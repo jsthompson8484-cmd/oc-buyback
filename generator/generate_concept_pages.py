@@ -288,6 +288,8 @@ def page(title, body, depth, extra_css="", *, path=None, desc="", schema=None,
 <html lang="en"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>{html.escape(title)}</title>
+<link rel="icon" type="image/png" href="{p}favicon.png">
+<link rel="apple-touch-icon" href="{p}apple-touch-icon.png">
 {head_extra}{FONTS}
 <style>{CSS}{extra_css}</style></head><body>
 {header(depth)}
