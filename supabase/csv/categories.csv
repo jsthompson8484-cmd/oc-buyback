@@ -1,0 +1,17 @@
+id,name,slug,display_name,image_dir,q1_label,q2_label,sort,enabled
+1,Cell Phone,cell-phone,Cell Phones,cell-phones,Which carrier?,How much storage?,0,True
+2,Tablet,tablet,Tablets,tablets,Which connectivity?,How much storage?,1,True
+3,Smartwatch,smartwatch,Smartwatches,smartwatches,Which case?,What size?,2,True
+4,Game Console,game-console,Game Consoles,game-consoles,Which edition?,How much storage?,3,True
+5,GoPro,gopro,GoPro,gopros,Which edition?,Which bundle?,4,True
+6,VR,vr,VR,vrs,Which edition?,How much storage?,5,True
+7,Headphones,headphones,Headphones,headphones,Which edition?,Which color?,6,True
+8,iPod,ipod,iPods,ipods,Which generation?,How much storage?,7,True
+9,Macbook,macbook,MacBooks,macbooks,Which carrier?,How much storage?,8,False
+10,Laptop,laptop,Laptops,laptops,Which carrier?,How much storage?,9,False
+11,iMac,imac,iMacs,imacs,Which carrier?,How much storage?,10,False
+12,Mac Mini,mac-mini,Mac Minis,mac-minis,Which carrier?,How much storage?,11,False
+13,Mac Studio,mac-studio,Mac Studios,mac-studios,Which carrier?,How much storage?,12,False
+14,Mac Pro,mac-pro,Mac Pros,mac-pros,Which carrier?,How much storage?,13,False
+15,Apple TV,apple-tv,Apple TV,apple-tvs,Which carrier?,How much storage?,14,False
+16,Drone,drone,Drones,drones,Which carrier?,How much storage?,15,False

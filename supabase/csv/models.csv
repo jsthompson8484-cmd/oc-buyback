@@ -1,0 +1,566 @@
+id,category_id,brand_id,name,slug,image_url,sort,enabled
+1,1,1,iPhone 5c,iphone-5c,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/apple/iphone-5c.webp,3199,False
+2,1,1,iPhone 5s,iphone-5s,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/apple/iphone-5s.webp,3289,False
+3,1,1,iPhone SE 1st Gen (2016),iphone-se-1st-gen-2016,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/apple/iphone-se-1st-gen-2016.webp,3379,False
+4,1,1,iPhone 6,iphone-6,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/apple/iphone-6.webp,3499,False
+5,1,1,iPhone 6 Plus,iphone-6-plus,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/apple/iphone-6-plus.webp,3620,False
+6,1,1,iPhone 6s,iphone-6s,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/apple/iphone-6s.webp,3764,False
+7,1,1,iPhone 6s Plus,iphone-6s-plus,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/apple/iphone-6s-plus.webp,3908,False
+8,1,1,iPhone 7,iphone-7,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/apple/iphone-7.webp,4052,False
+9,1,1,iPhone 7 Plus,iphone-7-plus,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/apple/iphone-7-plus.webp,4160,False
+10,1,1,iPhone 8,iphone-8,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/apple/iphone-8.webp,4265,True
+11,1,1,iPhone 8 Plus,iphone-8-plus,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/apple/iphone-8-plus.webp,4373,True
+12,1,1,iPhone X,iphone-x,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/apple/iphone-x.webp,4481,True
+13,1,1,iPhone XS,iphone-xs,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/apple/iphone-xs.webp,4553,True
+14,1,1,iPhone XS Max,iphone-xs-max,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/apple/iphone-xs-max.webp,4661,True
+15,1,1,iPhone XR,iphone-xr,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/apple/iphone-xr.webp,4769,True
+16,1,1,iPhone 11,iphone-11,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/apple/iphone-11.webp,4877,True
+17,1,1,iPhone 11 Pro,iphone-11-pro,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/apple/iphone-11-pro.webp,4985,True
+18,1,1,iPhone 11 Pro Max,iphone-11-pro-max,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/apple/iphone-11-pro-max.webp,5093,True
+19,1,1,iPhone 12,iphone-12,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/apple/iphone-12.webp,5201,True
+20,1,1,iPhone 12 Mini,iphone-12-mini,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/apple/iphone-12-mini.webp,5309,True
+21,1,1,iPhone 12 Pro,iphone-12-pro,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/apple/iphone-12-pro.webp,5417,True
+22,1,1,iPhone 12 Pro Max,iphone-12-pro-max,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/apple/iphone-12-pro-max.webp,5525,True
+23,1,1,iPhone 13,iphone-13,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/apple/iphone-13.webp,5633,True
+24,1,1,iPhone 13 Mini,iphone-13-mini,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/apple/iphone-13-mini.webp,5741,True
+25,1,1,iPhone 13 Pro,iphone-13-pro,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/apple/iphone-13-pro.webp,5849,True
+26,1,1,iPhone 13 Pro Max,iphone-13-pro-max,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/apple/iphone-13-pro-max.webp,5993,True
+27,1,1,iPhone SE 2nd Gen (2020),iphone-se-2nd-gen-2020,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/apple/iphone-se-2nd-gen-2020.webp,6137,True
+28,1,1,iPhone SE 3rd Gen (2022),iphone-se-3rd-gen-2022,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/apple/iphone-se-3rd-gen-2022.webp,6245,True
+29,1,1,iPhone 14,iphone-14,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/apple/iphone-14.webp,6353,True
+30,1,1,iPhone 14 Plus,iphone-14-plus,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/apple/iphone-14-plus.webp,6461,True
+31,1,1,iPhone 14 Pro,iphone-14-pro,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/apple/iphone-14-pro.webp,6569,True
+32,1,1,iPhone 14 Pro Max,iphone-14-pro-max,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/apple/iphone-14-pro-max.webp,6713,True
+33,1,1,iPhone 15,iphone-15,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/apple/iphone-15.webp,6857,True
+34,1,1,iPhone 15 Plus,iphone-15-plus,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/apple/iphone-15-plus.webp,6965,True
+35,1,1,iPhone 15 Pro,iphone-15-pro,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/apple/iphone-15-pro.webp,7073,True
+36,1,1,iPhone 15 Pro Max,iphone-15-pro-max,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/apple/iphone-15-pro-max.webp,7217,True
+37,1,1,iPhone 16,iphone-16,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/apple/iphone-16.webp,7325,True
+38,1,1,iPhone 16 Plus,iphone-16-plus,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/apple/iphone-16-plus.webp,7421,True
+39,1,1,iPhone 16 Pro,iphone-16-pro,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/apple/iphone-16-pro.webp,7511,True
+40,1,1,iPhone 16 Pro Max,iphone-16-pro-max,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/apple/iphone-16-pro-max.webp,7625,True
+41,1,1,iPhone 16e,iphone-16e,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/apple/iphone-16e.webp,7715,True
+42,1,1,iPhone 17e,iphone-17e,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/apple/iphone-17e.webp,7805,True
+43,1,1,iPhone 17,iphone-17,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/apple/iphone-17.webp,7859,True
+44,1,1,iPhone 17 Pro,iphone-17-pro,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/apple/iphone-17-pro.webp,7949,True
+45,1,1,iPhone 17 Pro Max,iphone-17-pro-max,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/apple/iphone-17-pro-max.webp,8063,True
+46,1,1,iPhone Air,iphone-air,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/apple/iphone-air.webp,8183,True
+47,1,2,ROG Phone,rog-phone,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/asus/rog-phone.webp,17237,False
+48,1,2,ROG Phone 2,rog-phone-2,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/asus/rog-phone-2.webp,17249,False
+49,1,2,ROG Phone 3,rog-phone-3,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/asus/rog-phone-3.webp,17267,False
+50,1,2,ROG Phone 5,rog-phone-5,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/asus/rog-phone-5.webp,17279,False
+51,1,2,ROG Phone 5S,rog-phone-5s,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/asus/rog-phone-5s.webp,17291,False
+52,1,2,ROG Phone 5S Pro,rog-phone-5s-pro,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/asus/rog-phone-5s-pro.webp,17321,False
+53,1,3,DTEK50,dtek50,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/blackberry/dtek50.webp,16853,False
+54,1,3,DTEK60,dtek60,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/blackberry/dtek60.webp,16859,False
+55,1,3,KEYone,keyone,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/blackberry/keyone.webp,16865,False
+56,1,3,Key2,key2,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/blackberry/key2.webp,16871,False
+57,1,8,Pixel 2,pixel-2,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/google/pixel-2.webp,14579,False
+58,1,8,Pixel 2 XL,pixel-2-xl,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/google/pixel-2-xl.webp,14603,False
+59,1,8,Pixel 3,pixel-3,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/google/pixel-3.webp,14639,False
+60,1,8,Pixel 3a,pixel-3a,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/google/pixel-3a.webp,14675,False
+61,1,8,Pixel 3 XL,pixel-3-xl,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/google/pixel-3-xl.webp,14687,False
+62,1,8,Pixel 3a XL,pixel-3a-xl,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/google/pixel-3a-xl.webp,14723,False
+63,1,8,Pixel 4,pixel-4,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/google/pixel-4.webp,14735,False
+64,1,8,Pixel 4a,pixel-4a,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/google/pixel-4a.webp,14795,True
+65,1,8,Pixel 4a 5G,pixel-4a-5g,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/google/pixel-4a-5g.webp,14819,False
+66,1,8,Pixel 4 XL,pixel-4-xl,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/google/pixel-4-xl.webp,14843,False
+67,1,8,Pixel 5,pixel-5,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/google/pixel-5.webp,14891,False
+68,1,8,Pixel 5a 5G,pixel-5a-5g,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/google/pixel-5a-5g.webp,14915,False
+69,1,8,Pixel 6,pixel-6,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/google/pixel-6.webp,14933,True
+70,1,8,Pixel 6 Pro,pixel-6-pro,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/google/pixel-6-pro.webp,14981,True
+71,1,8,Pixel 6a,pixel-6a,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/google/pixel-6a.webp,15053,True
+72,1,8,Pixel 7,pixel-7,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/google/pixel-7.webp,15101,True
+73,1,8,Pixel 7 Pro,pixel-7-pro,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/google/pixel-7-pro.webp,15161,True
+74,1,8,Pixel 7a,pixel-7a,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/google/pixel-7a.webp,15251,True
+75,1,8,Pixel Fold,pixel-fold,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/google/pixel-fold.webp,15281,True
+76,1,8,Pixel 8,pixel-8,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/google/pixel-8.webp,15341,True
+77,1,8,Pixel 8 Pro,pixel-8-pro,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/google/pixel-8-pro.webp,15401,True
+78,1,8,Pixel 8a,pixel-8a,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/google/pixel-8a.webp,15521,True
+79,1,8,Pixel 9 Pro Fold,pixel-9-pro-fold,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/google/pixel-9-pro-fold.webp,15581,True
+80,1,8,Pixel 9,pixel-9,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/google/pixel-9.webp,15641,True
+81,1,8,Pixel 9a,pixel-9a,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/google/pixel-9a.webp,15701,True
+82,1,8,Pixel 9 Pro,pixel-9-pro,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/google/pixel-9-pro.webp,15761,True
+83,1,8,Pixel 9 Pro XL,pixel-9-pro-xl,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/google/pixel-9-pro-xl.webp,15881,True
+84,1,8,Pixel 10 Pro Fold,pixel-10-pro-fold,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/google/pixel-10-pro-fold.webp,16001,True
+85,1,8,Pixel 10,pixel-10,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/google/pixel-10.webp,16091,True
+86,1,8,Pixel 10a,pixel-10a,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/google/pixel-10a.webp,16151,True
+87,1,8,Pixel 10 Pro,pixel-10-pro,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/google/pixel-10-pro.webp,16211,True
+88,1,8,Pixel 10 Pro XL,pixel-10-pro-xl,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/google/pixel-10-pro-xl.webp,16331,True
+89,1,9,P 20 Pro,p-20-pro,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/huawei/p-20-pro.webp,17207,False
+90,1,9,P 20 Lite,p-20-lite,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/huawei/p-20-lite.webp,17213,False
+91,1,9,P 20,p-20,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/huawei/p-20.webp,17219,False
+92,1,9,Google Nexus 6p,google-nexus-6p,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/huawei/google-nexus-6p.webp,17225,False
+93,1,9,P10,p10,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/huawei/p10.webp,17231,False
+94,1,10,G7 ThinQ,g7-thinq,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/lg/g7-thinq.webp,14351,False
+95,1,10,V30,v30,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/lg/v30.webp,14411,False
+96,1,10,V30 Plus,v30-plus,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/lg/v30-plus.webp,14471,False
+97,1,10,V35 ThinQ,v35-thinq,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/lg/v35-thinq.webp,14489,False
+98,1,10,V40 ThinQ,v40-thinq,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/lg/v40-thinq.webp,14519,False
+99,1,10,G8 ThinQ,g8-thinq,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/lg/g8-thinq.webp,14549,False
+100,1,12,Moto G4,moto-g4,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/motorola/moto-g4.webp,16913,False
+101,1,12,Moto G4 Plus,moto-g4-plus,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/motorola/moto-g4-plus.webp,16919,False
+102,1,12,Moto G5,moto-g5,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/motorola/moto-g5.webp,16925,False
+103,1,12,Moto G5 Plus,moto-g5-plus,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/motorola/moto-g5-plus.webp,16931,False
+104,1,12,Moto G 5G,moto-g-5g,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/motorola/moto-g-5g.webp,16937,False
+105,1,12,Moto G Stylus 5G (2022),moto-g-stylus-5g-2022,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/motorola/moto-g-stylus-5g-2022.webp,17057,False
+106,1,12,Moto G Stylus 5G (2021),moto-g-stylus-5g-2021,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/motorola/moto-g-stylus-5g-2021.webp,17147,False
+107,1,14,1,1,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/oneplus/1.webp,16421,False
+108,1,14,2,2,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/oneplus/2.webp,16433,False
+109,1,14,3,3,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/oneplus/3.webp,16445,False
+110,1,14,3T,3t,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/oneplus/3t.webp,16451,False
+111,1,14,5,5,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/oneplus/5.webp,16463,False
+112,1,14,5T,5t,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/oneplus/5t.webp,16475,False
+113,1,14,6,6,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/oneplus/6.webp,16487,False
+114,1,14,6T,6t,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/oneplus/6t.webp,16505,False
+115,1,14,7 Pro,7-pro,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/oneplus/7-pro.webp,16529,True
+116,1,14,7T,7t,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/oneplus/7t.webp,16553,True
+117,1,14,8 5G,8-5g,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/oneplus/8-5g.webp,16565,True
+118,1,14,8 Pro,8-pro,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/oneplus/8-pro.webp,16571,True
+119,1,14,9,9,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/oneplus/9.webp,16577,True
+120,1,14,9 Pro,9-pro,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/oneplus/9-pro.webp,16613,True
+121,1,14,10 Pro,10-pro,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/oneplus/10-pro.webp,16649,True
+122,1,14,11,11,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/oneplus/11.webp,16685,True
+123,1,14,Open,open,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/oneplus/open.webp,16721,True
+124,1,14,12,12,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/oneplus/12.webp,16745,True
+125,1,14,12R,12r,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/oneplus/12r.webp,16769,True
+126,1,14,13,13,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/oneplus/13.webp,16793,True
+127,1,14,13R,13r,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/oneplus/13r.webp,16817,True
+128,1,14,15,15,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/oneplus/15.webp,40905,True
+129,1,14,15R,15r,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/oneplus/15r.webp,40925,True
+130,1,16,Galaxy A11,galaxy-a11,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/samsung/galaxy-a11.webp,7706,False
+131,1,16,Galaxy A12,galaxy-a12,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/samsung/galaxy-a12.webp,8309,False
+132,1,16,Galaxy A13 5G,galaxy-a13-5g,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/samsung/galaxy-a13-5g.webp,8417,False
+133,1,16,Galaxy A14 5G,galaxy-a14-5g,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/samsung/galaxy-a14-5g.webp,8549,False
+134,1,16,Galaxy A23 5G,galaxy-a23-5g,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/samsung/galaxy-a23-5g.webp,8693,False
+135,1,16,Galaxy A30,galaxy-a30,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/samsung/galaxy-a30.webp,8765,False
+136,1,16,Galaxy A30S,galaxy-a30s,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/samsung/galaxy-a30s.webp,8837,False
+137,1,16,Galaxy A31,galaxy-a31,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/samsung/galaxy-a31.webp,8927,False
+138,1,16,Galaxy A32 5G,galaxy-a32-5g,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/samsung/galaxy-a32-5g.webp,8999,False
+139,1,16,Galaxy A53 5G,galaxy-a53-5g,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/samsung/galaxy-a53-5g.webp,9071,False
+140,1,16,Galaxy Fold,galaxy-fold,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/samsung/galaxy-fold.webp,9143,True
+141,1,16,Galaxy Note 3,galaxy-note-3,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/samsung/galaxy-note-3.webp,9179,False
+142,1,16,Galaxy Note 4,galaxy-note-4,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/samsung/galaxy-note-4.webp,9287,False
+143,1,16,Galaxy Note 5,galaxy-note-5,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/samsung/galaxy-note-5.webp,9359,False
+144,1,16,Galaxy Note 8,galaxy-note-8,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/samsung/galaxy-note-8.webp,9431,True
+145,1,16,Galaxy Note 9,galaxy-note-9,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/samsung/galaxy-note-9.webp,9503,True
+146,1,16,Galaxy Note 10,galaxy-note-10,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/samsung/galaxy-note-10.webp,9575,True
+147,1,16,Galaxy Note 10+ 4G,galaxy-note-10-plus-4g,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/samsung/galaxy-note-10-plus-4g.webp,9647,True
+148,1,16,Galaxy Note 20,galaxy-note-20,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/samsung/galaxy-note-20.webp,9719,True
+149,1,16,Galaxy Note 20 5G,galaxy-note-20-5g,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/samsung/galaxy-note-20-5g.webp,9791,True
+150,1,16,Galaxy Note 20 Ultra,galaxy-note-20-ultra,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/samsung/galaxy-note-20-ultra.webp,9827,True
+151,1,16,Galaxy S5,galaxy-s5,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/samsung/galaxy-s5.webp,9935,False
+152,1,16,Galaxy S6,galaxy-s6,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/samsung/galaxy-s6.webp,10007,False
+153,1,16,Galaxy S6 Edge,galaxy-s6-edge,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/samsung/galaxy-s6-edge.webp,10115,False
+154,1,16,Galaxy S6 Edge Plus,galaxy-s6-edge-plus,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/samsung/galaxy-s6-edge-plus.webp,10223,False
+155,1,16,Galaxy S7,galaxy-s7,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/samsung/galaxy-s7.webp,10331,True
+156,1,16,Galaxy S7 Active,galaxy-s7-active,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/samsung/galaxy-s7-active.webp,10367,False
+157,1,16,Galaxy S7 Edge,galaxy-s7-edge,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/samsung/galaxy-s7-edge.webp,10373,True
+158,1,16,Galaxy S8,galaxy-s8,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/samsung/galaxy-s8.webp,10409,False
+159,1,16,Galaxy S8 Plus,galaxy-s8-plus,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/samsung/galaxy-s8-plus.webp,10481,False
+160,1,16,Galaxy S9,galaxy-s9,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/samsung/galaxy-s9.webp,10553,True
+161,1,16,Galaxy S9 Plus,galaxy-s9-plus,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/samsung/galaxy-s9-plus.webp,10661,True
+162,1,16,Galaxy S10 4G,galaxy-s10-4g,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/samsung/galaxy-s10-4g.webp,10751,True
+163,1,16,Galaxy S10 5G,galaxy-s10-5g,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/samsung/galaxy-s10-5g.webp,10811,True
+164,1,16,Galaxy S10 Plus,galaxy-s10-plus,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/samsung/galaxy-s10-plus.webp,10871,True
+165,1,16,Galaxy S10e,galaxy-s10e,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/samsung/galaxy-s10e.webp,10961,True
+166,1,16,Galaxy S20,galaxy-s20,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/samsung/galaxy-s20.webp,11021,True
+167,1,16,Galaxy S20 FE,galaxy-s20-fe,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/samsung/galaxy-s20-fe.webp,11051,True
+168,1,16,Galaxy S20 Plus,galaxy-s20-plus,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/samsung/galaxy-s20-plus.webp,11111,True
+169,1,16,Galaxy S20 Ultra,galaxy-s20-ultra,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/samsung/galaxy-s20-ultra.webp,11171,True
+170,1,16,Galaxy S21,galaxy-s21,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/samsung/galaxy-s21.webp,11231,True
+171,1,16,Galaxy S21 FE,galaxy-s21-fe,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/samsung/galaxy-s21-fe.webp,11291,True
+172,1,16,Galaxy S21 Plus,galaxy-s21-plus,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/samsung/galaxy-s21-plus.webp,11351,True
+173,1,16,Galaxy S21 Plus 5G,galaxy-s21-plus-5g,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/samsung/galaxy-s21-plus-5g.webp,11411,False
+174,1,16,Galaxy S21 Ultra,galaxy-s21-ultra,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/samsung/galaxy-s21-ultra.webp,11471,True
+175,1,16,Galaxy S21 Ultra 5G,galaxy-s21-ultra-5g,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/samsung/galaxy-s21-ultra-5g.webp,11561,False
+176,1,16,Galaxy S22,galaxy-s22,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/samsung/galaxy-s22.webp,11651,True
+177,1,16,Galaxy S22 5G,galaxy-s22-5g,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/samsung/galaxy-s22-5g.webp,11711,False
+178,1,16,Galaxy S22 Plus,galaxy-s22-plus,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/samsung/galaxy-s22-plus.webp,11771,True
+179,1,16,Galaxy S22 Plus 5G,galaxy-s22-plus-5g,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/samsung/galaxy-s22-plus-5g.webp,11831,False
+180,1,16,Galaxy S22 Ultra,galaxy-s22-ultra,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/samsung/galaxy-s22-ultra.webp,11891,True
+181,1,16,Galaxy S22 Ultra 5G,galaxy-s22-ultra-5g,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/samsung/galaxy-s22-ultra-5g.webp,12011,False
+182,1,16,Galaxy S23,galaxy-s23,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/samsung/galaxy-s23.webp,12131,True
+183,1,16,Galaxy S23 FE,galaxy-s23-fe,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/samsung/galaxy-s23-fe.webp,12221,True
+184,1,16,Galaxy S23 Plus,galaxy-s23-plus,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/samsung/galaxy-s23-plus.webp,12281,True
+185,1,16,Galaxy S23 Ultra,galaxy-s23-ultra,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/samsung/galaxy-s23-ultra.webp,12371,True
+186,1,16,Galaxy S24,galaxy-s24,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/samsung/galaxy-s24.webp,12461,True
+187,1,16,Galaxy S24 Fe,galaxy-s24-fe,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/samsung/galaxy-s24-fe.webp,12521,True
+188,1,16,Galaxy S24 Plus,galaxy-s24-plus,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/samsung/galaxy-s24-plus.webp,12581,True
+189,1,16,Galaxy S24 Ultra,galaxy-s24-ultra,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/samsung/galaxy-s24-ultra.webp,12671,True
+190,1,16,Galaxy S25,galaxy-s25,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/samsung/galaxy-s25.webp,12761,True
+191,1,16,Galaxy S25 FE,galaxy-s25-fe,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/samsung/galaxy-s25-fe.webp,12821,True
+192,1,16,Galaxy S25 Plus,galaxy-s25-plus,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/samsung/galaxy-s25-plus.webp,12911,True
+193,1,16,Galaxy S25 Ultra,galaxy-s25-ultra,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/samsung/galaxy-s25-ultra.webp,12971,True
+194,1,16,Galaxy S25 Edge,galaxy-s25-edge,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/samsung/galaxy-s25-edge.webp,13061,True
+195,1,16,Galaxy S26,galaxy-s26,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/samsung/galaxy-s26.webp,13151,True
+196,1,16,Galaxy S26 Plus,galaxy-s26-plus,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/samsung/galaxy-s26-plus.webp,13241,True
+197,1,16,Galaxy S26 Ultra,galaxy-s26-ultra,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/samsung/galaxy-s26-ultra.webp,13301,True
+198,1,16,Galaxy Z Flip,galaxy-z-flip,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/samsung/galaxy-z-flip.webp,13391,False
+199,1,16,Galaxy Z Flip 4G,galaxy-z-flip-4g,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/samsung/galaxy-z-flip-4g.webp,13421,True
+200,1,16,Galaxy Z Flip 5G,galaxy-z-flip-5g,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/samsung/galaxy-z-flip-5g.webp,13451,True
+201,1,16,Galaxy Z Flip3,galaxy-z-flip3,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/samsung/galaxy-z-flip3.webp,13481,True
+202,1,16,Galaxy Z Flip4,galaxy-z-flip4,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/samsung/galaxy-z-flip4.webp,13541,True
+203,1,16,Galaxy Z Flip5,galaxy-z-flip5,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/samsung/galaxy-z-flip5.webp,13631,True
+204,1,16,Galaxy Z Flip6,galaxy-z-flip6,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/samsung/galaxy-z-flip6.webp,13691,True
+205,1,16,Galaxy Z Flip7,galaxy-z-flip7,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/samsung/galaxy-z-flip7.webp,13751,True
+206,1,16,Galaxy Z Flip7 FE,galaxy-z-flip7-fe,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/samsung/galaxy-z-flip7-fe.webp,13811,True
+207,1,16,Galaxy Z Fold2,galaxy-z-fold2,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/samsung/galaxy-z-fold2.webp,13871,True
+208,1,16,Galaxy Z Fold3,galaxy-z-fold3,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/samsung/galaxy-z-fold3.webp,13931,True
+209,1,16,Galaxy Z Fold4,galaxy-z-fold4,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/samsung/galaxy-z-fold4.webp,13991,True
+210,1,16,Galaxy Z Fold5,galaxy-z-fold5,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/samsung/galaxy-z-fold5.webp,14081,True
+211,1,16,Galaxy Z Fold6,galaxy-z-fold6,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/samsung/galaxy-z-fold6.webp,14171,True
+212,1,16,Galaxy Z Fold7,galaxy-z-fold7,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/samsung/galaxy-z-fold7.webp,14261,True
+213,1,17,Xperia Z5,xperia-z5,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/sony/xperia-z5.webp,16841,False
+214,1,17,Xperia Z5 Premium,xperia-z5-premium,https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/sony/xperia-z5-premium.webp,16847,False
+215,2,1,iPad 2nd Gen (2011),ipad-2nd-gen-2011,https://s3.amazonaws.com/fliptech-assets/images/devices/tablets/apple/ipad-2nd-gen-2011.webp,979,False
+216,2,1,iPad 3rd Gen (2012),ipad-3rd-gen-2012,https://s3.amazonaws.com/fliptech-assets/images/devices/tablets/apple/ipad-3rd-gen-2012.webp,1027,False
+217,2,1,iPad 4th Gen (2012),ipad-4th-gen-2012,https://s3.amazonaws.com/fliptech-assets/images/devices/tablets/apple/ipad-4th-gen-2012.webp,1063,False
+218,2,1,iPad Air 1st Gen (2013),ipad-air-1st-gen-2013,https://s3.amazonaws.com/fliptech-assets/images/devices/tablets/apple/ipad-air-1st-gen-2013.webp,1111,False
+219,2,1,iPad Air 2nd Gen (2014),ipad-air-2nd-gen-2014,https://s3.amazonaws.com/fliptech-assets/images/devices/tablets/apple/ipad-air-2nd-gen-2014.webp,1159,False
+220,2,1,iPad Air 3rd Gen (2019),ipad-air-3rd-gen-2019,https://s3.amazonaws.com/fliptech-assets/images/devices/tablets/apple/ipad-air-3rd-gen-2019.webp,1207,True
+221,2,1,iPad Air 4th Gen (2020),ipad-air-4th-gen-2020,https://s3.amazonaws.com/fliptech-assets/images/devices/tablets/apple/ipad-air-4th-gen-2020.webp,1231,True
+222,2,1,iPad Air 5th Gen (2022),ipad-air-5th-gen-2022,https://s3.amazonaws.com/fliptech-assets/images/devices/tablets/apple/ipad-air-5th-gen-2022.webp,1255,True
+223,2,1,iPad Mini 1st Gen (2012),ipad-mini-1st-gen-2012,https://s3.amazonaws.com/fliptech-assets/images/devices/tablets/apple/ipad-mini-1st-gen-2012.webp,1279,False
+224,2,1,iPad Mini 2nd Gen (2013),ipad-mini-2nd-gen-2013,https://s3.amazonaws.com/fliptech-assets/images/devices/tablets/apple/ipad-mini-2nd-gen-2013.webp,1315,False
+225,2,1,iPad Mini 3rd Gen (2014),ipad-mini-3rd-gen-2014,https://s3.amazonaws.com/fliptech-assets/images/devices/tablets/apple/ipad-mini-3rd-gen-2014.webp,1363,True
+226,2,1,iPad Mini 4th Gen (2015),ipad-mini-4th-gen-2015,https://s3.amazonaws.com/fliptech-assets/images/devices/tablets/apple/ipad-mini-4th-gen-2015.webp,1399,True
+227,2,1,iPad Mini 5th Gen (2019),ipad-mini-5th-gen-2019,https://s3.amazonaws.com/fliptech-assets/images/devices/tablets/apple/ipad-mini-5th-gen-2019.webp,1459,True
+228,2,1,iPad Mini 6th Gen (2021),ipad-mini-6th-gen-2021,https://s3.amazonaws.com/fliptech-assets/images/devices/tablets/apple/ipad-mini-6th-gen-2021.webp,1483,True
+229,2,1,iPad Mini 7th Gen (2024),ipad-mini-7th-gen-2024,https://s3.amazonaws.com/fliptech-assets/images/devices/tablets/apple/ipad-mini-7th-gen-2024.webp,1507,True
+230,2,1,iPad Pro 12.9 1st Gen (2015),ipad-pro-12-9-1st-gen-2015,https://s3.amazonaws.com/fliptech-assets/images/devices/tablets/apple/ipad-pro-12-9-1st-gen-2015.webp,1543,True
+231,2,1,iPad Pro 12.9 2nd Gen (2017),ipad-pro-12-9-2nd-gen-2017,https://s3.amazonaws.com/fliptech-assets/images/devices/tablets/apple/ipad-pro-12-9-2nd-gen-2017.webp,1591,True
+232,2,1,iPad Pro 12.9 3rd Gen (2018),ipad-pro-12-9-3rd-gen-2018,https://s3.amazonaws.com/fliptech-assets/images/devices/tablets/apple/ipad-pro-12-9-3rd-gen-2018.webp,1639,True
+233,2,1,iPad Pro 12.9 4th Gen (2020),ipad-pro-12-9-4th-gen-2020,https://s3.amazonaws.com/fliptech-assets/images/devices/tablets/apple/ipad-pro-12-9-4th-gen-2020.webp,1699,True
+234,2,1,iPad Pro 12.9 5th Gen (2021),ipad-pro-12-9-5th-gen-2021,https://s3.amazonaws.com/fliptech-assets/images/devices/tablets/apple/ipad-pro-12-9-5th-gen-2021.webp,1747,True
+235,2,1,iPad Pro 12.9 6th Gen (2022),ipad-pro-12-9-6th-gen-2022,https://s3.amazonaws.com/fliptech-assets/images/devices/tablets/apple/ipad-pro-12-9-6th-gen-2022.webp,1807,True
+236,2,1,iPad Pro 10.5 1st Gen (2017),ipad-pro-10-5-1st-gen-2017,https://s3.amazonaws.com/fliptech-assets/images/devices/tablets/apple/ipad-pro-10-5-1st-gen-2017.webp,1867,True
+237,2,1,iPad Pro 9.7 1st Gen (2016),ipad-pro-9-7-1st-gen-2016,https://s3.amazonaws.com/fliptech-assets/images/devices/tablets/apple/ipad-pro-9-7-1st-gen-2016.webp,1903,True
+238,2,1,iPad 9.7 5th Gen (2017),ipad-9-7-5th-gen-2017,https://s3.amazonaws.com/fliptech-assets/images/devices/tablets/apple/ipad-9-7-5th-gen-2017.webp,1939,True
+239,2,1,iPad 9.7 6th Gen (2018),ipad-9-7-6th-gen-2018,https://s3.amazonaws.com/fliptech-assets/images/devices/tablets/apple/ipad-9-7-6th-gen-2018.webp,1963,True
+240,2,1,iPad 10.2 7th Gen (2019),ipad-10-2-7th-gen-2019,https://s3.amazonaws.com/fliptech-assets/images/devices/tablets/apple/ipad-10-2-7th-gen-2019.webp,1987,True
+241,2,1,iPad 10.2 8th Gen (2020),ipad-10-2-8th-gen-2020,https://s3.amazonaws.com/fliptech-assets/images/devices/tablets/apple/ipad-10-2-8th-gen-2020.webp,2011,True
+242,2,1,iPad 10.2 9th Gen (2021),ipad-10-2-9th-gen-2021,https://s3.amazonaws.com/fliptech-assets/images/devices/tablets/apple/ipad-10-2-9th-gen-2021.webp,2059,True
+243,2,1,iPad Pro 11 1st Gen (2018),ipad-pro-11-1st-gen-2018,https://s3.amazonaws.com/fliptech-assets/images/devices/tablets/apple/ipad-pro-11-1st-gen-2018.webp,2083,True
+244,2,1,iPad Pro 11 2nd Gen (2020),ipad-pro-11-2nd-gen-2020,https://s3.amazonaws.com/fliptech-assets/images/devices/tablets/apple/ipad-pro-11-2nd-gen-2020.webp,2131,True
+245,2,1,iPad Pro 11 3rd Gen (2021),ipad-pro-11-3rd-gen-2021,https://s3.amazonaws.com/fliptech-assets/images/devices/tablets/apple/ipad-pro-11-3rd-gen-2021.webp,2179,True
+246,2,1,iPad 10.9 10th Gen (2022),ipad-10-9-10th-gen-2022,https://s3.amazonaws.com/fliptech-assets/images/devices/tablets/apple/ipad-10-9-10th-gen-2022.webp,2239,True
+247,2,1,iPad Pro 11 4th Gen (2022),ipad-pro-11-4th-gen-2022,https://s3.amazonaws.com/fliptech-assets/images/devices/tablets/apple/ipad-pro-11-4th-gen-2022.webp,2263,True
+248,2,1,iPad Pro 13 M4 Standard Glass (2024),ipad-pro-13-m4-standard-glass-2024,https://s3.amazonaws.com/fliptech-assets/images/devices/tablets/apple/ipad-pro-13-m4-standard-glass-2024.webp,2323,True
+249,2,1,iPad Pro 13 M4 Nano-texture Glass (2024),ipad-pro-13-m4-nano-texture-glass-2024,https://s3.amazonaws.com/fliptech-assets/images/devices/tablets/apple/ipad-pro-13-m4-nano-texture-glass-2024.webp,2371,True
+250,2,1,iPad Pro 11 M4 Standard Glass (2024),ipad-pro-11-m4-standard-glass-2024,https://s3.amazonaws.com/fliptech-assets/images/devices/tablets/apple/ipad-pro-11-m4-standard-glass-2024.webp,2395,True
+251,2,1,iPad Pro 11 M4 Nano-texture Glass (2024),ipad-pro-11-m4-nano-texture-glass-2024,https://s3.amazonaws.com/fliptech-assets/images/devices/tablets/apple/ipad-pro-11-m4-nano-texture-glass-2024.webp,2443,True
+252,2,1,iPad Air 11 M2 (2024),ipad-air-11-m2-2024,https://s3.amazonaws.com/fliptech-assets/images/devices/tablets/apple/ipad-air-11-m2-2024.webp,2467,True
+253,2,1,iPad Air 13 M2 (2024),ipad-air-13-m2-2024,https://s3.amazonaws.com/fliptech-assets/images/devices/tablets/apple/ipad-air-13-m2-2024.webp,2515,True
+254,2,1,iPad Air 11 M3 (2025),ipad-air-11-m3-2025,https://s3.amazonaws.com/fliptech-assets/images/devices/tablets/apple/ipad-air-11-m3-2025.webp,2563,True
+255,2,1,iPad Air 13 M3 (2025),ipad-air-13-m3-2025,https://s3.amazonaws.com/fliptech-assets/images/devices/tablets/apple/ipad-air-13-m3-2025.webp,2611,True
+256,2,1,iPad 11 A16 11th Gen (2025),ipad-11-a16-11th-gen-2025,https://s3.amazonaws.com/fliptech-assets/images/devices/tablets/apple/ipad-11-a16-11th-gen-2025.webp,2659,True
+257,2,1,iPad Pro 13 M5 Standard Glass (2025),ipad-pro-13-m5-standard-glass-2025,https://s3.amazonaws.com/fliptech-assets/images/devices/tablets/apple/ipad-pro-13-m5-standard-glass-2025.webp,40737,True
+258,2,1,iPad Pro 13 M5 Nano-texture Glass (2025),ipad-pro-13-m5-nanominustexture-glass-2025,https://s3.amazonaws.com/fliptech-assets/images/devices/tablets/apple/ipad-pro-13-m5-nanominustexture-glass-2025.webp,40785,True
+259,2,1,iPad Pro 11 M5 Standard Glass (2025),ipad-pro-11-m5-standard-glass-2025,https://s3.amazonaws.com/fliptech-assets/images/devices/tablets/apple/ipad-pro-11-m5-standard-glass-2025.webp,40809,True
+260,2,1,iPad Pro 11 M5 Nano-texture Glass (2025),ipad-pro-11-m5-nanominustexture-glass-2025,https://s3.amazonaws.com/fliptech-assets/images/devices/tablets/apple/ipad-pro-11-m5-nanominustexture-glass-2025.webp,40881,True
+261,2,1,iPad Air 11 M4 (2026),ipad-air-11-m4-2026,https://s3.amazonaws.com/fliptech-assets/images/devices/tablets/apple/ipad-air-11-m4-2026.webp,40945,True
+262,2,1,iPad Air 13 M4 (2026),ipad-air-13-m4-2026,https://s3.amazonaws.com/fliptech-assets/images/devices/tablets/apple/ipad-air-13-m4-2026.webp,40993,True
+263,2,11,Surface Pro 3 i3,surface-pro-3-i3,https://s3.amazonaws.com/fliptech-assets/images/devices/tablets/microsoft/surface-pro-3-i3.webp,2695,False
+264,2,11,Surface Pro 3 i5,surface-pro-3-i5,https://s3.amazonaws.com/fliptech-assets/images/devices/tablets/microsoft/surface-pro-3-i5.webp,2719,False
+265,2,11,Surface Pro 3 i7,surface-pro-3-i7,https://s3.amazonaws.com/fliptech-assets/images/devices/tablets/microsoft/surface-pro-3-i7.webp,2749,False
+266,2,11,Surface Pro 4 m3,surface-pro-4-m3,https://s3.amazonaws.com/fliptech-assets/images/devices/tablets/microsoft/surface-pro-4-m3.webp,2773,False
+267,2,11,Surface Pro 4 i5,surface-pro-4-i5,https://s3.amazonaws.com/fliptech-assets/images/devices/tablets/microsoft/surface-pro-4-i5.webp,2779,False
+268,2,11,Surface Pro 4 i7,surface-pro-4-i7,https://s3.amazonaws.com/fliptech-assets/images/devices/tablets/microsoft/surface-pro-4-i7.webp,2791,False
+269,2,11,Surface Pro 5 m3,surface-pro-5-m3,https://s3.amazonaws.com/fliptech-assets/images/devices/tablets/microsoft/surface-pro-5-m3.webp,2797,False
+270,2,11,Surface Pro 5 i5,surface-pro-5-i5,https://s3.amazonaws.com/fliptech-assets/images/devices/tablets/microsoft/surface-pro-5-i5.webp,2803,False
+271,2,11,Surface Pro 5 i7,surface-pro-5-i7,https://s3.amazonaws.com/fliptech-assets/images/devices/tablets/microsoft/surface-pro-5-i7.webp,2815,False
+272,2,11,Surface Pro 6 i5,surface-pro-6-i5,https://s3.amazonaws.com/fliptech-assets/images/devices/tablets/microsoft/surface-pro-6-i5.webp,2833,False
+273,2,11,Surface Pro 6 i7,surface-pro-6-i7,https://s3.amazonaws.com/fliptech-assets/images/devices/tablets/microsoft/surface-pro-6-i7.webp,2845,False
+274,2,11,Surface Pro 7 i3,surface-pro-7-i3,https://s3.amazonaws.com/fliptech-assets/images/devices/tablets/microsoft/surface-pro-7-i3.webp,2863,False
+275,2,11,Surface Pro 7 i5,surface-pro-7-i5,https://s3.amazonaws.com/fliptech-assets/images/devices/tablets/microsoft/surface-pro-7-i5.webp,2869,False
+276,2,11,Surface Pro 7 i7,surface-pro-7-i7,https://s3.amazonaws.com/fliptech-assets/images/devices/tablets/microsoft/surface-pro-7-i7.webp,2893,False
+277,2,11,Surface Pro 7 Plus i3,surface-pro-7-plus-i3,https://s3.amazonaws.com/fliptech-assets/images/devices/tablets/microsoft/surface-pro-7-plus-i3.webp,2917,False
+278,2,11,Surface Pro 7 Plus i5,surface-pro-7-plus-i5,https://s3.amazonaws.com/fliptech-assets/images/devices/tablets/microsoft/surface-pro-7-plus-i5.webp,2929,False
+279,2,11,Surface Pro 7 Plus i7,surface-pro-7-plus-i7,https://s3.amazonaws.com/fliptech-assets/images/devices/tablets/microsoft/surface-pro-7-plus-i7.webp,2953,False
+280,2,11,Surface Pro 8 i5,surface-pro-8-i5,https://s3.amazonaws.com/fliptech-assets/images/devices/tablets/microsoft/surface-pro-8-i5.webp,2989,False
+281,2,11,Surface Pro 8 i7,surface-pro-8-i7,https://s3.amazonaws.com/fliptech-assets/images/devices/tablets/microsoft/surface-pro-8-i7.webp,3007,False
+282,2,11,Surface Pro X SQ1,surface-pro-x-sq1,https://s3.amazonaws.com/fliptech-assets/images/devices/tablets/microsoft/surface-pro-x-sq1.webp,3025,False
+283,2,11,Surface Pro X SQ2,surface-pro-x-sq2,https://s3.amazonaws.com/fliptech-assets/images/devices/tablets/microsoft/surface-pro-x-sq2.webp,3037,False
+284,2,11,Surface Studio i5 1st Gen,surface-studio-i5-1st-gen,https://s3.amazonaws.com/fliptech-assets/images/devices/tablets/microsoft/surface-studio-i5-1st-gen.webp,3049,False
+285,2,11,Surface Studio i7 1st Gen,surface-studio-i7-1st-gen,https://s3.amazonaws.com/fliptech-assets/images/devices/tablets/microsoft/surface-studio-i7-1st-gen.webp,3067,False
+286,2,11,Surface Studio i7 2nd Gen,surface-studio-i7-2nd-gen,https://s3.amazonaws.com/fliptech-assets/images/devices/tablets/microsoft/surface-studio-i7-2nd-gen.webp,3091,False
+287,2,11,Surface Duo,surface-duo,https://s3.amazonaws.com/fliptech-assets/images/devices/tablets/microsoft/surface-duo.webp,3115,False
+288,2,11,Surface Duo 2,surface-duo-2,https://s3.amazonaws.com/fliptech-assets/images/devices/tablets/microsoft/surface-duo-2.webp,3127,False
+289,2,11,Surface Go,surface-go,https://s3.amazonaws.com/fliptech-assets/images/devices/tablets/microsoft/surface-go.webp,3145,False
+290,2,11,Surface Pro X (2019) SQ1,surface-pro-x-2019-sq1,https://s3.amazonaws.com/fliptech-assets/images/devices/tablets/microsoft/surface-pro-x-2019-sq1.webp,3163,False
+291,2,11,Surface Pro X (2020) SQ2,surface-pro-x-2020-sq2,https://s3.amazonaws.com/fliptech-assets/images/devices/tablets/microsoft/surface-pro-x-2020-sq2.webp,3187,False
+292,3,1,First Generation,first-generation,https://s3.amazonaws.com/fliptech-assets/images/devices/smartwatches/apple/first-generation.webp,31,False
+293,3,1,Series 1,series-1,https://s3.amazonaws.com/fliptech-assets/images/devices/smartwatches/apple/series-1.webp,55,False
+294,3,1,Series 2,series-2,https://s3.amazonaws.com/fliptech-assets/images/devices/smartwatches/apple/series-2.webp,79,False
+295,3,1,Series 3,series-3,https://s3.amazonaws.com/fliptech-assets/images/devices/smartwatches/apple/series-3.webp,103,False
+296,3,1,Series 3 GPS,series-3-gps,https://s3.amazonaws.com/fliptech-assets/images/devices/smartwatches/apple/series-3-gps.webp,127,False
+297,3,1,Series 3 GPS + Cellular,series-3-gps-plus-cellular,https://s3.amazonaws.com/fliptech-assets/images/devices/smartwatches/apple/series-3-gps-plus-cellular.webp,151,False
+298,3,1,Series 4 GPS,series-4-gps,https://s3.amazonaws.com/fliptech-assets/images/devices/smartwatches/apple/series-4-gps.webp,175,False
+299,3,1,Series 4 GPS + Cellular,series-4-gps-plus-cellular,https://s3.amazonaws.com/fliptech-assets/images/devices/smartwatches/apple/series-4-gps-plus-cellular.webp,199,False
+300,3,1,Series 5 GPS,series-5-gps,https://s3.amazonaws.com/fliptech-assets/images/devices/smartwatches/apple/series-5-gps.webp,223,True
+301,3,1,Series 5 GPS + Cellular,series-5-gps-plus-cellular,https://s3.amazonaws.com/fliptech-assets/images/devices/smartwatches/apple/series-5-gps-plus-cellular.webp,259,True
+302,3,1,Series 6 GPS,series-6-gps,https://s3.amazonaws.com/fliptech-assets/images/devices/smartwatches/apple/series-6-gps.webp,295,True
+303,3,1,Series 6 GPS + Cellular,series-6-gps-plus-cellular,https://s3.amazonaws.com/fliptech-assets/images/devices/smartwatches/apple/series-6-gps-plus-cellular.webp,331,True
+304,3,1,Series 7 GPS,series-7-gps,https://s3.amazonaws.com/fliptech-assets/images/devices/smartwatches/apple/series-7-gps.webp,367,True
+305,3,1,Series 7 GPS + Cellular,series-7-gps-cellular,https://s3.amazonaws.com/fliptech-assets/images/devices/smartwatches/apple/series-7-gps-cellular.webp,403,True
+306,3,1,Watch SE GPS,watch-se-gps,https://s3.amazonaws.com/fliptech-assets/images/devices/smartwatches/apple/watch-se-gps.webp,439,True
+307,3,1,Watch SE GPS + Cellular,watch-se-gps-plus-cellular,https://s3.amazonaws.com/fliptech-assets/images/devices/smartwatches/apple/watch-se-gps-plus-cellular.webp,451,True
+308,3,1,Watch SE GPS 2nd Gen,watch-se-gps-2nd-gen,https://s3.amazonaws.com/fliptech-assets/images/devices/smartwatches/apple/watch-se-gps-2nd-gen.webp,463,True
+309,3,1,Watch SE GPS + Cellular 2nd Gen,watch-se-gps-plus-cellular-2nd-gen,https://s3.amazonaws.com/fliptech-assets/images/devices/smartwatches/apple/watch-se-gps-plus-cellular-2nd-gen.webp,475,True
+310,3,1,Watch SE GPS 3rd Gen,watch-se-gps-3rd-gen,https://s3.amazonaws.com/fliptech-assets/images/devices/smartwatches/apple/watch-se-gps-3rd-gen.webp,487,True
+311,3,1,Watch SE GPS + Cellular 3rd Gen,watch-se-gps-plus-cellular-3rd-gen,https://s3.amazonaws.com/fliptech-assets/images/devices/smartwatches/apple/watch-se-gps-plus-cellular-3rd-gen.webp,499,True
+312,3,1,Series 8 GPS,series-8-gps,https://s3.amazonaws.com/fliptech-assets/images/devices/smartwatches/apple/series-8-gps.webp,511,True
+313,3,1,Series 8 GPS + Cellular,series-8-gps-cellular,https://s3.amazonaws.com/fliptech-assets/images/devices/smartwatches/apple/series-8-gps-cellular.webp,535,True
+314,3,1,Ultra,ultra,https://s3.amazonaws.com/fliptech-assets/images/devices/smartwatches/apple/ultra.webp,559,True
+315,3,1,Series 9 GPS,series-9-gps,https://s3.amazonaws.com/fliptech-assets/images/devices/smartwatches/apple/series-9-gps.webp,565,True
+316,3,1,Series 9 GPS + Cellular,series-9-gps-cellular,https://s3.amazonaws.com/fliptech-assets/images/devices/smartwatches/apple/series-9-gps-cellular.webp,589,True
+317,3,1,Series 10 GPS,series-10-gps,https://s3.amazonaws.com/fliptech-assets/images/devices/smartwatches/apple/series-10-gps.webp,613,True
+318,3,1,Series 10 GPS + Cellular,series-10-gps-cellular,https://s3.amazonaws.com/fliptech-assets/images/devices/smartwatches/apple/series-10-gps-cellular.webp,637,True
+319,3,1,Series 11 GPS,series-11-gps,https://s3.amazonaws.com/fliptech-assets/images/devices/smartwatches/apple/series-11-gps.webp,661,True
+320,3,1,Series 11 GPS + Cellular,series-11-gps-plus-cellular,https://s3.amazonaws.com/fliptech-assets/images/devices/smartwatches/apple/series-11-gps-plus-cellular.webp,685,True
+321,3,1,Ultra 2,ultra-2,https://s3.amazonaws.com/fliptech-assets/images/devices/smartwatches/apple/ultra-2.webp,709,True
+322,3,1,Ultra 3,ultra-3,https://s3.amazonaws.com/fliptech-assets/images/devices/smartwatches/apple/ultra-3.webp,715,True
+323,3,5,Alta HR,alta-hr,https://s3.amazonaws.com/fliptech-assets/images/devices/smartwatches/fitbit/alta-hr.webp,961,False
+324,3,5,Blaze,blaze,https://s3.amazonaws.com/fliptech-assets/images/devices/smartwatches/fitbit/blaze.webp,967,False
+325,3,5,Charge 2,charge-2,https://s3.amazonaws.com/fliptech-assets/images/devices/smartwatches/fitbit/charge-2.webp,973,False
+326,3,6,D2,d2,https://s3.amazonaws.com/fliptech-assets/images/devices/smartwatches/garmin/d2.webp,919,False
+327,3,6,Fenix,fenix,https://s3.amazonaws.com/fliptech-assets/images/devices/smartwatches/garmin/fenix.webp,925,False
+328,3,6,Fenix 2,fenix-2,https://s3.amazonaws.com/fliptech-assets/images/devices/smartwatches/garmin/fenix-2.webp,931,False
+329,3,6,Forerunner 620,forerunner-620,https://s3.amazonaws.com/fliptech-assets/images/devices/smartwatches/garmin/forerunner-620.webp,937,False
+330,3,6,Tactix,tactix,https://s3.amazonaws.com/fliptech-assets/images/devices/smartwatches/garmin/tactix.webp,943,False
+331,3,6,Vivoactive,vivoactive,https://s3.amazonaws.com/fliptech-assets/images/devices/smartwatches/garmin/vivoactive.webp,949,False
+332,3,6,Vivoactive HR,vivoactive-hr,https://s3.amazonaws.com/fliptech-assets/images/devices/smartwatches/garmin/vivoactive-hr.webp,955,False
+333,3,16,Galaxy Gear 2,galaxy-gear-2,https://s3.amazonaws.com/fliptech-assets/images/devices/smartwatches/samsung/galaxy-gear-2.webp,727,False
+334,3,16,Galaxy Gear 2 Neo,galaxy-gear-2-neo,https://s3.amazonaws.com/fliptech-assets/images/devices/smartwatches/samsung/galaxy-gear-2-neo.webp,739,False
+335,3,16,Galaxy Gear Fit,galaxy-gear-fit,https://s3.amazonaws.com/fliptech-assets/images/devices/smartwatches/samsung/galaxy-gear-fit.webp,751,False
+336,3,16,Galaxy Gear Fit2,galaxy-gear-fit2,https://s3.amazonaws.com/fliptech-assets/images/devices/smartwatches/samsung/galaxy-gear-fit2.webp,763,False
+337,3,16,Galaxy Gear Live,galaxy-gear-live,https://s3.amazonaws.com/fliptech-assets/images/devices/smartwatches/samsung/galaxy-gear-live.webp,775,False
+338,3,16,Galaxy Gear S,galaxy-gear-s,https://s3.amazonaws.com/fliptech-assets/images/devices/smartwatches/samsung/galaxy-gear-s.webp,799,False
+339,3,16,Galaxy Gear S2,galaxy-gear-s2,https://s3.amazonaws.com/fliptech-assets/images/devices/smartwatches/samsung/galaxy-gear-s2.webp,823,False
+340,3,16,Galaxy Gear S2 Classic,galaxy-gear-s2-classic,https://s3.amazonaws.com/fliptech-assets/images/devices/smartwatches/samsung/galaxy-gear-s2-classic.webp,835,False
+341,3,16,Galaxy Gear S3 Classic,galaxy-gear-s3-classic,https://s3.amazonaws.com/fliptech-assets/images/devices/smartwatches/samsung/galaxy-gear-s3-classic.webp,847,False
+342,3,16,Galaxy Gear S3 Frontier,galaxy-gear-s3-frontier,https://s3.amazonaws.com/fliptech-assets/images/devices/smartwatches/samsung/galaxy-gear-s3-frontier.webp,859,False
+343,3,16,Galaxy Gear Watch,galaxy-gear-watch,https://s3.amazonaws.com/fliptech-assets/images/devices/smartwatches/samsung/galaxy-gear-watch.webp,871,False
+344,3,16,Galaxy Watch Active 3,galaxy-watch-active-3,https://s3.amazonaws.com/fliptech-assets/images/devices/smartwatches/samsung/galaxy-watch-active-3.webp,877,False
+345,3,16,Galaxy Watch 3,galaxy-watch-3,https://s3.amazonaws.com/fliptech-assets/images/devices/smartwatches/samsung/galaxy-watch-3.webp,883,False
+346,3,16,Galaxy Watch 4,galaxy-watch-4,https://s3.amazonaws.com/fliptech-assets/images/devices/smartwatches/samsung/galaxy-watch-4.webp,895,False
+347,3,16,Galaxy Watch 4 Classic,galaxy-watch-4-classic,https://s3.amazonaws.com/fliptech-assets/images/devices/smartwatches/samsung/galaxy-watch-4-classic.webp,907,False
+348,4,2,rog ally,rog-ally,https://s3.amazonaws.com/fliptech-assets/images/devices/game-consoles/asus/rog-ally.webp,17957,True
+349,4,2,ROG Ally X,rog-ally-x,https://s3.amazonaws.com/fliptech-assets/images/devices/game-consoles/asus/rog-ally-x.webp,18311,True
+350,4,11,Xbox Original,xbox-original,https://s3.amazonaws.com/fliptech-assets/images/devices/game-consoles/microsoft/xbox-original.webp,17771,False
+351,4,11,Xbox 360,xbox-360,https://s3.amazonaws.com/fliptech-assets/images/devices/game-consoles/microsoft/xbox-360.webp,17777,False
+352,4,11,Xbox 360 Premium,xbox-360-premium,https://s3.amazonaws.com/fliptech-assets/images/devices/game-consoles/microsoft/xbox-360-premium.webp,17783,False
+353,4,11,Xbox 360 Slim,xbox-360-slim,https://s3.amazonaws.com/fliptech-assets/images/devices/game-consoles/microsoft/xbox-360-slim.webp,17807,False
+354,4,11,Xbox 360 e,xbox-360-e,https://s3.amazonaws.com/fliptech-assets/images/devices/game-consoles/microsoft/xbox-360-e.webp,17843,False
+355,4,11,Xbox 360 elite,xbox-360-elite,https://s3.amazonaws.com/fliptech-assets/images/devices/game-consoles/microsoft/xbox-360-elite.webp,17879,False
+356,4,11,Xbox One,xbox-one,https://s3.amazonaws.com/fliptech-assets/images/devices/game-consoles/microsoft/xbox-one.webp,17897,False
+357,4,11,Xbox One S,xbox-one-s,https://s3.amazonaws.com/fliptech-assets/images/devices/game-consoles/microsoft/xbox-one-s.webp,17909,True
+358,4,11,Xbox One X,xbox-one-x,https://s3.amazonaws.com/fliptech-assets/images/devices/game-consoles/microsoft/xbox-one-x.webp,17927,False
+359,4,11,Xbox Series S,xbox-series-s,https://s3.amazonaws.com/fliptech-assets/images/devices/game-consoles/microsoft/xbox-series-s.webp,17933,True
+360,4,11,Xbox Series X,xbox-series-x,https://s3.amazonaws.com/fliptech-assets/images/devices/game-consoles/microsoft/xbox-series-x.webp,17945,True
+361,4,13,Switch,switch,https://s3.amazonaws.com/fliptech-assets/images/devices/game-consoles/nintendo/switch.webp,17963,True
+362,4,13,Switch 2,switch-2,https://s3.amazonaws.com/fliptech-assets/images/devices/game-consoles/nintendo/switch-2.webp,17969,True
+363,4,13,Switch Lite,switch-lite,https://s3.amazonaws.com/fliptech-assets/images/devices/game-consoles/nintendo/switch-lite.webp,17975,True
+364,4,13,Switch OLED,switch-oled,https://s3.amazonaws.com/fliptech-assets/images/devices/game-consoles/nintendo/switch-oled.webp,17981,True
+365,4,13,2DS,2ds,https://s3.amazonaws.com/fliptech-assets/images/devices/game-consoles/nintendo/2ds.webp,17987,False
+366,4,13,New 2DS XL,new-2ds-xl,https://s3.amazonaws.com/fliptech-assets/images/devices/game-consoles/nintendo/new-2ds-xl.webp,17993,False
+367,4,13,3DS,3ds,https://s3.amazonaws.com/fliptech-assets/images/devices/game-consoles/nintendo/3ds.webp,17999,False
+368,4,13,New 3DS,new-3ds,https://s3.amazonaws.com/fliptech-assets/images/devices/game-consoles/nintendo/new-3ds.webp,18005,False
+369,4,13,3DS XL,3ds-xl,https://s3.amazonaws.com/fliptech-assets/images/devices/game-consoles/nintendo/3ds-xl.webp,18011,False
+370,4,13,New 3DS XL,new-3ds-xl,https://s3.amazonaws.com/fliptech-assets/images/devices/game-consoles/nintendo/new-3ds-xl.webp,18017,False
+371,4,13,Classic Mini SNES,classic-mini-snes,https://s3.amazonaws.com/fliptech-assets/images/devices/game-consoles/nintendo/classic-mini-snes.webp,18023,False
+372,4,13,NES,nes,https://s3.amazonaws.com/fliptech-assets/images/devices/game-consoles/nintendo/nes.webp,18029,False
+373,4,13,SNES,snes,https://s3.amazonaws.com/fliptech-assets/images/devices/game-consoles/nintendo/snes.webp,18035,False
+374,4,13,N64,n64,https://s3.amazonaws.com/fliptech-assets/images/devices/game-consoles/nintendo/n64.webp,18041,False
+375,4,13,Wii,wii,https://s3.amazonaws.com/fliptech-assets/images/devices/game-consoles/nintendo/wii.webp,18047,False
+376,4,13,Wii U,wii-u,https://s3.amazonaws.com/fliptech-assets/images/devices/game-consoles/nintendo/wii-u.webp,18053,False
+377,4,13,Wii Mini,wii-mini,https://s3.amazonaws.com/fliptech-assets/images/devices/game-consoles/nintendo/wii-mini.webp,18059,False
+378,4,13,Game Boy,game-boy,https://s3.amazonaws.com/fliptech-assets/images/devices/game-consoles/nintendo/game-boy.webp,18065,False
+379,4,13,Game Boy Advance,game-boy-advance,https://s3.amazonaws.com/fliptech-assets/images/devices/game-consoles/nintendo/game-boy-advance.webp,18071,False
+380,4,13,Game Boy Advance SP,game-boy-advance-sp,https://s3.amazonaws.com/fliptech-assets/images/devices/game-consoles/nintendo/game-boy-advance-sp.webp,18077,False
+381,4,13,Game Boy Micro,game-boy-micro,https://s3.amazonaws.com/fliptech-assets/images/devices/game-consoles/nintendo/game-boy-micro.webp,18083,False
+382,4,13,Game Boy Pocket,game-boy-pocket,https://s3.amazonaws.com/fliptech-assets/images/devices/game-consoles/nintendo/game-boy-pocket.webp,18089,False
+383,4,13,Game Boy Color,game-boy-color,https://s3.amazonaws.com/fliptech-assets/images/devices/game-consoles/nintendo/game-boy-color.webp,18095,False
+384,4,13,Game Cube,game-cube,https://s3.amazonaws.com/fliptech-assets/images/devices/game-consoles/nintendo/game-cube.webp,18101,False
+385,4,15,ps2,ps2,https://s3.amazonaws.com/fliptech-assets/images/devices/game-consoles/playstation/ps2.webp,14960,False
+386,4,15,ps2 slim,ps2-slim,https://s3.amazonaws.com/fliptech-assets/images/devices/game-consoles/playstation/ps2-slim.webp,14966,False
+387,4,15,ps3 slim,ps3-slim,https://s3.amazonaws.com/fliptech-assets/images/devices/game-consoles/playstation/ps3-slim.webp,15008,False
+388,4,15,ps4,ps4,https://s3.amazonaws.com/fliptech-assets/images/devices/game-consoles/playstation/ps4.webp,15068,False
+389,4,15,ps4 slim,ps4-slim,https://s3.amazonaws.com/fliptech-assets/images/devices/game-consoles/playstation/ps4-slim.webp,15080,False
+390,4,15,ps5,ps5,https://s3.amazonaws.com/fliptech-assets/images/devices/game-consoles/playstation/ps5.webp,15104,False
+391,4,15,Playstation VR Headset,playstation-vr-headset,https://s3.amazonaws.com/fliptech-assets/images/devices/game-consoles/playstation/playstation-vr-headset.webp,15140,False
+392,4,17,ps1,ps1,https://s3.amazonaws.com/fliptech-assets/images/devices/game-consoles/sony/ps1.webp,18107,True
+393,4,17,ps2,ps2,https://s3.amazonaws.com/fliptech-assets/images/devices/game-consoles/sony/ps2.webp,18113,True
+394,4,17,ps2 slim,ps2-slim,https://s3.amazonaws.com/fliptech-assets/images/devices/game-consoles/sony/ps2-slim.webp,18119,True
+395,4,17,ps3,ps3,https://s3.amazonaws.com/fliptech-assets/images/devices/game-consoles/sony/ps3.webp,18125,True
+396,4,17,ps3 slim,ps3-slim,https://s3.amazonaws.com/fliptech-assets/images/devices/game-consoles/sony/ps3-slim.webp,18161,True
+397,4,17,ps3 super slim,ps3-super-slim,https://s3.amazonaws.com/fliptech-assets/images/devices/game-consoles/sony/ps3-super-slim.webp,18191,True
+398,4,17,ps4,ps4,https://s3.amazonaws.com/fliptech-assets/images/devices/game-consoles/sony/ps4.webp,18221,True
+399,4,17,ps4 slim,ps4-slim,https://s3.amazonaws.com/fliptech-assets/images/devices/game-consoles/sony/ps4-slim.webp,18233,True
+400,4,17,ps4 pro,ps4-pro,https://s3.amazonaws.com/fliptech-assets/images/devices/game-consoles/sony/ps4-pro.webp,18245,True
+401,4,17,ps5,ps5,https://s3.amazonaws.com/fliptech-assets/images/devices/game-consoles/sony/ps5.webp,18257,True
+402,4,17,ps5 digital edition,ps5-digital-edition,https://s3.amazonaws.com/fliptech-assets/images/devices/game-consoles/sony/ps5-digital-edition.webp,18263,True
+403,4,17,ps5 slim,ps5-slim,https://s3.amazonaws.com/fliptech-assets/images/devices/game-consoles/sony/ps5-slim.webp,18269,True
+404,4,17,ps5 slim digital edition,ps5-slim-digital-edition,https://s3.amazonaws.com/fliptech-assets/images/devices/game-consoles/sony/ps5-slim-digital-edition.webp,18275,True
+405,4,17,ps5 pro,ps5-pro,https://s3.amazonaws.com/fliptech-assets/images/devices/game-consoles/sony/ps5-pro.webp,18281,True
+406,4,17,playstation portal,playstation-portal,https://s3.amazonaws.com/fliptech-assets/images/devices/game-consoles/sony/playstation-portal.webp,18287,True
+407,4,17,Playstation VR Headset,playstation-vr-headset,https://s3.amazonaws.com/fliptech-assets/images/devices/game-consoles/sony/playstation-vr-headset.webp,18293,True
+408,4,19,Steam Deck OLED,steam-deck-oled,https://s3.amazonaws.com/fliptech-assets/images/devices/game-consoles/valve/steam-deck-oled.webp,18299,True
+409,5,7,Fusion,fusion,https://s3.amazonaws.com/fliptech-assets/images/devices/gopros/gopro/fusion.webp,17633,True
+410,5,7,Max,max,https://s3.amazonaws.com/fliptech-assets/images/devices/gopros/gopro/max.webp,17639,True
+411,5,7,Hero 4,hero-4,https://s3.amazonaws.com/fliptech-assets/images/devices/gopros/gopro/hero-4.webp,17645,False
+412,5,7,Hero 5,hero-5,https://s3.amazonaws.com/fliptech-assets/images/devices/gopros/gopro/hero-5.webp,17651,False
+413,5,7,Hero 6,hero-6,https://s3.amazonaws.com/fliptech-assets/images/devices/gopros/gopro/hero-6.webp,17657,False
+414,5,7,Hero 7 White,hero-7-white,https://s3.amazonaws.com/fliptech-assets/images/devices/gopros/gopro/hero-7-white.webp,17663,False
+415,5,7,Hero 7 Black,hero-7-black,https://s3.amazonaws.com/fliptech-assets/images/devices/gopros/gopro/hero-7-black.webp,17669,True
+416,5,7,Hero 7 Silver,hero-7-silver,https://s3.amazonaws.com/fliptech-assets/images/devices/gopros/gopro/hero-7-silver.webp,17675,False
+417,5,7,Hero 8 Black,hero-8-black,https://s3.amazonaws.com/fliptech-assets/images/devices/gopros/gopro/hero-8-black.webp,17681,True
+418,5,7,Hero 9 Black,hero-9-black,https://s3.amazonaws.com/fliptech-assets/images/devices/gopros/gopro/hero-9-black.webp,17687,True
+419,5,7,Hero 10,hero-10,https://s3.amazonaws.com/fliptech-assets/images/devices/gopros/gopro/hero-10.webp,17693,True
+420,5,7,Session 4,session-4,https://s3.amazonaws.com/fliptech-assets/images/devices/gopros/gopro/session-4.webp,17699,False
+421,5,7,Session 5,session-5,https://s3.amazonaws.com/fliptech-assets/images/devices/gopros/gopro/session-5.webp,17705,False
+422,5,7,Hero 11 Black,hero-11-black,https://s3.amazonaws.com/fliptech-assets/images/devices/gopros/gopro/hero-11-black.webp,17711,True
+423,5,7,Hero 11 Black Mini,hero-11-black-mini,https://s3.amazonaws.com/fliptech-assets/images/devices/gopros/gopro/hero-11-black-mini.webp,17717,True
+424,5,7,Hero 12 Black,hero-12-black,https://s3.amazonaws.com/fliptech-assets/images/devices/gopros/gopro/hero-12-black.webp,17723,True
+425,5,7,Hero 13 Black,hero-13-black,https://s3.amazonaws.com/fliptech-assets/images/devices/gopros/gopro/hero-13-black.webp,17729,True
+426,6,1,vision pro,vision-pro,https://s3.amazonaws.com/fliptech-assets/images/devices/vrs/apple/vision-pro.webp,17746,True
+427,6,1,vision pro m5,vision-pro-m5,https://s3.amazonaws.com/fliptech-assets/images/devices/vrs/apple/vision-pro-m5.webp,17753,True
+428,7,1,AirPods 1st Gen,airpods-1st-gen,https://s3.amazonaws.com/fliptech-assets/images/devices/headphones/apple/airpods-1st-gen.webp,21731,False
+429,7,1,AirPods 2nd Gen,airpods-2nd-gen,https://s3.amazonaws.com/fliptech-assets/images/devices/headphones/apple/airpods-2nd-gen.webp,21737,False
+430,7,1,AirPods 3rd Gen,airpods-3rd-gen,https://s3.amazonaws.com/fliptech-assets/images/devices/headphones/apple/airpods-3rd-gen.webp,21743,False
+431,7,1,AirPods Pro 1st Gen,airpods-pro-1st-gen,https://s3.amazonaws.com/fliptech-assets/images/devices/headphones/apple/airpods-pro-1st-gen.webp,21749,False
+432,7,1,AirPods Pro 2nd Gen,airpods-pro-2nd-gen,https://s3.amazonaws.com/fliptech-assets/images/devices/headphones/apple/airpods-pro-2nd-gen.webp,21755,False
+433,7,1,AirPods Max,airpods-max,https://s3.amazonaws.com/fliptech-assets/images/devices/headphones/apple/airpods-max.webp,21761,True
+434,8,1,iPod Classic 5th Gen,ipod-classic-5th-gen,https://s3.amazonaws.com/fliptech-assets/images/devices/ipods/apple/ipod-classic-5th-gen.webp,17327,False
+435,8,1,iPod Classic 6th Gen,ipod-classic-6th-gen,https://s3.amazonaws.com/fliptech-assets/images/devices/ipods/apple/ipod-classic-6th-gen.webp,17345,False
+436,8,1,iPod Classic 7th Gen,ipod-classic-7th-gen,https://s3.amazonaws.com/fliptech-assets/images/devices/ipods/apple/ipod-classic-7th-gen.webp,17357,False
+437,8,1,iPod Nano 1st Gen,ipod-nano-1st-gen,https://s3.amazonaws.com/fliptech-assets/images/devices/ipods/apple/ipod-nano-1st-gen.webp,17381,False
+438,8,1,iPod Nano 5th Gen,ipod-nano-5th-gen,https://s3.amazonaws.com/fliptech-assets/images/devices/ipods/apple/ipod-nano-5th-gen.webp,17399,False
+439,8,1,iPod Nano 6th Gen,ipod-nano-6th-gen,https://s3.amazonaws.com/fliptech-assets/images/devices/ipods/apple/ipod-nano-6th-gen.webp,17411,False
+440,8,1,iPod Nano 7th Gen,ipod-nano-7th-gen,https://s3.amazonaws.com/fliptech-assets/images/devices/ipods/apple/ipod-nano-7th-gen.webp,17423,False
+441,8,1,iPod Touch 4th Gen,ipod-touch-4th-gen,https://s3.amazonaws.com/fliptech-assets/images/devices/ipods/apple/ipod-touch-4th-gen.webp,17429,False
+442,8,1,iPod Touch 5th Gen,ipod-touch-5th-gen,https://s3.amazonaws.com/fliptech-assets/images/devices/ipods/apple/ipod-touch-5th-gen.webp,17453,False
+443,8,1,iPod Touch 6th Gen,ipod-touch-6th-gen,https://s3.amazonaws.com/fliptech-assets/images/devices/ipods/apple/ipod-touch-6th-gen.webp,17471,False
+444,8,1,iPod Touch 7th Gen,ipod-touch-7th-gen,https://s3.amazonaws.com/fliptech-assets/images/devices/ipods/apple/ipod-touch-7th-gen.webp,17495,True
+445,9,1,"MacBook 12"" (2015)",macbook-12-2015,https://s3.amazonaws.com/fliptech-assets/images/devices/macbooks/apple/macbook-12-2015.webp,19301,False
+446,9,1,"MacBook 12"" (2016)",macbook-12-2016,https://s3.amazonaws.com/fliptech-assets/images/devices/macbooks/apple/macbook-12-2016.webp,19337,False
+447,9,1,"MacBook 12"" (2017)",macbook-12-2017,https://s3.amazonaws.com/fliptech-assets/images/devices/macbooks/apple/macbook-12-2017.webp,19355,False
+448,9,1,"MacBook Air 13"" (2009)",macbook-air-13-2009,https://s3.amazonaws.com/fliptech-assets/images/devices/macbooks/apple/macbook-air-13-2009.webp,19391,False
+449,9,1,"MacBook Air 11"" (2010)",macbook-air-11-2010,https://s3.amazonaws.com/fliptech-assets/images/devices/macbooks/apple/macbook-air-11-2010.webp,19403,False
+450,9,1,"MacBook Air 13"" (2010)",macbook-air-13-2010,https://s3.amazonaws.com/fliptech-assets/images/devices/macbooks/apple/macbook-air-13-2010.webp,19427,False
+451,9,1,"MacBook Air 11"" (2011)",macbook-air-11-2011,https://s3.amazonaws.com/fliptech-assets/images/devices/macbooks/apple/macbook-air-11-2011.webp,19451,False
+452,9,1,"MacBook Air 13"" (2011)",macbook-air-13-2011,https://s3.amazonaws.com/fliptech-assets/images/devices/macbooks/apple/macbook-air-13-2011.webp,19475,False
+453,9,1,"MacBook Air 11"" (2012)",macbook-air-11-2012,https://s3.amazonaws.com/fliptech-assets/images/devices/macbooks/apple/macbook-air-11-2012.webp,19487,False
+454,9,1,"MacBook Air 13"" (2012)",macbook-air-13-2012,https://s3.amazonaws.com/fliptech-assets/images/devices/macbooks/apple/macbook-air-13-2012.webp,19511,False
+455,9,1,"MacBook Air 11"" (2013)",macbook-air-11-2013,https://s3.amazonaws.com/fliptech-assets/images/devices/macbooks/apple/macbook-air-11-2013.webp,19541,False
+456,9,1,"MacBook Air 13"" (2013)",macbook-air-13-2013,https://s3.amazonaws.com/fliptech-assets/images/devices/macbooks/apple/macbook-air-13-2013.webp,19601,False
+457,9,1,"MacBook Air 11"" (2014)",macbook-air-11-2014,https://s3.amazonaws.com/fliptech-assets/images/devices/macbooks/apple/macbook-air-11-2014.webp,19637,False
+458,9,1,"MacBook Air 13"" (2014)",macbook-air-13-2014,https://s3.amazonaws.com/fliptech-assets/images/devices/macbooks/apple/macbook-air-13-2014.webp,19661,False
+459,9,1,"MacBook Air 11"" (2015)",macbook-air-11-2015,https://s3.amazonaws.com/fliptech-assets/images/devices/macbooks/apple/macbook-air-11-2015.webp,19685,False
+460,9,1,"MacBook Air 13"" (2015)",macbook-air-13-2015,https://s3.amazonaws.com/fliptech-assets/images/devices/macbooks/apple/macbook-air-13-2015.webp,19709,False
+461,9,1,"MacBook Air 13"" (2017)",macbook-air-13-2017,https://s3.amazonaws.com/fliptech-assets/images/devices/macbooks/apple/macbook-air-13-2017.webp,19739,False
+462,9,1,"MacBook Air 13"" (2018)",macbook-air-13-2018,https://s3.amazonaws.com/fliptech-assets/images/devices/macbooks/apple/macbook-air-13-2018.webp,19763,False
+463,9,1,"MacBook Air 13"" (2019)",macbook-air-13-2019,https://s3.amazonaws.com/fliptech-assets/images/devices/macbooks/apple/macbook-air-13-2019.webp,19775,False
+464,9,1,"MacBook Air 13"" (2020)",macbook-air-13-2020,https://s3.amazonaws.com/fliptech-assets/images/devices/macbooks/apple/macbook-air-13-2020.webp,19787,False
+465,9,1,"MacBook Air 13"" (2022)",macbook-air-13-2022,https://s3.amazonaws.com/fliptech-assets/images/devices/macbooks/apple/macbook-air-13-2022.webp,19859,False
+466,9,1,"MacBook Air 15"" (2023)",macbook-air-15-2023,https://s3.amazonaws.com/fliptech-assets/images/devices/macbooks/apple/macbook-air-15-2023.webp,19895,False
+467,9,1,"MacBook Air 13"" (2024)",macbook-air-13-2024,https://s3.amazonaws.com/fliptech-assets/images/devices/macbooks/apple/macbook-air-13-2024.webp,19913,False
+468,9,1,"MacBook Air 15"" (2024)",macbook-air-15-2024,https://s3.amazonaws.com/fliptech-assets/images/devices/macbooks/apple/macbook-air-15-2024.webp,19949,False
+469,9,1,"MacBook Pro 15"" (2009)",macbook-pro-15-2009,https://s3.amazonaws.com/fliptech-assets/images/devices/macbooks/apple/macbook-pro-15-2009.webp,19985,False
+470,9,1,"MacBook Pro 17"" (2009)",macbook-pro-17-2009,https://s3.amazonaws.com/fliptech-assets/images/devices/macbooks/apple/macbook-pro-17-2009.webp,20021,False
+471,9,1,"MacBook Pro 15"" (2010)",macbook-pro-15-2010,https://s3.amazonaws.com/fliptech-assets/images/devices/macbooks/apple/macbook-pro-15-2010.webp,20027,False
+472,9,1,"MacBook Pro 17"" (2010)",macbook-pro-17-2010,https://s3.amazonaws.com/fliptech-assets/images/devices/macbooks/apple/macbook-pro-17-2010.webp,20063,False
+473,9,1,"MacBook Pro 13"" (2011)",macbook-pro-13-2011,https://s3.amazonaws.com/fliptech-assets/images/devices/macbooks/apple/macbook-pro-13-2011.webp,20087,False
+474,9,1,"MacBook Pro 15"" (2011)",macbook-pro-15-2011,https://s3.amazonaws.com/fliptech-assets/images/devices/macbooks/apple/macbook-pro-15-2011.webp,20183,False
+475,9,1,"MacBook Pro 17"" (2011)",macbook-pro-17-2011,https://s3.amazonaws.com/fliptech-assets/images/devices/macbooks/apple/macbook-pro-17-2011.webp,20303,False
+476,9,1,"MacBook Pro 13"" (2012)",macbook-pro-13-2012,https://s3.amazonaws.com/fliptech-assets/images/devices/macbooks/apple/macbook-pro-13-2012.webp,20351,False
+477,9,1,"MacBook Pro 15"" (2012)",macbook-pro-15-2012,https://s3.amazonaws.com/fliptech-assets/images/devices/macbooks/apple/macbook-pro-15-2012.webp,20399,False
+478,9,1,"MacBook Pro 13"" (2013)",macbook-pro-13-2013,https://s3.amazonaws.com/fliptech-assets/images/devices/macbooks/apple/macbook-pro-13-2013.webp,20465,False
+479,9,1,"MacBook Pro 15"" (2013)",macbook-pro-15-2013,https://s3.amazonaws.com/fliptech-assets/images/devices/macbooks/apple/macbook-pro-15-2013.webp,20555,False
+480,9,1,"MacBook Pro 13"" (2014)",macbook-pro-13-2014,https://s3.amazonaws.com/fliptech-assets/images/devices/macbooks/apple/macbook-pro-13-2014.webp,20627,False
+481,9,1,"MacBook Pro 15"" (2014)",macbook-pro-15-2014,https://s3.amazonaws.com/fliptech-assets/images/devices/macbooks/apple/macbook-pro-15-2014.webp,20681,False
+482,9,1,"MacBook Pro 13"" (2015)",macbook-pro-13-2015,https://s3.amazonaws.com/fliptech-assets/images/devices/macbooks/apple/macbook-pro-13-2015.webp,20735,False
+483,9,1,"MacBook Pro 15"" (2015)",macbook-pro-15-2015,https://s3.amazonaws.com/fliptech-assets/images/devices/macbooks/apple/macbook-pro-15-2015.webp,20789,False
+484,9,1,"MacBook Pro 13"" (2016)",macbook-pro-13-2016,https://s3.amazonaws.com/fliptech-assets/images/devices/macbooks/apple/macbook-pro-13-2016.webp,20825,False
+485,9,1,"MacBook Pro 15"" (2016)",macbook-pro-15-2016,https://s3.amazonaws.com/fliptech-assets/images/devices/macbooks/apple/macbook-pro-15-2016.webp,20939,False
+486,9,1,"MacBook Pro 13"" (2017)",macbook-pro-13-2017,https://s3.amazonaws.com/fliptech-assets/images/devices/macbooks/apple/macbook-pro-13-2017.webp,20957,False
+487,9,1,"MacBook Pro 15"" (2017)",macbook-pro-15-2017,https://s3.amazonaws.com/fliptech-assets/images/devices/macbooks/apple/macbook-pro-15-2017.webp,21041,False
+488,9,1,"MacBook Pro 13"" (2018)",macbook-pro-13-2018,https://s3.amazonaws.com/fliptech-assets/images/devices/macbooks/apple/macbook-pro-13-2018.webp,21059,False
+489,9,1,"MacBook Pro 15"" (2018)",macbook-pro-15-2018,https://s3.amazonaws.com/fliptech-assets/images/devices/macbooks/apple/macbook-pro-15-2018.webp,21095,False
+490,9,1,"MacBook Pro 13"" (2019)",macbook-pro-13-2019,https://s3.amazonaws.com/fliptech-assets/images/devices/macbooks/apple/macbook-pro-13-2019.webp,21131,False
+491,9,1,"MacBook Pro 15"" (2019)",macbook-pro-15-2019,https://s3.amazonaws.com/fliptech-assets/images/devices/macbooks/apple/macbook-pro-15-2019.webp,21191,False
+492,9,1,"MacBook Pro 16"" (2019)",macbook-pro-16-2019,https://s3.amazonaws.com/fliptech-assets/images/devices/macbooks/apple/macbook-pro-16-2019.webp,21227,False
+493,9,1,"MacBook Pro 13"" (2020)",macbook-pro-13-2020,https://s3.amazonaws.com/fliptech-assets/images/devices/macbooks/apple/macbook-pro-13-2020.webp,21281,False
+494,9,1,"MacBook Pro 14"" (2021)",macbook-pro-14-2021,https://s3.amazonaws.com/fliptech-assets/images/devices/macbooks/apple/macbook-pro-14-2021.webp,21371,False
+495,9,1,"MacBook Pro 16"" (2021)",macbook-pro-16-2021,https://s3.amazonaws.com/fliptech-assets/images/devices/macbooks/apple/macbook-pro-16-2021.webp,21437,False
+496,9,1,"MacBook Pro 13"" (2022)",macbook-pro-13-2022,https://s3.amazonaws.com/fliptech-assets/images/devices/macbooks/apple/macbook-pro-13-2022.webp,21473,False
+497,9,1,"MacBook Pro 14"" (2023)",macbook-pro-14-2023,https://s3.amazonaws.com/fliptech-assets/images/devices/macbooks/apple/macbook-pro-14-2023.webp,21509,False
+498,9,1,"MacBook Pro 16"" (2023)",macbook-pro-16-2023,https://s3.amazonaws.com/fliptech-assets/images/devices/macbooks/apple/macbook-pro-16-2023.webp,21641,False
+499,10,11,Surface Laptop i5 1st Gen,surface-laptop-i5-1st-gen,https://s3.amazonaws.com/fliptech-assets/images/devices/laptops/microsoft/surface-laptop-i5-1st-gen.webp,18317,False
+500,10,11,Surface Laptop i7 1st Gen,surface-laptop-i7-1st-gen,https://s3.amazonaws.com/fliptech-assets/images/devices/laptops/microsoft/surface-laptop-i7-1st-gen.webp,18329,False
+501,10,11,Surface Laptop i5 2nd Gen,surface-laptop-i5-2nd-gen,https://s3.amazonaws.com/fliptech-assets/images/devices/laptops/microsoft/surface-laptop-i5-2nd-gen.webp,18341,False
+502,10,11,Surface Laptop i7 2nd Gen,surface-laptop-i7-2nd-gen,https://s3.amazonaws.com/fliptech-assets/images/devices/laptops/microsoft/surface-laptop-i7-2nd-gen.webp,18353,False
+503,10,11,Surface Laptop i5 3rd Gen,surface-laptop-i5-3rd-gen,https://s3.amazonaws.com/fliptech-assets/images/devices/laptops/microsoft/surface-laptop-i5-3rd-gen.webp,18365,False
+504,10,11,Surface Laptop i7 3rd Gen,surface-laptop-i7-3rd-gen,https://s3.amazonaws.com/fliptech-assets/images/devices/laptops/microsoft/surface-laptop-i7-3rd-gen.webp,18371,False
+505,10,11,Surface Laptop i5 4th Gen,surface-laptop-i5-4th-gen,https://s3.amazonaws.com/fliptech-assets/images/devices/laptops/microsoft/surface-laptop-i5-4th-gen.webp,18377,False
+506,10,11,Surface Laptop i7 4th Gen,surface-laptop-i7-4th-gen,https://s3.amazonaws.com/fliptech-assets/images/devices/laptops/microsoft/surface-laptop-i7-4th-gen.webp,18389,False
+507,10,11,Surface Laptop Studio i5 1st Gen,surface-laptop-studio-i5-1st-gen,https://s3.amazonaws.com/fliptech-assets/images/devices/laptops/microsoft/surface-laptop-studio-i5-1st-gen.webp,18407,False
+508,10,11,Surface Laptop Studio i7 1st Gen,surface-laptop-studio-i7-1st-gen,https://s3.amazonaws.com/fliptech-assets/images/devices/laptops/microsoft/surface-laptop-studio-i7-1st-gen.webp,18419,False
+509,10,11,Surface Laptop Studio i5 2nd Gen,surface-laptop-studio-i5-2nd-gen,https://s3.amazonaws.com/fliptech-assets/images/devices/laptops/microsoft/surface-laptop-studio-i5-2nd-gen.webp,18437,False
+510,10,11,Surface Laptop Studio i7 2nd Gen,surface-laptop-studio-i7-2nd-gen,https://s3.amazonaws.com/fliptech-assets/images/devices/laptops/microsoft/surface-laptop-studio-i7-2nd-gen.webp,18449,False
+511,10,11,Surface Laptop SE N4020,surface-laptop-se-n4020,https://s3.amazonaws.com/fliptech-assets/images/devices/laptops/microsoft/surface-laptop-se-n4020.webp,18473,False
+512,10,11,Surface Laptop SE N4120,surface-laptop-se-n4120,https://s3.amazonaws.com/fliptech-assets/images/devices/laptops/microsoft/surface-laptop-se-n4120.webp,18485,False
+513,10,11,Surface Laptop Go i5 1st Gen,surface-laptop-go-i5-1st-gen,https://s3.amazonaws.com/fliptech-assets/images/devices/laptops/microsoft/surface-laptop-go-i5-1st-gen.webp,18497,False
+514,10,11,Surface Book i5 1st Gen,surface-book-i5-1st-gen,https://s3.amazonaws.com/fliptech-assets/images/devices/laptops/microsoft/surface-book-i5-1st-gen.webp,18533,False
+515,10,11,Surface Book i7 1st Gen,surface-book-i7-1st-gen,https://s3.amazonaws.com/fliptech-assets/images/devices/laptops/microsoft/surface-book-i7-1st-gen.webp,18563,False
+516,10,11,Surface Book i5 2nd Gen,surface-book-i5-2nd-gen,https://s3.amazonaws.com/fliptech-assets/images/devices/laptops/microsoft/surface-book-i5-2nd-gen.webp,18593,False
+517,10,11,Surface Book i7 2nd Gen,surface-book-i7-2nd-gen,https://s3.amazonaws.com/fliptech-assets/images/devices/laptops/microsoft/surface-book-i7-2nd-gen.webp,18617,False
+518,10,11,"Surface Book i5 3rd Gen 13""",surface-book-i5-3rd-gen-13,https://s3.amazonaws.com/fliptech-assets/images/devices/laptops/microsoft/surface-book-i5-3rd-gen-13.webp,18647,False
+519,10,11,"Surface Book i7 3rd Gen 13""",surface-book-i7-3rd-gen-13,https://s3.amazonaws.com/fliptech-assets/images/devices/laptops/microsoft/surface-book-i7-3rd-gen-13.webp,18659,False
+520,10,11,"Surface Book i7 3rd Gen 15""",surface-book-i7-3rd-gen-15,https://s3.amazonaws.com/fliptech-assets/images/devices/laptops/microsoft/surface-book-i7-3rd-gen-15.webp,18683,False
+521,10,11,Surface Laptop Ryzen 5 3rd Gen,surface-laptop-ryzen-5-3rd-gen,https://s3.amazonaws.com/fliptech-assets/images/devices/laptops/microsoft/surface-laptop-ryzen-5-3rd-gen.webp,18719,False
+522,10,11,Surface Laptop Ryzen 5 4th Gen,surface-laptop-ryzen-5-4th-gen,https://s3.amazonaws.com/fliptech-assets/images/devices/laptops/microsoft/surface-laptop-ryzen-5-4th-gen.webp,18731,False
+523,10,11,Surface Laptop Ryzen 7 4th Gen,surface-laptop-ryzen-7-4th-gen,https://s3.amazonaws.com/fliptech-assets/images/devices/laptops/microsoft/surface-laptop-ryzen-7-4th-gen.webp,18743,False
+524,10,11,Surface Laptop Go i5 2nd Gen,surface-laptop-go-i5-2nd-gen,https://s3.amazonaws.com/fliptech-assets/images/devices/laptops/microsoft/surface-laptop-go-i5-2nd-gen.webp,18755,False
+525,10,11,Surface Studio Laptop i5,surface-studio-laptop-i5,https://s3.amazonaws.com/fliptech-assets/images/devices/laptops/microsoft/surface-studio-laptop-i5.webp,18773,False
+526,10,11,Surface Studio Laptop i7,surface-studio-laptop-i7,https://s3.amazonaws.com/fliptech-assets/images/devices/laptops/microsoft/surface-studio-laptop-i7.webp,18791,False
+527,11,1,"iMac 21.5"" (2017)",imac-21-5-2017,https://s3.amazonaws.com/fliptech-assets/images/devices/imacs/apple/imac-21-5-2017.webp,18809,False
+528,11,1,"iMac 27"" (2013)",imac-27-2013,https://s3.amazonaws.com/fliptech-assets/images/devices/imacs/apple/imac-27-2013.webp,18839,False
+529,11,1,"iMac 27"" (2014)",imac-27-2014,https://s3.amazonaws.com/fliptech-assets/images/devices/imacs/apple/imac-27-2014.webp,18845,False
+530,11,1,"iMac 27"" (2015)",imac-27-2015,https://s3.amazonaws.com/fliptech-assets/images/devices/imacs/apple/imac-27-2015.webp,18857,False
+531,11,1,"iMac 27"" (2017)",imac-27-2017,https://s3.amazonaws.com/fliptech-assets/images/devices/imacs/apple/imac-27-2017.webp,18875,False
+532,11,1,"iMac 24"" (2023)",imac-24-2023,https://s3.amazonaws.com/fliptech-assets/images/devices/imacs/apple/imac-24-2023.webp,18923,False
+533,12,1,Mac Mini (2007),mac-mini-2007,https://s3.amazonaws.com/fliptech-assets/images/devices/mac-minis/apple/mac-mini-2007.webp,18977,False
+534,12,1,Mac Mini (2009),mac-mini-2009,https://s3.amazonaws.com/fliptech-assets/images/devices/mac-minis/apple/mac-mini-2009.webp,18983,False
+535,12,1,Mac Mini (2023),mac-mini-2023,https://s3.amazonaws.com/fliptech-assets/images/devices/mac-minis/apple/mac-mini-2023.webp,18995,False
+536,13,1,Mac Studio (2022),mac-studio-2022,https://s3.amazonaws.com/fliptech-assets/images/devices/mac-studios/apple/mac-studio-2022.webp,19193,False
+537,13,1,Mac Studio (2023),mac-studio-2023,https://s3.amazonaws.com/fliptech-assets/images/devices/mac-studios/apple/mac-studio-2023.webp,19229,False
+538,14,1,Mac Pro (2006),mac-pro-2006,https://s3.amazonaws.com/fliptech-assets/images/devices/mac-pros/apple/mac-pro-2006.webp,19091,False
+539,14,1,Mac Pro (2007),mac-pro-2007,https://s3.amazonaws.com/fliptech-assets/images/devices/mac-pros/apple/mac-pro-2007.webp,19097,False
+540,14,1,Mac Pro (2008),mac-pro-2008,https://s3.amazonaws.com/fliptech-assets/images/devices/mac-pros/apple/mac-pro-2008.webp,19103,False
+541,14,1,Mac Pro (2009),mac-pro-2009,https://s3.amazonaws.com/fliptech-assets/images/devices/mac-pros/apple/mac-pro-2009.webp,19109,False
+542,14,1,Mac Pro (2010),mac-pro-2010,https://s3.amazonaws.com/fliptech-assets/images/devices/mac-pros/apple/mac-pro-2010.webp,19145,False
+543,14,1,Mac Pro (2019),mac-pro-2019,https://s3.amazonaws.com/fliptech-assets/images/devices/mac-pros/apple/mac-pro-2019.webp,19187,False
+544,15,1,TV 3rd Gen,tv-3rd-gen,https://s3.amazonaws.com/fliptech-assets/images/devices/apple-tvs/apple/tv-3rd-gen.webp,1,False
+545,15,1,TV 4K 5th Gen,tv-4k-5th-gen,https://s3.amazonaws.com/fliptech-assets/images/devices/apple-tvs/apple/tv-4k-5th-gen.webp,7,False
+546,15,1,TV 4th Gen,tv-4th-gen,https://s3.amazonaws.com/fliptech-assets/images/devices/apple-tvs/apple/tv-4th-gen.webp,19,False
+547,16,4,Mavic Pro,mavic-pro,https://s3.amazonaws.com/fliptech-assets/images/devices/drones/dji/mavic-pro.webp,17519,False
+548,16,4,Mavic Air,mavic-air,https://s3.amazonaws.com/fliptech-assets/images/devices/drones/dji/mavic-air.webp,17525,False
+549,16,4,Mavic 2 Pro,mavic-2-pro,https://s3.amazonaws.com/fliptech-assets/images/devices/drones/dji/mavic-2-pro.webp,17531,False
+550,16,4,Mavic 2 Zoom,mavic-2-zoom,https://s3.amazonaws.com/fliptech-assets/images/devices/drones/dji/mavic-2-zoom.webp,17537,False
+551,16,4,Mavic Air 2,mavic-air-2,https://s3.amazonaws.com/fliptech-assets/images/devices/drones/dji/mavic-air-2.webp,17543,False
+552,16,4,Mini 2,mini-2,https://s3.amazonaws.com/fliptech-assets/images/devices/drones/dji/mini-2.webp,17549,False
+553,16,4,Inspire 1,inspire-1,https://s3.amazonaws.com/fliptech-assets/images/devices/drones/dji/inspire-1.webp,17555,False
+554,16,4,Spark,spark,https://s3.amazonaws.com/fliptech-assets/images/devices/drones/dji/spark.webp,17561,False
+555,16,4,Phantom 2,phantom-2,https://s3.amazonaws.com/fliptech-assets/images/devices/drones/dji/phantom-2.webp,17567,False
+556,16,4,Phantom 2 Vision,phantom-2-vision,https://s3.amazonaws.com/fliptech-assets/images/devices/drones/dji/phantom-2-vision.webp,17573,False
+557,16,4,Phantom 2 Vision Plus,phantom-2-vision-plus,https://s3.amazonaws.com/fliptech-assets/images/devices/drones/dji/phantom-2-vision-plus.webp,17579,False
+558,16,4,Phantom 3,phantom-3,https://s3.amazonaws.com/fliptech-assets/images/devices/drones/dji/phantom-3.webp,17585,False
+559,16,4,Phantom 4,phantom-4,https://s3.amazonaws.com/fliptech-assets/images/devices/drones/dji/phantom-4.webp,17591,False
+560,16,4,Mavic Air 2s,mavic-air-2s,https://s3.amazonaws.com/fliptech-assets/images/devices/drones/dji/mavic-air-2s.webp,17597,False
+561,16,4,Mavic 3,mavic-3,https://s3.amazonaws.com/fliptech-assets/images/devices/drones/dji/mavic-3.webp,17603,False
+562,16,4,Mini 3,mini-3,https://s3.amazonaws.com/fliptech-assets/images/devices/drones/dji/mini-3.webp,17609,False
+563,16,18,Fishing Drone,fishing-drone,https://s3.amazonaws.com/fliptech-assets/images/devices/drones/swell-pro/fishing-drone.webp,17615,False
+564,16,18,Spry Plus,spry-plus,https://s3.amazonaws.com/fliptech-assets/images/devices/drones/swell-pro/spry-plus.webp,17621,False
+565,16,18,Splash Drone,splash-drone,https://s3.amazonaws.com/fliptech-assets/images/devices/drones/swell-pro/splash-drone.webp,17627,False

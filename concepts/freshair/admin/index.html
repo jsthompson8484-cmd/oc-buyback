@@ -1,0 +1,1000 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>OCBuyBack Admin</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Figtree:wght@400;500;600;700&display=swap">
+<style>
+:root{--ground:#f5f8f4;--surface:#fff;--ink:#182420;--muted:#5c6e64;--green:#167a46;--deep:#0e3d26;
+--lime:#d9f26a;--lime-ink:#2c3a10;--line:#e3eae2;--warn:#b45d0e;--crit:#b3372b}
+*{box-sizing:border-box}
+body{margin:0;background:var(--ground);color:var(--ink);font:400 14.5px/1.55 "Figtree",system-ui,sans-serif}
+button{font-family:inherit;cursor:pointer}
+input,select,textarea{font-family:inherit;font-size:14px;background:var(--ground);border:1.5px solid var(--line);
+border-radius:8px;padding:8px 10px;color:var(--ink)}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--green)}
+.wrap{max-width:1240px;margin:0 auto;padding:0 20px}
+header{background:var(--deep);color:#fff;position:sticky;top:0;z-index:10}
+.nav{display:flex;align-items:center;gap:8px;height:58px}
+.logo{font:800 17px "Bricolage Grotesque",sans-serif;margin-right:18px}
+.logo i{font-style:normal;color:var(--lime)}
+.tab{background:none;border:0;color:#bcd6c4;font-weight:600;font-size:14px;padding:8px 14px;border-radius:99px}
+.tab.on{background:rgba(217,242,106,.18);color:var(--lime)}
+.nav .who{margin-left:auto;font-size:12.5px;color:#bcd6c4}
+.nav .out{background:none;border:1px solid rgba(255,255,255,.25);color:#fff;border-radius:99px;padding:6px 12px;font-size:12.5px}
+h1{font:800 24px "Bricolage Grotesque",sans-serif;color:var(--deep);margin:26px 0 14px}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px;margin-bottom:16px}
+table{border-collapse:collapse;width:100%;font-size:13.5px}
+th{text-align:left;font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);
+padding:8px 10px;border-bottom:1px solid var(--line)}
+td{padding:8px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+tr:last-child td{border-bottom:none}
+.chip{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;
+padding:3px 9px;border-radius:99px;background:var(--ground);color:var(--muted)}
+.chip.initiated{background:#e7f0fa;color:#20507e}.chip.shipped{background:#e7f0fa;color:#20507e}.chip.delivered{background:#e3f1e5;color:var(--green)}.chip.received{background:#faf0e2;color:var(--warn)}
+.chip.evaluating{background:#f3eafa;color:#6d3fa3}.chip.adjusted{background:#faf0e2;color:var(--warn)}
+.chip.paid{background:#e3f1e5;color:var(--green)}.chip.returned,.chip.cancelled{background:#f9e9e6;color:var(--crit)}
+.btn{background:var(--green);color:#fff;border:0;border-radius:99px;font-weight:700;font-size:13px;padding:9px 16px}
+.btn:hover{background:var(--deep)}
+.btn.ghost{background:var(--ground);color:var(--ink);border:1.5px solid var(--line)}
+.btn.sm{padding:5px 12px;font-size:12px}
+.row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.money{font-variant-numeric:tabular-nums}
+.muted{color:var(--muted)}
+.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:var(--deep);color:#fff;
+padding:11px 22px;border-radius:99px;font-weight:600;font-size:13.5px;opacity:0;transition:opacity .2s;pointer-events:none;z-index:50}
+.toast.show{opacity:1}
+#login{max-width:420px;margin:12vh auto;text-align:center}
+#login .panel{padding:34px}
+#login h1{margin-top:0}
+.pricegrid input{width:76px;text-align:right}
+.detail{background:var(--ground);border-radius:10px;padding:12px 14px;margin:6px 0}
+dialog{border:1px solid var(--line);border-radius:16px;padding:24px;max-width:560px;width:92vw}
+dialog::backdrop{background:rgba(14,61,38,.35)}
+dialog.wide{max-width:760px}
+.toolbar{display:flex;gap:6px;background:var(--ground);border:1.5px solid var(--line);border-bottom:0;
+border-radius:10px 10px 0 0;padding:8px;margin-top:10px}
+.toolbar button{background:var(--surface);border:1px solid var(--line);border-radius:8px;min-width:34px;
+padding:6px 10px;font-size:13px;font-weight:700;cursor:pointer;color:var(--ink)}
+.toolbar button:hover{border-color:var(--green)}
+.editor{border:1.5px solid var(--line);border-radius:0 0 10px 10px;background:var(--surface);
+min-height:260px;max-height:46vh;overflow-y:auto;padding:14px 16px;font-size:14.5px;line-height:1.65}
+.editor:focus{outline:none;border-color:var(--green)}
+.editor p{margin:0 0 10px}
+.editor h4{font-size:17px;font-weight:800;margin:16px 0 8px;color:var(--deep)}
+.editor ul,.editor ol{padding-left:22px;margin:0 0 10px}
+.editor a{color:var(--green)}
+.editor img{max-width:100%;border-radius:8px}
+.heroprev{display:flex;align-items:center;gap:12px;margin-top:10px}
+.heroprev img{height:64px;border-radius:8px;border:1px solid var(--line)}
+</style></head><body>
+
+<div id="login" style="display:none">
+  <div class="panel">
+    <h1>OC<i style="font-style:normal;color:var(--green)">BuyBack</i> Admin</h1>
+    <p class="muted">Sign in with your admin email — we'll send a magic link.</p>
+    <div class="row" style="justify-content:center;margin-top:14px">
+      <input id="loginEmail" type="email" placeholder="you@example.com" style="width:240px">
+      <button class="btn" id="loginBtn">Send link</button>
+    </div>
+    <p class="muted" id="loginMsg" style="min-height:20px;margin-top:12px"></p>
+  </div>
+</div>
+
+<div id="app" style="display:none">
+<header><div class="wrap nav">
+  <span class="logo">OC<i>BuyBack</i> Admin</span>
+  <button class="tab on" data-t="actions">Action Items</button>
+  <button class="tab" data-t="tradeins">All Trade-Ins</button>
+  <button class="tab" data-t="analytics">Analytics</button>
+  <button class="tab" data-t="catalog">Catalog</button>
+  <button class="tab" data-t="blog">Blog</button>
+  <button class="tab" data-t="promos">Promo Codes</button>
+  <button class="tab" data-t="faqs">FAQs</button>
+  <span class="who" id="who"></span>
+  <button class="out" id="signOut">Sign out</button>
+</div></header>
+<div class="wrap">
+
+  <div id="t-actions">
+    <h1>Action Items</h1>
+    <p class="muted" style="margin:-6px 0 14px;font-size:13.5px">Every order that's on the way, arrived, or waiting on someone — newly placed orders stay in All Trade-Ins until their label is scanned.</p>
+    <div id="actionQueues"></div>
+  </div>
+
+  <div id="t-tradeins" style="display:none">
+    <h1>All Trade-Ins</h1>
+    <div class="panel"><div class="row">
+      <select id="tiStatus"><option value="">All statuses</option>
+        <option>initiated</option><option>received</option><option>evaluating</option>
+        <option>adjusted</option><option>paid</option><option>returned</option><option>cancelled</option></select>
+      <input id="tiSearch" placeholder="Search name, email, order #" style="flex:1;min-width:200px">
+      <button class="btn ghost" id="tiReload">Refresh</button>
+    </div></div>
+    <div class="panel"><table id="tiTable">
+      <thead><tr><th>Status</th><th>Order</th><th>Customer</th><th>Contact</th><th>Payment</th><th style="text-align:right">Quote</th><th>Created</th><th></th></tr></thead>
+      <tbody></tbody></table></div>
+  </div>
+
+  <div id="t-analytics" style="display:none">
+    <h1>Analytics</h1>
+    <div class="panel"><div class="row">
+      <select id="anRange">
+        <option value="7">Last 7 days</option>
+        <option value="30" selected>Last 30 days</option>
+        <option value="90">Last 90 days</option>
+        <option value="365">Last 12 months</option>
+      </select>
+      <button class="btn ghost" id="anReload">Refresh</button>
+      <span class="muted" style="font-size:13px">Order data only — page-view traffic lives in GA4.</span>
+    </div></div>
+    <div id="anCards" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px;margin-bottom:16px"></div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px" id="anGrids">
+      <div class="panel"><h2 style="font:700 16px 'Bricolage Grotesque',sans-serif;color:var(--deep);margin:0 0 10px">Where leads came from</h2>
+        <table id="anSources"><thead><tr><th>Source</th><th style="text-align:right">Orders</th><th style="text-align:right">Value</th><th style="text-align:right">Share</th></tr></thead><tbody></tbody></table></div>
+      <div class="panel"><h2 style="font:700 16px 'Bricolage Grotesque',sans-serif;color:var(--deep);margin:0 0 10px">Top devices traded in</h2>
+        <table id="anDevices"><thead><tr><th>Device</th><th style="text-align:right">Qty</th><th style="text-align:right">Value</th></tr></thead><tbody></tbody></table></div>
+      <div class="panel"><h2 style="font:700 16px 'Bricolage Grotesque',sans-serif;color:var(--deep);margin:0 0 10px">Order pipeline</h2>
+        <table id="anFunnel"><thead><tr><th>Status</th><th style="text-align:right">Orders</th><th style="text-align:right">Value</th></tr></thead><tbody></tbody></table></div>
+      <div class="panel"><h2 style="font:700 16px 'Bricolage Grotesque',sans-serif;color:var(--deep);margin:0 0 10px">Payouts &amp; requotes</h2>
+        <table id="anPay"><thead><tr><th>Payment method</th><th style="text-align:right">Orders</th></tr></thead><tbody></tbody></table>
+        <div id="anRequotes" class="muted" style="font-size:13.5px;margin-top:12px"></div></div>
+    </div>
+  </div>
+
+  <div id="t-catalog" style="display:none">
+    <h1>Catalog</h1>
+    <div class="panel">
+      <div class="row" style="justify-content:space-between">
+        <b style="font-size:15px">Data feeds — Flipsy · SellCell · BankMyCell · Swappa</b>
+        <button class="btn sm" id="feedCheck">Check feeds now</button>
+      </div>
+      <p class="muted" style="margin:8px 0 10px;font-size:13px">Feeds are generated live from this catalog —
+      aggregators always get prices at most 1 hour old. After a big price update, hit "Check feeds now"
+      to confirm your changes are flowing through.</p>
+      <div id="feedList" style="display:grid;gap:6px;font-size:13px"></div>
+    </div>
+    <div class="panel"><div class="row">
+      <select id="catSel"></select>
+      <select id="brandSel"></select>
+      <button class="btn ghost" id="catLoad">Load prices</button>
+      <span class="muted" id="catCount"></span>
+      <button class="btn" id="catSave" style="margin-left:auto;display:none">Save changes (<span id="dirtyN">0</span>)</button>
+    </div></div>
+    <div class="panel" style="overflow-x:auto"><table class="pricegrid" id="catTable">
+      <thead><tr><th>On</th><th>Model</th><th>Carrier</th><th>Storage</th>
+        <th>Brand New</th><th>Flawless</th><th>Good</th><th>Fair</th><th>Minor Damage</th><th>Broken</th></tr></thead>
+      <tbody></tbody></table></div>
+  </div>
+
+  <div id="t-blog" style="display:none">
+    <h1>Blog</h1>
+    <div class="panel"><div class="row">
+      <button class="btn" id="postAdd">New post</button>
+      <span class="muted">Posts marked live appear on the site after the next site rebuild.</span>
+    </div></div>
+    <div class="panel"><table id="postTable">
+      <thead><tr><th>Date</th><th>Title</th><th>Status</th><th></th></tr></thead><tbody></tbody></table></div>
+  </div>
+
+  <div id="t-promos" style="display:none">
+    <h1>Promo Codes</h1>
+    <div class="panel"><div class="row">
+      <input id="promoCode" placeholder="CODE" style="width:140px;text-transform:uppercase">
+      <input id="promoAmt" type="number" placeholder="$ added" style="width:110px">
+      <button class="btn" id="promoAdd">Create</button>
+    </div></div>
+    <div class="panel"><table id="promoTable">
+      <thead><tr><th>Code</th><th>Adds</th><th>Used</th><th>Status</th><th></th></tr></thead><tbody></tbody></table></div>
+  </div>
+
+  <div id="t-faqs" style="display:none">
+    <h1>FAQs</h1>
+    <div class="panel"><button class="btn" id="faqAdd">Add FAQ</button></div>
+    <div id="faqList"></div>
+  </div>
+
+</div>
+<div class="toast" id="toast"></div>
+
+<dialog id="tiDialog"></dialog>
+</div>
+
+<script src="config.js"></script>
+<script type="module">
+// ?demo=1 → run against canned sample data (no Supabase project needed).
+const DEMO = new URLSearchParams(location.search).has("demo");
+const C = window.OCB_CONFIG;
+
+function demoClient(){
+  const day = 864e5, now = Date.now();
+  const iso = (d) => new Date(d).toISOString();
+  const DATA = {
+    trade_ins: [
+      { id:"d1", order_number:"OCB-K4TN2M", status:"shipped", first_name:"Pooja", last_name:"Subramaniam",
+        email:"poojalsub@gmail.com", phone:"248-635-2371", address1:"18 Sample Ave", city:"Irvine", state:"CA", zip:"92602",
+        payment_method:"zelle", payment_detail:"poojalsub@gmail.com", total_quote:905, total_paid:null, source:"SellCell",
+        tracking_number:null, created_at: iso(now - 2*3600e3),
+        trade_in_items:[{id:901,category:"Cell Phone",brand:"Apple",model:"iPhone 17 Pro Max",carrier:"Unlocked",storage:"256GB",condition:"Flawless",quoted_price:905,qty:1}] },
+      { id:"d2", order_number:"OCB-8WQPRV", status:"received", first_name:"Bret", last_name:"Packard",
+        email:"bretpackard@gmail.com", phone:"702-308-6154", address1:"9 Demo Ct", city:"Brea", state:"CA", zip:"92821",
+        payment_method:"check", payment_detail:null, total_quote:1435, total_paid:null, source:"Google",
+        tracking_number:"9400 1234 5678 9012 3456 78", created_at: iso(now - day),
+        trade_in_items:[{id:902,category:"Tablet",brand:"Apple",model:"iPad Pro 13 M5 Standard Glass (2025)",carrier:"WiFi",storage:"512GB",condition:"Good",quoted_price:1020,qty:1},
+                        {id:903,category:"Cell Phone",brand:"Samsung",model:"Galaxy S25 FE",carrier:"Unlocked",storage:"128GB",condition:"Good",quoted_price:415,qty:1}] },
+      { id:"d3", order_number:"OCB-2JXH7A", status:"evaluating", first_name:"Catherine", last_name:"Hilgen",
+        email:"catherinehilgen@gmail.com", phone:"818-472-5749", address1:"41 Placeholder Rd", city:"Fullerton", state:"CA", zip:"92831",
+        payment_method:"venmo", payment_detail:"@cat-hilgen", total_quote:205, total_paid:null, source:"Swappa",
+        tracking_number:"9400 8765 4321 0987 6543 21", created_at: iso(now - 2*day),
+        trade_in_items:[{id:904,category:"Smartwatch",brand:"Apple",model:"Watch Ultra",carrier:"49mm",storage:"-",condition:"Good",quoted_price:205,qty:1}] },
+      { id:"d5", order_number:"OCB-7DELIV", status:"delivered", first_name:"Marcus", last_name:"Webb",
+        email:"marcusw@example.com", phone:"714-555-0134", address1:"5 Arrival Ln", city:"Anaheim", state:"CA", zip:"92805",
+        payment_method:"paypal", payment_detail:"marcusw@example.com", total_quote:460, total_paid:null,
+        tracking_number:"9400 1111 2222 3333 4444 55", created_at: iso(now - 3*day),
+        trade_in_items:[{id:906,category:"Cell Phone",brand:"Apple",model:"iPhone 14 Pro Max",carrier:"Unlocked",storage:"256GB",condition:"Good",quoted_price:460,qty:1}] },
+      { id:"d4", order_number:"OCB-Q9MZKD", status:"paid", first_name:"Alvin", last_name:"Estrada",
+        email:"alvin.e@example.com", phone:"657-555-0170", address1:"77 Sample St", city:"Brea", state:"CA", zip:"92821",
+        payment_method:"cash", payment_detail:null, total_quote:365, total_paid:365, source:"Direct",
+        tracking_number:null, created_at: iso(now - 4*day),
+        trade_in_items:[{id:905,category:"Cell Phone",brand:"Apple",model:"iPhone 16",carrier:"Unlocked",storage:"128GB",condition:"Good",quoted_price:365,qty:1}] },
+    ],
+    categories: [ {id:1,name:"Cell Phone",sort:0,enabled:true}, {id:2,name:"Tablet",sort:1,enabled:true} ],
+    models: [ {id:11,brand_id:1,brands:{name:"Apple"},name:"iPhone 16",sort:1,enabled:true},
+              {id:12,brand_id:1,brands:{name:"Apple"},name:"iPhone 16 Pro",sort:2,enabled:true} ],
+    variants: [
+      {id:101,model_id:11,carrier:"Unlocked",storage:"128GB",prices:[
+        {condition:"Brand New",price:450,enabled:true},{condition:"Flawless",price:400,enabled:true},
+        {condition:"Good",price:365,enabled:true},{condition:"Fair",price:305,enabled:true},
+        {condition:"Minor Damage",price:185,enabled:true},{condition:"Broken",price:30,enabled:true}]},
+      {id:102,model_id:11,carrier:"T-Mobile",storage:"128GB",prices:[
+        {condition:"Brand New",price:325,enabled:true},{condition:"Flawless",price:275,enabled:true},
+        {condition:"Good",price:240,enabled:true},{condition:"Fair",price:180,enabled:true},
+        {condition:"Minor Damage",price:105,enabled:true},{condition:"Broken",price:30,enabled:true}]},
+      {id:103,model_id:12,carrier:"Unlocked",storage:"256GB",prices:[
+        {condition:"Brand New",price:600,enabled:true},{condition:"Flawless",price:545,enabled:true},
+        {condition:"Good",price:505,enabled:true},{condition:"Fair",price:430,enabled:true},
+        {condition:"Minor Damage",price:280,enabled:true},{condition:"Broken",price:45,enabled:true}]} ],
+    blog_posts: [
+      { id:1, path:"2026/09/1/sell-your-iphone-17-pro-max-before-the-iphone-18-pro-max-arrives-get-top-cash-at-ocbuyback",
+        published_on:"2026-09-01", slug:"sell-your-iphone-17-pro-max", enabled:true,
+        title:"Sell Your iPhone 17 Pro Max Before the iPhone 18 Pro Max Arrives",
+        meta_description:"Get a competitive cash offer from OCBuyBack in Brea, CA.",
+        image_url:"", html:"<p>Demo post body.</p>" },
+      { id:2, path:"2026/08/18/sell-your-ipad-or-apple-watch-for-top-cash-in-brea-ca",
+        published_on:"2026-08-18", slug:"sell-your-ipad-or-apple-watch", enabled:false,
+        title:"Sell Your iPad or Apple Watch for Top Cash in Brea, CA",
+        meta_description:"Turn your Apple devices into cash today.", image_url:"", html:"<p>Draft body.</p>" } ],
+    trade_in_issues: [
+      { id:"i2", trade_in_id:"d5", item_id:906, type:"requote", status:"accepted",
+        new_condition:"Fair", new_price:280, created_at:iso(now-7200e3) },
+      { id:"i1", trade_in_id:"d3", item_id:904, type:"requote", status:"pending",
+        message:"Deep scratch across the sapphire glass — regrading to Fair.",
+        new_condition:"Fair", new_price:150, created_at:iso(now-3600e3) } ],
+    catalog_flat: [ {price:305} ],
+    promo_codes: [ {id:1,code:"FB10",amount:10,active:true,times_used:11,created_at:iso(now-30*day)},
+                   {id:2,code:"LABORDAY",amount:5,active:false,times_used:1,created_at:iso(now-60*day)} ],
+    faqs: [ {id:1,question:"How long is my offer good for?",answer:"14 days from the day the order is submitted.",sort:0,enabled:true},
+            {id:2,question:"How and when will I get paid?",answer:"Within 1 business day of arrival — check, Zelle, or Venmo. Cash in store for locals.",sort:1,enabled:true} ],
+  };
+  const from = (table) => {
+    let result = { data: null, error: null };
+    const proxy = new Proxy(function(){}, {
+      get(_, k){
+        if (k === "then") return (fn) => Promise.resolve(result).then(fn);
+        if (k === "eq") return (f, v) => {
+          if (Array.isArray(result.data))
+            result.data = result.data.filter((r) => !(f in r) || r[f] == v);
+          return proxy;
+        };
+        if (k === "gte") return (f, v) => {
+          if (Array.isArray(result.data))
+            result.data = result.data.filter((r) => !(f in r) || r[f] >= v);
+          return proxy;
+        };
+        return (..._args) => { if (k === "select") result = { data: (DATA[table] || []).map(x => ({...x})), error: null }; return proxy; };
+      },
+    });
+    return proxy;
+  };
+  return {
+    from,
+    auth: {
+      getSession: async () => ({ data: { session: { user: { email: "demo@ocbuyback.com" } } } }),
+      onAuthStateChange: () => {}, signOut: async () => {}, signInWithOtp: async () => ({ error: null }),
+    },
+    storage: { from: () => ({
+      upload: async (name) => ({ data: { path: name }, error: null }),
+      getPublicUrl: (name) => ({ data: { publicUrl: "https://demo.local/blog-images/" + name } }),
+    }) },
+  };
+}
+
+let sb;
+if (DEMO) { sb = demoClient(); C.ADMIN_EMAILS = ["demo@ocbuyback.com"]; }
+else {
+  const { createClient } = await import("https://esm.sh/@supabase/supabase-js@2");
+  sb = createClient(C.SUPABASE_URL, C.SUPABASE_ANON_KEY);
+}
+const $ = (s) => document.querySelector(s);
+const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const money = (v) => "$" + Number(v || 0).toLocaleString(undefined, {maximumFractionDigits: 2});
+let toastT;
+function toast(msg){ const t = $("#toast"); t.textContent = msg; t.classList.add("show");
+  clearTimeout(toastT); toastT = setTimeout(()=>t.classList.remove("show"), 2600); }
+
+// ---------- auth ----------
+async function boot(){
+  const { data: { session } } = await sb.auth.getSession();
+  const email = session?.user?.email?.toLowerCase();
+  if (email && C.ADMIN_EMAILS.map(e=>e.toLowerCase()).includes(email)) {
+    $("#login").style.display = "none"; $("#app").style.display = "";
+    $("#who").textContent = email;
+    loadActions(); loadTradeIns(); loadCategories();
+  } else {
+    if (email) { $("#loginMsg").textContent = email + " is not on the admin allowlist."; }
+    $("#login").style.display = ""; $("#app").style.display = "none";
+  }
+}
+$("#loginBtn").onclick = async () => {
+  const email = $("#loginEmail").value.trim();
+  if (!email) return;
+  const { error } = await sb.auth.signInWithOtp({ email, options: { emailRedirectTo: location.href } });
+  $("#loginMsg").textContent = error ? error.message : "Check your email for the sign-in link.";
+};
+$("#signOut").onclick = async () => { await sb.auth.signOut(); location.reload(); };
+sb.auth.onAuthStateChange(() => boot());
+boot();
+
+// ---------- tabs ----------
+document.querySelectorAll(".tab").forEach((b) => b.onclick = () => {
+  document.querySelectorAll(".tab").forEach((x) => x.classList.toggle("on", x === b));
+  ["actions","tradeins","analytics","catalog","blog","promos","faqs"].forEach((t) => $("#t-" + t).style.display = (t === b.dataset.t ? "" : "none"));
+  if (b.dataset.t === "promos") loadPromos();
+  if (b.dataset.t === "faqs") loadFaqs();
+  if (b.dataset.t === "blog") loadPosts();
+  if (b.dataset.t === "analytics") loadAnalytics();
+  if (b.dataset.t === "actions") loadActions();
+});
+
+// ---------- action items (the working queue) ----------
+async function loadActions(){
+  const ACTIVE = ["shipped","delivered","received","evaluating","adjusted"];
+  const [{ data: orders, error }, { data: issues }] = await Promise.all([
+    sb.from("trade_ins").select("*, trade_in_items(*)").in("status", ACTIVE)
+      .order("created_at", { ascending: true }).limit(500),
+    sb.from("trade_in_issues").select("trade_in_id,status,type,new_price").in("status",
+      ["pending","accepted","declined","cannot_complete"]),
+  ]);
+  if (error) return toast(error.message);
+  const issuesBy = new Map();
+  (issues || []).forEach((i) => { (issuesBy.get(i.trade_in_id) || issuesBy.set(i.trade_in_id, []).get(i.trade_in_id)).push(i); });
+
+  const label = (i) => ({ pending: "waiting on customer", accepted: `accepted $${i.new_price}`,
+    declined: "DECLINED — ship device back", cannot_complete: "can't complete — arrange return" }[i.status]);
+  const QUEUES = [
+    { key: "respond", title: "🟢 Customer responded — act now", hint: "Accepted offers need payment; declined or stuck ones need a return.",
+      match: (o, iss) => iss.some((i) => ["accepted","declined","cannot_complete"].includes(i.status)) },
+    { key: "delivered", title: "📬 Delivered — check in", hint: "USPS says these arrived. Open each and mark it received.",
+      match: (o) => o.status === "delivered" },
+    { key: "inspect", title: "🔍 Received — needs inspection", hint: "Checked in and waiting on evaluation.",
+      match: (o, iss) => o.status === "received" && !iss.some((i) => i.status === "pending") },
+    { key: "evaluating", title: "🧪 Evaluating — finish and pay or requote", hint: "",
+      match: (o, iss) => o.status === "evaluating" && !iss.some((i) => i.status === "pending") },
+    { key: "waiting", title: "⏳ Waiting on customer", hint: "Issue or revised-offer email sent — the ball is in their court.",
+      match: (o, iss) => iss.some((i) => i.status === "pending") || o.status === "adjusted" },
+    { key: "transit", title: "🚚 On the way", hint: "Label scanned — nothing to do until they arrive.",
+      match: (o) => o.status === "shipped" },
+  ];
+  const claimed = new Set();
+  const html_ = QUEUES.map((q) => {
+    const rows = (orders || []).filter((o) => {
+      if (claimed.has(o.id)) return false;
+      const ok = q.match(o, issuesBy.get(o.id) || []);
+      if (ok) claimed.add(o.id);
+      return ok;
+    });
+    if (!rows.length) return "";
+    return `<div class="panel">
+      <h2 style="font:700 16px 'Bricolage Grotesque',sans-serif;color:var(--deep);margin:0 0 2px">${q.title} <span class="muted">(${rows.length})</span></h2>
+      ${q.hint ? `<p class="muted" style="font-size:12.5px;margin:0 0 8px">${q.hint}</p>` : ""}
+      <table><tbody>${rows.map((t) => {
+        const iss = issuesBy.get(t.id) || [];
+        const responded = iss.filter((i) => ["accepted","declined","cannot_complete"].includes(i.status));
+        return `<tr>
+          <td style="width:110px"><span class="chip ${t.status}">${t.status}</span></td>
+          <td><b>${esc(t.order_number)}</b><br><span class="muted">${esc(t.first_name)} ${esc(t.last_name)}</span></td>
+          <td>${(t.trade_in_items || []).map((i) => esc(`${i.brand} ${i.model}`)).join("<br>")}</td>
+          <td class="muted">${esc(t.email)}<br>${esc(t.phone)}</td>
+          <td>${esc(t.payment_method)}</td>
+          <td class="money" style="text-align:right"><b>${money(t.total_quote)}</b></td>
+          <td class="muted" style="white-space:nowrap">${new Date(t.created_at).toLocaleDateString()}</td>
+          <td>${responded.map((i) => `<span class="chip ${i.status === "accepted" ? "paid" : "cancelled"}">${label(i)}</span>`).join(" ")}</td>
+          <td><button class="btn sm ghost" data-open-action="${t.id}">Open</button></td></tr>`;
+      }).join("")}</tbody></table></div>`;
+  }).join("");
+  $("#actionQueues").innerHTML = html_ ||
+    `<div class="panel muted" style="text-align:center;padding:40px">Nothing needs attention — no orders in transit or awaiting action. 🎉</div>`;
+  $("#actionQueues").dataset.cache = JSON.stringify(orders || []);
+}
+$("#actionQueues")?.addEventListener("click", (e) => {
+  const id = e.target.dataset?.openAction; if (!id) return;
+  const t = JSON.parse($("#actionQueues").dataset.cache).find((x) => x.id === id);
+  if (t) openTradeInDialog(t, loadActions);
+});
+
+// ---------- analytics ----------
+async function loadAnalytics(){
+  const days = Number($("#anRange").value);
+  const since = new Date(Date.now() - days * 864e5).toISOString();
+  const { data: orders, error } = await sb.from("trade_ins")
+    .select("id,status,source,total_quote,total_paid,payment_method,created_at,trade_in_items(brand,model,quoted_price,final_price,qty)")
+    .gte("created_at", since).order("created_at", { ascending: false }).limit(2000);
+  if (error) return toast(error.message);
+  const { data: requotes } = await sb.from("trade_in_issues")
+    .select("status,type,created_at").eq("type", "requote").gte("created_at", since);
+
+  const active = (orders || []).filter((o) => o.status !== "cancelled");
+  const totalVal = active.reduce((a, o) => a + Number(o.total_quote), 0);
+  const paid = active.filter((o) => o.status === "paid");
+  const paidVal = paid.reduce((a, o) => a + Number(o.total_paid ?? o.total_quote), 0);
+  const card = (label, big, sub) => `<div class="panel" style="margin:0;text-align:center">
+    <div style="font:800 26px 'Bricolage Grotesque',sans-serif;color:var(--deep)">${big}</div>
+    <div class="muted" style="font-size:12.5px;font-weight:600">${label}${sub ? ` · <b>${sub}</b>` : ""}</div></div>`;
+  $("#anCards").innerHTML =
+    card("trade-ins", active.length) +
+    card("quoted value", money(totalVal)) +
+    card("avg order", active.length ? money(totalVal / active.length) : "—") +
+    card("paid out", money(paidVal), `${paid.length} orders`) +
+    card("paid rate", active.length ? Math.round(100 * paid.length / active.length) + "%" : "—");
+
+  const agg = (rows, key) => {
+    const m = new Map();
+    rows.forEach((o) => {
+      const k = key(o) || "Unknown";
+      const e = m.get(k) || { n: 0, v: 0 };
+      e.n++; e.v += Number(o.total_quote); m.set(k, e);
+    });
+    return [...m].sort((a, b) => b[1].n - a[1].n);
+  };
+  $("#anSources tbody").innerHTML = agg(active, (o) => o.source || "Untracked").map(([s, e]) => `
+    <tr><td><b>${esc(s)}</b></td><td class="money" style="text-align:right">${e.n}</td>
+    <td class="money" style="text-align:right">${money(e.v)}</td>
+    <td class="muted" style="text-align:right">${Math.round(100 * e.n / active.length)}%</td></tr>`).join("")
+    || "<tr><td colspan=4 class=muted>No orders in this range yet.</td></tr>";
+
+  const dev = new Map();
+  active.forEach((o) => (o.trade_in_items || []).forEach((i) => {
+    const k = `${i.brand} ${i.model}`;
+    const e = dev.get(k) || { n: 0, v: 0 };
+    e.n += i.qty; e.v += Number(i.final_price ?? i.quoted_price) * i.qty; dev.set(k, e);
+  }));
+  $("#anDevices tbody").innerHTML = [...dev].sort((a, b) => b[1].n - a[1].n).slice(0, 15)
+    .map(([d, e]) => `<tr><td>${esc(d)}</td><td class="money" style="text-align:right">${e.n}</td>
+     <td class="money" style="text-align:right">${money(e.v)}</td></tr>`).join("")
+    || "<tr><td colspan=3 class=muted>No devices yet.</td></tr>";
+
+  const ORDER = ["initiated","received","evaluating","adjusted","paid","returned","cancelled"];
+  const st = agg(orders || [], (o) => o.status);
+  $("#anFunnel tbody").innerHTML = ORDER.filter((s) => st.find(([k]) => k === s))
+    .map((s) => { const e = st.find(([k]) => k === s)[1];
+      return `<tr><td><span class="chip ${s}">${s}</span></td>
+        <td class="money" style="text-align:right">${e.n}</td>
+        <td class="money" style="text-align:right">${money(e.v)}</td></tr>`; }).join("");
+
+  $("#anPay tbody").innerHTML = agg(active, (o) => o.payment_method).map(([p, e]) => `
+    <tr><td style="text-transform:capitalize">${esc(p)}</td><td class="money" style="text-align:right">${e.n}</td></tr>`).join("");
+  const rq = requotes || [];
+  const acc = rq.filter((r) => r.status === "accepted").length, dec = rq.filter((r) => r.status === "declined").length;
+  $("#anRequotes").innerHTML = rq.length
+    ? `<b>Requotes:</b> ${rq.length} sent · <span style="color:var(--green);font-weight:700">${acc} accepted</span> · <span style="color:#b3372b;font-weight:700">${dec} declined</span> · ${rq.length - acc - dec} pending`
+    : "<b>Requotes:</b> none in this range.";
+}
+$("#anReload").onclick = loadAnalytics;
+$("#anRange").onchange = loadAnalytics;
+
+// ---------- blog ----------
+const slugify = (s) => s.toLowerCase().replace(/&/g, "and").replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "");
+async function loadPosts(){
+  const { data, error } = await sb.from("blog_posts")
+    .select("id,path,published_on,slug,title,enabled").order("published_on", { ascending: false });
+  if (error) return toast(error.message);
+  $("#postTable tbody").innerHTML = (data || []).map((p) => `
+    <tr><td class="muted" style="white-space:nowrap">${p.published_on}</td>
+    <td><b>${esc(p.title)}</b><br><span class="muted">/blog/${esc(p.path)}</span></td>
+    <td><span class="chip ${p.enabled ? "paid" : "cancelled"}">${p.enabled ? "live" : "draft"}</span></td>
+    <td><button class="btn sm ghost" data-post="${p.id}">Edit</button></td></tr>`).join("")
+    || "<tr><td colspan=4 class=muted>No posts yet.</td></tr>";
+}
+// keep only clean, simple markup no matter what gets typed or pasted in
+function sanitizeHtml(dirty){
+  const KEEP = { P:1, H4:1, H5:1, UL:1, OL:1, LI:1, B:1, STRONG:1, I:1, EM:1, A:1, BR:1, IMG:1 };
+  const AS_H4 = { H1:1, H2:1, H3:1, H6:1 }, AS_P = { DIV:1, SECTION:1, ARTICLE:1, BLOCKQUOTE:1, PRE:1 };
+  const tpl = document.createElement("template");
+  tpl.innerHTML = dirty;
+  (function walk(node){
+    [...node.children].forEach((el) => {
+      walk(el);
+      let tag = el.tagName;
+      if (tag === "SCRIPT" || tag === "STYLE") return el.remove();
+      if (AS_H4[tag]) tag = "H4";
+      else if (AS_P[tag]) tag = "P";
+      else if (tag === "SPAN" || tag === "FONT" || tag === "U") { el.replaceWith(...el.childNodes); return; }
+      else if (!KEEP[tag]) { el.replaceWith(...el.childNodes); return; }
+      const repl = document.createElement(tag);
+      if (tag === "A" && /^(https?:|mailto:|\/)/.test(el.getAttribute("href") || ""))
+        repl.setAttribute("href", el.getAttribute("href"));
+      if (tag === "IMG") {
+        if (!/^https:/.test(el.getAttribute("src") || "")) return el.remove();
+        repl.setAttribute("src", el.getAttribute("src"));
+        repl.setAttribute("alt", el.getAttribute("alt") || "");
+      }
+      repl.append(...el.childNodes);
+      el.replaceWith(repl);
+    });
+  })(tpl.content);
+  // top-level loose text -> paragraphs; drop empty paragraphs
+  let html = tpl.innerHTML;
+  const tpl2 = document.createElement("template");
+  tpl2.innerHTML = html;
+  [...tpl2.content.querySelectorAll("p, h4")].forEach((el) => {
+    if (!el.textContent.trim() && !el.querySelector("img")) el.remove();
+  });
+  return tpl2.innerHTML.trim();
+}
+
+async function uploadHero(file){
+  const name = Date.now() + "-" + file.name.toLowerCase().replace(/[^a-z0-9.]+/g, "-");
+  const { error } = await sb.storage.from("blog-images").upload(name, file, { cacheControl: "31536000" });
+  if (error) throw error;
+  return sb.storage.from("blog-images").getPublicUrl(name).data.publicUrl;
+}
+
+function postDialog(p){  // p = existing row or null for new
+  const d = $("#tiDialog");
+  d.classList.add("wide");
+  const today = new Date().toISOString().slice(0, 10);
+  d.innerHTML = `
+    <h1 style="margin:0 0 14px">${p ? "Edit post" : "New post"}</h1>
+    <div class="row">
+      <input id="pDate" type="date" value="${p ? p.published_on : today}">
+      <label class="muted" style="font-size:12.5px"><input type="checkbox" id="pOn" ${!p || p.enabled ? "checked" : ""}> live</label>
+    </div>
+    <input id="pTitle" placeholder="Post title" value="${p ? esc(p.title) : ""}" style="width:100%;margin-top:10px;font-weight:700">
+    <input id="pDesc" placeholder="Meta description (the snippet shown in Google)" value="${p ? esc(p.meta_description || "") : ""}" style="width:100%;margin-top:10px">
+    <div class="heroprev">
+      <img id="pImgPrev" src="${p?.image_url ? esc(p.image_url) : ""}" style="${p?.image_url ? "" : "display:none"}" alt="">
+      <button class="btn sm ghost" id="pImgBtn" type="button">${p?.image_url ? "Replace image" : "Upload header image"}</button>
+      <button class="btn sm ghost" id="pImgRm" type="button" style="${p?.image_url ? "" : "display:none"}">Remove</button>
+      <input id="pImgFile" type="file" accept="image/*" style="display:none">
+      <span class="muted" id="pImgMsg" style="font-size:12.5px"></span>
+    </div>
+    <div class="toolbar">
+      <button type="button" data-cmd="bold"><b>B</b></button>
+      <button type="button" data-cmd="italic"><i>I</i></button>
+      <button type="button" data-block="h4">Heading</button>
+      <button type="button" data-block="p">Text</button>
+      <button type="button" data-cmd="insertUnorderedList">• List</button>
+      <button type="button" id="edLink">Link</button>
+    </div>
+    <div class="editor" id="pBody" contenteditable="true"></div>
+    <p class="muted" style="font-size:12px;margin:6px 0 0">Just write — press Enter for a new paragraph, use the buttons for headings and lists. Formatting is handled automatically.</p>
+    <div class="row" style="margin-top:14px;justify-content:flex-end">
+      <span class="muted" style="margin-right:auto;font-size:12.5px" id="pUrl"></span>
+      <button class="btn ghost" id="pClose">Close</button>
+      <button class="btn" id="pSave">${p ? "Save" : "Publish"}</button>
+    </div>`;
+
+  let heroUrl = p?.image_url || null;
+  const ed = $("#pBody");
+  ed.innerHTML = p ? sanitizeHtml(p.html || "") : "<p><br></p>";
+  try { document.execCommand("defaultParagraphSeparator", false, "p"); } catch(e) {}
+  // mousedown-preventDefault keeps the editor's caret/selection when a toolbar button is clicked
+  d.querySelectorAll(".toolbar button").forEach((b) => b.onmousedown = (e) => e.preventDefault());
+  d.querySelectorAll(".toolbar [data-cmd]").forEach((b) => b.onclick = () => document.execCommand(b.dataset.cmd));
+  d.querySelectorAll(".toolbar [data-block]").forEach((b) => b.onclick = () => document.execCommand("formatBlock", false, b.dataset.block));
+  $("#edLink").onclick = () => {
+    ed.focus();
+    const url = prompt("Link to (https://… or /sell/…):");
+    if (url && /^(https?:\/\/|\/)/.test(url)) document.execCommand("createLink", false, url);
+  };
+  ed.addEventListener("paste", (e) => {
+    e.preventDefault();
+    const h = e.clipboardData.getData("text/html");
+    if (h) document.execCommand("insertHTML", false, sanitizeHtml(h));
+    else {
+      const text = e.clipboardData.getData("text/plain");
+      document.execCommand("insertHTML", false,
+        text.split(/\n{2,}/).map((par) => "<p>" + esc(par).replace(/\n/g, "<br>") + "</p>").join(""));
+    }
+  });
+  $("#pImgBtn").onclick = () => $("#pImgFile").click();
+  $("#pImgFile").onchange = async (e) => {
+    const file = e.target.files[0]; if (!file) return;
+    $("#pImgMsg").textContent = "Uploading…";
+    try {
+      heroUrl = await uploadHero(file);
+      const prev = $("#pImgPrev");
+      prev.src = DEMO ? URL.createObjectURL(file) : heroUrl;
+      prev.style.display = ""; $("#pImgRm").style.display = "";
+      $("#pImgBtn").textContent = "Replace image"; $("#pImgMsg").textContent = "";
+    } catch (err) { $("#pImgMsg").textContent = err.message; }
+  };
+  $("#pImgRm").onclick = () => { heroUrl = null; $("#pImgPrev").style.display = "none"; $("#pImgRm").style.display = "none"; $("#pImgBtn").textContent = "Upload header image"; };
+  const urlPreview = () => {
+    if (p) { $("#pUrl").textContent = "/blog/" + p.path; return; }
+    const dt = $("#pDate").value || today;
+    const [y, m, day] = dt.split("-");
+    $("#pUrl").textContent = `/blog/${y}/${m}/${+day}/${slugify($("#pTitle").value || "post-title")}`;
+  };
+  $("#pTitle").oninput = urlPreview; $("#pDate").oninput = urlPreview; urlPreview();
+  d.showModal();
+  $("#pClose").onclick = () => d.close();
+  $("#pSave").onclick = async () => {
+    const title = $("#pTitle").value.trim();
+    const htmlBody = sanitizeHtml(ed.innerHTML);
+    if (!title || !htmlBody) return toast("Title and content are required");
+    const row = { published_on: $("#pDate").value, title,
+      meta_description: $("#pDesc").value.trim() || null,
+      image_url: heroUrl,
+      html: htmlBody, enabled: $("#pOn").checked };
+    let error;
+    if (p) ({ error } = await sb.from("blog_posts").update(row).eq("id", p.id));
+    else {
+      const [y, m, day] = row.published_on.split("-");
+      row.slug = slugify(title);
+      row.path = `${y}/${m}/${+day}/${row.slug}`;
+      ({ error } = await sb.from("blog_posts").insert(row));
+    }
+    if (error) return toast(error.message);
+    d.close(); toast(p ? "Saved" : "Post created"); loadPosts();
+  };
+}
+$("#postAdd").onclick = () => postDialog(null);
+$("#postTable").addEventListener("click", async (e) => {
+  const id = e.target.dataset?.post; if (!id) return;
+  const { data } = await sb.from("blog_posts").select("*").eq("id", id);
+  if (data?.[0]) postDialog(data[0]);
+});
+
+// ---------- trade-ins ----------
+const STATUSES = ["initiated","shipped","delivered","received","evaluating","adjusted","paid","returned","cancelled"];
+async function loadTradeIns(){
+  let q = sb.from("trade_ins").select("*, trade_in_items(*)").order("created_at", { ascending: false }).limit(200);
+  if ($("#tiStatus").value) q = q.eq("status", $("#tiStatus").value);
+  const search = $("#tiSearch").value.trim();
+  if (search) q = q.or(`order_number.ilike.%${search}%,email.ilike.%${search}%,first_name.ilike.%${search}%,last_name.ilike.%${search}%`);
+  const { data, error } = await q;
+  if (error) return toast(error.message);
+  $("#tiTable tbody").innerHTML = (data || []).map((t) => `
+    <tr>
+      <td><span class="chip ${t.status}">${t.status}</span></td>
+      <td><b>${esc(t.order_number)}</b></td>
+      <td>${esc(t.first_name)} ${esc(t.last_name)}<br><span class="muted">${esc(t.city)}, ${esc(t.state)}</span></td>
+      <td>${esc(t.email)}<br><span class="muted">${esc(t.phone)}</span></td>
+      <td>${esc(t.payment_method)}${t.payment_detail ? "<br><span class='muted'>" + esc(t.payment_detail) + "</span>" : ""}</td>
+      <td class="money" style="text-align:right"><b>${money(t.total_quote)}</b></td>
+      <td class="muted">${new Date(t.created_at).toLocaleDateString()}</td>
+      <td><button class="btn sm ghost" data-open="${t.id}">Open</button></td>
+    </tr>`).join("") || "<tr><td colspan=8 class=muted>No trade-ins found.</td></tr>";
+  $("#tiTable").dataset.cache = JSON.stringify(data || []);
+}
+$("#tiReload").onclick = loadTradeIns;
+$("#tiStatus").onchange = loadTradeIns;
+$("#tiSearch").onkeydown = (e) => { if (e.key === "Enter") loadTradeIns(); };
+
+$("#tiTable").addEventListener("click", (e) => {
+  const id = e.target.dataset?.open; if (!id) return;
+  const t = JSON.parse($("#tiTable").dataset.cache).find((x) => x.id === id);
+  if (t) openTradeInDialog(t, loadTradeIns);
+});
+
+function openTradeInDialog(t, refresh){
+  const d = $("#tiDialog");
+  d.classList.remove("wide");
+  d.innerHTML = `
+    <h1 style="margin:0 0 4px">${esc(t.order_number)} <span class="chip ${t.status}">${t.status}</span></h1>
+    <p class="muted" style="margin:0 0 12px">${esc(t.first_name)} ${esc(t.last_name)} · ${esc(t.address1)}${t.address2 ? ", " + esc(t.address2) : ""}, ${esc(t.city)}, ${esc(t.state)} ${esc(t.zip)}</p>
+    ${(t.trade_in_items || []).map((it) => `
+      <div class="detail"><b>${esc(it.brand)} ${esc(it.model)}</b> × ${it.qty}
+        <span class="muted">· ${[it.carrier, it.storage, it.condition].filter(Boolean).map(esc).join(" / ")}</span>
+        <span class="money" style="float:right"><b>${money(it.quoted_price * it.qty)}</b>${it.final_price != null ? `<br><span style="color:var(--green);font-size:12px">final ${money(it.final_price)}</span>` : ""}</span></div>`).join("")}
+    <div class="detail"><b>Total quote</b> <span class="money" style="float:right"><b>${money(t.total_quote)}</b></span></div>
+    <div id="issueList"></div>
+    <div style="border-top:1px solid var(--line);margin-top:14px;padding-top:14px">
+      <b style="font-size:14px">Raise an issue / requote</b>
+      <div class="row" style="margin-top:10px">
+        <select id="iItem">${(t.trade_in_items || []).map((it) =>
+          `<option value="${it.id}">${esc(it.brand)} ${esc(it.model)} (${esc(it.condition)})</option>`).join("")}</select>
+        <select id="iType">
+          <option value="icloud_lock">iCloud lock</option>
+          <option value="google_lock">Google lock</option>
+          <option value="financing">Carrier financing</option>
+          <option value="requote">Requote condition</option>
+          <option value="other">Other…</option></select>
+        <select id="iCond" style="display:none">
+          ${["Brand New","Flawless","Good","Fair","Minor Damage","Broken"].map((c) => `<option>${c}</option>`).join("")}</select>
+        <input id="iPrice" type="number" placeholder="New $" style="width:96px;display:none">
+      </div>
+      <textarea id="iMsg" rows="2" placeholder="Note to the customer (optional — required for Other)"
+        style="width:100%;margin-top:10px"></textarea>
+      <div class="row" style="margin-top:10px">
+        <button class="btn sm" id="iSend">Send email</button>
+        <span class="muted" id="iHint" style="font-size:12.5px">The email includes one-click links — their response lands back here automatically.</span>
+      </div>
+    </div>
+    <div class="row" style="margin-top:14px">
+      <select id="dStatus">${STATUSES.map((s) => `<option ${s === t.status ? "selected" : ""}>${s}</option>`).join("")}</select>
+      <input id="dNote" placeholder="Note (optional, shown in history)" style="flex:1">
+    </div>
+    <div class="row" style="margin-top:10px">
+      <input id="dTracking" placeholder="Tracking #" value="${esc(t.tracking_number || "")}" style="flex:1">
+      <input id="dPaid" type="number" placeholder="Total paid" value="${t.total_paid ?? ""}" style="width:120px">
+    </div>
+    <div class="row" style="margin-top:14px;justify-content:flex-end">
+      ${t.status !== "paid" && t.status !== "cancelled" ? `<button class="btn" id="dPay" style="margin-right:auto;background:var(--deep)">
+        💸 Send payment (${esc(t.payment_method)})</button>` : ""}
+      <button class="btn ghost" id="dClose">Close</button>
+      <button class="btn" id="dSave">Save</button>
+    </div>`;
+  d.showModal();
+  $("#dClose").onclick = () => d.close();
+
+  const payBtn = $("#dPay");
+  if (payBtn) payBtn.onclick = async () => {
+    const amount = Number($("#dPaid").value) ||
+      (t.trade_in_items || []).reduce((a, i) => a + Number(i.final_price ?? i.quoted_price) * i.qty, 0) + Number(t.promo_amount || 0);
+    const how = { paypal: `PayPal payout to ${t.payment_detail || t.email}`,
+                  check: `mail a Lob check to ${t.first_name} ${t.last_name}`,
+                  zelle: `mark paid (send Zelle to ${t.payment_detail} yourself)`,
+                  venmo: `mark paid (send Venmo to ${t.payment_detail} yourself)`,
+                  cash: "mark paid (cash in store)" }[t.payment_method];
+    if (!confirm(`Send ${money(amount)} — ${how}?`)) return;
+    payBtn.disabled = true; payBtn.textContent = "Sending…";
+    try {
+      if (DEMO) { await new Promise((r) => setTimeout(r, 600)); toast(`Paid ${money(amount)} (demo)`); }
+      else {
+        const { data: { session } } = await sb.auth.getSession();
+        const r = await fetch("/api/pay-trade-in", { method: "POST",
+          headers: { "content-type": "application/json", authorization: `Bearer ${session.access_token}` },
+          body: JSON.stringify({ trade_in_id: t.id, amount }) });
+        const dta = await r.json().catch(() => ({}));
+        if (!r.ok) throw new Error(dta.error || "Payment failed");
+        toast(dta.note || `Paid ${money(dta.paid)}`);
+      }
+      d.close(); refresh();
+    } catch (e) { toast(e.message); payBtn.disabled = false; payBtn.textContent = "💸 Send payment"; }
+  };
+
+  // ---- issue composer ----
+  const ISSUE_LABELS = { icloud_lock:"iCloud lock", google_lock:"Google lock",
+    financing:"Financing", requote:"Requote", other:"Other" };
+  const ISSUE_STATUS = { pending:"waiting on customer", resolved:"customer completed ✓",
+    cannot_complete:"customer can't complete", accepted:"offer accepted ✓",
+    declined:"offer declined", cancelled:"withdrawn" };
+  async function loadIssues(){
+    const { data } = await sb.from("trade_in_issues").select("*").eq("trade_in_id", t.id).order("created_at");
+    $("#issueList").innerHTML = (data || []).length ? (data || []).map((i) => `
+      <div class="detail" style="border-left:3px solid ${i.status === "pending" ? "var(--warn)" :
+          ["resolved","accepted"].includes(i.status) ? "var(--green)" : "var(--crit)"}">
+        <b>${ISSUE_LABELS[i.type]}</b>${i.new_price != null ? ` → <b class="money">${money(i.new_price)}</b>` : ""}
+        ${i.new_condition ? `<span class="muted">(${esc(i.new_condition)})</span>` : ""}
+        <span class="muted" style="float:right">${ISSUE_STATUS[i.status] || i.status}</span>
+        ${i.message ? `<div class="muted" style="font-size:12.5px;margin-top:2px">${esc(i.message)}</div>` : ""}
+      </div>`).join("") : "";
+  }
+  loadIssues();
+
+  const itemById = (id) => (t.trade_in_items || []).find((x) => x.id == id);
+  async function grabPrice(){
+    if ($("#iType").value !== "requote") return;
+    const it = itemById($("#iItem").value); if (!it) return;
+    const { data } = await sb.from("catalog_flat").select("price")
+      .eq("category", it.category || "").eq("brand", it.brand).eq("model", it.model)
+      .eq("carrier", it.carrier || "-").eq("storage", it.storage || "-")
+      .eq("condition", $("#iCond").value).limit(1);
+    if (data?.[0]?.price != null) $("#iPrice").value = data[0].price;
+  }
+  function issueUi(){
+    const type = $("#iType").value;
+    $("#iCond").style.display = type === "requote" ? "" : "none";
+    $("#iPrice").style.display = (type === "requote" || type === "other") ? "" : "none";
+    if (type === "requote") grabPrice();
+  }
+  $("#iType").onchange = issueUi;
+  $("#iCond").onchange = grabPrice;
+  $("#iItem").onchange = () => { if ($("#iType").value === "requote") grabPrice(); };
+  issueUi();
+
+  $("#iSend").onclick = async () => {
+    const type = $("#iType").value;
+    if (type === "other" && !$("#iMsg").value.trim()) return toast("Describe the issue for the customer");
+    const payload = { trade_in_id: t.id, item_id: Number($("#iItem").value), type,
+      message: $("#iMsg").value.trim() || null,
+      new_condition: type === "requote" ? $("#iCond").value : null,
+      new_price: $("#iPrice").value ? Number($("#iPrice").value) : null };
+    $("#iSend").disabled = true; $("#iSend").textContent = "Sending…";
+    try {
+      if (DEMO) { await new Promise((r) => setTimeout(r, 500)); toast("Email sent (demo)"); }
+      else {
+        const { data: { session } } = await sb.auth.getSession();
+        const r = await fetch("/api/send-issue-email", { method: "POST",
+          headers: { "content-type": "application/json", authorization: `Bearer ${session.access_token}` },
+          body: JSON.stringify(payload) });
+        const d = await r.json().catch(() => ({}));
+        if (!r.ok) throw new Error(d.error || "Send failed");
+        toast("Email sent: " + d.subject);
+      }
+      $("#iMsg").value = ""; loadIssues();
+    } catch (e) { toast(e.message); }
+    $("#iSend").disabled = false; $("#iSend").textContent = "Send email";
+  };
+  $("#dSave").onclick = async () => {
+    const status = $("#dStatus").value;
+    const patch = { status, tracking_number: $("#dTracking").value || null,
+                    total_paid: $("#dPaid").value ? Number($("#dPaid").value) : null };
+    const { error } = await sb.from("trade_ins").update(patch).eq("id", t.id);
+    if (error) return toast(error.message);
+    if (status !== t.status || $("#dNote").value.trim())
+      await sb.from("trade_in_events").insert({ trade_in_id: t.id, status, note: $("#dNote").value.trim() || null });
+    d.close(); toast("Saved"); refresh();
+  };
+}
+
+// ---------- catalog ----------
+const CONDS = ["Brand New","Flawless","Good","Fair","Minor Damage","Broken"];
+let dirty = {};   // `${variant_id}|${condition}` -> {price, enabled}
+async function loadCategories(){
+  const { data } = await sb.from("categories").select("*").order("sort");
+  $("#catSel").innerHTML = (data || []).map((c) =>
+    `<option value="${c.id}">${esc(c.name)}${c.enabled ? "" : " (off)"}</option>`).join("");
+  loadBrands();
+}
+async function loadBrands(){
+  const { data } = await sb.from("models").select("brand_id, brands(name)").eq("category_id", $("#catSel").value);
+  const seen = new Map();
+  (data || []).forEach((m) => seen.set(m.brand_id, m.brands.name));
+  $("#brandSel").innerHTML = [...seen].sort((a, b) => a[1].localeCompare(b[1]))
+    .map(([id, name]) => `<option value="${id}">${esc(name)}</option>`).join("");
+}
+$("#catSel").onchange = loadBrands;
+$("#catLoad").onclick = async () => {
+  dirty = {}; updateDirty();
+  const { data: models } = await sb.from("models").select("id,name,sort,enabled")
+    .eq("category_id", $("#catSel").value).eq("brand_id", $("#brandSel").value)
+    .order("sort", { ascending: false }); // newest models first
+  if (!models?.length) { $("#catTable tbody").innerHTML = "<tr><td colspan=10 class=muted>No models.</td></tr>"; return; }
+  const ids = models.map((m) => m.id);
+  const { data: variants } = await sb.from("variants")
+    .select("id,model_id,carrier,storage,prices(condition,price,enabled)").in("model_id", ids).limit(5000);
+  const byModel = {};
+  (variants || []).forEach((v) => (byModel[v.model_id] ||= []).push(v));
+  let html = "", n = 0;
+  for (const m of models) {
+    for (const v of (byModel[m.id] || [])) {
+      n++;
+      const p = {}; (v.prices || []).forEach((x) => p[x.condition] = x);
+      const allOn = (v.prices || []).some((x) => x.enabled);
+      html += `<tr data-v="${v.id}">
+        <td><input type="checkbox" class="rowOn" ${allOn ? "checked" : ""}></td>
+        <td><b>${esc(m.name)}</b></td><td>${esc(v.carrier)}</td><td>${esc(v.storage)}</td>
+        ${CONDS.map((c) => `<td><input type="number" step="1" min="0" data-c="${c}" value="${p[c]?.price ?? 0}"></td>`).join("")}
+      </tr>`;
+    }
+  }
+  $("#catTable tbody").innerHTML = html;
+  $("#catCount").textContent = n + " variant rows";
+};
+$("#catTable").addEventListener("input", (e) => {
+  const tr = e.target.closest("tr"); if (!tr) return;
+  const vid = tr.dataset.v;
+  const on = tr.querySelector(".rowOn").checked;
+  if (e.target.classList.contains("rowOn")) {
+    tr.querySelectorAll("input[data-c]").forEach((inp) => {
+      dirty[`${vid}|${inp.dataset.c}`] = { price: Number(inp.value || 0), enabled: on };
+    });
+  } else if (e.target.dataset.c) {
+    dirty[`${vid}|${e.target.dataset.c}`] = { price: Number(e.target.value || 0), enabled: on };
+  }
+  updateDirty();
+});
+function updateDirty(){
+  const n = Object.keys(dirty).length;
+  $("#dirtyN").textContent = n;
+  $("#catSave").style.display = n ? "" : "none";
+}
+$("#catSave").onclick = async () => {
+  const entries = Object.entries(dirty);
+  for (const [key, val] of entries) {
+    const [vid, cond] = key.split("|");
+    const { error } = await sb.from("prices")
+      .update({ price: val.price, enabled: val.enabled })
+      .eq("variant_id", vid).eq("condition", cond);
+    if (error) return toast(error.message);
+  }
+  dirty = {}; updateDirty(); toast(entries.length + " prices saved");
+};
+
+// ---------- data feeds ----------
+const FEEDS = ["flipsy", "sellcell", "bankmycell", "swappa"];
+const feedUrl = (f) => `/admin/catalog/e51ee82a3/export/${f}-csv.csv`;
+function renderFeeds(results){
+  $("#feedList").innerHTML = FEEDS.map((f) => {
+    const r = results?.[f];
+    const status = !r ? "" :
+      r.error ? `<span class="chip cancelled">${esc(r.error)}</span>` :
+      `<span class="chip paid">OK · ${r.rows} rows</span> <span class="muted">generated ${r.at}</span>`;
+    return `<div class="row" style="gap:8px">
+      <b style="width:90px;text-transform:capitalize">${f}</b>
+      <code style="background:var(--ground);border-radius:6px;padding:3px 8px;font-size:12px">${feedUrl(f)}</code>
+      <button class="btn sm ghost" data-copy="${feedUrl(f)}">Copy URL</button> ${status}</div>`;
+  }).join("");
+}
+renderFeeds();
+$("#feedList").addEventListener("click", (e) => {
+  const u = e.target.dataset?.copy; if (!u) return;
+  navigator.clipboard.writeText(location.origin + u).then(() => toast("Feed URL copied"));
+});
+$("#feedCheck").onclick = async () => {
+  $("#feedCheck").disabled = true; $("#feedCheck").textContent = "Checking…";
+  const results = {};
+  for (const f of FEEDS) {
+    if (DEMO) { await new Promise((r) => setTimeout(r, 250));
+      results[f] = { rows: {flipsy: 6454, sellcell: 1171, bankmycell: 1170, swappa: 1171}[f], at: "just now" };
+    } else {
+      try {
+        const r = await fetch(feedUrl(f) + "?fresh=" + Date.now());
+        if (!r.ok || !(r.headers.get("content-type") || "").includes("csv")) throw new Error("available after deploy");
+        results[f] = { rows: r.headers.get("x-row-count") || (await r.text()).trim().split("\n").length,
+                       at: new Date(r.headers.get("x-generated-at") || Date.now()).toLocaleTimeString() };
+      } catch (err) { results[f] = { error: err.message === "Failed to fetch" ? "unreachable" : err.message }; }
+    }
+    renderFeeds(results);
+  }
+  $("#feedCheck").disabled = false; $("#feedCheck").textContent = "Check feeds now";
+};
+
+// ---------- promos ----------
+async function loadPromos(){
+  const { data } = await sb.from("promo_codes").select("*").order("created_at", { ascending: false });
+  $("#promoTable tbody").innerHTML = (data || []).map((p) => `
+    <tr><td><b>${esc(p.code)}</b></td><td class="money">+${money(p.amount)}</td><td>${p.times_used}</td>
+    <td><span class="chip ${p.active ? "paid" : "cancelled"}">${p.active ? "active" : "off"}</span></td>
+    <td>${p.active ? `<button class="btn sm ghost" data-off="${p.id}">Deactivate</button>` : ""}</td></tr>`).join("")
+    || "<tr><td colspan=5 class=muted>No promo codes.</td></tr>";
+}
+$("#promoAdd").onclick = async () => {
+  const code = $("#promoCode").value.trim().toUpperCase(), amount = Number($("#promoAmt").value);
+  if (!code || !amount) return toast("Code and amount required");
+  const { error } = await sb.from("promo_codes").insert({ code, amount });
+  if (error) return toast(error.message);
+  $("#promoCode").value = ""; $("#promoAmt").value = ""; toast("Created"); loadPromos();
+};
+$("#promoTable").addEventListener("click", async (e) => {
+  const id = e.target.dataset?.off; if (!id) return;
+  await sb.from("promo_codes").update({ active: false }).eq("id", id); loadPromos();
+});
+
+// ---------- faqs ----------
+async function loadFaqs(){
+  const { data } = await sb.from("faqs").select("*").order("sort");
+  $("#faqList").innerHTML = (data || []).map((f) => `
+    <div class="panel" data-f="${f.id}">
+      <div class="row"><input class="fq" value="${esc(f.question)}" style="flex:1;font-weight:700">
+        <label class="muted" style="font-size:12.5px"><input type="checkbox" class="fon" ${f.enabled ? "checked" : ""}> live</label>
+        <button class="btn sm" data-save="${f.id}">Save</button></div>
+      <textarea class="fa" rows="3" style="width:100%;margin-top:8px">${esc(f.answer)}</textarea>
+    </div>`).join("");
+}
+$("#faqAdd").onclick = async () => {
+  await sb.from("faqs").insert({ question: "New question", answer: "Answer…", sort: 99 }); loadFaqs();
+};
+$("#faqList").addEventListener("click", async (e) => {
+  const id = e.target.dataset?.save; if (!id) return;
+  const p = e.target.closest(".panel");
+  const { error } = await sb.from("faqs").update({
+    question: p.querySelector(".fq").value, answer: p.querySelector(".fa").value,
+    enabled: p.querySelector(".fon").checked }).eq("id", id);
+  toast(error ? error.message : "Saved");
+});
+</script>
+</body></html>

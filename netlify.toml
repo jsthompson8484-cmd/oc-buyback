@@ -1,0 +1,41 @@
+# Deploy config for the rebuilt ocbuyback.com (not yet deployed).
+# Publish dir will become the generator's output once the real build replaces
+# the concept preview; functions live in netlify/functions.
+
+[build]
+  # regenerate the site from the database (blog) + catalog data, then bundle the admin
+  command = "python3 generator/sync_blog_from_db.py && python3 generator/generate_concept_pages.py && rm -rf concepts/freshair/admin && cp -r admin concepts/freshair/admin"
+  publish = "concepts/freshair"
+  functions = "netlify/functions"
+
+# SellCell per-condition deeplinks (from the price feed) land on the device
+# page with the pick pre-selected via query params
+[[redirects]]
+  from = "/sell/:cat/:brand/:model/:carrier/:storage/:cond"
+  to = "/sell/:cat/:brand/:model?carrier=:carrier&storage=:storage&cond=:cond"
+  status = 301
+
+# Marketplace store is not carried over
+[[redirects]]
+  from = "/buy"
+  to = "/sell"
+  status = 301
+
+[[redirects]]
+  from = "/buy/*"
+  to = "/sell"
+  status = 301
+
+[[headers]]
+  for = "/admin/*"
+  [headers.values]
+    X-Robots-Tag = "noindex, nofollow"
+
+# ############################################################################
+# STAGING GUARD — REMOVE THIS BLOCK AT CUTOVER (when ocbuyback.com points here)
+# Keeps the staging URL out of Google while the real site still runs on FlipTech.
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Robots-Tag = "noindex"
+# ############################################################################

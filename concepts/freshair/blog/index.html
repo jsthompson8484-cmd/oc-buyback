@@ -1,0 +1,368 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The OCBuyBack Blog — selling tips &amp; trade-in news</title>
+<link rel="canonical" href="https://www.ocbuyback.com/blog">
+<meta name="description" content="Selling tips, trade-in news, and what your devices are worth — from OCBuyBack in Brea, CA.">
+<meta property="og:title" content="The OCBuyBack Blog — selling tips &amp; trade-in news">
+<meta property="og:description" content="Selling tips, trade-in news, and what your devices are worth — from OCBuyBack in Brea, CA.">
+<meta property="og:url" content="https://www.ocbuyback.com/blog">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="OCBuyBack">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Figtree:wght@400;500;600;700&display=swap">
+<style>
+:root{--ground:#f5f8f4;--surface:#ffffff;--ink:#182420;--muted:#5c6e64;--green:#167a46;--deep:#0e3d26;
+--lime:#d9f26a;--lime-ink:#2c3a10;--line:#e3eae2;--gold:#e8a828}
+*{box-sizing:border-box}
+body{margin:0;background:var(--ground);color:var(--ink);font:400 16px/1.6 "Figtree",system-ui,sans-serif}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+header{background:var(--ground);position:sticky;top:0;z-index:10;border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;gap:30px;height:68px}
+.logo{font:800 19px/1 "Bricolage Grotesque",sans-serif;color:var(--deep)}
+.logo i{font-style:normal;color:var(--green)}
+.nav .links{display:flex;gap:24px;font-size:14.5px;font-weight:600;color:var(--muted)}
+.nav .links a:hover{color:var(--ink)}
+.nav .cta{margin-left:auto;background:var(--deep);color:#fff;font-weight:700;font-size:14px;padding:11px 20px;border-radius:99px}
+.crumb{font-size:13.5px;color:var(--muted);padding:22px 0}
+.crumb b{color:var(--ink)}
+h1{font:800 clamp(26px,3.4vw,38px)/1.1 "Bricolage Grotesque",sans-serif;color:var(--deep);margin:0 0 6px}
+.sub{color:var(--muted);margin:0 0 28px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:14px;padding-bottom:70px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:20px;text-align:center;
+transition:transform .12s,box-shadow .12s}
+.card:hover{transform:translateY(-2px);box-shadow:0 6px 18px rgba(14,61,38,.08)}
+.card img{height:96px;width:auto;max-width:100%;object-fit:contain;display:block;margin:0 auto 12px}
+.card .name{font-weight:700;font-size:14.5px}
+.card .val{color:var(--green);font-weight:800;font-size:16px;margin-top:4px;font-variant-numeric:tabular-nums}
+.card .val small{color:var(--muted);font-weight:500;font-size:12px}
+.brand-h{font:700 20px "Bricolage Grotesque",sans-serif;color:var(--deep);margin:34px 0 14px}
+.back{position:fixed;bottom:18px;right:18px;background:var(--surface);border:1px solid var(--line);color:var(--muted);
+font-size:12px;font-weight:700;padding:9px 14px;border-radius:99px;z-index:20;box-shadow:0 2px 10px rgba(14,61,38,.08)}
+footer{border-top:1px solid var(--line);padding:30px 0;color:var(--muted);font-size:13.5px}
+
+.bloggrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:18px;padding-bottom:70px}
+.bpost{background:var(--surface);border:1px solid var(--line);border-radius:16px;overflow:hidden;
+transition:transform .12s,box-shadow .12s;display:flex;flex-direction:column}
+.bpost:hover{transform:translateY(-2px);box-shadow:0 6px 18px rgba(14,61,38,.08)}
+.bpost .thumb{height:170px;background:var(--ground) center/cover no-repeat}
+.bpost .pad{padding:18px 20px 20px;display:flex;flex-direction:column;gap:6px;flex:1}
+.bpost .date{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:700}
+.bpost h2{font:700 16.5px/1.35 "Bricolage Grotesque",sans-serif;color:var(--deep);margin:0;text-wrap:balance}
+.bpost p{color:var(--muted);font-size:13.5px;margin:0;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+/* post page */
+.post{max-width:720px;margin:0 auto;padding-bottom:80px}
+.post .date{font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:700}
+.post h1{margin:8px 0 18px}
+.post .hero{width:100%;border-radius:20px;border:1px solid var(--line);margin-bottom:26px}
+.post .body p{color:#33413a;font-size:16px;line-height:1.75;margin:0 0 16px;max-width:68ch}
+.post .body h4,.post .body h5{font:700 20px "Bricolage Grotesque",sans-serif;color:var(--deep);margin:28px 0 10px}
+.post .body a{color:var(--green);font-weight:600}
+.post .body img{max-width:100%;border-radius:14px;margin:8px 0}
+.post .body ul,.post .body ol{color:#33413a;font-size:16px;line-height:1.7;padding-left:22px}
+.postcta{background:var(--deep);color:#eaf4ec;border-radius:20px;padding:30px;text-align:center;margin-top:36px}
+.postcta b{font:800 20px "Bricolage Grotesque",sans-serif;color:#fff;display:block;margin-bottom:6px}
+.postcta a{display:inline-block;background:var(--lime);color:var(--lime-ink);font-weight:800;font-size:14.5px;
+padding:13px 26px;border-radius:99px;margin-top:14px}
+</style></head><body>
+<header><div class="wrap nav">
+  <a class="logo" href="../index.html">OC<i>BuyBack</i></a>
+  <nav class="links"><a href="../sell/index.html">Sell</a><a href="../trade-in/track/index.html">Track order</a><a href="../faq/index.html">FAQ</a><a href="../blog/index.html">Blog</a><a href="../contact-us/index.html">Contact</a></nav>
+  <a class="cta" href="../sell/index.html">Get my quote</a>
+  <a class="cta" id="cartPill" href="../sell/devices/index.html" style="display:none;margin-left:12px;background:var(--lime);color:var(--lime-ink)">Cart · 0</a>
+</div></header>
+<script>
+const CART_KEY = "ocb_cart";
+function cartGet(){ try { return JSON.parse(localStorage.getItem(CART_KEY)) || []; } catch(e) { return []; } }
+function cartSave(c){ try { localStorage.setItem(CART_KEY, JSON.stringify(c)); } catch(e) {} }
+function cartBadge(){
+  const c = cartGet(), n = c.reduce((a,i)=>a+i.qty,0), t = c.reduce((a,i)=>a+i.price*i.qty,0);
+  const el = document.getElementById("cartPill");
+  if(el){ el.style.display = n ? "" : "none"; el.textContent = "Cart · " + n + " ($" + t.toLocaleString() + ")"; }
+}
+cartBadge();
+// first-touch lead attribution: recorded once per visitor, sent with checkout
+(function(){
+  try {
+    if (localStorage.getItem("ocb_attrib")) return;
+    const q = new URLSearchParams(location.search);
+    const ref = document.referrer || "";
+    const sameSite = ref && new URL(ref).host === location.host;
+    localStorage.setItem("ocb_attrib", JSON.stringify({
+      r: sameSite ? "" : ref,
+      l: location.pathname + location.search,
+      us: q.get("utm_source") || "", um: q.get("utm_medium") || "", uc: q.get("utm_campaign") || "",
+      t: new Date().toISOString(),
+    }));
+  } catch(e) {}
+})();
+</script>
+
+<div class="wrap">
+  <div class="crumb"><a href="../index.html">Home</a> → <b>Blog</b></div>
+  <h1>The OCBuyBack blog</h1>
+  <p class="sub">Selling tips, trade-in news, and what your devices are worth — since 2018.</p>
+  <div class="bloggrid"><a class="bpost" href="2026/09/1/sell-your-iphone-17-pro-max-before-the-iphone-18-pro-max-arrives-get-top-cash-at-ocbuyback/index.html">
+  <div class="thumb" style="background-image:url('../assets/blog/sell-your-iphone-17-pro-max-before-the-iphone-18-pro-max-arr-773542.png')"></div>
+  <div class="pad"><div class="date">September 01, 2026</div>
+  <h2>Sell Your iPhone 17 Pro Max Before the iPhone 18 Pro Max Arrives — Get Top Cash at OCBuyBack</h2>
+  <p>Sell your iPhone 17 Pro Max before the iPhone 18 Pro Max arrives. Get a competitive cash offer from OCBuyBack in Brea, CA or ship free nationwide.</p></div></a><a class="bpost" href="2026/08/18/sell-your-ipad-or-apple-watch-for-top-cash-in-brea-ca/index.html">
+  <div class="thumb" style="background-image:url('../assets/blog/sell-your-ipad-or-apple-watch-for-top-cash-in-brea-ca-8e229f.png')"></div>
+  <div class="pad"><div class="date">August 18, 2026</div>
+  <h2>Sell Your iPad or Apple Watch for Top Cash in Brea, CA</h2>
+  <p>Sell your Apple iPad or Apple Watch for top cash at OCBuyBack in Brea, CA. Get a fast quote and visit our local Orange County shop today.</p></div></a><a class="bpost" href="2026/07/28/sell-your-iphone-before-the-iphone-18-launch-get-top-cash-at-ocbuyback/index.html">
+  <div class="thumb" style="background-image:url('../assets/blog/sell-your-iphone-before-the-iphone-18-launch-get-top-cash-at-7866c7.jpg')"></div>
+  <div class="pad"><div class="date">July 28, 2026</div>
+  <h2>📱 Sell Your iPhone Before the iPhone 18 Launch – Get Top Cash at OCBuyBack!</h2>
+  <p>Sell your iPhone before the iPhone 18 release and lock in today&#x27;s higher value. OCBuyBack in Brea pays top cash for iPhones with same-day payouts and free nationwide shipping.</p></div></a><a class="bpost" href="2026/06/15/sell-your-iphone-before-the-iphone-18-launches-get-top-cash-in-brea-and-orange-county/index.html">
+  <div class="thumb" style="background-image:url('../assets/blog/sell-your-iphone-before-the-iphone-18-launches-get-top-cash--77e340.jpg')"></div>
+  <div class="pad"><div class="date">June 15, 2026</div>
+  <h2>Sell Your iPhone Before the iPhone 18 Launches: Get Top Cash in Brea and Orange County</h2>
+  <p>Looking to sell your iPhone in Brea or Orange County? OCBuyBack pays top cash for new and used iPhones. Get the best value before the iPhone 18 launch.</p></div></a><a class="bpost" href="2026/02/10/why-ocbuyback-com-is-the-best-place-to-sell-your-phone-in-2026/index.html">
+  <div class="thumb" style="background-image:url('../assets/blog/why-ocbuyback-com-is-the-best-place-to-sell-your-phone-in-20-59fd09.jpg')"></div>
+  <div class="pad"><div class="date">February 10, 2026</div>
+  <h2>Why OCBuyBack.com Is the Best Place to Sell Your Phone in 2026</h2>
+  <p>Sell new or used phones in 2026 with OCBuyBack.com. Located in Orange County, CA with free shipping nationwide. Get paid fast online or in Brea.</p></div></a><a class="bpost" href="2026/01/26/we-pay-top-cash-for-samsung-galaxy-fold-7-fast-safe-trusted-nationwide/index.html">
+  <div class="thumb" style="background-image:url('../assets/blog/we-pay-top-cash-for-samsung-galaxy-fold-7-fast-safe-trusted--09a729.jpg')"></div>
+  <div class="pad"><div class="date">January 26, 2026</div>
+  <h2>We Pay Top Cash for Samsung Galaxy Fold 7 – Fast, Safe &amp; Trusted Nationwide</h2>
+  <p>Sell your Samsung Galaxy Fold 7 for top cash with OCBuyBack. Fast payouts, trusted local &amp; nationwide buyer. Get paid today.</p></div></a><a class="bpost" href="2026/01/2/we-buy-nintendo-switch-2-for-cash-in-brea-ca-same-day-cash-offers/index.html">
+  <div class="thumb" style="background-image:url('../assets/blog/we-buy-nintendo-switch-2-for-cash-in-brea-ca-same-day-cash-o-5c6ac3.jpg')"></div>
+  <div class="pad"><div class="date">January 02, 2026</div>
+  <h2>We Buy Nintendo Switch 2 for Cash in Brea, CA (Same-Day Cash Offers!)</h2>
+  <p>Sell your Nintendo Switch 2 for cash in Brea, CA. OC Buy Back offers fast local payouts. Serving Fullerton, La Habra, Placentia &amp; more.</p></div></a><a class="bpost" href="2025/09/27/ocbuyback-is-now-buying-the-apple-watch-ultra-3-sell-yours-today-for-cash/index.html">
+  <div class="thumb" style="background-image:url('../assets/blog/ocbuyback-is-now-buying-the-apple-watch-ultra-3-sell-yours-t-6a2e57.jpg')"></div>
+  <div class="pad"><div class="date">September 27, 2025</div>
+  <h2>OCBuyBack is Now Buying the Apple Watch Ultra 3 – Sell Yours Today for Cash!</h2>
+  <p>OCBuyBack in Brea, CA is now buying the Apple Watch Ultra 3! Get top cash payouts, same-day payment, and a safe trade-in process. Sell your Apple Watch Ultra 3 locally or online today.</p></div></a><a class="bpost" href="2025/09/25/ocbuyback-is-now-buying-the-iphone-17-series-get-cash-for-your-iphone-today/index.html">
+  <div class="thumb" style="background-image:url('../assets/blog/ocbuyback-is-now-buying-the-iphone-17-series-get-cash-for-yo-8801e2.jpg')"></div>
+  <div class="pad"><div class="date">September 25, 2025</div>
+  <h2>OCBuyBack Is Now Buying the iPhone 17 Series – Get Cash for Your iPhone Today</h2>
+  <p>OCBuyBack is now buying iPhone 17, 17 Pro, 17 Pro Max &amp; iPhone Air. Get an instant quote, free shipping, and fast payment at OCBuyBack.com today!</p></div></a><a class="bpost" href="2025/09/8/get-top-cash-for-your-apple-watch-ultra-2-at-ocbuyback/index.html">
+  <div class="thumb" style="background-image:url('../assets/blog/get-top-cash-for-your-apple-watch-ultra-2-at-ocbuyback-83cfff.jpg')"></div>
+  <div class="pad"><div class="date">September 08, 2025</div>
+  <h2>Get Top Cash for Your Apple Watch Ultra 2 at OCBuyBack</h2>
+  <p>Get top cash for your Apple Watch Ultra 2 at OCBuyBack in Brea, CA. Sell in-store in Orange County or online at OCBuyBack.com. Fast, secure, and easy!</p></div></a><a class="bpost" href="2025/08/28/sell-your-sony-canon-or-nikon-camera-for-cash-in-orange-county/index.html">
+  <div class="thumb" style="background-image:url('../assets/blog/sell-your-sony-canon-or-nikon-camera-for-cash-in-orange-coun-3ef84a.jpg')"></div>
+  <div class="pad"><div class="date">August 28, 2025</div>
+  <h2>Sell Your Sony, Canon, or Nikon Camera for Cash in Orange County</h2>
+  <p>OCBuyBack buys Sony, Canon, and Nikon cameras for cash in Orange County. Call, text, or visit our Brea, CA store today for a fast quote and same-day payment!</p></div></a><a class="bpost" href="2025/08/26/get-top-cash-for-your-xbox-series-x-and-playstation-5-with-ocbuyback/index.html">
+  <div class="thumb" style="background-image:url('../assets/blog/get-top-cash-for-your-xbox-series-x-and-playstation-5-with-o-c560e8.jpg')"></div>
+  <div class="pad"><div class="date">August 26, 2025</div>
+  <h2>Get Top Cash for Your Xbox Series X and PlayStation 5 with OCBuyBack</h2>
+  <p>Get top cash for your Xbox Series X and PS5 with OCBuyBack. Fast payouts, free shipping, and hassle-free selling. Sell your console online today!</p></div></a><a class="bpost" href="2025/04/8/ocbuyback-now-buying-brand-new-breville-espresso-machines-for-cash/index.html">
+  <div class="thumb" style="background-image:url('../assets/blog/ocbuyback-now-buying-brand-new-breville-espresso-machines-fo-ece2ad.jpg')"></div>
+  <div class="pad"><div class="date">April 08, 2025</div>
+  <h2>OCBuyBack Now Buying Brand New Breville Espresso Machines for Cash</h2>
+  <p>At OCBuyBack, we&#x27;re always looking for new ways to help our customers turn their unused tech and gadgets into instant cash. We&#x27;re excited to announce that we are now buying brand new Breville Espresso Machines! Whether you received an extra machine as a gift, purchased the wrong model, or simply</p></div></a><a class="bpost" href="2025/03/20/places-that-buy-phones-for-cash/index.html">
+  <div class="thumb" style="background-image:url('../assets/blog/places-that-buy-phones-for-cash-497044.jpg')"></div>
+  <div class="pad"><div class="date">March 20, 2025</div>
+  <h2>Places that Buy Phones for Cash</h2>
+  <p>If you&#x27;re looking to sell your used phone for cash, several reputable services can help you get the best value for your device. Here&#x27;s a look at some top options:</p></div></a><a class="bpost" href="2025/01/7/ocbuyback-pays-cash-for-new-google-pixel-9-phones-how-to-get-the-best-deal/index.html">
+  <div class="thumb" style="background-image:url('../assets/blog/ocbuyback-pays-cash-for-new-google-pixel-9-phones-how-to-get-bf31cd.png')"></div>
+  <div class="pad"><div class="date">January 07, 2025</div>
+  <h2>OCBuyBack Pays Cash for New Google Pixel 9 Phones: How to Get the Best Deal</h2>
+  <p>The Google Pixel 9 has officially arrived, and tech enthusiasts are already buzzing about the latest iteration of Google’s flagship phone. Packed with impressive specs and innovative features, the Pixel 9 is sure to be a hit among Android lovers. But what about the old phone you’re looking to</p></div></a><a class="bpost" href="2025/01/2/selling-your-phone-to-ocbuyback-com-in-2025-a-smart-and-hassle-free-solution/index.html">
+  <div class="thumb" style="background-image:url('../assets/blog/selling-your-phone-to-ocbuyback-com-in-2025-a-smart-and-hass-fe88a9.jpg')"></div>
+  <div class="pad"><div class="date">January 02, 2025</div>
+  <h2>Selling Your Phone to OCBuyBack.com in 2025: A Smart and Hassle-Free Solution</h2>
+  <p>Selling Your Phone to OCBuyBack.com in 2025: A Smart and Hassle-Free Solution</p></div></a><a class="bpost" href="2024/010/25/how-to-sell-your-ps5-to-ocbuyback-a-simple-guide-to-getting-the-best-value/index.html">
+  <div class="thumb" style="background-image:url('../assets/blog/how-to-sell-your-ps5-to-ocbuyback-a-simple-guide-to-getting--29663d.jpg')"></div>
+  <div class="pad"><div class="date">October 25, 2024</div>
+  <h2>How to Sell Your PS5 to OCBuyBack: A Simple Guide to Getting the Best Value</h2>
+  <p>How to Sell Your PS5 to OCBuyBack: A Simple Guide to Getting the Best Value</p></div></a><a class="bpost" href="2024/09/18/how-ocbuyback-pays-top-cash-for-your-oneplus-phones/index.html">
+  <div class="thumb" style="background-image:url('../assets/blog/how-ocbuyback-pays-top-cash-for-your-oneplus-phones-b07236.jpg')"></div>
+  <div class="pad"><div class="date">September 18, 2024</div>
+  <h2>How OCBuyBack Pays Top Cash for Your OnePlus Phones</h2>
+  <p>How OCBuyBack Pays Top Cash for Your OnePlus Phones</p></div></a><a class="bpost" href="2024/09/6/everything-you-need-to-know-about-the-new-iphone-16-and-how-to-upgrade-with-ocbuyback/index.html">
+  <div class="thumb" style="background-image:url('../assets/blog/everything-you-need-to-know-about-the-new-iphone-16-and-how--bd9e62.png')"></div>
+  <div class="pad"><div class="date">September 06, 2024</div>
+  <h2>Everything You Need to Know About the New iPhone 16 and How to Upgrade with OCBuyBack</h2>
+  <p>Everything You Need to Know About the New iPhone 16 and How to Upgrade with OCBuyBack</p></div></a><a class="bpost" href="2024/08/30/selling-your-apple-watches-for-cash/index.html">
+  <div class="thumb" style="background-image:url('../assets/blog/selling-your-apple-watches-for-cash-6afe67.png')"></div>
+  <div class="pad"><div class="date">August 30, 2024</div>
+  <h2>Selling Your Apple Watches for Cash</h2>
+  <p>Selling Your Apple Watches for Cash to OCBuyBack: A Hassle-Free Experience</p></div></a><a class="bpost" href="2024/08/19/get-top-cash-for-your-google-pixel-phones/index.html">
+  <div class="thumb" style="background-image:url('../assets/blog/get-top-cash-for-your-google-pixel-phones-1c8042.jpg')"></div>
+  <div class="pad"><div class="date">August 19, 2024</div>
+  <h2>Get Top Cash for Your Google Pixel Phones</h2>
+  <p>Title: Get Top Cash for Your Google Pixel Phones with OCBuyBack.com. We buy new and used Google Pixel phones. Enjoy free shipping or visit out location. Fast payments, highest prices!</p></div></a><a class="bpost" href="2024/08/13/how-to-sell-your-new-or-used-iphone-to-ocbuyback-com-a-hassle-free-experience/index.html">
+  <div class="thumb" style="background-image:url('../assets/blog/how-to-sell-your-new-or-used-iphone-to-ocbuyback-com-a-hassl-2a8a48.jpeg')"></div>
+  <div class="pad"><div class="date">August 13, 2024</div>
+  <h2>How to Sell Your New or Used iPhone to OCBuyBack.com: A Hassle-Free Experience</h2>
+  <p>Selling your new or used iPhone to OCBuyBack.com is a is Halle free experience. Simply find your device, answer a few questions, and receive an instant quote. Payments are quick and easy.</p></div></a><a class="bpost" href="2023/09/20/iphone-15-series-a-comprehensive-overview/index.html">
+  <div class="thumb" style="background-image:url('../assets/blog/iphone-15-series-a-comprehensive-overview-669116.jpg')"></div>
+  <div class="pad"><div class="date">September 20, 2023</div>
+  <h2>iPhone 15 Series - A Comprehensive Overview</h2>
+  <p>In the ever-evolving world of technology, Apple continues to set the bar high with its groundbreaking innovations in the iPhone series. The iPhone 15 series, consisting of the iPhone 15, iPhone 15 Plus, iPhone 15 Pro, and iPhone 15 Pro Max, is no exception. Apple has once again pushed the boundaries</p></div></a><a class="bpost" href="2023/05/17/exploring-the-google-pixel-fold-phone/index.html">
+  <div class="thumb" style="background-image:url('../assets/blog/exploring-the-google-pixel-fold-phone-5dde7a.jpg')"></div>
+  <div class="pad"><div class="date">May 17, 2023</div>
+  <h2>Exploring the Google Pixel Fold Phone</h2>
+  <p>The Google Pixel Fold is officially here. It starts with a hefty price tag of $1799 and goes up to $1919 for the 512GB variation. Available for preorder now with a ship date sometime in June. Sell your old Google Pixel phone to OCBuyBack to offset the cost of the new phone.</p></div></a><a class="bpost" href="2023/04/30/sell-your-game-console-for-cash/index.html">
+  <div class="thumb" style="background-image:url('../assets/blog/sell-your-game-console-for-cash-39d4c1.jpg')"></div>
+  <div class="pad"><div class="date">April 30, 2023</div>
+  <h2>Sell Your Game Console for Cash</h2>
+  <p>Are you looking to sell your game console but don&#x27;t know where to start? Look no further than ocbuyback.com! Ocbuyback.com is a website that specializes in buying back used electronics, including gaming consoles. Whether you are looking to sell your PS5, Xbox Series X or Nintendo Switch,</p></div></a><a class="bpost" href="2023/04/27/how-to-erase-iphone-to-sell/index.html">
+  <div class="thumb" style="background-image:url('../assets/blog/how-to-erase-iphone-to-sell-11c558.jpg')"></div>
+  <div class="pad"><div class="date">April 27, 2023</div>
+  <h2>How to Erase iPhone to Sell</h2>
+  <p>Selling your iPhone can be an easy way to make some extra cash, but before you do, it’s important to make sure that all of your personal information is wiped from the device. Here’s how to erase an iPhone so you can sell it.</p></div></a><a class="bpost" href="2023/04/19/why-selling-your-old-iphone-is-important/index.html">
+  <div class="thumb" style="background-image:url('../assets/blog/why-selling-your-old-iphone-is-important-5c18a4.jpg')"></div>
+  <div class="pad"><div class="date">April 19, 2023</div>
+  <h2>Why Selling Your Old iPhone is Important</h2>
+  <p>Turn your old iPhone into cash by selling it today. OCBuyBack makes it easy to sell your iPhone and pays you the best price. Get an instant quote online in seconds or bring it to our location for payout.</p></div></a><a class="bpost" href="2023/04/5/get-cash-for-your-ipad-with-ocbuyback/index.html">
+  <div class="thumb" style="background-image:url('../assets/blog/get-cash-for-your-ipad-with-ocbuyback-f61a3e.jpg')"></div>
+  <div class="pad"><div class="date">April 05, 2023</div>
+  <h2>Get Cash for Your iPad with OCBuyBack</h2>
+  <p>We pay cash for your Pads. Enjoy our simple process and highest price guarantee. Sell your new or used iPad today</p></div></a><a class="bpost" href="2021/04/15/apple-airtags-new-tracking-device-everything-you-need-to-know/index.html">
+  <div class="thumb" style="background-image:url('../assets/blog/apple-airtags-new-tracking-device-everything-you-need-to-kno-e66368.jpg')"></div>
+  <div class="pad"><div class="date">April 15, 2021</div>
+  <h2>Apple AirTags: New Tracking Device - Everything You Need to Know</h2>
+  <p>    Apple does it again! On April 20, 2021 Apple announced that it will be launching its first ever AirTag, a small elegant accessory that helps you keep track of the things that matter most. You can use this on anything from keys, phone, bag, etc. It connects via Apple’s Find My App. This is what</p></div></a><a class="bpost" href="2021/03/18/alternatives-to-gazelle-com-for-selling-your-used-phone/index.html">
+  <div class="thumb" style="background-image:url('../assets/blog/alternatives-to-gazelle-com-for-selling-your-used-phone-e00cab.jpg')"></div>
+  <div class="pad"><div class="date">March 18, 2021</div>
+  <h2>Alternative to Gazelle.com for Selling Your Used Phone</h2>
+  <p></p></div></a><a class="bpost" href="2020/04/28/how-to-sell-your-gopro-online/index.html">
+  <div class="thumb" style="background-image:url('../assets/blog/how-to-sell-your-gopro-online-4a597d.jpg')"></div>
+  <div class="pad"><div class="date">April 28, 2020</div>
+  <h2>How To Sell Your GoPro Online</h2>
+  <p>Now is a good time as ever to get a bit of extra cash on your unused electronics. With many people working reduced hours or none at all, it can alleviate some stress knowing you can sell the devices you no longer use for some pocket cash. Cellphones are not the only device buyback companies are</p></div></a><a class="bpost" href="2020/04/8/how-to-permanently-delete-your-phone-info-before-selling-it/index.html">
+  <div class="thumb" style="background-image:url('../assets/blog/how-to-permanently-delete-your-phone-info-before-selling-it-c05de4.jpg')"></div>
+  <div class="pad"><div class="date">April 08, 2020</div>
+  <h2>How to Permanently Delete Your Cell Phone&#x27;s Info Before Selling It</h2>
+  <p>Considering selling your smartphone, but are concerned about your sensitive information being breached? In today’s tech-enriched world, cell phone users have valid concerns about sensitive data getting into the hands of the wrong people. Selling your smartphone and making a bit of extra income</p></div></a><a class="bpost" href="2020/03/28/covid-19-tips-how-to-properly-clean-disinfect-your-cell-phone/index.html">
+  <div class="thumb" style="background-image:url('../assets/blog/covid-19-tips-how-to-properly-clean-disinfect-your-cell-phon-cfeaa6.jpg')"></div>
+  <div class="pad"><div class="date">March 28, 2020</div>
+  <h2>Covid-19 Tips: How to Properly Clean &amp; Disinfect Your Cell Phone</h2>
+  <p></p></div></a><a class="bpost" href="2020/03/17/top-picks-best-places-to-sell-your-used-phone-online/index.html">
+  <div class="thumb" style="background-image:url('../assets/blog/top-picks-best-places-to-sell-your-used-phone-online-8acc52.jpg')"></div>
+  <div class="pad"><div class="date">March 17, 2020</div>
+  <h2>Top Picks: Best Places To Sell Your Used Phone Online</h2>
+  <p></p></div></a><a class="bpost" href="2020/02/24/top-5-places-to-sell-your-used-ipad-for-the-most-cash/index.html">
+  <div class="thumb" style="background-image:url('../assets/blog/top-5-places-to-sell-your-used-ipad-for-the-most-cash-7f0c32.jpg')"></div>
+  <div class="pad"><div class="date">February 24, 2020</div>
+  <h2>Top 5 Places to Sell Your Used iPad for the Most Cash</h2>
+  <p></p></div></a><a class="bpost" href="2020/02/12/amazon-trade-in-program-vs-ocbuyback/index.html">
+  <div class="thumb" style="background-image:url('../assets/blog/amazon-trade-in-program-vs-ocbuyback-0984dc.jpg')"></div>
+  <div class="pad"><div class="date">February 12, 2020</div>
+  <h2>Amazon Trade-In Program vs OCBuyBack</h2>
+  <p></p></div></a><a class="bpost" href="2020/01/25/how-to-sell-your-old-iphone-for-the-most-cash/index.html">
+  <div class="thumb" style="background-image:url('../assets/blog/how-to-sell-your-old-iphone-for-the-most-cash-dc4091.png')"></div>
+  <div class="pad"><div class="date">January 25, 2020</div>
+  <h2>How to Sell Your Old iPhone for the Most Cash</h2>
+  <p></p></div></a><a class="bpost" href="2019/08/21/5-things-to-consider-before-buying-a-used-phone/index.html">
+  <div class="thumb" style="background-image:url('../assets/blog/5-things-to-consider-before-buying-a-used-phone-7625fc.jpg')"></div>
+  <div class="pad"><div class="date">August 21, 2019</div>
+  <h2>5 Things to Consider Before Buying a Used Phone</h2>
+  <p>The growing competition between Apple, Samsung and others in equipping the latest phone model with up to date technology has given rise to a supply of used phones all around the world. With the latest iPhone and Samsung’s price tag of over $1,000 buying a 2-3-year-old phone is the smartest way to</p></div></a><a class="bpost" href="2019/08/19/what-is-ocbuyback-and-how-does-it-work/index.html">
+  <div class="thumb" style="background-image:url('../assets/blog/what-is-ocbuyback-and-how-does-it-work-5be629.jpg')"></div>
+  <div class="pad"><div class="date">August 19, 2019</div>
+  <h2>What is OCBuyBack and How Does It Work?</h2>
+  <p></p></div></a><a class="bpost" href="2019/08/16/why-your-mobile-carrier-is-ripping-you-off-with-their-trade-in-program/index.html">
+  <div class="thumb" style="background-image:url('../assets/blog/why-your-mobile-carrier-is-ripping-you-off-with-their-trade--6b7681.jpg')"></div>
+  <div class="pad"><div class="date">August 16, 2019</div>
+  <h2>Why Your Mobile Carrier Is Ripping You off with Their Trade-In Program</h2>
+  <p>Why Your Mobile Carrier Is Ripping You off with Their Trade-In ProgramCell phone trade-in programs are a huge business for your carrier whether you have AT&amp;T, Verizon, T-Mobile or Sprint. These programs seem to offer you a substantial discount on your next cell phone purchase when you trade in your</p></div></a><a class="bpost" href="2019/08/9/craigslist-vs-ocbuyback/index.html">
+  <div class="thumb" style="background-image:url('../assets/blog/craigslist-vs-ocbuyback-732a28.jpg')"></div>
+  <div class="pad"><div class="date">August 09, 2019</div>
+  <h2>Craigslist vs OCBuyBack</h2>
+  <p></p></div></a><a class="bpost" href="2019/07/7/sell-your-iphone-fast-safe-and-easy-ocbuyback-com/index.html">
+  <div class="thumb" style="background-image:url('../assets/blog/sell-your-iphone-fast-safe-and-easy-ocbuyback-com-234e27.jpg')"></div>
+  <div class="pad"><div class="date">July 07, 2019</div>
+  <h2>Sell Your iPhone Fast, Safe, and Easy - OCBuyBack.com</h2>
+  <p></p></div></a><a class="bpost" href="2019/06/11/top-3-places-where-you-can-sell-your-iphone-locally-in-orange-county-ca/index.html">
+  <div class="thumb" style="background-image:url('../assets/blog/top-3-places-where-you-can-sell-your-iphone-locally-in-orang-81e263.jpg')"></div>
+  <div class="pad"><div class="date">June 11, 2019</div>
+  <h2>Top 3 Places Where You Can Sell Your iPhone Locally In Orange County California</h2>
+  <p></p></div></a><a class="bpost" href="2019/05/15/5-best-places-to-sell-your-iphone-for-the-most-money/index.html">
+  <div class="thumb" style="background-image:url('../assets/blog/5-best-places-to-sell-your-iphone-for-the-most-money-5b5d02.jpg')"></div>
+  <div class="pad"><div class="date">May 15, 2019</div>
+  <h2>5 Best Places To Sell Your iPhone For The Most Money</h2>
+  <p></p></div></a><a class="bpost" href="2019/04/18/how-to-back-up-your-iphone-using-icloud-or-itunes/index.html">
+  <div class="thumb" style="background-image:url('../assets/blog/how-to-back-up-your-iphone-using-icloud-or-itunes-1cebb7.jpg')"></div>
+  <div class="pad"><div class="date">April 18, 2019</div>
+  <h2>How to Back Up Your iPhone Using iCloud or iTunes</h2>
+  <p></p></div></a><a class="bpost" href="2019/04/9/how-to-remove-your-icloud-account-from-iphone-or-ipad/index.html">
+  <div class="thumb" style="background-image:url('../assets/blog/how-to-remove-your-icloud-account-from-iphone-or-ipad-845e55.png')"></div>
+  <div class="pad"><div class="date">April 09, 2019</div>
+  <h2>How to Remove Your iCloud Account From iPhone or iPad</h2>
+  <p>Ready to sell your Apple device but do not know how to remove your iCloud account from your iPhone or iPad? In this blog, we will be going through the steps on how to remove your iCloud account either by directly using your device or using a computer/laptop. Before all else, please make sure you</p></div></a><a class="bpost" href="2019/03/22/what-to-do-if-your-iphone-was-lost-or-stolen/index.html">
+  <div class="thumb" style="background-image:url('../assets/blog/what-to-do-if-your-iphone-was-lost-or-stolen-310287.jpg')"></div>
+  <div class="pad"><div class="date">March 22, 2019</div>
+  <h2>What To Do If Your iPhone Was Lost Or Stolen</h2>
+  <p>What To Do If Your iPhone Was Lost Or StoleniPhone&#x27;s are lost or stolen everyday all over the world. iPhones have become a favorite target for thieves due to their high resale value. To combat this global issue, Apple implemented Find my iPhone and Activation lock. With find my iPhone you are able</p></div></a><a class="bpost" href="2019/03/13/top-health-fitness-apps-for-iphone-2019/index.html">
+  <div class="thumb" style="background-image:url('../assets/blog/top-health-fitness-apps-for-iphone-2019-933ddb.jpg')"></div>
+  <div class="pad"><div class="date">March 13, 2019</div>
+  <h2>iPhone&#x27;s Top Health &amp; Fitness Apps - 2019</h2>
+  <p></p></div></a><a class="bpost" href="2019/03/12/how-to-unlock-your-iphone-for-use-with-a-different-carrier/index.html">
+  <div class="thumb" style="background-image:url('../assets/blog/how-to-unlock-your-iphone-for-use-with-a-different-carrier-276426.jpg')"></div>
+  <div class="pad"><div class="date">March 12, 2019</div>
+  <h2>How To Unlock Your iPhone For Use With A Different Carrier</h2>
+  <p></p></div></a><a class="bpost" href="2019/02/22/galaxy-s10-phone-lineup-release-date-price-and-specs/index.html">
+  <div class="thumb" style="background-image:url('../assets/blog/galaxy-s10-phone-lineup-release-date-price-and-specs-5ce5f2.jpg')"></div>
+  <div class="pad"><div class="date">February 22, 2019</div>
+  <h2>Galaxy S10 Phone Lineup: Release Date, Price, and Specs</h2>
+  <p></p></div></a><a class="bpost" href="2019/02/6/2019-new-iphone-rumors-and-what-to-expect/index.html">
+  <div class="thumb" style="background-image:url('../assets/blog/2019-new-iphone-rumors-and-what-to-expect-7977fb.jpg')"></div>
+  <div class="pad"><div class="date">February 06, 2019</div>
+  <h2>2019 New iPhone Rumors and What to Expect</h2>
+  <p></p></div></a><a class="bpost" href="2019/02/1/is-your-old-ipod-worth-anything-where-can-you-sell-your-ipod-for-a-good-price/index.html">
+  <div class="thumb" style="background-image:url('../assets/blog/is-your-old-ipod-worth-anything-where-can-you-sell-your-ipod-c9e0fe.jpg')"></div>
+  <div class="pad"><div class="date">February 01, 2019</div>
+  <h2>Is Your Used iPod Worth Anything? Where Can You Sell Your iPod for a Good Price?</h2>
+  <p></p></div></a><a class="bpost" href="2019/01/21/where-can-i-sell-my-iphone-ecoatm-vs-ocbuyback/index.html">
+  <div class="thumb" style="background-image:url('../assets/blog/where-can-i-sell-my-iphone-ecoatm-vs-ocbuyback-f4e3cf.jpg')"></div>
+  <div class="pad"><div class="date">January 21, 2019</div>
+  <h2>Where Can I Sell My iPhone: EcoATM vs OCBuyBack</h2>
+  <p></p></div></a><a class="bpost" href="2019/01/17/5-steps-to-get-most-money-selling-an-old-or-broken-ipad/index.html">
+  <div class="thumb" style="background-image:url('../assets/blog/5-steps-to-get-most-money-selling-an-old-or-broken-ipad-3e2ceb.jpeg')"></div>
+  <div class="pad"><div class="date">January 17, 2019</div>
+  <h2>5 Steps to Get the Most Money Selling an Old or Broken iPad</h2>
+  <p></p></div></a><a class="bpost" href="2019/01/3/the-best-way-to-sell-your-iphone-online/index.html">
+  <div class="thumb" style="background-image:url('../assets/blog/the-best-way-to-sell-your-iphone-online-5da6f4.jpg')"></div>
+  <div class="pad"><div class="date">January 03, 2019</div>
+  <h2>The Best Way To Sell Your iPhone Online</h2>
+  <p></p></div></a><a class="bpost" href="2018/012/16/the-damage-of-e-waste-and-how-we-can-help/index.html">
+  <div class="thumb" style="background-image:url('../assets/blog/the-damage-of-e-waste-and-how-we-can-help-d4f1c3.jpg')"></div>
+  <div class="pad"><div class="date">December 16, 2018</div>
+  <h2>The Damage of E-Waste and How We Can Help</h2>
+  <p></p></div></a><a class="bpost" href="2018/012/9/10-budget-friendly-tech-gift-ideas-for-iphone-lovers/index.html">
+  <div class="thumb" style="background-image:url('../assets/blog/10-budget-friendly-tech-gift-ideas-for-iphone-lovers-0e1d1b.jpg')"></div>
+  <div class="pad"><div class="date">December 09, 2018</div>
+  <h2>10 Budget Friendly Tech Gift Ideas for iPhone Lovers</h2>
+  <p></p></div></a><a class="bpost" href="2018/011/30/samsung-galaxy-s10-release-and-what-to-expect/index.html">
+  <div class="thumb" style="background-image:url('../assets/blog/samsung-galaxy-s10-release-and-what-to-expect-1db451.jpg')"></div>
+  <div class="pad"><div class="date">November 30, 2018</div>
+  <h2>Samsung Galaxy S10 Release Date and What to Expect</h2>
+  <p></p></div></a><a class="bpost" href="2018/010/27/how-to-check-if-your-phone-has-clean-esn-or-imei/index.html">
+  <div class="thumb" style="background-image:url('../assets/blog/how-to-check-if-your-phone-has-clean-esn-or-imei-e3e4ac.jpg')"></div>
+  <div class="pad"><div class="date">October 27, 2018</div>
+  <h2>How to Check if Your Phone Has Clean ESN or IMEI</h2>
+  <p></p></div></a><a class="bpost" href="2018/010/19/apple-s-latest-ios-12-features-and-improvements/index.html">
+  <div class="thumb" style="background-image:url('../assets/blog/apple-s-latest-ios-12-features-and-improvements-937a2c.jpg')"></div>
+  <div class="pad"><div class="date">October 19, 2018</div>
+  <h2>Apple’s Latest iOS 12 Features and Improvements</h2>
+  <p>In 2017, forecasters predict that around 223 million people in the U.S. will be using a smartphone which is about 83.8% of all mobile users. Out of these 223 million users over 90 million will own an iPhone making Apple’s iOS the leading operating system in America next to Android. The newest</p></div></a><a class="bpost" href="2018/010/12/places-that-buy-broken-cell-phones/index.html">
+  <div class="thumb" style="background-image:url('../assets/blog/places-that-buy-broken-cell-phones-5f4f23.png')"></div>
+  <div class="pad"><div class="date">October 12, 2018</div>
+  <h2>Places That Buy Broken Cell Phones</h2>
+  <p></p></div></a><a class="bpost" href="2018/010/1/how-and-why-you-should-recycle-your-cell-phone/index.html">
+  <div class="thumb" style="background-image:url('../assets/blog/how-and-why-you-should-recycle-your-cell-phone-aca2b8.jpg')"></div>
+  <div class="pad"><div class="date">October 01, 2018</div>
+  <h2>How and Why You Should Recycle Your Cell Phone</h2>
+  <p></p></div></a><a class="bpost" href="2018/09/21/iphone-keynote-2018-the-highlights/index.html">
+  <div class="thumb" style="background-image:url('../assets/blog/iphone-keynote-2018-the-highlights-ca6ebd.jpg')"></div>
+  <div class="pad"><div class="date">September 21, 2018</div>
+  <h2>iPhone Keynote 2018 - the Highlights</h2>
+  <p>Thousands of excited tech-fans flocked to Cupertino, California on Wednesday September 12th in order to get a sneak peek at the newest products which will soon be available. The event took place in the Steve Jobs Theater at Apple HQ and the announcements were widely met with enthusiasm. Fans were</p></div></a><a class="bpost" href="2018/09/10/turn-your-old-mobile-into-cash/index.html">
+  <div class="thumb" style="background-image:url('../assets/blog/turn-your-old-mobile-into-cash-3ad5f6.jpg')"></div>
+  <div class="pad"><div class="date">September 10, 2018</div>
+  <h2>Turn Your Old Mobile Phone Into Cash</h2>
+  <p></p></div></a></div>
+</div>
+<footer><div class="wrap" style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;padding:0">
+<div>© 2026 OCBuyBack · Brea, CA</div>
+<div><a href="https://x.com/buy_oc" target="_blank" rel="noopener">X</a> · <a href="https://www.facebook.com/ocbuyback" target="_blank" rel="noopener">Facebook</a> · <a href="https://www.instagram.com/ocbuyback" target="_blank" rel="noopener">Instagram</a></div>
+<div><a href="../privacy-policy/index.html">Privacy</a> · <a href="../terms-of-service/index.html">Terms</a> · <a href="../faq/index.html">FAQ</a> · <a href="../contact-us/index.html">Contact</a></div></div></footer>
+<a class="back" href="../../index.html">← All concepts</a>
+</body></html>

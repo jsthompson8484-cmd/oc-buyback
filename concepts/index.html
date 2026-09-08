@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>OCBuyBack Design Concepts</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;650;700&family=Public+Sans:wght@400;600&display=swap">
+<style>
+:root{--ground:#f4f5f3;--surface:#fff;--ink:#20251f;--muted:#667063;--line:#e0e4de}
+*{box-sizing:border-box}
+body{margin:0;background:var(--ground);color:var(--ink);font:400 16px/1.6 "Public Sans",system-ui,sans-serif}
+.wrap{max-width:1040px;margin:0 auto;padding:56px 24px 80px}
+h1{font:700 34px/1.15 "Archivo",sans-serif;margin:0 0 10px}
+.sub{color:var(--muted);max-width:66ch;margin:0 0 40px}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:20px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:12px;overflow:hidden;display:flex;flex-direction:column;text-decoration:none;color:inherit;transition:transform .12s,box-shadow .12s}
+.card:hover{transform:translateY(-3px);box-shadow:0 10px 28px rgba(32,37,31,.10)}
+.swatch{height:110px;display:flex}
+.swatch i{flex:1}
+.card .body{padding:22px 24px 24px}
+.card h2{font:650 20px/1.2 "Archivo",sans-serif;margin:0 0 4px}
+.card .tag{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.card p{color:var(--muted);font-size:14.5px;margin:10px 0 16px}
+.card .go{font-weight:600;font-size:14px;color:#167a46}
+.note{margin-top:44px;background:var(--surface);border:1px solid var(--line);border-left:3px solid #167a46;border-radius:10px;padding:18px 22px;font-size:14.5px;color:var(--muted);max-width:76ch}
+.note b{color:var(--ink)}
+</style></head><body>
+<div class="wrap">
+  <h1>OCBuyBack — three design directions</h1>
+  <p class="sub">Each concept has a clickable homepage and a working iPhone 16 quote page (pick carrier → storage → condition and watch the price). All reviews, copy, store info, and device photos are the real thing.</p>
+
+  <div class="cards">
+    <a class="card" href="ledger/index.html">
+      <div class="swatch"><i style="background:#0b120d"></i><i style="background:#121a14"></i><i style="background:#45e070"></i><i style="background:#d8b24a"></i></div>
+      <div class="body">
+        <div class="tag">Concept A</div>
+        <h2>Ledger</h2>
+        <p>Dark, premium, price-forward — a fintech feel with a live payout ticker and big money-green numbers. Says: "we're the serious buyer with the best prices."</p>
+        <div class="go">View concept →</div>
+      </div>
+    </a>
+    <a class="card" href="freshair/index.html">
+      <div class="swatch"><i style="background:#f5f8f4"></i><i style="background:#167a46"></i><i style="background:#0e3d26"></i><i style="background:#d9f26a"></i></div>
+      <div class="body">
+        <div class="tag">Concept B</div>
+        <h2>Fresh Air</h2>
+        <p>Light, friendly, modern — soft cards, evergreen + lime, trust stats band. Closest in spirit to the current green brand, rebuilt as a clean modern buyback site. ✓ Selected direction.</p>
+        <div class="go">View concept →</div>
+      </div>
+    </a>
+    <a class="card" href="oc/index.html">
+      <div class="swatch"><i style="background:#fffbf5"></i><i style="background:#f26430"></i><i style="background:#0e7c86"></i><i style="background:#ffc53d"></i></div>
+      <div class="body">
+        <div class="tag">Concept C</div>
+        <h2>The OC</h2>
+        <p>Local sunshine — sunset orange, Pacific teal, playful type, the Brea shop front and center. Leans into being Orange County's hometown buyback shop.</p>
+        <div class="go">View concept →</div>
+      </div>
+    </a>
+  </div>
+
+  <div class="note">
+    <b>Notes:</b> Quote-page pricing is sample data until the catalog CSV import (the $365 for Unlocked / 128GB / Good is the real current price; other combinations are estimates). Only the home and iPhone 16 pages are built per concept — category pages, cart, checkout, tracking, and blog follow the winning direction. Payment methods already reflect the new lineup: check, Zelle, Venmo, cash in store.
+  </div>
+</div>
+</body></html>

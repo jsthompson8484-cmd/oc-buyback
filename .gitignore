@@ -1,0 +1,9 @@
+.DS_Store
+node_modules/
+*.pyc
+__pycache__/
+.env
+.env.*
+# local-only reference material (old site snapshot contains FlipTech signed-URL
+# key IDs that trip GitHub push protection; not needed for builds)
+reference/site-snapshot-2026-09-03/

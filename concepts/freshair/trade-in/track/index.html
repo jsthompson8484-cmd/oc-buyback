@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Track your order | OCBuyBack</title>
+<link rel="canonical" href="https://www.ocbuyback.com/trade-in/track">
+<meta name="description" content="Track your OCBuyBack trade-in from shipment through payment with your order number and email.">
+<meta property="og:title" content="Track your order | OCBuyBack">
+<meta property="og:description" content="Track your OCBuyBack trade-in from shipment through payment with your order number and email.">
+<meta property="og:url" content="https://www.ocbuyback.com/trade-in/track">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="OCBuyBack">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Figtree:wght@400;500;600;700&display=swap">
+<style>
+:root{--ground:#f5f8f4;--surface:#ffffff;--ink:#182420;--muted:#5c6e64;--green:#167a46;--deep:#0e3d26;
+--lime:#d9f26a;--lime-ink:#2c3a10;--line:#e3eae2;--gold:#e8a828}
+*{box-sizing:border-box}
+body{margin:0;background:var(--ground);color:var(--ink);font:400 16px/1.6 "Figtree",system-ui,sans-serif}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+header{background:var(--ground);position:sticky;top:0;z-index:10;border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;gap:30px;height:68px}
+.logo{font:800 19px/1 "Bricolage Grotesque",sans-serif;color:var(--deep)}
+.logo i{font-style:normal;color:var(--green)}
+.nav .links{display:flex;gap:24px;font-size:14.5px;font-weight:600;color:var(--muted)}
+.nav .links a:hover{color:var(--ink)}
+.nav .cta{margin-left:auto;background:var(--deep);color:#fff;font-weight:700;font-size:14px;padding:11px 20px;border-radius:99px}
+.crumb{font-size:13.5px;color:var(--muted);padding:22px 0}
+.crumb b{color:var(--ink)}
+h1{font:800 clamp(26px,3.4vw,38px)/1.1 "Bricolage Grotesque",sans-serif;color:var(--deep);margin:0 0 6px}
+.sub{color:var(--muted);margin:0 0 28px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:14px;padding-bottom:70px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:20px;text-align:center;
+transition:transform .12s,box-shadow .12s}
+.card:hover{transform:translateY(-2px);box-shadow:0 6px 18px rgba(14,61,38,.08)}
+.card img{height:96px;width:auto;max-width:100%;object-fit:contain;display:block;margin:0 auto 12px}
+.card .name{font-weight:700;font-size:14.5px}
+.card .val{color:var(--green);font-weight:800;font-size:16px;margin-top:4px;font-variant-numeric:tabular-nums}
+.card .val small{color:var(--muted);font-weight:500;font-size:12px}
+.brand-h{font:700 20px "Bricolage Grotesque",sans-serif;color:var(--deep);margin:34px 0 14px}
+.back{position:fixed;bottom:18px;right:18px;background:var(--surface);border:1px solid var(--line);color:var(--muted);
+font-size:12px;font-weight:700;padding:9px 14px;border-radius:99px;z-index:20;box-shadow:0 2px 10px rgba(14,61,38,.08)}
+footer{border-top:1px solid var(--line);padding:30px 0;color:var(--muted);font-size:13.5px}
+
+.lookup{max-width:520px;margin:40px auto 80px;background:var(--surface);border:1px solid var(--line);
+border-radius:20px;padding:34px;box-shadow:0 8px 28px rgba(14,61,38,.07);text-align:center}
+.lookup h1{margin-bottom:6px}
+.lookup p{color:var(--muted);margin:0 0 22px}
+.lookup .field{text-align:left;margin-bottom:12px}
+.lookup label{display:block;font-weight:600;font-size:13px;margin-bottom:5px}
+.lookup input{width:100%;background:var(--ground);border:1.5px solid var(--line);border-radius:10px;
+padding:13px 14px;font:400 15px "Figtree",sans-serif;color:var(--ink)}
+.lookup input:focus{outline:none;border-color:var(--green)}
+.lookup button{width:100%;background:var(--green);color:#fff;font:700 15px "Figtree",sans-serif;
+padding:15px;border:0;border-radius:99px;cursor:pointer;margin-top:6px}
+.lookup button:hover{background:var(--deep)}
+.lookup .err{color:#b3372b;font-size:13.5px;font-weight:600;min-height:18px;margin-top:10px}
+/* result */
+.result{max-width:720px;margin:34px auto 80px;display:none}
+.shead{background:var(--deep);color:#eaf4ec;border-radius:20px;padding:28px 30px;margin-bottom:16px}
+.shead .on{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:#bcd6c4;font-weight:700}
+.shead h1{color:#fff;font-size:24px;margin:6px 0 4px}
+.shead .sub2{color:#bcd6c4;font-size:14px}
+.prog{display:flex;margin:22px 0 4px;gap:6px}
+.prog .p{flex:1;text-align:center;font-size:12px;font-weight:700;color:#7fa38a}
+.prog .p .bar{height:6px;border-radius:99px;background:rgba(255,255,255,.15);margin-bottom:8px}
+.prog .p.done .bar{background:var(--lime)}
+.prog .p.done{color:var(--lime)}
+.banner{border-radius:14px;padding:14px 18px;font-size:14.5px;font-weight:600;margin-bottom:16px}
+.banner.warn{background:#faf0e2;color:#b45d0e}
+.banner.crit{background:#f9e9e6;color:#b3372b}
+.rcard{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:22px 24px;margin-bottom:16px}
+.rcard h2{font:700 16px "Bricolage Grotesque",sans-serif;color:var(--deep);margin:0 0 12px}
+.ritem{display:flex;justify-content:space-between;gap:14px;padding:9px 0;border-bottom:1px solid var(--line);font-size:14.5px}
+.ritem:last-child{border-bottom:none}
+.ritem .money{font-weight:700}
+.ritem .fin{color:var(--green);font-size:12.5px;font-weight:700}
+.tl{list-style:none;margin:0;padding:0}
+.tl li{position:relative;padding:0 0 18px 26px;font-size:14px}
+.tl li::before{content:"";position:absolute;left:6px;top:5px;width:9px;height:9px;border-radius:50%;
+background:var(--green)}
+.tl li::after{content:"";position:absolute;left:10px;top:16px;bottom:-2px;width:1.5px;background:var(--line)}
+.tl li:last-child::after{display:none}
+.tl .when{color:var(--muted);font-size:12.5px}
+.again{text-align:center;margin-top:6px}
+.again button{background:none;border:0;color:var(--green);font:600 14px "Figtree",sans-serif;cursor:pointer;text-decoration:underline}
+.demo-note{background:var(--lime);color:var(--lime-ink);border-radius:10px;padding:8px 14px;font-size:12.5px;
+font-weight:700;text-align:center;margin-bottom:16px;display:none}
+</style></head><body>
+<header><div class="wrap nav">
+  <a class="logo" href="../../index.html">OC<i>BuyBack</i></a>
+  <nav class="links"><a href="../../sell/index.html">Sell</a><a href="../../trade-in/track/index.html">Track order</a><a href="../../faq/index.html">FAQ</a><a href="../../blog/index.html">Blog</a><a href="../../contact-us/index.html">Contact</a></nav>
+  <a class="cta" href="../../sell/index.html">Get my quote</a>
+  <a class="cta" id="cartPill" href="../../sell/devices/index.html" style="display:none;margin-left:12px;background:var(--lime);color:var(--lime-ink)">Cart · 0</a>
+</div></header>
+<script>
+const CART_KEY = "ocb_cart";
+function cartGet(){ try { return JSON.parse(localStorage.getItem(CART_KEY)) || []; } catch(e) { return []; } }
+function cartSave(c){ try { localStorage.setItem(CART_KEY, JSON.stringify(c)); } catch(e) {} }
+function cartBadge(){
+  const c = cartGet(), n = c.reduce((a,i)=>a+i.qty,0), t = c.reduce((a,i)=>a+i.price*i.qty,0);
+  const el = document.getElementById("cartPill");
+  if(el){ el.style.display = n ? "" : "none"; el.textContent = "Cart · " + n + " ($" + t.toLocaleString() + ")"; }
+}
+cartBadge();
+// first-touch lead attribution: recorded once per visitor, sent with checkout
+(function(){
+  try {
+    if (localStorage.getItem("ocb_attrib")) return;
+    const q = new URLSearchParams(location.search);
+    const ref = document.referrer || "";
+    const sameSite = ref && new URL(ref).host === location.host;
+    localStorage.setItem("ocb_attrib", JSON.stringify({
+      r: sameSite ? "" : ref,
+      l: location.pathname + location.search,
+      us: q.get("utm_source") || "", um: q.get("utm_medium") || "", uc: q.get("utm_campaign") || "",
+      t: new Date().toISOString(),
+    }));
+  } catch(e) {}
+})();
+</script>
+
+<div class="wrap">
+  <div class="lookup" id="lookup">
+    <h1>Track your order</h1>
+    <p>Enter your order number and the email you used at checkout.</p>
+    <div class="field"><label for="tOrder">Order number</label><input id="tOrder" placeholder="OCB-XXXXXX" autocomplete="off"></div>
+    <div class="field"><label for="tEmail">Email</label><input id="tEmail" type="email" placeholder="you@example.com"></div>
+    <button id="tGo">Track my order</button>
+    <div class="err" id="tErr"></div>
+  </div>
+
+  <div class="result" id="result">
+    <div class="demo-note" id="demoNote">Sample data — live tracking connects when the site is deployed.</div>
+    <div class="shead">
+      <div class="on">Order <span id="rOrder"></span></div>
+      <h1 id="rLabel"></h1>
+      <div class="sub2" id="rMeta"></div>
+      <div class="prog" id="rProg"></div>
+    </div>
+    <div id="rBanner"></div>
+    <div class="rcard"><h2>Your devices</h2><div id="rItems"></div></div>
+    <div class="rcard"><h2>History</h2><ul class="tl" id="rHist"></ul></div>
+    <div class="again"><button id="tAgain">Track a different order</button></div>
+  </div>
+</div>
+<script>
+const STEPS = ["Order placed","Shipped","Received","Evaluating","Paid"];
+const STEP_OF = { initiated:0, shipped:1, delivered:1, received:2, evaluating:3, adjusted:3, paid:4 };
+const money = v => "$" + Number(v).toLocaleString();
+const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+function demoData(order){
+  const d = 864e5, now = Date.now();
+  return { order_number: order || "OCB-DEMO42", status: "evaluating",
+    status_label: "Device being evaluated",
+    total_quote: 905, total_paid: null, tracking_number: "9400 1234 5678 9012 3456 78",
+    created_at: new Date(now - 3*d).toISOString(),
+    items: [{ brand:"Apple", model:"iPhone 17 Pro Max", condition:"Flawless", quoted_price:905, qty:1 }],
+    history: [
+      { status:"initiated", note:"Order created — shipping label emailed.", created_at:new Date(now-3*d).toISOString() },
+      { status:"received", note:"Package arrived at our Brea location.", created_at:new Date(now-1*d).toISOString() },
+      { status:"evaluating", note:"Diagnostics in progress.", created_at:new Date(now-3600e3).toISOString() } ] };
+}
+function render(d){
+  document.getElementById("lookup").style.display = "none";
+  document.getElementById("result").style.display = "block";
+  document.getElementById("rOrder").textContent = d.order_number;
+  document.getElementById("rLabel").textContent = d.status_label || d.status;
+  const meta = [];
+  meta.push("Placed " + new Date(d.created_at).toLocaleDateString("en-US",{month:"long",day:"numeric"}));
+  meta.push("Quote " + money(d.total_quote));
+  if (d.total_paid != null) meta.push("Paid " + money(d.total_paid));
+  if (d.tracking_number) meta.push("USPS " + d.tracking_number);
+  document.getElementById("rMeta").textContent = meta.join(" · ");
+  const stepIdx = STEP_OF[d.status];
+  document.getElementById("rProg").innerHTML = stepIdx == null ? "" :
+    STEPS.map((s,i)=>`<div class="p ${i<=stepIdx?"done":""}"><div class="bar"></div>${s}</div>`).join("");
+  const banner = document.getElementById("rBanner");
+  banner.innerHTML = d.status === "adjusted"
+    ? '<div class="banner warn">We sent you a revised offer by email — check your inbox to accept or decline.</div>'
+    : d.status === "returned" ? '<div class="banner warn">Your device has been shipped back to you.</div>'
+    : d.status === "cancelled" ? '<div class="banner crit">This order was cancelled.</div>' : "";
+  document.getElementById("rItems").innerHTML = (d.items || []).map(it => `
+    <div class="ritem"><span><b>${esc(it.brand)} ${esc(it.model)}</b> × ${it.qty}
+      <span style="color:var(--muted)">· ${esc(it.condition)}</span>
+      ${it.final_price != null ? `<span class="fin"> → final ${money(it.final_price)}${it.final_condition ? " (" + esc(it.final_condition) + ")" : ""}</span>` : ""}</span>
+      <span class="money">${money(it.quoted_price * it.qty)}</span></div>`).join("");
+  document.getElementById("rHist").innerHTML = (d.history || []).map(h => `
+    <li><b>${esc(h.note || h.status)}</b><div class="when">${new Date(h.created_at).toLocaleString("en-US",
+      {month:"short",day:"numeric",hour:"numeric",minute:"2-digit"})}</div></li>`).join("");
+}
+document.getElementById("tGo").onclick = async () => {
+  const order = document.getElementById("tOrder").value.trim().toUpperCase();
+  const email = document.getElementById("tEmail").value.trim();
+  const err = document.getElementById("tErr");
+  if (!order || !email) { err.textContent = "Both fields are required."; return; }
+  err.textContent = "";
+  const btn = document.getElementById("tGo");
+  btn.disabled = true; btn.textContent = "Looking up…";
+  try {
+    const r = await fetch(`/api/track-order?order=${encodeURIComponent(order)}&email=${encodeURIComponent(email)}`);
+    if ((r.headers.get("content-type") || "").includes("json")) {
+      const d = await r.json();
+      if (!r.ok) { err.textContent = d.error || "Order not found."; }
+      else render(d);
+    } else {
+      document.getElementById("demoNote").style.display = "block";
+      render(demoData(order));
+    }
+  } catch(e) {
+    document.getElementById("demoNote").style.display = "block";
+    render(demoData(order));
+  }
+  btn.disabled = false; btn.textContent = "Track my order";
+};
+document.getElementById("tEmail").addEventListener("keydown", e => { if (e.key === "Enter") document.getElementById("tGo").click(); });
+document.getElementById("tAgain").onclick = () => {
+  document.getElementById("result").style.display = "none";
+  document.getElementById("lookup").style.display = "block";
+};
+</script>
+<footer><div class="wrap" style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;padding:0">
+<div>© 2026 OCBuyBack · Brea, CA</div>
+<div><a href="https://x.com/buy_oc" target="_blank" rel="noopener">X</a> · <a href="https://www.facebook.com/ocbuyback" target="_blank" rel="noopener">Facebook</a> · <a href="https://www.instagram.com/ocbuyback" target="_blank" rel="noopener">Instagram</a></div>
+<div><a href="../../privacy-policy/index.html">Privacy</a> · <a href="../../terms-of-service/index.html">Terms</a> · <a href="../../faq/index.html">FAQ</a> · <a href="../../contact-us/index.html">Contact</a></div></div></footer>
+<a class="back" href="../../../index.html">← All concepts</a>
+</body></html>

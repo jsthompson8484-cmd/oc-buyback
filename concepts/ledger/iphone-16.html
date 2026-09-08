@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Sell iPhone 16 — Ledger concept</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700&family=Manrope:wght@400;500;600;700&display=swap">
+<style>
+:root{
+  --ground:#0b120d; --surface:#121a14; --raise:#18231b; --line:#22301f;
+  --ink:#eaf2ea; --muted:#8fa595; --accent:#45e070; --accent-dim:#2aa352; --gold:#d8b24a;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--ground);color:var(--ink);font:400 16px/1.6 "Manrope",system-ui,sans-serif}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1140px;margin:0 auto;padding:0 24px}
+header{border-bottom:1px solid var(--line);position:sticky;top:0;background:rgba(11,18,13,.92);backdrop-filter:blur(8px);z-index:10}
+.nav{display:flex;align-items:center;gap:32px;height:64px}
+.logo{font:700 17px/1 "Unbounded",sans-serif}
+.logo span{color:var(--accent)}
+.nav .links{display:flex;gap:26px;font-size:14px;color:var(--muted);font-weight:600}
+.nav .cta{margin-left:auto;background:var(--accent);color:#08110a;font-weight:700;font-size:14px;padding:10px 18px;border-radius:4px}
+.crumb{font-size:13px;color:var(--muted);padding:20px 0}
+.crumb a:hover{color:var(--ink)}
+.layout{display:grid;grid-template-columns:1.35fr 1fr;gap:40px;padding-bottom:80px;align-items:start}
+h1{font:700 clamp(24px,3vw,34px)/1.2 "Unbounded",sans-serif;margin:0 0 6px}
+.sub{color:var(--muted);margin:0 0 30px;font-size:14.5px}
+.qs{margin-bottom:28px}
+.qs .label{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:700;margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.qs .label .done{color:var(--accent)}
+.pills{display:flex;flex-wrap:wrap;gap:10px}
+.pill{background:var(--surface);border:1px solid var(--line);border-radius:4px;padding:12px 22px;font-weight:600;font-size:14.5px;cursor:pointer;color:var(--ink)}
+.pill:hover{border-color:var(--accent-dim)}
+.pill.on{border-color:var(--accent);color:var(--accent);background:rgba(69,224,112,.07)}
+.conds{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:10px}
+.cond{background:var(--surface);border:1px solid var(--line);border-radius:4px;padding:14px 16px;cursor:pointer}
+.cond:hover{border-color:var(--accent-dim)}
+.cond.on{border-color:var(--accent);background:rgba(69,224,112,.07)}
+.cond b{font-size:14.5px}
+.cond p{margin:4px 0 0;font-size:12.5px;color:var(--muted);line-height:1.45}
+/* summary */
+.sum{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:26px;position:sticky;top:84px}
+.sum img{height:130px;display:block;margin:0 auto 18px}
+.sum .dev{font-weight:700;text-align:center;font-size:16px}
+.sum .picks{color:var(--muted);font-size:13.5px;text-align:center;margin:4px 0 18px;min-height:20px}
+.sum .pricebox{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:18px 0;text-align:center;margin-bottom:18px}
+.sum .pl{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:700}
+.sum .price{font:700 54px/1.1 "Unbounded",sans-serif;color:var(--accent);font-variant-numeric:tabular-nums}
+.sum .price.dim{color:var(--muted);font-size:30px}
+.sum .lock{font-size:12.5px;color:var(--muted);margin-top:6px}
+.sum button{width:100%;background:var(--accent);color:#08110a;font:700 15px "Manrope",sans-serif;padding:15px;border:0;border-radius:4px;cursor:pointer}
+.sum button:disabled{background:var(--raise);color:var(--muted);cursor:not-allowed}
+.sum .trust{display:grid;gap:8px;margin-top:18px;font-size:12.5px;color:var(--muted)}
+.sum .trust span::before{content:"✓ ";color:var(--accent);font-weight:700}
+.toast{margin-top:14px;font-size:13px;color:var(--accent);text-align:center;min-height:18px;font-weight:600}
+/* faq */
+section.faq{border-top:1px solid var(--line);padding:56px 0}
+section.faq h2{font:700 20px "Unbounded",sans-serif;margin:0 0 20px}
+details{background:var(--surface);border:1px solid var(--line);border-radius:4px;margin-bottom:8px;max-width:760px}
+summary{padding:16px 20px;font-weight:700;font-size:14.5px;cursor:pointer;list-style:none}
+summary::before{content:"+";color:var(--accent);margin-right:12px;font-weight:700}
+details[open] summary::before{content:"–"}
+details p{padding:0 20px 16px;margin:0;color:var(--muted);font-size:14px;max-width:65ch}
+.back{position:fixed;bottom:18px;right:18px;background:var(--raise);border:1px solid var(--line);color:var(--muted);font-size:12px;font-weight:700;padding:9px 14px;border-radius:99px;z-index:20}
+@media(max-width:900px){.layout{grid-template-columns:1fr}.sum{position:static}}
+</style></head><body>
+
+<header><div class="wrap nav">
+  <a class="logo" href="index.html">OCBuyBack<span>.</span></a>
+  <nav class="links"><a href="index.html">Sell a device</a><a href="#">Track order</a><a href="#">FAQ</a></nav>
+  <a class="cta" href="#">Cart · $0</a>
+</div></header>
+
+<div class="wrap">
+  <div class="crumb"><a href="index.html">Sell</a> / <a href="index.html">Cell Phones</a> / <a href="index.html">Apple</a> / <b style="color:var(--ink)">iPhone 16</b></div>
+  <div class="layout">
+    <div>
+      <h1>Sell your iPhone 16</h1>
+      <p class="sub">Three questions. Real price. Locked for 14 days.</p>
+
+      <div class="qs"><div class="label"><span id="l1">1 · Carrier</span></div>
+        <div class="pills" id="carrier">
+          <button class="pill" data-v="Unlocked">Unlocked</button>
+          <button class="pill" data-v="AT&T">AT&amp;T</button>
+          <button class="pill" data-v="T-Mobile">T-Mobile</button>
+          <button class="pill" data-v="Verizon">Verizon</button>
+          <button class="pill" data-v="Other">Other</button>
+        </div>
+      </div>
+
+      <div class="qs"><div class="label"><span id="l2">2 · Storage</span></div>
+        <div class="pills" id="storage">
+          <button class="pill" data-v="128GB">128GB</button>
+          <button class="pill" data-v="256GB">256GB</button>
+          <button class="pill" data-v="512GB">512GB</button>
+        </div>
+      </div>
+
+      <div class="qs"><div class="label"><span id="l3">3 · Condition</span></div>
+        <div class="conds" id="cond">
+          <div class="cond" data-v="Brand New"><b>Brand New</b><p>Sealed in box, never activated.</p></div>
+          <div class="cond" data-v="Flawless"><b>Flawless</b><p>Like new. Zero scratches, zero dents, fully functional.</p></div>
+          <div class="cond" data-v="Good"><b>Good</b><p>Light wear you have to look for. Everything works.</p></div>
+          <div class="cond" data-v="Fair"><b>Fair</b><p>Visible scratches or dings. Fully functional.</p></div>
+          <div class="cond" data-v="Minor Damage"><b>Minor Damage</b><p>Cracked screen or back, but powers on and works.</p></div>
+          <div class="cond" data-v="Broken"><b>Broken</b><p>Doesn't power on, bad screen, or other faults.</p></div>
+        </div>
+      </div>
+    </div>
+
+    <aside class="sum">
+      <img src="https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/apple/iphone-16.webp" alt="iPhone 16">
+      <div class="dev">Apple iPhone 16</div>
+      <div class="picks" id="picks">Answer the questions to see your price</div>
+      <div class="pricebox">
+        <div class="pl">Your offer</div>
+        <div class="price dim" id="price">— —</div>
+        <div class="lock" id="lock"></div>
+      </div>
+      <button id="go" disabled>Lock this price · 14 days</button>
+      <div class="toast" id="toast"></div>
+      <div class="trust">
+        <span>Free USPS label · $100 insurance included</span>
+        <span>Paid within 1 business day of arrival</span>
+        <span>Check, Zelle, Venmo — or cash in store</span>
+      </div>
+    </aside>
+  </div>
+</div>
+
+<section class="faq"><div class="wrap">
+  <h2>Common questions</h2>
+  <details><summary>How long is my offer good for?</summary><p>The offer is good for 14 days beginning the day the order is submitted. If an item arrives after the 14-day mark, the current offer for the device will be given.</p></details>
+  <details><summary>Does the shipping label come with insurance?</summary><p>Our labels come with $100 insurance. Additional insurance can be added at the Post Office when you drop off the package.</p></details>
+  <details><summary>What if I'm not sure about the condition?</summary><p>Pick your best guess — every device is evaluated with diagnostic software when it arrives. If our grade differs, we send a new offer you can accept, or we ship your device back free.</p></details>
+</div></section>
+
+<a class="back" href="../index.html">← All concepts</a>
+
+<script>
+const PRICES = { // concept sample pricing (real matrix comes from catalog import)
+  "Brand New":{ "128GB":520, "256GB":560, "512GB":610 },
+  "Flawless": { "128GB":420, "256GB":455, "512GB":505 },
+  "Good":     { "128GB":365, "256GB":400, "512GB":450 },
+  "Fair":     { "128GB":245, "256GB":280, "512GB":330 },
+  "Minor Damage":{ "128GB":130, "256GB":160, "512GB":210 },
+  "Broken":   { "128GB":40,  "256GB":50,  "512GB":70 }
+};
+const state = {carrier:null, storage:null, cond:null};
+function wire(id, key, sel){
+  document.getElementById(id).addEventListener("click", e=>{
+    const t = e.target.closest(sel); if(!t) return;
+    document.querySelectorAll("#"+id+" "+sel).forEach(x=>x.classList.remove("on"));
+    t.classList.add("on"); state[key]=t.dataset.v; render();
+  });
+}
+wire("carrier","carrier",".pill"); wire("storage","storage",".pill"); wire("cond","cond",".cond");
+function render(){
+  const {carrier, storage, cond} = state;
+  document.getElementById("picks").textContent = [carrier,storage,cond].filter(Boolean).join(" · ") || "Answer the questions to see your price";
+  const priceEl = document.getElementById("price"), go = document.getElementById("go");
+  if(carrier && storage && cond){
+    let p = PRICES[cond][storage];
+    if(carrier!=="Unlocked") p = Math.round(p*0.9);
+    priceEl.textContent = "$"+p; priceEl.classList.remove("dim");
+    document.getElementById("lock").textContent = "Locked through " + new Date(Date.now()+14*864e5).toLocaleDateString("en-US",{month:"short",day:"numeric"});
+    go.disabled = false;
+  } else { priceEl.textContent = "— —"; priceEl.classList.add("dim"); go.disabled = true; document.getElementById("lock").textContent=""; }
+}
+document.getElementById("go").addEventListener("click", ()=>{
+  document.getElementById("toast").textContent = "Design concept — checkout isn't wired up yet.";
+});
+</script>
+</body></html>
