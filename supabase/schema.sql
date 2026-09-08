@@ -12,7 +12,8 @@ create table categories (
   q1_label     text not null default 'Which carrier?',
   q2_label     text not null default 'How much storage?',
   sort         int not null default 0,
-  enabled      boolean not null default false -- category shown on site
+  enabled      boolean not null default false, -- category shown on site
+  default_weight_oz numeric not null default 16 -- shipping-weight estimate for the category
 );
 
 create table brands (
@@ -30,6 +31,7 @@ create table models (
   image_url   text,
   sort        int not null default 0,
   enabled     boolean not null default false, -- model page generated when enabled AND has a price
+  weight_oz   numeric,                        -- per-model shipping-weight override
   unique (category_id, brand_id, slug)
 );
 
@@ -60,7 +62,8 @@ select c.name as category, c.slug as category_slug, c.enabled as category_enable
        b.name as brand, b.slug as brand_slug,
        m.name as model, m.slug as model_slug, m.image_url, m.sort, m.enabled as model_enabled,
        v.id as variant_id, v.carrier, v.storage,
-       p.condition, p.price, p.enabled as price_enabled
+       p.condition, p.price, p.enabled as price_enabled,
+       coalesce(m.weight_oz, c.default_weight_oz) as weight_oz
 from prices p
 join variants v on v.id = p.variant_id
 join models m   on m.id = v.model_id
@@ -100,6 +103,7 @@ create table trade_ins (
   referrer          text,                               -- first-touch referrer URL
   landing_page      text,                               -- first page the visitor hit
   utm               jsonb,                              -- utm_source/medium/campaign if present
+  estimated_weight_oz numeric,                        -- for the shipping label
   label_url         text,
   tracking_number   text,
   admin_notes       text,

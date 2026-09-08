@@ -723,7 +723,7 @@ function openTradeInDialog(t, refresh){
       <div class="detail"><b>${esc(it.brand)} ${esc(it.model)}</b> × ${it.qty}
         <span class="muted">· ${[it.carrier, it.storage, it.condition].filter(Boolean).map(esc).join(" / ")}</span>
         <span class="money" style="float:right"><b>${money(it.quoted_price * it.qty)}</b>${it.final_price != null ? `<br><span style="color:var(--green);font-size:12px">final ${money(it.final_price)}</span>` : ""}</span></div>`).join("")}
-    <div class="detail"><b>Total quote</b> <span class="money" style="float:right"><b>${money(t.total_quote)}</b></span></div>
+    <div class="detail"><b>Total quote</b> <span class="money" style="float:right"><b>${money(t.total_quote)}</b></span>${t.estimated_weight_oz ? `<span class="muted" style="float:right;margin-right:14px">est. ${Math.floor(t.estimated_weight_oz/16)} lb ${Math.round(t.estimated_weight_oz%16)} oz</span>` : ""}</div>
     <div id="issueList"></div>
     <div style="border-top:1px solid var(--line);margin-top:14px;padding-top:14px">
       <b style="font-size:14px">Add a device to this order</b>
@@ -944,7 +944,7 @@ let dirty = {};   // `${variant_id}|${condition}` -> {price, enabled}
 async function loadCategories(){
   const { data } = await sb.from("categories").select("*").order("sort");
   $("#catSel").innerHTML = (data || []).map((c) =>
-    `<option value="${c.id}">${esc(c.name)}${c.enabled ? "" : " (off)"}</option>`).join("");
+    `<option value="${c.id}" data-w="${c.default_weight_oz ?? 16}">${esc(c.name)}${c.enabled ? "" : " (off)"}</option>`).join("");
   loadBrands();
 }
 async function loadBrands(){
@@ -957,7 +957,8 @@ async function loadBrands(){
 $("#catSel").onchange = loadBrands;
 $("#catLoad").onclick = async () => {
   dirty = {}; updateDirty();
-  const { data: models } = await sb.from("models").select("id,name,sort,enabled")
+  const catDefaultW = $("#catSel option:checked")?.dataset?.w || 16;
+  const { data: models } = await sb.from("models").select("id,name,sort,enabled,weight_oz")
     .eq("category_id", $("#catSel").value).eq("brand_id", $("#brandSel").value)
     .order("sort", { ascending: false }); // newest models first
   if (!models?.length) { $("#catTable tbody").innerHTML = "<tr><td colspan=10 class=muted>No models.</td></tr>"; return; }
@@ -968,13 +969,16 @@ $("#catLoad").onclick = async () => {
   (variants || []).forEach((v) => (byModel[v.model_id] ||= []).push(v));
   let html = "", n = 0;
   for (const m of models) {
+    let first = true;
     for (const v of (byModel[m.id] || [])) {
       n++;
       const p = {}; (v.prices || []).forEach((x) => p[x.condition] = x);
       const allOn = (v.prices || []).some((x) => x.enabled);
+      const wCell = first ? `<b>${esc(m.name)}</b><br><input type="number" class="wOz" data-m="${m.id}" value="${m.weight_oz ?? ""}" placeholder="${catDefaultW} oz" title="Shipping weight (oz) — blank uses the category default" style="width:70px;margin-top:4px;font-size:12px">` : `<b>${esc(m.name)}</b>`;
+      first = false;
       html += `<tr data-v="${v.id}">
         <td><input type="checkbox" class="rowOn" ${allOn ? "checked" : ""}></td>
-        <td><b>${esc(m.name)}</b></td><td>${esc(v.carrier)}</td><td>${esc(v.storage)}</td>
+        <td>${wCell}</td><td>${esc(v.carrier)}</td><td>${esc(v.storage)}</td>
         ${CONDS.map((c) => `<td><input type="number" step="1" min="0" data-c="${c}" value="${p[c]?.price ?? 0}"></td>`).join("")}
       </tr>`;
     }
@@ -982,7 +986,16 @@ $("#catLoad").onclick = async () => {
   $("#catTable tbody").innerHTML = html;
   $("#catCount").textContent = n + " variant rows";
 };
+$("#catTable").addEventListener("change", async (e) => {
+  if (e.target.classList.contains("wOz")) {
+    const w = e.target.value ? Number(e.target.value) : null;
+    const { error } = await sb.from("models").update({ weight_oz: w }).eq("id", e.target.dataset.m);
+    toast(error ? error.message : (w ? `Weight saved: ${w} oz` : "Weight cleared — using category default"));
+    return;
+  }
+});
 $("#catTable").addEventListener("input", (e) => {
+  if (e.target.classList.contains("wOz")) return;
   const tr = e.target.closest("tr"); if (!tr) return;
   const vid = tr.dataset.v;
   const on = tr.querySelector(".rowOn").checked;

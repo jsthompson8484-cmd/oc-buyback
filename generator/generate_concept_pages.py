@@ -714,6 +714,23 @@ function setErr(id, msg){{
   const f = document.getElementById(id).closest(".field");
   f.classList.toggle("err", !!msg); f.querySelector(".hint").textContent = msg || "";
 }}
+// ZIP -> city/state autofill (prevents typos; fields stay editable)
+document.getElementById("zip").addEventListener("input", async (e) => {{
+  const z = e.target.value.trim();
+  if (!/^\\d{{5}}$/.test(z)) return;
+  try {{
+    const r = await fetch("https://api.zippopotam.us/us/" + z);
+    if (!r.ok) {{ setErr("zip", "That ZIP doesn't look right — double-check it"); return; }}
+    const d = await r.json();
+    const place = d.places && d.places[0];
+    if (place) {{
+      const cityEl = document.getElementById("city"), stEl = document.getElementById("st");
+      if (!cityEl.value.trim() || cityEl.dataset.auto) {{ cityEl.value = place["place name"]; cityEl.dataset.auto = "1"; }}
+      if (!stEl.value || stEl.dataset.auto) {{ stEl.value = place["state abbreviation"]; stEl.dataset.auto = "1"; }}
+      setErr("zip", ""); setErr("city", ""); setErr("st", "");
+    }}
+  }} catch(err) {{}}
+}});
 function validate(){{
   let ok = true;
   const req = {{fn:"First name", ln:"Last name", a1:"Address", city:"City", st:"State", zip:"ZIP", em:"Email", ph:"Phone"}};

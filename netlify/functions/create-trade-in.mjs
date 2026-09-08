@@ -88,7 +88,7 @@ export default async (req) => {
   for (const it of items) {
     const qty = Math.min(Math.max(parseInt(it.qty) || 1, 1), 10);
     const params = new URLSearchParams({
-      select: "price,price_enabled,model_enabled,category_enabled",
+      select: "price,price_enabled,model_enabled,category_enabled,weight_oz",
       category: `eq.${it.cat}`, brand: `eq.${it.brand}`, model: `eq.${it.device}`,
       carrier: `eq.${it.carrier || "-"}`, storage: `eq.${it.storage || "-"}`,
       condition: `eq.${it.cond}`,
@@ -99,7 +99,7 @@ export default async (req) => {
     if (!row || !row.price_enabled || !row.model_enabled || !row.category_enabled || !(row.price > 0))
       return json(409, { error: `No current offer for ${it.brand} ${it.device} (${it.cond}). Please re-quote.` });
     total += row.price * qty;
-    verified.push({ ...it, qty, price: row.price });
+    verified.push({ ...it, qty, price: row.price, weight_oz: Number(row.weight_oz) || 16 });
   }
 
   // -- promo code (optional)
@@ -134,6 +134,7 @@ export default async (req) => {
       promo_code: promoCode, promo_amount: promoAmount,
       total_quote: total + promoAmount,
       price_locked_until: lockDate,
+      estimated_weight_oz: verified.reduce((a, i) => a + i.weight_oz * i.qty, 0) + 8, // +8oz box/padding
       source: deriveSource(attrib),
       referrer: (attrib?.r || "").slice(0, 500) || null,
       landing_page: (attrib?.l || "").slice(0, 500) || null,
