@@ -381,7 +381,7 @@ async function loadActions(){
     sb.from("trade_ins").select("*, trade_in_items(*)").in("status", ACTIVE)
       .order("created_at", { ascending: true }).limit(500),
     sb.from("trade_in_issues").select("trade_in_id,status,type,new_price").in("status",
-      ["pending","accepted","declined","cannot_complete"]),
+      ["pending","accepted","declined","cannot_complete","resolved"]),
   ]);
   if (error) return toast(error.message);
   const issuesBy = new Map();
@@ -389,28 +389,35 @@ async function loadActions(){
 
   const label = (i) => ({ pending: "waiting on customer", accepted: `accepted $${i.new_price}`,
     declined: "DECLINED — ship device back", cannot_complete: "can't complete — arrange return" }[i.status]);
-  const QUEUES = [
-    { key: "respond", title: "🟢 Customer responded — act now", hint: "Accepted offers need payment; declined or stuck ones need a return.",
-      match: (o, iss) => iss.some((i) => ["accepted","declined","cannot_complete"].includes(i.status)) },
-    { key: "delivered", title: "📬 Delivered — check in", hint: "USPS says these arrived. Open each and mark it received.",
-      match: (o) => o.status === "delivered" },
-    { key: "inspect", title: "🔍 Received — needs inspection", hint: "Checked in and waiting on evaluation.",
-      match: (o, iss) => o.status === "received" && !iss.some((i) => i.status === "pending") },
-    { key: "evaluating", title: "🧪 Evaluating — finish and pay or requote", hint: "",
-      match: (o, iss) => o.status === "evaluating" && !iss.some((i) => i.status === "pending") },
-    { key: "waiting", title: "⏳ Waiting on customer", hint: "Issue or revised-offer email sent — the ball is in their court.",
-      match: (o, iss) => iss.some((i) => i.status === "pending") || o.status === "adjusted" || o.status === "action_pending" },
-    { key: "transit", title: "🚚 On the way", hint: "Label scanned — nothing to do until they arrive.",
-      match: (o) => o.status === "shipped" },
+  // one bucket per order, most-specific first
+  function bucket(o, iss){
+    if (["initiated","paid","returned","cancelled"].includes(o.status)) return null;
+    if (iss.some((i) => i.status === "accepted")) return "pay";          // requote accepted -> needs payment
+    if (iss.some((i) => i.status === "declined")) return "denied";
+    if (iss.some((i) => i.status === "cannot_complete")) return "failed";
+    if (iss.some((i) => i.status === "resolved") && !iss.some((i) => i.status === "pending")) return "completed";
+    if (iss.some((i) => i.status === "pending") || o.status === "action_pending" || o.status === "adjusted") return "pending";
+    if (o.status === "delivered") return "delivered";
+    if (o.status === "shipped") return "incoming";
+    return "inspect";                                                     // received / evaluating, nothing open
+  }
+  const QUEUES = [   // render order
+    { key: "incoming", title: "🚚 Incoming", hint: "Label scanned — on the way to you." },
+    { key: "delivered", title: "📬 Delivered — check in", hint: "USPS says these arrived. Open each and mark it received." },
+    { key: "inspect", title: "🔍 Received — needs inspection", hint: "Checked in and waiting on evaluation." },
+    { key: "pending", title: "⏳ Action pending — waiting on customer", hint: "Issue or revised-offer email sent — the ball is in their court." },
+    { key: "completed", title: "✅ Action completed — verify & continue", hint: "Customer says it's fixed. Verify and finish the evaluation." },
+    { key: "failed", title: "⚠️ Action failed — follow up", hint: "Customer couldn't complete the request — arrange a return or reach out." },
+    { key: "denied", title: "🚫 Requote denied — ship it back", hint: "Revised offer declined. Return the device and mark the order returned." },
+    { key: "pay", title: "💰 Needs payment", hint: "Accepted offers — send the payment from each order." },
   ];
-  const claimed = new Set();
+  const byBucket = {};
+  (orders || []).forEach((o) => {
+    const b = bucket(o, issuesBy.get(o.id) || []);
+    if (b) (byBucket[b] ||= []).push(o);
+  });
   const html_ = QUEUES.map((q) => {
-    const rows = (orders || []).filter((o) => {
-      if (claimed.has(o.id)) return false;
-      const ok = q.match(o, issuesBy.get(o.id) || []);
-      if (ok) claimed.add(o.id);
-      return ok;
-    });
+    const rows = byBucket[q.key] || [];
     if (!rows.length) return "";
     return `<div class="panel">
       <h2 style="font:700 16px 'Bricolage Grotesque',sans-serif;color:var(--deep);margin:0 0 2px">${q.title} <span class="muted">(${rows.length})</span></h2>
