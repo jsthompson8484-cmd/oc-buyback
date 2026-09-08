@@ -113,7 +113,6 @@ export function buildIssueEmail(issue, ctx) {
           ]),
           buttonsHtml: button(respondUrl("done"), "It's paid off now ✓") +
                        button(respondUrl("cannot"), "I'm not able to", false),
-          footNote: "Once confirmed, we'll verify with the carrier and complete your payment. If you can't clear the balance, we'll ship the device back to you free of charge.",
         }),
       };
 
