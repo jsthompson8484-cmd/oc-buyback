@@ -123,8 +123,12 @@ export default async (req) => {
             (new_price != null ? ` — revised offer $${new_price}` : ""),
     }),
   });
-  if (type === "requote" && ti.status !== "adjusted")
-    await db(`trade_ins?id=eq.${trade_in_id}`, { method: "PATCH", body: JSON.stringify({ status: "adjusted" }) });
+  // auto-advance the order status so the admin never has to set it by hand:
+  // requote -> adjusted; any other issue -> action_pending (waiting on customer)
+  const FINAL = ["paid", "returned", "cancelled"];
+  const target = type === "requote" ? "adjusted" : "action_pending";
+  if (!FINAL.includes(ti.status) && ti.status !== target)
+    await db(`trade_ins?id=eq.${trade_in_id}`, { method: "PATCH", body: JSON.stringify({ status: target }) });
 
   return json(200, { issue_id: issue.id, emailed, subject });
 };

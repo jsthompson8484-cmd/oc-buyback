@@ -63,6 +63,8 @@ export default async (req) => {
   switch (newStatus) {
     case "resolved":
       note = `Customer confirmed completed: ${issue.type.replace("_", " ")} on ${device}`;
+      if (issue.trade_ins.status === "action_pending")
+        await db(`trade_ins?id=eq.${issue.trade_ins.id}`, { method: "PATCH", body: JSON.stringify({ status: "evaluating" }) });
       page = { title: `Thanks, ${first}!`,
         body: `We'll verify ${device} and finish your evaluation the same business day. You'll get a confirmation email once it's done.` };
       break;

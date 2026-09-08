@@ -33,7 +33,7 @@ tr:last-child td{border-bottom:none}
 .chip{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;
 padding:3px 9px;border-radius:99px;background:var(--ground);color:var(--muted)}
 .chip.initiated{background:#e7f0fa;color:#20507e}.chip.shipped{background:#e7f0fa;color:#20507e}.chip.delivered{background:#e3f1e5;color:var(--green)}.chip.received{background:#faf0e2;color:var(--warn)}
-.chip.evaluating{background:#f3eafa;color:#6d3fa3}.chip.adjusted{background:#faf0e2;color:var(--warn)}
+.chip.evaluating{background:#f3eafa;color:#6d3fa3}.chip.adjusted{background:#faf0e2;color:var(--warn)}.chip.action_pending{background:#faf0e2;color:var(--warn)}
 .chip.paid{background:#e3f1e5;color:var(--green)}.chip.returned,.chip.cancelled{background:#f9e9e6;color:var(--crit)}
 .btn{background:var(--green);color:#fff;border:0;border-radius:99px;font-weight:700;font-size:13px;padding:9px 16px}
 .btn:hover{background:var(--deep)}
@@ -376,7 +376,7 @@ document.querySelectorAll(".tab").forEach((b) => b.onclick = () => {
 
 // ---------- action items (the working queue) ----------
 async function loadActions(){
-  const ACTIVE = ["shipped","delivered","received","evaluating","adjusted"];
+  const ACTIVE = ["shipped","delivered","received","evaluating","adjusted","action_pending"];
   const [{ data: orders, error }, { data: issues }] = await Promise.all([
     sb.from("trade_ins").select("*, trade_in_items(*)").in("status", ACTIVE)
       .order("created_at", { ascending: true }).limit(500),
@@ -399,7 +399,7 @@ async function loadActions(){
     { key: "evaluating", title: "🧪 Evaluating — finish and pay or requote", hint: "",
       match: (o, iss) => o.status === "evaluating" && !iss.some((i) => i.status === "pending") },
     { key: "waiting", title: "⏳ Waiting on customer", hint: "Issue or revised-offer email sent — the ball is in their court.",
-      match: (o, iss) => iss.some((i) => i.status === "pending") || o.status === "adjusted" },
+      match: (o, iss) => iss.some((i) => i.status === "pending") || o.status === "adjusted" || o.status === "action_pending" },
     { key: "transit", title: "🚚 On the way", hint: "Label scanned — nothing to do until they arrive.",
       match: (o) => o.status === "shipped" },
   ];
@@ -491,7 +491,7 @@ async function loadAnalytics(){
      <td class="money" style="text-align:right">${money(e.v)}</td></tr>`).join("")
     || "<tr><td colspan=3 class=muted>No devices yet.</td></tr>";
 
-  const ORDER = ["initiated","received","evaluating","adjusted","paid","returned","cancelled"];
+  const ORDER = ["initiated","shipped","delivered","received","evaluating","adjusted","action_pending","paid","returned","cancelled"];
   const st = agg(orders || [], (o) => o.status);
   $("#anFunnel tbody").innerHTML = ORDER.filter((s) => st.find(([k]) => k === s))
     .map((s) => { const e = st.find(([k]) => k === s)[1];
@@ -675,7 +675,7 @@ $("#postTable").addEventListener("click", async (e) => {
 });
 
 // ---------- trade-ins ----------
-const STATUSES = ["initiated","shipped","delivered","received","evaluating","adjusted","paid","returned","cancelled"];
+const STATUSES = ["initiated","shipped","delivered","received","evaluating","adjusted","action_pending","paid","returned","cancelled"];
 async function loadTradeIns(){
   let q = sb.from("trade_ins").select("*, trade_in_items(*)").order("created_at", { ascending: false }).limit(200);
   if ($("#tiStatus").value) q = q.eq("status", $("#tiStatus").value);

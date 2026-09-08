@@ -76,7 +76,9 @@ create table trade_ins (
     ('initiated',   -- order created, label emailed
      'shipped',     -- label scanned / in transit (set by carrier webhook later)
      'delivered',   -- carrier says delivered, not yet checked in
-     'received','evaluating','adjusted','paid','returned','cancelled')),
+     'received','evaluating','adjusted',
+     'action_pending', -- issue email sent, waiting on the customer
+     'paid','returned','cancelled')),
   first_name        text not null,
   last_name         text not null,
   email             text not null,

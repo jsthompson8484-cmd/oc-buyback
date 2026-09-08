@@ -868,7 +868,7 @@ track_body = '''
 </div>
 <script>
 const STEPS = ["Order placed","Shipped","Received","Evaluating","Paid"];
-const STEP_OF = { initiated:0, shipped:1, delivered:1, received:2, evaluating:3, adjusted:3, paid:4 };
+const STEP_OF = { initiated:0, shipped:1, delivered:1, received:2, evaluating:3, adjusted:3, action_pending:3, paid:4 };
 const money = v => "$" + Number(v).toLocaleString();
 const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 function demoData(order){
@@ -900,6 +900,7 @@ function render(d){
   const banner = document.getElementById("rBanner");
   banner.innerHTML = d.status === "adjusted"
     ? '<div class="banner warn">We sent you a revised offer by email — check your inbox to accept or decline.</div>'
+    : d.status === "action_pending" ? '<div class="banner warn">We emailed you — a quick action on your end keeps things moving.</div>'
     : d.status === "returned" ? '<div class="banner warn">Your device has been shipped back to you.</div>'
     : d.status === "cancelled" ? '<div class="banner crit">This order was cancelled.</div>' : "";
   document.getElementById("rItems").innerHTML = (d.items || []).map(it => `

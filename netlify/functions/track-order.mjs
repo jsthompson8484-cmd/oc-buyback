@@ -20,6 +20,7 @@ const STATUS_LABELS = {
   received: "Device received at our Brea location",
   evaluating: "Device being evaluated",
   adjusted: "Revised offer sent — check your email",
+  action_pending: "Action needed — check your email to keep things moving",
   paid: "Paid — all done!",
   returned: "Device returned to you",
   cancelled: "Order cancelled",
