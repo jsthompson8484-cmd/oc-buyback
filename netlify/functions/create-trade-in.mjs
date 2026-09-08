@@ -112,7 +112,7 @@ export default async (req) => {
   }
 
   // -- create the trade-in
-  const orderNumber = "OCB-" + Array.from(crypto.getRandomValues(new Uint8Array(4)))
+  const orderNumber = "OCB-" + Array.from(crypto.getRandomValues(new Uint8Array(6)))
     .map((b) => "ABCDEFGHJKMNPQRSTUVWXYZ23456789"[b % 31]).join("");
   const lockDate = new Date(Date.now() + 14 * 864e5).toISOString().slice(0, 10);
 
