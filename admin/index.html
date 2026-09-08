@@ -719,6 +719,17 @@ function openTradeInDialog(t, refresh){
     <div class="detail"><b>Total quote</b> <span class="money" style="float:right"><b>${money(t.total_quote)}</b></span></div>
     <div id="issueList"></div>
     <div style="border-top:1px solid var(--line);margin-top:14px;padding-top:14px">
+      <b style="font-size:14px">Add a device to this order</b>
+      <div class="row" style="margin-top:10px">
+        <select id="adCat"><option value="">Category…</option></select>
+        <select id="adModel" style="display:none;max-width:220px"></select>
+        <select id="adVar" style="display:none"></select>
+        <select id="adCond" style="display:none"></select>
+        <button class="btn sm" id="adAdd" style="display:none">Add</button>
+        <span class="muted" id="adPrice" style="font-size:12.5px"></span>
+      </div>
+    </div>
+    <div style="border-top:1px solid var(--line);margin-top:14px;padding-top:14px">
       <b style="font-size:14px">Raise an issue / requote</b>
       <div class="row" style="margin-top:10px">
         <select id="iItem">${(t.trade_in_items || []).map((it) =>
@@ -783,6 +794,67 @@ function openTradeInDialog(t, refresh){
     } catch (e) { toast(e.message); payBtn.disabled = false; payBtn.textContent = "💸 Send payment"; }
   };
 
+  // ---- add device to order ----
+  (async () => {
+    const { data: cats } = await sb.from("categories").select("id,name").order("sort");
+    $("#adCat").innerHTML = '<option value="">Category…</option>' +
+      (cats || []).map((c) => `<option value="${c.id}">${esc(c.name)}</option>`).join("");
+  })();
+  let adState = {};
+  $("#adCat").onchange = async () => {
+    adState = { cat: $("#adCat option:checked").textContent };
+    ["adVar","adCond","adAdd"].forEach((x) => $("#" + x).style.display = "none"); $("#adPrice").textContent = "";
+    if (!$("#adCat").value) return $("#adModel").style.display = "none";
+    const { data: models } = await sb.from("models").select("id,name,brands(name)")
+      .eq("category_id", $("#adCat").value).eq("enabled", true).order("sort", { ascending: false });
+    $("#adModel").innerHTML = '<option value="">Model…</option>' +
+      (models || []).map((m) => `<option value="${m.id}" data-brand="${esc(m.brands.name)}">${esc(m.brands.name)} ${esc(m.name)}</option>`).join("");
+    $("#adModel").style.display = "";
+  };
+  $("#adModel").onchange = async () => {
+    ["adCond","adAdd"].forEach((x) => $("#" + x).style.display = "none"); $("#adPrice").textContent = "";
+    if (!$("#adModel").value) return $("#adVar").style.display = "none";
+    const opt = $("#adModel option:checked");
+    adState.brand = opt.dataset.brand;
+    adState.model = opt.textContent.replace(adState.brand + " ", "");
+    const { data: vars } = await sb.from("variants").select("id,carrier,storage,prices(condition,price,enabled)")
+      .eq("model_id", $("#adModel").value);
+    adState.vars = vars || [];
+    $("#adVar").innerHTML = '<option value="">Variant…</option>' +
+      adState.vars.map((v) => `<option value="${v.id}">${esc([v.carrier, v.storage].filter((x) => x !== "-").join(" / ") || "Standard")}</option>`).join("");
+    $("#adVar").style.display = "";
+  };
+  $("#adVar").onchange = () => {
+    $("#adAdd").style.display = "none"; $("#adPrice").textContent = "";
+    const v = adState.vars.find((x) => x.id == $("#adVar").value);
+    if (!v) return $("#adCond").style.display = "none";
+    adState.v = v;
+    const live = (v.prices || []).filter((p) => p.enabled && p.price > 0);
+    $("#adCond").innerHTML = '<option value="">Condition…</option>' +
+      live.map((p) => `<option value="${esc(p.condition)}" data-price="${p.price}">${esc(p.condition)} — ${money(p.price)}</option>`).join("");
+    $("#adCond").style.display = "";
+  };
+  $("#adCond").onchange = () => {
+    const o = $("#adCond option:checked");
+    $("#adAdd").style.display = o.value ? "" : "none";
+    $("#adPrice").textContent = o.value ? `will add ${money(o.dataset.price)} to the quote` : "";
+  };
+  $("#adAdd").onclick = async () => {
+    const o = $("#adCond option:checked");
+    const price = Number(o.dataset.price);
+    const item = { trade_in_id: t.id, category: adState.cat, brand: adState.brand, model: adState.model,
+      carrier: adState.v.carrier === "-" ? null : adState.v.carrier,
+      storage: adState.v.storage === "-" ? null : adState.v.storage,
+      condition: o.value, quoted_price: price, qty: 1 };
+    const { error } = await sb.from("trade_in_items").insert(item);
+    if (error) return toast(error.message);
+    await sb.from("trade_ins").update({ total_quote: Number(t.total_quote) + price }).eq("id", t.id);
+    await sb.from("trade_in_events").insert({ trade_in_id: t.id, status: t.status,
+      note: `Added ${adState.brand} ${adState.model} (${o.value}) ${money(price)} to the order` });
+    toast(`Added — quote now ${money(Number(t.total_quote) + price)}`);
+    d.close(); refresh();
+  };
+
   // ---- issue composer ----
   const ISSUE_LABELS = { icloud_lock:"iCloud lock", google_lock:"Google lock",
     financing:"Financing", requote:"Requote", other:"Other" };
@@ -840,7 +912,8 @@ function openTradeInDialog(t, refresh){
           body: JSON.stringify(payload) });
         const d = await r.json().catch(() => ({}));
         if (!r.ok) throw new Error(d.error || "Send failed");
-        toast("Email sent: " + d.subject);
+        toast(d.emailed ? "Email sent: " + d.subject
+                        : "⚠️ Issue saved but EMAIL NOT SENT — email service isn't configured yet");
       }
       $("#iMsg").value = ""; loadIssues();
     } catch (e) { toast(e.message); }
