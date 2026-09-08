@@ -79,7 +79,6 @@ export function buildIssueEmail(issue, ctx) {
           ]),
           buttonsHtml: button(respondUrl("done"), "I've removed it ✓") +
                        button(respondUrl("cannot"), "I'm not able to", false),
-          footNote: "Once you confirm, we'll verify and finish your evaluation the same business day. If you can't remove it, we'll ship the device back to you free of charge.",
         }),
       };
 
@@ -97,7 +96,6 @@ export function buildIssueEmail(issue, ctx) {
           ]),
           buttonsHtml: button(respondUrl("done"), "I've removed it ✓") +
                        button(respondUrl("cannot"), "I'm not able to", false),
-          footNote: "Once you confirm, we'll verify and finish your evaluation the same business day. If you can't remove it, we'll ship the device back to you free of charge.",
         }),
       };
 
