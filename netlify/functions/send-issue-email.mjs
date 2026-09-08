@@ -15,7 +15,8 @@ const SUPABASE_URL = process.env.SUPABASE_URL;
 const SERVICE_KEY = process.env.SUPABASE_SERVICE_KEY;
 const RESEND_KEY = process.env.RESEND_API_KEY;
 const SITE_URL = process.env.SITE_URL || "https://www.ocbuyback.com";
-const FROM = process.env.EMAIL_FROM || "OCBuyBack <orders@ocbuyback.com>";
+// until ocbuyback.com is verified in Resend, only the resend.dev sender works
+const FROM = process.env.EMAIL_FROM || "OCBuyBack <onboarding@resend.dev>";
 const ADMIN_EMAILS = (process.env.ADMIN_EMAILS || "js@neartechpartners.com")
   .split(",").map((e) => e.trim().toLowerCase());
 

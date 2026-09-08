@@ -162,6 +162,34 @@ export function buildIssueEmail(issue, ctx) {
   }
 }
 
+// Order confirmation sent right after checkout.
+export function buildOrderConfirmation({ orderNumber, firstName, items, total, lockedUntil, payMethod, trackUrl }) {
+  const isCash = payMethod === "cash";
+  const rows = items.map((i) =>
+    `<tr><td style="padding:4px 0;font-size:14.5px">${esc(i.brand)} ${esc(i.device || i.model)} × ${i.qty}
+       <span style="color:${MUTED}">· ${esc(i.cond)}</span></td>
+     <td style="text-align:right;font-weight:700">${money(i.price * i.qty)}</td></tr>`).join("");
+  return {
+    subject: `Order ${orderNumber} confirmed — ${money(total)} locked in`,
+    html: layout({
+      orderNumber,
+      heading: isCash ? "You're all set — see you at the shop!" : "You're all set — here's what happens next",
+      intro: `Hi ${esc(firstName)} — your trade-in is confirmed and your price is locked through <b>${lockedUntil}</b>.`,
+      bodyHtml: `<div style="background:${GROUND};border-radius:12px;padding:14px 18px;margin:0 0 16px">
+        <table style="width:100%;border-collapse:collapse">${rows}
+        <tr><td style="padding:8px 0 0;font-weight:800">Total offer</td>
+        <td style="text-align:right;font-weight:800;color:${GREEN};font-size:18px;padding-top:8px">${money(total)}</td></tr></table></div>` +
+        (isCash
+          ? `<p style="font-size:14.5px;line-height:1.6">Bring your device to <b>1203 W Imperial Hwy, STE 103, Brea</b> (Mon–Fri 10 AM–6 PM). We'll evaluate it while you wait — about 10 minutes — and pay you cash on the spot.</p>`
+          : `<p style="font-size:14.5px;line-height:1.6"><b>1.</b> Your free prepaid USPS shipping label arrives in a separate email.<br>
+             <b>2.</b> Pack your device in any sturdy box and drop it at any Post Office.<br>
+             <b>3.</b> You're paid within 1 business day of it arriving.</p>`),
+      buttonsHtml: button(trackUrl, "Track my order"),
+      footNote: "Questions? Just reply to this email or call 657-286-8274.",
+    }),
+  };
+}
+
 // Friendly page shown in the browser after the customer clicks an email link.
 export function responsePage({ title, body }) {
   return `<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">

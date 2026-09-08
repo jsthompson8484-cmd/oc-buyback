@@ -13,8 +13,13 @@
 // TODO before launch: shipping label purchase (awaiting customer's carrier account
 // details) and Twilio SMS opt-in confirmation.
 
+import { buildOrderConfirmation } from "./lib/issue-emails.mjs";
+
 const SUPABASE_URL = process.env.SUPABASE_URL;
 const SERVICE_KEY = process.env.SUPABASE_SERVICE_KEY;
+const RESEND_KEY = process.env.RESEND_API_KEY;
+const SITE_URL = process.env.SITE_URL || "https://www.ocbuyback.com";
+const FROM = process.env.EMAIL_FROM || "OCBuyBack <onboarding@resend.dev>";
 
 const db = (path, init = {}) =>
   fetch(`${SUPABASE_URL}/rest/v1/${path}`, {
@@ -157,7 +162,24 @@ export default async (req) => {
     }),
   });
 
-  // TODO: email label + confirmation via Resend; SMS via Twilio when sms_opt_in.
+  // -- order confirmation email (label email comes with the carrier integration)
+  if (RESEND_KEY) {
+    try {
+      const lockedPretty = new Date(lockDate + "T12:00:00").toLocaleDateString("en-US", { month: "long", day: "numeric" });
+      const { subject, html } = buildOrderConfirmation({
+        orderNumber, firstName: customer.first_name, items: verified,
+        total: total + promoAmount, lockedUntil: lockedPretty, payMethod: method,
+        trackUrl: `${SITE_URL}/trade-in/track`,
+      });
+      await fetch("https://api.resend.com/emails", {
+        method: "POST",
+        headers: { authorization: `Bearer ${RESEND_KEY}`, "content-type": "application/json" },
+        body: JSON.stringify({ from: FROM, to: customer.email, subject, html,
+                               reply_to: "support@ocbuyback.com" }),
+      });
+    } catch (e) { /* order stands even if the email hiccups */ }
+  }
+  // TODO: SMS via Twilio when sms_opt_in; label email once carrier account is wired.
 
   return json(200, {
     order_number: orderNumber,
