@@ -334,7 +334,7 @@ for cat, brand, dev, m in models:
     n2, n3 = ("1","2") if single_carrier else ("2","3")
     body = f'''
 <div class="wrap">
-  <div class="crumb"><a href="../../../index.html">Sell</a> → <a href="../../index.html">{cat}</a> → <b>{html.escape(brand)} {html.escape(dev)}</b></div>
+  <div class="crumb"><a href="../../../index.html">Sell</a> → <a href="../../index.html">{cat}</a> → <a href="../index.html">{html.escape(brand)}</a> → <b>{html.escape(dev)}</b></div>
   <div class="layout">
     <div>
       <h1>Sell your {html.escape(dev)}</h1>
@@ -461,7 +461,7 @@ renderStorage(); renderConds();
                    "availability": "https://schema.org/InStock", "url": SITE + live_path,
                    "seller": {"@id": SITE + "/#org"}},
     }
-    crumbs = breadcrumbs([("Sell", "/sell"), (cat, f"/sell/{cslug}"), (f"{brand} {dev}", None)])
+    crumbs = breadcrumbs([("Sell", "/sell"), (cat, f"/sell/{cslug}"), (brand, f"/sell/{cslug}/{bslug}"), (dev, None)])
     write(OUT/"sell"/cslug/bslug/dslug/"index.html",
           page(f"Sell {dev} Brea, CA | OCBuyBack", body, 4, WIZ_CSS,
                path=live_path,
@@ -469,33 +469,72 @@ renderStorage(); renderConds();
                schema=[product_schema, crumbs], og_image=img_url(cat, brand, dev)))
     count += 1
 
-# ---- category pages ----
+# ---- category pages: brand picker when multiple brands, else model grid ----
+BRAND_LINE = {("Cell Phone","Apple"):"iPhone", ("Cell Phone","Samsung"):"Galaxy", ("Cell Phone","Google"):"Pixel",
+  ("Cell Phone","OnePlus"):"OnePlus", ("Cell Phone","Motorola"):"moto & razr", ("Cell Phone","LG"):"LG",
+  ("Tablet","Apple"):"iPad", ("Tablet","Samsung"):"Galaxy Tab", ("Tablet","Microsoft"):"Surface",
+  ("Smartwatch","Apple"):"Apple Watch", ("Smartwatch","Samsung"):"Galaxy Watch",
+  ("Game Console","Sony"):"PlayStation", ("Game Console","Microsoft"):"Xbox",
+  ("Game Console","Nintendo"):"Switch, Game Boy & more", ("Game Console","Asus"):"ROG Ally",
+  ("Game Console","Valve"):"Steam Deck", ("Game Console","Playstation"):"PlayStation"}
+
+def brand_logo(brand):
+    return f"https://s3.amazonaws.com/fliptech-assets/images/brands/{slug(brand)}.webp"
+
+def model_cards(cat, brand, devs, depth_prefix=""):
+    return "".join(
+        f"""<a class="card" href="{depth_prefix}{slug(brand)}/{slug(d)}/index.html">
+<img src="{img_url(cat, brand, d)}" alt="" onerror="this.style.display='none'">
+<div class="name">{html.escape(d)}</div><div class="val">{money(model_max(m))} <small>up to</small></div></a>"""
+        for d, m in devs)
+
 for cat in LIVE_CATS:
     cslug = CAT_SLUG[cat]
     brands = TREE.get(cat, {})
-    sections = []
-    for brand in sorted(brands, key=lambda b: -len([1 for m in brands[b].values() if m["enabled"]])):
-        devs = [(d,m) for d,m in brands[brand].items() if m["enabled"] and model_max(m) > 0]
-        if not devs: continue
-        devs.sort(key=lambda x: x[1]["sort"], reverse=True)  # newest models first
-        cards = "".join(
-            f'''<a class="card" href="{slug(brand)}/{slug(d)}/index.html">
-<img src="{img_url(cat, brand, d)}" alt="" onerror="this.style.display='none'">
-<div class="name">{html.escape(d)}</div><div class="val">{money(model_max(m))} <small>up to</small></div></a>'''
-            for d,m in devs)
-        sections.append(f'<h2 class="brand-h">{html.escape(brand)}</h2><div class="grid">{cards}</div>')
-    body = f'''
+    # sellable models per brand, newest first
+    by_brand = {}
+    for brand in brands:
+        devs = [(d, m) for d, m in brands[brand].items() if m["enabled"] and model_max(m) > 0]
+        if devs:
+            devs.sort(key=lambda x: x[1]["sort"], reverse=True)
+            by_brand[brand] = devs
+    # Apple first (user rule), then by model count
+    order = sorted(by_brand, key=lambda b: (b != "Apple", -len(by_brand[b]), b))
+
+    # brand picker page (like the live site) + a page per brand
+    tiles = "".join(f"""<a class="card" href="{slug(b)}/index.html" style="padding:28px 20px">
+<img src="{brand_logo(b)}" alt="{html.escape(b)} logo" style="height:64px;object-fit:contain" onerror="this.style.display='none'">
+<div class="name" style="font-size:17px;margin-top:6px">{html.escape(b)}</div>
+<div style="color:var(--green);font-weight:700;font-size:13px">{html.escape(BRAND_LINE.get((cat, b), ""))}</div>
+<div class="val" style="font-size:14px">up to {money(max(model_max(m) for _, m in by_brand[b]))}</div>
+<div style="color:var(--muted);font-size:12.5px">{len(by_brand[b])} models</div></a>"""
+        for b in order)
+    body = f"""
 <div class="wrap">
   <div class="crumb"><a href="../index.html">Sell</a> → <b>{cat}</b></div>
   <h1>Sell your {SELL_YOUR.get(cat, cat.lower())}</h1>
-  <p class="sub">Pick your model for an instant quote — prices lock for 14 days.</p>
-  {"".join(sections)}
-</div>'''
+  <p class="sub">Pick your brand to see every model we buy.</p>
+  <div class="grid" style="grid-template-columns:repeat(auto-fill,minmax(220px,1fr))">{tiles}</div>
+</div>"""
     write(OUT/"sell"/cslug/"index.html",
           page(f"Sell {CAT_DISPLAY[cat]} Near Me Brea, CA | OCBuyBack", body, 2,
                path=f"/sell/{cslug}",
-               desc=f"Sell your {SELL_YOUR.get(cat, cat.lower())} for cash near Brea, CA. Instant quotes on every model — locked for 14 days, free shipping, paid within 1 business day.",
+               desc=f"Sell your {SELL_YOUR.get(cat, cat.lower())} for cash near Brea, CA. Pick your brand for an instant quote — locked for 14 days, free shipping, paid within 1 business day.",
                schema=[breadcrumbs([("Sell", "/sell"), (cat, None)])]))
+    for b in order:
+        line = BRAND_LINE.get((cat, b), "")
+        bbody = f"""
+<div class="wrap">
+  <div class="crumb"><a href="../../index.html">Sell</a> → <a href="../index.html">{cat}</a> → <b>{html.escape(b)}</b></div>
+  <h1>Sell your {html.escape(line or b)}</h1>
+  <p class="sub">Pick your model for an instant quote — prices lock for 14 days.</p>
+  <div class="grid">{model_cards(cat, b, by_brand[b], "../")}</div>
+</div>"""
+        write(OUT/"sell"/cslug/slug(b)/"index.html",
+              page(f"Sell {line or b} Near Me Brea, CA | OCBuyBack", bbody, 3,
+                   path=f"/sell/{cslug}/{slug(b)}", in_sitemap=False,
+                   desc=f"Sell your {line or b} for cash near Brea, CA — instant quotes on every model, free shipping, paid within 1 business day.",
+                   schema=[breadcrumbs([("Sell", "/sell"), (cat, f"/sell/{cslug}"), (b, None)])]))
 
 # ---- sell hub ----
 cat_cards = []
