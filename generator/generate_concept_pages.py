@@ -151,7 +151,7 @@ def money(v):
 
 CSS = """
 :root{--ground:#f5f8f4;--surface:#ffffff;--ink:#182420;--muted:#5c6e64;--brand:#2EB835;--green:#2D8631;--deep:#1E6323;
---lime:#d9f26a;--lime-ink:#2c3a10;--line:#e3eae2;--gold:#e8a828}
+--lime:#DFF3E1;--lime-ink:#1E6323;--line:#e3eae2;--gold:#e8a828}
 *{box-sizing:border-box}
 body{margin:0;background:var(--ground);color:var(--ink);font:400 16px/1.6 "Figtree",system-ui,sans-serif}
 a{color:inherit;text-decoration:none}
