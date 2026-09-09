@@ -236,8 +236,8 @@ create policy public_read_settings   on site_settings for select using (true);
 create or replace function is_admin() returns boolean
 language sql stable security definer as $$
   select coalesce(auth.jwt()->>'email','') in (
-    'js@neartechpartners.com'
-    -- ,'customer@ocbuyback.com'
+    'js@neartechpartners.com',
+    'henry@ocbuyback.com'
   );
 $$;
 
