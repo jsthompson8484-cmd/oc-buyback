@@ -150,7 +150,7 @@ def money(v):
     return f"${v:,.0f}" if v == int(v) else f"${v:,.2f}"
 
 CSS = """
-:root{--ground:#f5f8f4;--surface:#ffffff;--ink:#182420;--muted:#5c6e64;--green:#167a46;--deep:#0e3d26;
+:root{--ground:#f5f8f4;--surface:#ffffff;--ink:#182420;--muted:#5c6e64;--brand:#2EB835;--green:#2D8631;--deep:#1E6323;
 --lime:#d9f26a;--lime-ink:#2c3a10;--line:#e3eae2;--gold:#e8a828}
 *{box-sizing:border-box}
 body{margin:0;background:var(--ground);color:var(--ink);font:400 16px/1.6 "Figtree",system-ui,sans-serif}
@@ -199,7 +199,7 @@ WIZ_CSS = """
 .pill{background:var(--ground);border:1.5px solid var(--line);border-radius:99px;padding:11px 22px;font-weight:600;
 font-size:14.5px;cursor:pointer;color:var(--ink);font-family:inherit}
 .pill:hover{border-color:var(--green)}
-.pill.on{border-color:var(--green);background:var(--green);color:#fff}
+.pill.on{border-color:var(--brand);background:var(--brand);color:#fff}
 .conds{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .cond{background:var(--ground);border:1.5px solid var(--line);border-radius:12px;padding:14px 16px;cursor:pointer}
 .cond:hover{border-color:var(--green)}
@@ -217,7 +217,7 @@ box-shadow:0 8px 28px rgba(14,61,38,.07)}
 .sum .price{font:800 50px/1.15 "Bricolage Grotesque",sans-serif;color:var(--green);font-variant-numeric:tabular-nums}
 .sum .price.dim{color:var(--muted);font-size:26px}
 .sum .lock{font-size:12.5px;color:var(--muted);margin-top:2px}
-.sum button{width:100%;background:var(--green);color:#fff;font:700 15px "Figtree",sans-serif;padding:15px;border:0;
+.sum button{width:100%;background:var(--brand);color:#fff;font:700 15px "Figtree",sans-serif;padding:15px;border:0;
 border-radius:99px;cursor:pointer}
 .sum button:hover:not(:disabled){background:var(--deep)}
 .sum button:disabled{background:var(--line);color:var(--muted);cursor:not-allowed}
@@ -648,7 +648,7 @@ box-shadow:0 8px 28px rgba(14,61,38,.07)}
 .side .row b{font-variant-numeric:tabular-nums}
 .side .tot{display:flex;justify-content:space-between;align-items:baseline;margin:12px 0 16px}
 .side .tot b{font:800 34px/1 "Bricolage Grotesque",sans-serif;color:var(--green);font-variant-numeric:tabular-nums}
-.side button{width:100%;background:var(--green);color:#fff;font:700 15px "Figtree",sans-serif;padding:15px;border:0;
+.side button{width:100%;background:var(--brand);color:#fff;font:700 15px "Figtree",sans-serif;padding:15px;border:0;
 border-radius:99px;cursor:pointer}
 .side button:hover:not(:disabled){background:var(--deep)}
 .side button:disabled{background:var(--line);color:var(--muted);cursor:not-allowed}
@@ -899,7 +899,7 @@ border-radius:20px;padding:34px;box-shadow:0 8px 28px rgba(14,61,38,.07);text-al
 .lookup input{width:100%;background:var(--ground);border:1.5px solid var(--line);border-radius:10px;
 padding:13px 14px;font:400 15px "Figtree",sans-serif;color:var(--ink)}
 .lookup input:focus{outline:none;border-color:var(--green)}
-.lookup button{width:100%;background:var(--green);color:#fff;font:700 15px "Figtree",sans-serif;
+.lookup button{width:100%;background:var(--brand);color:#fff;font:700 15px "Figtree",sans-serif;
 padding:15px;border:0;border-radius:99px;cursor:pointer;margin-top:6px}
 .lookup button:hover{background:var(--deep)}
 .lookup .err{color:#b3372b;font-size:13.5px;font-weight:600;min-height:18px;margin-top:10px}
@@ -1060,7 +1060,7 @@ details p{padding:0 20px 16px;margin:0;color:var(--muted);font-size:14.5px;max-w
 .ccard a{color:var(--green);font-weight:700}
 .ccard .hours{display:grid;grid-template-columns:auto 1fr;gap:6px 22px;font-size:14.5px;color:var(--muted);margin-top:8px}
 .ccard .hours b{color:var(--ink)}
-.ccard .btn{display:inline-block;background:var(--green);color:#fff;font-weight:700;font-size:14px;
+.ccard .btn{display:inline-block;background:var(--brand);color:#fff;font-weight:700;font-size:14px;
 padding:12px 22px;border-radius:99px;margin-top:12px}
 .ccard .btn:hover{background:var(--deep)}
 @media(max-width:760px){.contact-grid{grid-template-columns:1fr}}

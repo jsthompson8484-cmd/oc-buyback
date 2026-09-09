@@ -4,7 +4,7 @@
 //
 // Copy rules: no insurance mentions, no marketplace language, no PayPal.
 
-const GREEN = "#167a46", DEEP = "#0e3d26", GROUND = "#f5f8f4", MUTED = "#5c6e64", LINE = "#e3eae2";
+const GREEN = "#2D8631", DEEP = "#1E6323", GROUND = "#f5f8f4", MUTED = "#5c6e64", LINE = "#e3eae2";
 
 const money = (v) => "$" + Number(v).toLocaleString(undefined, { maximumFractionDigits: 2 });
 const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
