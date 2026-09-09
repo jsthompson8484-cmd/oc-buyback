@@ -42,7 +42,16 @@ transition:transform .12s,box-shadow .12s}
 .brand-h{font:700 20px "Bricolage Grotesque",sans-serif;color:var(--deep);margin:34px 0 14px}
 .back{position:fixed;bottom:18px;right:18px;background:var(--surface);border:1px solid var(--line);color:var(--muted);
 font-size:12px;font-weight:700;padding:9px 14px;border-radius:99px;z-index:20;box-shadow:0 2px 10px rgba(14,61,38,.08)}
-footer{border-top:1px solid var(--line);padding:30px 0;color:var(--muted);font-size:13.5px}
+footer{background:var(--deep);color:#bcd6c4;font-size:13.5px;margin-top:40px}
+footer .cols{display:grid;grid-template-columns:1.3fr 1fr 1fr 1fr;gap:36px;padding:44px 0 30px}
+footer h4{font:700 13px "Bricolage Grotesque",sans-serif;letter-spacing:.08em;text-transform:uppercase;color:var(--lime);margin:0 0 12px}
+footer a{color:#bcd6c4}
+footer a:hover{color:#fff}
+footer .flinks{display:grid;gap:7px}
+footer .fbrand img{height:34px;margin-bottom:12px}
+footer .fbrand p{margin:0 0 10px;line-height:1.6;max-width:34ch}
+footer .fbot{border-top:1px solid rgba(255,255,255,.12);padding:16px 0;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:12.5px;color:#8fa595}
+@media(max-width:860px){footer .cols{grid-template-columns:1fr 1fr}}
 </style></head><body>
 <header><div class="wrap nav">
   <a class="logo" href="../../../index.html">OC<i>BuyBack</i></a>
@@ -109,9 +118,39 @@ cartBadge();
 <img src="https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/oneplus/8-5g.webp" alt="" onerror="this.style.display='none'">
 <div class="name">8 5G</div><div class="val">$90 <small>up to</small></div></a></div>
 </div>
-<footer><div class="wrap" style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;padding:0">
-<div>© 2026 OCBuyBack · Brea, CA</div>
-<div><a href="https://x.com/buy_oc" target="_blank" rel="noopener">X</a> · <a href="https://www.facebook.com/ocbuyback" target="_blank" rel="noopener">Facebook</a> · <a href="https://www.instagram.com/ocbuyback" target="_blank" rel="noopener">Instagram</a></div>
-<div><a href="../../../privacy-policy/index.html">Privacy</a> · <a href="../../../terms-of-service/index.html">Terms</a> · <a href="../../../faq/index.html">FAQ</a> · <a href="../../../contact-us/index.html">Contact</a></div></div></footer>
+<footer>
+<div class="wrap">
+  <div class="cols">
+    <div class="fbrand">
+      <img src="../../../assets/logo-white.png" alt="OCBuyBack">
+      <p>Cash for phones, tablets, watches, consoles and more — Brea's local buyback shop. Instant quotes, free shipping, paid within 1 business day.</p>
+      <p>1203 W Imperial Hwy, STE 103<br>Brea, CA 92821<br><a href="tel:657-286-8274">657-286-8274</a> · <a href="mailto:support@ocbuyback.com">support@ocbuyback.com</a><br>Mon–Fri 10 AM – 6 PM</p>
+    </div>
+    <div><h4>Sell your device</h4><div class="flinks">
+      <a href="../../../sell/cell-phone/apple/index.html">Apple iPhone</a>
+      <a href="../../../sell/cell-phone/samsung/index.html">Samsung Galaxy</a>
+      <a href="../../../sell/cell-phone/google/index.html">Google Pixel</a>
+      <a href="../../../sell/tablet/apple/index.html">Apple iPad</a>
+      <a href="../../../sell/smartwatch/apple/index.html">Apple Watch</a>
+      <a href="../../../sell/game-console/index.html">Game Consoles</a>
+      <a href="../../../sell/index.html">All devices →</a>
+    </div></div>
+    <div><h4>OCBuyBack</h4><div class="flinks">
+      <a href="../../../trade-in/track/index.html">Track your order</a>
+      <a href="../../../faq/index.html">FAQ</a>
+      <a href="../../../blog/index.html">Blog</a>
+      <a href="../../../locations/brea-ca-92821/index.html">Our Brea store</a>
+      <a href="../../../contact-us/index.html">Contact us</a>
+    </div></div>
+    <div><h4>Follow us</h4><div class="flinks">
+      <a href="https://x.com/buy_oc" target="_blank" rel="noopener">X</a><a href="https://www.facebook.com/ocbuyback" target="_blank" rel="noopener">Facebook</a><a href="https://www.instagram.com/ocbuyback" target="_blank" rel="noopener">Instagram</a>
+    </div>
+    <p style="margin-top:14px">★ 4.7 on Google<br>★ 4.8 on Trustpilot</p></div>
+  </div>
+  <div class="fbot">
+    <div>© 2026 OCBuyBack · Brea, CA</div>
+    <div><a href="../../../privacy-policy/index.html">Privacy Policy</a> · <a href="../../../terms-of-service/index.html">Terms of Service</a></div>
+  </div>
+</div></footer>
 <a class="back" href="../../../../index.html">← All concepts</a>
 </body></html>
