@@ -125,21 +125,22 @@ function cartGet(){ try { return JSON.parse(localStorage.getItem("ocb_cart")) ||
   <div class="actions">
     <a class="btn primary" href="sell/index.html">Get an instant quote</a>
   </div>
-  <div class="cats">
-    <a class="cat" href="sell/cell-phone/index.html"><img src="https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/apple/iphone-16.webp" alt="">Cell Phones</a>
-    <a class="cat" href="sell/tablet/index.html"><img src="https://s3.amazonaws.com/fliptech-assets/images/devices/tablets/apple/ipad-air-11-m4-2026.webp" alt="">Tablets</a>
-    <a class="cat" href="sell/smartwatch/index.html"><img src="https://s3.amazonaws.com/fliptech-assets/images/devices/smartwatches/apple/series-11-gps.webp" alt="">Watches</a>
-    <a class="cat" href="sell/game-console/index.html"><img src="https://s3.amazonaws.com/fliptech-assets/images/devices/game-consoles/nintendo/switch-2.webp" alt="">Consoles</a>
-    <a class="cat" href="sell/gopro/index.html"><img src="https://s3.amazonaws.com/fliptech-assets/images/devices/gopros/gopro/hero-9-black.webp" alt="">GoPro</a>
-    <a class="cat" href="sell/vr/index.html"><img src="https://s3.amazonaws.com/fliptech-assets/images/devices/vrs/apple/vision-pro-m5.webp" alt="">VR</a>
-    <a class="cat" href="sell/headphones/index.html"><img src="https://s3.amazonaws.com/fliptech-assets/images/devices/headphones/apple/airpods-max.webp" alt="">Headphones</a>
-    <a class="cat" href="sell/ipod/index.html"><img src="https://s3.amazonaws.com/fliptech-assets/images/devices/ipods/apple/ipod-touch-7th-gen.webp" alt="">iPods</a>
-    <a class="cat" href="sell/macbook/index.html"><img src="assets/devices/macbook-pro-14-2024.webp" alt="">MacBooks</a>
-    <a class="cat" href="sell/imac/index.html"><img src="assets/devices/imac-24-2024.webp" alt="">iMacs</a>
-    <a class="cat" href="sell/mac-mini/index.html"><img src="assets/devices/mac-mini-2024.webp" alt="">Mac Mini</a>
-    <a class="cat" href="sell/mac-studio/index.html"><img src="assets/devices/mac-studio-2025.webp" alt="">Mac Studio</a>
-    <a class="cat" href="sell/mac-pro/index.html"><img src="assets/devices/mac-pro-2023.webp" alt="">Mac Pro</a>
-  </div>
+  <div class="devgrid" style="padding:44px 0 8px;text-align:left">
+    <a class="dev" href="sell/cell-phone/index.html"><img src="https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/apple/iphone-16.webp" alt="Cell Phones"><div class="name">Cell Phones</div><div class="val">$1,155 <small>up to</small></div></a>
+    <a class="dev" href="sell/tablet/index.html"><img src="https://s3.amazonaws.com/fliptech-assets/images/devices/tablets/apple/ipad-air-11-m4-2026.webp" alt="Tablets"><div class="name">Tablets</div><div class="val">$1,225 <small>up to</small></div></a>
+    <a class="dev" href="sell/smartwatch/index.html"><img src="https://s3.amazonaws.com/fliptech-assets/images/devices/smartwatches/apple/series-11-gps.webp" alt="Watches"><div class="name">Watches</div><div class="val">$390 <small>up to</small></div></a>
+    <a class="dev" href="sell/game-console/index.html"><img src="https://s3.amazonaws.com/fliptech-assets/images/devices/game-consoles/nintendo/switch-2.webp" alt="Consoles"><div class="name">Consoles</div><div class="val">$525 <small>up to</small></div></a>
+    <a class="dev" href="sell/macbook/index.html"><img src="assets/devices/macbook-pro-14-2024.webp" alt="MacBooks"><div class="name">MacBooks</div><div class="val">$2,594 <small>up to</small></div></a>
+    <a class="dev" href="sell/imac/index.html"><img src="assets/devices/imac-24-2024.webp" alt="iMacs"><div class="name">iMacs</div><div class="val">$1,283 <small>up to</small></div></a>
+    <a class="dev" href="sell/mac-studio/index.html"><img src="assets/devices/mac-studio-2025.webp" alt="Mac Studio"><div class="name">Mac Studio</div><div class="val">$10,500 <small>up to</small></div></a>
+    <a class="dev" href="sell/mac-mini/index.html"><img src="assets/devices/mac-mini-2024.webp" alt="Mac Mini"><div class="name">Mac Mini</div><div class="val">$349 <small>up to</small></div></a>
+    <a class="dev" href="sell/mac-pro/index.html"><img src="assets/devices/mac-pro-2023.webp" alt="Mac Pro"><div class="name">Mac Pro</div><div class="val">$4,944 <small>up to</small></div></a>
+    <a class="dev" href="sell/vr/index.html"><img src="https://s3.amazonaws.com/fliptech-assets/images/devices/vrs/apple/vision-pro-m5.webp" alt="VR"><div class="name">VR</div><div class="val">$2,190 <small>up to</small></div></a>
+    <a class="dev" href="sell/headphones/index.html"><img src="https://s3.amazonaws.com/fliptech-assets/images/devices/headphones/apple/airpods-max.webp" alt="Headphones"><div class="name">Headphones</div><div class="val">$205 <small>up to</small></div></a>
+    <a class="dev" href="sell/gopro/index.html"><img src="https://s3.amazonaws.com/fliptech-assets/images/devices/gopros/gopro/hero-9-black.webp" alt="GoPro"><div class="name">GoPro</div><div class="val">$100 <small>up to</small></div></a>
+    <a class="dev" href="sell/ipod/index.html"><img src="https://s3.amazonaws.com/fliptech-assets/images/devices/ipods/apple/ipod-touch-7th-gen.webp" alt="iPods"><div class="name">iPods</div><div class="val">$70 <small>up to</small></div></a>
+    <a class="dev" href="sell/index.html" style="display:flex;flex-direction:column;justify-content:center;text-align:center"><div class="name" style="font-size:17px">Every device we buy</div><div style="color:var(--muted);font-size:13.5px;margin-top:6px">Instant quotes on 200+ models →</div></a>
+  
 </div>
 
 <section><div class="wrap">
@@ -157,18 +158,6 @@ function cartGet(){ try { return JSON.parse(localStorage.getItem("ocb_cart")) ||
   </div>
 </div></section>
 
-<section><div class="wrap">
-  <h2>Now buying Macs</h2>
-  <p class="kick">MacBooks, iMacs, Mac Mini, Mac Studio and Mac Pro — Apple Silicon and Intel, priced daily.</p>
-  <div class="devgrid">
-    <a class="dev" href="sell/macbook/index.html"><img src="assets/devices/macbook-pro-14-2024.webp" alt="MacBooks"><div class="name">MacBooks</div><div class="val">$2,594 <small>up to</small></div></a>
-    <a class="dev" href="sell/imac/index.html"><img src="assets/devices/imac-24-2024.webp" alt="iMacs"><div class="name">iMacs</div><div class="val">$1,283 <small>up to</small></div></a>
-    <a class="dev" href="sell/mac-studio/index.html"><img src="assets/devices/mac-studio-2025.webp" alt="Mac Studio"><div class="name">Mac Studio</div><div class="val">$10,500 <small>up to</small></div></a>
-    <a class="dev" href="sell/mac-pro/index.html"><img src="assets/devices/mac-pro-2023.webp" alt="Mac Pro"><div class="name">Mac Pro</div><div class="val">$4,944 <small>up to</small></div></a>
-    <a class="dev" href="sell/mac-mini/index.html"><img src="assets/devices/mac-mini-2024.webp" alt="Mac Mini"><div class="name">Mac Mini</div><div class="val">$349 <small>up to</small></div></a>
-    <a class="dev" href="sell/index.html" style="display:flex;flex-direction:column;justify-content:center;text-align:center"><div class="name" style="font-size:17px">Selling a different Mac?</div><div style="color:var(--muted);font-size:13.5px;margin:6px 0 10px">35 models priced right now — desktops and laptops back to 2012.</div><div class="val" style="font-size:14px">Browse everything →</div></a>
-  </div>
-</div></section>
 
 <section><div class="wrap">
   <h2>Three steps to pay day</h2>

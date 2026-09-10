@@ -1345,6 +1345,45 @@ write(OUT/"locations"/"brea-ca-92821"/"index.html",
 # Local-intent pages: directions + drive time from each city into the Brea
 # store, with the quote flow linked (never duplicated — quotes happen on the
 # device pages). LocalBusiness schema stays on the Brea page only.
+# Content layer targets city-modified device queries ("sell iphone fullerton"):
+# live top payouts per device (auto-updates each build) + Q&A in natural
+# search language. All numbers come from the catalog — nothing invented.
+
+def _top_devices(cat, brand=None, n=1):
+    devs = [(b, d, m) for b, dd in TREE.get(cat, {}).items() for d, m in dd.items()
+            if m["enabled"] and model_max(m) > 0 and (brand is None or b == brand)]
+    return sorted(devs, key=lambda x: -model_max(x[2]))[:n]
+
+def _dev_card(prefix, cat, b, d, m):
+    return (f'<a class="card" href="{prefix}sell/{CAT_SLUG[cat]}/{slug(b)}/{mslug(m, d)}/index.html">'
+            f'<img src="{img_url(cat, b, d)}" alt="{html.escape(d)}" onerror="this.style.display=\'none\'">'
+            f'<div class="name">{html.escape(d)}</div><div class="val">up to {money(model_max(m))}</div></a>')
+
+TOP_IPHONES = _top_devices("Cell Phone", "Apple", 6)
+TOP_OTHERS = [(cat, *t) for cat, brand in [("Cell Phone", "Samsung"), ("Tablet", "Apple"), ("Macbook", "Apple"),
+                                           ("Smartwatch", "Apple"), ("Game Console", None), ("Headphones", None)]
+              for t in _top_devices(cat, brand, 1)]
+IPHONE_MAX = money(max((model_max(m) for _, _, m in TOP_IPHONES), default=0))
+
+def city_faq(city, mins):
+    return [
+        (f"Is there an iPhone buyback store near {city}?",
+         f"Yes — OCBuyBack in Brea is {mins} from {city} and buys iPhones every weekday. "
+         "Get an instant quote online, then bring your phone in and get paid in cash after a 10-minute evaluation."),
+        (f"How much can I get for my iPhone near {city}?",
+         f"Right now iPhones go up to {IPHONE_MAX} depending on the model, storage, and condition. "
+         "The price you see online is the price you get in store, and it locks for 14 days when you start a trade-in."),
+        ("Do I need an appointment?",
+         "No — walk-ins are welcome Monday to Friday, 10 AM to 6 PM. Starting your trade-in online first "
+         "means your price is already locked when you arrive; just bring your order number."),
+        ("What should I bring?",
+         "Your device and a photo ID. Sign out of iCloud or your Google account before you come in — "
+         "or ask us and we'll help you do it at the counter."),
+        (f"Can I sell without driving to Brea?",
+         f"Yes — every quote comes with a free prepaid USPS shipping label with a QR code (no printer needed), "
+         f"so you can mail your device in from {city} and get paid within one business day of it arriving."),
+    ]
+
 def city_cat_cards(prefix):
     cards = []
     for cat in LIVE_CATS:
@@ -1386,6 +1425,18 @@ for cslug_, city, dist, mins, route in CITY_PAGES:
   </div>
   <h2 style="font:700 22px 'Bricolage Grotesque',sans-serif;color:var(--deep);margin:44px 0 16px">What are you selling?</h2>
   <div class="grid">{city_cat_cards("../../")}</div>
+  <h2 style="font:700 22px 'Bricolage Grotesque',sans-serif;color:var(--deep);margin:44px 0 6px">Sell your iPhone near {city}</h2>
+  <p style="color:var(--muted);margin:0 0 16px">The most-traded devices at our shop — every price below is live,
+  locks for 14 days online, and pays the same in store. {mins.capitalize()} from {city}, or ship it free.</p>
+  <div class="grid">{"".join(_dev_card("../../", "Cell Phone", b, d, m) for b, d, m in TOP_IPHONES)}</div>
+  <h2 style="font:700 22px 'Bricolage Grotesque',sans-serif;color:var(--deep);margin:44px 0 6px">Other top payouts near {city}</h2>
+  <p style="color:var(--muted);margin:0 0 16px">Galaxy phones, iPads, MacBooks, Apple Watches, consoles and headphones —
+  bring several devices in one visit and get paid for everything at once.</p>
+  <div class="grid">{"".join(_dev_card("../../", cat, b, d, m) for cat, b, d, m in TOP_OTHERS)}</div>
+  <h2 style="font:700 22px 'Bricolage Grotesque',sans-serif;color:var(--deep);margin:44px 0 16px">Selling near {city} — common questions</h2>
+  <div class="contact-grid">
+    {"".join(f'<div class="ccard"><h2>{html.escape(q)}</h2><p style="color:var(--muted)">{html.escape(a)}</p></div>' for q, a in city_faq(city, mins))}
+  </div>
   <p style="color:var(--muted);font-size:14px;margin-top:26px">Also serving
   {" · ".join(f'<a href="../{s}/index.html" style="color:var(--green)">{c}</a>' for s, c, *_ in CITY_PAGES if s != cslug_)}
   · <a href="../brea-ca-92821/index.html" style="color:var(--green)">Brea</a></p>
@@ -1396,23 +1447,19 @@ for cslug_, city, dist, mins, route in CITY_PAGES:
                desc=f"Sell your phone, tablet, watch or console for cash near {city}, CA — OCBuyBack in Brea is {mins} away. Instant online quote locked for 14 days, cash on the spot, or ship free.",
                schema=[breadcrumbs([("Home", "/"), ("Brea store", "/locations/brea-ca-92821"), (f"Near {city}", None)])]))
 
-# ---- homepage Mac payouts (kept current with the daily price feed) ----
-# The homepage is a static source file; Mac trade-in values change daily via
-# the price-feed sync, so each build rewrites the "Now buying Macs" card
-# values and the priced-model count from the live catalog.
+# ---- homepage category payouts (kept current with catalog + price feed) ----
+# The homepage is a static source file; each build rewrites every hero
+# category card's "up to $X" from the live catalog so daily price changes
+# (and the Mac feed) reach the homepage without manual edits.
 _idx = OUT / "index.html"
 _h = _idx.read_text()
-_mac_cats = ["Macbook", "iMac", "Mac Mini", "Mac Studio", "Mac Pro"]
-_total_priced = 0
-for _cat in _mac_cats:
+for _cat in LIVE_CATS:
     _devs = [m for b in TREE.get(_cat, {}).values() for m in b.values() if m["enabled"]]
     _mx = max((model_max(m) for m in _devs), default=0)
-    _total_priced += sum(1 for m in _devs if model_max(m) > 0)
     if _mx:
         _h = re.sub(
             r'(href="sell/' + CAT_SLUG[_cat] + r'/index\.html"><img[^>]*><div class="name">[^<]*</div><div class="val">)\$[\d,]+',
             lambda mo: mo.group(1) + money(_mx), _h)
-_h = re.sub(r"\d+ models priced right now", f"{_total_priced} models priced right now", _h)
 _idx.write_text(_h)
 
 # ---- sitemap.xml + robots.txt ----
