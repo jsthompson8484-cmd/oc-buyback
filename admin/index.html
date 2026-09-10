@@ -164,6 +164,12 @@ min-height:260px;max-height:46vh;overflow-y:auto;padding:14px 16px;font-size:14.
       <span class="muted" id="catCount"></span>
       <button class="btn" id="catSave" style="margin-left:auto;display:none">Save changes (<span id="dirtyN">0</span>)</button>
     </div></div>
+    <div class="panel"><details id="condPanel">
+      <summary style="font-weight:700;font-size:15px;cursor:pointer">📝 Condition descriptions — edit what customers see</summary>
+      <p class="muted" style="font-size:12.5px;margin:8px 0 12px">"Card text" is the one-liner on each condition card; "What this means" is the panel that expands when a customer selects the condition (intro sentence + one criterion per line). Changes go live on the next site publish.</p>
+      <div id="condEditors"></div>
+      <button class="btn" id="condSave" style="margin-top:6px">Save condition descriptions</button>
+    </details></div>
     <div class="panel" style="overflow-x:auto"><table class="pricegrid" id="catTable">
       <thead><tr><th>On</th><th>Model</th><th>Carrier</th><th>Storage</th>
         <th>Brand New</th><th>Flawless</th><th>Good</th><th>Fair</th><th>Minor Damage</th><th>Broken</th></tr></thead>
@@ -1063,6 +1069,38 @@ $("#feedCheck").onclick = async () => {
     renderFeeds(results);
   }
   $("#feedCheck").disabled = false; $("#feedCheck").textContent = "Check feeds now";
+};
+
+// ---------- condition descriptions ----------
+const COND_NAMES = ["Brand New","Flawless","Good","Fair","Minor Damage","Broken"];
+let condLoaded = false;
+$("#condPanel").addEventListener("toggle", async () => {
+  if (!$("#condPanel").open || condLoaded) return;
+  condLoaded = true;
+  const { data } = await sb.from("site_settings").select("value").eq("key", "conditions");
+  const conds = data?.[0]?.value || {};
+  $("#condEditors").innerHTML = COND_NAMES.map((c) => {
+    const v = conds[c] || { short: "", intro: "", steps: [] };
+    return `<div style="border:1px solid var(--line);border-radius:10px;padding:12px 14px;margin-bottom:10px" data-cond="${c}">
+      <b style="font-size:14px">${c}</b>
+      <input class="cShort" value="${esc(v.short)}" placeholder="Card text (one line)" style="width:100%;margin-top:6px">
+      <input class="cIntro" value="${esc(v.intro)}" placeholder="Expanded panel intro sentence" style="width:100%;margin-top:6px">
+      <textarea class="cSteps" rows="4" placeholder="Criteria — one per line"
+        style="width:100%;margin-top:6px">${esc((v.steps || []).join("\n"))}</textarea>
+    </div>`;
+  }).join("");
+});
+$("#condSave").onclick = async () => {
+  const value = {};
+  document.querySelectorAll("#condEditors [data-cond]").forEach((el) => {
+    value[el.dataset.cond] = {
+      short: el.querySelector(".cShort").value.trim(),
+      intro: el.querySelector(".cIntro").value.trim(),
+      steps: el.querySelector(".cSteps").value.split("\n").map((s) => s.trim()).filter(Boolean),
+    };
+  });
+  const { error } = await sb.from("site_settings").upsert({ key: "conditions", value });
+  toast(error ? error.message : "Saved — descriptions go live on the next site publish");
 };
 
 // ---------- add device to catalog ----------

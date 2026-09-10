@@ -1,0 +1,71 @@
+{
+ "Fair": {
+  "intro": "Moderate to excessive signs of wear \u2014 heavy scratching, deep scratches you can feel, or major dents \u2014 but fully functional. All of the following must be true:",
+  "short": "Visible scratches or dings, fully functional.",
+  "steps": [
+   "Front and back glass is free of any cracks or chips.",
+   "Display is free of defects such as dead pixels, white spots, or burn-in.",
+   "Powers on and functions 100% as intended.",
+   "Paid off and free of any financial obligations."
+  ]
+ },
+ "Good": {
+  "intro": "The most common condition \u2014 average wear and tear from normal use, 100% fully functional, no water damage. All of the following must be true:",
+  "short": "Light wear you have to look for. Works perfectly.",
+  "steps": [
+   "No major scratches, deep scratches, chips, or dents.",
+   "Display is free of defects such as dead pixels, white spots, or burn-in.",
+   "Original battery above 85% capacity.",
+   "Powers on and functions 100% as intended.",
+   "Paid off and free of any financial obligations."
+  ]
+ },
+ "Broken": {
+  "intro": "More than one issue from the Minor Damage list \u2014 or water damage, bent/dented housing, or LCD damage (spots, lines). More than one of the following is true:",
+  "short": "Doesn't power on or has major faults.",
+  "steps": [
+   "Cracked display or damaged housing.",
+   "Display defects such as dead pixels, white spots, or burn-in.",
+   "Faulty headphone jack or vibrate motor.",
+   "Battery is dead or has poor life.",
+   "Faulty microphone or speaker.",
+   "Malfunctioning buttons or switches.",
+   "Another functional defect.",
+   "Signs of liquid intrusion or damage."
+  ]
+ },
+ "Flawless": {
+  "intro": "100% perfect condition \u2014 like new out of the box and fully functional. All of the following must be true:",
+  "short": "Like new \u2014 zero scratches, fully functional.",
+  "steps": [
+   "Zero scratches, scuffs, or other marks. Looks like new.",
+   "Display is free of defects such as dead pixels, white spots, or burn-in.",
+   "Original battery above 90% capacity.",
+   "Powers on and functions 100% as intended.",
+   "Paid off and free of any financial obligations."
+  ]
+ },
+ "Brand New": {
+  "intro": "An unopened item in the original packaging/box. All of the following must be true:",
+  "short": "Sealed in box, never activated.",
+  "steps": [
+   "Plastic film still on the device and has not been reapplied.",
+   "Device is not activated.",
+   "Comes with the original box with matching serial number.",
+   "Contains original accessories sealed and untouched.",
+   "Paid off and free of any financial obligations."
+  ]
+ },
+ "Minor Damage": {
+  "intro": "The device has only ONE issue, such as a cracked screen without display damage, cracked camera or back glass, or a bad button \u2014 and can be fully tested. One of the following is true:",
+  "short": "Cracked screen or other damage, still works.",
+  "steps": [
+   "Cracked front screen without LCD damage, cracked back glass or camera.",
+   "Display defects such as white spots or minor LCD burn-in.",
+   "Faulty headphone jack or vibrate motor.",
+   "Faulty microphone or speaker.",
+   "Malfunctioning buttons or switches.",
+   "Another functional defect (calls, charging, fingerprint sensor, etc.). Note: water damage counts as Broken even if the device works."
+  ]
+ }
+}

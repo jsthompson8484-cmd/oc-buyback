@@ -108,6 +108,16 @@ COND_FULL = {
    "Faulty headphone jack or vibrate motor.","Battery is dead or has poor life.","Faulty microphone or speaker.",
    "Malfunctioning buttons or switches.","Another functional defect.","Signs of liquid intrusion or damage."]),
 }
+# admin-edited condition copy wins over the built-in defaults
+try:
+    _c = json.load(open(ROOT / "data" / "conditions.json"))
+    for _name, _v in _c.items():
+        if _name in COND_DESC and _v.get("short"): COND_DESC[_name] = _v["short"]
+        if _name in COND_FULL and _v.get("intro") and _v.get("steps"):
+            COND_FULL[_name] = (_v["intro"], _v["steps"])
+except FileNotFoundError:
+    pass
+
 SOCIAL = [("X", "https://x.com/buy_oc"), ("Facebook", "https://www.facebook.com/ocbuyback"),
           ("Instagram", "https://www.instagram.com/ocbuyback")]
 BATTERY_NOTE = ('<p style="color:var(--muted);font-size:13px;margin:8px 0 0">iPhone battery health shows under '

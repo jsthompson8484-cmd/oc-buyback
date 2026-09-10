@@ -37,6 +37,16 @@ for r in rows:
         v[r["condition"]] = float(r["price"])
 
 json.dump(tree, open(ROOT / "data" / "catalog.json", "w"), indent=1)
+
+# condition copy (short card text + expanded criteria), editable in the admin
+r = subprocess.run(["curl", "-s", f"{url}/rest/v1/site_settings?key=eq.conditions&select=value",
+                    "-H", f"apikey: {key}"], capture_output=True, text=True)
+try:
+    conds = json.loads(r.stdout)[0]["value"]
+    json.dump(conds, open(ROOT / "data" / "conditions.json", "w"), indent=1)
+    print(f"synced condition copy for {len(conds)} conditions")
+except (IndexError, KeyError, ValueError):
+    print("condition copy not in DB - generator falls back to built-ins")
 models = sum(len(b) for c in tree.values() for b in c.values())
 sellable = sum(1 for c in tree.values() for b in c.values() for m in b.values()
                if m["enabled"] and any(p for cr in m["variants"].values() for s in cr.values() for p in s.values()))
