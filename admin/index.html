@@ -1145,6 +1145,10 @@ $("#devAdd").onclick = async () => {
       <span class="muted" id="nImgMsg" style="font-size:12.5px"></span>
     </div>
     <div style="margin-top:14px"><b style="font-size:14px">Variants</b>
+      <div class="row" style="margin:6px 0 8px">
+        <span class="muted" style="font-size:12.5px">Start from:</span>
+        <select id="nClone" style="max-width:260px"><option value="">Blank</option></select>
+      </div>
       <p class="muted" style="font-size:12.5px;margin:2px 0 8px">One row per carrier + storage combo (phones: "Unlocked"/"128GB"; watches use case + size like "Titanium"/"49mm"; consoles can leave both as "-"). Prices start at $0 — set them in the grid after creating.</p>
       <div id="nVars"></div>
       <button class="btn sm ghost" id="nVarAdd" type="button">+ Add variant</button>
@@ -1165,7 +1169,38 @@ $("#devAdd").onclick = async () => {
   };
   varRow("Unlocked", "128GB");
   $("#nVarAdd").onclick = () => varRow();
-  $("#nBrand").onchange = () => $("#nBrandName").style.display = $("#nBrand").value === "__new" ? "" : "none";
+
+  // "Start from" — clone the carrier×storage matrix (and weight) of an existing
+  // model, defaulting to the newest one for the picked category + brand.
+  async function refreshCloneOptions(){
+    const bid = $("#nBrand").value;
+    if (bid === "__new") { $("#nClone").innerHTML = '<option value="">Blank</option>'; return; }
+    const { data: sibs } = await sb.from("models").select("id,name,weight_oz")
+      .eq("category_id", $("#nCat").value).eq("brand_id", bid)
+      .order("sort", { ascending: false }).limit(25);
+    $("#nClone").innerHTML = '<option value="">Blank</option>' +
+      (sibs || []).map((m) => `<option value="${m.id}" data-w="${m.weight_oz ?? ""}">Copy of ${esc(m.name)}</option>`).join("");
+    if (sibs?.length) { $("#nClone").value = sibs[0].id; await applyClone(); }
+  }
+  async function applyClone(){
+    const mid = $("#nClone").value;
+    if (!mid) return;
+    const { data: vars } = await sb.from("variants").select("carrier,storage").eq("model_id", mid);
+    if (!vars?.length) return;
+    $("#nVars").innerHTML = "";
+    vars.sort((a, b) => a.carrier.localeCompare(b.carrier) || a.storage.localeCompare(b.storage, undefined, { numeric: true }))
+        .forEach((v) => varRow(v.carrier, v.storage));
+    const w = $("#nClone option:checked")?.dataset?.w;
+    if (w && !$("#nWeight").value) $("#nWeight").value = w;
+    toast(`Copied ${vars.length} variants from ${$("#nClone option:checked").textContent.replace("Copy of ", "")}`);
+  }
+  $("#nClone").onchange = applyClone;
+  $("#nCat").onchange = refreshCloneOptions;
+  refreshCloneOptions();
+  $("#nBrand").onchange = () => {
+    $("#nBrandName").style.display = $("#nBrand").value === "__new" ? "" : "none";
+    refreshCloneOptions();
+  };
   $("#nImgBtn").onclick = () => $("#nImgFile").click();
   $("#nImgFile").onchange = async (e) => {
     const f = e.target.files[0]; if (!f) return;
