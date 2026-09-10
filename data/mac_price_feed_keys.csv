@@ -1,0 +1,562 @@
+category,model,model_slug,processor,memory
+iMac,"iMac 24"" (2024)",imac-24-2024,M4 10-Core CPU 10-Core GPU,16GB
+iMac,"iMac 24"" (2024)",imac-24-2024,M4 10-Core CPU 10-Core GPU,24GB
+iMac,"iMac 24"" (2024)",imac-24-2024,M4 10-Core CPU 10-Core GPU,32GB
+iMac,"iMac 24"" (2024)",imac-24-2024,M4 8-Core CPU 8-Core GPU,16GB
+iMac,"iMac 24"" (2024)",imac-24-2024,M4 8-Core CPU 8-Core GPU,24GB
+iMac,"iMac 24"" (2023)",imac-24-2023,M3 10-Core CPU 16-Core GPU,16GB
+iMac,"iMac 24"" (2023)",imac-24-2023,M3 10-Core CPU 16-Core GPU,24GB
+iMac,"iMac 24"" (2023)",imac-24-2023,M3 10-Core CPU 16-Core GPU,8GB
+iMac,"iMac 24"" (2023)",imac-24-2023,M3 8-Core CPU 10-Core GPU,16GB
+iMac,"iMac 24"" (2023)",imac-24-2023,M3 8-Core CPU 10-Core GPU,24GB
+iMac,"iMac 24"" (2023)",imac-24-2023,M3 8-Core CPU 10-Core GPU,8GB
+iMac,"iMac 24"" (2023)",imac-24-2023,M3 8-Core CPU 8-Core GPU,16GB
+iMac,"iMac 24"" (2023)",imac-24-2023,M3 8-Core CPU 8-Core GPU,24GB
+iMac,"iMac 24"" (2023)",imac-24-2023,M3 8-Core CPU 8-Core GPU,8GB
+iMac,"iMac 27"" (2017)",imac-27-2017,i5 3.8GHz,40GB
+iMac,"iMac 27"" (2017)",imac-27-2017,i7 4.0GHz,128GB
+iMac,"iMac 27"" (2017)",imac-27-2017,i7 4.0GHz,24GB
+iMac,"iMac 27"" (2017)",imac-27-2017,i7 4.0GHz,32GB
+iMac,"iMac 27"" (2017)",imac-27-2017,i7 4.0GHz,40GB
+iMac,"iMac 27"" (2017)",imac-27-2017,i7 4.0GHz,64GB
+iMac,"iMac 27"" (2017)",imac-27-2017,i7 4.0GHz,8GB
+iMac,"iMac 27"" (2017)",imac-27-2017,i7 4.2GHz,40GB
+iMac,"iMac 27"" (2015)",imac-27-2015,i5 3.2GHz,128GB
+iMac,"iMac 27"" (2015)",imac-27-2015,i5 3.2GHz,16GB
+iMac,"iMac 27"" (2015)",imac-27-2015,i5 3.2GHz,64GB
+iMac,"iMac 27"" (2014)",imac-27-2014,-,-
+iMac,"iMac 27"" (2014)",imac-27-2014,i5 3.5GHz,40GB
+iMac,"iMac 27"" (2013)",imac-27-2013,-,-
+iMac,"iMac 21.5"" (2017)",imac-21-5-2017,i5 2.3GHz,24GB
+iMac,"iMac 21.5"" (2017)",imac-21-5-2017,i5 3.0GHz,24GB
+iMac,"iMac 21.5"" (2017)",imac-21-5-2017,i5 3.4GHz,24GB
+iMac,"iMac 21.5"" (2017)",imac-21-5-2017,i5 3.4GHz,40GB
+iMac,"iMac 21.5"" (2017)",imac-21-5-2017,i7 3.6GHz,24GB
+Mac Mini,Mac Mini (2026),mac-mini-2026,M5,16GB
+Mac Mini,Mac Mini (2026),mac-mini-2026,M5,24GB
+Mac Mini,Mac Mini (2026),mac-mini-2026,M5,32GB
+Mac Mini,Mac Mini (2026),mac-mini-2026,M5 Pro,24GB
+Mac Mini,Mac Mini (2026),mac-mini-2026,M5 Pro,48GB
+Mac Mini,Mac Mini (2026),mac-mini-2026,M5 Pro,64GB
+Mac Mini,Mac Mini (2024),mac-mini-2024,M4 10-Core CPU 10-Core GPU,16GB
+Mac Mini,Mac Mini (2024),mac-mini-2024,M4 10-Core CPU 10-Core GPU,24GB
+Mac Mini,Mac Mini (2024),mac-mini-2024,M4 10-Core CPU 10-Core GPU,32GB
+Mac Mini,Mac Mini (2024),mac-mini-2024,M4 Pro 12-Core CPU 16-Core GPU,24GB
+Mac Mini,Mac Mini (2024),mac-mini-2024,M4 Pro 14-Core CPU 20-Core GPU,24GB
+Mac Mini,Mac Mini (2024),mac-mini-2024,M4 Pro 14-Core CPU 20-Core GPU,48GB
+Mac Mini,Mac Mini (2024),mac-mini-2024,M4 Pro 14-Core CPU 20-Core GPU,64GB
+Mac Mini,Mac Mini (2023),mac-mini-2023,M2 10-Core CPU 16-Core GPU,16GB
+Mac Mini,Mac Mini (2023),mac-mini-2023,M2 10-Core CPU 16-Core GPU,24GB
+Mac Mini,Mac Mini (2023),mac-mini-2023,M2 10-Core CPU 16-Core GPU,32GB
+Mac Mini,Mac Mini (2023),mac-mini-2023,M2 12-Core CPU 19-Core GPU,16GB
+Mac Mini,Mac Mini (2023),mac-mini-2023,M2 12-Core CPU 19-Core GPU,24GB
+Mac Mini,Mac Mini (2023),mac-mini-2023,M2 12-Core CPU 19-Core GPU,32GB
+Mac Mini,Mac Mini (2023),mac-mini-2023,M2 8-Core CPU 10-Core GPU,16GB
+Mac Mini,Mac Mini (2023),mac-mini-2023,M2 8-Core CPU 10-Core GPU,24GB
+Mac Mini,Mac Mini (2023),mac-mini-2023,M2 8-Core CPU 10-Core GPU,32GB
+Mac Mini,Mac Mini (2023),mac-mini-2023,M2 8-Core CPU 10-Core GPU,8GB
+Mac Mini,Mac Mini (2023),mac-mini-2023,M2 Pro 10-Core CPU 16-Core GPU,16GB
+Mac Mini,Mac Mini (2023),mac-mini-2023,M2 Pro 10-Core CPU 16-Core GPU,24GB
+Mac Mini,Mac Mini (2023),mac-mini-2023,M2 Pro 10-Core CPU 16-Core GPU,32GB
+Mac Mini,Mac Mini (2023),mac-mini-2023,M2 Pro 12-Core CPU 19-Core GPU,16GB
+Mac Mini,Mac Mini (2023),mac-mini-2023,M2 Pro 12-Core CPU 19-Core GPU,32GB
+Mac Mini,Mac Mini (2009),mac-mini-2009,-,1GB
+Mac Mini,Mac Mini (2009),mac-mini-2009,-,2GB
+Mac Mini,Mac Mini (2007),mac-mini-2007,-,-
+Mac Pro,Mac Pro (2023),mac-pro-2023,M2 Ultra 24-Core CPU 60-Core GPU,128GB
+Mac Pro,Mac Pro (2023),mac-pro-2023,M2 Ultra 24-Core CPU 60-Core GPU,192GB
+Mac Pro,Mac Pro (2023),mac-pro-2023,M2 Ultra 24-Core CPU 60-Core GPU,64GB
+Mac Pro,Mac Pro (2023),mac-pro-2023,M2 Ultra 24-Core CPU 76-Core GPU,128GB
+Mac Pro,Mac Pro (2023),mac-pro-2023,M2 Ultra 24-Core CPU 76-Core GPU,192GB
+Mac Pro,Mac Pro (2023),mac-pro-2023,M2 Ultra 24-Core CPU 76-Core GPU,64GB
+Mac Pro,Mac Pro (2019),mac-pro-2019,12-Core Xeon,96GB
+Mac Pro,Mac Pro (2010),mac-pro-2010,-,10GB
+Mac Pro,Mac Pro (2010),mac-pro-2010,-,12GB
+Mac Pro,Mac Pro (2010),mac-pro-2010,-,16GB
+Mac Pro,Mac Pro (2010),mac-pro-2010,-,24GB
+Mac Pro,Mac Pro (2010),mac-pro-2010,-,32GB
+Mac Pro,Mac Pro (2010),mac-pro-2010,-,64GB
+Mac Pro,Mac Pro (2010),mac-pro-2010,-,8GB
+Mac Pro,Mac Pro (2009),mac-pro-2009,-,10GB
+Mac Pro,Mac Pro (2009),mac-pro-2009,-,12GB
+Mac Pro,Mac Pro (2009),mac-pro-2009,-,16GB
+Mac Pro,Mac Pro (2009),mac-pro-2009,-,32GB
+Mac Pro,Mac Pro (2009),mac-pro-2009,-,6GB
+Mac Pro,Mac Pro (2009),mac-pro-2009,-,8GB
+Mac Pro,Mac Pro (2008),mac-pro-2008,-,-
+Mac Pro,Mac Pro (2007),mac-pro-2007,-,-
+Mac Pro,Mac Pro (2006),mac-pro-2006,-,-
+Mac Studio,Mac Studio (2026),mac-studio-2026,M5 Max,128GB
+Mac Studio,Mac Studio (2026),mac-studio-2026,M5 Max,36GB
+Mac Studio,Mac Studio (2026),mac-studio-2026,M5 Max,64GB
+Mac Studio,Mac Studio (2026),mac-studio-2026,M5 Ultra,256GB
+Mac Studio,Mac Studio (2026),mac-studio-2026,M5 Ultra,512GB
+Mac Studio,Mac Studio (2026),mac-studio-2026,M5 Ultra,96GB
+Mac Studio,Mac Studio (2025),mac-studio-2025,M3 Ultra 28-Core CPU 60-Core GPU,256GB
+Mac Studio,Mac Studio (2025),mac-studio-2025,M3 Ultra 28-Core CPU 60-Core GPU,96GB
+Mac Studio,Mac Studio (2025),mac-studio-2025,M3 Ultra 32-Core CPU 80-Core GPU,256GB
+Mac Studio,Mac Studio (2025),mac-studio-2025,M3 Ultra 32-Core CPU 80-Core GPU,512GB
+Mac Studio,Mac Studio (2025),mac-studio-2025,M3 Ultra 32-Core CPU 80-Core GPU,96GB
+Mac Studio,Mac Studio (2025),mac-studio-2025,M4 Max 14-Core CPU 32-Core GPU,36GB
+Mac Studio,Mac Studio (2025),mac-studio-2025,M4 Max 16-Core CPU 40-Core GPU,128GB
+Mac Studio,Mac Studio (2025),mac-studio-2025,M4 Max 16-Core CPU 40-Core GPU,48GB
+Mac Studio,Mac Studio (2025),mac-studio-2025,M4 Max 16-Core CPU 40-Core GPU,64GB
+Mac Studio,Mac Studio (2023),mac-studio-2023,M2 Max 12-Core CPU 30-Core GPU,32GB
+Mac Studio,Mac Studio (2023),mac-studio-2023,M2 Max 12-Core CPU 30-Core GPU,64GB
+Mac Studio,Mac Studio (2023),mac-studio-2023,M2 Max 12-Core CPU 30-Core GPU,96GB
+Mac Studio,Mac Studio (2023),mac-studio-2023,M2 Max 12-Core CPU 38-Core GPU,32GB
+Mac Studio,Mac Studio (2023),mac-studio-2023,M2 Max 12-Core CPU 38-Core GPU,64GB
+Mac Studio,Mac Studio (2023),mac-studio-2023,M2 Max 12-Core CPU 38-Core GPU,96GB
+Mac Studio,Mac Studio (2023),mac-studio-2023,M2 Ultra 24-Core CPU 60-Core GPU,128GB
+Mac Studio,Mac Studio (2023),mac-studio-2023,M2 Ultra 24-Core CPU 60-Core GPU,192GB
+Mac Studio,Mac Studio (2023),mac-studio-2023,M2 Ultra 24-Core CPU 60-Core GPU,64GB
+Mac Studio,Mac Studio (2023),mac-studio-2023,M2 Ultra 24-Core CPU 76-Core GPU,128GB
+Mac Studio,Mac Studio (2023),mac-studio-2023,M2 Ultra 24-Core CPU 76-Core GPU,192GB
+Mac Studio,Mac Studio (2023),mac-studio-2023,M2 Ultra 24-Core CPU 76-Core GPU,64GB
+Mac Studio,Mac Studio (2022),mac-studio-2022,M1 Max 10-Core CPU 32-Core GPU,32GB
+Mac Studio,Mac Studio (2022),mac-studio-2022,M1 Max 10-Core CPU 32-Core GPU,64GB
+Mac Studio,Mac Studio (2022),mac-studio-2022,M1 Ultra 20-Core CPU 32-Core CPU,128GB
+Mac Studio,Mac Studio (2022),mac-studio-2022,M1 Ultra 20-Core CPU 32-Core CPU,64GB
+Mac Studio,Mac Studio (2022),mac-studio-2022,M1 Ultra 20-Core CPU 64-Core CPU,128GB
+Mac Studio,Mac Studio (2022),mac-studio-2022,M1 Ultra 20-Core CPU 64-Core CPU,64GB
+Macbook,"MacBook Pro 16"" (2026)",macbook-pro-16-2026,M5 Max,128GB
+Macbook,"MacBook Pro 16"" (2026)",macbook-pro-16-2026,M5 Max,36GB
+Macbook,"MacBook Pro 16"" (2026)",macbook-pro-16-2026,M5 Max,64GB
+Macbook,"MacBook Pro 16"" (2026)",macbook-pro-16-2026,M5 Pro,24GB
+Macbook,"MacBook Pro 16"" (2026)",macbook-pro-16-2026,M5 Pro,48GB
+Macbook,"MacBook Pro 14"" (2026)",macbook-pro-14-2026,M5 Max,128GB
+Macbook,"MacBook Pro 14"" (2026)",macbook-pro-14-2026,M5 Max,36GB
+Macbook,"MacBook Pro 14"" (2026)",macbook-pro-14-2026,M5 Max,64GB
+Macbook,"MacBook Pro 14"" (2026)",macbook-pro-14-2026,M5 Pro,24GB
+Macbook,"MacBook Pro 14"" (2026)",macbook-pro-14-2026,M5 Pro,48GB
+Macbook,"MacBook Air 15"" (2026)",macbook-air-15-2026,M5 10-Core CPU 10-Core GPU,16GB
+Macbook,"MacBook Air 15"" (2026)",macbook-air-15-2026,M5 10-Core CPU 10-Core GPU,24GB
+Macbook,"MacBook Air 15"" (2026)",macbook-air-15-2026,M5 10-Core CPU 10-Core GPU,32GB
+Macbook,"MacBook Air 13"" (2026)",macbook-air-13-2026,M5 10-Core CPU 10-Core GPU,16GB
+Macbook,"MacBook Air 13"" (2026)",macbook-air-13-2026,M5 10-Core CPU 10-Core GPU,24GB
+Macbook,"MacBook Air 13"" (2026)",macbook-air-13-2026,M5 10-Core CPU 10-Core GPU,32GB
+Macbook,"MacBook Pro 14"" (2025)",macbook-pro-14-2025,M5 10-Core CPU 10-Core GPU,16GB
+Macbook,"MacBook Pro 14"" (2025)",macbook-pro-14-2025,M5 10-Core CPU 10-Core GPU,24GB
+Macbook,"MacBook Pro 14"" (2025)",macbook-pro-14-2025,M5 10-Core CPU 10-Core GPU,32GB
+Macbook,"MacBook Air 15"" (2025)",macbook-air-15-2025,M4 10-Core CPU 10-Core GPU,16GB
+Macbook,"MacBook Air 15"" (2025)",macbook-air-15-2025,M4 10-Core CPU 10-Core GPU,24GB
+Macbook,"MacBook Air 15"" (2025)",macbook-air-15-2025,M4 10-Core CPU 10-Core GPU,32GB
+Macbook,"MacBook Air 13"" (2025)",macbook-air-13-2025,M4 10-Core CPU 10-Core GPU,16GB
+Macbook,"MacBook Air 13"" (2025)",macbook-air-13-2025,M4 10-Core CPU 10-Core GPU,24GB
+Macbook,"MacBook Air 13"" (2025)",macbook-air-13-2025,M4 10-Core CPU 10-Core GPU,32GB
+Macbook,"MacBook Air 13"" (2025)",macbook-air-13-2025,M4 10-Core CPU 8-Core GPU,16GB
+Macbook,"MacBook Pro 16"" (2024)",macbook-pro-16-2024,M4 Max 14-Core CPU 32-Core GPU,36GB
+Macbook,"MacBook Pro 16"" (2024)",macbook-pro-16-2024,M4 Max 16-Core CPU 40-Core GPU,128GB
+Macbook,"MacBook Pro 16"" (2024)",macbook-pro-16-2024,M4 Max 16-Core CPU 40-Core GPU,48GB
+Macbook,"MacBook Pro 16"" (2024)",macbook-pro-16-2024,M4 Max 16-Core CPU 40-Core GPU,64GB
+Macbook,"MacBook Pro 16"" (2024)",macbook-pro-16-2024,M4 Pro 14-Core CPU 20-Core GPU,24GB
+Macbook,"MacBook Pro 16"" (2024)",macbook-pro-16-2024,M4 Pro 14-Core CPU 20-Core GPU,48GB
+Macbook,"MacBook Pro 14"" (2024)",macbook-pro-14-2024,M4 10-Core CPU 10-Core GPU,16GB
+Macbook,"MacBook Pro 14"" (2024)",macbook-pro-14-2024,M4 10-Core CPU 10-Core GPU,24GB
+Macbook,"MacBook Pro 14"" (2024)",macbook-pro-14-2024,M4 10-Core CPU 10-Core GPU,32GB
+Macbook,"MacBook Pro 14"" (2024)",macbook-pro-14-2024,M4 Max 14-Core CPU 32-Core GPU,36GB
+Macbook,"MacBook Pro 14"" (2024)",macbook-pro-14-2024,M4 Max 16-Core CPU 40-Core GPU,128GB
+Macbook,"MacBook Pro 14"" (2024)",macbook-pro-14-2024,M4 Max 16-Core CPU 40-Core GPU,48GB
+Macbook,"MacBook Pro 14"" (2024)",macbook-pro-14-2024,M4 Max 16-Core CPU 40-Core GPU,64GB
+Macbook,"MacBook Pro 14"" (2024)",macbook-pro-14-2024,M4 Pro 12-Core CPU 16-Core GPU,24GB
+Macbook,"MacBook Pro 14"" (2024)",macbook-pro-14-2024,M4 Pro 14-Core CPU 20-Core GPU,24GB
+Macbook,"MacBook Pro 14"" (2024)",macbook-pro-14-2024,M4 Pro 14-Core CPU 20-Core GPU,48GB
+Macbook,"MacBook Pro 16"" (2023)",macbook-pro-16-2023,M2 Max 12-Core CPU 30-Core GPU,32GB
+Macbook,"MacBook Pro 16"" (2023)",macbook-pro-16-2023,M2 Max 12-Core CPU 30-Core GPU,64GB
+Macbook,"MacBook Pro 16"" (2023)",macbook-pro-16-2023,M2 Max 12-Core CPU 30-Core GPU,96GB
+Macbook,"MacBook Pro 16"" (2023)",macbook-pro-16-2023,M2 Max 12-Core CPU 38-Core GPU,32GB
+Macbook,"MacBook Pro 16"" (2023)",macbook-pro-16-2023,M2 Max 12-Core CPU 38-Core GPU,64GB
+Macbook,"MacBook Pro 16"" (2023)",macbook-pro-16-2023,M2 Max 12-Core CPU 38-Core GPU,96GB
+Macbook,"MacBook Pro 16"" (2023)",macbook-pro-16-2023,M2 Pro 10-Core CPU 19-Core GPU,16GB
+Macbook,"MacBook Pro 16"" (2023)",macbook-pro-16-2023,M2 Pro 10-Core CPU 19-Core GPU,32GB
+Macbook,"MacBook Pro 16"" (2023)",macbook-pro-16-2023,M3 Max 14-Core CPU 30-Core GPU,36GB
+Macbook,"MacBook Pro 16"" (2023)",macbook-pro-16-2023,M3 Max 14-Core CPU 30-Core GPU,96GB
+Macbook,"MacBook Pro 16"" (2023)",macbook-pro-16-2023,M3 Max 16-Core CPU 40-Core GPU,128GB
+Macbook,"MacBook Pro 16"" (2023)",macbook-pro-16-2023,M3 Max 16-Core CPU 40-Core GPU,48GB
+Macbook,"MacBook Pro 16"" (2023)",macbook-pro-16-2023,M3 Max 16-Core CPU 40-Core GPU,64GB
+Macbook,"MacBook Pro 16"" (2023)",macbook-pro-16-2023,M3 Pro 12-Core CPU 18-Core GPU,18GB
+Macbook,"MacBook Pro 16"" (2023)",macbook-pro-16-2023,M3 Pro 12-Core CPU 18-Core GPU,36GB
+Macbook,"MacBook Pro 14"" (2023)",macbook-pro-14-2023,M2 Max 12-Core CPU 30-Core GPU,32GB
+Macbook,"MacBook Pro 14"" (2023)",macbook-pro-14-2023,M2 Max 12-Core CPU 30-Core GPU,64GB
+Macbook,"MacBook Pro 14"" (2023)",macbook-pro-14-2023,M2 Max 12-Core CPU 30-Core GPU,96GB
+Macbook,"MacBook Pro 14"" (2023)",macbook-pro-14-2023,M2 Max 12-Core CPU 38-Core GPU,32GB
+Macbook,"MacBook Pro 14"" (2023)",macbook-pro-14-2023,M2 Max 12-Core CPU 38-Core GPU,64GB
+Macbook,"MacBook Pro 14"" (2023)",macbook-pro-14-2023,M2 Max 12-Core CPU 38-Core GPU,96GB
+Macbook,"MacBook Pro 14"" (2023)",macbook-pro-14-2023,M2 Pro 10-Core CPU 16-Core GPU,16GB
+Macbook,"MacBook Pro 14"" (2023)",macbook-pro-14-2023,M2 Pro 10-Core CPU 16-Core GPU,32GB
+Macbook,"MacBook Pro 14"" (2023)",macbook-pro-14-2023,M2 Pro 12-Core CPU 19-Core GPU,16GB
+Macbook,"MacBook Pro 14"" (2023)",macbook-pro-14-2023,M2 Pro 12-Core CPU 19-Core GPU,32GB
+Macbook,"MacBook Pro 14"" (2023)",macbook-pro-14-2023,M3 8-Core CPU 10-Core GPU,16GB
+Macbook,"MacBook Pro 14"" (2023)",macbook-pro-14-2023,M3 8-Core CPU 10-Core GPU,24GB
+Macbook,"MacBook Pro 14"" (2023)",macbook-pro-14-2023,M3 8-Core CPU 10-Core GPU,8GB
+Macbook,"MacBook Pro 14"" (2023)",macbook-pro-14-2023,M3 Max 14-Core CPU 30-Core GPU,36GB
+Macbook,"MacBook Pro 14"" (2023)",macbook-pro-14-2023,M3 Max 14-Core CPU 30-Core GPU,96GB
+Macbook,"MacBook Pro 14"" (2023)",macbook-pro-14-2023,M3 Max 16-Core CPU 40-Core GPU,128GB
+Macbook,"MacBook Pro 14"" (2023)",macbook-pro-14-2023,M3 Max 16-Core CPU 40-Core GPU,48GB
+Macbook,"MacBook Pro 14"" (2023)",macbook-pro-14-2023,M3 Max 16-Core CPU 40-Core GPU,64GB
+Macbook,"MacBook Pro 14"" (2023)",macbook-pro-14-2023,M3 Pro 11-Core CPU 14-Core GPU,18GB
+Macbook,"MacBook Pro 14"" (2023)",macbook-pro-14-2023,M3 Pro 11-Core CPU 14-Core GPU,36GB
+Macbook,"MacBook Pro 14"" (2023)",macbook-pro-14-2023,M3 Pro 12-Core CPU 18-Core GPU,18GB
+Macbook,"MacBook Pro 14"" (2023)",macbook-pro-14-2023,M3 Pro 12-Core CPU 18-Core GPU,36GB
+Macbook,"MacBook Pro 13"" (2022)",macbook-pro-13-2022,M2 8-Core CPU 10-Core GPU,16GB
+Macbook,"MacBook Pro 13"" (2022)",macbook-pro-13-2022,M2 8-Core CPU 10-Core GPU,24GB
+Macbook,"MacBook Pro 13"" (2022)",macbook-pro-13-2022,M2 8-Core CPU 10-Core GPU,8GB
+Macbook,"MacBook Pro 13"" (2022)",macbook-pro-13-2022,M2 8-Core CPU 8-Core GPU,16GB
+Macbook,"MacBook Pro 13"" (2022)",macbook-pro-13-2022,M2 8-Core CPU 8-Core GPU,24GB
+Macbook,"MacBook Pro 13"" (2022)",macbook-pro-13-2022,M2 8-Core CPU 8-Core GPU,8GB
+Macbook,"MacBook Pro 16"" (2021)",macbook-pro-16-2021,M1 Max 10-Core CPU 24-Core GPU,32GB
+Macbook,"MacBook Pro 16"" (2021)",macbook-pro-16-2021,M1 Max 10-Core CPU 24-Core GPU,64GB
+Macbook,"MacBook Pro 16"" (2021)",macbook-pro-16-2021,M1 Max 10-Core CPU 32-Core GPU,32GB
+Macbook,"MacBook Pro 16"" (2021)",macbook-pro-16-2021,M1 Max 10-Core CPU 32-Core GPU,64GB
+Macbook,"MacBook Pro 16"" (2021)",macbook-pro-16-2021,M1 Pro 10-Core CPU 16-Core GPU,16GB
+Macbook,"MacBook Pro 16"" (2021)",macbook-pro-16-2021,M1 Pro 10-Core CPU 16-Core GPU,32GB
+Macbook,"MacBook Pro 14"" (2021)",macbook-pro-14-2021,M1 Max 10-Core CPU 24-Core GPU,16GB
+Macbook,"MacBook Pro 14"" (2021)",macbook-pro-14-2021,M1 Max 10-Core CPU 24-Core GPU,32GB
+Macbook,"MacBook Pro 14"" (2021)",macbook-pro-14-2021,M1 Max 10-Core CPU 24-Core GPU,64GB
+Macbook,"MacBook Pro 14"" (2021)",macbook-pro-14-2021,M1 Max 10-Core CPU 32-Core GPU,32GB
+Macbook,"MacBook Pro 14"" (2021)",macbook-pro-14-2021,M1 Max 10-Core CPU 32-Core GPU,64GB
+Macbook,"MacBook Pro 14"" (2021)",macbook-pro-14-2021,M1 Pro 10-Core CPU 14-Core GPU,16GB
+Macbook,"MacBook Pro 14"" (2021)",macbook-pro-14-2021,M1 Pro 10-Core CPU 14-Core GPU,32GB
+Macbook,"MacBook Pro 14"" (2021)",macbook-pro-14-2021,M1 Pro 10-Core CPU 16-Core GPU,16GB
+Macbook,"MacBook Pro 14"" (2021)",macbook-pro-14-2021,M1 Pro 10-Core CPU 16-Core GPU,32GB
+Macbook,"MacBook Pro 14"" (2021)",macbook-pro-14-2021,M1 Pro 8-Core CPU 14-Core GPU,16GB
+Macbook,"MacBook Pro 14"" (2021)",macbook-pro-14-2021,M1 Pro 8-Core CPU 14-Core GPU,32GB
+Macbook,"MacBook Pro 13"" (2020)",macbook-pro-13-2020,i5 1.4GHz,16GB
+Macbook,"MacBook Pro 13"" (2020)",macbook-pro-13-2020,i5 1.4GHz,32GB
+Macbook,"MacBook Pro 13"" (2020)",macbook-pro-13-2020,i5 1.4GHz,8GB
+Macbook,"MacBook Pro 13"" (2020)",macbook-pro-13-2020,i5 2.0GHz,16GB
+Macbook,"MacBook Pro 13"" (2020)",macbook-pro-13-2020,i5 2.0GHz,32GB
+Macbook,"MacBook Pro 13"" (2020)",macbook-pro-13-2020,i5 2.0GHz,8GB
+Macbook,"MacBook Pro 13"" (2020)",macbook-pro-13-2020,i7 1.7GHz,16GB
+Macbook,"MacBook Pro 13"" (2020)",macbook-pro-13-2020,i7 1.7GHz,32GB
+Macbook,"MacBook Pro 13"" (2020)",macbook-pro-13-2020,i7 1.7GHz,8GB
+Macbook,"MacBook Pro 13"" (2020)",macbook-pro-13-2020,i7 2.3GHz,16GB
+Macbook,"MacBook Pro 13"" (2020)",macbook-pro-13-2020,i7 2.3GHz,32GB
+Macbook,"MacBook Pro 13"" (2020)",macbook-pro-13-2020,i7 2.3GHz,8GB
+Macbook,"MacBook Pro 13"" (2020)",macbook-pro-13-2020,M1 3.2GHz 8-Core GPU,16GB
+Macbook,"MacBook Pro 13"" (2020)",macbook-pro-13-2020,M1 3.2GHz 8-Core GPU,32GB
+Macbook,"MacBook Pro 13"" (2020)",macbook-pro-13-2020,M1 3.2GHz 8-Core GPU,8GB
+Macbook,"MacBook Pro 16"" (2019)",macbook-pro-16-2019,i7 2.6GHz,16GB
+Macbook,"MacBook Pro 16"" (2019)",macbook-pro-16-2019,i7 2.6GHz,32GB
+Macbook,"MacBook Pro 16"" (2019)",macbook-pro-16-2019,i7 2.6GHz,64GB
+Macbook,"MacBook Pro 16"" (2019)",macbook-pro-16-2019,i9 2.3GHz,16GB
+Macbook,"MacBook Pro 16"" (2019)",macbook-pro-16-2019,i9 2.3GHz,32GB
+Macbook,"MacBook Pro 16"" (2019)",macbook-pro-16-2019,i9 2.3GHz,64GB
+Macbook,"MacBook Pro 16"" (2019)",macbook-pro-16-2019,i9 2.4GHz,16GB
+Macbook,"MacBook Pro 16"" (2019)",macbook-pro-16-2019,i9 2.4GHz,32GB
+Macbook,"MacBook Pro 16"" (2019)",macbook-pro-16-2019,i9 2.4GHz,64GB
+Macbook,"MacBook Pro 15"" (2019)",macbook-pro-15-2019,i7 2.6GHz,16GB
+Macbook,"MacBook Pro 15"" (2019)",macbook-pro-15-2019,i7 2.6GHz,32GB
+Macbook,"MacBook Pro 15"" (2019)",macbook-pro-15-2019,i9 2.3GHz,16GB
+Macbook,"MacBook Pro 15"" (2019)",macbook-pro-15-2019,i9 2.3GHz,32GB
+Macbook,"MacBook Pro 15"" (2019)",macbook-pro-15-2019,i9 2.4GHz,16GB
+Macbook,"MacBook Pro 15"" (2019)",macbook-pro-15-2019,i9 2.4GHz,32GB
+Macbook,"MacBook Pro 13"" (2019)",macbook-pro-13-2019,i5 1.4GHz,16GB
+Macbook,"MacBook Pro 13"" (2019)",macbook-pro-13-2019,i5 1.4GHz,8GB
+Macbook,"MacBook Pro 13"" (2019)",macbook-pro-13-2019,i5 2.4GHz,16GB
+Macbook,"MacBook Pro 13"" (2019)",macbook-pro-13-2019,i5 2.4GHz,8GB
+Macbook,"MacBook Pro 13"" (2019)",macbook-pro-13-2019,i5 2.8GHz,16GB
+Macbook,"MacBook Pro 13"" (2019)",macbook-pro-13-2019,i5 2.8GHz,8GB
+Macbook,"MacBook Pro 13"" (2019)",macbook-pro-13-2019,i7 1.7GHz,16GB
+Macbook,"MacBook Pro 13"" (2019)",macbook-pro-13-2019,i7 1.7GHz,8GB
+Macbook,"MacBook Pro 13"" (2019)",macbook-pro-13-2019,i7 2.8GHz,16GB
+Macbook,"MacBook Pro 13"" (2019)",macbook-pro-13-2019,i7 2.8GHz,8GB
+Macbook,"MacBook Pro 15"" (2018)",macbook-pro-15-2018,i7 2.2GHz,16GB
+Macbook,"MacBook Pro 15"" (2018)",macbook-pro-15-2018,i7 2.2GHz,32GB
+Macbook,"MacBook Pro 15"" (2018)",macbook-pro-15-2018,i7 2.6GHz,16GB
+Macbook,"MacBook Pro 15"" (2018)",macbook-pro-15-2018,i7 2.6GHz,32GB
+Macbook,"MacBook Pro 15"" (2018)",macbook-pro-15-2018,i9 2.9GHz,16GB
+Macbook,"MacBook Pro 15"" (2018)",macbook-pro-15-2018,i9 2.9GHz,32GB
+Macbook,"MacBook Pro 13"" (2018)",macbook-pro-13-2018,i5 2.3GHz,16GB
+Macbook,"MacBook Pro 13"" (2018)",macbook-pro-13-2018,i5 2.3GHz,8GB
+Macbook,"MacBook Pro 13"" (2018)",macbook-pro-13-2018,i5 2.9GHz,16GB
+Macbook,"MacBook Pro 13"" (2018)",macbook-pro-13-2018,i5 2.9GHz,8GB
+Macbook,"MacBook Pro 13"" (2018)",macbook-pro-13-2018,i7 2.7GHz,16GB
+Macbook,"MacBook Pro 13"" (2018)",macbook-pro-13-2018,i7 2.7GHz,8GB
+Macbook,"MacBook Pro 15"" (2017)",macbook-pro-15-2017,i7 2.8GHz,16GB
+Macbook,"MacBook Pro 15"" (2017)",macbook-pro-15-2017,i7 2.9GHz,16GB
+Macbook,"MacBook Pro 15"" (2017)",macbook-pro-15-2017,i7 3.1GHz,16GB
+Macbook,"MacBook Pro 13"" (2017)",macbook-pro-13-2017,i5 2.3GHz,16GB
+Macbook,"MacBook Pro 13"" (2017)",macbook-pro-13-2017,i5 2.3GHz,8GB
+Macbook,"MacBook Pro 13"" (2017)",macbook-pro-13-2017,i5 2.9GHz,16GB
+Macbook,"MacBook Pro 13"" (2017)",macbook-pro-13-2017,i5 2.9GHz,8GB
+Macbook,"MacBook Pro 13"" (2017)",macbook-pro-13-2017,i5 3.1GHz,16GB
+Macbook,"MacBook Pro 13"" (2017)",macbook-pro-13-2017,i5 3.1GHz,8GB
+Macbook,"MacBook Pro 13"" (2017)",macbook-pro-13-2017,i5 3.3GHz,16GB
+Macbook,"MacBook Pro 13"" (2017)",macbook-pro-13-2017,i5 3.3GHz,8GB
+Macbook,"MacBook Pro 13"" (2017)",macbook-pro-13-2017,i7 2.5GHz,16GB
+Macbook,"MacBook Pro 13"" (2017)",macbook-pro-13-2017,i7 2.5GHz,8GB
+Macbook,"MacBook Pro 13"" (2017)",macbook-pro-13-2017,i7 3.3GHz,16GB
+Macbook,"MacBook Pro 13"" (2017)",macbook-pro-13-2017,i7 3.3GHz,8GB
+Macbook,"MacBook Pro 13"" (2017)",macbook-pro-13-2017,i7 3.5GHz,16GB
+Macbook,"MacBook Pro 13"" (2017)",macbook-pro-13-2017,i7 3.5GHz,8GB
+Macbook,"MacBook Pro 15"" (2016)",macbook-pro-15-2016,i7 2.6GHz,16GB
+Macbook,"MacBook Pro 15"" (2016)",macbook-pro-15-2016,i7 2.7GHz,16GB
+Macbook,"MacBook Pro 15"" (2016)",macbook-pro-15-2016,i7 2.9GHz,16GB
+Macbook,"MacBook Pro 13"" (2016)",macbook-pro-13-2016,i5 2.0GHz,16GB
+Macbook,"MacBook Pro 13"" (2016)",macbook-pro-13-2016,i5 2.0GHz,4GB
+Macbook,"MacBook Pro 13"" (2016)",macbook-pro-13-2016,i5 2.0GHz,8GB
+Macbook,"MacBook Pro 13"" (2016)",macbook-pro-13-2016,i5 2.9GHz,16GB
+Macbook,"MacBook Pro 13"" (2016)",macbook-pro-13-2016,i5 2.9GHz,4GB
+Macbook,"MacBook Pro 13"" (2016)",macbook-pro-13-2016,i5 2.9GHz,8GB
+Macbook,"MacBook Pro 13"" (2016)",macbook-pro-13-2016,i5 3.1GHz,16GB
+Macbook,"MacBook Pro 13"" (2016)",macbook-pro-13-2016,i5 3.1GHz,4GB
+Macbook,"MacBook Pro 13"" (2016)",macbook-pro-13-2016,i5 3.1GHz,8GB
+Macbook,"MacBook Pro 13"" (2016)",macbook-pro-13-2016,i5 3.3GHz,16GB
+Macbook,"MacBook Pro 13"" (2016)",macbook-pro-13-2016,i5 3.3GHz,8GB
+Macbook,"MacBook Pro 13"" (2016)",macbook-pro-13-2016,i7 2.4GHz,16GB
+Macbook,"MacBook Pro 13"" (2016)",macbook-pro-13-2016,i7 2.4GHz,4GB
+Macbook,"MacBook Pro 13"" (2016)",macbook-pro-13-2016,i7 2.4GHz,8GB
+Macbook,"MacBook Pro 13"" (2016)",macbook-pro-13-2016,i7 2.9GHz,16GB
+Macbook,"MacBook Pro 13"" (2016)",macbook-pro-13-2016,i7 2.9GHz,8GB
+Macbook,"MacBook Pro 13"" (2016)",macbook-pro-13-2016,i7 3.3GHz,16GB
+Macbook,"MacBook Pro 13"" (2016)",macbook-pro-13-2016,i7 3.3GHz,4GB
+Macbook,"MacBook Pro 13"" (2016)",macbook-pro-13-2016,i7 3.3GHz,8GB
+Macbook,"MacBook Pro 15"" (2015)",macbook-pro-15-2015,i7 2.2GHz,16GB
+Macbook,"MacBook Pro 15"" (2015)",macbook-pro-15-2015,i7 2.2GHz,8GB
+Macbook,"MacBook Pro 15"" (2015)",macbook-pro-15-2015,i7 2.5GHz,16GB
+Macbook,"MacBook Pro 15"" (2015)",macbook-pro-15-2015,i7 2.5GHz,8GB
+Macbook,"MacBook Pro 15"" (2015)",macbook-pro-15-2015,i7 2.8GHz,16GB
+Macbook,"MacBook Pro 15"" (2015)",macbook-pro-15-2015,i7 2.8GHz,8GB
+Macbook,"MacBook Pro 13"" (2015)",macbook-pro-13-2015,i5 2.7GHz,16GB
+Macbook,"MacBook Pro 13"" (2015)",macbook-pro-13-2015,i5 2.7GHz,4GB
+Macbook,"MacBook Pro 13"" (2015)",macbook-pro-13-2015,i5 2.7GHz,8GB
+Macbook,"MacBook Pro 13"" (2015)",macbook-pro-13-2015,i5 2.9GHz,16GB
+Macbook,"MacBook Pro 13"" (2015)",macbook-pro-13-2015,i5 2.9GHz,4GB
+Macbook,"MacBook Pro 13"" (2015)",macbook-pro-13-2015,i5 2.9GHz,8GB
+Macbook,"MacBook Pro 13"" (2015)",macbook-pro-13-2015,i7 3.1GHz,16GB
+Macbook,"MacBook Pro 13"" (2015)",macbook-pro-13-2015,i7 3.1GHz,4GB
+Macbook,"MacBook Pro 13"" (2015)",macbook-pro-13-2015,i7 3.1GHz,8GB
+Macbook,"MacBook Pro 15"" (2014)",macbook-pro-15-2014,i7 2.2GHz,16GB
+Macbook,"MacBook Pro 15"" (2014)",macbook-pro-15-2014,i7 2.2GHz,4GB
+Macbook,"MacBook Pro 15"" (2014)",macbook-pro-15-2014,i7 2.2GHz,8GB
+Macbook,"MacBook Pro 15"" (2014)",macbook-pro-15-2014,i7 2.5GHz,16GB
+Macbook,"MacBook Pro 15"" (2014)",macbook-pro-15-2014,i7 2.5GHz,4GB
+Macbook,"MacBook Pro 15"" (2014)",macbook-pro-15-2014,i7 2.5GHz,8GB
+Macbook,"MacBook Pro 15"" (2014)",macbook-pro-15-2014,i7 2.8GHz,16GB
+Macbook,"MacBook Pro 15"" (2014)",macbook-pro-15-2014,i7 2.8GHz,4GB
+Macbook,"MacBook Pro 15"" (2014)",macbook-pro-15-2014,i7 2.8GHz,8GB
+Macbook,"MacBook Pro 13"" (2014)",macbook-pro-13-2014,i5 2.6GHz,16GB
+Macbook,"MacBook Pro 13"" (2014)",macbook-pro-13-2014,i5 2.6GHz,4GB
+Macbook,"MacBook Pro 13"" (2014)",macbook-pro-13-2014,i5 2.6GHz,8GB
+Macbook,"MacBook Pro 13"" (2014)",macbook-pro-13-2014,i5 2.8GHz,16GB
+Macbook,"MacBook Pro 13"" (2014)",macbook-pro-13-2014,i5 2.8GHz,4GB
+Macbook,"MacBook Pro 13"" (2014)",macbook-pro-13-2014,i5 2.8GHz,8GB
+Macbook,"MacBook Pro 13"" (2014)",macbook-pro-13-2014,i7 3.0GHz,16GB
+Macbook,"MacBook Pro 13"" (2014)",macbook-pro-13-2014,i7 3.0GHz,4GB
+Macbook,"MacBook Pro 13"" (2014)",macbook-pro-13-2014,i7 3.0GHz,8GB
+Macbook,"MacBook Pro 15"" (2013)",macbook-pro-15-2013,i7 2.0GHz,16GB
+Macbook,"MacBook Pro 15"" (2013)",macbook-pro-15-2013,i7 2.0GHz,8GB
+Macbook,"MacBook Pro 15"" (2013)",macbook-pro-15-2013,i7 2.3GHz,16GB
+Macbook,"MacBook Pro 15"" (2013)",macbook-pro-15-2013,i7 2.3GHz,8GB
+Macbook,"MacBook Pro 15"" (2013)",macbook-pro-15-2013,i7 2.4GHz,16GB
+Macbook,"MacBook Pro 15"" (2013)",macbook-pro-15-2013,i7 2.4GHz,8GB
+Macbook,"MacBook Pro 15"" (2013)",macbook-pro-15-2013,i7 2.6GHz,16GB
+Macbook,"MacBook Pro 15"" (2013)",macbook-pro-15-2013,i7 2.6GHz,8GB
+Macbook,"MacBook Pro 15"" (2013)",macbook-pro-15-2013,i7 2.7GHz,16GB
+Macbook,"MacBook Pro 15"" (2013)",macbook-pro-15-2013,i7 2.7GHz,8GB
+Macbook,"MacBook Pro 15"" (2013)",macbook-pro-15-2013,i7 2.8GHz,16GB
+Macbook,"MacBook Pro 15"" (2013)",macbook-pro-15-2013,i7 2.8GHz,8GB
+Macbook,"MacBook Pro 13"" (2013)",macbook-pro-13-2013,i5 2.4GHz,16GB
+Macbook,"MacBook Pro 13"" (2013)",macbook-pro-13-2013,i5 2.4GHz,4GB
+Macbook,"MacBook Pro 13"" (2013)",macbook-pro-13-2013,i5 2.4GHz,8GB
+Macbook,"MacBook Pro 13"" (2013)",macbook-pro-13-2013,i5 2.5GHz,8GB
+Macbook,"MacBook Pro 13"" (2013)",macbook-pro-13-2013,i5 2.6GHz,16GB
+Macbook,"MacBook Pro 13"" (2013)",macbook-pro-13-2013,i5 2.6GHz,4GB
+Macbook,"MacBook Pro 13"" (2013)",macbook-pro-13-2013,i5 2.6GHz,8GB
+Macbook,"MacBook Pro 13"" (2013)",macbook-pro-13-2013,i5 2.9GHz,8GB
+Macbook,"MacBook Pro 13"" (2013)",macbook-pro-13-2013,i7 2.8GHz,16GB
+Macbook,"MacBook Pro 13"" (2013)",macbook-pro-13-2013,i7 2.8GHz,4GB
+Macbook,"MacBook Pro 13"" (2013)",macbook-pro-13-2013,i7 2.8GHz,8GB
+Macbook,"MacBook Pro 13"" (2013)",macbook-pro-13-2013,i7 2.9GHz,8GB
+Macbook,"MacBook Pro 13"" (2013)",macbook-pro-13-2013,i7 3.0GHz,16GB
+Macbook,"MacBook Pro 13"" (2013)",macbook-pro-13-2013,i7 3.0GHz,4GB
+Macbook,"MacBook Pro 13"" (2013)",macbook-pro-13-2013,i7 3.0GHz,8GB
+Macbook,"MacBook Pro 15"" (2012)",macbook-pro-15-2012,i7 2.3GHz,16GB
+Macbook,"MacBook Pro 15"" (2012)",macbook-pro-15-2012,i7 2.3GHz,2GB
+Macbook,"MacBook Pro 15"" (2012)",macbook-pro-15-2012,i7 2.3GHz,4GB
+Macbook,"MacBook Pro 15"" (2012)",macbook-pro-15-2012,i7 2.3GHz,8GB
+Macbook,"MacBook Pro 15"" (2012)",macbook-pro-15-2012,i7 2.6GHz,16GB
+Macbook,"MacBook Pro 15"" (2012)",macbook-pro-15-2012,i7 2.6GHz,2GB
+Macbook,"MacBook Pro 15"" (2012)",macbook-pro-15-2012,i7 2.6GHz,4GB
+Macbook,"MacBook Pro 15"" (2012)",macbook-pro-15-2012,i7 2.6GHz,8GB
+Macbook,"MacBook Pro 15"" (2012)",macbook-pro-15-2012,i7 2.7GHz,16GB
+Macbook,"MacBook Pro 15"" (2012)",macbook-pro-15-2012,i7 2.7GHz,4GB
+Macbook,"MacBook Pro 15"" (2012)",macbook-pro-15-2012,i7 2.7GHz,8GB
+Macbook,"MacBook Pro 13"" (2012)",macbook-pro-13-2012,i5 2.5GHz,10GB
+Macbook,"MacBook Pro 13"" (2012)",macbook-pro-13-2012,i5 2.5GHz,12GB
+Macbook,"MacBook Pro 13"" (2012)",macbook-pro-13-2012,i5 2.5GHz,2GB
+Macbook,"MacBook Pro 13"" (2012)",macbook-pro-13-2012,i5 2.5GHz,4GB
+Macbook,"MacBook Pro 13"" (2012)",macbook-pro-13-2012,i5 2.5GHz,8GB
+Macbook,"MacBook Pro 13"" (2012)",macbook-pro-13-2012,i7 2.9GHz,2GB
+Macbook,"MacBook Pro 13"" (2012)",macbook-pro-13-2012,i7 2.9GHz,4GB
+Macbook,"MacBook Pro 13"" (2012)",macbook-pro-13-2012,i7 2.9GHz,8GB
+Macbook,"MacBook Pro 17"" (2011)",macbook-pro-17-2011,i7 2.2GHz,4GB
+Macbook,"MacBook Pro 17"" (2011)",macbook-pro-17-2011,i7 2.2GHz,8GB
+Macbook,"MacBook Pro 17"" (2011)",macbook-pro-17-2011,i7 2.3GHz,4GB
+Macbook,"MacBook Pro 17"" (2011)",macbook-pro-17-2011,i7 2.3GHz,8GB
+Macbook,"MacBook Pro 17"" (2011)",macbook-pro-17-2011,i7 2.4GHz,4GB
+Macbook,"MacBook Pro 17"" (2011)",macbook-pro-17-2011,i7 2.4GHz,8GB
+Macbook,"MacBook Pro 17"" (2011)",macbook-pro-17-2011,i7 2.5GHz,4GB
+Macbook,"MacBook Pro 17"" (2011)",macbook-pro-17-2011,i7 2.5GHz,8GB
+Macbook,"MacBook Pro 15"" (2011)",macbook-pro-15-2011,i7 2.0GHz,16GB
+Macbook,"MacBook Pro 15"" (2011)",macbook-pro-15-2011,i7 2.0GHz,2GB
+Macbook,"MacBook Pro 15"" (2011)",macbook-pro-15-2011,i7 2.0GHz,4GB
+Macbook,"MacBook Pro 15"" (2011)",macbook-pro-15-2011,i7 2.0GHz,8GB
+Macbook,"MacBook Pro 15"" (2011)",macbook-pro-15-2011,i7 2.2GHz,16GB
+Macbook,"MacBook Pro 15"" (2011)",macbook-pro-15-2011,i7 2.2GHz,2GB
+Macbook,"MacBook Pro 15"" (2011)",macbook-pro-15-2011,i7 2.2GHz,4GB
+Macbook,"MacBook Pro 15"" (2011)",macbook-pro-15-2011,i7 2.2GHz,8GB
+Macbook,"MacBook Pro 15"" (2011)",macbook-pro-15-2011,i7 2.3GHz,16GB
+Macbook,"MacBook Pro 15"" (2011)",macbook-pro-15-2011,i7 2.3GHz,2GB
+Macbook,"MacBook Pro 15"" (2011)",macbook-pro-15-2011,i7 2.3GHz,4GB
+Macbook,"MacBook Pro 15"" (2011)",macbook-pro-15-2011,i7 2.3GHz,8GB
+Macbook,"MacBook Pro 15"" (2011)",macbook-pro-15-2011,i7 2.4GHz,16GB
+Macbook,"MacBook Pro 15"" (2011)",macbook-pro-15-2011,i7 2.4GHz,2GB
+Macbook,"MacBook Pro 15"" (2011)",macbook-pro-15-2011,i7 2.4GHz,4GB
+Macbook,"MacBook Pro 15"" (2011)",macbook-pro-15-2011,i7 2.4GHz,8GB
+Macbook,"MacBook Pro 15"" (2011)",macbook-pro-15-2011,i7 2.5GHz,16GB
+Macbook,"MacBook Pro 15"" (2011)",macbook-pro-15-2011,i7 2.5GHz,2GB
+Macbook,"MacBook Pro 15"" (2011)",macbook-pro-15-2011,i7 2.5GHz,4GB
+Macbook,"MacBook Pro 15"" (2011)",macbook-pro-15-2011,i7 2.5GHz,8GB
+Macbook,"MacBook Pro 13"" (2011)",macbook-pro-13-2011,i5 2.3GHz,16GB
+Macbook,"MacBook Pro 13"" (2011)",macbook-pro-13-2011,i5 2.3GHz,2GB
+Macbook,"MacBook Pro 13"" (2011)",macbook-pro-13-2011,i5 2.3GHz,4GB
+Macbook,"MacBook Pro 13"" (2011)",macbook-pro-13-2011,i5 2.3GHz,8GB
+Macbook,"MacBook Pro 13"" (2011)",macbook-pro-13-2011,i5 2.4GHz,16GB
+Macbook,"MacBook Pro 13"" (2011)",macbook-pro-13-2011,i5 2.4GHz,2GB
+Macbook,"MacBook Pro 13"" (2011)",macbook-pro-13-2011,i5 2.4GHz,4GB
+Macbook,"MacBook Pro 13"" (2011)",macbook-pro-13-2011,i5 2.4GHz,8GB
+Macbook,"MacBook Pro 13"" (2011)",macbook-pro-13-2011,i7 2.7GHz,16GB
+Macbook,"MacBook Pro 13"" (2011)",macbook-pro-13-2011,i7 2.7GHz,2GB
+Macbook,"MacBook Pro 13"" (2011)",macbook-pro-13-2011,i7 2.7GHz,4GB
+Macbook,"MacBook Pro 13"" (2011)",macbook-pro-13-2011,i7 2.7GHz,8GB
+Macbook,"MacBook Pro 13"" (2011)",macbook-pro-13-2011,i7 2.8GHz,16GB
+Macbook,"MacBook Pro 13"" (2011)",macbook-pro-13-2011,i7 2.8GHz,2GB
+Macbook,"MacBook Pro 13"" (2011)",macbook-pro-13-2011,i7 2.8GHz,4GB
+Macbook,"MacBook Pro 13"" (2011)",macbook-pro-13-2011,i7 2.8GHz,8GB
+Macbook,"MacBook Pro 17"" (2010)",macbook-pro-17-2010,i5 2.53GHz,4GB
+Macbook,"MacBook Pro 17"" (2010)",macbook-pro-17-2010,i5 2.53GHz,8GB
+Macbook,"MacBook Pro 17"" (2010)",macbook-pro-17-2010,i7 2.66GHz,4GB
+Macbook,"MacBook Pro 17"" (2010)",macbook-pro-17-2010,i7 2.66GHz,8GB
+Macbook,"MacBook Pro 15"" (2010)",macbook-pro-15-2010,i5 2.4GHz,4GB
+Macbook,"MacBook Pro 15"" (2010)",macbook-pro-15-2010,i5 2.4GHz,8GB
+Macbook,"MacBook Pro 15"" (2010)",macbook-pro-15-2010,i5 2.53GHz,4GB
+Macbook,"MacBook Pro 15"" (2010)",macbook-pro-15-2010,i5 2.53GHz,8GB
+Macbook,"MacBook Pro 15"" (2010)",macbook-pro-15-2010,i7 2.66GHz,4GB
+Macbook,"MacBook Pro 15"" (2010)",macbook-pro-15-2010,i7 2.66GHz,8GB
+Macbook,"MacBook Pro 17"" (2009)",macbook-pro-17-2009,Core 2 Duo 2.8GHz,4GB
+Macbook,"MacBook Pro 15"" (2009)",macbook-pro-15-2009,Core 2 Duo 2.53GHz,4GB
+Macbook,"MacBook Pro 15"" (2009)",macbook-pro-15-2009,Core 2 Duo 2.53GHz,8GB
+Macbook,"MacBook Pro 15"" (2009)",macbook-pro-15-2009,Core 2 Duo 2.66GHz,4GB
+Macbook,"MacBook Pro 15"" (2009)",macbook-pro-15-2009,Core 2 Duo 2.66GHz,8GB
+Macbook,"MacBook Pro 15"" (2009)",macbook-pro-15-2009,Core 2 Duo 2.8GHz,4GB
+Macbook,"MacBook Pro 15"" (2009)",macbook-pro-15-2009,Core 2 Duo 2.8GHz,8GB
+Macbook,"MacBook Air 15"" (2024)",macbook-air-15-2024,M3 8-Core CPU 10-Core GPU,16GB
+Macbook,"MacBook Air 15"" (2024)",macbook-air-15-2024,M3 8-Core CPU 10-Core GPU,24GB
+Macbook,"MacBook Air 15"" (2024)",macbook-air-15-2024,M3 8-Core CPU 10-Core GPU,8GB
+Macbook,"MacBook Air 15"" (2024)",macbook-air-15-2024,M3 8-Core CPU 8-Core GPU,16GB
+Macbook,"MacBook Air 15"" (2024)",macbook-air-15-2024,M3 8-Core CPU 8-Core GPU,24GB
+Macbook,"MacBook Air 15"" (2024)",macbook-air-15-2024,M3 8-Core CPU 8-Core GPU,8GB
+Macbook,"MacBook Air 13"" (2024)",macbook-air-13-2024,M3 8-Core CPU 10-Core GPU,16GB
+Macbook,"MacBook Air 13"" (2024)",macbook-air-13-2024,M3 8-Core CPU 10-Core GPU,24GB
+Macbook,"MacBook Air 13"" (2024)",macbook-air-13-2024,M3 8-Core CPU 10-Core GPU,8GB
+Macbook,"MacBook Air 13"" (2024)",macbook-air-13-2024,M3 8-Core CPU 8-Core GPU,16GB
+Macbook,"MacBook Air 13"" (2024)",macbook-air-13-2024,M3 8-Core CPU 8-Core GPU,24GB
+Macbook,"MacBook Air 13"" (2024)",macbook-air-13-2024,M3 8-Core CPU 8-Core GPU,8GB
+Macbook,"MacBook Air 15"" (2023)",macbook-air-15-2023,M2 8-Core CPU 10-Core GPU,16GB
+Macbook,"MacBook Air 15"" (2023)",macbook-air-15-2023,M2 8-Core CPU 10-Core GPU,24GB
+Macbook,"MacBook Air 15"" (2023)",macbook-air-15-2023,M2 8-Core CPU 10-Core GPU,8GB
+Macbook,"MacBook Air 13"" (2022)",macbook-air-13-2022,M2 8-Core CPU 10-Core GPU,16GB
+Macbook,"MacBook Air 13"" (2022)",macbook-air-13-2022,M2 8-Core CPU 10-Core GPU,24GB
+Macbook,"MacBook Air 13"" (2022)",macbook-air-13-2022,M2 8-Core CPU 10-Core GPU,8GB
+Macbook,"MacBook Air 13"" (2022)",macbook-air-13-2022,M2 8-Core CPU 8-Core GPU,16GB
+Macbook,"MacBook Air 13"" (2022)",macbook-air-13-2022,M2 8-Core CPU 8-Core GPU,24GB
+Macbook,"MacBook Air 13"" (2022)",macbook-air-13-2022,M2 8-Core CPU 8-Core GPU,8GB
+Macbook,"MacBook Air 13"" (2020)",macbook-air-13-2020,i3 1.1GHz,16GB
+Macbook,"MacBook Air 13"" (2020)",macbook-air-13-2020,i3 1.1GHz,8GB
+Macbook,"MacBook Air 13"" (2020)",macbook-air-13-2020,i5 1.1GHz,16GB
+Macbook,"MacBook Air 13"" (2020)",macbook-air-13-2020,i5 1.1GHz,8GB
+Macbook,"MacBook Air 13"" (2020)",macbook-air-13-2020,i5 1.6GHz,16GB
+Macbook,"MacBook Air 13"" (2020)",macbook-air-13-2020,i5 1.6GHz,8GB
+Macbook,"MacBook Air 13"" (2020)",macbook-air-13-2020,i7 1.2GHz,16GB
+Macbook,"MacBook Air 13"" (2020)",macbook-air-13-2020,i7 1.2GHz,8GB
+Macbook,"MacBook Air 13"" (2020)",macbook-air-13-2020,M1 3.2GHz 7-Core GPU,16GB
+Macbook,"MacBook Air 13"" (2020)",macbook-air-13-2020,M1 3.2GHz 7-Core GPU,8GB
+Macbook,"MacBook Air 13"" (2020)",macbook-air-13-2020,M1 3.2GHz 8-Core GPU,16GB
+Macbook,"MacBook Air 13"" (2020)",macbook-air-13-2020,M1 3.2GHz 8-Core GPU,8GB
+Macbook,"MacBook Air 13"" (2019)",macbook-air-13-2019,i5 1.6GHz,16GB
+Macbook,"MacBook Air 13"" (2019)",macbook-air-13-2019,i5 1.6GHz,8GB
+Macbook,"MacBook Air 13"" (2018)",macbook-air-13-2018,i5 1.6GHz,16GB
+Macbook,"MacBook Air 13"" (2018)",macbook-air-13-2018,i5 1.6GHz,8GB
+Macbook,"MacBook Air 13"" (2017)",macbook-air-13-2017,i5 1.8GHz,4GB
+Macbook,"MacBook Air 13"" (2017)",macbook-air-13-2017,i5 1.8GHz,8GB
+Macbook,"MacBook Air 13"" (2017)",macbook-air-13-2017,i7 2.2GHz,4GB
+Macbook,"MacBook Air 13"" (2017)",macbook-air-13-2017,i7 2.2GHz,8GB
+Macbook,"MacBook Air 13"" (2015)",macbook-air-13-2015,i5 1.6GHz,4GB
+Macbook,"MacBook Air 13"" (2015)",macbook-air-13-2015,i5 1.6GHz,8GB
+Macbook,"MacBook Air 13"" (2015)",macbook-air-13-2015,i7 1.3GHz,4GB
+Macbook,"MacBook Air 13"" (2015)",macbook-air-13-2015,i7 2.2GHz,4GB
+Macbook,"MacBook Air 13"" (2015)",macbook-air-13-2015,i7 2.2GHz,8GB
+Macbook,"MacBook Air 11"" (2015)",macbook-air-11-2015,i5 1.6GHz,4GB
+Macbook,"MacBook Air 11"" (2015)",macbook-air-11-2015,i5 1.6GHz,8GB
+Macbook,"MacBook Air 11"" (2015)",macbook-air-11-2015,i7 2.2GHz,4GB
+Macbook,"MacBook Air 11"" (2015)",macbook-air-11-2015,i7 2.2GHz,8GB
+Macbook,"MacBook Air 13"" (2014)",macbook-air-13-2014,i5 1.4GHz,4GB
+Macbook,"MacBook Air 13"" (2014)",macbook-air-13-2014,i5 1.4GHz,8GB
+Macbook,"MacBook Air 13"" (2014)",macbook-air-13-2014,i7 1.7GHz,4GB
+Macbook,"MacBook Air 13"" (2014)",macbook-air-13-2014,i7 1.7GHz,8GB
+Macbook,"MacBook Air 11"" (2014)",macbook-air-11-2014,i5 1.4GHz,4GB
+Macbook,"MacBook Air 11"" (2014)",macbook-air-11-2014,i5 1.4GHz,8GB
+Macbook,"MacBook Air 11"" (2014)",macbook-air-11-2014,i7 1.7GHz,4GB
+Macbook,"MacBook Air 11"" (2014)",macbook-air-11-2014,i7 1.7GHz,8GB
+Macbook,"MacBook Air 13"" (2013)",macbook-air-13-2013,i5 1.3GHz,4GB
+Macbook,"MacBook Air 13"" (2013)",macbook-air-13-2013,i5 1.3GHz,8GB
+Macbook,"MacBook Air 13"" (2013)",macbook-air-13-2013,i5 1.4GHz,4GB
+Macbook,"MacBook Air 13"" (2013)",macbook-air-13-2013,i5 1.4GHz,8GB
+Macbook,"MacBook Air 13"" (2013)",macbook-air-13-2013,i7 1.7GHz,4GB
+Macbook,"MacBook Air 13"" (2013)",macbook-air-13-2013,i7 1.7GHz,8GB
+Macbook,"MacBook Air 11"" (2013)",macbook-air-11-2013,i5 1.3GHz,4GB
+Macbook,"MacBook Air 11"" (2013)",macbook-air-11-2013,i5 1.3GHz,8GB
+Macbook,"MacBook Air 11"" (2013)",macbook-air-11-2013,i7 1.7GHz,4GB
+Macbook,"MacBook Air 11"" (2013)",macbook-air-11-2013,i7 1.7GHz,8GB
+Macbook,"MacBook Air 13"" (2012)",macbook-air-13-2012,i5 1.7GHz,4GB
+Macbook,"MacBook Air 13"" (2012)",macbook-air-13-2012,i5 1.8GHz,4GB
+Macbook,"MacBook Air 13"" (2012)",macbook-air-13-2012,i5 1.8GHz,8GB
+Macbook,"MacBook Air 13"" (2012)",macbook-air-13-2012,i7 2.0GHz,4GB
+Macbook,"MacBook Air 13"" (2012)",macbook-air-13-2012,i7 2.0GHz,8GB
+Macbook,"MacBook Air 11"" (2012)",macbook-air-11-2012,i5 1.7GHz,4GB
+Macbook,"MacBook Air 11"" (2012)",macbook-air-11-2012,i5 1.7GHz,8GB
+Macbook,"MacBook Air 11"" (2012)",macbook-air-11-2012,i7 2.0GHz,4GB
+Macbook,"MacBook Air 11"" (2012)",macbook-air-11-2012,i7 2.0GHz,8GB
+Macbook,"MacBook Air 13"" (2011)",macbook-air-13-2011,i5 1.7GHz,4GB
+Macbook,"MacBook Air 13"" (2011)",macbook-air-13-2011,i7 1.8GHz,4GB
+Macbook,"MacBook Air 11"" (2011)",macbook-air-11-2011,i5 1.6GHz,2GB
+Macbook,"MacBook Air 11"" (2011)",macbook-air-11-2011,i5 1.6GHz,4GB
+Macbook,"MacBook Air 11"" (2011)",macbook-air-11-2011,i7 1.8GHz,2GB
+Macbook,"MacBook Air 11"" (2011)",macbook-air-11-2011,i7 1.8GHz,4GB
+Macbook,"MacBook Air 13"" (2010)",macbook-air-13-2010,Core 2 Duo 1.86GHz,2GB
+Macbook,"MacBook Air 13"" (2010)",macbook-air-13-2010,Core 2 Duo 1.86GHz,4GB
+Macbook,"MacBook Air 13"" (2010)",macbook-air-13-2010,Core 2 Duo 2.13GHz,2GB
+Macbook,"MacBook Air 13"" (2010)",macbook-air-13-2010,Core 2 Duo 2.13GHz,4GB
+Macbook,"MacBook Air 11"" (2010)",macbook-air-11-2010,Core 2 Duo 1.4GHz,2GB
+Macbook,"MacBook Air 11"" (2010)",macbook-air-11-2010,Core 2 Duo 1.4GHz,4GB
+Macbook,"MacBook Air 11"" (2010)",macbook-air-11-2010,Core 2 Duo 1.6GHz,2GB
+Macbook,"MacBook Air 11"" (2010)",macbook-air-11-2010,Core 2 Duo 1.6GHz,4GB
+Macbook,"MacBook Air 13"" (2009)",macbook-air-13-2009,Core 2 Duo 1.86GHz,2GB
+Macbook,"MacBook Air 13"" (2009)",macbook-air-13-2009,Core 2 Duo 2.13GHz,2GB
+Macbook,"MacBook 12"" (2017)",macbook-12-2017,i5 1.3GHz,16GB
+Macbook,"MacBook 12"" (2017)",macbook-12-2017,i5 1.3GHz,8GB
+Macbook,"MacBook 12"" (2017)",macbook-12-2017,i7 1.4GHz,16GB
+Macbook,"MacBook 12"" (2017)",macbook-12-2017,i7 1.4GHz,8GB
+Macbook,"MacBook 12"" (2017)",macbook-12-2017,m3 1.2GHz,16GB
+Macbook,"MacBook 12"" (2017)",macbook-12-2017,m3 1.2GHz,8GB
+Macbook,"MacBook 12"" (2016)",macbook-12-2016,m3 1.1GHz,8GB
+Macbook,"MacBook 12"" (2016)",macbook-12-2016,m5 1.2GHz,8GB
+Macbook,"MacBook 12"" (2016)",macbook-12-2016,m7 1.3GHz,8GB
+Macbook,"MacBook 12"" (2015)",macbook-12-2015,Core M 1.1GHz,16GB
+Macbook,"MacBook 12"" (2015)",macbook-12-2015,Core M 1.1GHz,8GB
+Macbook,"MacBook 12"" (2015)",macbook-12-2015,Core M 1.2GHz,16GB
+Macbook,"MacBook 12"" (2015)",macbook-12-2015,Core M 1.2GHz,8GB
+Macbook,"MacBook 12"" (2015)",macbook-12-2015,Core M 1.3GHz,16GB
+Macbook,"MacBook 12"" (2015)",macbook-12-2015,Core M 1.3GHz,8GB
