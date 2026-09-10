@@ -268,7 +268,7 @@ def header(depth):
 
 CART_JS = '''<script>
 const CART_KEY = "ocb_cart";
-function cartGet(){ try { return JSON.parse(localStorage.getItem(CART_KEY)) || []; } catch(e) { return []; } }
+function cartGet(){ try { const c = JSON.parse(localStorage.getItem(CART_KEY)); return Array.isArray(c) ? c : []; } catch(e) { return []; } }
 function cartSave(c){ try { localStorage.setItem(CART_KEY, JSON.stringify(c)); } catch(e) {} }
 function cartBadge(){
   const c = cartGet(), n = c.reduce((a,i)=>a+i.qty,0), t = c.reduce((a,i)=>a+i.price*i.qty,0);
@@ -316,7 +316,8 @@ def page(title, body, depth, extra_css="", *, path=None, desc="", schema=None,
         elif in_sitemap:
             SITEMAP.append((path, og_image))
     for s in (schema or []):
-        head_extra += f'<script type="application/ld+json">{json.dumps(s)}</script>\n'
+        sj = json.dumps(s).replace("</", "<\\/")
+        head_extra += f'<script type="application/ld+json">{sj}</script>\n'
     if GA4_ID:
         head_extra += (f'<script async src="https://www.googletagmanager.com/gtag/js?id={GA4_ID}"></script>'
                        f'<script>window.dataLayer=window.dataLayer||[];function gtag(){{dataLayer.push(arguments)}}'
@@ -366,7 +367,6 @@ def page(title, body, depth, extra_css="", *, path=None, desc="", schema=None,
     <div><a href="{p}privacy-policy/index.html">Privacy Policy</a> · <a href="{p}terms-of-service/index.html">Terms of Service</a></div>
   </div>
 </div></footer>
-<a class="back" href="{p}../index.html">← All concepts</a>
 </body></html>'''
 
 def write(path, content):
@@ -391,9 +391,9 @@ for cat, brand, dev, m in models:
     variants = {c:ss for c,ss in variants.items() if ss}
     carriers = sorted(variants.keys(), key=carrier_sort)
     single_carrier = len(carriers) == 1
-    matrix = json.dumps(variants)
+    matrix = json.dumps(variants).replace("</", "<\\/")
     cond_html = "".join(
-        f'<div class="cond" data-v="{c}"><b>{c}</b><p>{COND_DESC[c]}</p></div>' for c in COND_ORDER)
+        f'<div class="cond" data-v="{c}"><b>{c}</b><p>{html.escape(COND_DESC[c])}</p></div>' for c in COND_ORDER)
     carrier_html = "".join(f'<button class="pill" data-v="{html.escape(c)}">{html.escape(c) if c != "-" else "Standard"}</button>' for c in carriers)
     q1_block = "" if single_carrier else f'''
       <div class="qs"><div class="label"><span class="badge">1</span> {q1}</div>
@@ -412,7 +412,7 @@ for cat, brand, dev, m in models:
       <div class="qs"><div class="label"><span class="badge">{n3}</span> What condition is it in?</div>
         <div class="conds" id="cond">{cond_html}</div></div>
       <div id="condDetail" style="display:none;margin-top:12px;background:#eaf6ee;border:1.5px solid var(--green);border-radius:12px;padding:16px 18px">
-        {"".join(f'<div class="cdet" data-c="{c}" style="display:none"><b style="font-size:14px;color:var(--deep)">{c} — what this means</b><p style="color:var(--muted);font-size:13px;margin:4px 0 6px">{COND_FULL[c][0]}</p><ol style="color:var(--muted);font-size:13px;margin:0;padding-left:20px">{"".join(f"<li>{x}</li>" for x in COND_FULL[c][1])}</ol>{BATTERY_NOTE if cat == "Cell Phone" and c in ("Flawless","Good","Fair") else ""}</div>' for c in COND_ORDER)}
+        {"".join(f'<div class="cdet" data-c="{c}" style="display:none"><b style="font-size:14px;color:var(--deep)">{c} — what this means</b><p style="color:var(--muted);font-size:13px;margin:4px 0 6px">{html.escape(COND_FULL[c][0])}</p><ol style="color:var(--muted);font-size:13px;margin:0;padding-left:20px">{"".join(f"<li>{html.escape(x)}</li>" for x in COND_FULL[c][1])}</ol>{BATTERY_NOTE if cat == "Cell Phone" and c in ("Flawless","Good","Fair") else ""}</div>' for c in COND_ORDER)}
       </div>
       <p style="color:var(--muted);font-size:13px;max-width:60ch;margin-top:10px">Not sure about condition? Pick your best guess — if our inspection differs, you get a new offer to accept, or we ship your device back free.</p>
     </div>
@@ -483,7 +483,7 @@ document.getElementById("go").onclick = ()=>{{
   const p = M[carrier][storage][cond];
   const item = {{ id: [{json.dumps(brand)}, {json.dumps(dev)}, carrier, storage, cond].join("|"),
     brand: {json.dumps(brand)}, device: {json.dumps(dev)}, cat: {json.dumps(cat)},
-    carrier: SINGLE ? "" : carrier, storage, cond, price: p,
+    carrier, storage, cond, price: p,
     img: {json.dumps(img_url(cat, brand, dev))}, qty: 1 }};
   const c = cartGet();
   const ex = c.find(x => x.id === item.id);
@@ -777,6 +777,7 @@ cart_body = f'''
 </div>
 <script>
 function money(v){{ return "$" + v.toLocaleString(); }}
+const IS_LOCAL = ["localhost","127.0.0.1"].includes(location.hostname);
 let payMethod = null;
 function renderCart(){{
   const c = cartGet();
@@ -787,7 +788,7 @@ function renderCart(){{
   items.innerHTML = "";
   c.forEach((it,i)=>{{
     const d = document.createElement("div"); d.className = "item";
-    const spec = [it.carrier, it.storage, it.cond].filter(Boolean).join(" / ");
+    const spec = [it.carrier, it.storage, it.cond].filter(v=>v && v!=="-").join(" / ");
     d.innerHTML = `<img src="${{it.img}}" onerror="this.style.display='none'">`+
       `<div class="name">${{it.brand}} ${{it.device}}</div><div class="spec">${{spec}}</div>`+
       `<div class="price">${{money(it.price)}}<small style="color:var(--muted);font-weight:500"> each</small></div>`+
@@ -899,13 +900,24 @@ document.getElementById("submit").addEventListener("click", async ()=>{{
       const d = await r.json();
       id = d.order_number; total = d.total; lockDate = new Date(d.locked_until + "T12:00:00");
     }} else if ((r.headers.get("content-type") || "").includes("json")) {{
-      // a real API answered with an error — show it; non-JSON = static preview, demo mode
+      // a real API answered with an error — show it
       const d = await r.json().catch(()=>({{}}));
       document.getElementById("coToast").textContent = d.error || "Something went wrong — please try again.";
       btn.disabled = false; btn.textContent = "Sell my device(s)";
       return;
+    }} else if (!IS_LOCAL) {{
+      // deployed but the API answered non-JSON (crash/timeout): NEVER fabricate success
+      document.getElementById("coToast").textContent = "We couldn't reach our order system — nothing was submitted. Please try again in a minute, or call 657-286-8274.";
+      btn.disabled = false; btn.textContent = "Sell my device(s)";
+      return;
     }}
-  }} catch(e) {{ /* static preview / offline: demo mode */ }}
+  }} catch(e) {{
+    if (!IS_LOCAL) {{
+      document.getElementById("coToast").textContent = "We couldn't reach our order system — nothing was submitted. Check your connection and try again.";
+      btn.disabled = false; btn.textContent = "Sell my device(s)";
+      return;
+    }} /* local preview: demo mode */
+  }}
   btn.disabled = false; btn.textContent = "Sell my device(s)";
   document.getElementById("doneName").textContent = document.getElementById("fn").value.trim();
   document.getElementById("doneId").textContent = id;
@@ -1064,13 +1076,19 @@ document.getElementById("tGo").onclick = async () => {
       const d = await r.json();
       if (!r.ok) { err.textContent = d.error || "Order not found."; }
       else render(d);
-    } else {
+    } else if (["localhost","127.0.0.1"].includes(location.hostname)) {
       document.getElementById("demoNote").style.display = "block";
       render(demoData(order));
+    } else {
+      err.textContent = "We couldn't reach the tracking system — please try again in a minute.";
     }
   } catch(e) {
-    document.getElementById("demoNote").style.display = "block";
-    render(demoData(order));
+    if (["localhost","127.0.0.1"].includes(location.hostname)) {
+      document.getElementById("demoNote").style.display = "block";
+      render(demoData(order));
+    } else {
+      err.textContent = "We couldn't reach the tracking system — check your connection and try again.";
+    }
   }
   btn.disabled = false; btn.textContent = "Track my order";
 };
@@ -1470,9 +1488,11 @@ for _cat in LIVE_CATS:
     _devs = [m for b in TREE.get(_cat, {}).values() for m in b.values() if m["enabled"]]
     _mx = max((model_max(m) for m in _devs), default=0)
     if _mx:
-        _h = re.sub(
-            r'(href="sell/' + CAT_SLUG[_cat] + r'/index\.html"><img[^>]*><div class="name">[^<]*</div><div class="val">)\$[\d,]+',
-            lambda mo: mo.group(1) + money(_mx), _h)
+        _h, _n = re.subn(
+            r'(href="sell/' + CAT_SLUG[_cat] + r'/index\.html"><img[^>]*><div class="name">[^<]*</div><div class="val">)\$[\d,]+(?:\.\d+)?',
+            lambda mo: mo.group(1) + money(float(round(_mx))), _h)
+        if _n == 0:
+            print(f"WARNING: homepage payout card for {_cat} not found - value not updated")
 _idx.write_text(_h)
 
 # ---- sitemap.xml + robots.txt ----

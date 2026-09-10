@@ -26,7 +26,8 @@ const SITE = process.env.SITE_URL || "https://www.ocbuyback.com";
 const TOKEN = "e51ee82a3";
 
 const US = { Aluminium: "aluminum" }; // aggregators use US spelling
-const seg = (s) => (US[s] || s).toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "");
+// never emit an empty segment — "//" in a deeplink URL breaks the redirect
+const seg = (s) => (US[s] || s).toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "") || "-";
 const swappaCarrier = (s) => (US[s] || s).toLowerCase().replace(/&/g, "").replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "");
 // customer-facing condition slugs used in SellCell deeplinks
 const COND_SLUG = { "Brand New": "brand-new", "Flawless": "like-new", "Good": "good-condition",

@@ -112,7 +112,23 @@ footer .fbot{border-top:1px solid rgba(255,255,255,.12);padding:16px 0;display:f
   <a class="cta" id="cartPill" href="sell/devices/index.html" style="display:none;margin-left:12px;background:var(--lime);color:var(--lime-ink)">Cart · 0</a>
 </div></header>
 <script>
-function cartGet(){ try { return JSON.parse(localStorage.getItem("ocb_cart")) || []; } catch(e) { return []; } }
+function cartGet(){ try { const c = JSON.parse(localStorage.getItem("ocb_cart")); return Array.isArray(c) ? c : []; } catch(e) { return []; } }
+// first-touch lead attribution: recorded once per visitor, sent with checkout
+(function(){
+  try {
+    if (localStorage.getItem("ocb_attrib")) return;
+    const q = new URLSearchParams(location.search);
+    const ref = document.referrer || "";
+    const sameSite = ref && new URL(ref).host === location.host;
+    localStorage.setItem("ocb_attrib", JSON.stringify({
+      r: sameSite ? "" : ref,
+      l: location.pathname + location.search,
+      us: q.get("utm_source") || "", um: q.get("utm_medium") || "", uc: q.get("utm_campaign") || "",
+      t: new Date().toISOString(),
+    }));
+  } catch(e) {}
+})();
+
 (function(){ const c = cartGet(), n = c.reduce((a,i)=>a+i.qty,0), t = c.reduce((a,i)=>a+i.price*i.qty,0);
   const el = document.getElementById("cartPill");
   if(el && n){ el.style.display = ""; el.textContent = "Cart · " + n + " ($" + t.toLocaleString() + ")"; } })();
@@ -263,5 +279,4 @@ function cartGet(){ try { return JSON.parse(localStorage.getItem("ocb_cart")) ||
   </div>
 </div></footer>
 
-<a class="back" href="../index.html">← All concepts</a>
 </body></html>

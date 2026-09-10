@@ -163,7 +163,7 @@ border-radius:99px;cursor:pointer}
 </div></header>
 <script>
 const CART_KEY = "ocb_cart";
-function cartGet(){ try { return JSON.parse(localStorage.getItem(CART_KEY)) || []; } catch(e) { return []; } }
+function cartGet(){ try { const c = JSON.parse(localStorage.getItem(CART_KEY)); return Array.isArray(c) ? c : []; } catch(e) { return []; } }
 function cartSave(c){ try { localStorage.setItem(CART_KEY, JSON.stringify(c)); } catch(e) {} }
 function cartBadge(){
   const c = cartGet(), n = c.reduce((a,i)=>a+i.qty,0), t = c.reduce((a,i)=>a+i.price*i.qty,0);
@@ -262,6 +262,7 @@ cartBadge();
 </div>
 <script>
 function money(v){ return "$" + v.toLocaleString(); }
+const IS_LOCAL = ["localhost","127.0.0.1"].includes(location.hostname);
 let payMethod = null;
 function renderCart(){
   const c = cartGet();
@@ -272,7 +273,7 @@ function renderCart(){
   items.innerHTML = "";
   c.forEach((it,i)=>{
     const d = document.createElement("div"); d.className = "item";
-    const spec = [it.carrier, it.storage, it.cond].filter(Boolean).join(" / ");
+    const spec = [it.carrier, it.storage, it.cond].filter(v=>v && v!=="-").join(" / ");
     d.innerHTML = `<img src="${it.img}" onerror="this.style.display='none'">`+
       `<div class="name">${it.brand} ${it.device}</div><div class="spec">${spec}</div>`+
       `<div class="price">${money(it.price)}<small style="color:var(--muted);font-weight:500"> each</small></div>`+
@@ -384,13 +385,24 @@ document.getElementById("submit").addEventListener("click", async ()=>{
       const d = await r.json();
       id = d.order_number; total = d.total; lockDate = new Date(d.locked_until + "T12:00:00");
     } else if ((r.headers.get("content-type") || "").includes("json")) {
-      // a real API answered with an error — show it; non-JSON = static preview, demo mode
+      // a real API answered with an error — show it
       const d = await r.json().catch(()=>({}));
       document.getElementById("coToast").textContent = d.error || "Something went wrong — please try again.";
       btn.disabled = false; btn.textContent = "Sell my device(s)";
       return;
+    } else if (!IS_LOCAL) {
+      // deployed but the API answered non-JSON (crash/timeout): NEVER fabricate success
+      document.getElementById("coToast").textContent = "We couldn't reach our order system — nothing was submitted. Please try again in a minute, or call 657-286-8274.";
+      btn.disabled = false; btn.textContent = "Sell my device(s)";
+      return;
     }
-  } catch(e) { /* static preview / offline: demo mode */ }
+  } catch(e) {
+    if (!IS_LOCAL) {
+      document.getElementById("coToast").textContent = "We couldn't reach our order system — nothing was submitted. Check your connection and try again.";
+      btn.disabled = false; btn.textContent = "Sell my device(s)";
+      return;
+    } /* local preview: demo mode */
+  }
   btn.disabled = false; btn.textContent = "Sell my device(s)";
   document.getElementById("doneName").textContent = document.getElementById("fn").value.trim();
   document.getElementById("doneId").textContent = id;
@@ -445,5 +457,4 @@ renderCart();
     <div><a href="../../privacy-policy/index.html">Privacy Policy</a> · <a href="../../terms-of-service/index.html">Terms of Service</a></div>
   </div>
 </div></footer>
-<a class="back" href="../../../index.html">← All concepts</a>
 </body></html>

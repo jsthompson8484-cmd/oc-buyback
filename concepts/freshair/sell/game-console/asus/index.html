@@ -61,7 +61,7 @@ footer .fbot{border-top:1px solid rgba(255,255,255,.12);padding:16px 0;display:f
 </div></header>
 <script>
 const CART_KEY = "ocb_cart";
-function cartGet(){ try { return JSON.parse(localStorage.getItem(CART_KEY)) || []; } catch(e) { return []; } }
+function cartGet(){ try { const c = JSON.parse(localStorage.getItem(CART_KEY)); return Array.isArray(c) ? c : []; } catch(e) { return []; } }
 function cartSave(c){ try { localStorage.setItem(CART_KEY, JSON.stringify(c)); } catch(e) {} }
 function cartBadge(){
   const c = cartGet(), n = c.reduce((a,i)=>a+i.qty,0), t = c.reduce((a,i)=>a+i.price*i.qty,0);
@@ -130,5 +130,4 @@ cartBadge();
     <div><a href="../../../privacy-policy/index.html">Privacy Policy</a> · <a href="../../../terms-of-service/index.html">Terms of Service</a></div>
   </div>
 </div></footer>
-<a class="back" href="../../../../index.html">← All concepts</a>
 </body></html>

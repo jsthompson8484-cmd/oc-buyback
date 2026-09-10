@@ -31,15 +31,19 @@ export default async (req) => {
   const order = (url.searchParams.get("order") || "").trim().toUpperCase();
   const email = (url.searchParams.get("email") || "").trim().toLowerCase();
   if (!order || !email) return json(400, { error: "Order number and email required" });
+  if (!/^[A-Z0-9-]{4,20}$/.test(order)) return json(404, { error: "No order found for that number and email" });
 
+  // Fetch by order number only, then compare the email in JS — never put the
+  // email in a pattern operator (ilike lets "%" match any address).
   const r = await db(
-    `trade_ins?order_number=eq.${encodeURIComponent(order)}&email=ilike.${encodeURIComponent(email)}` +
-    `&select=order_number,status,total_quote,total_paid,price_locked_until,tracking_number,created_at,` +
+    `trade_ins?order_number=eq.${encodeURIComponent(order)}` +
+    `&select=order_number,email,status,total_quote,total_paid,price_locked_until,tracking_number,created_at,` +
     `trade_in_items(model,brand,condition,quoted_price,qty,final_price,final_condition),` +
     `trade_in_events(status,note,created_at)`
   );
   const rows = await r.json();
-  if (!rows.length) return json(404, { error: "No order found for that number and email" });
+  if (!rows.length || (rows[0].email || "").toLowerCase() !== email)
+    return json(404, { error: "No order found for that number and email" });
 
   const t = rows[0];
   return json(200, {
@@ -52,7 +56,11 @@ export default async (req) => {
     tracking_number: t.tracking_number,
     created_at: t.created_at,
     items: t.trade_in_items,
-    history: (t.trade_in_events || []).sort((a, b) => a.created_at.localeCompare(b.created_at)),
+    // history: status timeline only — event notes are internal ops notes
+    // (e.g. label-purchase failures) and never belong in the public response
+    history: (t.trade_in_events || [])
+      .sort((a, b) => a.created_at.localeCompare(b.created_at))
+      .map((h) => ({ status: h.status, note: STATUS_LABELS[h.status] || h.status, created_at: h.created_at })),
   });
 };
 

@@ -103,18 +103,34 @@ export default async (req) => {
     t.trade_in_items.reduce((a, i) => a + (Number(i.final_price ?? i.quoted_price)) * i.qty, 0) + Number(t.promo_amount || 0);
   if (!(amount > 0)) return json(400, { error: "Amount must be positive" });
 
+  // -- claim the order BEFORE sending money: a conditional PATCH that only
+  // matches while status != paid. A double-click or concurrent retry gets
+  // zero rows back and stops here instead of paying twice.
+  const claim = await db(`trade_ins?id=eq.${trade_in_id}&status=neq.paid`, {
+    method: "PATCH",
+    headers: { prefer: "return=representation" },
+    body: JSON.stringify({ status: "paid", total_paid: amount }),
+  });
+  const claimed = claim.ok ? await claim.json() : [];
+  if (!claimed.length) return json(409, { error: "Already marked paid" });
+
   let result;
   try {
     if (t.payment_method === "paypal") result = await paypalPayout(t, amount);
     else if (t.payment_method === "check") result = await lobCheck(t, amount);
     else result = { ref: null, note: `Marked paid — ${t.payment_method} sent manually` };
   } catch (e) {
+    // payout failed — release the claim so it can be retried once fixed
+    await db(`trade_ins?id=eq.${trade_in_id}`, {
+      method: "PATCH", body: JSON.stringify({ status: t.status, total_paid: null }),
+    }).catch(() => {});
+    await db("trade_in_events", {
+      method: "POST",
+      body: JSON.stringify({ trade_in_id, status: t.status,
+        note: `Payout FAILED (${t.payment_method}): ${String(e.message).slice(0, 300)} — order released for retry` }),
+    }).catch(() => {});
     return json(502, { error: e.message });
   }
-
-  await db(`trade_ins?id=eq.${trade_in_id}`, {
-    method: "PATCH", body: JSON.stringify({ status: "paid", total_paid: amount }),
-  });
   await db("trade_in_events", {
     method: "POST",
     body: JSON.stringify({ trade_in_id, status: "paid",

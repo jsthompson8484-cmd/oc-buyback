@@ -118,8 +118,22 @@ export default async (req) => {
   }
   if (method !== "cash" && !/^\d{5}(-\d{4})?$/.test(customer.zip)) return json(400, { error: "Invalid ZIP" });
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(customer.email)) return json(400, { error: "Invalid email" });
+  customer.email = customer.email.trim().toLowerCase(); // normalized — throttle + track lookups rely on it
   if (method === "cash")  // ignore any half-typed address from before the switch
     customer.address1 = customer.address2 = customer.city = customer.state = customer.zip = null;
+  // length caps — oversized junk otherwise surfaces later as Lob/EasyPost failures at payout time
+  const CAPS = { first_name: 40, last_name: 40, email: 120, phone: 20, address1: 100, address2: 100, city: 60, state: 2, zip: 10 };
+  for (const [f, cap] of Object.entries(CAPS))
+    if (customer[f]) customer[f] = String(customer[f]).slice(0, cap);
+  if (method !== "cash" && !/^[A-Z]{2}$/i.test(customer.state)) return json(400, { error: "Invalid state" });
+  if (payment.detail) payment.detail = String(payment.detail).slice(0, 120);
+
+  // -- throttle: this endpoint sends email and (for mail-in) buys a shipping
+  // label, so cap orders per email address per hour
+  const recent = await db(`trade_ins?email=eq.${encodeURIComponent(customer.email.toLowerCase())}` +
+    `&created_at=gte.${encodeURIComponent(new Date(Date.now() - 36e5).toISOString())}&select=id`);
+  if ((await recent.json()).length >= 3)
+    return json(429, { error: "Too many orders in the last hour — call us at 657-286-8274 and we'll help directly" });
   if ((method === "paypal" || method === "zelle" || method === "venmo") && !String(payment.detail || "").trim())
     return json(400, { error: `${payment.method} details required` });
 
@@ -146,10 +160,13 @@ export default async (req) => {
     verified.push({ ...it, qty, price: row.price, weight_oz: Number(row.weight_oz) || 16 });
   }
 
-  // -- promo code (optional)
+  // -- promo code (optional). Strip anything outside [A-Za-z0-9-] BEFORE the
+  // ilike lookup: %, _ and * are pattern wildcards in PostgREST, so an
+  // unsanitized "%" would match (and redeem) any active code.
   let promoAmount = 0, promoCode = null;
-  if (promo_code) {
-    const r = await db(`promo_codes?code=ilike.${encodeURIComponent(promo_code)}&active=eq.true&select=*`);
+  const promoClean = String(promo_code || "").trim().replace(/[^A-Za-z0-9-]/g, "");
+  if (promoClean && promoClean === String(promo_code).trim()) {
+    const r = await db(`promo_codes?code=ilike.${encodeURIComponent(promoClean)}&active=eq.true&select=*`);
     const codes = await r.json();
     if (codes[0]) {
       promoAmount = Number(codes[0].amount);
@@ -186,7 +203,10 @@ export default async (req) => {
         ? { source: attrib.us || null, medium: attrib.um || null, campaign: attrib.uc || null } : null,
     }),
   });
-  if (!tiRes.ok) return json(500, { error: "Could not create order", detail: await tiRes.text() });
+  if (!tiRes.ok) {
+    console.error("trade_ins insert failed:", await tiRes.text()); // detail stays server-side
+    return json(500, { error: "Could not create order — please try again" });
+  }
   const [tradeIn] = await tiRes.json();
 
   await db("trade_in_items", {

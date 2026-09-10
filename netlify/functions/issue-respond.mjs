@@ -1,6 +1,12 @@
-// GET /api/issue-respond?token=...&action=... — the customer clicked a link
-// in an issue email. Validates the token, records the response exactly once,
-// updates the order, and shows a friendly confirmation page.
+// /api/issue-respond?token=...&action=... — the customer clicked a link
+// in an issue email.
+//
+// GET shows a confirmation page with a button; only the button's POST records
+// the response. Email security scanners (Outlook SafeLinks, AV gateways)
+// prefetch every link with GET — if GET mutated, an offer could be accepted
+// or declined before the customer ever opened the email.
+// The recording PATCH is conditional on status=eq.pending, so concurrent
+// clicks record exactly once.
 
 import { responsePage } from "./lib/issue-emails.mjs";
 
@@ -43,21 +49,49 @@ export default async (req) => {
   const first = issue.trade_ins.first_name;
 
   // already answered → show what we have on file, don't double-record
-  if (issue.status !== "pending") {
+  const alreadyPage = () => {
     const already = {
       resolved: "You've already confirmed this is done — we're on it.",
       cannot_complete: "You've already let us know you couldn't complete this — we're arranging the return.",
       accepted: "You've already accepted the revised offer — payment is on its way.",
       declined: "You've already declined the revised offer — your device is being returned.",
       cancelled: "This issue was withdrawn by our team — no action needed.",
-    }[issue.status];
+    }[issue.status] || "This has already been handled — reply to our email if anything looks off.";
     return html(200, responsePage({ title: "Already taken care of", body: already }));
+  };
+  if (issue.status !== "pending") return alreadyPage();
+
+  // GET = show the confirm button; only its POST records the choice
+  if (req.method !== "POST") {
+    const label = {
+      done: "Yes — I've completed this",
+      cannot: "I wasn't able to complete this",
+      accept: `Accept the revised offer${issue.new_price ? ` of $${Number(issue.new_price).toLocaleString()}` : ""}`,
+      decline: "Decline — send my device back",
+    }[action];
+    const qs = `token=${encodeURIComponent(token)}&action=${encodeURIComponent(action)}`;
+    return html(200, responsePage({
+      title: `One tap to confirm, ${first}`,
+      body: `This will record your choice for ${device} on order <b>${issue.trade_ins.order_number}</b>.` +
+        `<form method="POST" action="/api/issue-respond?${qs}" style="margin:22px 0 0">` +
+        `<button type="submit" style="background:#2D8631;color:#fff;border:0;border-radius:10px;` +
+        `padding:14px 26px;font-size:15px;font-weight:700;cursor:pointer">${label}</button></form>` +
+        `<span style="display:block;margin-top:14px;font-size:13px">Changed your mind? Just close this page ` +
+        `and use the other button in our email.</span>`,
+    }));
   }
 
-  await db(`trade_in_issues?id=eq.${issue.id}`, {
+  // claim: only records while still pending — first response wins
+  const claim = await db(`trade_in_issues?id=eq.${issue.id}&status=eq.pending`, {
     method: "PATCH",
     body: JSON.stringify({ status: newStatus, responded_at: new Date().toISOString() }),
   });
+  const claimed = claim.ok ? await claim.json() : [];
+  if (!claimed.length) {
+    const [cur] = await db(`trade_in_issues?id=eq.${issue.id}&select=status`).then((r) => r.json());
+    issue.status = cur?.status || issue.status;
+    return alreadyPage();
+  }
 
   let note, page;
   switch (newStatus) {

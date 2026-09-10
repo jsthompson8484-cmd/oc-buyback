@@ -105,7 +105,7 @@ font-weight:700;text-align:center;margin-bottom:16px;display:none}
 </div></header>
 <script>
 const CART_KEY = "ocb_cart";
-function cartGet(){ try { return JSON.parse(localStorage.getItem(CART_KEY)) || []; } catch(e) { return []; } }
+function cartGet(){ try { const c = JSON.parse(localStorage.getItem(CART_KEY)); return Array.isArray(c) ? c : []; } catch(e) { return []; } }
 function cartSave(c){ try { localStorage.setItem(CART_KEY, JSON.stringify(c)); } catch(e) {} }
 function cartBadge(){
   const c = cartGet(), n = c.reduce((a,i)=>a+i.qty,0), t = c.reduce((a,i)=>a+i.price*i.qty,0);
@@ -214,13 +214,19 @@ document.getElementById("tGo").onclick = async () => {
       const d = await r.json();
       if (!r.ok) { err.textContent = d.error || "Order not found."; }
       else render(d);
-    } else {
+    } else if (["localhost","127.0.0.1"].includes(location.hostname)) {
       document.getElementById("demoNote").style.display = "block";
       render(demoData(order));
+    } else {
+      err.textContent = "We couldn't reach the tracking system — please try again in a minute.";
     }
   } catch(e) {
-    document.getElementById("demoNote").style.display = "block";
-    render(demoData(order));
+    if (["localhost","127.0.0.1"].includes(location.hostname)) {
+      document.getElementById("demoNote").style.display = "block";
+      render(demoData(order));
+    } else {
+      err.textContent = "We couldn't reach the tracking system — check your connection and try again.";
+    }
   }
   btn.disabled = false; btn.textContent = "Track my order";
 };
@@ -264,5 +270,4 @@ document.getElementById("tAgain").onclick = () => {
     <div><a href="../../privacy-policy/index.html">Privacy Policy</a> · <a href="../../terms-of-service/index.html">Terms of Service</a></div>
   </div>
 </div></footer>
-<a class="back" href="../../../index.html">← All concepts</a>
 </body></html>

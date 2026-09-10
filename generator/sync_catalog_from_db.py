@@ -51,3 +51,5 @@ models = sum(len(b) for c in tree.values() for b in c.values())
 sellable = sum(1 for c in tree.values() for b in c.values() for m in b.values()
                if m["enabled"] and any(p for cr in m["variants"].values() for s in cr.values() for p in s.values()))
 print(f"synced catalog from db: {len(rows)} price rows, {models} models, {sellable} sellable")
+if sellable < 50:
+    raise SystemExit(f"ABORT BUILD: only {sellable} sellable models came back - catalog fetch is broken (RLS/key change?)")
