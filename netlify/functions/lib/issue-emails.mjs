@@ -209,7 +209,14 @@ export function buildOrderConfirmation({ orderNumber, firstName, items, total, l
         <tr><td style="padding:8px 0 0;font-weight:800">Total offer</td>
         <td style="text-align:right;font-weight:800;color:${GREEN};font-size:18px;padding-top:8px">${money(total)}</td></tr></table></div>` +
         (isCash
-          ? `<p style="font-size:14.5px;line-height:1.6">Bring your device to <b>1203 W Imperial Hwy, STE 103, Brea</b> (Mon–Fri 10 AM–6 PM). We'll evaluate it while you wait — about 10 minutes — and pay you cash on the spot.</p>`
+          ? `<h3 style="font-size:16px;color:${DEEP};margin:20px 0 8px">🏪 Come get paid</h3>
+             <div style="background:${GROUND};border-radius:12px;padding:16px 18px;margin:0 0 12px">
+               <p style="font-size:14.5px;line-height:1.7;margin:0"><b>OCBuyBack</b><br>
+               1203 W Imperial Hwy, STE 103<br>Brea, CA 92821<br>
+               <span style="color:${MUTED}">Monday–Friday · 10 AM – 6 PM · no appointment needed</span></p>
+             </div>
+             <p style="font-size:14.5px;line-height:1.6;margin:0 0 6px">Show your order number <b>${orderNumber}</b> at the counter — your price is locked, so what you see above is what we pay. We evaluate while you wait (about 10 minutes) and hand you cash on the spot.</p>
+             <p style="font-size:13.5px;color:${MUTED};line-height:1.6;margin:0"><b>Bring:</b> your device, a photo ID, and sign out of iCloud or your Google account first — or ask us and we'll help at the counter.</p>`
           : (qrUrl || labelUrl
             ? `<h3 style="font-size:16px;color:${DEEP};margin:20px 0 8px">📦 Your free shipping label</h3>` +
               (qrUrl ? `<div style="background:${GROUND};border-radius:12px;padding:16px;text-align:center;margin:0 0 10px">
@@ -226,7 +233,9 @@ export function buildOrderConfirmation({ orderNumber, firstName, items, total, l
             guides.map((g) => `<p style="font-size:14px;font-weight:700;margin:10px 0 4px">${g.title}</p>
               <ol style="font-size:13.5px;color:${MUTED};line-height:1.6;margin:0;padding-left:20px">${g.steps.map((s) => `<li>${s}</li>`).join("")}</ol>`).join("") +
             `<div style="margin-top:18px"></div>` : "";
-        })() : "") + button(trackUrl, "Track my order"),
+        })() : "") +
+        (isCash ? button("https://www.google.com/maps/dir/?api=1&destination=OCBuyBack+1203+W+Imperial+Hwy+STE+103+Brea+CA+92821", "Get driving directions") : "") +
+        button(trackUrl, "Track my order"),
       footNote: "Questions? Just reply to this email or call 657-286-8274.",
     }),
   };

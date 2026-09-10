@@ -722,29 +722,29 @@ cart_body = f'''
 
     <div class="co">
       <div>
-        <div class="fs"><h2>Your details</h2>
-          <div class="frow">
-            <div class="field"><label for="fn">First name</label><input id="fn" autocomplete="given-name"><div class="hint"></div></div>
-            <div class="field"><label for="ln">Last name</label><input id="ln" autocomplete="family-name"><div class="hint"></div></div>
-            <div class="field full"><label for="a1">Address</label><input id="a1" autocomplete="address-line1"><div class="hint"></div></div>
-            <div class="field full"><label for="a2">Address 2 <span style="color:var(--muted);font-weight:400">(optional)</span></label><input id="a2" autocomplete="address-line2"><div class="hint"></div></div>
-            <div class="field"><label for="city">City</label><input id="city" autocomplete="address-level2"><div class="hint"></div></div>
-            <div class="field"><label for="st">State</label><select id="st">{state_opts}</select><div class="hint"></div></div>
-            <div class="field"><label for="zip">ZIP code</label><input id="zip" inputmode="numeric" autocomplete="postal-code"><div class="hint"></div></div>
-            <div class="field"><label for="em">Email</label><input id="em" type="email" autocomplete="email"><div class="hint"></div></div>
-            <div class="field full"><label for="ph">Phone</label><input id="ph" inputmode="tel" autocomplete="tel"><div class="hint"></div></div>
-          </div>
-        </div>
         <div class="fs"><h2>How do you want to get paid?</h2>
           <div class="pay" id="pay">
             <div class="payopt" data-v="PayPal"><b>PayPal</b><p>Sent to your PayPal within 1 business day of arrival.</p>
               <div class="extra field"><label for="paypal">PayPal email</label><input id="paypal"><div class="hint"></div></div></div>
-            <div class="payopt" data-v="Check"><b>Check</b><p>Mailed to the address above within 1 business day of your device arriving.</p></div>
+            <div class="payopt" data-v="Check"><b>Check</b><p>Mailed to the address you enter below within 1 business day of your device arriving.</p></div>
             <div class="payopt" data-v="Zelle"><b>Zelle</b><p>Sent within 1 business day of arrival.</p>
               <div class="extra field"><label for="zelle">Zelle email or phone</label><input id="zelle"><div class="hint"></div></div></div>
             <div class="payopt" data-v="Venmo"><b>Venmo</b><p>Sent within 1 business day of arrival.</p>
               <div class="extra field"><label for="venmo">Venmo username</label><input id="venmo" placeholder="@username"><div class="hint"></div></div></div>
             <div class="payopt" data-v="Cash in store"><b>Cash in store</b><p>Skip shipping — bring your device to 1203 W Imperial Hwy, Brea and get paid on the spot.</p></div>
+          </div>
+        </div>
+        <div class="fs"><h2 id="detailsHead">Your details</h2>
+          <div class="frow">
+            <div class="field"><label for="fn">First name</label><input id="fn" autocomplete="given-name"><div class="hint"></div></div>
+            <div class="field"><label for="ln">Last name</label><input id="ln" autocomplete="family-name"><div class="hint"></div></div>
+            <div class="field full addrf"><label for="a1">Address</label><input id="a1" autocomplete="address-line1"><div class="hint"></div></div>
+            <div class="field full addrf"><label for="a2">Address 2 <span style="color:var(--muted);font-weight:400">(optional)</span></label><input id="a2" autocomplete="address-line2"><div class="hint"></div></div>
+            <div class="field addrf"><label for="city">City</label><input id="city" autocomplete="address-level2"><div class="hint"></div></div>
+            <div class="field addrf"><label for="st">State</label><select id="st">{state_opts}</select><div class="hint"></div></div>
+            <div class="field addrf"><label for="zip">ZIP code</label><input id="zip" inputmode="numeric" autocomplete="postal-code"><div class="hint"></div></div>
+            <div class="field"><label for="em">Email</label><input id="em" type="email" autocomplete="email"><div class="hint"></div></div>
+            <div class="field full"><label for="ph">Phone</label><input id="ph" inputmode="tel" autocomplete="tel"><div class="hint"></div></div>
           </div>
         </div>
         <div class="fs">
@@ -817,6 +817,16 @@ document.getElementById("pay").addEventListener("click", e=>{{
   if(!t || e.target.closest("input")) return;
   payMethod = t.dataset.v;
   document.querySelectorAll(".payopt").forEach(x=>x.classList.toggle("on", x===t));
+  // cash in store = walk-in: no shipping, so no address — just name, email, phone
+  const cash = payMethod === "Cash in store";
+  document.querySelectorAll(".addrf").forEach(f=>{{ f.style.display = cash ? "none" : ""; }});
+  document.getElementById("detailsHead").textContent = cash ? "Your details — just the basics for a walk-in" : "Your details";
+  document.querySelector(".totalbar span").textContent = cash
+    ? "Bring your device to our Brea shop — we'll evaluate it while you wait and pay cash on the spot."
+    : "We'll email your free prepaid USPS shipping label right after checkout.";
+  document.querySelector(".trust").innerHTML = cash
+    ? "<span>Cash on the spot at our Brea shop</span><span>Price locked for 14 days</span><span>Evaluated while you wait — about 10 minutes</span>"
+    : "<span>Free prepaid USPS shipping label</span><span>Price locked for 14 days</span><span>Paid within 1 business day of arrival</span>";
 }});
 function setErr(id, msg){{
   const f = document.getElementById(id).closest(".field");
@@ -841,7 +851,9 @@ document.getElementById("zip").addEventListener("input", async (e) => {{
 }});
 function validate(){{
   let ok = true;
-  const req = {{fn:"First name", ln:"Last name", a1:"Address", city:"City", st:"State", zip:"ZIP", em:"Email", ph:"Phone"}};
+  const req = payMethod === "Cash in store"
+    ? {{fn:"First name", ln:"Last name", em:"Email", ph:"Phone"}}
+    : {{fn:"First name", ln:"Last name", a1:"Address", city:"City", st:"State", zip:"ZIP", em:"Email", ph:"Phone"}};
   for(const [id,label] of Object.entries(req)){{
     const v = document.getElementById(id).value.trim();
     let msg = v ? "" : label + " is required";

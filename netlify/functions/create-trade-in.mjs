@@ -106,16 +106,20 @@ export default async (req) => {
 
   const { customer = {}, items = [], payment = {}, promo_code, sms_opt_in, attrib } = body;
 
-  // -- validate customer fields
-  const required = ["first_name", "last_name", "email", "phone", "address1", "city", "state", "zip"];
+  const method = PAY_METHODS[payment.method] || null;
+  if (!method) return json(400, { error: "Invalid payment method" });
+
+  // -- validate customer fields (cash walk-ins bring the device — no address needed)
+  const required = method === "cash"
+    ? ["first_name", "last_name", "email", "phone"]
+    : ["first_name", "last_name", "email", "phone", "address1", "city", "state", "zip"];
   for (const f of required) {
     if (!String(customer[f] || "").trim()) return json(400, { error: `Missing field: ${f}` });
   }
-  if (!/^\d{5}(-\d{4})?$/.test(customer.zip)) return json(400, { error: "Invalid ZIP" });
+  if (method !== "cash" && !/^\d{5}(-\d{4})?$/.test(customer.zip)) return json(400, { error: "Invalid ZIP" });
   if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(customer.email)) return json(400, { error: "Invalid email" });
-
-  const method = PAY_METHODS[payment.method] || null;
-  if (!method) return json(400, { error: "Invalid payment method" });
+  if (method === "cash")  // ignore any half-typed address from before the switch
+    customer.address1 = customer.address2 = customer.city = customer.state = customer.zip = null;
   if ((method === "paypal" || method === "zelle" || method === "venmo") && !String(payment.detail || "").trim())
     return json(400, { error: `${payment.method} details required` });
 
