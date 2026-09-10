@@ -1396,6 +1396,25 @@ for cslug_, city, dist, mins, route in CITY_PAGES:
                desc=f"Sell your phone, tablet, watch or console for cash near {city}, CA — OCBuyBack in Brea is {mins} away. Instant online quote locked for 14 days, cash on the spot, or ship free.",
                schema=[breadcrumbs([("Home", "/"), ("Brea store", "/locations/brea-ca-92821"), (f"Near {city}", None)])]))
 
+# ---- homepage Mac payouts (kept current with the daily price feed) ----
+# The homepage is a static source file; Mac trade-in values change daily via
+# the price-feed sync, so each build rewrites the "Now buying Macs" card
+# values and the priced-model count from the live catalog.
+_idx = OUT / "index.html"
+_h = _idx.read_text()
+_mac_cats = ["Macbook", "iMac", "Mac Mini", "Mac Studio", "Mac Pro"]
+_total_priced = 0
+for _cat in _mac_cats:
+    _devs = [m for b in TREE.get(_cat, {}).values() for m in b.values() if m["enabled"]]
+    _mx = max((model_max(m) for m in _devs), default=0)
+    _total_priced += sum(1 for m in _devs if model_max(m) > 0)
+    if _mx:
+        _h = re.sub(
+            r'(href="sell/' + CAT_SLUG[_cat] + r'/index\.html"><img[^>]*><div class="name">[^<]*</div><div class="val">)\$[\d,]+',
+            lambda mo: mo.group(1) + money(_mx), _h)
+_h = re.sub(r"\d+ models priced right now", f"{_total_priced} models priced right now", _h)
+_idx.write_text(_h)
+
 # ---- sitemap.xml + robots.txt ----
 urls = []
 for path, img in [("/", None)] + SITEMAP:
