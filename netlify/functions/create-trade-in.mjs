@@ -20,6 +20,46 @@ const SERVICE_KEY = process.env.SUPABASE_SERVICE_KEY;
 const RESEND_KEY = process.env.RESEND_API_KEY;
 const SITE_URL = process.env.SITE_URL || "https://www.ocbuyback.com";
 const FROM = process.env.EMAIL_FROM || "OCBuyBack <onboarding@resend.dev>";
+const EASYPOST_KEY = process.env.EASYPOST_API_KEY;
+
+const STORE_ADDR = { name: "OCBuyBack", street1: "1203 W Imperial Hwy", street2: "STE 103",
+  city: "Brea", state: "CA", zip: "92821", country: "US", phone: "6572868274" };
+
+// Buy a USPS return label (customer -> store) with lithium-battery hazmat and a
+// Label Broker QR code. Uses the scan-based USPSReturns product when available
+// (billed only when the customer actually ships), falling back to Ground Advantage.
+async function buyReturnLabel(customer, weightOz, orderNumber) {
+  const ep = (path, body) => fetch(`https://api.easypost.com/v2/${path}`, {
+    method: "POST",
+    headers: { authorization: "Basic " + btoa(EASYPOST_KEY + ":"), "content-type": "application/json" },
+    body: JSON.stringify(body),
+  }).then((r) => r.json());
+
+  const shipment = await ep("shipments", { shipment: {
+    to_address: STORE_ADDR,
+    from_address: { name: `${customer.first_name} ${customer.last_name}`,
+      street1: customer.address1, street2: customer.address2 || undefined,
+      city: customer.city, state: customer.state, zip: customer.zip, country: "US",
+      phone: customer.phone },
+    parcel: { weight: Math.max(Math.round(weightOz), 4) },
+    options: { hazmat: "CLASS_9_USED_LITHIUM", print_custom_1: orderNumber },
+  }});
+  if (!shipment.id) throw new Error(shipment.error?.message || "EasyPost shipment failed");
+  const rates = shipment.rates || [];
+  const rate = rates.find((r) => r.carrier === "USPSReturns" && r.service === "GroundAdvantageReturn")
+    || rates.filter((r) => r.carrier === "USPS").sort((a, b) => a.rate - b.rate)[0];
+  if (!rate) throw new Error("No USPS rate returned" +
+    (shipment.messages?.length ? `: ${shipment.messages[0].message}` : ""));
+  const bought = await ep(`shipments/${shipment.id}/buy`, { rate: { id: rate.id } });
+  if (!bought.postage_label) throw new Error(bought.error?.message || "Label purchase failed");
+  let qrUrl = null;
+  try {
+    const withForm = await ep(`shipments/${shipment.id}/forms`, { form: { type: "label_qr_code" } });
+    qrUrl = (withForm.forms || []).find((f) => f.form_type === "label_qr_code")?.form_url || null;
+  } catch { /* QR is best-effort; the printable label always works */ }
+  return { labelUrl: bought.postage_label.label_url, qrUrl, tracking: bought.tracking_code,
+           service: `${rate.carrier} ${rate.service}` };
+}
 
 const db = (path, init = {}) =>
   fetch(`${SUPABASE_URL}/rest/v1/${path}`, {
@@ -154,12 +194,28 @@ export default async (req) => {
       condition: it.cond, quoted_price: it.price, qty: it.qty,
     }))),
   });
+  // -- buy the return shipping label (skip for walk-in cash orders)
+  let label = null;
+  if (method !== "cash" && EASYPOST_KEY) {
+    try {
+      label = await buyReturnLabel(customer,
+        verified.reduce((a, i) => a + i.weight_oz * i.qty, 0) + 8, orderNumber);
+      await db(`trade_ins?id=eq.${tradeIn.id}`, { method: "PATCH", body: JSON.stringify({
+        label_url: label.labelUrl, label_qr_url: label.qrUrl, tracking_number: label.tracking }) });
+    } catch (e) {
+      await db("trade_in_events", { method: "POST", body: JSON.stringify({
+        trade_in_id: tradeIn.id, status: "initiated",
+        note: `⚠️ Shipping label purchase FAILED (${e.message}) — buy manually and email the customer.` }) });
+    }
+  }
+
   await db("trade_in_events", {
     method: "POST",
     body: JSON.stringify({
       trade_in_id: tradeIn.id, status: "initiated",
       note: method === "cash" ? "Order created — customer will bring device to the store."
-                              : "Order created — shipping label emailed.",
+        : label ? `Order created — ${label.service} label bought (${label.tracking}), emailed with QR code.`
+                : "Order created — label pending.",
     }),
   });
 
@@ -171,6 +227,7 @@ export default async (req) => {
         orderNumber, firstName: customer.first_name, items: verified,
         total: total + promoAmount, lockedUntil: lockedPretty, payMethod: method,
         trackUrl: `${new URL(req.url).origin}/trade-in/track`,
+        labelUrl: label?.labelUrl, qrUrl: label?.qrUrl, tracking: label?.tracking,
       });
       await fetch("https://api.resend.com/emails", {
         method: "POST",

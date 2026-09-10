@@ -105,6 +105,7 @@ create table trade_ins (
   utm               jsonb,                              -- utm_source/medium/campaign if present
   estimated_weight_oz numeric,                        -- for the shipping label
   label_url         text,
+  label_qr_url      text,                               -- USPS Label Broker QR code image
   tracking_number   text,
   admin_notes       text,
   created_at        timestamptz not null default now(),

@@ -159,8 +159,40 @@ export function buildIssueEmail(issue, ctx) {
   }
 }
 
+// "Get your device ready" checklists, keyed by what's in the order.
+const RESET_GUIDES = [
+  { match: (i) => i.brand === "Apple" && ["Cell Phone","Tablet","iPod","VR"].includes(i.cat || i.category),
+    title: "iPhone / iPad",
+    steps: ["Back up anything you want to keep (iCloud or computer).",
+      "Turn off Find My and sign out: Settings → your name → Sign Out.",
+      "Erase it: Settings → General → Transfer or Reset → Erase All Content and Settings.",
+      "Remove your SIM card if it has one."] },
+  { match: (i) => i.brand === "Apple" && (i.cat || i.category) === "Smartwatch",
+    title: "Apple Watch",
+    steps: ["On your iPhone, open the Watch app → All Watches → tap ⓘ → Unpair Apple Watch.",
+      "Unpairing automatically removes Activation Lock — no other steps needed."] },
+  { match: (i) => i.brand !== "Apple" && ["Cell Phone","Tablet"].includes(i.cat || i.category),
+    title: "Android phone / tablet",
+    steps: ["Back up anything you want to keep.",
+      "Remove your Google account: Settings → Accounts (or Passwords & accounts) → remove.",
+      "Remove any screen lock, then factory reset: Settings → General management (or System) → Reset.",
+      "Remove your SIM card if it has one."] },
+  { match: (i) => (i.cat || i.category) === "Game Console",
+    title: "Game console",
+    steps: ["Sign out / deactivate your accounts (PlayStation: Settings → Users and Accounts; Xbox: remove account; Nintendo: deregister).",
+      "Factory reset from system settings.",
+      "Include the power cable, and controllers if you have them."] },
+  { match: (i) => (i.cat || i.category) === "GoPro",
+    title: "GoPro",
+    steps: ["Take out your SD card — we don't need it and can't return it.",
+      "Factory reset: Preferences → Reset → Factory Reset."] },
+  { match: (i) => (i.cat || i.category) === "Headphones",
+    title: "Headphones",
+    steps: ["Remove them from Find My / Bluetooth on your devices so they're fully unpaired."] },
+];
+
 // Order confirmation sent right after checkout.
-export function buildOrderConfirmation({ orderNumber, firstName, items, total, lockedUntil, payMethod, trackUrl }) {
+export function buildOrderConfirmation({ orderNumber, firstName, items, total, lockedUntil, payMethod, trackUrl, labelUrl, qrUrl, tracking }) {
   const isCash = payMethod === "cash";
   const rows = items.map((i) =>
     `<tr><td style="padding:4px 0;font-size:14.5px">${esc(i.brand)} ${esc(i.device || i.model)} × ${i.qty}
@@ -178,10 +210,23 @@ export function buildOrderConfirmation({ orderNumber, firstName, items, total, l
         <td style="text-align:right;font-weight:800;color:${GREEN};font-size:18px;padding-top:8px">${money(total)}</td></tr></table></div>` +
         (isCash
           ? `<p style="font-size:14.5px;line-height:1.6">Bring your device to <b>1203 W Imperial Hwy, STE 103, Brea</b> (Mon–Fri 10 AM–6 PM). We'll evaluate it while you wait — about 10 minutes — and pay you cash on the spot.</p>`
-          : `<p style="font-size:14.5px;line-height:1.6"><b>1.</b> Your free prepaid USPS shipping label arrives in a separate email.<br>
-             <b>2.</b> Pack your device in any sturdy box and drop it at any Post Office.<br>
-             <b>3.</b> You're paid within 1 business day of it arriving.</p>`),
-      buttonsHtml: button(trackUrl, "Track my order"),
+          : (qrUrl || labelUrl
+            ? `<h3 style="font-size:16px;color:${DEEP};margin:20px 0 8px">📦 Your free shipping label</h3>` +
+              (qrUrl ? `<div style="background:${GROUND};border-radius:12px;padding:16px;text-align:center;margin:0 0 10px">
+                 <img src="${qrUrl}" alt="USPS QR code" style="width:180px;max-width:60%">
+                 <p style="font-size:13.5px;color:${MUTED};margin:8px 0 0"><b>No printer needed:</b> show this QR code at any Post Office and they'll print the label for you.</p></div>` : "") +
+              (labelUrl ? `<p style="font-size:14px;margin:0 0 6px">Have a printer? <a href="${labelUrl}" style="color:${GREEN};font-weight:700">Print your shipping label here</a>.</p>` : "") +
+              (tracking ? `<p style="font-size:13px;color:${MUTED};margin:0 0 4px">Tracking number: <b>${esc(tracking)}</b></p>` : "") +
+              `<p style="font-size:13px;color:${MUTED};margin:0">This label carries the required lithium-battery (HAZMAT Class 9) marking — ground shipping only, which USPS handles automatically.</p>`
+            : `<p style="font-size:14.5px;line-height:1.6">Your free prepaid USPS shipping label arrives in a separate email shortly.</p>`)),
+      buttonsHtml:
+        (!isCash ? (() => {
+          const guides = RESET_GUIDES.filter((g) => items.some(g.match));
+          return guides.length ? `<h3 style="font-size:16px;color:${DEEP};margin:20px 0 8px">🔒 Get your device ready</h3>` +
+            guides.map((g) => `<p style="font-size:14px;font-weight:700;margin:10px 0 4px">${g.title}</p>
+              <ol style="font-size:13.5px;color:${MUTED};line-height:1.6;margin:0;padding-left:20px">${g.steps.map((s) => `<li>${s}</li>`).join("")}</ol>`).join("") +
+            `<div style="margin-top:18px"></div>` : "";
+        })() : "") + button(trackUrl, "Track my order"),
       footNote: "Questions? Just reply to this email or call 657-286-8274.",
     }),
   };
