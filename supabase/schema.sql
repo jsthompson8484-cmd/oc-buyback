@@ -269,6 +269,16 @@ create policy "admin update blog images" on storage.objects
 create policy "admin delete blog images" on storage.objects
   for delete using (bucket_id = 'blog-images' and public.is_admin());
 
+-- device photos uploaded from the admin (webp only, enforced client-side)
+insert into storage.buckets (id, name, public) values ('device-images', 'device-images', true)
+on conflict (id) do nothing;
+create policy "public read device images" on storage.objects
+  for select using (bucket_id = 'device-images');
+create policy "admin insert device images" on storage.objects
+  for insert with check (bucket_id = 'device-images' and public.is_admin());
+create policy "admin update device images" on storage.objects
+  for update using (bucket_id = 'device-images' and public.is_admin());
+
 -- keep updated_at fresh
 create or replace function touch_updated_at() returns trigger
 language plpgsql as $$ begin new.updated_at := now(); return new; end; $$;

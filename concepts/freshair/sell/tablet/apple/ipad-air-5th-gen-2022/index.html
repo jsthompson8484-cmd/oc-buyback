@@ -153,7 +153,7 @@ cartBadge();
   </div>
 </div>
 <script>
-const M = {"Wi-Fi": {"64GB": {"Brand New": 235.0, "Flawless": 205.0, "Good": 170.0, "Fair": 125.0, "Minor Damage": 75.0, "Broken": 10.0}, "256GB": {"Brand New": 275.0, "Flawless": 245.0, "Good": 210.0, "Fair": 165.0, "Minor Damage": 80.0, "Broken": 10.0}}, "Wi-Fi + Cellular": {"64GB": {"Brand New": 250.0, "Flawless": 220.0, "Good": 185.0, "Fair": 140.0, "Minor Damage": 80.0, "Broken": 10.0}, "256GB": {"Brand New": 290.0, "Flawless": 260.0, "Good": 225.0, "Fair": 180.0, "Minor Damage": 85.0, "Broken": 10.0}}};
+const M = {"Wi-Fi": {"256GB": {"Brand New": 275.0, "Broken": 10.0, "Fair": 165.0, "Flawless": 245.0, "Good": 210.0, "Minor Damage": 80.0}, "64GB": {"Brand New": 235.0, "Broken": 10.0, "Fair": 125.0, "Flawless": 205.0, "Good": 170.0, "Minor Damage": 75.0}}, "Wi-Fi + Cellular": {"256GB": {"Brand New": 290.0, "Broken": 10.0, "Fair": 180.0, "Flawless": 260.0, "Good": 225.0, "Minor Damage": 85.0}, "64GB": {"Brand New": 250.0, "Broken": 10.0, "Fair": 140.0, "Flawless": 220.0, "Good": 185.0, "Minor Damage": 80.0}}};
 const SINGLE = false;
 const state = {carrier: SINGLE ? Object.keys(M)[0] : null, storage: null, cond: null};
 function storkey(s){const m=s.match(/([\d.]+)\s*(GB|TB|mm)?/i); if(!m) return 1e9; const v=parseFloat(m[1]); return (m[2]||"").toUpperCase()==="TB"?v*1024:v;}

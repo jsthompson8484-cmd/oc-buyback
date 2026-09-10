@@ -160,6 +160,7 @@ min-height:260px;max-height:46vh;overflow-y:auto;padding:14px 16px;font-size:14.
       <select id="catSel"></select>
       <select id="brandSel"></select>
       <button class="btn ghost" id="catLoad">Load prices</button>
+      <button class="btn" id="devAdd">+ Add device</button>
       <span class="muted" id="catCount"></span>
       <button class="btn" id="catSave" style="margin-left:auto;display:none">Save changes (<span id="dirtyN">0</span>)</button>
     </div></div>
@@ -1062,6 +1063,117 @@ $("#feedCheck").onclick = async () => {
     renderFeeds(results);
   }
   $("#feedCheck").disabled = false; $("#feedCheck").textContent = "Check feeds now";
+};
+
+// ---------- add device to catalog ----------
+$("#devAdd").onclick = async () => {
+  const d = $("#tiDialog");
+  d.classList.add("wide");
+  const { data: cats } = await sb.from("categories").select("id,name").order("sort");
+  const { data: allBrands } = await sb.from("brands").select("id,name").order("name");
+  d.innerHTML = `
+    <h1 style="margin:0 0 14px">Add a device</h1>
+    <div class="row">
+      <select id="nCat">${(cats || []).map((c) => `<option value="${c.id}">${esc(c.name)}</option>`).join("")}</select>
+      <select id="nBrand">${(allBrands || []).map((b) => `<option value="${b.id}">${esc(b.name)}</option>`).join("")}
+        <option value="__new">+ New brand…</option></select>
+      <input id="nBrandName" placeholder="New brand name" style="display:none;width:150px">
+    </div>
+    <div class="row" style="margin-top:10px">
+      <input id="nName" placeholder="Model name (e.g. iPhone 18 Pro)" style="flex:1">
+      <input id="nWeight" type="number" placeholder="Weight oz (blank = category default)" style="width:230px">
+      <label class="muted" style="font-size:12.5px"><input type="checkbox" id="nOn" checked> live</label>
+    </div>
+    <div class="heroprev" style="margin-top:12px">
+      <img id="nImgPrev" style="display:none" alt="">
+      <button class="btn sm ghost" id="nImgBtn" type="button">Upload photo (.webp only)</button>
+      <input id="nImgFile" type="file" accept="image/webp" style="display:none">
+      <span class="muted" id="nImgMsg" style="font-size:12.5px"></span>
+    </div>
+    <div style="margin-top:14px"><b style="font-size:14px">Variants</b>
+      <p class="muted" style="font-size:12.5px;margin:2px 0 8px">One row per carrier + storage combo (phones: "Unlocked"/"128GB"; watches use case + size like "Titanium"/"49mm"; consoles can leave both as "-"). Prices start at $0 — set them in the grid after creating.</p>
+      <div id="nVars"></div>
+      <button class="btn sm ghost" id="nVarAdd" type="button">+ Add variant</button>
+    </div>
+    <div class="row" style="margin-top:16px;justify-content:flex-end">
+      <button class="btn ghost" id="nClose">Close</button>
+      <button class="btn" id="nCreate">Create device</button>
+    </div>`;
+  let imgUrl = null;
+  const varRow = (c = "", s = "") => {
+    const div = document.createElement("div");
+    div.className = "row"; div.style.marginBottom = "8px";
+    div.innerHTML = `<input class="vC" placeholder="Carrier / case" value="${esc(c)}" style="width:170px">
+      <input class="vS" placeholder="Storage / size" value="${esc(s)}" style="width:150px">
+      <button class="btn sm ghost vX" type="button">✕</button>`;
+    div.querySelector(".vX").onclick = () => div.remove();
+    $("#nVars").appendChild(div);
+  };
+  varRow("Unlocked", "128GB");
+  $("#nVarAdd").onclick = () => varRow();
+  $("#nBrand").onchange = () => $("#nBrandName").style.display = $("#nBrand").value === "__new" ? "" : "none";
+  $("#nImgBtn").onclick = () => $("#nImgFile").click();
+  $("#nImgFile").onchange = async (e) => {
+    const f = e.target.files[0]; if (!f) return;
+    if (f.type !== "image/webp" || !/\.webp$/i.test(f.name))
+      return $("#nImgMsg").textContent = "⚠️ .webp files only — convert the image first.";
+    $("#nImgMsg").textContent = "Uploading…";
+    try {
+      const name = Date.now() + "-" + f.name.toLowerCase().replace(/[^a-z0-9.]+/g, "-");
+      const { error } = await sb.storage.from("device-images").upload(name, f, { cacheControl: "31536000", contentType: "image/webp" });
+      if (error) throw error;
+      imgUrl = sb.storage.from("device-images").getPublicUrl(name).data.publicUrl;
+      const prev = $("#nImgPrev");
+      prev.src = DEMO ? URL.createObjectURL(f) : imgUrl;
+      prev.style.display = ""; $("#nImgMsg").textContent = "";
+      $("#nImgBtn").textContent = "Replace photo (.webp)";
+    } catch (err) { $("#nImgMsg").textContent = err.message; }
+  };
+  d.showModal();
+  $("#nClose").onclick = () => d.close();
+  $("#nCreate").onclick = async () => {
+    const name = $("#nName").value.trim();
+    if (!name) return toast("Model name is required");
+    const vars = [...$("#nVars").children].map((r) => ({
+      carrier: r.querySelector(".vC").value.trim() || "-",
+      storage: r.querySelector(".vS").value.trim() || "-",
+    }));
+    if (!vars.length) return toast("Add at least one variant");
+    $("#nCreate").disabled = true; $("#nCreate").textContent = "Creating…";
+    try {
+      let brandId = $("#nBrand").value;
+      if (brandId === "__new") {
+        const bn = $("#nBrandName").value.trim();
+        if (!bn) throw new Error("New brand name is required");
+        const { data: nb, error: be } = await sb.from("brands").insert({ name: bn, slug: slugify(bn) }).select().single();
+        if (be) throw be;
+        brandId = nb.id;
+      }
+      const catId = Number($("#nCat").value);
+      const { data: maxRow } = await sb.from("models").select("sort").eq("category_id", catId)
+        .order("sort", { ascending: false }).limit(1);
+      const { data: model, error: me } = await sb.from("models").insert({
+        category_id: catId, brand_id: Number(brandId), name, slug: slugify(name),
+        image_url: imgUrl, weight_oz: $("#nWeight").value ? Number($("#nWeight").value) : null,
+        sort: ((maxRow?.[0]?.sort) || 0) + 10, enabled: $("#nOn").checked,
+      }).select().single();
+      if (me) throw me;
+      const CONDS6 = ["Brand New","Flawless","Good","Fair","Minor Damage","Broken"];
+      for (const v of vars) {
+        const { data: nv, error: ve } = await sb.from("variants").insert({
+          model_id: model.id, carrier: v.carrier, storage: v.storage }).select().single();
+        if (ve) throw ve;
+        const { error: pe } = await sb.from("prices").insert(
+          CONDS6.map((c) => ({ variant_id: nv.id, condition: c, price: 0, enabled: false })));
+        if (pe) throw pe;
+      }
+      toast(`${name} created — now set its prices below and tick the rows live`);
+      d.close();
+      $("#catSel").value = catId; await loadBrands();
+      $("#brandSel").value = brandId; $("#catLoad").click();
+    } catch (e) { toast(e.message); }
+    $("#nCreate").disabled = false; $("#nCreate").textContent = "Create device";
+  };
 };
 
 // ---------- promos ----------

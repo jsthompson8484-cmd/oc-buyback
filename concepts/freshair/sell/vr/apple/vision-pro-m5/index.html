@@ -151,7 +151,7 @@ cartBadge();
   </div>
 </div>
 <script>
-const M = {"-": {"256GB": {"Brand New": 1890.0, "Flawless": 1790.0, "Good": 1490.0, "Fair": 1040.0}, "512GB": {"Brand New": 2040.0, "Flawless": 1940.0, "Good": 1640.0, "Fair": 1190.0}, "1TB": {"Brand New": 2190.0, "Flawless": 2090.0, "Good": 1790.0, "Fair": 1340.0}}};
+const M = {"-": {"1TB": {"Brand New": 2190.0, "Fair": 1340.0, "Flawless": 2090.0, "Good": 1790.0}, "256GB": {"Brand New": 1890.0, "Fair": 1040.0, "Flawless": 1790.0, "Good": 1490.0}, "512GB": {"Brand New": 2040.0, "Fair": 1190.0, "Flawless": 1940.0, "Good": 1640.0}}};
 const SINGLE = true;
 const state = {carrier: SINGLE ? Object.keys(M)[0] : null, storage: null, cond: null};
 function storkey(s){const m=s.match(/([\d.]+)\s*(GB|TB|mm)?/i); if(!m) return 1e9; const v=parseFloat(m[1]); return (m[2]||"").toUpperCase()==="TB"?v*1024:v;}

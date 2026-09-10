@@ -144,7 +144,15 @@ def model_max(m):
     return max((p for c in m["variants"].values() for s in c.values() for p in s.values()), default=0)
 
 def img_url(cat, brand, device):
+    try:
+        img = TREE[cat][brand][device].get("image")
+        if img: return img
+    except (KeyError, AttributeError): pass
     return f"https://s3.amazonaws.com/fliptech-assets/images/devices/{CAT_PLURAL_IMG[cat]}/{slug(brand)}/{slug(device)}.webp"
+
+def mslug(m, name):
+    """DB slug wins (it carries the legacy overrides); fall back to computed."""
+    return (m.get("slug") if isinstance(m, dict) else None) or slug(name)
 
 def money(v):
     return f"${v:,.0f}" if v == int(v) else f"${v:,.2f}"
@@ -356,7 +364,7 @@ for cat in LIVE_CATS:
 # ---- device pages ----
 count = 0
 for cat, brand, dev, m in models:
-    cslug, bslug, dslug = CAT_SLUG[cat], slug(brand), slug(dev)
+    cslug, bslug, dslug = CAT_SLUG[cat], slug(brand), mslug(m, dev)
     q1, q2 = CAT_LABELS.get(cat, ("Which option?","Which configuration?"))
     # variants with at least one price
     variants = {c:{s:conds for s,conds in ss.items() if conds} for c,ss in m["variants"].items()}
@@ -522,7 +530,7 @@ def brand_logo(brand):
 
 def model_cards(cat, brand, devs, depth_prefix=""):
     return "".join(
-        f"""<a class="card" href="{depth_prefix}{slug(brand)}/{slug(d)}/index.html">
+        f"""<a class="card" href="{depth_prefix}{slug(brand)}/{mslug(m, d)}/index.html">
 <img src="{img_url(cat, brand, d)}" alt="" onerror="this.style.display='none'">
 <div class="name">{html.escape(d)}</div><div class="val">{money(model_max(m))} <small>up to</small></div></a>"""
         for d, m in devs)

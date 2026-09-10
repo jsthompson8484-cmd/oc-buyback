@@ -153,7 +153,7 @@ cartBadge();
   </div>
 </div>
 <script>
-const M = {"AT&T": {"128GB": {"Flawless": 70.0, "Good": 55.0, "Fair": 35.0, "Minor Damage": 20.0, "Broken": 5.0}, "256GB": {"Flawless": 80.0, "Good": 65.0, "Fair": 35.0, "Minor Damage": 25.0}}, "T-Mobile": {"128GB": {"Flawless": 50.0, "Good": 45.0, "Fair": 20.0, "Minor Damage": 10.0}, "256GB": {"Flawless": 60.0, "Good": 45.0, "Fair": 20.0, "Minor Damage": 15.0}}, "Verizon": {"128GB": {"Flawless": 30.0, "Good": 15.0, "Fair": 5.0, "Minor Damage": 5.0}, "256GB": {"Flawless": 40.0, "Good": 25.0, "Fair": 10.0, "Minor Damage": 5.0}}, "Unlocked": {"128GB": {"Flawless": 90.0, "Good": 75.0, "Fair": 45.0, "Minor Damage": 25.0}, "256GB": {"Flawless": 100.0, "Good": 85.0, "Fair": 55.0, "Minor Damage": 30.0}}};
+const M = {"AT&T": {"128GB": {"Broken": 5.0, "Fair": 35.0, "Flawless": 70.0, "Good": 55.0, "Minor Damage": 20.0}, "256GB": {"Fair": 35.0, "Flawless": 80.0, "Good": 65.0, "Minor Damage": 25.0}}, "T-Mobile": {"128GB": {"Fair": 20.0, "Flawless": 50.0, "Good": 45.0, "Minor Damage": 10.0}, "256GB": {"Fair": 20.0, "Flawless": 60.0, "Good": 45.0, "Minor Damage": 15.0}}, "Unlocked": {"128GB": {"Fair": 45.0, "Flawless": 90.0, "Good": 75.0, "Minor Damage": 25.0}, "256GB": {"Fair": 55.0, "Flawless": 100.0, "Good": 85.0, "Minor Damage": 30.0}}, "Verizon": {"128GB": {"Fair": 5.0, "Flawless": 30.0, "Good": 15.0, "Minor Damage": 5.0}, "256GB": {"Fair": 10.0, "Flawless": 40.0, "Good": 25.0, "Minor Damage": 5.0}}};
 const SINGLE = false;
 const state = {carrier: SINGLE ? Object.keys(M)[0] : null, storage: null, cond: null};
 function storkey(s){const m=s.match(/([\d.]+)\s*(GB|TB|mm)?/i); if(!m) return 1e9; const v=parseFloat(m[1]); return (m[2]||"").toUpperCase()==="TB"?v*1024:v;}

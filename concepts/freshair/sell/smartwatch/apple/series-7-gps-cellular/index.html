@@ -153,7 +153,7 @@ cartBadge();
   </div>
 </div>
 <script>
-const M = {"Aluminium": {"41mm": {"Flawless": 65.0, "Good": 25.0, "Fair": 10.0}, "45mm": {"Flawless": 70.0, "Good": 30.0, "Fair": 20.0}}, "Stainless Steel": {"41mm": {"Flawless": 70.0, "Good": 45.0, "Fair": 20.0}, "45mm": {"Flawless": 80.0, "Good": 55.0, "Fair": 30.0}}, "Titanium": {"41mm": {"Flawless": 55.0, "Good": 30.0, "Fair": 15.0}, "45mm": {"Flawless": 80.0, "Good": 55.0, "Fair": 30.0}}};
+const M = {"Aluminium": {"41mm": {"Fair": 10.0, "Flawless": 65.0, "Good": 25.0}, "45mm": {"Fair": 20.0, "Flawless": 70.0, "Good": 30.0}}, "Stainless Steel": {"41mm": {"Fair": 20.0, "Flawless": 70.0, "Good": 45.0}, "45mm": {"Fair": 30.0, "Flawless": 80.0, "Good": 55.0}}, "Titanium": {"41mm": {"Fair": 15.0, "Flawless": 55.0, "Good": 30.0}, "45mm": {"Fair": 30.0, "Flawless": 80.0, "Good": 55.0}}};
 const SINGLE = false;
 const state = {carrier: SINGLE ? Object.keys(M)[0] : null, storage: null, cond: null};
 function storkey(s){const m=s.match(/([\d.]+)\s*(GB|TB|mm)?/i); if(!m) return 1e9; const v=parseFloat(m[1]); return (m[2]||"").toUpperCase()==="TB"?v*1024:v;}

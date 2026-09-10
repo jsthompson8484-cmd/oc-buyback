@@ -151,7 +151,7 @@ cartBadge();
   </div>
 </div>
 <script>
-const M = {"Unlocked": {"128GB": {"Brand New": 320.0, "Flawless": 270.0, "Good": 230.0, "Fair": 165.0, "Minor Damage": 55.0, "Broken": 10.0}, "256GB": {"Brand New": 350.0, "Flawless": 300.0, "Good": 260.0, "Fair": 195.0, "Minor Damage": 57.0, "Broken": 10.0}, "512GB": {"Brand New": 370.0, "Flawless": 320.0, "Good": 280.0, "Fair": 215.0, "Minor Damage": 60.0, "Broken": 10.0}, "1TB": {"Brand New": 395.0, "Flawless": 345.0, "Good": 305.0, "Fair": 240.0, "Minor Damage": 65.0, "Broken": 10.0}}};
+const M = {"Unlocked": {"128GB": {"Brand New": 320.0, "Broken": 10.0, "Fair": 165.0, "Flawless": 270.0, "Good": 230.0, "Minor Damage": 55.0}, "1TB": {"Brand New": 395.0, "Broken": 10.0, "Fair": 240.0, "Flawless": 345.0, "Good": 305.0, "Minor Damage": 65.0}, "256GB": {"Brand New": 350.0, "Broken": 10.0, "Fair": 195.0, "Flawless": 300.0, "Good": 260.0, "Minor Damage": 57.0}, "512GB": {"Brand New": 370.0, "Broken": 10.0, "Fair": 215.0, "Flawless": 320.0, "Good": 280.0, "Minor Damage": 60.0}}};
 const SINGLE = true;
 const state = {carrier: SINGLE ? Object.keys(M)[0] : null, storage: null, cond: null};
 function storkey(s){const m=s.match(/([\d.]+)\s*(GB|TB|mm)?/i); if(!m) return 1e9; const v=parseFloat(m[1]); return (m[2]||"").toUpperCase()==="TB"?v*1024:v;}

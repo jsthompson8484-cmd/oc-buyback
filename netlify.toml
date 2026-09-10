@@ -4,7 +4,7 @@
 
 [build]
   # regenerate the site from the database (blog) + catalog data, then bundle the admin
-  command = "python3 generator/sync_blog_from_db.py && python3 generator/generate_concept_pages.py && rm -rf concepts/freshair/admin && cp -r admin concepts/freshair/admin"
+  command = "python3 generator/sync_blog_from_db.py && python3 generator/sync_catalog_from_db.py && python3 generator/generate_concept_pages.py && rm -rf concepts/freshair/admin && cp -r admin concepts/freshair/admin"
   publish = "concepts/freshair"
   functions = "netlify/functions"
 

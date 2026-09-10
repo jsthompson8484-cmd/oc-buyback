@@ -153,7 +153,7 @@ cartBadge();
   </div>
 </div>
 <script>
-const M = {"Wi-Fi": {"64GB": {"Flawless": 180.0, "Good": 150.0, "Fair": 100.0, "Minor Damage": 40.0}, "256GB": {"Flawless": 210.0, "Good": 180.0, "Fair": 135.0, "Minor Damage": 45.0}}, "Wi-Fi + Cellular": {"64GB": {"Flawless": 190.0, "Good": 160.0, "Fair": 115.0, "Minor Damage": 45.0}, "256GB": {"Flawless": 220.0, "Good": 190.0, "Fair": 145.0, "Minor Damage": 50.0}}};
+const M = {"Wi-Fi": {"256GB": {"Fair": 135.0, "Flawless": 210.0, "Good": 180.0, "Minor Damage": 45.0}, "64GB": {"Fair": 100.0, "Flawless": 180.0, "Good": 150.0, "Minor Damage": 40.0}}, "Wi-Fi + Cellular": {"256GB": {"Fair": 145.0, "Flawless": 220.0, "Good": 190.0, "Minor Damage": 50.0}, "64GB": {"Fair": 115.0, "Flawless": 190.0, "Good": 160.0, "Minor Damage": 45.0}}};
 const SINGLE = false;
 const state = {carrier: SINGLE ? Object.keys(M)[0] : null, storage: null, cond: null};
 function storkey(s){const m=s.match(/([\d.]+)\s*(GB|TB|mm)?/i); if(!m) return 1e9; const v=parseFloat(m[1]); return (m[2]||"").toUpperCase()==="TB"?v*1024:v;}
