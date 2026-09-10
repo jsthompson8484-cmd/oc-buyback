@@ -12889,6 +12889,23 @@
     "image": "https://s3.amazonaws.com/fliptech-assets/images/devices/imacs/apple/imac-24-2023.webp",
     "slug": "imac-24-2023"
    },
+   "iMac 24\" (2024)": {
+    "enabled": false,
+    "sort": 18930,
+    "variants": {
+     "M4 10-Core CPU 10-Core GPU": {
+      "16GB": {},
+      "24GB": {},
+      "32GB": {}
+     },
+     "M4 8-Core CPU 8-Core GPU": {
+      "16GB": {},
+      "24GB": {}
+     }
+    },
+    "image": "https://ocbuyback.netlify.app/assets/devices/imac-24-2024.webp",
+    "slug": "imac-24-2024"
+   },
    "iMac 27\" (2013)": {
     "enabled": false,
     "sort": 18839,
@@ -13531,6 +13548,45 @@
     },
     "image": "https://s3.amazonaws.com/fliptech-assets/images/devices/mac-minis/apple/mac-mini-2023.webp",
     "slug": "mac-mini-2023"
+   },
+   "Mac Mini (2024)": {
+    "enabled": false,
+    "sort": 19000,
+    "variants": {
+     "M4 10-Core CPU 10-Core GPU": {
+      "16GB": {},
+      "24GB": {},
+      "32GB": {}
+     },
+     "M4 Pro 12-Core CPU 16-Core GPU": {
+      "24GB": {}
+     },
+     "M4 Pro 14-Core CPU 20-Core GPU": {
+      "24GB": {},
+      "48GB": {},
+      "64GB": {}
+     }
+    },
+    "image": "https://ocbuyback.netlify.app/assets/devices/mac-mini-2024.webp",
+    "slug": "mac-mini-2024"
+   },
+   "Mac Mini (2026)": {
+    "enabled": false,
+    "sort": 19010,
+    "variants": {
+     "M5": {
+      "16GB": {},
+      "24GB": {},
+      "32GB": {}
+     },
+     "M5 Pro": {
+      "24GB": {},
+      "48GB": {},
+      "64GB": {}
+     }
+    },
+    "image": "https://ocbuyback.netlify.app/assets/devices/mac-mini-2026.webp",
+    "slug": "mac-mini-2026"
    }
   }
  },
@@ -13612,6 +13668,24 @@
     },
     "image": "https://s3.amazonaws.com/fliptech-assets/images/devices/mac-pros/apple/mac-pro-2019.webp",
     "slug": "mac-pro-2019"
+   },
+   "Mac Pro (2023)": {
+    "enabled": false,
+    "sort": 19300,
+    "variants": {
+     "M2 Ultra 24-Core CPU 60-Core GPU": {
+      "128GB": {},
+      "192GB": {},
+      "64GB": {}
+     },
+     "M2 Ultra 24-Core CPU 76-Core GPU": {
+      "128GB": {},
+      "192GB": {},
+      "64GB": {}
+     }
+    },
+    "image": "https://ocbuyback.netlify.app/assets/devices/mac-pro-2023.webp",
+    "slug": "mac-pro-2023"
    }
   }
  },
@@ -13664,6 +13738,49 @@
     },
     "image": "https://s3.amazonaws.com/fliptech-assets/images/devices/mac-studios/apple/mac-studio-2023.webp",
     "slug": "mac-studio-2023"
+   },
+   "Mac Studio (2025)": {
+    "enabled": false,
+    "sort": 19240,
+    "variants": {
+     "M3 Ultra 28-Core CPU 60-Core GPU": {
+      "256GB": {},
+      "96GB": {}
+     },
+     "M3 Ultra 32-Core CPU 80-Core GPU": {
+      "256GB": {},
+      "512GB": {},
+      "96GB": {}
+     },
+     "M4 Max 14-Core CPU 32-Core GPU": {
+      "36GB": {}
+     },
+     "M4 Max 16-Core CPU 40-Core GPU": {
+      "128GB": {},
+      "48GB": {},
+      "64GB": {}
+     }
+    },
+    "image": "https://ocbuyback.netlify.app/assets/devices/mac-studio-2025.webp",
+    "slug": "mac-studio-2025"
+   },
+   "Mac Studio (2026)": {
+    "enabled": false,
+    "sort": 19250,
+    "variants": {
+     "M5 Max": {
+      "128GB": {},
+      "36GB": {},
+      "64GB": {}
+     },
+     "M5 Ultra": {
+      "256GB": {},
+      "512GB": {},
+      "96GB": {}
+     }
+    },
+    "image": "https://ocbuyback.netlify.app/assets/devices/mac-studio-2026.webp",
+    "slug": "mac-studio-2026"
    }
   }
  },
@@ -14048,6 +14165,35 @@
     "image": "https://s3.amazonaws.com/fliptech-assets/images/devices/macbooks/apple/macbook-air-13-2024.webp",
     "slug": "macbook-air-13-2024"
    },
+   "MacBook Air 13\" (2025)": {
+    "enabled": false,
+    "sort": 21720,
+    "variants": {
+     "M4 10-Core CPU 10-Core GPU": {
+      "16GB": {},
+      "24GB": {},
+      "32GB": {}
+     },
+     "M4 10-Core CPU 8-Core GPU": {
+      "16GB": {}
+     }
+    },
+    "image": "https://ocbuyback.netlify.app/assets/devices/macbook-air-13-2025.webp",
+    "slug": "macbook-air-13-2025"
+   },
+   "MacBook Air 13\" (2026)": {
+    "enabled": false,
+    "sort": 21750,
+    "variants": {
+     "M5 10-Core CPU 10-Core GPU": {
+      "16GB": {},
+      "24GB": {},
+      "32GB": {}
+     }
+    },
+    "image": "https://ocbuyback.netlify.app/assets/devices/macbook-air-13-2026.webp",
+    "slug": "macbook-air-13-2026"
+   },
    "MacBook Air 15\" (2023)": {
     "enabled": false,
     "sort": 19895,
@@ -14078,6 +14224,32 @@
     },
     "image": "https://s3.amazonaws.com/fliptech-assets/images/devices/macbooks/apple/macbook-air-15-2024.webp",
     "slug": "macbook-air-15-2024"
+   },
+   "MacBook Air 15\" (2025)": {
+    "enabled": false,
+    "sort": 21730,
+    "variants": {
+     "M4 10-Core CPU 10-Core GPU": {
+      "16GB": {},
+      "24GB": {},
+      "32GB": {}
+     }
+    },
+    "image": "https://ocbuyback.netlify.app/assets/devices/macbook-air-15-2025.webp",
+    "slug": "macbook-air-15-2025"
+   },
+   "MacBook Air 15\" (2026)": {
+    "enabled": false,
+    "sort": 21760,
+    "variants": {
+     "M5 10-Core CPU 10-Core GPU": {
+      "16GB": {},
+      "24GB": {},
+      "32GB": {}
+     }
+    },
+    "image": "https://ocbuyback.netlify.app/assets/devices/macbook-air-15-2026.webp",
+    "slug": "macbook-air-15-2026"
    },
    "MacBook Pro 13\" (2011)": {
     "enabled": false,
@@ -14467,6 +14639,64 @@
     "image": "https://s3.amazonaws.com/fliptech-assets/images/devices/macbooks/apple/macbook-pro-14-2023.webp",
     "slug": "macbook-pro-14-2023"
    },
+   "MacBook Pro 14\" (2024)": {
+    "enabled": false,
+    "sort": 21700,
+    "variants": {
+     "M4 10-Core CPU 10-Core GPU": {
+      "16GB": {},
+      "24GB": {},
+      "32GB": {}
+     },
+     "M4 Max 14-Core CPU 32-Core GPU": {
+      "36GB": {}
+     },
+     "M4 Max 16-Core CPU 40-Core GPU": {
+      "128GB": {},
+      "48GB": {},
+      "64GB": {}
+     },
+     "M4 Pro 12-Core CPU 16-Core GPU": {
+      "24GB": {}
+     },
+     "M4 Pro 14-Core CPU 20-Core GPU": {
+      "24GB": {},
+      "48GB": {}
+     }
+    },
+    "image": "https://ocbuyback.netlify.app/assets/devices/macbook-pro-14-2024.webp",
+    "slug": "macbook-pro-14-2024"
+   },
+   "MacBook Pro 14\" (2025)": {
+    "enabled": false,
+    "sort": 21740,
+    "variants": {
+     "M5 10-Core CPU 10-Core GPU": {
+      "16GB": {},
+      "24GB": {},
+      "32GB": {}
+     }
+    },
+    "image": "https://ocbuyback.netlify.app/assets/devices/macbook-pro-14-2025.webp",
+    "slug": "macbook-pro-14-2025"
+   },
+   "MacBook Pro 14\" (2026)": {
+    "enabled": false,
+    "sort": 21770,
+    "variants": {
+     "M5 Max": {
+      "128GB": {},
+      "36GB": {},
+      "64GB": {}
+     },
+     "M5 Pro": {
+      "24GB": {},
+      "48GB": {}
+     }
+    },
+    "image": "https://ocbuyback.netlify.app/assets/devices/macbook-pro-14-2026.webp",
+    "slug": "macbook-pro-14-2026"
+   },
    "MacBook Pro 15\" (2009)": {
     "enabled": false,
     "sort": 19985,
@@ -14796,6 +15026,43 @@
     },
     "image": "https://s3.amazonaws.com/fliptech-assets/images/devices/macbooks/apple/macbook-pro-16-2023.webp",
     "slug": "macbook-pro-16-2023"
+   },
+   "MacBook Pro 16\" (2024)": {
+    "enabled": false,
+    "sort": 21710,
+    "variants": {
+     "M4 Max 14-Core CPU 32-Core GPU": {
+      "36GB": {}
+     },
+     "M4 Max 16-Core CPU 40-Core GPU": {
+      "128GB": {},
+      "48GB": {},
+      "64GB": {}
+     },
+     "M4 Pro 14-Core CPU 20-Core GPU": {
+      "24GB": {},
+      "48GB": {}
+     }
+    },
+    "image": "https://ocbuyback.netlify.app/assets/devices/macbook-pro-16-2024.webp",
+    "slug": "macbook-pro-16-2024"
+   },
+   "MacBook Pro 16\" (2026)": {
+    "enabled": false,
+    "sort": 21780,
+    "variants": {
+     "M5 Max": {
+      "128GB": {},
+      "36GB": {},
+      "64GB": {}
+     },
+     "M5 Pro": {
+      "24GB": {},
+      "48GB": {}
+     }
+    },
+    "image": "https://ocbuyback.netlify.app/assets/devices/macbook-pro-16-2026.webp",
+    "slug": "macbook-pro-16-2026"
    },
    "MacBook Pro 17\" (2009)": {
     "enabled": false,
