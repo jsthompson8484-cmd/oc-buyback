@@ -1151,7 +1151,12 @@ $("#devAdd").onclick = async () => {
       </div>
       <p class="muted" style="font-size:12.5px;margin:2px 0 8px">One row per carrier + storage combo (phones: "Unlocked"/"128GB"; watches use case + size like "Titanium"/"49mm"; consoles can leave both as "-"). Prices start at $0 — set them in the grid after creating.</p>
       <div id="nVars"></div>
-      <button class="btn sm ghost" id="nVarAdd" type="button">+ Add variant</button>
+      <div class="row">
+        <button class="btn sm ghost" id="nVarAdd" type="button">+ Add variant</button>
+        <input id="nFind" placeholder="Find (e.g. M5)" style="width:110px">
+        <input id="nRepl" placeholder="Replace (e.g. M6)" style="width:110px">
+        <button class="btn sm ghost" id="nFR" type="button">Replace in all rows</button>
+      </div>
     </div>
     <div class="row" style="margin-top:16px;justify-content:flex-end">
       <button class="btn ghost" id="nClose">Close</button>
@@ -1169,6 +1174,15 @@ $("#devAdd").onclick = async () => {
   };
   varRow("Unlocked", "128GB");
   $("#nVarAdd").onclick = () => varRow();
+  $("#nFR").onclick = () => {
+    const f = $("#nFind").value, r = $("#nRepl").value;
+    if (!f) return;
+    let n = 0;
+    document.querySelectorAll("#nVars .vC, #nVars .vS").forEach((inp) => {
+      if (inp.value.includes(f)) { inp.value = inp.value.split(f).join(r); n++; }
+    });
+    toast(n ? `Replaced "${f}" → "${r}" in ${n} fields` : `"${f}" not found in any row`);
+  };
 
   // "Start from" — clone the carrier×storage matrix (and weight) of an existing
   // model, defaulting to the newest one for the picked category + brand.
