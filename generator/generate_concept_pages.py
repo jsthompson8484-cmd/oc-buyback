@@ -54,14 +54,19 @@ def breadcrumbs(items):  # [(name, path or None)]
                              **({"item": SITE + p} if p else {})}
                             for i, (n, p) in enumerate(items)]}
 
-LIVE_CATS = ["Cell Phone","Tablet","Smartwatch","Game Console","GoPro","VR","Headphones","iPod"]
+LIVE_CATS = ["Cell Phone","Tablet","Smartwatch","Game Console","GoPro","VR","Headphones","iPod",
+             "Macbook","iMac","Mac Mini","Mac Studio","Mac Pro"]
 CAT_SLUG = {"Cell Phone":"cell-phone","Tablet":"tablet","Smartwatch":"smartwatch",
-            "Game Console":"game-console","GoPro":"gopro","VR":"vr","Headphones":"headphones","iPod":"ipod"}
+            "Game Console":"game-console","GoPro":"gopro","VR":"vr","Headphones":"headphones","iPod":"ipod",
+            "Macbook":"macbook","iMac":"imac","Mac Mini":"mac-mini","Mac Studio":"mac-studio","Mac Pro":"mac-pro"}
 CAT_PLURAL_IMG = {"Cell Phone":"cell-phones","Tablet":"tablets","Smartwatch":"smartwatches",
-                  "Game Console":"game-consoles","GoPro":"gopros","VR":"vrs","Headphones":"headphones","iPod":"ipods"}
+                  "Game Console":"game-consoles","GoPro":"gopros","VR":"vrs","Headphones":"headphones","iPod":"ipods",
+                  "Macbook":"macbooks","iMac":"imacs","Mac Mini":"mac-minis","Mac Studio":"mac-studios","Mac Pro":"mac-pros"}
 CAT_DISPLAY = {"Cell Phone":"Cell Phones","Tablet":"Tablets","Smartwatch":"Smartwatches",
-               "Game Console":"Game Consoles","GoPro":"GoPro","VR":"VR","Headphones":"Headphones","iPod":"iPods"}
-SELL_YOUR = {"GoPro":"GoPro","VR":"VR headset","iPod":"iPod"}
+               "Game Console":"Game Consoles","GoPro":"GoPro","VR":"VR","Headphones":"Headphones","iPod":"iPods",
+               "Macbook":"MacBooks","iMac":"iMacs","Mac Mini":"Mac Minis","Mac Studio":"Mac Studios","Mac Pro":"Mac Pros"}
+SELL_YOUR = {"GoPro":"GoPro","VR":"VR headset","iPod":"iPod","Macbook":"MacBook",
+             "iMac":"iMac","Mac Mini":"Mac Mini","Mac Studio":"Mac Studio","Mac Pro":"Mac Pro"}
 # question labels per category: (question-1 label, question-2 label)
 CAT_LABELS = {"Smartwatch":("Which case?","What size?"),
               "Game Console":("Which edition?","How much storage?"),
@@ -70,7 +75,12 @@ CAT_LABELS = {"Smartwatch":("Which case?","What size?"),
               "Tablet":("Which connectivity?","How much storage?"),
               "VR":("Which edition?","How much storage?"),
               "Headphones":("Which edition?","Which color?"),
-              "iPod":("Which generation?","How much storage?")}
+              "iPod":("Which generation?","How much storage?"),
+              "Macbook":("Which processor?","How much memory?"),
+              "iMac":("Which processor?","How much memory?"),
+              "Mac Mini":("Which processor?","How much memory?"),
+              "Mac Studio":("Which processor?","How much memory?"),
+              "Mac Pro":("Which processor?","How much memory?")}
 COND_ORDER = ["Brand New","Flawless","Good","Fair","Minor Damage","Broken"]
 COND_DESC = {"Brand New":"Sealed in box, never activated.",
              "Flawless":"Like new — zero scratches, fully functional.",
@@ -527,7 +537,9 @@ renderStorage(); renderConds();
     count += 1
 
 # ---- category pages: brand picker when multiple brands, else model grid ----
-BRAND_LINE = {("Cell Phone","Apple"):"iPhone", ("Cell Phone","Samsung"):"Galaxy", ("Cell Phone","Google"):"Pixel",
+BRAND_LINE = {("Macbook","Apple"):"MacBook Air & Pro", ("iMac","Apple"):"iMac",
+              ("Mac Mini","Apple"):"Mac Mini", ("Mac Studio","Apple"):"Mac Studio", ("Mac Pro","Apple"):"Mac Pro",
+              ("Cell Phone","Apple"):"iPhone", ("Cell Phone","Samsung"):"Galaxy", ("Cell Phone","Google"):"Pixel",
   ("Cell Phone","OnePlus"):"OnePlus", ("Cell Phone","Motorola"):"moto & razr", ("Cell Phone","LG"):"LG",
   ("Tablet","Apple"):"iPad", ("Tablet","Samsung"):"Galaxy Tab", ("Tablet","Microsoft"):"Surface",
   ("Smartwatch","Apple"):"Apple Watch", ("Smartwatch","Samsung"):"Galaxy Watch",
@@ -1272,6 +1284,21 @@ write(OUT/"blog"/"index.html",
            desc="Selling tips, trade-in news, and what your devices are worth — from OCBuyBack in Brea, CA."))
 
 # ---- location page (/locations/brea-ca-92821) ----
+# nearby-city pages: (slug, city, distance, drive time, route from that city)
+CITY_PAGES = [
+    ("fullerton", "Fullerton", "5 miles", "about 10 minutes",
+     "Head north on Harbor Blvd or State College Blvd, then east on Imperial Hwy."),
+    ("la-habra", "La Habra", "4 miles", "about 10 minutes",
+     "A straight shot east on Imperial Hwy (SR-90) — we're in the first stretch of Brea you reach."),
+    ("placentia", "Placentia", "4 miles", "under 10 minutes",
+     "Take Kraemer Blvd north to Imperial Hwy, then head west."),
+    ("yorba-linda", "Yorba Linda", "7 miles", "about 15 minutes",
+     "Follow Imperial Hwy (SR-90) west through Placentia — we're on West Imperial."),
+    ("anaheim-hills", "Anaheim Hills", "11 miles", "15–20 minutes",
+     "Take the 91 west to the 57 north, exit at Imperial Hwy and head west."),
+    ("diamond-bar", "Diamond Bar", "9 miles", "about 15 minutes",
+     "Take the 57 south, exit at Imperial Hwy (SR-90) and head west."),
+]
 LOC_BLURBS = [
     ("Cash for iPhone", "We'll buy your iPhone in Brea, CA 92821. Our trade-in process is quick, reliable, and professional — come see us today."),
     ("Cash for Samsung phones", "If you're in Brea, CA, OCBuyBack pays cash for your Samsung Galaxy. Stop by and see us."),
@@ -1302,12 +1329,72 @@ loc_body = f'''
   <div class="contact-grid">
     {"".join(f'<div class="ccard"><h2>{t}</h2><p style="color:var(--muted)">{b}</p></div>' for t, b in LOC_BLURBS)}
   </div>
+  <h2 style="font:700 22px 'Bricolage Grotesque',sans-serif;color:var(--deep);margin:44px 0 16px">Coming from a nearby city?</h2>
+  <p style="color:var(--muted);margin:0 0 14px">We're a short drive from most of north Orange County — get your offer online first, then come get paid.</p>
+  <p style="font-size:15px;line-height:2.2">
+    {" · ".join(f'<a href="../{s}/index.html" style="color:var(--green);font-weight:600;text-decoration:underline">Sell devices near {c}</a>' for s, c, *_ in CITY_PAGES)}
+  </p>
 </div>'''
 write(OUT/"locations"/"brea-ca-92821"/"index.html",
       page("Sell your device in Brea, CA 92821 | OCBuyBack", loc_body, 2, STATIC_CSS,
            path="/locations/brea-ca-92821",
            desc="OCBuyBack at 1203 W Imperial Hwy STE 103, Brea, CA 92821. Cash for iPhones, Samsung, Pixel, iPads and more — evaluated in about 10 minutes, cash on the spot.",
            schema=[STORE_SCHEMA]))
+
+# ---- nearby-city pages (/locations/{city}) ----
+# Local-intent pages: directions + drive time from each city into the Brea
+# store, with the quote flow linked (never duplicated — quotes happen on the
+# device pages). LocalBusiness schema stays on the Brea page only.
+def city_cat_cards(prefix):
+    cards = []
+    for cat in LIVE_CATS:
+        devs = [(b, d, m) for b, dd in TREE.get(cat, {}).items() for d, m in dd.items()
+                if m["enabled"] and model_max(m) > 0]
+        if not devs: continue
+        top = max(devs, key=lambda x: model_max(x[2]))
+        cards.append(f'''<a class="card" href="{prefix}sell/{CAT_SLUG[cat]}/index.html">
+<img src="{img_url(cat, top[0], top[1])}" alt="" onerror="this.style.display='none'">
+<div class="name">{CAT_DISPLAY[cat]}</div><div class="val">up to {money(model_max(top[2]))}</div></a>''')
+    return "".join(cards)
+
+for cslug_, city, dist, mins, route in CITY_PAGES:
+    dir_link = ("https://www.google.com/maps/dir/?api=1&origin=" + city.replace(" ", "+") +
+                ",+CA&destination=OCBuyBack+1203+W+Imperial+Hwy+STE+103+Brea+CA+92821")
+    city_body = f'''
+<div class="wrap" style="max-width:920px;margin:0 auto;padding-bottom:80px">
+  <div class="crumb"><a href="../../index.html">Home</a> → <a href="../brea-ca-92821/index.html">Brea store</a> → <b>Near {city}</b></div>
+  <h1>Sell your devices for cash near {city}</h1>
+  <p class="sub">OCBuyBack is {dist} from {city} — {mins} to our Brea shop. Get your offer online first,
+  then walk out with cash the same day.</p>
+  <div class="contact-grid">
+    <div class="ccard">
+      <h2>Getting here from {city}</h2>
+      <p style="color:var(--muted)">{route}</p>
+      <p><b>1203 W Imperial Hwy, STE 103<br>Brea, CA 92821</b></p>
+      <div class="hours"><b>Mon–Fri</b><span>10:00 AM – 6:00 PM</span><b>Sat–Sun</b><span>Closed</span></div>
+      <a class="btn" href="{dir_link}" target="_blank" rel="noopener">Directions from {city}</a>
+    </div>
+    <div class="ccard">
+      <h2>Know your payout before you drive</h2>
+      <p style="color:var(--muted)">Start a trade-in online and your price is locked for 14 days —
+      same price online and in store. Bring your order number and get paid in cash after a
+      10-minute evaluation. Bring a photo ID and sign out of your accounts (we can help in store).</p>
+      <a class="btn" href="../../sell/index.html">Get an instant quote</a>
+      <p style="color:var(--muted);font-size:13.5px;margin-top:10px">Rather not drive? Every quote
+      also comes with a free prepaid shipping label — mail it in from {city} instead.</p>
+    </div>
+  </div>
+  <h2 style="font:700 22px 'Bricolage Grotesque',sans-serif;color:var(--deep);margin:44px 0 16px">What are you selling?</h2>
+  <div class="grid">{city_cat_cards("../../")}</div>
+  <p style="color:var(--muted);font-size:14px;margin-top:26px">Also serving
+  {" · ".join(f'<a href="../{s}/index.html" style="color:var(--green)">{c}</a>' for s, c, *_ in CITY_PAGES if s != cslug_)}
+  · <a href="../brea-ca-92821/index.html" style="color:var(--green)">Brea</a></p>
+</div>'''
+    write(OUT/"locations"/cslug_/"index.html",
+          page(f"Sell your devices for cash near {city}, CA | OCBuyBack", city_body, 2, STATIC_CSS,
+               path=f"/locations/{cslug_}",
+               desc=f"Sell your phone, tablet, watch or console for cash near {city}, CA — OCBuyBack in Brea is {mins} away. Instant online quote locked for 14 days, cash on the spot, or ship free.",
+               schema=[breadcrumbs([("Home", "/"), ("Brea store", "/locations/brea-ca-92821"), (f"Near {city}", None)])]))
 
 # ---- sitemap.xml + robots.txt ----
 urls = []

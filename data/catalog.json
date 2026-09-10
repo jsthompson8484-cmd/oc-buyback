@@ -12867,7 +12867,7 @@
     "slug": "imac-21-5-2017"
    },
    "iMac 24\" (2023)": {
-    "enabled": false,
+    "enabled": true,
     "sort": 18923,
     "variants": {
      "M3 10-Core CPU 16-Core GPU": {
@@ -12876,31 +12876,86 @@
       "8GB": {}
      },
      "M3 8-Core CPU 10-Core GPU": {
-      "16GB": {},
-      "24GB": {},
-      "8GB": {}
+      "16GB": {
+       "Brand New": 682.0,
+       "Fair": 481.0,
+       "Flawless": 675.0,
+       "Good": 576.0
+      },
+      "24GB": {
+       "Brand New": 732.0,
+       "Fair": 531.0,
+       "Flawless": 725.0,
+       "Good": 626.0
+      },
+      "8GB": {
+       "Brand New": 632.0,
+       "Fair": 431.0,
+       "Flawless": 625.0,
+       "Good": 526.0
+      }
      },
      "M3 8-Core CPU 8-Core GPU": {
-      "16GB": {},
-      "24GB": {},
-      "8GB": {}
+      "16GB": {
+       "Brand New": 575.0,
+       "Fair": 392.0,
+       "Flawless": 558.0,
+       "Good": 475.0
+      },
+      "24GB": {
+       "Brand New": 630.0,
+       "Fair": 447.0,
+       "Flawless": 613.0,
+       "Good": 530.0
+      },
+      "8GB": {
+       "Brand New": 540.0,
+       "Fair": 357.0,
+       "Flawless": 523.0,
+       "Good": 440.0
+      }
      }
     },
     "image": "https://s3.amazonaws.com/fliptech-assets/images/devices/imacs/apple/imac-24-2023.webp",
     "slug": "imac-24-2023"
    },
    "iMac 24\" (2024)": {
-    "enabled": false,
+    "enabled": true,
     "sort": 18930,
     "variants": {
      "M4 10-Core CPU 10-Core GPU": {
-      "16GB": {},
-      "24GB": {},
-      "32GB": {}
+      "16GB": {
+       "Brand New": 975.0,
+       "Fair": 638.0,
+       "Flawless": 950.0,
+       "Good": 788.0
+      },
+      "24GB": {
+       "Brand New": 1100.0,
+       "Fair": 762.0,
+       "Flawless": 1075.0,
+       "Good": 912.0
+      },
+      "32GB": {
+       "Brand New": 1283.0,
+       "Fair": 892.0,
+       "Flawless": 1258.0,
+       "Good": 1075.0
+      }
      },
      "M4 8-Core CPU 8-Core GPU": {
-      "16GB": {},
-      "24GB": {}
+      "16GB": {
+       "Brand New": 750.0,
+       "Fair": 510.0,
+       "Flawless": 728.0,
+       "Good": 628.0
+      },
+      "24GB": {
+       "Brand New": 850.0,
+       "Fair": 610.0,
+       "Flawless": 828.0,
+       "Good": 728.0
+      }
      }
     },
     "image": "https://ocbuyback.netlify.app/assets/devices/imac-24-2024.webp",
@@ -13517,7 +13572,7 @@
     "slug": "mac-mini-2009"
    },
    "Mac Mini (2023)": {
-    "enabled": false,
+    "enabled": true,
     "sort": 18995,
     "variants": {
      "M2 10-Core CPU 16-Core GPU": {
@@ -13531,19 +13586,68 @@
       "32GB": {}
      },
      "M2 8-Core CPU 10-Core GPU": {
-      "16GB": {},
-      "24GB": {},
+      "16GB": {
+       "Brand New": 286.0,
+       "Broken": 34.0,
+       "Fair": 118.0,
+       "Flawless": 286.0,
+       "Good": 235.0,
+       "Minor Damage": 34.0
+      },
+      "24GB": {
+       "Brand New": 298.0,
+       "Broken": 35.0,
+       "Fair": 123.0,
+       "Flawless": 298.0,
+       "Good": 246.0,
+       "Minor Damage": 35.0
+      },
       "32GB": {},
-      "8GB": {}
+      "8GB": {
+       "Brand New": 273.0,
+       "Broken": 32.0,
+       "Fair": 112.0,
+       "Flawless": 273.0,
+       "Good": 225.0,
+       "Minor Damage": 32.0
+      }
      },
      "M2 Pro 10-Core CPU 16-Core GPU": {
-      "16GB": {},
+      "16GB": {
+       "Brand New": 311.0,
+       "Broken": 37.0,
+       "Fair": 128.0,
+       "Flawless": 311.0,
+       "Good": 256.0,
+       "Minor Damage": 37.0
+      },
       "24GB": {},
-      "32GB": {}
+      "32GB": {
+       "Brand New": 336.0,
+       "Broken": 40.0,
+       "Fair": 138.0,
+       "Flawless": 336.0,
+       "Good": 277.0,
+       "Minor Damage": 40.0
+      }
      },
      "M2 Pro 12-Core CPU 19-Core GPU": {
-      "16GB": {},
-      "32GB": {}
+      "16GB": {
+       "Brand New": 324.0,
+       "Broken": 38.0,
+       "Fair": 133.0,
+       "Flawless": 324.0,
+       "Good": 266.0,
+       "Minor Damage": 38.0
+      },
+      "32GB": {
+       "Brand New": 349.0,
+       "Broken": 41.0,
+       "Fair": 144.0,
+       "Flawless": 349.0,
+       "Good": 287.0,
+       "Minor Damage": 41.0
+      }
      }
     },
     "image": "https://s3.amazonaws.com/fliptech-assets/images/devices/mac-minis/apple/mac-mini-2023.webp",
@@ -13670,18 +13774,48 @@
     "slug": "mac-pro-2019"
    },
    "Mac Pro (2023)": {
-    "enabled": false,
+    "enabled": true,
     "sort": 19300,
     "variants": {
      "M2 Ultra 24-Core CPU 60-Core GPU": {
-      "128GB": {},
-      "192GB": {},
-      "64GB": {}
+      "128GB": {
+       "Brand New": 4188.0,
+       "Fair": 2938.0,
+       "Flawless": 3988.0,
+       "Good": 3462.0
+      },
+      "192GB": {
+       "Brand New": 4500.0,
+       "Fair": 3200.0,
+       "Flawless": 4300.0,
+       "Good": 3750.0
+      },
+      "64GB": {
+       "Brand New": 3812.0,
+       "Fair": 2588.0,
+       "Flawless": 3612.0,
+       "Good": 3100.0
+      }
      },
      "M2 Ultra 24-Core CPU 76-Core GPU": {
-      "128GB": {},
-      "192GB": {},
-      "64GB": {}
+      "128GB": {
+       "Brand New": 4544.0,
+       "Fair": 3044.0,
+       "Flawless": 4344.0,
+       "Good": 3694.0
+      },
+      "192GB": {
+       "Brand New": 4944.0,
+       "Fair": 3444.0,
+       "Flawless": 4744.0,
+       "Good": 4094.0
+      },
+      "64GB": {
+       "Brand New": 4131.0,
+       "Fair": 2606.0,
+       "Flawless": 3931.0,
+       "Good": 3306.0
+      }
      }
     },
     "image": "https://ocbuyback.netlify.app/assets/devices/mac-pro-2023.webp",
@@ -13692,12 +13826,22 @@
  "Mac Studio": {
   "Apple": {
    "Mac Studio (2022)": {
-    "enabled": false,
+    "enabled": true,
     "sort": 19193,
     "variants": {
      "M1 Max 10-Core CPU 32-Core GPU": {
-      "32GB": {},
-      "64GB": {}
+      "32GB": {
+       "Brand New": 1430.0,
+       "Fair": 1080.0,
+       "Flawless": 1380.0,
+       "Good": 1230.0
+      },
+      "64GB": {
+       "Brand New": 1730.0,
+       "Fair": 1380.0,
+       "Flawless": 1680.0,
+       "Good": 1530.0
+      }
      },
      "M1 Ultra 20-Core CPU 32-Core CPU": {
       "128GB": {},
@@ -13712,53 +13856,153 @@
     "slug": "mac-studio-2022"
    },
    "Mac Studio (2023)": {
-    "enabled": false,
+    "enabled": true,
     "sort": 19229,
     "variants": {
      "M2 Max 12-Core CPU 30-Core GPU": {
-      "32GB": {},
-      "64GB": {},
+      "32GB": {
+       "Brand New": 1655.0,
+       "Fair": 1220.0,
+       "Flawless": 1570.0,
+       "Good": 1388.0
+      },
+      "64GB": {
+       "Brand New": 2005.0,
+       "Fair": 1470.0,
+       "Flawless": 1920.0,
+       "Good": 1692.0
+      },
       "96GB": {}
      },
      "M2 Max 12-Core CPU 38-Core GPU": {
-      "32GB": {},
-      "64GB": {},
-      "96GB": {}
+      "32GB": {
+       "Brand New": 1755.0,
+       "Fair": 1220.0,
+       "Flawless": 1670.0,
+       "Good": 1442.0
+      },
+      "64GB": {
+       "Brand New": 2105.0,
+       "Fair": 1570.0,
+       "Flawless": 2020.0,
+       "Good": 1792.0
+      },
+      "96GB": {
+       "Brand New": 2455.0,
+       "Fair": 1920.0,
+       "Flawless": 2370.0,
+       "Good": 2142.0
+      }
      },
      "M2 Ultra 24-Core CPU 60-Core GPU": {
-      "128GB": {},
-      "192GB": {},
-      "64GB": {}
+      "128GB": {
+       "Brand New": 2988.0,
+       "Fair": 2288.0,
+       "Flawless": 2888.0,
+       "Good": 2588.0
+      },
+      "192GB": {
+       "Brand New": 3588.0,
+       "Fair": 2888.0,
+       "Flawless": 3488.0,
+       "Good": 3188.0
+      },
+      "64GB": {
+       "Brand New": 2312.0,
+       "Fair": 1675.0,
+       "Flawless": 2200.0,
+       "Good": 1925.0
+      }
      },
      "M2 Ultra 24-Core CPU 76-Core GPU": {
-      "128GB": {},
-      "192GB": {},
-      "64GB": {}
+      "128GB": {
+       "Brand New": 3088.0,
+       "Fair": 2388.0,
+       "Flawless": 2988.0,
+       "Good": 2688.0
+      },
+      "192GB": {
+       "Brand New": 3688.0,
+       "Fair": 2988.0,
+       "Flawless": 3588.0,
+       "Good": 3288.0
+      },
+      "64GB": {
+       "Brand New": 2412.0,
+       "Fair": 1775.0,
+       "Flawless": 2300.0,
+       "Good": 2025.0
+      }
      }
     },
     "image": "https://s3.amazonaws.com/fliptech-assets/images/devices/mac-studios/apple/mac-studio-2023.webp",
     "slug": "mac-studio-2023"
    },
    "Mac Studio (2025)": {
-    "enabled": false,
+    "enabled": true,
     "sort": 19240,
     "variants": {
      "M3 Ultra 28-Core CPU 60-Core GPU": {
-      "256GB": {},
-      "96GB": {}
+      "256GB": {
+       "Brand New": 7210.0,
+       "Fair": 6100.0,
+       "Flawless": 6940.0,
+       "Good": 6420.0
+      },
+      "96GB": {
+       "Brand New": 6060.0,
+       "Fair": 5120.0,
+       "Flawless": 5820.0,
+       "Good": 5400.0
+      }
      },
      "M3 Ultra 32-Core CPU 80-Core GPU": {
-      "256GB": {},
-      "512GB": {},
-      "96GB": {}
+      "256GB": {
+       "Brand New": 8700.0,
+       "Fair": 7440.0,
+       "Flawless": 8400.0,
+       "Good": 7820.0
+      },
+      "512GB": {
+       "Brand New": 10500.0,
+       "Fair": 9240.0,
+       "Flawless": 10200.0,
+       "Good": 9620.0
+      },
+      "96GB": {
+       "Brand New": 7210.0,
+       "Fair": 6100.0,
+       "Flawless": 6940.0,
+       "Good": 6420.0
+      }
      },
      "M4 Max 14-Core CPU 32-Core GPU": {
-      "36GB": {}
+      "36GB": {
+       "Brand New": 2700.0,
+       "Fair": 2190.0,
+       "Flawless": 2550.0,
+       "Good": 2365.0
+      }
      },
      "M4 Max 16-Core CPU 40-Core GPU": {
-      "128GB": {},
-      "48GB": {},
-      "64GB": {}
+      "128GB": {
+       "Brand New": 3580.0,
+       "Fair": 3000.0,
+       "Flawless": 3420.0,
+       "Good": 3180.0
+      },
+      "48GB": {
+       "Brand New": 2780.0,
+       "Fair": 2200.0,
+       "Flawless": 2620.0,
+       "Good": 2380.0
+      },
+      "64GB": {
+       "Brand New": 3030.0,
+       "Fair": 2450.0,
+       "Flawless": 2870.0,
+       "Good": 2630.0
+      }
      }
     },
     "image": "https://ocbuyback.netlify.app/assets/devices/mac-studio-2025.webp",
@@ -14058,64 +14302,148 @@
     "slug": "macbook-air-13-2015"
    },
    "MacBook Air 13\" (2017)": {
-    "enabled": false,
+    "enabled": true,
     "sort": 19739,
     "variants": {
      "i5 1.8GHz": {
       "4GB": {},
-      "8GB": {}
+      "8GB": {
+       "Brand New": 99.0,
+       "Broken": 8.0,
+       "Fair": 34.0,
+       "Flawless": 70.0,
+       "Good": 50.0,
+       "Minor Damage": 8.0
+      }
      },
      "i7 2.2GHz": {
       "4GB": {},
-      "8GB": {}
+      "8GB": {
+       "Brand New": 105.0,
+       "Broken": 12.0,
+       "Fair": 46.0,
+       "Flawless": 90.0,
+       "Good": 70.0,
+       "Minor Damage": 12.0
+      }
      }
     },
     "image": "https://s3.amazonaws.com/fliptech-assets/images/devices/macbooks/apple/macbook-air-13-2017.webp",
     "slug": "macbook-air-13-2017"
    },
    "MacBook Air 13\" (2018)": {
-    "enabled": false,
+    "enabled": true,
     "sort": 19763,
     "variants": {
      "i5 1.6GHz": {
-      "16GB": {},
-      "8GB": {}
+      "16GB": {
+       "Brand New": 191.0,
+       "Broken": 20.0,
+       "Fair": 103.0,
+       "Flawless": 158.0,
+       "Good": 143.0,
+       "Minor Damage": 20.0
+      },
+      "8GB": {
+       "Brand New": 165.0,
+       "Broken": 20.0,
+       "Fair": 77.0,
+       "Flawless": 132.0,
+       "Good": 117.0,
+       "Minor Damage": 20.0
+      }
      }
     },
     "image": "https://s3.amazonaws.com/fliptech-assets/images/devices/macbooks/apple/macbook-air-13-2018.webp",
     "slug": "macbook-air-13-2018"
    },
    "MacBook Air 13\" (2019)": {
-    "enabled": false,
+    "enabled": true,
     "sort": 19775,
     "variants": {
      "i5 1.6GHz": {
-      "16GB": {},
-      "8GB": {}
+      "16GB": {
+       "Brand New": 230.0,
+       "Broken": 23.0,
+       "Fair": 140.0,
+       "Flawless": 202.0,
+       "Good": 185.0,
+       "Minor Damage": 23.0
+      },
+      "8GB": {
+       "Brand New": 185.0,
+       "Broken": 23.0,
+       "Fair": 95.0,
+       "Flawless": 157.0,
+       "Good": 140.0,
+       "Minor Damage": 23.0
+      }
      }
     },
     "image": "https://s3.amazonaws.com/fliptech-assets/images/devices/macbooks/apple/macbook-air-13-2019.webp",
     "slug": "macbook-air-13-2019"
    },
    "MacBook Air 13\" (2020)": {
-    "enabled": false,
+    "enabled": true,
     "sort": 19787,
     "variants": {
      "i3 1.1GHz": {
-      "16GB": {},
-      "8GB": {}
+      "16GB": {
+       "Brand New": 280.0,
+       "Broken": 27.0,
+       "Fair": 166.0,
+       "Flawless": 242.0,
+       "Good": 220.0,
+       "Minor Damage": 27.0
+      },
+      "8GB": {
+       "Brand New": 248.0,
+       "Broken": 27.0,
+       "Fair": 134.0,
+       "Flawless": 210.0,
+       "Good": 188.0,
+       "Minor Damage": 27.0
+      }
      },
      "i5 1.1GHz": {
-      "16GB": {},
-      "8GB": {}
+      "16GB": {
+       "Brand New": 294.0,
+       "Broken": 30.0,
+       "Fair": 176.0,
+       "Flawless": 256.0,
+       "Good": 234.0,
+       "Minor Damage": 30.0
+      },
+      "8GB": {
+       "Brand New": 262.0,
+       "Broken": 30.0,
+       "Fair": 144.0,
+       "Flawless": 224.0,
+       "Good": 202.0,
+       "Minor Damage": 30.0
+      }
      },
      "i5 1.6GHz": {
       "16GB": {},
       "8GB": {}
      },
      "i7 1.2GHz": {
-      "16GB": {},
-      "8GB": {}
+      "16GB": {
+       "Brand New": 316.0,
+       "Broken": 33.0,
+       "Fair": 186.0,
+       "Flawless": 278.0,
+       "Good": 254.0,
+       "Minor Damage": 33.0
+      },
+      "8GB": {
+       "Brand New": 284.0,
+       "Broken": 33.0,
+       "Fair": 154.0,
+       "Flawless": 246.0,
+       "Good": 222.0,
+       "Minor Damage": 33.0
+      }
      },
      "M1 3.2GHz 7-Core GPU": {
       "16GB": {},
@@ -14130,52 +14458,164 @@
     "slug": "macbook-air-13-2020"
    },
    "MacBook Air 13\" (2022)": {
-    "enabled": false,
+    "enabled": true,
     "sort": 19859,
     "variants": {
      "M2 8-Core CPU 10-Core GPU": {
-      "16GB": {},
-      "24GB": {},
-      "8GB": {}
+      "16GB": {
+       "Brand New": 480.0,
+       "Broken": 57.0,
+       "Fair": 294.0,
+       "Flawless": 436.0,
+       "Good": 408.0,
+       "Minor Damage": 57.0
+      },
+      "24GB": {
+       "Brand New": 544.0,
+       "Broken": 57.0,
+       "Fair": 358.0,
+       "Flawless": 500.0,
+       "Good": 472.0,
+       "Minor Damage": 57.0
+      },
+      "8GB": {
+       "Brand New": 431.0,
+       "Broken": 57.0,
+       "Fair": 245.0,
+       "Flawless": 387.0,
+       "Good": 359.0,
+       "Minor Damage": 57.0
+      }
      },
      "M2 8-Core CPU 8-Core GPU": {
-      "16GB": {},
-      "24GB": {},
-      "8GB": {}
+      "16GB": {
+       "Brand New": 466.0,
+       "Broken": 54.0,
+       "Fair": 285.0,
+       "Flawless": 422.0,
+       "Good": 393.0,
+       "Minor Damage": 54.0
+      },
+      "24GB": {
+       "Brand New": 530.0,
+       "Broken": 54.0,
+       "Fair": 349.0,
+       "Flawless": 486.0,
+       "Good": 457.0,
+       "Minor Damage": 54.0
+      },
+      "8GB": {
+       "Brand New": 417.0,
+       "Broken": 54.0,
+       "Fair": 236.0,
+       "Flawless": 373.0,
+       "Good": 344.0,
+       "Minor Damage": 54.0
+      }
      }
     },
     "image": "https://s3.amazonaws.com/fliptech-assets/images/devices/macbooks/apple/macbook-air-13-2022.webp",
     "slug": "macbook-air-13-2022"
    },
    "MacBook Air 13\" (2024)": {
-    "enabled": false,
+    "enabled": true,
     "sort": 19913,
     "variants": {
      "M3 8-Core CPU 10-Core GPU": {
-      "16GB": {},
-      "24GB": {},
-      "8GB": {}
+      "16GB": {
+       "Brand New": 651.0,
+       "Broken": 73.0,
+       "Fair": 394.0,
+       "Flawless": 594.0,
+       "Good": 540.0,
+       "Minor Damage": 73.0
+      },
+      "24GB": {
+       "Brand New": 716.0,
+       "Broken": 73.0,
+       "Fair": 459.0,
+       "Flawless": 659.0,
+       "Good": 605.0,
+       "Minor Damage": 73.0
+      },
+      "8GB": {
+       "Brand New": 586.0,
+       "Broken": 73.0,
+       "Fair": 329.0,
+       "Flawless": 529.0,
+       "Good": 475.0,
+       "Minor Damage": 73.0
+      }
      },
      "M3 8-Core CPU 8-Core GPU": {
-      "16GB": {},
-      "24GB": {},
-      "8GB": {}
+      "16GB": {
+       "Brand New": 620.0,
+       "Broken": 68.0,
+       "Fair": 379.0,
+       "Flawless": 562.0,
+       "Good": 514.0,
+       "Minor Damage": 68.0
+      },
+      "24GB": {
+       "Brand New": 685.0,
+       "Broken": 68.0,
+       "Fair": 444.0,
+       "Flawless": 627.0,
+       "Good": 579.0,
+       "Minor Damage": 68.0
+      },
+      "8GB": {
+       "Brand New": 555.0,
+       "Broken": 68.0,
+       "Fair": 314.0,
+       "Flawless": 497.0,
+       "Good": 449.0,
+       "Minor Damage": 68.0
+      }
      }
     },
     "image": "https://s3.amazonaws.com/fliptech-assets/images/devices/macbooks/apple/macbook-air-13-2024.webp",
     "slug": "macbook-air-13-2024"
    },
    "MacBook Air 13\" (2025)": {
-    "enabled": false,
+    "enabled": true,
     "sort": 21720,
     "variants": {
      "M4 10-Core CPU 10-Core GPU": {
-      "16GB": {},
-      "24GB": {},
-      "32GB": {}
+      "16GB": {
+       "Brand New": 725.0,
+       "Broken": 146.0,
+       "Fair": 449.0,
+       "Flawless": 700.0,
+       "Good": 665.0,
+       "Minor Damage": 146.0
+      },
+      "24GB": {
+       "Brand New": 815.0,
+       "Broken": 196.0,
+       "Fair": 539.0,
+       "Flawless": 790.0,
+       "Good": 755.0,
+       "Minor Damage": 196.0
+      },
+      "32GB": {
+       "Brand New": 900.0,
+       "Broken": 196.0,
+       "Fair": 624.0,
+       "Flawless": 875.0,
+       "Good": 840.0,
+       "Minor Damage": 196.0
+      }
      },
      "M4 10-Core CPU 8-Core GPU": {
-      "16GB": {}
+      "16GB": {
+       "Brand New": 575.0,
+       "Broken": 105.0,
+       "Fair": 315.0,
+       "Flawless": 550.0,
+       "Good": 525.0,
+       "Minor Damage": 105.0
+      }
      }
     },
     "image": "https://ocbuyback.netlify.app/assets/devices/macbook-air-13-2025.webp",
@@ -14195,44 +14635,128 @@
     "slug": "macbook-air-13-2026"
    },
    "MacBook Air 15\" (2023)": {
-    "enabled": false,
+    "enabled": true,
     "sort": 19895,
     "variants": {
      "M2 8-Core CPU 10-Core GPU": {
-      "16GB": {},
-      "24GB": {},
-      "8GB": {}
+      "16GB": {
+       "Brand New": 562.0,
+       "Broken": 64.0,
+       "Fair": 363.0,
+       "Flawless": 522.0,
+       "Good": 492.0,
+       "Minor Damage": 64.0
+      },
+      "24GB": {
+       "Brand New": 627.0,
+       "Broken": 64.0,
+       "Fair": 428.0,
+       "Flawless": 587.0,
+       "Good": 557.0,
+       "Minor Damage": 64.0
+      },
+      "8GB": {
+       "Brand New": 497.0,
+       "Broken": 64.0,
+       "Fair": 298.0,
+       "Flawless": 457.0,
+       "Good": 427.0,
+       "Minor Damage": 64.0
+      }
      }
     },
     "image": "https://s3.amazonaws.com/fliptech-assets/images/devices/macbooks/apple/macbook-air-15-2023.webp",
     "slug": "macbook-air-15-2023"
    },
    "MacBook Air 15\" (2024)": {
-    "enabled": false,
+    "enabled": true,
     "sort": 19949,
     "variants": {
      "M3 8-Core CPU 10-Core GPU": {
-      "16GB": {},
-      "24GB": {},
-      "8GB": {}
+      "16GB": {
+       "Brand New": 755.0,
+       "Broken": 90.0,
+       "Fair": 462.0,
+       "Flawless": 697.0,
+       "Good": 642.0,
+       "Minor Damage": 90.0
+      },
+      "24GB": {
+       "Brand New": 836.0,
+       "Broken": 90.0,
+       "Fair": 543.0,
+       "Flawless": 778.0,
+       "Good": 723.0,
+       "Minor Damage": 90.0
+      },
+      "8GB": {
+       "Brand New": 674.0,
+       "Broken": 90.0,
+       "Fair": 381.0,
+       "Flawless": 616.0,
+       "Good": 561.0,
+       "Minor Damage": 90.0
+      }
      },
      "M3 8-Core CPU 8-Core GPU": {
-      "16GB": {},
-      "24GB": {},
-      "8GB": {}
+      "16GB": {
+       "Brand New": 755.0,
+       "Broken": 90.0,
+       "Fair": 462.0,
+       "Flawless": 697.0,
+       "Good": 642.0,
+       "Minor Damage": 90.0
+      },
+      "24GB": {
+       "Brand New": 836.0,
+       "Broken": 90.0,
+       "Fair": 543.0,
+       "Flawless": 778.0,
+       "Good": 723.0,
+       "Minor Damage": 90.0
+      },
+      "8GB": {
+       "Brand New": 674.0,
+       "Broken": 90.0,
+       "Fair": 381.0,
+       "Flawless": 616.0,
+       "Good": 561.0,
+       "Minor Damage": 90.0
+      }
      }
     },
     "image": "https://s3.amazonaws.com/fliptech-assets/images/devices/macbooks/apple/macbook-air-15-2024.webp",
     "slug": "macbook-air-15-2024"
    },
    "MacBook Air 15\" (2025)": {
-    "enabled": false,
+    "enabled": true,
     "sort": 21730,
     "variants": {
      "M4 10-Core CPU 10-Core GPU": {
-      "16GB": {},
-      "24GB": {},
-      "32GB": {}
+      "16GB": {
+       "Brand New": 800.0,
+       "Broken": 148.0,
+       "Fair": 455.0,
+       "Flawless": 725.0,
+       "Good": 675.0,
+       "Minor Damage": 148.0
+      },
+      "24GB": {
+       "Brand New": 915.0,
+       "Broken": 198.0,
+       "Fair": 545.0,
+       "Flawless": 840.0,
+       "Good": 807.0,
+       "Minor Damage": 198.0
+      },
+      "32GB": {
+       "Brand New": 992.0,
+       "Broken": 198.0,
+       "Fair": 630.0,
+       "Flawless": 900.0,
+       "Good": 875.0,
+       "Minor Damage": 198.0
+      }
      }
     },
     "image": "https://ocbuyback.netlify.app/assets/devices/macbook-air-15-2025.webp",
@@ -14387,152 +14911,432 @@
     "slug": "macbook-pro-13-2015"
    },
    "MacBook Pro 13\" (2016)": {
-    "enabled": false,
+    "enabled": true,
     "sort": 20825,
     "variants": {
      "i5 2.0GHz": {
-      "16GB": {},
+      "16GB": {
+       "Brand New": 141.0,
+       "Broken": 15.0,
+       "Fair": 83.0,
+       "Flawless": 130.0,
+       "Good": 113.0,
+       "Minor Damage": 15.0
+      },
       "4GB": {},
-      "8GB": {}
+      "8GB": {
+       "Brand New": 121.0,
+       "Broken": 15.0,
+       "Fair": 63.0,
+       "Flawless": 110.0,
+       "Good": 93.0,
+       "Minor Damage": 15.0
+      }
      },
      "i5 2.9GHz": {
-      "16GB": {},
+      "16GB": {
+       "Brand New": 159.0,
+       "Broken": 19.0,
+       "Fair": 93.0,
+       "Flawless": 147.0,
+       "Good": 130.0,
+       "Minor Damage": 19.0
+      },
       "4GB": {},
-      "8GB": {}
+      "8GB": {
+       "Brand New": 139.0,
+       "Broken": 19.0,
+       "Fair": 73.0,
+       "Flawless": 127.0,
+       "Good": 110.0,
+       "Minor Damage": 19.0
+      }
      },
      "i5 3.1GHz": {
-      "16GB": {},
+      "16GB": {
+       "Brand New": 164.0,
+       "Broken": 20.0,
+       "Fair": 96.0,
+       "Flawless": 152.0,
+       "Good": 135.0,
+       "Minor Damage": 20.0
+      },
       "4GB": {},
-      "8GB": {}
+      "8GB": {
+       "Brand New": 144.0,
+       "Broken": 20.0,
+       "Fair": 76.0,
+       "Flawless": 132.0,
+       "Good": 115.0,
+       "Minor Damage": 20.0
+      }
      },
      "i5 3.3GHz": {
       "16GB": {},
       "8GB": {}
      },
      "i7 2.4GHz": {
-      "16GB": {},
+      "16GB": {
+       "Brand New": 152.0,
+       "Broken": 17.0,
+       "Fair": 89.0,
+       "Flawless": 141.0,
+       "Good": 123.0,
+       "Minor Damage": 17.0
+      },
       "4GB": {},
-      "8GB": {}
+      "8GB": {
+       "Brand New": 132.0,
+       "Broken": 17.0,
+       "Fair": 69.0,
+       "Flawless": 121.0,
+       "Good": 103.0,
+       "Minor Damage": 17.0
+      }
      },
      "i7 2.9GHz": {
       "16GB": {},
       "8GB": {}
      },
      "i7 3.3GHz": {
-      "16GB": {},
+      "16GB": {
+       "Brand New": 170.0,
+       "Broken": 21.0,
+       "Fair": 99.0,
+       "Flawless": 159.0,
+       "Good": 141.0,
+       "Minor Damage": 21.0
+      },
       "4GB": {},
-      "8GB": {}
+      "8GB": {
+       "Brand New": 150.0,
+       "Broken": 21.0,
+       "Fair": 79.0,
+       "Flawless": 139.0,
+       "Good": 121.0,
+       "Minor Damage": 21.0
+      }
      }
     },
     "image": "https://s3.amazonaws.com/fliptech-assets/images/devices/macbooks/apple/macbook-pro-13-2016.webp",
     "slug": "macbook-pro-13-2016"
    },
    "MacBook Pro 13\" (2017)": {
-    "enabled": false,
+    "enabled": true,
     "sort": 20957,
     "variants": {
      "i5 2.3GHz": {
-      "16GB": {},
-      "8GB": {}
+      "16GB": {
+       "Brand New": 140.0,
+       "Broken": 15.0,
+       "Fair": 74.0,
+       "Flawless": 126.0,
+       "Good": 104.0,
+       "Minor Damage": 15.0
+      },
+      "8GB": {
+       "Brand New": 124.0,
+       "Broken": 15.0,
+       "Fair": 58.0,
+       "Flawless": 110.0,
+       "Good": 88.0,
+       "Minor Damage": 15.0
+      }
      },
      "i5 2.9GHz": {
       "16GB": {},
       "8GB": {}
      },
      "i5 3.1GHz": {
-      "16GB": {},
-      "8GB": {}
+      "16GB": {
+       "Brand New": 166.0,
+       "Broken": 19.0,
+       "Fair": 93.0,
+       "Flawless": 151.0,
+       "Good": 131.0,
+       "Minor Damage": 19.0
+      },
+      "8GB": {
+       "Brand New": 150.0,
+       "Broken": 19.0,
+       "Fair": 77.0,
+       "Flawless": 135.0,
+       "Good": 115.0,
+       "Minor Damage": 19.0
+      }
      },
      "i5 3.3GHz": {
-      "16GB": {},
-      "8GB": {}
+      "16GB": {
+       "Brand New": 171.0,
+       "Broken": 20.0,
+       "Fair": 97.0,
+       "Flawless": 158.0,
+       "Good": 138.0,
+       "Minor Damage": 20.0
+      },
+      "8GB": {
+       "Brand New": 155.0,
+       "Broken": 20.0,
+       "Fair": 81.0,
+       "Flawless": 142.0,
+       "Good": 122.0,
+       "Minor Damage": 20.0
+      }
      },
      "i7 2.5GHz": {
-      "16GB": {},
-      "8GB": {}
+      "16GB": {
+       "Brand New": 152.0,
+       "Broken": 18.0,
+       "Fair": 80.0,
+       "Flawless": 138.0,
+       "Good": 116.0,
+       "Minor Damage": 18.0
+      },
+      "8GB": {
+       "Brand New": 136.0,
+       "Broken": 18.0,
+       "Fair": 64.0,
+       "Flawless": 122.0,
+       "Good": 100.0,
+       "Minor Damage": 18.0
+      }
      },
      "i7 3.3GHz": {
       "16GB": {},
       "8GB": {}
      },
      "i7 3.5GHz": {
-      "16GB": {},
-      "8GB": {}
+      "16GB": {
+       "Brand New": 180.0,
+       "Broken": 22.0,
+       "Fair": 102.0,
+       "Flawless": 166.0,
+       "Good": 146.0,
+       "Minor Damage": 22.0
+      },
+      "8GB": {
+       "Brand New": 164.0,
+       "Broken": 22.0,
+       "Fair": 86.0,
+       "Flawless": 150.0,
+       "Good": 130.0,
+       "Minor Damage": 22.0
+      }
      }
     },
     "image": "https://s3.amazonaws.com/fliptech-assets/images/devices/macbooks/apple/macbook-pro-13-2017.webp",
     "slug": "macbook-pro-13-2017"
    },
    "MacBook Pro 13\" (2018)": {
-    "enabled": false,
+    "enabled": true,
     "sort": 21059,
     "variants": {
      "i5 2.3GHz": {
-      "16GB": {},
-      "8GB": {}
+      "16GB": {
+       "Brand New": 254.0,
+       "Broken": 27.0,
+       "Fair": 150.0,
+       "Flawless": 234.0,
+       "Good": 204.0,
+       "Minor Damage": 27.0
+      },
+      "8GB": {
+       "Brand New": 234.0,
+       "Broken": 27.0,
+       "Fair": 130.0,
+       "Flawless": 214.0,
+       "Good": 184.0,
+       "Minor Damage": 27.0
+      }
      },
      "i5 2.9GHz": {
       "16GB": {},
       "8GB": {}
      },
      "i7 2.7GHz": {
-      "16GB": {},
-      "8GB": {}
+      "16GB": {
+       "Brand New": 284.0,
+       "Broken": 33.0,
+       "Fair": 168.0,
+       "Flawless": 264.0,
+       "Good": 236.0,
+       "Minor Damage": 33.0
+      },
+      "8GB": {
+       "Brand New": 264.0,
+       "Broken": 33.0,
+       "Fair": 148.0,
+       "Flawless": 244.0,
+       "Good": 216.0,
+       "Minor Damage": 33.0
+      }
      }
     },
     "image": "https://s3.amazonaws.com/fliptech-assets/images/devices/macbooks/apple/macbook-pro-13-2018.webp",
     "slug": "macbook-pro-13-2018"
    },
    "MacBook Pro 13\" (2019)": {
-    "enabled": false,
+    "enabled": true,
     "sort": 21131,
     "variants": {
      "i5 1.4GHz": {
-      "16GB": {},
-      "8GB": {}
+      "16GB": {
+       "Brand New": 241.0,
+       "Broken": 23.0,
+       "Fair": 152.0,
+       "Flawless": 216.0,
+       "Good": 198.0,
+       "Minor Damage": 23.0
+      },
+      "8GB": {
+       "Brand New": 221.0,
+       "Broken": 23.0,
+       "Fair": 132.0,
+       "Flawless": 196.0,
+       "Good": 178.0,
+       "Minor Damage": 23.0
+      }
      },
      "i5 2.4GHz": {
-      "16GB": {},
-      "8GB": {}
+      "16GB": {
+       "Brand New": 269.0,
+       "Broken": 25.0,
+       "Fair": 175.0,
+       "Flawless": 243.0,
+       "Good": 226.0,
+       "Minor Damage": 25.0
+      },
+      "8GB": {
+       "Brand New": 249.0,
+       "Broken": 25.0,
+       "Fair": 155.0,
+       "Flawless": 223.0,
+       "Good": 206.0,
+       "Minor Damage": 25.0
+      }
      },
      "i5 2.8GHz": {
       "16GB": {},
       "8GB": {}
      },
      "i7 1.7GHz": {
-      "16GB": {},
-      "8GB": {}
+      "16GB": {
+       "Brand New": 265.0,
+       "Broken": 28.0,
+       "Fair": 166.0,
+       "Flawless": 239.0,
+       "Good": 222.0,
+       "Minor Damage": 28.0
+      },
+      "8GB": {
+       "Brand New": 245.0,
+       "Broken": 28.0,
+       "Fair": 146.0,
+       "Flawless": 219.0,
+       "Good": 202.0,
+       "Minor Damage": 28.0
+      }
      },
      "i7 2.8GHz": {
-      "16GB": {},
-      "8GB": {}
+      "16GB": {
+       "Brand New": 281.0,
+       "Broken": 28.0,
+       "Fair": 182.0,
+       "Flawless": 255.0,
+       "Good": 238.0,
+       "Minor Damage": 28.0
+      },
+      "8GB": {
+       "Brand New": 261.0,
+       "Broken": 28.0,
+       "Fair": 162.0,
+       "Flawless": 235.0,
+       "Good": 218.0,
+       "Minor Damage": 28.0
+      }
      }
     },
     "image": "https://s3.amazonaws.com/fliptech-assets/images/devices/macbooks/apple/macbook-pro-13-2019.webp",
     "slug": "macbook-pro-13-2019"
    },
    "MacBook Pro 13\" (2020)": {
-    "enabled": false,
+    "enabled": true,
     "sort": 21281,
     "variants": {
      "i5 1.4GHz": {
-      "16GB": {},
+      "16GB": {
+       "Brand New": 299.0,
+       "Broken": 33.0,
+       "Fair": 177.0,
+       "Flawless": 268.0,
+       "Good": 244.0,
+       "Minor Damage": 33.0
+      },
       "32GB": {},
-      "8GB": {}
+      "8GB": {
+       "Brand New": 279.0,
+       "Broken": 33.0,
+       "Fair": 157.0,
+       "Flawless": 248.0,
+       "Good": 224.0,
+       "Minor Damage": 33.0
+      }
      },
      "i5 2.0GHz": {
-      "16GB": {},
-      "32GB": {},
+      "16GB": {
+       "Brand New": 342.0,
+       "Broken": 30.0,
+       "Fair": 228.0,
+       "Flawless": 312.0,
+       "Good": 288.0,
+       "Minor Damage": 30.0
+      },
+      "32GB": {
+       "Brand New": 390.0,
+       "Broken": 30.0,
+       "Fair": 276.0,
+       "Flawless": 360.0,
+       "Good": 336.0,
+       "Minor Damage": 30.0
+      },
       "8GB": {}
      },
      "i7 1.7GHz": {
-      "16GB": {},
+      "16GB": {
+       "Brand New": 314.0,
+       "Broken": 36.0,
+       "Fair": 186.0,
+       "Flawless": 282.0,
+       "Good": 259.0,
+       "Minor Damage": 36.0
+      },
       "32GB": {},
-      "8GB": {}
+      "8GB": {
+       "Brand New": 294.0,
+       "Broken": 36.0,
+       "Fair": 166.0,
+       "Flawless": 262.0,
+       "Good": 239.0,
+       "Minor Damage": 36.0
+      }
      },
      "i7 2.3GHz": {
-      "16GB": {},
-      "32GB": {},
+      "16GB": {
+       "Brand New": 356.0,
+       "Broken": 33.0,
+       "Fair": 236.0,
+       "Flawless": 324.0,
+       "Good": 302.0,
+       "Minor Damage": 33.0
+      },
+      "32GB": {
+       "Brand New": 404.0,
+       "Broken": 33.0,
+       "Fair": 284.0,
+       "Flawless": 372.0,
+       "Good": 350.0,
+       "Minor Damage": 33.0
+      },
       "8GB": {}
      },
      "M1 3.2GHz 8-Core GPU": {
@@ -14545,136 +15349,486 @@
     "slug": "macbook-pro-13-2020"
    },
    "MacBook Pro 13\" (2022)": {
-    "enabled": false,
+    "enabled": true,
     "sort": 21473,
     "variants": {
      "M2 8-Core CPU 10-Core GPU": {
-      "16GB": {},
-      "24GB": {},
-      "8GB": {}
+      "16GB": {
+       "Brand New": 535.0,
+       "Broken": 62.0,
+       "Fair": 341.0,
+       "Flawless": 489.0,
+       "Good": 466.0,
+       "Minor Damage": 62.0
+      },
+      "24GB": {
+       "Brand New": 626.0,
+       "Broken": 62.0,
+       "Fair": 432.0,
+       "Flawless": 580.0,
+       "Good": 557.0,
+       "Minor Damage": 62.0
+      },
+      "8GB": {
+       "Brand New": 458.0,
+       "Broken": 62.0,
+       "Fair": 264.0,
+       "Flawless": 412.0,
+       "Good": 389.0,
+       "Minor Damage": 62.0
+      }
      },
      "M2 8-Core CPU 8-Core GPU": {
-      "16GB": {},
-      "24GB": {},
-      "8GB": {}
+      "16GB": {
+       "Brand New": 535.0,
+       "Broken": 62.0,
+       "Fair": 341.0,
+       "Flawless": 489.0,
+       "Good": 466.0,
+       "Minor Damage": 62.0
+      },
+      "24GB": {
+       "Brand New": 626.0,
+       "Broken": 62.0,
+       "Fair": 432.0,
+       "Flawless": 580.0,
+       "Good": 557.0,
+       "Minor Damage": 62.0
+      },
+      "8GB": {
+       "Brand New": 458.0,
+       "Broken": 62.0,
+       "Fair": 264.0,
+       "Flawless": 412.0,
+       "Good": 389.0,
+       "Minor Damage": 62.0
+      }
      }
     },
     "image": "https://s3.amazonaws.com/fliptech-assets/images/devices/macbooks/apple/macbook-pro-13-2022.webp",
     "slug": "macbook-pro-13-2022"
    },
    "MacBook Pro 14\" (2021)": {
-    "enabled": false,
+    "enabled": true,
     "sort": 21371,
     "variants": {
      "M1 Max 10-Core CPU 24-Core GPU": {
       "16GB": {},
-      "32GB": {},
-      "64GB": {}
+      "32GB": {
+       "Brand New": 845.0,
+       "Broken": 115.0,
+       "Fair": 490.0,
+       "Flawless": 755.0,
+       "Good": 720.0,
+       "Minor Damage": 115.0
+      },
+      "64GB": {
+       "Brand New": 975.0,
+       "Broken": 115.0,
+       "Fair": 620.0,
+       "Flawless": 885.0,
+       "Good": 850.0,
+       "Minor Damage": 115.0
+      }
      },
      "M1 Max 10-Core CPU 32-Core GPU": {
-      "32GB": {},
-      "64GB": {}
+      "32GB": {
+       "Brand New": 895.0,
+       "Broken": 125.0,
+       "Fair": 520.0,
+       "Flawless": 805.0,
+       "Good": 770.0,
+       "Minor Damage": 125.0
+      },
+      "64GB": {
+       "Brand New": 1025.0,
+       "Broken": 125.0,
+       "Fair": 650.0,
+       "Flawless": 935.0,
+       "Good": 900.0,
+       "Minor Damage": 125.0
+      }
      },
      "M1 Pro 10-Core CPU 14-Core GPU": {
-      "16GB": {},
-      "32GB": {}
+      "16GB": {
+       "Brand New": 629.0,
+       "Broken": 100.0,
+       "Fair": 353.0,
+       "Flawless": 584.0,
+       "Good": 553.0,
+       "Minor Damage": 100.0
+      },
+      "32GB": {
+       "Brand New": 720.0,
+       "Broken": 100.0,
+       "Fair": 444.0,
+       "Flawless": 675.0,
+       "Good": 644.0,
+       "Minor Damage": 100.0
+      }
      },
      "M1 Pro 10-Core CPU 16-Core GPU": {
-      "16GB": {},
-      "32GB": {}
+      "16GB": {
+       "Brand New": 679.0,
+       "Broken": 105.0,
+       "Fair": 369.0,
+       "Flawless": 619.0,
+       "Good": 579.0,
+       "Minor Damage": 105.0
+      },
+      "32GB": {
+       "Brand New": 770.0,
+       "Broken": 105.0,
+       "Fair": 460.0,
+       "Flawless": 710.0,
+       "Good": 670.0,
+       "Minor Damage": 105.0
+      }
      },
      "M1 Pro 8-Core CPU 14-Core GPU": {
-      "16GB": {},
-      "32GB": {}
+      "16GB": {
+       "Brand New": 604.0,
+       "Broken": 93.0,
+       "Fair": 333.0,
+       "Flawless": 554.0,
+       "Good": 519.0,
+       "Minor Damage": 93.0
+      },
+      "32GB": {
+       "Brand New": 695.0,
+       "Broken": 93.0,
+       "Fair": 424.0,
+       "Flawless": 645.0,
+       "Good": 610.0,
+       "Minor Damage": 93.0
+      }
      }
     },
     "image": "https://s3.amazonaws.com/fliptech-assets/images/devices/macbooks/apple/macbook-pro-14-2021.webp",
     "slug": "macbook-pro-14-2021"
    },
    "MacBook Pro 14\" (2023)": {
-    "enabled": false,
+    "enabled": true,
     "sort": 21509,
     "variants": {
      "M2 Max 12-Core CPU 30-Core GPU": {
-      "32GB": {},
-      "64GB": {},
+      "32GB": {
+       "Brand New": 1132.0,
+       "Broken": 279.0,
+       "Fair": 722.0,
+       "Flawless": 1034.0,
+       "Good": 992.0,
+       "Minor Damage": 279.0
+      },
+      "64GB": {
+       "Brand New": 1180.0,
+       "Broken": 279.0,
+       "Fair": 772.0,
+       "Flawless": 1082.0,
+       "Good": 1042.0,
+       "Minor Damage": 279.0
+      },
       "96GB": {}
      },
      "M2 Max 12-Core CPU 38-Core GPU": {
-      "32GB": {},
-      "64GB": {},
-      "96GB": {}
+      "32GB": {
+       "Brand New": 1204.0,
+       "Broken": 293.0,
+       "Fair": 766.0,
+       "Flawless": 1108.0,
+       "Good": 1064.0,
+       "Minor Damage": 293.0
+      },
+      "64GB": {
+       "Brand New": 1252.0,
+       "Broken": 293.0,
+       "Fair": 814.0,
+       "Flawless": 1156.0,
+       "Good": 1114.0,
+       "Minor Damage": 293.0
+      },
+      "96GB": {
+       "Brand New": 1366.0,
+       "Broken": 293.0,
+       "Fair": 928.0,
+       "Flawless": 1270.0,
+       "Good": 1226.0,
+       "Minor Damage": 293.0
+      }
      },
      "M2 Pro 10-Core CPU 16-Core GPU": {
-      "16GB": {},
-      "32GB": {}
+      "16GB": {
+       "Brand New": 817.0,
+       "Broken": 223.0,
+       "Fair": 487.0,
+       "Flawless": 812.0,
+       "Good": 703.0,
+       "Minor Damage": 223.0
+      },
+      "32GB": {
+       "Brand New": 930.0,
+       "Broken": 223.0,
+       "Fair": 600.0,
+       "Flawless": 925.0,
+       "Good": 816.0,
+       "Minor Damage": 223.0
+      }
      },
      "M2 Pro 12-Core CPU 19-Core GPU": {
-      "16GB": {},
-      "32GB": {}
+      "16GB": {
+       "Brand New": 876.0,
+       "Broken": 235.0,
+       "Fair": 524.0,
+       "Flawless": 876.0,
+       "Good": 764.0,
+       "Minor Damage": 235.0
+      },
+      "32GB": {
+       "Brand New": 989.0,
+       "Broken": 235.0,
+       "Fair": 637.0,
+       "Flawless": 989.0,
+       "Good": 877.0,
+       "Minor Damage": 235.0
+      }
      },
      "M3 8-Core CPU 10-Core GPU": {
-      "16GB": {},
-      "24GB": {},
-      "8GB": {}
+      "16GB": {
+       "Brand New": 759.0,
+       "Broken": 113.0,
+       "Fair": 420.0,
+       "Flawless": 692.0,
+       "Good": 646.0,
+       "Minor Damage": 113.0
+      },
+      "24GB": {
+       "Brand New": 876.0,
+       "Broken": 113.0,
+       "Fair": 537.0,
+       "Flawless": 809.0,
+       "Good": 763.0,
+       "Minor Damage": 113.0
+      },
+      "8GB": {
+       "Brand New": 672.0,
+       "Broken": 113.0,
+       "Fair": 333.0,
+       "Flawless": 605.0,
+       "Good": 559.0,
+       "Minor Damage": 113.0
+      }
      },
      "M3 Max 14-Core CPU 30-Core GPU": {
-      "36GB": {},
-      "96GB": {}
+      "36GB": {
+       "Brand New": 1445.0,
+       "Broken": 342.0,
+       "Fair": 846.0,
+       "Flawless": 1351.0,
+       "Good": 1300.0,
+       "Minor Damage": 342.0
+      },
+      "96GB": {
+       "Brand New": 1720.0,
+       "Broken": 342.0,
+       "Fair": 1121.0,
+       "Flawless": 1626.0,
+       "Good": 1575.0,
+       "Minor Damage": 342.0
+      }
      },
      "M3 Max 16-Core CPU 40-Core GPU": {
-      "128GB": {},
-      "48GB": {},
-      "64GB": {}
+      "128GB": {
+       "Brand New": 1946.0,
+       "Broken": 380.0,
+       "Fair": 1260.0,
+       "Flawless": 1848.0,
+       "Good": 1791.0,
+       "Minor Damage": 380.0
+      },
+      "48GB": {
+       "Brand New": 1646.0,
+       "Broken": 380.0,
+       "Fair": 960.0,
+       "Flawless": 1548.0,
+       "Good": 1491.0,
+       "Minor Damage": 380.0
+      },
+      "64GB": {
+       "Brand New": 1808.0,
+       "Broken": 380.0,
+       "Fair": 1122.0,
+       "Flawless": 1710.0,
+       "Good": 1653.0,
+       "Minor Damage": 380.0
+      }
      },
      "M3 Pro 11-Core CPU 14-Core GPU": {
-      "18GB": {},
-      "36GB": {}
+      "18GB": {
+       "Brand New": 891.0,
+       "Broken": 217.0,
+       "Fair": 435.0,
+       "Flawless": 816.0,
+       "Good": 770.0,
+       "Minor Damage": 217.0
+      },
+      "36GB": {
+       "Brand New": 1069.0,
+       "Broken": 217.0,
+       "Fair": 613.0,
+       "Flawless": 994.0,
+       "Good": 948.0,
+       "Minor Damage": 217.0
+      }
      },
      "M3 Pro 12-Core CPU 18-Core GPU": {
-      "18GB": {},
-      "36GB": {}
+      "18GB": {
+       "Brand New": 991.0,
+       "Broken": 237.0,
+       "Fair": 494.0,
+       "Flawless": 913.0,
+       "Good": 868.0,
+       "Minor Damage": 237.0
+      },
+      "36GB": {
+       "Brand New": 1169.0,
+       "Broken": 237.0,
+       "Fair": 672.0,
+       "Flawless": 1091.0,
+       "Good": 1046.0,
+       "Minor Damage": 237.0
+      }
      }
     },
     "image": "https://s3.amazonaws.com/fliptech-assets/images/devices/macbooks/apple/macbook-pro-14-2023.webp",
     "slug": "macbook-pro-14-2023"
    },
    "MacBook Pro 14\" (2024)": {
-    "enabled": false,
+    "enabled": true,
     "sort": 21700,
     "variants": {
      "M4 10-Core CPU 10-Core GPU": {
-      "16GB": {},
-      "24GB": {},
-      "32GB": {}
+      "16GB": {
+       "Brand New": 1200.0,
+       "Broken": 215.0,
+       "Fair": 620.0,
+       "Flawless": 1175.0,
+       "Good": 1100.0,
+       "Minor Damage": 215.0
+      },
+      "24GB": {
+       "Brand New": 1400.0,
+       "Broken": 290.0,
+       "Fair": 820.0,
+       "Flawless": 1375.0,
+       "Good": 1300.0,
+       "Minor Damage": 290.0
+      },
+      "32GB": {
+       "Brand New": 1392.0,
+       "Broken": 282.0,
+       "Fair": 812.0,
+       "Flawless": 1367.0,
+       "Good": 1292.0,
+       "Minor Damage": 282.0
+      }
      },
      "M4 Max 14-Core CPU 32-Core GPU": {
-      "36GB": {}
+      "36GB": {
+       "Brand New": 2069.0,
+       "Broken": 378.0,
+       "Fair": 1214.0,
+       "Flawless": 1994.0,
+       "Good": 1894.0,
+       "Minor Damage": 378.0
+      }
      },
      "M4 Max 16-Core CPU 40-Core GPU": {
-      "128GB": {},
-      "48GB": {},
-      "64GB": {}
+      "128GB": {
+       "Brand New": 2544.0,
+       "Broken": 468.0,
+       "Fair": 1634.0,
+       "Flawless": 2494.0,
+       "Good": 2394.0,
+       "Minor Damage": 468.0
+      },
+      "48GB": {
+       "Brand New": 2344.0,
+       "Broken": 468.0,
+       "Fair": 1434.0,
+       "Flawless": 2294.0,
+       "Good": 2194.0,
+       "Minor Damage": 468.0
+      },
+      "64GB": {
+       "Brand New": 2444.0,
+       "Broken": 468.0,
+       "Fair": 1534.0,
+       "Flawless": 2394.0,
+       "Good": 2294.0,
+       "Minor Damage": 468.0
+      }
      },
      "M4 Pro 12-Core CPU 16-Core GPU": {
-      "24GB": {}
+      "24GB": {
+       "Brand New": 1400.0,
+       "Broken": 251.0,
+       "Fair": 785.0,
+       "Flawless": 1350.0,
+       "Good": 1275.0,
+       "Minor Damage": 251.0
+      }
      },
      "M4 Pro 14-Core CPU 20-Core GPU": {
-      "24GB": {},
-      "48GB": {}
+      "24GB": {
+       "Brand New": 1425.0,
+       "Broken": 256.0,
+       "Fair": 800.0,
+       "Flawless": 1375.0,
+       "Good": 1300.0,
+       "Minor Damage": 256.0
+      },
+      "48GB": {
+       "Brand New": 1525.0,
+       "Broken": 306.0,
+       "Fair": 900.0,
+       "Flawless": 1475.0,
+       "Good": 1400.0,
+       "Minor Damage": 306.0
+      }
      }
     },
     "image": "https://ocbuyback.netlify.app/assets/devices/macbook-pro-14-2024.webp",
     "slug": "macbook-pro-14-2024"
    },
    "MacBook Pro 14\" (2025)": {
-    "enabled": false,
+    "enabled": true,
     "sort": 21740,
     "variants": {
      "M5 10-Core CPU 10-Core GPU": {
-      "16GB": {},
-      "24GB": {},
-      "32GB": {}
+      "16GB": {
+       "Brand New": 1275.0,
+       "Broken": 108.0,
+       "Fair": 650.0,
+       "Flawless": 1175.0,
+       "Good": 1100.0,
+       "Minor Damage": 108.0
+      },
+      "24GB": {
+       "Brand New": 1425.0,
+       "Broken": 258.0,
+       "Fair": 800.0,
+       "Flawless": 1325.0,
+       "Good": 1250.0,
+       "Minor Damage": 258.0
+      },
+      "32GB": {
+       "Brand New": 1550.0,
+       "Broken": 308.0,
+       "Fair": 925.0,
+       "Flawless": 1450.0,
+       "Good": 1375.0,
+       "Minor Damage": 308.0
+      }
      }
     },
     "image": "https://ocbuyback.netlify.app/assets/devices/macbook-pro-14-2025.webp",
@@ -14876,172 +16030,529 @@
     "slug": "macbook-pro-15-2015"
    },
    "MacBook Pro 15\" (2016)": {
-    "enabled": false,
+    "enabled": true,
     "sort": 20939,
     "variants": {
      "i7 2.6GHz": {
-      "16GB": {}
+      "16GB": {
+       "Brand New": 188.0,
+       "Broken": 22.0,
+       "Fair": 106.0,
+       "Flawless": 167.0,
+       "Good": 150.0,
+       "Minor Damage": 22.0
+      }
      },
      "i7 2.7GHz": {
-      "16GB": {}
+      "16GB": {
+       "Brand New": 175.0,
+       "Broken": 20.0,
+       "Fair": 99.0,
+       "Flawless": 155.0,
+       "Good": 138.0,
+       "Minor Damage": 20.0
+      }
      },
      "i7 2.9GHz": {
-      "16GB": {}
+      "16GB": {
+       "Brand New": 193.0,
+       "Broken": 23.0,
+       "Fair": 109.0,
+       "Flawless": 173.0,
+       "Good": 155.0,
+       "Minor Damage": 23.0
+      }
      }
     },
     "image": "https://s3.amazonaws.com/fliptech-assets/images/devices/macbooks/apple/macbook-pro-15-2016.webp",
     "slug": "macbook-pro-15-2016"
    },
    "MacBook Pro 15\" (2017)": {
-    "enabled": false,
+    "enabled": true,
     "sort": 21041,
     "variants": {
      "i7 2.8GHz": {
-      "16GB": {}
+      "16GB": {
+       "Brand New": 213.0,
+       "Broken": 28.0,
+       "Fair": 116.0,
+       "Flawless": 189.0,
+       "Good": 172.0,
+       "Minor Damage": 28.0
+      }
      },
      "i7 2.9GHz": {
-      "16GB": {}
+      "16GB": {
+       "Brand New": 216.0,
+       "Broken": 29.0,
+       "Fair": 117.0,
+       "Flawless": 192.0,
+       "Good": 175.0,
+       "Minor Damage": 29.0
+      }
      },
      "i7 3.1GHz": {
-      "16GB": {}
+      "16GB": {
+       "Brand New": 224.0,
+       "Broken": 30.0,
+       "Fair": 121.0,
+       "Flawless": 201.0,
+       "Good": 181.0,
+       "Minor Damage": 30.0
+      }
      }
     },
     "image": "https://s3.amazonaws.com/fliptech-assets/images/devices/macbooks/apple/macbook-pro-15-2017.webp",
     "slug": "macbook-pro-15-2017"
    },
    "MacBook Pro 15\" (2018)": {
-    "enabled": false,
+    "enabled": true,
     "sort": 21095,
     "variants": {
      "i7 2.2GHz": {
-      "16GB": {},
-      "32GB": {}
+      "16GB": {
+       "Brand New": 264.0,
+       "Broken": 26.0,
+       "Fair": 146.0,
+       "Flawless": 226.0,
+       "Good": 198.0,
+       "Minor Damage": 26.0
+      },
+      "32GB": {
+       "Brand New": 313.0,
+       "Broken": 26.0,
+       "Fair": 195.0,
+       "Flawless": 275.0,
+       "Good": 247.0,
+       "Minor Damage": 26.0
+      }
      },
      "i7 2.6GHz": {
-      "16GB": {},
-      "32GB": {}
+      "16GB": {
+       "Brand New": 271.0,
+       "Broken": 28.0,
+       "Fair": 153.0,
+       "Flawless": 238.0,
+       "Good": 209.0,
+       "Minor Damage": 28.0
+      },
+      "32GB": {
+       "Brand New": 320.0,
+       "Broken": 28.0,
+       "Fair": 202.0,
+       "Flawless": 287.0,
+       "Good": 258.0,
+       "Minor Damage": 28.0
+      }
      },
      "i9 2.9GHz": {
-      "16GB": {},
-      "32GB": {}
+      "16GB": {
+       "Brand New": 299.0,
+       "Broken": 33.0,
+       "Fair": 167.0,
+       "Flawless": 261.0,
+       "Good": 233.0,
+       "Minor Damage": 33.0
+      },
+      "32GB": {
+       "Brand New": 348.0,
+       "Broken": 33.0,
+       "Fair": 216.0,
+       "Flawless": 310.0,
+       "Good": 282.0,
+       "Minor Damage": 33.0
+      }
      }
     },
     "image": "https://s3.amazonaws.com/fliptech-assets/images/devices/macbooks/apple/macbook-pro-15-2018.webp",
     "slug": "macbook-pro-15-2018"
    },
    "MacBook Pro 15\" (2019)": {
-    "enabled": false,
+    "enabled": true,
     "sort": 21191,
     "variants": {
      "i7 2.6GHz": {
-      "16GB": {},
-      "32GB": {}
+      "16GB": {
+       "Brand New": 312.0,
+       "Broken": 37.0,
+       "Fair": 186.0,
+       "Flawless": 286.0,
+       "Good": 260.0,
+       "Minor Damage": 37.0
+      },
+      "32GB": {
+       "Brand New": 353.0,
+       "Broken": 37.0,
+       "Fair": 227.0,
+       "Flawless": 327.0,
+       "Good": 301.0,
+       "Minor Damage": 37.0
+      }
      },
      "i9 2.3GHz": {
-      "16GB": {},
-      "32GB": {}
+      "16GB": {
+       "Brand New": 324.0,
+       "Broken": 41.0,
+       "Fair": 190.0,
+       "Flawless": 298.0,
+       "Good": 272.0,
+       "Minor Damage": 41.0
+      },
+      "32GB": {
+       "Brand New": 373.0,
+       "Broken": 41.0,
+       "Fair": 239.0,
+       "Flawless": 347.0,
+       "Good": 321.0,
+       "Minor Damage": 41.0
+      }
      },
      "i9 2.4GHz": {
-      "16GB": {},
-      "32GB": {}
+      "16GB": {
+       "Brand New": 328.0,
+       "Broken": 41.0,
+       "Fair": 194.0,
+       "Flawless": 302.0,
+       "Good": 276.0,
+       "Minor Damage": 41.0
+      },
+      "32GB": {
+       "Brand New": 373.0,
+       "Broken": 41.0,
+       "Fair": 239.0,
+       "Flawless": 347.0,
+       "Good": 321.0,
+       "Minor Damage": 41.0
+      }
      }
     },
     "image": "https://s3.amazonaws.com/fliptech-assets/images/devices/macbooks/apple/macbook-pro-15-2019.webp",
     "slug": "macbook-pro-15-2019"
    },
    "MacBook Pro 16\" (2019)": {
-    "enabled": false,
+    "enabled": true,
     "sort": 21227,
     "variants": {
      "i7 2.6GHz": {
-      "16GB": {},
-      "32GB": {},
-      "64GB": {}
+      "16GB": {
+       "Brand New": 393.0,
+       "Broken": 37.0,
+       "Fair": 262.0,
+       "Flawless": 358.0,
+       "Good": 336.0,
+       "Minor Damage": 37.0
+      },
+      "32GB": {
+       "Brand New": 443.0,
+       "Broken": 37.0,
+       "Fair": 312.0,
+       "Flawless": 408.0,
+       "Good": 386.0,
+       "Minor Damage": 37.0
+      },
+      "64GB": {
+       "Brand New": 508.0,
+       "Broken": 37.0,
+       "Fair": 377.0,
+       "Flawless": 473.0,
+       "Good": 451.0,
+       "Minor Damage": 37.0
+      }
      },
      "i9 2.3GHz": {
-      "16GB": {},
-      "32GB": {},
-      "64GB": {}
+      "16GB": {
+       "Brand New": 427.0,
+       "Broken": 40.0,
+       "Fair": 289.0,
+       "Flawless": 392.0,
+       "Good": 369.0,
+       "Minor Damage": 40.0
+      },
+      "32GB": {
+       "Brand New": 492.0,
+       "Broken": 40.0,
+       "Fair": 354.0,
+       "Flawless": 457.0,
+       "Good": 434.0,
+       "Minor Damage": 40.0
+      },
+      "64GB": {
+       "Brand New": 557.0,
+       "Broken": 40.0,
+       "Fair": 419.0,
+       "Flawless": 522.0,
+       "Good": 499.0,
+       "Minor Damage": 40.0
+      }
      },
      "i9 2.4GHz": {
-      "16GB": {},
-      "32GB": {},
-      "64GB": {}
+      "16GB": {
+       "Brand New": 441.0,
+       "Broken": 44.0,
+       "Fair": 295.0,
+       "Flawless": 406.0,
+       "Good": 383.0,
+       "Minor Damage": 44.0
+      },
+      "32GB": {
+       "Brand New": 478.0,
+       "Broken": 44.0,
+       "Fair": 332.0,
+       "Flawless": 443.0,
+       "Good": 420.0,
+       "Minor Damage": 44.0
+      },
+      "64GB": {
+       "Brand New": 543.0,
+       "Broken": 44.0,
+       "Fair": 397.0,
+       "Flawless": 508.0,
+       "Good": 485.0,
+       "Minor Damage": 44.0
+      }
      }
     },
     "image": "https://s3.amazonaws.com/fliptech-assets/images/devices/macbooks/apple/macbook-pro-16-2019.webp",
     "slug": "macbook-pro-16-2019"
    },
    "MacBook Pro 16\" (2021)": {
-    "enabled": false,
+    "enabled": true,
     "sort": 21437,
     "variants": {
      "M1 Max 10-Core CPU 24-Core GPU": {
-      "32GB": {},
-      "64GB": {}
+      "32GB": {
+       "Brand New": 891.0,
+       "Broken": 107.0,
+       "Fair": 562.0,
+       "Flawless": 833.0,
+       "Good": 775.0,
+       "Minor Damage": 107.0
+      },
+      "64GB": {
+       "Brand New": 924.0,
+       "Broken": 107.0,
+       "Fair": 595.0,
+       "Flawless": 866.0,
+       "Good": 808.0,
+       "Minor Damage": 107.0
+      }
      },
      "M1 Max 10-Core CPU 32-Core GPU": {
-      "32GB": {},
-      "64GB": {}
+      "32GB": {
+       "Brand New": 956.0,
+       "Broken": 113.0,
+       "Fair": 616.0,
+       "Flawless": 898.0,
+       "Good": 841.0,
+       "Minor Damage": 113.0
+      },
+      "64GB": {
+       "Brand New": 989.0,
+       "Broken": 113.0,
+       "Fair": 649.0,
+       "Flawless": 931.0,
+       "Good": 874.0,
+       "Minor Damage": 113.0
+      }
      },
      "M1 Pro 10-Core CPU 16-Core GPU": {
-      "16GB": {},
-      "32GB": {}
+      "16GB": {
+       "Brand New": 710.0,
+       "Broken": 89.0,
+       "Fair": 413.0,
+       "Flawless": 650.0,
+       "Good": 592.0,
+       "Minor Damage": 89.0
+      },
+      "32GB": {
+       "Brand New": 807.0,
+       "Broken": 89.0,
+       "Fair": 510.0,
+       "Flawless": 747.0,
+       "Good": 689.0,
+       "Minor Damage": 89.0
+      }
      }
     },
     "image": "https://s3.amazonaws.com/fliptech-assets/images/devices/macbooks/apple/macbook-pro-16-2021.webp",
     "slug": "macbook-pro-16-2021"
    },
    "MacBook Pro 16\" (2023)": {
-    "enabled": false,
+    "enabled": true,
     "sort": 21641,
     "variants": {
      "M2 Max 12-Core CPU 30-Core GPU": {
-      "32GB": {},
-      "64GB": {},
+      "32GB": {
+       "Brand New": 1238.0,
+       "Broken": 150.0,
+       "Fair": 806.0,
+       "Flawless": 1162.0,
+       "Good": 1106.0,
+       "Minor Damage": 150.0
+      },
+      "64GB": {
+       "Brand New": 1300.0,
+       "Broken": 150.0,
+       "Fair": 868.0,
+       "Flawless": 1224.0,
+       "Good": 1168.0,
+       "Minor Damage": 150.0
+      },
       "96GB": {}
      },
      "M2 Max 12-Core CPU 38-Core GPU": {
-      "32GB": {},
-      "64GB": {},
-      "96GB": {}
+      "32GB": {
+       "Brand New": 1408.0,
+       "Broken": 183.0,
+       "Fair": 904.0,
+       "Flawless": 1328.0,
+       "Good": 1270.0,
+       "Minor Damage": 183.0
+      },
+      "64GB": {
+       "Brand New": 1470.0,
+       "Broken": 183.0,
+       "Fair": 966.0,
+       "Flawless": 1390.0,
+       "Good": 1332.0,
+       "Minor Damage": 183.0
+      },
+      "96GB": {
+       "Brand New": 1608.0,
+       "Broken": 183.0,
+       "Fair": 1104.0,
+       "Flawless": 1528.0,
+       "Good": 1470.0,
+       "Minor Damage": 183.0
+      }
      },
      "M2 Pro 10-Core CPU 19-Core GPU": {
       "16GB": {},
       "32GB": {}
      },
      "M3 Max 14-Core CPU 30-Core GPU": {
-      "36GB": {},
-      "96GB": {}
+      "36GB": {
+       "Brand New": 1594.0,
+       "Broken": 243.0,
+       "Fair": 934.0,
+       "Flawless": 1487.0,
+       "Good": 1421.0,
+       "Minor Damage": 243.0
+      },
+      "96GB": {
+       "Brand New": 1894.0,
+       "Broken": 243.0,
+       "Fair": 1234.0,
+       "Flawless": 1787.0,
+       "Good": 1721.0,
+       "Minor Damage": 243.0
+      }
      },
      "M3 Max 16-Core CPU 40-Core GPU": {
-      "128GB": {},
-      "48GB": {},
-      "64GB": {}
+      "128GB": {
+       "Brand New": 2123.0,
+       "Broken": 268.0,
+       "Fair": 1357.0,
+       "Flawless": 1978.0,
+       "Good": 1892.0,
+       "Minor Damage": 268.0
+      },
+      "48GB": {
+       "Brand New": 1773.0,
+       "Broken": 268.0,
+       "Fair": 1007.0,
+       "Flawless": 1628.0,
+       "Good": 1542.0,
+       "Minor Damage": 268.0
+      },
+      "64GB": {
+       "Brand New": 1935.0,
+       "Broken": 268.0,
+       "Fair": 1169.0,
+       "Flawless": 1790.0,
+       "Good": 1704.0,
+       "Minor Damage": 268.0
+      }
      },
      "M3 Pro 12-Core CPU 18-Core GPU": {
-      "18GB": {},
-      "36GB": {}
+      "18GB": {
+       "Brand New": 1088.0,
+       "Broken": 199.0,
+       "Fair": 546.0,
+       "Flawless": 1001.0,
+       "Good": 944.0,
+       "Minor Damage": 199.0
+      },
+      "36GB": {
+       "Brand New": 1282.0,
+       "Broken": 199.0,
+       "Fair": 740.0,
+       "Flawless": 1195.0,
+       "Good": 1138.0,
+       "Minor Damage": 199.0
+      }
      }
     },
     "image": "https://s3.amazonaws.com/fliptech-assets/images/devices/macbooks/apple/macbook-pro-16-2023.webp",
     "slug": "macbook-pro-16-2023"
    },
    "MacBook Pro 16\" (2024)": {
-    "enabled": false,
+    "enabled": true,
     "sort": 21710,
     "variants": {
      "M4 Max 14-Core CPU 32-Core GPU": {
-      "36GB": {}
+      "36GB": {
+       "Brand New": 2194.0,
+       "Broken": 398.0,
+       "Fair": 1274.0,
+       "Flawless": 2094.0,
+       "Good": 1994.0,
+       "Minor Damage": 398.0
+      }
      },
      "M4 Max 16-Core CPU 40-Core GPU": {
-      "128GB": {},
-      "48GB": {},
-      "64GB": {}
+      "128GB": {
+       "Brand New": 2594.0,
+       "Broken": 472.0,
+       "Fair": 1549.0,
+       "Flawless": 2544.0,
+       "Good": 2419.0,
+       "Minor Damage": 472.0
+      },
+      "48GB": {
+       "Brand New": 2294.0,
+       "Broken": 422.0,
+       "Fair": 1349.0,
+       "Flawless": 2244.0,
+       "Good": 2093.0,
+       "Minor Damage": 422.0
+      },
+      "64GB": {
+       "Brand New": 2494.0,
+       "Broken": 472.0,
+       "Fair": 1474.0,
+       "Flawless": 2444.0,
+       "Good": 2318.0,
+       "Minor Damage": 472.0
+      }
      },
      "M4 Pro 14-Core CPU 20-Core GPU": {
-      "24GB": {},
-      "48GB": {}
+      "24GB": {
+       "Brand New": 1725.0,
+       "Broken": 246.0,
+       "Fair": 845.0,
+       "Flawless": 1625.0,
+       "Good": 1525.0,
+       "Minor Damage": 246.0
+      },
+      "48GB": {
+       "Brand New": 1950.0,
+       "Broken": 346.0,
+       "Fair": 1070.0,
+       "Flawless": 1850.0,
+       "Good": 1750.0,
+       "Minor Damage": 346.0
+      }
      }
     },
     "image": "https://ocbuyback.netlify.app/assets/devices/macbook-pro-16-2024.webp",
