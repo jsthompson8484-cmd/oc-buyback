@@ -91,7 +91,9 @@ export default async (req) => {
   if (!issueRes.ok) return json(500, { error: "Could not create issue", detail: await issueRes.text() });
   const [issue] = await issueRes.json();
 
-  // -- compose + send
+  // -- compose + send (links use the origin this request came from, so
+  // staging emails link to staging and production emails to production)
+  const origin = new URL(req.url).origin;
   const device = `${item.brand} ${item.model}`;
   const { subject, html } = buildIssueEmail(issue, {
     orderNumber: ti.order_number,
@@ -99,7 +101,7 @@ export default async (req) => {
     device,
     condition: item.condition,
     quotedPrice: item.quoted_price,
-    respondUrl: (action) => `${SITE_URL}/api/issue-respond?token=${token}&action=${action}`,
+    respondUrl: (action) => `${origin}/api/issue-respond?token=${token}&action=${action}`,
   });
 
   let emailed = false;

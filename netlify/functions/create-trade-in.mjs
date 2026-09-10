@@ -170,7 +170,7 @@ export default async (req) => {
       const { subject, html } = buildOrderConfirmation({
         orderNumber, firstName: customer.first_name, items: verified,
         total: total + promoAmount, lockedUntil: lockedPretty, payMethod: method,
-        trackUrl: `${SITE_URL}/trade-in/track`,
+        trackUrl: `${new URL(req.url).origin}/trade-in/track`,
       });
       await fetch("https://api.resend.com/emails", {
         method: "POST",
