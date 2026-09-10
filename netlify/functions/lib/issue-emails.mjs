@@ -234,8 +234,9 @@ export function buildOrderConfirmation({ orderNumber, firstName, items, total, l
               <ol style="font-size:13.5px;color:${MUTED};line-height:1.6;margin:0;padding-left:20px">${g.steps.map((s) => `<li>${s}</li>`).join("")}</ol>`).join("") +
             `<div style="margin-top:18px"></div>` : "";
         })() : "") +
-        (isCash ? button("https://www.google.com/maps/dir/?api=1&destination=OCBuyBack+1203+W+Imperial+Hwy+STE+103+Brea+CA+92821", "Get driving directions") : "") +
-        button(trackUrl, "Track my order"),
+        (isCash
+          ? button("https://www.google.com/maps/dir/?api=1&destination=OCBuyBack+1203+W+Imperial+Hwy+STE+103+Brea+CA+92821", "Get driving directions")
+          : button(trackUrl, "Track my order")),
       footNote: "Questions? Just reply to this email or call 657-286-8274.",
     }),
   };

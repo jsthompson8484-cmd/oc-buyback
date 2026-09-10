@@ -257,7 +257,7 @@ cartBadge();
       <div class="s"><b>3 · Get paid</b><p>Paid by <span id="donePay"></span> within 1 business day of your device arriving.</p></div>
     </div>
     <p style="margin-top:28px"><a class="btn" href="../index.html">Sell another device</a></p>
-    <p style="margin-top:10px"><a href="../../trade-in/track/index.html" style="color:var(--green);font-weight:700;font-size:14px">Track this order →</a></p>
+    <p style="margin-top:10px" id="trackLink"><a href="../../trade-in/track/index.html" style="color:var(--green);font-weight:700;font-size:14px">Track this order →</a></p>
   </div>
 </div>
 <script>
@@ -402,6 +402,7 @@ document.getElementById("submit").addEventListener("click", async ()=>{
     document.querySelector(".steps3").innerHTML = "<div class='s'><b>1 · Check your email</b><p>Your order confirmation is on the way.</p></div>"+
       "<div class='s'><b>2 · Come by the shop</b><p>1203 W Imperial Hwy, STE 103, Brea — Mon–Fri 10 AM to 6 PM.</p></div>"+
       "<div class='s'><b>3 · Get paid</b><p>We evaluate while you wait (about 10 minutes) and pay cash on the spot.</p></div>";
+    const tl = document.getElementById("trackLink"); if(tl) tl.style.display = "none";
   }
   cartSave([]); cartBadge();
   document.getElementById("cartState").style.display = "none";
