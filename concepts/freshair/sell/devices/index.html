@@ -219,6 +219,14 @@ cartBadge();
             <div class="payopt" data-v="Cash in store"><b>Cash in store</b><p>Skip shipping — bring your device to 1203 W Imperial Hwy, Brea and get paid on the spot.</p></div>
           </div>
         </div>
+        <div class="fs" id="shipWrap" style="display:none"><h2>How would you like to ship?</h2>
+          <div class="pay" id="shipPick">
+            <div class="payopt shipopt on" data-c="USPS"><b>USPS</b><p>Show a QR code at any Post Office — no printer needed.</p></div>
+            <div class="payopt shipopt" data-c="FedEx"><b>FedEx</b><p>Print the label and drop off at any FedEx location.</p></div>
+            <div class="payopt shipopt" data-c="UPS"><b>UPS</b><p>Print the label and drop off at any UPS location.</p></div>
+          </div>
+          <p style="color:var(--muted);font-size:12.5px;margin:8px 0 0">Console trade-ins can ship with any of the three — the label is free either way.</p>
+        </div>
         <div class="fs"><h2 id="detailsHead">Your details</h2>
           <div class="frow">
             <div class="field"><label for="fn">First name</label><input id="fn" autocomplete="given-name"><div class="hint"></div></div>
@@ -242,7 +250,7 @@ cartBadge();
         <div class="tot"><span style="font-weight:700">Total offer</span><b id="sideTotal">$0</b></div>
         <button id="submit">Sell my device(s)</button>
         <div class="toast" id="coToast" style="margin-top:12px;font-size:13px;color:#b3372b;text-align:center;min-height:18px;font-weight:600"></div>
-        <div class="trust"><span>Free prepaid USPS shipping label</span><span>Price locked for 14 days</span><span>Paid within 1 business day of arrival</span></div>
+        <div class="trust"><span>Free prepaid shipping label</span><span>Price locked for 14 days</span><span>Paid within 1 business day of arrival</span></div>
       </aside>
     </div>
   </div>
@@ -253,7 +261,7 @@ cartBadge();
     <p>Order <b id="doneId" style="color:var(--deep)"></b> · total offer <b id="doneTotal" style="color:var(--green)"></b>, locked through <b id="doneLock"></b>.</p>
     <div class="steps3">
       <div class="s"><b>1 · Check your email</b><p>Your free prepaid USPS shipping label and packing instructions are on the way<span id="doneSms"></span>.</p></div>
-      <div class="s"><b>2 · Pack and ship</b><p>Any sturdy box works. Drop it at any Post Office or USPS pickup.</p></div>
+      <div class="s"><b>2 · Pack and ship</b><p id="doneShip">Any sturdy box works. Drop it at any Post Office or USPS pickup.</p></div>
       <div class="s"><b>3 · Get paid</b><p>Paid by <span id="donePay"></span> within 1 business day of your device arriving.</p></div>
     </div>
     <p style="margin-top:28px"><a class="btn" href="../index.html">Sell another device</a></p>
@@ -264,6 +272,22 @@ cartBadge();
 function money(v){ return "$" + v.toLocaleString(); }
 const IS_LOCAL = ["localhost","127.0.0.1"].includes(location.hostname);
 let payMethod = null;
+let shipCarrier = "USPS";
+function refreshShip(){
+  const c = cartGet();
+  const consolesOnly = c.length && c.every(i => i.cat === "Game Console");
+  const show = consolesOnly && payMethod !== "Cash in store";
+  document.getElementById("shipWrap").style.display = show ? "" : "none";
+  if(!show) {
+    shipCarrier = "USPS";
+    document.querySelectorAll(".shipopt").forEach(x=>x.classList.toggle("on", x.dataset.c === "USPS"));
+  }
+}
+document.getElementById("shipPick").addEventListener("click", e=>{
+  const t = e.target.closest(".shipopt"); if(!t) return;
+  shipCarrier = t.dataset.c;
+  document.querySelectorAll(".shipopt").forEach(x=>x.classList.toggle("on", x===t));
+});
 function renderCart(){
   const c = cartGet();
   document.getElementById("emptyState").style.display = c.length ? "none" : "";
@@ -290,6 +314,7 @@ function renderCart(){
   document.getElementById("sideRows").innerHTML = c.map(it=>
     `<div class="row"><span>${it.device} × ${it.qty}</span><b>${money(it.price*it.qty)}</b></div>`).join("");
   cartBadge();
+  refreshShip();
 }
 document.getElementById("items")?.addEventListener("click", e=>{
   const t = e.target; if(!(t instanceof HTMLButtonElement)) return;
@@ -312,7 +337,8 @@ document.getElementById("pay").addEventListener("click", e=>{
     : "We'll email your free prepaid USPS shipping label right after checkout.";
   document.querySelector(".trust").innerHTML = cash
     ? "<span>Cash on the spot at our Brea shop</span><span>Price locked for 14 days</span><span>Evaluated while you wait — about 10 minutes</span>"
-    : "<span>Free prepaid USPS shipping label</span><span>Price locked for 14 days</span><span>Paid within 1 business day of arrival</span>";
+    : "<span>Free prepaid shipping label</span><span>Price locked for 14 days</span><span>Paid within 1 business day of arrival</span>";
+  refreshShip();
 });
 function setErr(id, msg){
   const f = document.getElementById(id).closest(".field");
@@ -378,6 +404,7 @@ document.getElementById("submit").addEventListener("click", async ()=>{
         items: c,
         payment: { method: payMethod,
           detail: payMethod === "PayPal" ? val("paypal") : payMethod === "Zelle" ? val("zelle") : payMethod === "Venmo" ? val("venmo") : null },
+        ship_carrier: shipCarrier,
         sms_opt_in: document.getElementById("sms").checked,
         attrib: (()=>{ try { return JSON.parse(localStorage.getItem("ocb_attrib")); } catch(e) { return null; } })(),
       }) });
@@ -410,6 +437,8 @@ document.getElementById("submit").addEventListener("click", async ()=>{
   document.getElementById("doneLock").textContent = lockDate.toLocaleDateString("en-US",{month:"long",day:"numeric"});
   document.getElementById("donePay").textContent = ({"Check":"check","Cash in store":"cash in store"})[payMethod] || payMethod;
   document.getElementById("doneSms").textContent = document.getElementById("sms").checked ? ", plus text updates" : "";
+  if(shipCarrier !== "USPS" && payMethod !== "Cash in store")
+    document.getElementById("doneShip").textContent = "Any sturdy box works. Print the label from your email and drop it at any " + shipCarrier + " location.";
   if(payMethod === "Cash in store"){
     document.querySelector(".steps3").innerHTML = "<div class='s'><b>1 · Check your email</b><p>Your order confirmation is on the way.</p></div>"+
       "<div class='s'><b>2 · Come by the shop</b><p>1203 W Imperial Hwy, STE 103, Brea — Mon–Fri 10 AM to 6 PM.</p></div>"+

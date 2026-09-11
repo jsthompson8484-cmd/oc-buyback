@@ -192,7 +192,7 @@ const RESET_GUIDES = [
 ];
 
 // Order confirmation sent right after checkout.
-export function buildOrderConfirmation({ orderNumber, firstName, items, total, lockedUntil, payMethod, trackUrl, labelUrl, qrUrl, tracking }) {
+export function buildOrderConfirmation({ orderNumber, firstName, items, total, lockedUntil, payMethod, trackUrl, labelUrl, qrUrl, tracking, shipCarrier = "USPS" }) {
   const isCash = payMethod === "cash";
   const rows = items.map((i) =>
     `<tr><td style="padding:4px 0;font-size:14.5px">${esc(i.brand)} ${esc(i.device || i.model)} × ${i.qty}
@@ -218,13 +218,15 @@ export function buildOrderConfirmation({ orderNumber, firstName, items, total, l
              <p style="font-size:14.5px;line-height:1.6;margin:0 0 6px">Show your order number <b>${orderNumber}</b> at the counter — your price is locked, so what you see above is what we pay. We evaluate while you wait (about 10 minutes) and hand you cash on the spot.</p>
              <p style="font-size:13.5px;color:${MUTED};line-height:1.6;margin:0"><b>Bring:</b> your device, a photo ID, and sign out of iCloud or your Google account first — or ask us and we'll help at the counter.</p>`
           : (qrUrl || labelUrl
-            ? `<h3 style="font-size:16px;color:${DEEP};margin:20px 0 8px">📦 Your free shipping label</h3>` +
+            ? `<h3 style="font-size:16px;color:${DEEP};margin:20px 0 8px">📦 Your free ${esc(shipCarrier)} shipping label</h3>` +
               (qrUrl ? `<div style="background:${GROUND};border-radius:12px;padding:16px;text-align:center;margin:0 0 10px">
                  <img src="${qrUrl}" alt="USPS QR code" style="width:180px;max-width:60%">
                  <p style="font-size:13.5px;color:${MUTED};margin:8px 0 0"><b>No printer needed:</b> show this QR code at any Post Office and they'll print the label for you.</p></div>` : "") +
               (labelUrl ? `<p style="font-size:14px;margin:0 0 6px">Have a printer? <a href="${labelUrl}" style="color:${GREEN};font-weight:700">Print your shipping label here</a>.</p>` : "") +
               (tracking ? `<p style="font-size:13px;color:${MUTED};margin:0 0 4px">Tracking number: <b>${esc(tracking)}</b></p>` : "") +
-              `<p style="font-size:13px;color:${MUTED};margin:0">This label carries the required lithium-battery (HAZMAT Class 9) marking — ground shipping only, which USPS handles automatically.</p>`
+              (shipCarrier === "USPS"
+                ? `<p style="font-size:13px;color:${MUTED};margin:0">This label carries the required lithium-battery (HAZMAT Class 9) marking — ground shipping only, which USPS handles automatically.</p>`
+                : `<p style="font-size:13px;color:${MUTED};margin:0">Print the label, tape it to any sturdy box, and drop it off at ${shipCarrier === "FedEx" ? "any FedEx Office or FedEx drop-off location" : "any The UPS Store or UPS drop-off location"}.</p>`)
             : `<p style="font-size:14.5px;line-height:1.6">Your free prepaid USPS shipping label arrives in a separate email shortly.</p>`)),
       buttonsHtml:
         (!isCash ? (() => {
