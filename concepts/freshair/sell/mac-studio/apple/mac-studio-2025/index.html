@@ -155,10 +155,12 @@ cartBadge();
 <script>
 const M = {"M3 Ultra 28-Core CPU 60-Core GPU": {"256GB": {"Brand New": 7210.0, "Fair": 6100.0, "Flawless": 6940.0, "Good": 6420.0}, "96GB": {"Brand New": 6060.0, "Fair": 5120.0, "Flawless": 5820.0, "Good": 5400.0}}, "M3 Ultra 32-Core CPU 80-Core GPU": {"256GB": {"Brand New": 8700.0, "Fair": 7440.0, "Flawless": 8400.0, "Good": 7820.0}, "512GB": {"Brand New": 10500.0, "Fair": 9240.0, "Flawless": 10200.0, "Good": 9620.0}, "96GB": {"Brand New": 7210.0, "Fair": 6100.0, "Flawless": 6940.0, "Good": 6420.0}}, "M4 Max 14-Core CPU 32-Core GPU": {"36GB": {"Brand New": 2700.0, "Fair": 2190.0, "Flawless": 2550.0, "Good": 2365.0}}, "M4 Max 16-Core CPU 40-Core GPU": {"128GB": {"Brand New": 3580.0, "Fair": 3000.0, "Flawless": 3420.0, "Good": 3180.0}, "48GB": {"Brand New": 2780.0, "Fair": 2200.0, "Flawless": 2620.0, "Good": 2380.0}, "64GB": {"Brand New": 3030.0, "Fair": 2450.0, "Flawless": 2870.0, "Good": 2630.0}}};
 const SINGLE = false;
+const SINGLE_S = false;
 const state = {carrier: SINGLE ? Object.keys(M)[0] : null, storage: null, cond: null};
+if (SINGLE_S && state.carrier) state.storage = Object.keys(M[state.carrier])[0];
 function storkey(s){const m=s.match(/([\d.]+)\s*(GB|TB|mm)?/i); if(!m) return 1e9; const v=parseFloat(m[1]); return (m[2]||"").toUpperCase()==="TB"?v*1024:v;}
 function renderStorage(){
-  const el = document.getElementById("storage"); el.innerHTML = "";
+  const el = document.getElementById("storage"); if(!el) return; el.innerHTML = "";
   if(!state.carrier) { el.innerHTML = '<span style="color:var(--muted);font-size:13.5px">Pick an option above first</span>'; return; }
   Object.keys(M[state.carrier]).sort((a,b)=>storkey(a)-storkey(b)).forEach(s=>{
     const b = document.createElement("button"); b.className = "pill"+(state.storage===s?" on":""); b.textContent = s; b.dataset.v = s;
@@ -179,7 +181,7 @@ function renderConds(){
     d.style.display = d.dataset.c === state.cond ? "block" : "none");
 }
 document.querySelectorAll("#carrier .pill").forEach(b=>b.onclick=()=>{
-  state.carrier = b.dataset.v; state.storage = null; state.cond = null;
+  state.carrier = b.dataset.v; state.storage = SINGLE_S ? Object.keys(M[b.dataset.v])[0] : null; state.cond = null;
   document.querySelectorAll("#carrier .pill").forEach(x=>x.classList.toggle("on", x===b));
   renderStorage(); renderConds(); render();
 });
@@ -190,7 +192,7 @@ document.getElementById("cond").addEventListener("click", e=>{
 });
 function render(){
   const {carrier, storage, cond} = state;
-  const parts = [SINGLE?null:carrier, storage, cond].filter(Boolean);
+  const parts = [SINGLE?null:carrier, SINGLE_S?null:storage, cond].filter(v=>v && v!=="-");
   document.getElementById("picks").textContent = parts.join(" · ") || "Make your picks to see the price";
   const priceEl = document.getElementById("price"), go = document.getElementById("go");
   const p = (carrier && storage && cond) ? M[carrier][storage][cond] : null;

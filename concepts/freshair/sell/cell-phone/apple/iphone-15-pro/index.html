@@ -155,10 +155,12 @@ cartBadge();
 <script>
 const M = {"AT&T": {"128GB": {"Brand New": 230.0, "Broken": 40.0, "Fair": 95.0, "Flawless": 180.0, "Good": 145.0, "Minor Damage": 105.0}, "1TB": {"Brand New": 350.0, "Broken": 40.0, "Fair": 215.0, "Flawless": 300.0, "Good": 260.0, "Minor Damage": 190.0}, "256GB": {"Brand New": 270.0, "Broken": 40.0, "Fair": 130.0, "Flawless": 220.0, "Good": 185.0, "Minor Damage": 140.0}, "512GB": {"Brand New": 290.0, "Broken": 40.0, "Fair": 155.0, "Flawless": 240.0, "Good": 205.0, "Minor Damage": 150.0}}, "Other": {"128GB": {"Brand New": 155.0, "Broken": 40.0, "Fair": 50.0, "Flawless": 105.0, "Good": 60.0, "Minor Damage": 30.0}, "1TB": {"Brand New": 275.0, "Broken": 40.0, "Fair": 100.0, "Flawless": 225.0, "Good": 185.0, "Minor Damage": 80.0}, "256GB": {"Brand New": 170.0, "Broken": 40.0, "Fair": 60.0, "Flawless": 120.0, "Good": 85.0, "Minor Damage": 50.0}, "512GB": {"Brand New": 190.0, "Broken": 40.0, "Fair": 75.0, "Flawless": 140.0, "Good": 105.0, "Minor Damage": 70.0}}, "T-Mobile": {"128GB": {"Brand New": 270.0, "Broken": 40.0, "Fair": 135.0, "Flawless": 220.0, "Good": 185.0, "Minor Damage": 115.0}, "1TB": {"Brand New": 425.0, "Broken": 40.0, "Fair": 260.0, "Flawless": 375.0, "Good": 305.0, "Minor Damage": 165.0}, "256GB": {"Brand New": 310.0, "Broken": 40.0, "Fair": 170.0, "Flawless": 260.0, "Good": 230.0, "Minor Damage": 135.0}, "512GB": {"Brand New": 330.0, "Broken": 40.0, "Fair": 195.0, "Flawless": 280.0, "Good": 245.0, "Minor Damage": 145.0}}, "Unlocked": {"128GB": {"Brand New": 380.0, "Broken": 40.0, "Fair": 240.0, "Flawless": 330.0, "Good": 295.0, "Minor Damage": 190.0}, "1TB": {"Brand New": 500.0, "Broken": 40.0, "Fair": 365.0, "Flawless": 450.0, "Good": 410.0, "Minor Damage": 240.0}, "256GB": {"Brand New": 410.0, "Broken": 40.0, "Fair": 280.0, "Flawless": 360.0, "Good": 335.0, "Minor Damage": 210.0}, "512GB": {"Brand New": 440.0, "Broken": 40.0, "Fair": 305.0, "Flawless": 390.0, "Good": 355.0, "Minor Damage": 220.0}}, "Verizon": {"128GB": {"Brand New": 230.0, "Broken": 40.0, "Fair": 95.0, "Flawless": 180.0, "Good": 145.0, "Minor Damage": 70.0}, "1TB": {"Brand New": 350.0, "Broken": 40.0, "Fair": 215.0, "Flawless": 300.0, "Good": 260.0, "Minor Damage": 140.0}, "256GB": {"Brand New": 270.0, "Broken": 40.0, "Fair": 130.0, "Flawless": 220.0, "Good": 185.0, "Minor Damage": 110.0}, "512GB": {"Brand New": 290.0, "Broken": 40.0, "Fair": 155.0, "Flawless": 240.0, "Good": 205.0, "Minor Damage": 120.0}}};
 const SINGLE = false;
+const SINGLE_S = false;
 const state = {carrier: SINGLE ? Object.keys(M)[0] : null, storage: null, cond: null};
+if (SINGLE_S && state.carrier) state.storage = Object.keys(M[state.carrier])[0];
 function storkey(s){const m=s.match(/([\d.]+)\s*(GB|TB|mm)?/i); if(!m) return 1e9; const v=parseFloat(m[1]); return (m[2]||"").toUpperCase()==="TB"?v*1024:v;}
 function renderStorage(){
-  const el = document.getElementById("storage"); el.innerHTML = "";
+  const el = document.getElementById("storage"); if(!el) return; el.innerHTML = "";
   if(!state.carrier) { el.innerHTML = '<span style="color:var(--muted);font-size:13.5px">Pick an option above first</span>'; return; }
   Object.keys(M[state.carrier]).sort((a,b)=>storkey(a)-storkey(b)).forEach(s=>{
     const b = document.createElement("button"); b.className = "pill"+(state.storage===s?" on":""); b.textContent = s; b.dataset.v = s;
@@ -179,7 +181,7 @@ function renderConds(){
     d.style.display = d.dataset.c === state.cond ? "block" : "none");
 }
 document.querySelectorAll("#carrier .pill").forEach(b=>b.onclick=()=>{
-  state.carrier = b.dataset.v; state.storage = null; state.cond = null;
+  state.carrier = b.dataset.v; state.storage = SINGLE_S ? Object.keys(M[b.dataset.v])[0] : null; state.cond = null;
   document.querySelectorAll("#carrier .pill").forEach(x=>x.classList.toggle("on", x===b));
   renderStorage(); renderConds(); render();
 });
@@ -190,7 +192,7 @@ document.getElementById("cond").addEventListener("click", e=>{
 });
 function render(){
   const {carrier, storage, cond} = state;
-  const parts = [SINGLE?null:carrier, storage, cond].filter(Boolean);
+  const parts = [SINGLE?null:carrier, SINGLE_S?null:storage, cond].filter(v=>v && v!=="-");
   document.getElementById("picks").textContent = parts.join(" · ") || "Make your picks to see the price";
   const priceEl = document.getElementById("price"), go = document.getElementById("go");
   const p = (carrier && storage && cond) ? M[carrier][storage][cond] : null;

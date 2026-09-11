@@ -155,10 +155,12 @@ cartBadge();
 <script>
 const M = {"M2 Max 12-Core CPU 30-Core GPU": {"32GB": {"Brand New": 1655.0, "Fair": 1220.0, "Flawless": 1570.0, "Good": 1388.0}, "64GB": {"Brand New": 2005.0, "Fair": 1470.0, "Flawless": 1920.0, "Good": 1692.0}}, "M2 Max 12-Core CPU 38-Core GPU": {"32GB": {"Brand New": 1755.0, "Fair": 1220.0, "Flawless": 1670.0, "Good": 1442.0}, "64GB": {"Brand New": 2105.0, "Fair": 1570.0, "Flawless": 2020.0, "Good": 1792.0}, "96GB": {"Brand New": 2455.0, "Fair": 1920.0, "Flawless": 2370.0, "Good": 2142.0}}, "M2 Ultra 24-Core CPU 60-Core GPU": {"128GB": {"Brand New": 2988.0, "Fair": 2288.0, "Flawless": 2888.0, "Good": 2588.0}, "192GB": {"Brand New": 3588.0, "Fair": 2888.0, "Flawless": 3488.0, "Good": 3188.0}, "64GB": {"Brand New": 2312.0, "Fair": 1675.0, "Flawless": 2200.0, "Good": 1925.0}}, "M2 Ultra 24-Core CPU 76-Core GPU": {"128GB": {"Brand New": 3088.0, "Fair": 2388.0, "Flawless": 2988.0, "Good": 2688.0}, "192GB": {"Brand New": 3688.0, "Fair": 2988.0, "Flawless": 3588.0, "Good": 3288.0}, "64GB": {"Brand New": 2412.0, "Fair": 1775.0, "Flawless": 2300.0, "Good": 2025.0}}};
 const SINGLE = false;
+const SINGLE_S = false;
 const state = {carrier: SINGLE ? Object.keys(M)[0] : null, storage: null, cond: null};
+if (SINGLE_S && state.carrier) state.storage = Object.keys(M[state.carrier])[0];
 function storkey(s){const m=s.match(/([\d.]+)\s*(GB|TB|mm)?/i); if(!m) return 1e9; const v=parseFloat(m[1]); return (m[2]||"").toUpperCase()==="TB"?v*1024:v;}
 function renderStorage(){
-  const el = document.getElementById("storage"); el.innerHTML = "";
+  const el = document.getElementById("storage"); if(!el) return; el.innerHTML = "";
   if(!state.carrier) { el.innerHTML = '<span style="color:var(--muted);font-size:13.5px">Pick an option above first</span>'; return; }
   Object.keys(M[state.carrier]).sort((a,b)=>storkey(a)-storkey(b)).forEach(s=>{
     const b = document.createElement("button"); b.className = "pill"+(state.storage===s?" on":""); b.textContent = s; b.dataset.v = s;
@@ -179,7 +181,7 @@ function renderConds(){
     d.style.display = d.dataset.c === state.cond ? "block" : "none");
 }
 document.querySelectorAll("#carrier .pill").forEach(b=>b.onclick=()=>{
-  state.carrier = b.dataset.v; state.storage = null; state.cond = null;
+  state.carrier = b.dataset.v; state.storage = SINGLE_S ? Object.keys(M[b.dataset.v])[0] : null; state.cond = null;
   document.querySelectorAll("#carrier .pill").forEach(x=>x.classList.toggle("on", x===b));
   renderStorage(); renderConds(); render();
 });
@@ -190,7 +192,7 @@ document.getElementById("cond").addEventListener("click", e=>{
 });
 function render(){
   const {carrier, storage, cond} = state;
-  const parts = [SINGLE?null:carrier, storage, cond].filter(Boolean);
+  const parts = [SINGLE?null:carrier, SINGLE_S?null:storage, cond].filter(v=>v && v!=="-");
   document.getElementById("picks").textContent = parts.join(" · ") || "Make your picks to see the price";
   const priceEl = document.getElementById("price"), go = document.getElementById("go");
   const p = (carrier && storage && cond) ? M[carrier][storage][cond] : null;

@@ -155,10 +155,12 @@ cartBadge();
 <script>
 const M = {"AT&T": {"1TB": {"Brand New": 430.0, "Broken": 40.0, "Fair": 280.0, "Flawless": 380.0, "Good": 350.0, "Minor Damage": 200.0}, "256GB": {"Brand New": 360.0, "Broken": 40.0, "Fair": 210.0, "Flawless": 310.0, "Good": 280.0, "Minor Damage": 150.0}, "512GB": {"Brand New": 390.0, "Broken": 40.0, "Fair": 240.0, "Flawless": 340.0, "Good": 300.0, "Minor Damage": 170.0}}, "Other": {"1TB": {"Brand New": 255.0, "Broken": 40.0, "Fair": 110.0, "Flawless": 205.0, "Good": 165.0, "Minor Damage": 80.0}, "256GB": {"Brand New": 165.0, "Broken": 40.0, "Fair": 50.0, "Flawless": 115.0, "Good": 70.0, "Minor Damage": 40.0}, "512GB": {"Brand New": 210.0, "Broken": 40.0, "Fair": 90.0, "Flawless": 160.0, "Good": 135.0, "Minor Damage": 60.0}}, "T-Mobile": {"1TB": {"Brand New": 445.0, "Broken": 40.0, "Fair": 295.0, "Flawless": 395.0, "Good": 355.0, "Minor Damage": 175.0}, "256GB": {"Brand New": 375.0, "Broken": 40.0, "Fair": 225.0, "Flawless": 325.0, "Good": 295.0, "Minor Damage": 125.0}, "512GB": {"Brand New": 405.0, "Broken": 40.0, "Fair": 255.0, "Flawless": 355.0, "Good": 325.0, "Minor Damage": 145.0}}, "Unlocked": {"1TB": {"Brand New": 550.0, "Broken": 40.0, "Fair": 400.0, "Flawless": 500.0, "Good": 470.0, "Minor Damage": 250.0}, "256GB": {"Brand New": 480.0, "Broken": 40.0, "Fair": 330.0, "Flawless": 430.0, "Good": 390.0, "Minor Damage": 200.0}, "512GB": {"Brand New": 510.0, "Broken": 40.0, "Fair": 360.0, "Flawless": 460.0, "Good": 430.0, "Minor Damage": 220.0}}, "Verizon": {"1TB": {"Brand New": 350.0, "Broken": 40.0, "Fair": 200.0, "Flawless": 300.0, "Good": 270.0, "Minor Damage": 170.0}, "256GB": {"Brand New": 280.0, "Broken": 40.0, "Fair": 110.0, "Flawless": 230.0, "Good": 200.0, "Minor Damage": 90.0}, "512GB": {"Brand New": 310.0, "Broken": 40.0, "Fair": 160.0, "Flawless": 260.0, "Good": 230.0, "Minor Damage": 140.0}}};
 const SINGLE = false;
+const SINGLE_S = false;
 const state = {carrier: SINGLE ? Object.keys(M)[0] : null, storage: null, cond: null};
+if (SINGLE_S && state.carrier) state.storage = Object.keys(M[state.carrier])[0];
 function storkey(s){const m=s.match(/([\d.]+)\s*(GB|TB|mm)?/i); if(!m) return 1e9; const v=parseFloat(m[1]); return (m[2]||"").toUpperCase()==="TB"?v*1024:v;}
 function renderStorage(){
-  const el = document.getElementById("storage"); el.innerHTML = "";
+  const el = document.getElementById("storage"); if(!el) return; el.innerHTML = "";
   if(!state.carrier) { el.innerHTML = '<span style="color:var(--muted);font-size:13.5px">Pick an option above first</span>'; return; }
   Object.keys(M[state.carrier]).sort((a,b)=>storkey(a)-storkey(b)).forEach(s=>{
     const b = document.createElement("button"); b.className = "pill"+(state.storage===s?" on":""); b.textContent = s; b.dataset.v = s;
@@ -179,7 +181,7 @@ function renderConds(){
     d.style.display = d.dataset.c === state.cond ? "block" : "none");
 }
 document.querySelectorAll("#carrier .pill").forEach(b=>b.onclick=()=>{
-  state.carrier = b.dataset.v; state.storage = null; state.cond = null;
+  state.carrier = b.dataset.v; state.storage = SINGLE_S ? Object.keys(M[b.dataset.v])[0] : null; state.cond = null;
   document.querySelectorAll("#carrier .pill").forEach(x=>x.classList.toggle("on", x===b));
   renderStorage(); renderConds(); render();
 });
@@ -190,7 +192,7 @@ document.getElementById("cond").addEventListener("click", e=>{
 });
 function render(){
   const {carrier, storage, cond} = state;
-  const parts = [SINGLE?null:carrier, storage, cond].filter(Boolean);
+  const parts = [SINGLE?null:carrier, SINGLE_S?null:storage, cond].filter(v=>v && v!=="-");
   document.getElementById("picks").textContent = parts.join(" · ") || "Make your picks to see the price";
   const priceEl = document.getElementById("price"), go = document.getElementById("go");
   const p = (carrier && storage && cond) ? M[carrier][storage][cond] : null;

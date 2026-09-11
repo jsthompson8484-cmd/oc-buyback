@@ -155,10 +155,12 @@ cartBadge();
 <script>
 const M = {"M2 Max 12-Core CPU 30-Core GPU": {"32GB": {"Brand New": 1132.0, "Broken": 279.0, "Fair": 722.0, "Flawless": 1034.0, "Good": 992.0, "Minor Damage": 279.0}, "64GB": {"Brand New": 1180.0, "Broken": 279.0, "Fair": 772.0, "Flawless": 1082.0, "Good": 1042.0, "Minor Damage": 279.0}}, "M2 Max 12-Core CPU 38-Core GPU": {"32GB": {"Brand New": 1204.0, "Broken": 293.0, "Fair": 766.0, "Flawless": 1108.0, "Good": 1064.0, "Minor Damage": 293.0}, "64GB": {"Brand New": 1252.0, "Broken": 293.0, "Fair": 814.0, "Flawless": 1156.0, "Good": 1114.0, "Minor Damage": 293.0}, "96GB": {"Brand New": 1366.0, "Broken": 293.0, "Fair": 928.0, "Flawless": 1270.0, "Good": 1226.0, "Minor Damage": 293.0}}, "M2 Pro 10-Core CPU 16-Core GPU": {"16GB": {"Brand New": 817.0, "Broken": 223.0, "Fair": 487.0, "Flawless": 812.0, "Good": 703.0, "Minor Damage": 223.0}, "32GB": {"Brand New": 930.0, "Broken": 223.0, "Fair": 600.0, "Flawless": 925.0, "Good": 816.0, "Minor Damage": 223.0}}, "M2 Pro 12-Core CPU 19-Core GPU": {"16GB": {"Brand New": 876.0, "Broken": 235.0, "Fair": 524.0, "Flawless": 876.0, "Good": 764.0, "Minor Damage": 235.0}, "32GB": {"Brand New": 989.0, "Broken": 235.0, "Fair": 637.0, "Flawless": 989.0, "Good": 877.0, "Minor Damage": 235.0}}, "M3 8-Core CPU 10-Core GPU": {"16GB": {"Brand New": 759.0, "Broken": 113.0, "Fair": 420.0, "Flawless": 692.0, "Good": 646.0, "Minor Damage": 113.0}, "24GB": {"Brand New": 876.0, "Broken": 113.0, "Fair": 537.0, "Flawless": 809.0, "Good": 763.0, "Minor Damage": 113.0}, "8GB": {"Brand New": 672.0, "Broken": 113.0, "Fair": 333.0, "Flawless": 605.0, "Good": 559.0, "Minor Damage": 113.0}}, "M3 Max 14-Core CPU 30-Core GPU": {"36GB": {"Brand New": 1445.0, "Broken": 342.0, "Fair": 846.0, "Flawless": 1351.0, "Good": 1300.0, "Minor Damage": 342.0}, "96GB": {"Brand New": 1720.0, "Broken": 342.0, "Fair": 1121.0, "Flawless": 1626.0, "Good": 1575.0, "Minor Damage": 342.0}}, "M3 Max 16-Core CPU 40-Core GPU": {"128GB": {"Brand New": 1946.0, "Broken": 380.0, "Fair": 1260.0, "Flawless": 1848.0, "Good": 1791.0, "Minor Damage": 380.0}, "48GB": {"Brand New": 1646.0, "Broken": 380.0, "Fair": 960.0, "Flawless": 1548.0, "Good": 1491.0, "Minor Damage": 380.0}, "64GB": {"Brand New": 1808.0, "Broken": 380.0, "Fair": 1122.0, "Flawless": 1710.0, "Good": 1653.0, "Minor Damage": 380.0}}, "M3 Pro 11-Core CPU 14-Core GPU": {"18GB": {"Brand New": 891.0, "Broken": 217.0, "Fair": 435.0, "Flawless": 816.0, "Good": 770.0, "Minor Damage": 217.0}, "36GB": {"Brand New": 1069.0, "Broken": 217.0, "Fair": 613.0, "Flawless": 994.0, "Good": 948.0, "Minor Damage": 217.0}}, "M3 Pro 12-Core CPU 18-Core GPU": {"18GB": {"Brand New": 991.0, "Broken": 237.0, "Fair": 494.0, "Flawless": 913.0, "Good": 868.0, "Minor Damage": 237.0}, "36GB": {"Brand New": 1169.0, "Broken": 237.0, "Fair": 672.0, "Flawless": 1091.0, "Good": 1046.0, "Minor Damage": 237.0}}};
 const SINGLE = false;
+const SINGLE_S = false;
 const state = {carrier: SINGLE ? Object.keys(M)[0] : null, storage: null, cond: null};
+if (SINGLE_S && state.carrier) state.storage = Object.keys(M[state.carrier])[0];
 function storkey(s){const m=s.match(/([\d.]+)\s*(GB|TB|mm)?/i); if(!m) return 1e9; const v=parseFloat(m[1]); return (m[2]||"").toUpperCase()==="TB"?v*1024:v;}
 function renderStorage(){
-  const el = document.getElementById("storage"); el.innerHTML = "";
+  const el = document.getElementById("storage"); if(!el) return; el.innerHTML = "";
   if(!state.carrier) { el.innerHTML = '<span style="color:var(--muted);font-size:13.5px">Pick an option above first</span>'; return; }
   Object.keys(M[state.carrier]).sort((a,b)=>storkey(a)-storkey(b)).forEach(s=>{
     const b = document.createElement("button"); b.className = "pill"+(state.storage===s?" on":""); b.textContent = s; b.dataset.v = s;
@@ -179,7 +181,7 @@ function renderConds(){
     d.style.display = d.dataset.c === state.cond ? "block" : "none");
 }
 document.querySelectorAll("#carrier .pill").forEach(b=>b.onclick=()=>{
-  state.carrier = b.dataset.v; state.storage = null; state.cond = null;
+  state.carrier = b.dataset.v; state.storage = SINGLE_S ? Object.keys(M[b.dataset.v])[0] : null; state.cond = null;
   document.querySelectorAll("#carrier .pill").forEach(x=>x.classList.toggle("on", x===b));
   renderStorage(); renderConds(); render();
 });
@@ -190,7 +192,7 @@ document.getElementById("cond").addEventListener("click", e=>{
 });
 function render(){
   const {carrier, storage, cond} = state;
-  const parts = [SINGLE?null:carrier, storage, cond].filter(Boolean);
+  const parts = [SINGLE?null:carrier, SINGLE_S?null:storage, cond].filter(v=>v && v!=="-");
   document.getElementById("picks").textContent = parts.join(" · ") || "Make your picks to see the price";
   const priceEl = document.getElementById("price"), go = document.getElementById("go");
   const p = (carrier && storage && cond) ? M[carrier][storage][cond] : null;

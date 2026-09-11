@@ -155,10 +155,12 @@ cartBadge();
 <script>
 const M = {"AT&T": {"1TB": {"Brand New": 510.0, "Broken": 10.0, "Fair": 320.0, "Flawless": 460.0, "Good": 380.0, "Minor Damage": 100.0}, "256GB": {"Brand New": 440.0, "Broken": 10.0, "Fair": 250.0, "Flawless": 390.0, "Good": 310.0, "Minor Damage": 90.0}, "512GB": {"Brand New": 480.0, "Broken": 10.0, "Fair": 290.0, "Flawless": 430.0, "Good": 350.0, "Minor Damage": 95.0}}, "T-Mobile": {"1TB": {"Brand New": 460.0, "Broken": 10.0, "Fair": 270.0, "Flawless": 410.0, "Good": 330.0, "Minor Damage": 100.0}, "256GB": {"Brand New": 390.0, "Broken": 10.0, "Fair": 200.0, "Flawless": 340.0, "Good": 260.0, "Minor Damage": 90.0}, "512GB": {"Brand New": 430.0, "Broken": 10.0, "Fair": 240.0, "Flawless": 380.0, "Good": 300.0, "Minor Damage": 95.0}}, "Unlocked": {"1TB": {"Brand New": 610.0, "Broken": 10.0, "Fair": 420.0, "Flawless": 560.0, "Good": 480.0, "Minor Damage": 135.0}, "256GB": {"Brand New": 540.0, "Broken": 10.0, "Fair": 350.0, "Flawless": 490.0, "Good": 410.0, "Minor Damage": 125.0}, "512GB": {"Brand New": 580.0, "Broken": 10.0, "Fair": 390.0, "Flawless": 530.0, "Good": 450.0, "Minor Damage": 130.0}}, "Verizon": {"1TB": {"Brand New": 250.0, "Broken": 10.0, "Fair": 70.0, "Flawless": 210.0, "Good": 130.0, "Minor Damage": 25.0}, "256GB": {"Brand New": 190.0, "Broken": 10.0, "Fair": 30.0, "Flawless": 140.0, "Good": 60.0, "Minor Damage": 15.0}, "512GB": {"Brand New": 230.0, "Broken": 10.0, "Fair": 40.0, "Flawless": 180.0, "Good": 100.0, "Minor Damage": 20.0}}};
 const SINGLE = false;
+const SINGLE_S = false;
 const state = {carrier: SINGLE ? Object.keys(M)[0] : null, storage: null, cond: null};
+if (SINGLE_S && state.carrier) state.storage = Object.keys(M[state.carrier])[0];
 function storkey(s){const m=s.match(/([\d.]+)\s*(GB|TB|mm)?/i); if(!m) return 1e9; const v=parseFloat(m[1]); return (m[2]||"").toUpperCase()==="TB"?v*1024:v;}
 function renderStorage(){
-  const el = document.getElementById("storage"); el.innerHTML = "";
+  const el = document.getElementById("storage"); if(!el) return; el.innerHTML = "";
   if(!state.carrier) { el.innerHTML = '<span style="color:var(--muted);font-size:13.5px">Pick an option above first</span>'; return; }
   Object.keys(M[state.carrier]).sort((a,b)=>storkey(a)-storkey(b)).forEach(s=>{
     const b = document.createElement("button"); b.className = "pill"+(state.storage===s?" on":""); b.textContent = s; b.dataset.v = s;
@@ -179,7 +181,7 @@ function renderConds(){
     d.style.display = d.dataset.c === state.cond ? "block" : "none");
 }
 document.querySelectorAll("#carrier .pill").forEach(b=>b.onclick=()=>{
-  state.carrier = b.dataset.v; state.storage = null; state.cond = null;
+  state.carrier = b.dataset.v; state.storage = SINGLE_S ? Object.keys(M[b.dataset.v])[0] : null; state.cond = null;
   document.querySelectorAll("#carrier .pill").forEach(x=>x.classList.toggle("on", x===b));
   renderStorage(); renderConds(); render();
 });
@@ -190,7 +192,7 @@ document.getElementById("cond").addEventListener("click", e=>{
 });
 function render(){
   const {carrier, storage, cond} = state;
-  const parts = [SINGLE?null:carrier, storage, cond].filter(Boolean);
+  const parts = [SINGLE?null:carrier, SINGLE_S?null:storage, cond].filter(v=>v && v!=="-");
   document.getElementById("picks").textContent = parts.join(" · ") || "Make your picks to see the price";
   const priceEl = document.getElementById("price"), go = document.getElementById("go");
   const p = (carrier && storage && cond) ? M[carrier][storage][cond] : null;

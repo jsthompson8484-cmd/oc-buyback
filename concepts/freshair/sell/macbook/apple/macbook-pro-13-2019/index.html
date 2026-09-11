@@ -155,10 +155,12 @@ cartBadge();
 <script>
 const M = {"i5 1.4GHz": {"16GB": {"Brand New": 241.0, "Broken": 23.0, "Fair": 152.0, "Flawless": 216.0, "Good": 198.0, "Minor Damage": 23.0}, "8GB": {"Brand New": 221.0, "Broken": 23.0, "Fair": 132.0, "Flawless": 196.0, "Good": 178.0, "Minor Damage": 23.0}}, "i5 2.4GHz": {"16GB": {"Brand New": 269.0, "Broken": 25.0, "Fair": 175.0, "Flawless": 243.0, "Good": 226.0, "Minor Damage": 25.0}, "8GB": {"Brand New": 249.0, "Broken": 25.0, "Fair": 155.0, "Flawless": 223.0, "Good": 206.0, "Minor Damage": 25.0}}, "i7 1.7GHz": {"16GB": {"Brand New": 265.0, "Broken": 28.0, "Fair": 166.0, "Flawless": 239.0, "Good": 222.0, "Minor Damage": 28.0}, "8GB": {"Brand New": 245.0, "Broken": 28.0, "Fair": 146.0, "Flawless": 219.0, "Good": 202.0, "Minor Damage": 28.0}}, "i7 2.8GHz": {"16GB": {"Brand New": 281.0, "Broken": 28.0, "Fair": 182.0, "Flawless": 255.0, "Good": 238.0, "Minor Damage": 28.0}, "8GB": {"Brand New": 261.0, "Broken": 28.0, "Fair": 162.0, "Flawless": 235.0, "Good": 218.0, "Minor Damage": 28.0}}};
 const SINGLE = false;
+const SINGLE_S = false;
 const state = {carrier: SINGLE ? Object.keys(M)[0] : null, storage: null, cond: null};
+if (SINGLE_S && state.carrier) state.storage = Object.keys(M[state.carrier])[0];
 function storkey(s){const m=s.match(/([\d.]+)\s*(GB|TB|mm)?/i); if(!m) return 1e9; const v=parseFloat(m[1]); return (m[2]||"").toUpperCase()==="TB"?v*1024:v;}
 function renderStorage(){
-  const el = document.getElementById("storage"); el.innerHTML = "";
+  const el = document.getElementById("storage"); if(!el) return; el.innerHTML = "";
   if(!state.carrier) { el.innerHTML = '<span style="color:var(--muted);font-size:13.5px">Pick an option above first</span>'; return; }
   Object.keys(M[state.carrier]).sort((a,b)=>storkey(a)-storkey(b)).forEach(s=>{
     const b = document.createElement("button"); b.className = "pill"+(state.storage===s?" on":""); b.textContent = s; b.dataset.v = s;
@@ -179,7 +181,7 @@ function renderConds(){
     d.style.display = d.dataset.c === state.cond ? "block" : "none");
 }
 document.querySelectorAll("#carrier .pill").forEach(b=>b.onclick=()=>{
-  state.carrier = b.dataset.v; state.storage = null; state.cond = null;
+  state.carrier = b.dataset.v; state.storage = SINGLE_S ? Object.keys(M[b.dataset.v])[0] : null; state.cond = null;
   document.querySelectorAll("#carrier .pill").forEach(x=>x.classList.toggle("on", x===b));
   renderStorage(); renderConds(); render();
 });
@@ -190,7 +192,7 @@ document.getElementById("cond").addEventListener("click", e=>{
 });
 function render(){
   const {carrier, storage, cond} = state;
-  const parts = [SINGLE?null:carrier, storage, cond].filter(Boolean);
+  const parts = [SINGLE?null:carrier, SINGLE_S?null:storage, cond].filter(v=>v && v!=="-");
   document.getElementById("picks").textContent = parts.join(" · ") || "Make your picks to see the price";
   const priceEl = document.getElementById("price"), go = document.getElementById("go");
   const p = (carrier && storage && cond) ? M[carrier][storage][cond] : null;

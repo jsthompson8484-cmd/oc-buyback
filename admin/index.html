@@ -792,6 +792,13 @@ function openTradeInDialog(t, refresh){
         <span class="muted" id="iHint" style="font-size:12.5px">The email includes one-click links — their response lands back here automatically.</span>
       </div>
     </div>
+    ${t.label_url || t.label_qr_url ? `<div class="row" style="margin-top:14px;background:var(--ground);border-radius:10px;padding:10px 12px;gap:10px;align-items:center">
+      <b style="font-size:13px">📦 ${esc(t.ship_carrier || "USPS")} label</b>
+      ${t.label_url ? `<a class="btn sm ghost" href="${esc(t.label_url)}" target="_blank" rel="noopener">Open label</a>` : ""}
+      ${t.label_qr_url ? `<a class="btn sm ghost" href="${esc(t.label_qr_url)}" target="_blank" rel="noopener">QR code</a>` : ""}
+      <button class="btn sm" id="dResendLabel">✉️ Resend label email</button>
+      <span class="muted" style="font-size:12px">Re-sends the confirmation email with the label${t.label_qr_url ? " + QR" : ""} to ${esc(t.email)}</span>
+    </div>` : ""}
     <div class="row" style="margin-top:14px">
       <select id="dStatus">${STATUSES.map((s) => `<option ${s === t.status ? "selected" : ""}>${s}</option>`).join("")}</select>
       <input id="dNote" placeholder="Note (optional, shown in history)" style="flex:1">
@@ -808,6 +815,24 @@ function openTradeInDialog(t, refresh){
     </div>`;
   d.showModal();
   $("#dClose").onclick = () => d.close();
+
+  const resendBtn = $("#dResendLabel");
+  if (resendBtn) resendBtn.onclick = async () => {
+    resendBtn.disabled = true; resendBtn.textContent = "Sending…";
+    try {
+      if (DEMO) { await new Promise((r) => setTimeout(r, 500)); toast("Label email re-sent (demo)"); }
+      else {
+        const { data: { session } } = await sb.auth.getSession();
+        const r = await fetch("/api/resend-label", { method: "POST",
+          headers: { "content-type": "application/json", authorization: `Bearer ${session.access_token}` },
+          body: JSON.stringify({ trade_in_id: t.id }) });
+        const dta = await r.json().catch(() => ({}));
+        if (!r.ok) throw new Error(dta.error || "Resend failed");
+        toast(`Label email re-sent to ${dta.to || t.email}`);
+      }
+    } catch (e) { toast(e.message); }
+    resendBtn.disabled = false; resendBtn.textContent = "✉️ Resend label email";
+  };
 
   const payBtn = $("#dPay");
   if (payBtn) payBtn.onclick = async () => {

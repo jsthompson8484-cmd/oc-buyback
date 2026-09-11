@@ -391,14 +391,26 @@ for cat, brand, dev, m in models:
     variants = {c:ss for c,ss in variants.items() if ss}
     carriers = sorted(variants.keys(), key=carrier_sort)
     single_carrier = len(carriers) == 1
+    # a question with exactly one answer is noise — skip it and auto-select
+    single_storage = all(len(ss) == 1 for ss in variants.values())
     matrix = json.dumps(variants).replace("</", "<\\/")
     cond_html = "".join(
         f'<div class="cond" data-v="{c}"><b>{c}</b><p>{html.escape(COND_DESC[c])}</p></div>' for c in COND_ORDER)
     carrier_html = "".join(f'<button class="pill" data-v="{html.escape(c)}">{html.escape(c) if c != "-" else "Standard"}</button>' for c in carriers)
-    q1_block = "" if single_carrier else f'''
-      <div class="qs"><div class="label"><span class="badge">1</span> {q1}</div>
+    step = 1
+    q1_block = ""
+    if not single_carrier:
+        q1_block = f'''
+      <div class="qs"><div class="label"><span class="badge">{step}</span> {q1}</div>
         <div class="pills" id="carrier">{carrier_html}</div></div>'''
-    n2, n3 = ("1","2") if single_carrier else ("2","3")
+        step += 1
+    q2_block = ""
+    if not single_storage:
+        q2_block = f'''
+      <div class="qs"><div class="label"><span class="badge">{step}</span> {q2}</div>
+        <div class="pills" id="storage"></div></div>'''
+        step += 1
+    n3 = str(step)
     body = f'''
 <div class="wrap">
   <div class="crumb"><a href="../../../index.html">Sell</a> → <a href="../../index.html">{cat}</a> → <a href="../index.html">{html.escape(brand)}</a> → <b>{html.escape(dev)}</b></div>
@@ -406,9 +418,7 @@ for cat, brand, dev, m in models:
     <div>
       <h1>Sell your {html.escape(dev)}</h1>
       <p class="sub">Answer the quick questions — your price locks for 14 days.</p>
-      {q1_block}
-      <div class="qs"><div class="label"><span class="badge">{n2}</span> {q2}</div>
-        <div class="pills" id="storage"></div></div>
+      {q1_block}{q2_block}
       <div class="qs"><div class="label"><span class="badge">{n3}</span> What condition is it in?</div>
         <div class="conds" id="cond">{cond_html}</div></div>
       <div id="condDetail" style="display:none;margin-top:12px;background:#eaf6ee;border:1.5px solid var(--green);border-radius:12px;padding:16px 18px">
@@ -430,10 +440,12 @@ for cat, brand, dev, m in models:
 <script>
 const M = {matrix};
 const SINGLE = {str(single_carrier).lower()};
+const SINGLE_S = {str(single_storage).lower()};
 const state = {{carrier: SINGLE ? Object.keys(M)[0] : null, storage: null, cond: null}};
+if (SINGLE_S && state.carrier) state.storage = Object.keys(M[state.carrier])[0];
 function storkey(s){{const m=s.match(/([\\d.]+)\\s*(GB|TB|mm)?/i); if(!m) return 1e9; const v=parseFloat(m[1]); return (m[2]||"").toUpperCase()==="TB"?v*1024:v;}}
 function renderStorage(){{
-  const el = document.getElementById("storage"); el.innerHTML = "";
+  const el = document.getElementById("storage"); if(!el) return; el.innerHTML = "";
   if(!state.carrier) {{ el.innerHTML = '<span style="color:var(--muted);font-size:13.5px">Pick an option above first</span>'; return; }}
   Object.keys(M[state.carrier]).sort((a,b)=>storkey(a)-storkey(b)).forEach(s=>{{
     const b = document.createElement("button"); b.className = "pill"+(state.storage===s?" on":""); b.textContent = s; b.dataset.v = s;
@@ -454,7 +466,7 @@ function renderConds(){{
     d.style.display = d.dataset.c === state.cond ? "block" : "none");
 }}
 document.querySelectorAll("#carrier .pill").forEach(b=>b.onclick=()=>{{
-  state.carrier = b.dataset.v; state.storage = null; state.cond = null;
+  state.carrier = b.dataset.v; state.storage = SINGLE_S ? Object.keys(M[b.dataset.v])[0] : null; state.cond = null;
   document.querySelectorAll("#carrier .pill").forEach(x=>x.classList.toggle("on", x===b));
   renderStorage(); renderConds(); render();
 }});
@@ -465,7 +477,7 @@ document.getElementById("cond").addEventListener("click", e=>{{
 }});
 function render(){{
   const {{carrier, storage, cond}} = state;
-  const parts = [SINGLE?null:carrier, storage, cond].filter(Boolean);
+  const parts = [SINGLE?null:carrier, SINGLE_S?null:storage, cond].filter(v=>v && v!=="-");
   document.getElementById("picks").textContent = parts.join(" · ") || "Make your picks to see the price";
   const priceEl = document.getElementById("price"), go = document.getElementById("go");
   const p = (carrier && storage && cond) ? M[carrier][storage][cond] : null;
