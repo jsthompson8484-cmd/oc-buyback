@@ -178,10 +178,13 @@ export default async (req) => {
     verified.push({ ...it, qty, price: row.price, weight_oz: Number(row.weight_oz) || 16 });
   }
 
-  // FedEx/UPS is a game-console-only option (Henry's cheaper heavy-parcel
-  // rates); anything else in the cart needs the USPS lithium hazmat label
-  if (shipCarrier !== "USPS" && !verified.every((i) => i.cat === "Game Console"))
-    shipCarrier = "USPS";
+  // Carrier rules: consoles-only carts ship FedEx or UPS (Henry's cheaper
+  // heavy-parcel rates — USPS is not offered for consoles); every other cart
+  // ships USPS for the lithium hazmat label. Rate-pick still falls back to
+  // USPS if the chosen carrier returns no rate, so a label always exists.
+  const allConsoles = verified.every((i) => i.cat === "Game Console");
+  if (!allConsoles) shipCarrier = "USPS";
+  else if (method !== "cash" && shipCarrier === "USPS") shipCarrier = "FedEx";
 
   // -- promo code (optional). Strip anything outside [A-Za-z0-9-] BEFORE the
   // ilike lookup: %, _ and * are pattern wildcards in PostgREST, so an

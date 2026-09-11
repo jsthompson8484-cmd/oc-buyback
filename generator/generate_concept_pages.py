@@ -736,11 +736,10 @@ cart_body = f'''
         </div>
         <div class="fs" id="shipWrap" style="display:none"><h2>How would you like to ship?</h2>
           <div class="pay" id="shipPick">
-            <div class="payopt shipopt on" data-c="USPS"><b>USPS</b><p>Show a QR code at any Post Office — no printer needed.</p></div>
-            <div class="payopt shipopt" data-c="FedEx"><b>FedEx</b><p>Print the label and drop off at any FedEx location.</p></div>
+            <div class="payopt shipopt on" data-c="FedEx"><b>FedEx</b><p>Print the label and drop off at any FedEx location.</p></div>
             <div class="payopt shipopt" data-c="UPS"><b>UPS</b><p>Print the label and drop off at any UPS location.</p></div>
           </div>
-          <p style="color:var(--muted);font-size:12.5px;margin:8px 0 0">Console trade-ins can ship with any of the three — the label is free either way.</p>
+          <p style="color:var(--muted);font-size:12.5px;margin:8px 0 0">Consoles ship FedEx or UPS — sturdier handling for bigger boxes, and the label is free either way.</p>
         </div>
         <div class="fs"><h2 id="detailsHead">Your details</h2>
           <div class="frow">
@@ -793,10 +792,12 @@ function refreshShip(){{
   const consolesOnly = c.length && c.every(i => i.cat === "Game Console");
   const show = consolesOnly && payMethod !== "Cash in store";
   document.getElementById("shipWrap").style.display = show ? "" : "none";
-  if(!show) {{
+  if(show) {{
+    if(shipCarrier === "USPS") shipCarrier = "FedEx";
+  }} else {{
     shipCarrier = "USPS";
-    document.querySelectorAll(".shipopt").forEach(x=>x.classList.toggle("on", x.dataset.c === "USPS"));
   }}
+  document.querySelectorAll(".shipopt").forEach(x=>x.classList.toggle("on", x.dataset.c === shipCarrier));
 }}
 document.getElementById("shipPick").addEventListener("click", e=>{{
   const t = e.target.closest(".shipopt"); if(!t) return;
