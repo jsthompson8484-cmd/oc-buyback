@@ -67,8 +67,12 @@ async function buyReturnLabel(customer, weightOz, orderNumber, shipCarrier = "US
     (shipment.messages?.length ? `: ${shipment.messages[0].message}` : ""));
   const bought = await ep(`shipments/${shipment.id}/buy`, { rate: { id: rate.id } });
   if (!bought.postage_label) throw new Error(bought.error?.message || "Label purchase failed");
+  // QR codes: EasyPost supports them for USPS (Label Broker) and native UPS
+  // accounts — NOT FedEx, and not the built-in UPSDAP program. Best-effort:
+  // if the form generates, the email shows a QR; otherwise the printable
+  // label carries the order on its own.
   let qrUrl = null;
-  if (rate.carrier.startsWith("USPS")) {
+  if (/^(USPS|UPS)/.test(rate.carrier)) {
     try {
       const withForm = await ep(`shipments/${shipment.id}/forms`, { form: { type: "label_qr_code" } });
       qrUrl = (withForm.forms || []).find((f) => f.form_type === "label_qr_code")?.form_url || null;

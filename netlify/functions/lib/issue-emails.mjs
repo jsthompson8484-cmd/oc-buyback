@@ -221,7 +221,7 @@ export function buildOrderConfirmation({ orderNumber, firstName, items, total, l
             ? `<h3 style="font-size:16px;color:${DEEP};margin:20px 0 8px">📦 Your free ${esc(shipCarrier)} shipping label</h3>` +
               (qrUrl ? `<div style="background:${GROUND};border-radius:12px;padding:16px;text-align:center;margin:0 0 10px">
                  <img src="${qrUrl}" alt="USPS QR code" style="width:180px;max-width:60%">
-                 <p style="font-size:13.5px;color:${MUTED};margin:8px 0 0"><b>No printer needed:</b> show this QR code at any Post Office and they'll print the label for you.</p></div>` : "") +
+                 <p style="font-size:13.5px;color:${MUTED};margin:8px 0 0"><b>No printer needed:</b> show this QR code at ${shipCarrier === "UPS" ? "any The UPS Store" : "any Post Office"} and they'll print the label for you.</p></div>` : "") +
               (labelUrl ? `<p style="font-size:14px;margin:0 0 6px">Have a printer? <a href="${labelUrl}" style="color:${GREEN};font-weight:700">Print your shipping label here</a>.</p>` : "") +
               (tracking ? `<p style="font-size:13px;color:${MUTED};margin:0 0 4px">Tracking number: <b>${esc(tracking)}</b></p>` : "") +
               (shipCarrier === "USPS"
