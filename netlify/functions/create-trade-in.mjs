@@ -58,6 +58,7 @@ async function buyReturnLabel(customer, weightOz, orderNumber, shipCarrier = "US
       city: customer.city, state: customer.state, zip: customer.zip, country: "US",
       phone: customer.phone },
     parcel: { weight: Math.max(Math.round(weightOz), 4) },
+    is_return: true,  // customer -> store; on own FedEx/UPS accounts return labels bill on first scan
     options,
   }});
   if (!shipment.id) throw new Error(shipment.error?.message || "EasyPost shipment failed");
