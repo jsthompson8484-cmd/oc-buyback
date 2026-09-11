@@ -183,13 +183,20 @@ export default async (req) => {
     verified.push({ ...it, qty, price: row.price, weight_oz: Number(row.weight_oz) || 16 });
   }
 
-  // Carrier rules: consoles-only carts ship FedEx or UPS (Henry's cheaper
-  // heavy-parcel rates — USPS is not offered for consoles); every other cart
-  // ships USPS for the lithium hazmat label. Rate-pick still falls back to
-  // USPS if the chosen carrier returns no rate, so a label always exists.
-  const allConsoles = verified.every((i) => i.cat === "Game Console");
-  if (!allConsoles) shipCarrier = "USPS";
-  else if (method !== "cash" && shipCarrier === "USPS") shipCarrier = "FedEx";
+  // Carrier rules (Henry's): phones/GoPros/watches may ship any carrier;
+  // consoles, Macs and tablets ship FedEx/UPS only (cheaper heavy parcels);
+  // everything else is USPS. A mixed cart gets the intersection of what every
+  // item allows; if that's empty, USPS (one shipment must carry the cart, and
+  // rate-pick falls back to USPS anyway if a carrier returns no rate).
+  const CARRIERS_BY_CAT = (cat) =>
+    ["Cell Phone", "GoPro", "Smartwatch"].includes(cat) ? ["USPS", "FedEx", "UPS"]
+    : ["Game Console", "Tablet", "Macbook", "iMac", "Mac Mini", "Mac Studio", "Mac Pro"].includes(cat) ? ["FedEx", "UPS"]
+    : ["USPS"];
+  let allowed = verified.map((i) => CARRIERS_BY_CAT(i.cat))
+    .reduce((a, b) => a.filter((x) => b.includes(x)));
+  if (!allowed.length) allowed = ["USPS"];
+  if (!allowed.includes(shipCarrier))
+    shipCarrier = allowed.includes("USPS") ? "USPS" : "FedEx";
 
   // -- promo code (optional). Strip anything outside [A-Za-z0-9-] BEFORE the
   // ilike lookup: %, _ and * are pattern wildcards in PostgREST, so an

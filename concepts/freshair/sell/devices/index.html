@@ -221,10 +221,11 @@ cartBadge();
         </div>
         <div class="fs" id="shipWrap" style="display:none"><h2>How would you like to ship?</h2>
           <div class="pay" id="shipPick">
-            <div class="payopt shipopt on" data-c="FedEx"><b>FedEx</b><p>Print the label and drop off at any FedEx location.</p></div>
+            <div class="payopt shipopt" data-c="USPS"><b>USPS</b><p>Show a QR code at any Post Office — no printer needed.</p></div>
+            <div class="payopt shipopt" data-c="FedEx"><b>FedEx</b><p>Print the label and drop off at any FedEx location.</p></div>
             <div class="payopt shipopt" data-c="UPS"><b>UPS</b><p>Print the label and drop off at any UPS location.</p></div>
           </div>
-          <p style="color:var(--muted);font-size:12.5px;margin:8px 0 0">Consoles ship FedEx or UPS — sturdier handling for bigger boxes, and the label is free either way.</p>
+          <p style="color:var(--muted);font-size:12.5px;margin:8px 0 0" id="shipNote"></p>
         </div>
         <div class="fs"><h2 id="detailsHead">Your details</h2>
           <div class="frow">
@@ -272,17 +273,25 @@ function money(v){ return "$" + v.toLocaleString(); }
 const IS_LOCAL = ["localhost","127.0.0.1"].includes(location.hostname);
 let payMethod = null;
 let shipCarrier = "USPS";
+// which carriers each category may ship with (mirrors the server rules)
+function carriersFor(cat){
+  if(["Cell Phone","GoPro","Smartwatch"].includes(cat)) return ["USPS","FedEx","UPS"];
+  if(["Game Console","Tablet","Macbook","iMac","Mac Mini","Mac Studio","Mac Pro"].includes(cat)) return ["FedEx","UPS"];
+  return ["USPS"];
+}
 function refreshShip(){
   const c = cartGet();
-  const consolesOnly = c.length && c.every(i => i.cat === "Game Console");
-  const show = consolesOnly && payMethod !== "Cash in store";
+  let allowed = c.length ? c.map(i => carriersFor(i.cat)).reduce((a,b)=>a.filter(x=>b.includes(x))) : ["USPS"];
+  if(!allowed.length) allowed = ["USPS"];
+  const show = allowed.length > 1 && payMethod !== "Cash in store";
   document.getElementById("shipWrap").style.display = show ? "" : "none";
-  if(show) {
-    if(shipCarrier === "USPS") shipCarrier = "FedEx";
-  } else {
-    shipCarrier = "USPS";
-  }
+  document.querySelectorAll(".shipopt").forEach(x=>{ x.style.display = allowed.includes(x.dataset.c) ? "" : "none"; });
+  if(!allowed.includes(shipCarrier) || !show)
+    shipCarrier = show ? (allowed.includes("USPS") ? "USPS" : "FedEx") : (allowed.length === 1 ? allowed[0] : "USPS");
   document.querySelectorAll(".shipopt").forEach(x=>x.classList.toggle("on", x.dataset.c === shipCarrier));
+  document.getElementById("shipNote").textContent = allowed.includes("USPS")
+    ? "Pick whichever is easiest — the label is free either way."
+    : "These items ship FedEx or UPS — sturdier handling for bigger boxes, and the label is free either way.";
 }
 document.getElementById("shipPick").addEventListener("click", e=>{
   const t = e.target.closest(".shipopt"); if(!t) return;
