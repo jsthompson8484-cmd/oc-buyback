@@ -293,12 +293,18 @@ export default async (req) => {
         labelUrl: label?.labelUrl, qrUrl: label?.qrUrl, tracking: label?.tracking,
         shipCarrier: label?.carrier || shipCarrier,
       });
-      await fetch("https://api.resend.com/emails", {
+      const sent = await fetch("https://api.resend.com/emails", {
         method: "POST",
         headers: { authorization: `Bearer ${RESEND_KEY}`, "content-type": "application/json" },
         body: JSON.stringify({ from: FROM, to: customer.email, subject, html,
                                reply_to: "support@ocbuyback.com" }),
       });
+      if (!sent.ok) {
+        const why = (await sent.text()).slice(0, 200);
+        await db("trade_in_events", { method: "POST", body: JSON.stringify({
+          trade_in_id: tradeIn.id, status: "initiated",
+          note: `⚠️ Confirmation email FAILED to ${customer.email} (${why}) — resend it from this dialog once email is fixed.` }) });
+      }
     } catch (e) { /* order stands even if the email hiccups */ }
   }
   // TODO: SMS via Twilio when sms_opt_in; label email once carrier account is wired.
