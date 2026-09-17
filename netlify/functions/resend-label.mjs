@@ -2,11 +2,10 @@
 // (with the shipping label / QR) to the customer. Body: { trade_in_id }.
 
 import { buildOrderConfirmation } from "./lib/issue-emails.mjs";
+import { sendEmail, emailConfigured } from "./lib/send-email.mjs";
 
 const SUPABASE_URL = process.env.SUPABASE_URL;
 const SERVICE_KEY = process.env.SUPABASE_SERVICE_KEY;
-const RESEND_KEY = process.env.RESEND_API_KEY;
-const FROM = process.env.EMAIL_FROM || "OCBuyBack <onboarding@resend.dev>";
 const ADMIN_EMAILS = (process.env.ADMIN_EMAILS || "js@neartechpartners.com")
   .split(",").map((e) => e.trim().toLowerCase());
 
@@ -32,7 +31,7 @@ export default async (req) => {
 
   const { trade_in_id } = await req.json().catch(() => ({}));
   if (!trade_in_id) return json(400, { error: "trade_in_id required" });
-  if (!RESEND_KEY) return json(503, { error: "Email is not configured (RESEND_API_KEY)" });
+  if (!emailConfigured()) return json(503, { error: "Email is not configured" });
 
   const [t] = await db(`trade_ins?id=eq.${encodeURIComponent(trade_in_id)}&select=*,trade_in_items(*)`)
     .then((r) => r.json());
@@ -54,13 +53,8 @@ export default async (req) => {
     shipCarrier: t.ship_carrier || "USPS",
   });
 
-  const sent = await fetch("https://api.resend.com/emails", {
-    method: "POST",
-    headers: { authorization: `Bearer ${RESEND_KEY}`, "content-type": "application/json" },
-    body: JSON.stringify({ from: FROM, to: t.email, subject: `[Resent] ${subject}`, html,
-                           reply_to: "support@ocbuyback.com" }),
-  });
-  if (!sent.ok) return json(502, { error: "Email send failed" });
+  const sent = await sendEmail({ to: t.email, subject: `[Resent] ${subject}`, html });
+  if (!sent.ok) return json(502, { error: "Email send failed", detail: sent.detail });
 
   await db("trade_in_events", { method: "POST", body: JSON.stringify({
     trade_in_id: t.id, status: t.status,

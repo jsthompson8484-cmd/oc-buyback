@@ -17,9 +17,8 @@ import { buildOrderConfirmation } from "./lib/issue-emails.mjs";
 
 const SUPABASE_URL = process.env.SUPABASE_URL;
 const SERVICE_KEY = process.env.SUPABASE_SERVICE_KEY;
-const RESEND_KEY = process.env.RESEND_API_KEY;
+import { sendEmail, emailConfigured } from "./lib/send-email.mjs";
 const SITE_URL = process.env.SITE_URL || "https://www.ocbuyback.com";
-const FROM = process.env.EMAIL_FROM || "OCBuyBack <onboarding@resend.dev>";
 const EASYPOST_KEY = process.env.EASYPOST_API_KEY;
 
 const STORE_ADDR = { name: "OCBuyBack", street1: "1203 W Imperial Hwy", street2: "STE 103",
@@ -283,7 +282,7 @@ export default async (req) => {
   });
 
   // -- order confirmation email (label email comes with the carrier integration)
-  if (RESEND_KEY) {
+  if (emailConfigured()) {
     try {
       const lockedPretty = new Date(lockDate + "T12:00:00").toLocaleDateString("en-US", { month: "long", day: "numeric" });
       const { subject, html } = buildOrderConfirmation({
@@ -293,14 +292,9 @@ export default async (req) => {
         labelUrl: label?.labelUrl, qrUrl: label?.qrUrl, tracking: label?.tracking,
         shipCarrier: label?.carrier || shipCarrier,
       });
-      const sent = await fetch("https://api.resend.com/emails", {
-        method: "POST",
-        headers: { authorization: `Bearer ${RESEND_KEY}`, "content-type": "application/json" },
-        body: JSON.stringify({ from: FROM, to: customer.email, subject, html,
-                               reply_to: "support@ocbuyback.com" }),
-      });
+      const sent = await sendEmail({ to: customer.email, subject, html });
       if (!sent.ok) {
-        const why = (await sent.text()).slice(0, 200);
+        const why = sent.detail;
         await db("trade_in_events", { method: "POST", body: JSON.stringify({
           trade_in_id: tradeIn.id, status: "initiated",
           note: `⚠️ Confirmation email FAILED to ${customer.email} (${why}) — resend it from this dialog once email is fixed.` }) });

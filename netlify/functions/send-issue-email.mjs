@@ -10,13 +10,12 @@
 // price for the item's variant at new_condition — the quote the site shows.
 
 import { buildIssueEmail } from "./lib/issue-emails.mjs";
+import { sendEmail, emailConfigured } from "./lib/send-email.mjs";
 
 const SUPABASE_URL = process.env.SUPABASE_URL;
 const SERVICE_KEY = process.env.SUPABASE_SERVICE_KEY;
-const RESEND_KEY = process.env.RESEND_API_KEY;
 const SITE_URL = process.env.SITE_URL || "https://www.ocbuyback.com";
 // until ocbuyback.com is verified in Resend, only the resend.dev sender works
-const FROM = process.env.EMAIL_FROM || "OCBuyBack <onboarding@resend.dev>";
 const ADMIN_EMAILS = (process.env.ADMIN_EMAILS || "js@neartechpartners.com")
   .split(",").map((e) => e.trim().toLowerCase());
 
@@ -105,14 +104,10 @@ export default async (req) => {
   });
 
   let emailed = false;
-  if (RESEND_KEY) {
-    const r = await fetch("https://api.resend.com/emails", {
-      method: "POST",
-      headers: { authorization: `Bearer ${RESEND_KEY}`, "content-type": "application/json" },
-      body: JSON.stringify({ from: FROM, to: ti.email, subject, html, reply_to: "support@ocbuyback.com" }),
-    });
+  if (emailConfigured()) {
+    const r = await sendEmail({ to: ti.email, subject, html });
     emailed = r.ok;
-    if (!r.ok) return json(502, { error: "Email send failed", detail: await r.text() });
+    if (!r.ok) return json(502, { error: "Email send failed", detail: r.detail });
   }
 
   const labels = { icloud_lock: "iCloud lock", google_lock: "Google lock",
