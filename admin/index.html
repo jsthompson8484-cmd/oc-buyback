@@ -839,10 +839,10 @@ function openTradeInDialog(t, refresh){
   if (payBtn) payBtn.onclick = async () => {
     const amount = Number($("#dPaid").value) ||
       (t.trade_in_items || []).reduce((a, i) => a + Number(i.final_price ?? i.quoted_price) * i.qty, 0) + Number(t.promo_amount || 0);
-    const how = { paypal: `PayPal payout to ${t.payment_detail || t.email}`,
-                  check: `mail a Lob check to ${t.first_name} ${t.last_name}`,
-                  zelle: `mark paid (send Zelle to ${t.payment_detail} yourself)`,
-                  venmo: `mark paid (send Venmo to ${t.payment_detail} yourself)`,
+    const how = { paypal: `PayPal payout to ${t.payment_detail || t.email} + payment email`,
+                  check: `mark paid — mail the check to ${t.first_name} ${t.last_name} yourself (customer gets a "check is in the mail" email)`,
+                  zelle: `mark paid (send Zelle to ${t.payment_detail} yourself) + payment email`,
+                  venmo: `mark paid (send Venmo to ${t.payment_detail} yourself) + payment email`,
                   cash: "mark paid (cash in store)" }[t.payment_method];
     if (!confirm(`Send ${money(amount)} — ${how}?`)) return;
     payBtn.disabled = true; payBtn.textContent = "Sending…";

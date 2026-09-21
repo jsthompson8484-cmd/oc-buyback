@@ -244,6 +244,29 @@ export function buildOrderConfirmation({ orderNumber, firstName, items, total, l
   };
 }
 
+// Payment-sent notification, per payout method. Checks are mailed by hand,
+// so the copy promises the mail, not a Lob tracking ref.
+export function buildPaymentSent({ orderNumber, firstName, amount, method, detail }) {
+  const how = {
+    paypal: `We've sent <b>${money(amount)}</b> to your PayPal (<b>${esc(detail)}</b>). It usually appears within minutes — occasionally PayPal takes a few hours.`,
+    check: `Your check for <b>${money(amount)}</b> is in the mail to the address on your order. Please allow 3–7 business days for delivery.`,
+    zelle: `We've sent <b>${money(amount)}</b> via Zelle to <b>${esc(detail)}</b>. It typically arrives within minutes.`,
+    venmo: `We've sent <b>${money(amount)}</b> via Venmo to <b>${esc(detail)}</b>. It typically arrives within minutes.`,
+  }[method] || `Your payment of <b>${money(amount)}</b> is on its way.`;
+  return {
+    subject: `Payment sent — ${money(amount)} for order ${orderNumber}`,
+    html: layout({
+      orderNumber,
+      heading: "💸 Your payment is on the way!",
+      intro: `Hi ${esc(firstName)} — great news: your trade-in is complete and you've been paid.`,
+      bodyHtml: `<p style="font-size:15px;line-height:1.7">${how}</p>
+        <p style="font-size:14px;line-height:1.6;color:${MUTED}">Don't see it after the window above? Reply to this email or call 657-286-8274 and we'll chase it down.</p>`,
+      buttonsHtml: "",
+      footNote: "Thanks for trading in with OCBuyBack — we'd love to see you again. Got another device? Every quote locks for 14 days.",
+    }),
+  };
+}
+
 // Friendly page shown in the browser after the customer clicks an email link.
 export function responsePage({ title, body }) {
   return `<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">

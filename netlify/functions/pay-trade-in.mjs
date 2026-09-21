@@ -2,8 +2,9 @@
 //
 // Payment rails by method:
 //   paypal -> PayPal Payouts API (PAYPAL_CLIENT_ID / PAYPAL_CLIENT_SECRET)
-//   check  -> Lob mailed check (LOB_API_KEY / LOB_BANK_ACCOUNT_ID / LOB_FROM_ADDRESS_ID)
-//   zelle / venmo / cash -> recorded as paid manually (those are sent by hand)
+//   check / zelle / venmo / cash -> recorded as paid manually (Henry mails
+//     checks himself and sends Zelle/Venmo by hand)
+// All non-cash methods email the customer that payment is on its way.
 //
 // Auth: caller must be an allow-listed admin (same check as send-issue-email).
 // Body: { trade_in_id, amount? }  — amount defaults to sum of final/quoted prices.
@@ -12,12 +13,12 @@ const SUPABASE_URL = process.env.SUPABASE_URL;
 const SERVICE_KEY = process.env.SUPABASE_SERVICE_KEY;
 const ADMIN_EMAILS = (process.env.ADMIN_EMAILS || "js@neartechpartners.com")
   .split(",").map((e) => e.trim().toLowerCase());
-const LOB_KEY = process.env.LOB_API_KEY;
-const LOB_BANK = process.env.LOB_BANK_ACCOUNT_ID;
-const LOB_FROM = process.env.LOB_FROM_ADDRESS_ID;
 const PP_ID = process.env.PAYPAL_CLIENT_ID;
 const PP_SECRET = process.env.PAYPAL_CLIENT_SECRET;
 const PP_BASE = process.env.PAYPAL_BASE || "https://api-m.paypal.com";
+
+import { sendEmail, emailConfigured } from "./lib/send-email.mjs";
+import { buildPaymentSent } from "./lib/issue-emails.mjs";
 
 const db = (path, init = {}) =>
   fetch(`${SUPABASE_URL}/rest/v1/${path}`, {
@@ -57,31 +58,6 @@ async function paypalPayout(t, amount) {
   return { ref: data.batch_header?.payout_batch_id, note: `PayPal payout sent to ${receiver}` };
 }
 
-async function lobCheck(t, amount) {
-  if (!LOB_KEY || !LOB_BANK) throw new Error("Lob not configured (LOB_API_KEY / LOB_BANK_ACCOUNT_ID)");
-  const form = new URLSearchParams({
-    description: `OCBuyBack trade-in ${t.order_number}`,
-    bank_account: LOB_BANK,
-    amount: amount.toFixed(2),
-    memo: `Trade-in ${t.order_number}`,
-    "to[name]": `${t.first_name} ${t.last_name}`,
-    "to[address_line1]": t.address1,
-    ...(t.address2 ? { "to[address_line2]": t.address2 } : {}),
-    "to[address_city]": t.city,
-    "to[address_state]": t.state,
-    "to[address_zip]": t.zip,
-    ...(LOB_FROM ? { from: LOB_FROM } : {}),
-  });
-  const res = await fetch("https://api.lob.com/v1/checks", {
-    method: "POST",
-    headers: { authorization: "Basic " + btoa(LOB_KEY + ":"),
-               "content-type": "application/x-www-form-urlencoded" },
-    body: form,
-  });
-  const data = await res.json();
-  if (!res.ok) throw new Error(data.error?.message || "Lob check failed");
-  return { ref: data.id, note: `Check mailed via Lob to ${t.first_name} ${t.last_name} (expected delivery ${data.expected_delivery_date || "soon"})` };
-}
 
 export default async (req) => {
   if (req.method !== "POST") return json(405, { error: "POST only" });
@@ -117,7 +93,8 @@ export default async (req) => {
   let result;
   try {
     if (t.payment_method === "paypal") result = await paypalPayout(t, amount);
-    else if (t.payment_method === "check") result = await lobCheck(t, amount);
+    else if (t.payment_method === "check")
+      result = { ref: null, note: `Marked paid — check for $${amount.toFixed(2)} mailed manually to ${t.first_name} ${t.last_name}` };
     else result = { ref: null, note: `Marked paid — ${t.payment_method} sent manually` };
   } catch (e) {
     // payout failed — release the claim so it can be retried once fixed
@@ -136,7 +113,21 @@ export default async (req) => {
     body: JSON.stringify({ trade_in_id, status: "paid",
       note: result.note + (result.ref ? ` — ref ${result.ref}` : "") }),
   });
-  return json(200, { paid: amount, method: t.payment_method, ref: result.ref, note: result.note });
+
+  // tell the customer their payment is on the way (cash is handed over in person)
+  let emailed = false;
+  if (t.payment_method !== "cash" && emailConfigured()) {
+    const { subject, html } = buildPaymentSent({
+      orderNumber: t.order_number, firstName: t.first_name, amount,
+      method: t.payment_method, detail: t.payment_detail || t.email,
+    });
+    const sent = await sendEmail({ to: t.email, subject, html });
+    emailed = sent.ok;
+    if (!sent.ok) await db("trade_in_events", { method: "POST", body: JSON.stringify({
+      trade_in_id, status: "paid",
+      note: `⚠️ Payment-sent email FAILED to ${t.email} (${sent.detail})` }) }).catch(() => {});
+  }
+  return json(200, { paid: amount, method: t.payment_method, ref: result.ref, note: result.note, emailed });
 };
 
 export const config = { path: "/api/pay-trade-in" };
