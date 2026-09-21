@@ -143,7 +143,7 @@ export default async (req) => {
   customer.email = customer.email.trim().toLowerCase(); // normalized — throttle + track lookups rely on it
   if (method === "cash")  // ignore any half-typed address from before the switch
     customer.address1 = customer.address2 = customer.city = customer.state = customer.zip = null;
-  // length caps — oversized junk otherwise surfaces later as Lob/EasyPost failures at payout time
+  // length caps — oversized junk otherwise surfaces later as EasyPost/payout failures
   const CAPS = { first_name: 40, last_name: 40, email: 120, phone: 20, address1: 100, address2: 100, city: 60, state: 2, zip: 10 };
   for (const [f, cap] of Object.entries(CAPS))
     if (customer[f]) customer[f] = String(customer[f]).slice(0, cap);

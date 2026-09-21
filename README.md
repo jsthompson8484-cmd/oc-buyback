@@ -32,11 +32,9 @@ live site's URL structure exactly (see `reference/parity_baseline.csv`).
 ## Business rules (do not regress)
 
 - Only `enabled=true` catalog rows carry prices; disabled rows stay at $0 in the DB.
-- Payment methods: PayPal (auto payout), check (auto via Lob), Zelle, Venmo, cash in store.
+- Payment methods: PayPal (auto payout), check (mailed manually by the store), Zelle, Venmo, cash in store. Non-cash payouts email the customer automatically.
   (PayPal re-added Sep 8 per user for automated payouts — no processing fee shown.)
 - Payout env vars: `PAYPAL_CLIENT_ID`, `PAYPAL_CLIENT_SECRET` (developer.paypal.com → live app),
-  `LOB_API_KEY`, `LOB_BANK_ACCOUNT_ID`, `LOB_FROM_ADDRESS_ID` (dashboard.lob.com — bank account
-  must be added + verified in Lob before checks can send).
 - Never mention shipping insurance anywhere on the site.
 - Buyback site, not a marketplace. No `/buy` store (301 → `/sell`).
 - 14-day price lock; paid within 1 business day of arrival; free prepaid USPS label.
