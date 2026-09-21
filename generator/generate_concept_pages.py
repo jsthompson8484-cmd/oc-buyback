@@ -433,7 +433,7 @@ for cat, brand, dev, m in models:
       <div class="pricebox"><div class="pl">Your offer</div><div class="price dim" id="price">— —</div><div class="lock" id="lock"></div></div>
       <button id="go" disabled>Lock my price for 14 days</button>
       <div class="toast" id="toast"></div>
-      <div class="trust"><span>Free prepaid USPS shipping label</span><span>Paid within 1 business day of arrival</span><span>PayPal, Zelle, Venmo, check — or cash in store</span></div>
+      <div class="trust"><span>Free prepaid USPS shipping label</span><span>Paid within 1 business day of arrival</span><span>PayPal or check — or cash in store</span></div>
     </aside>
   </div>
 </div>
@@ -739,10 +739,6 @@ cart_body = f'''
             <div class="payopt" data-v="PayPal"><b>PayPal</b><p>Sent to your PayPal within 1 business day of arrival.</p>
               <div class="extra field"><label for="paypal">PayPal email</label><input id="paypal"><div class="hint"></div></div></div>
             <div class="payopt" data-v="Check"><b>Check</b><p>Mailed to the address you enter below within 1 business day of your device arriving.</p></div>
-            <div class="payopt" data-v="Zelle"><b>Zelle</b><p>Sent within 1 business day of arrival.</p>
-              <div class="extra field"><label for="zelle">Zelle email or phone</label><input id="zelle"><div class="hint"></div></div></div>
-            <div class="payopt" data-v="Venmo"><b>Venmo</b><p>Sent within 1 business day of arrival.</p>
-              <div class="extra field"><label for="venmo">Venmo username</label><input id="venmo" placeholder="@username"><div class="hint"></div></div></div>
             <div class="payopt" data-v="Cash in store"><b>Cash in store</b><p>Skip shipping — bring your device to 1203 W Imperial Hwy, Brea and get paid on the spot.</p></div>
           </div>
         </div>
@@ -912,8 +908,6 @@ function validate(){{
     setErr(id, msg); if(msg) ok = false;
   }}
   if(payMethod === "PayPal"){{ const v = document.getElementById("paypal").value.trim(); setErr("paypal", v?"":"Required for PayPal"); if(!v) ok=false; }}
-  if(payMethod === "Zelle"){{ const v = document.getElementById("zelle").value.trim(); setErr("zelle", v?"":"Required for Zelle"); if(!v) ok=false; }}
-  if(payMethod === "Venmo"){{ const v = document.getElementById("venmo").value.trim(); setErr("venmo", v?"":"Required for Venmo"); if(!v) ok=false; }}
   const toast = document.getElementById("coToast");
   if(!payMethod){{ toast.textContent = "Pick how you'd like to get paid."; ok = false; }}
   else if(!document.getElementById("tos").checked){{ toast.textContent = "Please accept the terms and conditions."; ok = false; }}
@@ -940,7 +934,7 @@ document.getElementById("submit").addEventListener("click", async ()=>{{
           email: val("em"), phone: val("ph") }},
         items: c,
         payment: {{ method: payMethod,
-          detail: payMethod === "PayPal" ? val("paypal") : payMethod === "Zelle" ? val("zelle") : payMethod === "Venmo" ? val("venmo") : null }},
+          detail: payMethod === "PayPal" ? val("paypal") : null }},
         ship_carrier: shipCarrier,
         sms_opt_in: document.getElementById("sms").checked,
         attrib: (()=>{{ try {{ return JSON.parse(localStorage.getItem("ocb_attrib")); }} catch(e) {{ return null; }} }})(),
@@ -1192,7 +1186,7 @@ FAQS = [
     ("What if I'm not sure about the condition of my product?",
      "Pick your best guess — every device is checked on arrival. If our grade differs you'll get a new offer to accept, or we return your device free."),
     ("How and when will I get paid?",
-     "Within 1 business day of your device arriving — by PayPal, Zelle, Venmo, or check. Locals can choose cash on the spot at our Brea store."),
+     "Within 1 business day of your device arriving — by PayPal or check. Locals can choose cash on the spot at our Brea store."),
     ("Is there a limit on the number of items I can sell?",
      "No — sell one device or a whole drawer full. Bulk trade-ins welcome."),
     ("What if I do not agree with the evaluation of my phone?",
@@ -1256,8 +1250,8 @@ def legal_page(name, title):
         txt = b["text"]
         if txt.strip() == title: continue
         txt = txt.replace("PayPal, check or cash(local pickup only for cash)",
-                          "check, Zelle, Venmo, or cash (local pickup only for cash)")
-        txt = re.sub(r"\bPayPal, check or cash\b", "check, Zelle, Venmo, or cash", txt)
+                          "PayPal, check, or cash (local pickup only for cash)")
+        txt = re.sub(r"\bPayPal, check or cash\b", "PayPal, check, or cash", txt)
         txt = txt.replace("126 Viking Ave", "1203 W Imperial Hwy, STE 103")  # old address in policy contact block
         txt = txt.replace("Chancellor Communications", "OCBuyBack")  # legal entity is OCBuyBack (user, Sep 8 2026)
         # question headings (privacy) and numbered sections (terms)

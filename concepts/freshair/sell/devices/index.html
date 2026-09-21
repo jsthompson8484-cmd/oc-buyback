@@ -212,10 +212,6 @@ cartBadge();
             <div class="payopt" data-v="PayPal"><b>PayPal</b><p>Sent to your PayPal within 1 business day of arrival.</p>
               <div class="extra field"><label for="paypal">PayPal email</label><input id="paypal"><div class="hint"></div></div></div>
             <div class="payopt" data-v="Check"><b>Check</b><p>Mailed to the address you enter below within 1 business day of your device arriving.</p></div>
-            <div class="payopt" data-v="Zelle"><b>Zelle</b><p>Sent within 1 business day of arrival.</p>
-              <div class="extra field"><label for="zelle">Zelle email or phone</label><input id="zelle"><div class="hint"></div></div></div>
-            <div class="payopt" data-v="Venmo"><b>Venmo</b><p>Sent within 1 business day of arrival.</p>
-              <div class="extra field"><label for="venmo">Venmo username</label><input id="venmo" placeholder="@username"><div class="hint"></div></div></div>
             <div class="payopt" data-v="Cash in store"><b>Cash in store</b><p>Skip shipping — bring your device to 1203 W Imperial Hwy, Brea and get paid on the spot.</p></div>
           </div>
         </div>
@@ -385,8 +381,6 @@ function validate(){
     setErr(id, msg); if(msg) ok = false;
   }
   if(payMethod === "PayPal"){ const v = document.getElementById("paypal").value.trim(); setErr("paypal", v?"":"Required for PayPal"); if(!v) ok=false; }
-  if(payMethod === "Zelle"){ const v = document.getElementById("zelle").value.trim(); setErr("zelle", v?"":"Required for Zelle"); if(!v) ok=false; }
-  if(payMethod === "Venmo"){ const v = document.getElementById("venmo").value.trim(); setErr("venmo", v?"":"Required for Venmo"); if(!v) ok=false; }
   const toast = document.getElementById("coToast");
   if(!payMethod){ toast.textContent = "Pick how you'd like to get paid."; ok = false; }
   else if(!document.getElementById("tos").checked){ toast.textContent = "Please accept the terms and conditions."; ok = false; }
@@ -413,7 +407,7 @@ document.getElementById("submit").addEventListener("click", async ()=>{
           email: val("em"), phone: val("ph") },
         items: c,
         payment: { method: payMethod,
-          detail: payMethod === "PayPal" ? val("paypal") : payMethod === "Zelle" ? val("zelle") : payMethod === "Venmo" ? val("venmo") : null },
+          detail: payMethod === "PayPal" ? val("paypal") : null },
         ship_carrier: shipCarrier,
         sms_opt_in: document.getElementById("sms").checked,
         attrib: (()=>{ try { return JSON.parse(localStorage.getItem("ocb_attrib")); } catch(e) { return null; } })(),

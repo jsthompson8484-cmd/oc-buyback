@@ -97,7 +97,7 @@ const db = (path, init = {}) =>
 const json = (status, body) =>
   new Response(JSON.stringify(body), { status, headers: { "content-type": "application/json" } });
 
-const PAY_METHODS = { PayPal: "paypal", Check: "check", Zelle: "zelle", Venmo: "venmo", "Cash in store": "cash" };
+const PAY_METHODS = { PayPal: "paypal", Check: "check", "Cash in store": "cash" };  // Zelle/Venmo retired Sep 21 per Henry
 
 // derive a clean lead channel from first-touch attribution
 const REF_CHANNELS = [
@@ -156,7 +156,7 @@ export default async (req) => {
     `&created_at=gte.${encodeURIComponent(new Date(Date.now() - 36e5).toISOString())}&select=id`);
   if ((await recent.json()).length >= 3)
     return json(429, { error: "Too many orders in the last hour — call us at 657-286-8274 and we'll help directly" });
-  if ((method === "paypal" || method === "zelle" || method === "venmo") && !String(payment.detail || "").trim())
+  if (method === "paypal" && !String(payment.detail || "").trim())
     return json(400, { error: `${payment.method} details required` });
 
   if (!Array.isArray(items) || !items.length || items.length > 25)
