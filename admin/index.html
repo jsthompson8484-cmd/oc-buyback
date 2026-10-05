@@ -855,7 +855,7 @@ function openTradeInDialog(t, refresh){
           body: JSON.stringify({ trade_in_id: t.id, amount }) });
         const dta = await r.json().catch(() => ({}));
         if (!r.ok) throw new Error(dta.error || "Payment failed");
-        toast(dta.note || `Paid ${money(dta.paid)}`);
+        toast((dta.sandbox ? "⚠️ SANDBOX — no real money moved. " : "") + (dta.note || `Paid ${money(dta.paid)}`));
       }
       d.close(); refresh();
     } catch (e) { toast(e.message); payBtn.disabled = false; payBtn.textContent = "💸 Send payment"; }

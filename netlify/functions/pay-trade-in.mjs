@@ -16,6 +16,9 @@ const ADMIN_EMAILS = (process.env.ADMIN_EMAILS || "js@neartechpartners.com")
 const PP_ID = process.env.PAYPAL_CLIENT_ID;
 const PP_SECRET = process.env.PAYPAL_CLIENT_SECRET;
 const PP_BASE = process.env.PAYPAL_BASE || "https://api-m.paypal.com";
+// Sandbox payouts move NO real money. Label them everywhere so a test payout
+// can never be mistaken for a real one (e.g. PAYPAL_BASE left set at cutover).
+const PP_SANDBOX = PP_BASE.includes("sandbox");
 
 import { sendEmail, emailConfigured } from "./lib/send-email.mjs";
 import { buildPaymentSent } from "./lib/issue-emails.mjs";
@@ -55,7 +58,8 @@ async function paypalPayout(t, amount) {
   });
   const data = await res.json();
   if (!res.ok) throw new Error(data.message || "PayPal payout failed");
-  return { ref: data.batch_header?.payout_batch_id, note: `PayPal payout sent to ${receiver}` };
+  return { ref: data.batch_header?.payout_batch_id,
+           note: `PayPal payout sent to ${receiver}${PP_SANDBOX ? " — ⚠️ SANDBOX (no real money moved)" : ""}` };
 }
 
 
@@ -127,7 +131,7 @@ export default async (req) => {
       trade_in_id, status: "paid",
       note: `⚠️ Payment-sent email FAILED to ${t.email} (${sent.detail})` }) }).catch(() => {});
   }
-  return json(200, { paid: amount, method: t.payment_method, ref: result.ref, note: result.note, emailed });
+  return json(200, { paid: amount, method: t.payment_method, ref: result.ref, note: result.note, emailed, sandbox: PP_SANDBOX && t.payment_method === "paypal" });
 };
 
 export const config = { path: "/api/pay-trade-in" };
