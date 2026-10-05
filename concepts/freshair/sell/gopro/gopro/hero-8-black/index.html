@@ -11,8 +11,8 @@
 <meta property="og:url" content="https://www.ocbuyback.com/sell/gopro/gopro/hero-8-black">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="OCBuyBack">
-<meta property="og:image" content="https://s3.amazonaws.com/fliptech-assets/images/devices/gopros/gopro/hero-8-black.webp">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Product", "name": "GoPro Hero 8 Black", "image": "https://s3.amazonaws.com/fliptech-assets/images/devices/gopros/gopro/hero-8-black.webp", "brand": {"@type": "Brand", "name": "GoPro"}, "description": "Sell your GoPro Hero 8 Black for cash at OCBuyBack in Brea, CA \u2014 instant quote, free shipping, paid within 1 business day.", "offers": {"@type": "Offer", "price": "50.00", "priceCurrency": "USD", "availability": "https://schema.org/InStock", "url": "https://www.ocbuyback.com/sell/gopro/gopro/hero-8-black", "seller": {"@id": "https://www.ocbuyback.com/#org"}}}</script>
+<meta property="og:image" content="/assets/devices/gopros/gopro/hero-8-black.webp">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Product", "name": "GoPro Hero 8 Black", "image": "/assets/devices/gopros/gopro/hero-8-black.webp", "brand": {"@type": "Brand", "name": "GoPro"}, "description": "Sell your GoPro Hero 8 Black for cash at OCBuyBack in Brea, CA \u2014 instant quote, free shipping, paid within 1 business day.", "offers": {"@type": "Offer", "price": "50.00", "priceCurrency": "USD", "availability": "https://schema.org/InStock", "url": "https://www.ocbuyback.com/sell/gopro/gopro/hero-8-black", "seller": {"@id": "https://www.ocbuyback.com/#org"}}}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Sell", "item": "https://www.ocbuyback.com/sell"}, {"@type": "ListItem", "position": 2, "name": "GoPro", "item": "https://www.ocbuyback.com/sell/gopro"}, {"@type": "ListItem", "position": 3, "name": "GoPro", "item": "https://www.ocbuyback.com/sell/gopro/gopro"}, {"@type": "ListItem", "position": 4, "name": "Hero 8 Black"}]}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Figtree:wght@400;500;600;700&display=swap">
 <style>
@@ -148,7 +148,7 @@ cartBadge();
       <p style="color:var(--muted);font-size:13px;max-width:60ch;margin-top:10px">Not sure about condition? Pick your best guess — if our inspection differs, you get a new offer to accept, or we ship your device back free.</p>
     </div>
     <aside class="sum">
-      <img src="https://s3.amazonaws.com/fliptech-assets/images/devices/gopros/gopro/hero-8-black.webp" alt="Hero 8 Black" width="260" height="260" decoding="async" onerror="this.style.display='none'">
+      <img src="/assets/devices/gopros/gopro/hero-8-black.webp" alt="Hero 8 Black" width="260" height="260" decoding="async" onerror="this.style.display='none'">
       <div class="dev">GoPro Hero 8 Black</div>
       <div class="picks" id="picks">Make your picks to see the price</div>
       <div class="pricebox"><div class="pl">Your offer</div><div class="price dim" id="price" aria-hidden="true">— —</div><div class="lock" id="lock"></div></div>
@@ -225,7 +225,7 @@ document.getElementById("go").onclick = ()=>{
   const item = { id: ["GoPro", "Hero 8 Black", carrier, storage, cond].join("|"),
     brand: "GoPro", device: "Hero 8 Black", cat: "GoPro",
     carrier, storage, cond, price: p,
-    img: "https://s3.amazonaws.com/fliptech-assets/images/devices/gopros/gopro/hero-8-black.webp", qty: 1 };
+    img: "/assets/devices/gopros/gopro/hero-8-black.webp", qty: 1 };
   const c = cartGet();
   const ex = c.find(x => x.id === item.id);
   if (ex) ex.qty += 1; else c.push(item);

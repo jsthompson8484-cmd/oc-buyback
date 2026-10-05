@@ -164,8 +164,21 @@ def model_max(m):
     return max((p for c in m["variants"].values() for s in c.values() for p in s.values()), default=0)
 
 def img_url(cat, brand, device):
+    """Prefer our own rehosted 400px copy (root-relative, cached immutably).
+    Falls back to the model's DB image, then the legacy FlipTech S3 path."""
+    local = f"assets/devices/{CAT_PLURAL_IMG[cat]}/{slug(brand)}/{slug(device)}.webp"
+    if (OUT / local).exists():
+        return "/" + local
     try:
-        img = TREE[cat][brand][device].get("image")
+        img = TREE[cat][brand][device].get("image") or ""
+        # Macs were added with a flat local filename
+        if "/assets/devices/" in img:
+            flat = "assets/devices/" + img.rsplit("/", 1)[-1]
+            if (OUT / flat).exists(): return "/" + flat
+        # legacy S3 path -> our rehosted copy at the same relative path
+        if "/fliptech-assets/images/" in img:
+            twin = "assets/" + img.split("/images/", 1)[1]
+            if (OUT / twin).exists(): return "/" + twin
         if img: return img
     except (KeyError, AttributeError): pass
     return f"https://s3.amazonaws.com/fliptech-assets/images/devices/{CAT_PLURAL_IMG[cat]}/{slug(brand)}/{slug(device)}.webp"
@@ -581,6 +594,8 @@ BRAND_LINE = {("Macbook","Apple"):"MacBook Air & Pro", ("iMac","Apple"):"iMac",
   ("Game Console","Valve"):"Steam Deck", ("Game Console","Playstation"):"PlayStation"}
 
 def brand_logo(brand):
+    local = f"assets/brands/{slug(brand)}.webp"
+    if (OUT / local).exists(): return "/" + local
     return f"https://s3.amazonaws.com/fliptech-assets/images/brands/{slug(brand)}.webp"
 
 def model_cards(cat, brand, devs, depth_prefix=""):
