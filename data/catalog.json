@@ -3118,96 +3118,96 @@
      "AT&T": {
       "128GB": {},
       "256GB": {
-       "Brand New": 525.0,
+       "Brand New": 505.0,
        "Broken": 30.0,
-       "Fair": 340.0,
-       "Flawless": 475.0,
-       "Good": 420.0,
-       "Minor Damage": 210.0
+       "Fair": 320.0,
+       "Flawless": 455.0,
+       "Good": 400.0,
+       "Minor Damage": 190.0
       },
       "512GB": {
-       "Brand New": 625.0,
+       "Brand New": 605.0,
        "Broken": 30.0,
-       "Fair": 440.0,
-       "Flawless": 575.0,
-       "Good": 520.0,
-       "Minor Damage": 290.0
+       "Fair": 420.0,
+       "Flawless": 555.0,
+       "Good": 500.0,
+       "Minor Damage": 270.0
       }
      },
      "Other": {
       "128GB": {},
       "256GB": {
-       "Brand New": 275.0,
+       "Brand New": 255.0,
        "Broken": 30.0,
-       "Fair": 160.0,
-       "Flawless": 225.0,
-       "Good": 170.0,
-       "Minor Damage": 90.0
+       "Fair": 140.0,
+       "Flawless": 205.0,
+       "Good": 150.0,
+       "Minor Damage": 70.0
       },
       "512GB": {
-       "Brand New": 375.0,
+       "Brand New": 355.0,
        "Broken": 30.0,
-       "Fair": 240.0,
-       "Flawless": 325.0,
-       "Good": 270.0,
-       "Minor Damage": 190.0
+       "Fair": 220.0,
+       "Flawless": 305.0,
+       "Good": 250.0,
+       "Minor Damage": 170.0
       }
      },
      "T-Mobile": {
       "128GB": {},
       "256GB": {
-       "Brand New": 500.0,
+       "Brand New": 480.0,
        "Broken": 30.0,
-       "Fair": 315.0,
-       "Flawless": 450.0,
-       "Good": 395.0,
-       "Minor Damage": 185.0
+       "Fair": 295.0,
+       "Flawless": 430.0,
+       "Good": 375.0,
+       "Minor Damage": 165.0
       },
       "512GB": {
-       "Brand New": 600.0,
+       "Brand New": 580.0,
        "Broken": 30.0,
-       "Fair": 415.0,
-       "Flawless": 550.0,
-       "Good": 495.0,
-       "Minor Damage": 265.0
+       "Fair": 395.0,
+       "Flawless": 530.0,
+       "Good": 475.0,
+       "Minor Damage": 245.0
       }
      },
      "Unlocked": {
       "128GB": {},
       "256GB": {
-       "Brand New": 625.0,
+       "Brand New": 605.0,
        "Broken": 30.0,
-       "Fair": 440.0,
-       "Flawless": 575.0,
-       "Good": 520.0,
-       "Minor Damage": 260.0
+       "Fair": 420.0,
+       "Flawless": 555.0,
+       "Good": 500.0,
+       "Minor Damage": 240.0
       },
       "512GB": {
-       "Brand New": 725.0,
+       "Brand New": 705.0,
        "Broken": 30.0,
-       "Fair": 540.0,
-       "Flawless": 675.0,
-       "Good": 620.0,
-       "Minor Damage": 340.0
+       "Fair": 520.0,
+       "Flawless": 655.0,
+       "Good": 600.0,
+       "Minor Damage": 320.0
       }
      },
      "Verizon": {
       "128GB": {},
       "256GB": {
-       "Brand New": 525.0,
+       "Brand New": 505.0,
        "Broken": 30.0,
-       "Fair": 340.0,
-       "Flawless": 475.0,
-       "Good": 420.0,
-       "Minor Damage": 210.0
+       "Fair": 320.0,
+       "Flawless": 455.0,
+       "Good": 400.0,
+       "Minor Damage": 190.0
       },
       "512GB": {
-       "Brand New": 625.0,
+       "Brand New": 605.0,
        "Broken": 30.0,
-       "Fair": 440.0,
-       "Flawless": 575.0,
-       "Good": 520.0,
-       "Minor Damage": 290.0
+       "Fair": 420.0,
+       "Flawless": 555.0,
+       "Good": 500.0,
+       "Minor Damage": 270.0
       }
      }
     },
@@ -3220,136 +3220,136 @@
     "variants": {
      "AT&T": {
       "1TB": {
-       "Brand New": 845.0,
-       "Broken": 40.0,
-       "Fair": 575.0,
-       "Flawless": 795.0,
-       "Good": 715.0,
-       "Minor Damage": 410.0
-      },
-      "256GB": {
-       "Brand New": 695.0,
-       "Broken": 40.0,
-       "Fair": 425.0,
-       "Flawless": 645.0,
-       "Good": 565.0,
-       "Minor Damage": 250.0
-      },
-      "512GB": {
        "Brand New": 795.0,
        "Broken": 40.0,
-       "Fair": 525.0,
+       "Fair": 565.0,
        "Flawless": 745.0,
        "Good": 665.0,
-       "Minor Damage": 370.0
+       "Minor Damage": 390.0
+      },
+      "256GB": {
+       "Brand New": 645.0,
+       "Broken": 40.0,
+       "Fair": 415.0,
+       "Flawless": 595.0,
+       "Good": 515.0,
+       "Minor Damage": 230.0
+      },
+      "512GB": {
+       "Brand New": 745.0,
+       "Broken": 40.0,
+       "Fair": 515.0,
+       "Flawless": 695.0,
+       "Good": 615.0,
+       "Minor Damage": 350.0
       }
      },
      "Other": {
       "128GB": {},
       "1TB": {
-       "Brand New": 545.0,
-       "Broken": 40.0,
-       "Fair": 275.0,
-       "Flawless": 495.0,
-       "Good": 415.0,
-       "Minor Damage": 260.0
-      },
-      "256GB": {
-       "Brand New": 395.0,
-       "Broken": 40.0,
-       "Fair": 125.0,
-       "Flawless": 345.0,
-       "Good": 265.0,
-       "Minor Damage": 100.0
-      },
-      "512GB": {
        "Brand New": 495.0,
        "Broken": 40.0,
-       "Fair": 225.0,
+       "Fair": 265.0,
        "Flawless": 445.0,
        "Good": 365.0,
-       "Minor Damage": 200.0
+       "Minor Damage": 240.0
+      },
+      "256GB": {
+       "Brand New": 345.0,
+       "Broken": 40.0,
+       "Fair": 115.0,
+       "Flawless": 295.0,
+       "Good": 215.0,
+       "Minor Damage": 80.0
+      },
+      "512GB": {
+       "Brand New": 445.0,
+       "Broken": 40.0,
+       "Fair": 215.0,
+       "Flawless": 395.0,
+       "Good": 315.0,
+       "Minor Damage": 180.0
       }
      },
      "T-Mobile": {
       "128GB": {},
       "1TB": {
-       "Brand New": 920.0,
-       "Broken": 40.0,
-       "Fair": 650.0,
-       "Flawless": 870.0,
-       "Good": 790.0,
-       "Minor Damage": 385.0
-      },
-      "256GB": {
-       "Brand New": 770.0,
-       "Broken": 40.0,
-       "Fair": 500.0,
-       "Flawless": 720.0,
-       "Good": 640.0,
-       "Minor Damage": 225.0
-      },
-      "512GB": {
        "Brand New": 870.0,
        "Broken": 40.0,
-       "Fair": 600.0,
+       "Fair": 640.0,
        "Flawless": 820.0,
        "Good": 740.0,
-       "Minor Damage": 345.0
+       "Minor Damage": 365.0
+      },
+      "256GB": {
+       "Brand New": 720.0,
+       "Broken": 40.0,
+       "Fair": 490.0,
+       "Flawless": 670.0,
+       "Good": 590.0,
+       "Minor Damage": 205.0
+      },
+      "512GB": {
+       "Brand New": 820.0,
+       "Broken": 40.0,
+       "Fair": 590.0,
+       "Flawless": 770.0,
+       "Good": 690.0,
+       "Minor Damage": 325.0
       }
      },
      "Unlocked": {
       "128GB": {},
       "1TB": {
-       "Brand New": 995.0,
-       "Broken": 40.0,
-       "Fair": 725.0,
-       "Flawless": 945.0,
-       "Good": 865.0,
-       "Minor Damage": 460.0
-      },
-      "256GB": {
-       "Brand New": 845.0,
-       "Broken": 40.0,
-       "Fair": 575.0,
-       "Flawless": 795.0,
-       "Good": 715.0,
-       "Minor Damage": 300.0
-      },
-      "512GB": {
        "Brand New": 945.0,
        "Broken": 40.0,
-       "Fair": 675.0,
+       "Fair": 715.0,
        "Flawless": 895.0,
        "Good": 815.0,
-       "Minor Damage": 420.0
+       "Minor Damage": 440.0
+      },
+      "256GB": {
+       "Brand New": 795.0,
+       "Broken": 40.0,
+       "Fair": 565.0,
+       "Flawless": 745.0,
+       "Good": 665.0,
+       "Minor Damage": 280.0
+      },
+      "512GB": {
+       "Brand New": 895.0,
+       "Broken": 40.0,
+       "Fair": 665.0,
+       "Flawless": 845.0,
+       "Good": 765.0,
+       "Minor Damage": 400.0
       }
      },
      "Verizon": {
       "128GB": {},
       "1TB": {
-       "Brand New": 745.0,
-       "Broken": 40.0,
-       "Fair": 475.0,
-       "Flawless": 695.0,
-       "Good": 615.0,
-       "Minor Damage": 360.0
-      },
-      "256GB": {
-       "Brand New": 595.0,
-       "Broken": 40.0,
-       "Fair": 325.0,
-       "Flawless": 545.0,
-       "Good": 465.0,
-       "Minor Damage": 200.0
-      },
-      "512GB": {
        "Brand New": 695.0,
        "Broken": 40.0,
-       "Fair": 425.0,
+       "Fair": 465.0,
        "Flawless": 645.0,
        "Good": 565.0,
-       "Minor Damage": 320.0
+       "Minor Damage": 340.0
+      },
+      "256GB": {
+       "Brand New": 545.0,
+       "Broken": 40.0,
+       "Fair": 315.0,
+       "Flawless": 495.0,
+       "Good": 415.0,
+       "Minor Damage": 180.0
+      },
+      "512GB": {
+       "Brand New": 645.0,
+       "Broken": 40.0,
+       "Fair": 415.0,
+       "Flawless": 595.0,
+       "Good": 515.0,
+       "Minor Damage": 300.0
       }
      }
     },
@@ -3362,172 +3362,172 @@
     "variants": {
      "AT&T": {
       "1TB": {
-       "Brand New": 1000.0,
+       "Brand New": 910.0,
        "Broken": 50.0,
-       "Fair": 800.0,
-       "Flawless": 950.0,
-       "Good": 900.0,
-       "Minor Damage": 320.0
+       "Fair": 710.0,
+       "Flawless": 860.0,
+       "Good": 810.0,
+       "Minor Damage": 300.0
       },
       "256GB": {
-       "Brand New": 835.0,
+       "Brand New": 745.0,
        "Broken": 50.0,
-       "Fair": 635.0,
-       "Flawless": 785.0,
-       "Good": 735.0,
-       "Minor Damage": 250.0
+       "Fair": 545.0,
+       "Flawless": 695.0,
+       "Good": 645.0,
+       "Minor Damage": 230.0
       },
       "2TB": {
-       "Brand New": 1035.0,
+       "Brand New": 945.0,
        "Broken": 50.0,
-       "Fair": 835.0,
-       "Flawless": 985.0,
-       "Good": 935.0,
-       "Minor Damage": 400.0
+       "Fair": 745.0,
+       "Flawless": 895.0,
+       "Good": 845.0,
+       "Minor Damage": 380.0
       },
       "512GB": {
-       "Brand New": 935.0,
+       "Brand New": 845.0,
        "Broken": 50.0,
-       "Fair": 735.0,
-       "Flawless": 885.0,
-       "Good": 835.0,
-       "Minor Damage": 280.0
+       "Fair": 645.0,
+       "Flawless": 795.0,
+       "Good": 745.0,
+       "Minor Damage": 260.0
       }
      },
      "Other": {
       "1TB": {
-       "Brand New": 620.0,
+       "Brand New": 530.0,
        "Broken": 50.0,
-       "Fair": 420.0,
-       "Flawless": 570.0,
-       "Good": 520.0,
-       "Minor Damage": 170.0
+       "Fair": 330.0,
+       "Flawless": 480.0,
+       "Good": 430.0,
+       "Minor Damage": 150.0
       },
       "256GB": {
-       "Brand New": 455.0,
+       "Brand New": 365.0,
        "Broken": 50.0,
-       "Fair": 255.0,
-       "Flawless": 405.0,
-       "Good": 355.0,
-       "Minor Damage": 100.0
+       "Fair": 165.0,
+       "Flawless": 315.0,
+       "Good": 265.0,
+       "Minor Damage": 80.0
       },
       "2TB": {
-       "Brand New": 655.0,
+       "Brand New": 565.0,
        "Broken": 50.0,
-       "Fair": 455.0,
-       "Flawless": 605.0,
-       "Good": 555.0,
-       "Minor Damage": 250.0
+       "Fair": 365.0,
+       "Flawless": 515.0,
+       "Good": 465.0,
+       "Minor Damage": 230.0
       },
       "512GB": {
-       "Brand New": 555.0,
+       "Brand New": 465.0,
        "Broken": 50.0,
-       "Fair": 355.0,
-       "Flawless": 505.0,
-       "Good": 455.0,
-       "Minor Damage": 130.0
+       "Fair": 265.0,
+       "Flawless": 415.0,
+       "Good": 365.0,
+       "Minor Damage": 110.0
       }
      },
      "T-Mobile": {
       "1TB": {
-       "Brand New": 1015.0,
+       "Brand New": 925.0,
        "Broken": 50.0,
-       "Fair": 815.0,
-       "Flawless": 965.0,
-       "Good": 915.0,
-       "Minor Damage": 345.0
+       "Fair": 725.0,
+       "Flawless": 875.0,
+       "Good": 825.0,
+       "Minor Damage": 325.0
       },
       "256GB": {
-       "Brand New": 850.0,
+       "Brand New": 760.0,
        "Broken": 50.0,
-       "Fair": 650.0,
-       "Flawless": 800.0,
-       "Good": 750.0,
-       "Minor Damage": 275.0
+       "Fair": 560.0,
+       "Flawless": 710.0,
+       "Good": 660.0,
+       "Minor Damage": 255.0
       },
       "2TB": {
-       "Brand New": 1050.0,
+       "Brand New": 960.0,
        "Broken": 50.0,
-       "Fair": 850.0,
-       "Flawless": 1000.0,
-       "Good": 950.0,
-       "Minor Damage": 425.0
+       "Fair": 760.0,
+       "Flawless": 910.0,
+       "Good": 860.0,
+       "Minor Damage": 405.0
       },
       "512GB": {
-       "Brand New": 950.0,
+       "Brand New": 860.0,
        "Broken": 50.0,
-       "Fair": 750.0,
-       "Flawless": 900.0,
-       "Good": 850.0,
-       "Minor Damage": 305.0
+       "Fair": 660.0,
+       "Flawless": 810.0,
+       "Good": 760.0,
+       "Minor Damage": 285.0
       }
      },
      "Unlocked": {
       "1TB": {
-       "Brand New": 1120.0,
+       "Brand New": 1030.0,
        "Broken": 50.0,
-       "Fair": 920.0,
-       "Flawless": 1070.0,
-       "Good": 1020.0,
-       "Minor Damage": 420.0
+       "Fair": 830.0,
+       "Flawless": 980.0,
+       "Good": 930.0,
+       "Minor Damage": 400.0
       },
       "256GB": {
-       "Brand New": 955.0,
+       "Brand New": 865.0,
        "Broken": 50.0,
-       "Fair": 755.0,
-       "Flawless": 905.0,
-       "Good": 855.0,
-       "Minor Damage": 350.0
+       "Fair": 665.0,
+       "Flawless": 815.0,
+       "Good": 765.0,
+       "Minor Damage": 330.0
       },
       "2TB": {
-       "Brand New": 1155.0,
+       "Brand New": 1165.0,
        "Broken": 50.0,
-       "Fair": 955.0,
-       "Flawless": 1105.0,
-       "Good": 1055.0,
-       "Minor Damage": 500.0
+       "Fair": 865.0,
+       "Flawless": 1015.0,
+       "Good": 965.0,
+       "Minor Damage": 480.0
       },
       "512GB": {
-       "Brand New": 1055.0,
+       "Brand New": 965.0,
        "Broken": 50.0,
-       "Fair": 855.0,
-       "Flawless": 1005.0,
-       "Good": 955.0,
-       "Minor Damage": 380.0
+       "Fair": 765.0,
+       "Flawless": 915.0,
+       "Good": 865.0,
+       "Minor Damage": 360.0
       }
      },
      "Verizon": {
       "1TB": {
-       "Brand New": 920.0,
+       "Brand New": 830.0,
        "Broken": 50.0,
-       "Fair": 720.0,
-       "Flawless": 870.0,
-       "Good": 820.0,
-       "Minor Damage": 370.0
+       "Fair": 630.0,
+       "Flawless": 780.0,
+       "Good": 730.0,
+       "Minor Damage": 350.0
       },
       "256GB": {
-       "Brand New": 755.0,
+       "Brand New": 665.0,
        "Broken": 50.0,
-       "Fair": 555.0,
-       "Flawless": 705.0,
-       "Good": 655.0,
-       "Minor Damage": 300.0
+       "Fair": 465.0,
+       "Flawless": 615.0,
+       "Good": 565.0,
+       "Minor Damage": 280.0
       },
       "2TB": {
-       "Brand New": 955.0,
+       "Brand New": 865.0,
        "Broken": 50.0,
-       "Fair": 755.0,
-       "Flawless": 905.0,
-       "Good": 855.0,
-       "Minor Damage": 450.0
+       "Fair": 665.0,
+       "Flawless": 815.0,
+       "Good": 765.0,
+       "Minor Damage": 430.0
       },
       "512GB": {
-       "Brand New": 855.0,
+       "Brand New": 765.0,
        "Broken": 50.0,
-       "Fair": 655.0,
-       "Flawless": 805.0,
-       "Good": 755.0,
-       "Minor Damage": 330.0
+       "Fair": 565.0,
+       "Flawless": 715.0,
+       "Good": 665.0,
+       "Minor Damage": 310.0
       }
      }
     },
@@ -3981,136 +3981,136 @@
      "AT&T": {
       "128GB": {},
       "1TB": {
-       "Brand New": 685.0,
+       "Brand New": 665.0,
        "Broken": 30.0,
-       "Fair": 485.0,
-       "Flawless": 635.0,
-       "Good": 565.0,
-       "Minor Damage": 300.0
+       "Fair": 465.0,
+       "Flawless": 615.0,
+       "Good": 545.0,
+       "Minor Damage": 280.0
       },
       "256GB": {
-       "Brand New": 550.0,
+       "Brand New": 530.0,
        "Broken": 30.0,
-       "Fair": 350.0,
-       "Flawless": 500.0,
-       "Good": 430.0,
-       "Minor Damage": 180.0
+       "Fair": 330.0,
+       "Flawless": 480.0,
+       "Good": 410.0,
+       "Minor Damage": 160.0
       },
       "512GB": {
-       "Brand New": 610.0,
+       "Brand New": 590.0,
        "Broken": 30.0,
-       "Fair": 410.0,
-       "Flawless": 560.0,
-       "Good": 490.0,
-       "Minor Damage": 260.0
+       "Fair": 390.0,
+       "Flawless": 540.0,
+       "Good": 470.0,
+       "Minor Damage": 240.0
       }
      },
      "Other": {
       "128GB": {},
       "1TB": {
-       "Brand New": 435.0,
+       "Brand New": 415.0,
        "Broken": 30.0,
-       "Fair": 235.0,
-       "Flawless": 385.0,
-       "Good": 315.0,
-       "Minor Damage": 235.0
+       "Fair": 215.0,
+       "Flawless": 365.0,
+       "Good": 295.0,
+       "Minor Damage": 215.0
       },
       "256GB": {
-       "Brand New": 300.0,
+       "Brand New": 280.0,
        "Broken": 30.0,
-       "Fair": 100.0,
-       "Flawless": 250.0,
-       "Good": 180.0,
-       "Minor Damage": 90.0
+       "Fair": 80.0,
+       "Flawless": 230.0,
+       "Good": 160.0,
+       "Minor Damage": 70.0
       },
       "512GB": {
-       "Brand New": 360.0,
+       "Brand New": 340.0,
        "Broken": 30.0,
-       "Fair": 160.0,
-       "Flawless": 310.0,
-       "Good": 240.0,
-       "Minor Damage": 155.0
+       "Fair": 140.0,
+       "Flawless": 290.0,
+       "Good": 220.0,
+       "Minor Damage": 135.0
       }
      },
      "T-Mobile": {
       "128GB": {},
       "1TB": {
-       "Brand New": 660.0,
+       "Brand New": 640.0,
        "Broken": 30.0,
-       "Fair": 460.0,
-       "Flawless": 610.0,
-       "Good": 540.0,
+       "Fair": 440.0,
+       "Flawless": 590.0,
+       "Good": 520.0,
        "Minor Damage": 275.0
       },
       "256GB": {
-       "Brand New": 525.0,
+       "Brand New": 505.0,
        "Broken": 30.0,
-       "Fair": 325.0,
-       "Flawless": 475.0,
-       "Good": 405.0,
-       "Minor Damage": 155.0
+       "Fair": 305.0,
+       "Flawless": 455.0,
+       "Good": 385.0,
+       "Minor Damage": 135.0
       },
       "512GB": {
-       "Brand New": 585.0,
+       "Brand New": 565.0,
        "Broken": 30.0,
-       "Fair": 385.0,
-       "Flawless": 535.0,
-       "Good": 465.0,
-       "Minor Damage": 235.0
+       "Fair": 365.0,
+       "Flawless": 515.0,
+       "Good": 445.0,
+       "Minor Damage": 215.0
       }
      },
      "Unlocked": {
       "128GB": {},
       "1TB": {
-       "Brand New": 785.0,
+       "Brand New": 765.0,
        "Broken": 30.0,
-       "Fair": 585.0,
-       "Flawless": 735.0,
-       "Good": 665.0,
-       "Minor Damage": 350.0
+       "Fair": 565.0,
+       "Flawless": 715.0,
+       "Good": 645.0,
+       "Minor Damage": 330.0
       },
       "256GB": {
-       "Brand New": 650.0,
+       "Brand New": 630.0,
        "Broken": 30.0,
-       "Fair": 450.0,
-       "Flawless": 600.0,
-       "Good": 530.0,
-       "Minor Damage": 230.0
+       "Fair": 430.0,
+       "Flawless": 580.0,
+       "Good": 510.0,
+       "Minor Damage": 210.0
       },
       "512GB": {
-       "Brand New": 710.0,
+       "Brand New": 690.0,
        "Broken": 30.0,
-       "Fair": 510.0,
-       "Flawless": 660.0,
-       "Good": 590.0,
-       "Minor Damage": 310.0
+       "Fair": 490.0,
+       "Flawless": 640.0,
+       "Good": 570.0,
+       "Minor Damage": 290.0
       }
      },
      "Verizon": {
       "128GB": {},
       "1TB": {
-       "Brand New": 685.0,
+       "Brand New": 665.0,
        "Broken": 30.0,
-       "Fair": 485.0,
-       "Flawless": 635.0,
-       "Good": 565.0,
-       "Minor Damage": 300.0
+       "Fair": 465.0,
+       "Flawless": 615.0,
+       "Good": 545.0,
+       "Minor Damage": 280.0
       },
       "256GB": {
-       "Brand New": 550.0,
+       "Brand New": 530.0,
        "Broken": 30.0,
-       "Fair": 350.0,
-       "Flawless": 500.0,
-       "Good": 430.0,
-       "Minor Damage": 180.0
+       "Fair": 330.0,
+       "Flawless": 480.0,
+       "Good": 410.0,
+       "Minor Damage": 160.0
       },
       "512GB": {
-       "Brand New": 610.0,
+       "Brand New": 590.0,
        "Broken": 30.0,
-       "Fair": 410.0,
-       "Flawless": 560.0,
-       "Good": 490.0,
-       "Minor Damage": 260.0
+       "Fair": 390.0,
+       "Flawless": 540.0,
+       "Good": 470.0,
+       "Minor Damage": 240.0
       }
      }
     },
@@ -10764,19 +10764,19 @@
     "variants": {
      "AT&T": {
       "256GB": {
+       "Brand New": 280.0,
+       "Broken": 10.0,
+       "Fair": 125.0,
+       "Flawless": 230.0,
+       "Good": 180.0,
+       "Minor Damage": 40.0
+      },
+      "512GB": {
        "Brand New": 300.0,
        "Broken": 10.0,
        "Fair": 145.0,
        "Flawless": 250.0,
        "Good": 200.0,
-       "Minor Damage": 40.0
-      },
-      "512GB": {
-       "Brand New": 320.0,
-       "Broken": 10.0,
-       "Fair": 165.0,
-       "Flawless": 270.0,
-       "Good": 220.0,
        "Minor Damage": 50.0
       }
      },
@@ -10786,55 +10786,55 @@
      },
      "T-Mobile": {
       "256GB": {
+       "Brand New": 270.0,
+       "Broken": 10.0,
+       "Fair": 115.0,
+       "Flawless": 220.0,
+       "Good": 170.0,
+       "Minor Damage": 40.0
+      },
+      "512GB": {
        "Brand New": 290.0,
        "Broken": 10.0,
        "Fair": 135.0,
        "Flawless": 240.0,
        "Good": 190.0,
-       "Minor Damage": 40.0
-      },
-      "512GB": {
-       "Brand New": 310.0,
-       "Broken": 10.0,
-       "Fair": 155.0,
-       "Flawless": 260.0,
-       "Good": 210.0,
        "Minor Damage": 50.0
       }
      },
      "Unlocked": {
       "256GB": {
+       "Brand New": 320.0,
+       "Broken": 10.0,
+       "Fair": 165.0,
+       "Flawless": 270.0,
+       "Good": 220.0,
+       "Minor Damage": 60.0
+      },
+      "512GB": {
        "Brand New": 340.0,
        "Broken": 10.0,
        "Fair": 185.0,
        "Flawless": 290.0,
        "Good": 240.0,
-       "Minor Damage": 60.0
-      },
-      "512GB": {
-       "Brand New": 360.0,
-       "Broken": 10.0,
-       "Fair": 205.0,
-       "Flawless": 310.0,
-       "Good": 260.0,
        "Minor Damage": 70.0
       }
      },
      "Verizon": {
       "256GB": {
-       "Brand New": 155.0,
+       "Brand New": 135.0,
        "Broken": 10.0,
        "Fair": 40.0,
-       "Flawless": 105.0,
+       "Flawless": 85.0,
        "Good": 55.0,
        "Minor Damage": 30.0
       },
       "512GB": {
-       "Brand New": 175.0,
+       "Brand New": 155.0,
        "Broken": 10.0,
        "Fair": 50.0,
-       "Flawless": 125.0,
-       "Good": 75.0,
+       "Flawless": 105.0,
+       "Good": 55.0,
        "Minor Damage": 40.0
       }
      }
@@ -12449,10 +12449,10 @@
     "variants": {
      "-": {
       "-": {
-       "Brand New": 270.0,
+       "Brand New": 320.0,
        "Fair": 90.0,
-       "Flawless": 230.0,
-       "Good": 180.0
+       "Flawless": 280.0,
+       "Good": 210.0
       }
      }
     },
@@ -12465,10 +12465,10 @@
     "variants": {
      "-": {
       "-": {
-       "Brand New": 300.0,
-       "Fair": 105.0,
-       "Flawless": 260.0,
-       "Good": 200.0
+       "Brand New": 270.0,
+       "Fair": 150.0,
+       "Flawless": 230.0,
+       "Good": 195.0
       }
      }
     },
@@ -12481,10 +12481,10 @@
     "variants": {
      "-": {
       "-": {
-       "Brand New": 490.0,
-       "Fair": 250.0,
-       "Flawless": 440.0,
-       "Good": 370.0
+       "Brand New": 565.0,
+       "Fair": 410.0,
+       "Flawless": 525.0,
+       "Good": 460.0
       }
      }
     },
@@ -12497,10 +12497,10 @@
     "variants": {
      "-": {
       "-": {
-       "Brand New": 315.0,
-       "Fair": 125.0,
-       "Flawless": 275.0,
-       "Good": 215.0
+       "Brand New": 300.0,
+       "Fair": 170.0,
+       "Flawless": 260.0,
+       "Good": 220.0
       }
      }
     },
@@ -12513,10 +12513,10 @@
     "variants": {
      "-": {
       "-": {
-       "Brand New": 245.0,
-       "Fair": 105.0,
-       "Flawless": 205.0,
-       "Good": 160.0
+       "Brand New": 275.0,
+       "Fair": 160.0,
+       "Flawless": 235.0,
+       "Good": 215.0
       }
      }
     },
@@ -12877,42 +12877,42 @@
      },
      "M3 8-Core CPU 10-Core GPU": {
       "16GB": {
-       "Brand New": 682.0,
-       "Fair": 481.0,
-       "Flawless": 675.0,
-       "Good": 576.0
+       "Brand New": 715.0,
+       "Fair": 489.0,
+       "Flawless": 682.0,
+       "Good": 584.0
       },
       "24GB": {
-       "Brand New": 732.0,
-       "Fair": 531.0,
-       "Flawless": 725.0,
-       "Good": 626.0
+       "Brand New": 765.0,
+       "Fair": 539.0,
+       "Flawless": 732.0,
+       "Good": 634.0
       },
       "8GB": {
-       "Brand New": 632.0,
-       "Fair": 431.0,
-       "Flawless": 625.0,
-       "Good": 526.0
+       "Brand New": 665.0,
+       "Fair": 439.0,
+       "Flawless": 632.0,
+       "Good": 534.0
       }
      },
      "M3 8-Core CPU 8-Core GPU": {
       "16GB": {
-       "Brand New": 575.0,
-       "Fair": 392.0,
-       "Flawless": 558.0,
-       "Good": 475.0
+       "Brand New": 600.0,
+       "Fair": 403.0,
+       "Flawless": 570.0,
+       "Good": 487.0
       },
       "24GB": {
-       "Brand New": 630.0,
-       "Fair": 447.0,
-       "Flawless": 613.0,
-       "Good": 530.0
+       "Brand New": 650.0,
+       "Fair": 453.0,
+       "Flawless": 620.0,
+       "Good": 537.0
       },
       "8GB": {
-       "Brand New": 540.0,
-       "Fair": 357.0,
-       "Flawless": 523.0,
-       "Good": 440.0
+       "Brand New": 550.0,
+       "Fair": 353.0,
+       "Flawless": 520.0,
+       "Good": 437.0
       }
      }
     },
@@ -12925,36 +12925,36 @@
     "variants": {
      "M4 10-Core CPU 10-Core GPU": {
       "16GB": {
-       "Brand New": 975.0,
-       "Fair": 638.0,
-       "Flawless": 950.0,
-       "Good": 788.0
+       "Brand New": 1035.0,
+       "Fair": 662.0,
+       "Flawless": 975.0,
+       "Good": 812.0
       },
       "24GB": {
-       "Brand New": 1100.0,
-       "Fair": 762.0,
-       "Flawless": 1075.0,
-       "Good": 912.0
+       "Brand New": 1160.0,
+       "Fair": 788.0,
+       "Flawless": 1100.0,
+       "Good": 938.0
       },
       "32GB": {
-       "Brand New": 1283.0,
-       "Fair": 892.0,
-       "Flawless": 1258.0,
-       "Good": 1075.0
+       "Brand New": 1322.0,
+       "Fair": 883.0,
+       "Flawless": 1250.0,
+       "Good": 1067.0
       }
      },
      "M4 8-Core CPU 8-Core GPU": {
       "16GB": {
-       "Brand New": 750.0,
-       "Fair": 510.0,
-       "Flawless": 728.0,
-       "Good": 628.0
+       "Brand New": 800.0,
+       "Fair": 532.0,
+       "Flawless": 750.0,
+       "Good": 650.0
       },
       "24GB": {
-       "Brand New": 850.0,
-       "Fair": 610.0,
-       "Flawless": 828.0,
-       "Good": 728.0
+       "Brand New": 900.0,
+       "Fair": 632.0,
+       "Flawless": 850.0,
+       "Good": 750.0
       }
      }
     },
@@ -13831,16 +13831,16 @@
     "variants": {
      "M1 Max 10-Core CPU 32-Core GPU": {
       "32GB": {
-       "Brand New": 1430.0,
-       "Fair": 1080.0,
-       "Flawless": 1380.0,
-       "Good": 1230.0
+       "Brand New": 1550.0,
+       "Fair": 1200.0,
+       "Flawless": 1500.0,
+       "Good": 1350.0
       },
       "64GB": {
-       "Brand New": 1730.0,
-       "Fair": 1380.0,
-       "Flawless": 1680.0,
-       "Good": 1530.0
+       "Brand New": 1950.0,
+       "Fair": 1600.0,
+       "Flawless": 1900.0,
+       "Good": 1750.0
       }
      },
      "M1 Ultra 20-Core CPU 32-Core CPU": {
@@ -13861,74 +13861,74 @@
     "variants": {
      "M2 Max 12-Core CPU 30-Core GPU": {
       "32GB": {
-       "Brand New": 1655.0,
-       "Fair": 1220.0,
-       "Flawless": 1570.0,
-       "Good": 1388.0
+       "Brand New": 1720.0,
+       "Fair": 1300.0,
+       "Flawless": 1650.0,
+       "Good": 1468.0
       },
       "64GB": {
-       "Brand New": 2005.0,
-       "Fair": 1470.0,
-       "Flawless": 1920.0,
-       "Good": 1692.0
+       "Brand New": 2090.0,
+       "Fair": 1570.0,
+       "Flawless": 2020.0,
+       "Good": 1792.0
       },
       "96GB": {}
      },
      "M2 Max 12-Core CPU 38-Core GPU": {
       "32GB": {
-       "Brand New": 1755.0,
-       "Fair": 1220.0,
-       "Flawless": 1670.0,
-       "Good": 1442.0
+       "Brand New": 1790.0,
+       "Fair": 1270.0,
+       "Flawless": 1720.0,
+       "Good": 1492.0
       },
       "64GB": {
-       "Brand New": 2105.0,
-       "Fair": 1570.0,
-       "Flawless": 2020.0,
-       "Good": 1792.0
+       "Brand New": 2140.0,
+       "Fair": 1620.0,
+       "Flawless": 2070.0,
+       "Good": 1842.0
       },
       "96GB": {
-       "Brand New": 2455.0,
-       "Fair": 1920.0,
-       "Flawless": 2370.0,
-       "Good": 2142.0
+       "Brand New": 2490.0,
+       "Fair": 1970.0,
+       "Flawless": 2420.0,
+       "Good": 2192.0
       }
      },
      "M2 Ultra 24-Core CPU 60-Core GPU": {
       "128GB": {
-       "Brand New": 2988.0,
+       "Brand New": 3938.0,
        "Fair": 2288.0,
-       "Flawless": 2888.0,
-       "Good": 2588.0
+       "Flawless": 3838.0,
+       "Good": 3538.0
       },
       "192GB": {
-       "Brand New": 3588.0,
-       "Fair": 2888.0,
-       "Flawless": 3488.0,
-       "Good": 3188.0
+       "Brand New": 4438.0,
+       "Fair": 3738.0,
+       "Flawless": 4338.0,
+       "Good": 4038.0
       },
       "64GB": {
-       "Brand New": 2312.0,
+       "Brand New": 3150.0,
        "Fair": 1675.0,
-       "Flawless": 2200.0,
+       "Flawless": 3038.0,
        "Good": 1925.0
       }
      },
      "M2 Ultra 24-Core CPU 76-Core GPU": {
       "128GB": {
-       "Brand New": 3088.0,
+       "Brand New": 4138.0,
        "Fair": 2388.0,
-       "Flawless": 2988.0,
-       "Good": 2688.0
+       "Flawless": 4038.0,
+       "Good": 3738.0
       },
       "192GB": {
-       "Brand New": 3688.0,
-       "Fair": 2988.0,
-       "Flawless": 3588.0,
-       "Good": 3288.0
+       "Brand New": 4638.0,
+       "Fair": 3938.0,
+       "Flawless": 4538.0,
+       "Good": 4238.0
       },
       "64GB": {
-       "Brand New": 2412.0,
+       "Brand New": 3350.0,
        "Fair": 1775.0,
        "Flawless": 2300.0,
        "Good": 2025.0
@@ -13944,64 +13944,64 @@
     "variants": {
      "M3 Ultra 28-Core CPU 60-Core GPU": {
       "256GB": {
-       "Brand New": 7210.0,
-       "Fair": 6100.0,
-       "Flawless": 6940.0,
-       "Good": 6420.0
+       "Brand New": 6890.0,
+       "Fair": 5780.0,
+       "Flawless": 6620.0,
+       "Good": 6100.0
       },
       "96GB": {
-       "Brand New": 6060.0,
-       "Fair": 5120.0,
-       "Flawless": 5820.0,
-       "Good": 5400.0
+       "Brand New": 4920.0,
+       "Fair": 3980.0,
+       "Flawless": 4680.0,
+       "Good": 4260.0
       }
      },
      "M3 Ultra 32-Core CPU 80-Core GPU": {
       "256GB": {
-       "Brand New": 8700.0,
-       "Fair": 7440.0,
-       "Flawless": 8400.0,
-       "Good": 7820.0
+       "Brand New": 8300.0,
+       "Fair": 7040.0,
+       "Flawless": 8000.0,
+       "Good": 7420.0
       },
       "512GB": {
-       "Brand New": 10500.0,
-       "Fair": 9240.0,
-       "Flawless": 10200.0,
-       "Good": 9620.0
+       "Brand New": 10300.0,
+       "Fair": 9040.0,
+       "Flawless": 10000.0,
+       "Good": 9420.0
       },
       "96GB": {
-       "Brand New": 7210.0,
-       "Fair": 6100.0,
-       "Flawless": 6940.0,
-       "Good": 6420.0
+       "Brand New": 6090.0,
+       "Fair": 4980.0,
+       "Flawless": 5820.0,
+       "Good": 5300.0
       }
      },
      "M4 Max 14-Core CPU 32-Core GPU": {
       "36GB": {
-       "Brand New": 2700.0,
-       "Fair": 2190.0,
-       "Flawless": 2550.0,
-       "Good": 2365.0
+       "Brand New": 2270.0,
+       "Fair": 1760.0,
+       "Flawless": 2120.0,
+       "Good": 1935.0
       }
      },
      "M4 Max 16-Core CPU 40-Core GPU": {
       "128GB": {
-       "Brand New": 3580.0,
-       "Fair": 3000.0,
-       "Flawless": 3420.0,
-       "Good": 3180.0
+       "Brand New": 3800.0,
+       "Fair": 3220.0,
+       "Flawless": 3640.0,
+       "Good": 3400.0
       },
       "48GB": {
-       "Brand New": 2780.0,
-       "Fair": 2200.0,
-       "Flawless": 2620.0,
-       "Good": 2380.0
+       "Brand New": 2800.0,
+       "Fair": 2220.0,
+       "Flawless": 2640.0,
+       "Good": 2400.0
       },
       "64GB": {
-       "Brand New": 3030.0,
-       "Fair": 2450.0,
-       "Flawless": 2870.0,
-       "Good": 2630.0
+       "Brand New": 3100.0,
+       "Fair": 2520.0,
+       "Flawless": 2940.0,
+       "Good": 2700.0
       }
      }
     },
@@ -14463,54 +14463,54 @@
     "variants": {
      "M2 8-Core CPU 10-Core GPU": {
       "16GB": {
-       "Brand New": 480.0,
-       "Broken": 57.0,
-       "Fair": 294.0,
-       "Flawless": 436.0,
-       "Good": 408.0,
-       "Minor Damage": 57.0
+       "Brand New": 491.0,
+       "Broken": 65.0,
+       "Fair": 316.0,
+       "Flawless": 471.0,
+       "Good": 446.0,
+       "Minor Damage": 65.0
       },
       "24GB": {
-       "Brand New": 544.0,
-       "Broken": 57.0,
-       "Fair": 358.0,
-       "Flawless": 500.0,
-       "Good": 472.0,
-       "Minor Damage": 57.0
+       "Brand New": 566.0,
+       "Broken": 65.0,
+       "Fair": 391.0,
+       "Flawless": 546.0,
+       "Good": 521.0,
+       "Minor Damage": 65.0
       },
       "8GB": {
-       "Brand New": 431.0,
-       "Broken": 57.0,
-       "Fair": 245.0,
-       "Flawless": 387.0,
-       "Good": 359.0,
-       "Minor Damage": 57.0
+       "Brand New": 441.0,
+       "Broken": 65.0,
+       "Fair": 266.0,
+       "Flawless": 421.0,
+       "Good": 396.0,
+       "Minor Damage": 65.0
       }
      },
      "M2 8-Core CPU 8-Core GPU": {
       "16GB": {
-       "Brand New": 466.0,
-       "Broken": 54.0,
-       "Fair": 285.0,
-       "Flawless": 422.0,
-       "Good": 393.0,
-       "Minor Damage": 54.0
+       "Brand New": 471.0,
+       "Broken": 60.0,
+       "Fair": 301.0,
+       "Flawless": 446.0,
+       "Good": 421.0,
+       "Minor Damage": 60.0
       },
       "24GB": {
-       "Brand New": 530.0,
-       "Broken": 54.0,
-       "Fair": 349.0,
-       "Flawless": 486.0,
-       "Good": 457.0,
-       "Minor Damage": 54.0
+       "Brand New": 546.0,
+       "Broken": 60.0,
+       "Fair": 376.0,
+       "Flawless": 521.0,
+       "Good": 496.0,
+       "Minor Damage": 60.0
       },
       "8GB": {
-       "Brand New": 417.0,
-       "Broken": 54.0,
-       "Fair": 236.0,
-       "Flawless": 373.0,
-       "Good": 344.0,
-       "Minor Damage": 54.0
+       "Brand New": 421.0,
+       "Broken": 60.0,
+       "Fair": 251.0,
+       "Flawless": 396.0,
+       "Good": 371.0,
+       "Minor Damage": 60.0
       }
      }
     },
@@ -14523,54 +14523,54 @@
     "variants": {
      "M3 8-Core CPU 10-Core GPU": {
       "16GB": {
-       "Brand New": 651.0,
-       "Broken": 73.0,
-       "Fair": 394.0,
-       "Flawless": 594.0,
-       "Good": 540.0,
-       "Minor Damage": 73.0
+       "Brand New": 671.0,
+       "Broken": 88.0,
+       "Fair": 435.0,
+       "Flawless": 646.0,
+       "Good": 611.0,
+       "Minor Damage": 88.0
       },
       "24GB": {
-       "Brand New": 716.0,
-       "Broken": 73.0,
-       "Fair": 459.0,
-       "Flawless": 659.0,
-       "Good": 605.0,
-       "Minor Damage": 73.0
+       "Brand New": 736.0,
+       "Broken": 88.0,
+       "Fair": 500.0,
+       "Flawless": 711.0,
+       "Good": 676.0,
+       "Minor Damage": 88.0
       },
       "8GB": {
-       "Brand New": 586.0,
-       "Broken": 73.0,
-       "Fair": 329.0,
-       "Flawless": 529.0,
-       "Good": 475.0,
-       "Minor Damage": 73.0
+       "Brand New": 606.0,
+       "Broken": 88.0,
+       "Fair": 370.0,
+       "Flawless": 581.0,
+       "Good": 546.0,
+       "Minor Damage": 88.0
       }
      },
      "M3 8-Core CPU 8-Core GPU": {
       "16GB": {
-       "Brand New": 620.0,
-       "Broken": 68.0,
-       "Fair": 379.0,
-       "Flawless": 562.0,
-       "Good": 514.0,
-       "Minor Damage": 68.0
+       "Brand New": 646.0,
+       "Broken": 82.0,
+       "Fair": 417.0,
+       "Flawless": 621.0,
+       "Good": 581.0,
+       "Minor Damage": 82.0
       },
       "24GB": {
-       "Brand New": 685.0,
-       "Broken": 68.0,
-       "Fair": 444.0,
-       "Flawless": 627.0,
-       "Good": 579.0,
-       "Minor Damage": 68.0
+       "Brand New": 711.0,
+       "Broken": 82.0,
+       "Fair": 482.0,
+       "Flawless": 686.0,
+       "Good": 646.0,
+       "Minor Damage": 82.0
       },
       "8GB": {
-       "Brand New": 555.0,
-       "Broken": 68.0,
-       "Fair": 314.0,
-       "Flawless": 497.0,
-       "Good": 449.0,
-       "Minor Damage": 68.0
+       "Brand New": 581.0,
+       "Broken": 82.0,
+       "Fair": 352.0,
+       "Flawless": 556.0,
+       "Good": 516.0,
+       "Minor Damage": 82.0
       }
      }
     },
@@ -14584,11 +14584,11 @@
      "M4 10-Core CPU 10-Core GPU": {
       "16GB": {
        "Brand New": 725.0,
-       "Broken": 146.0,
+       "Broken": 108.0,
        "Fair": 449.0,
        "Flawless": 700.0,
        "Good": 665.0,
-       "Minor Damage": 146.0
+       "Minor Damage": 108.0
       },
       "24GB": {
        "Brand New": 815.0,
@@ -14641,27 +14641,27 @@
      "M2 8-Core CPU 10-Core GPU": {
       "16GB": {
        "Brand New": 562.0,
-       "Broken": 64.0,
-       "Fair": 363.0,
-       "Flawless": 522.0,
-       "Good": 492.0,
-       "Minor Damage": 64.0
+       "Broken": 68.0,
+       "Fair": 374.0,
+       "Flawless": 535.0,
+       "Good": 510.0,
+       "Minor Damage": 68.0
       },
       "24GB": {
        "Brand New": 627.0,
-       "Broken": 64.0,
-       "Fair": 428.0,
-       "Flawless": 587.0,
-       "Good": 557.0,
-       "Minor Damage": 64.0
+       "Broken": 68.0,
+       "Fair": 439.0,
+       "Flawless": 600.0,
+       "Good": 575.0,
+       "Minor Damage": 68.0
       },
       "8GB": {
        "Brand New": 497.0,
-       "Broken": 64.0,
-       "Fair": 298.0,
-       "Flawless": 457.0,
-       "Good": 427.0,
-       "Minor Damage": 64.0
+       "Broken": 68.0,
+       "Fair": 309.0,
+       "Flawless": 470.0,
+       "Good": 445.0,
+       "Minor Damage": 68.0
       }
      }
     },
@@ -14674,54 +14674,54 @@
     "variants": {
      "M3 8-Core CPU 10-Core GPU": {
       "16GB": {
-       "Brand New": 755.0,
-       "Broken": 90.0,
-       "Fair": 462.0,
-       "Flawless": 697.0,
-       "Good": 642.0,
-       "Minor Damage": 90.0
+       "Brand New": 738.0,
+       "Broken": 95.0,
+       "Fair": 472.0,
+       "Flawless": 712.0,
+       "Good": 662.0,
+       "Minor Damage": 95.0
       },
       "24GB": {
-       "Brand New": 836.0,
-       "Broken": 90.0,
-       "Fair": 543.0,
-       "Flawless": 778.0,
-       "Good": 723.0,
-       "Minor Damage": 90.0
+       "Brand New": 808.0,
+       "Broken": 95.0,
+       "Fair": 542.0,
+       "Flawless": 782.0,
+       "Good": 732.0,
+       "Minor Damage": 95.0
       },
       "8GB": {
-       "Brand New": 674.0,
-       "Broken": 90.0,
-       "Fair": 381.0,
-       "Flawless": 616.0,
-       "Good": 561.0,
-       "Minor Damage": 90.0
+       "Brand New": 658.0,
+       "Broken": 95.0,
+       "Fair": 392.0,
+       "Flawless": 632.0,
+       "Good": 582.0,
+       "Minor Damage": 95.0
       }
      },
      "M3 8-Core CPU 8-Core GPU": {
       "16GB": {
-       "Brand New": 755.0,
-       "Broken": 90.0,
-       "Fair": 462.0,
-       "Flawless": 697.0,
-       "Good": 642.0,
-       "Minor Damage": 90.0
+       "Brand New": 738.0,
+       "Broken": 95.0,
+       "Fair": 472.0,
+       "Flawless": 712.0,
+       "Good": 662.0,
+       "Minor Damage": 95.0
       },
       "24GB": {
-       "Brand New": 836.0,
-       "Broken": 90.0,
-       "Fair": 543.0,
-       "Flawless": 778.0,
-       "Good": 723.0,
-       "Minor Damage": 90.0
+       "Brand New": 808.0,
+       "Broken": 95.0,
+       "Fair": 542.0,
+       "Flawless": 782.0,
+       "Good": 732.0,
+       "Minor Damage": 95.0
       },
       "8GB": {
-       "Brand New": 674.0,
-       "Broken": 90.0,
-       "Fair": 381.0,
-       "Flawless": 616.0,
-       "Good": 561.0,
-       "Minor Damage": 90.0
+       "Brand New": 658.0,
+       "Broken": 95.0,
+       "Fair": 392.0,
+       "Flawless": 632.0,
+       "Good": 582.0,
+       "Minor Damage": 95.0
       }
      }
     },
@@ -14735,11 +14735,11 @@
      "M4 10-Core CPU 10-Core GPU": {
       "16GB": {
        "Brand New": 800.0,
-       "Broken": 148.0,
+       "Broken": 110.0,
        "Fair": 455.0,
        "Flawless": 725.0,
        "Good": 675.0,
-       "Minor Damage": 148.0
+       "Minor Damage": 110.0
       },
       "24GB": {
        "Brand New": 915.0,
@@ -15133,20 +15133,20 @@
     "variants": {
      "i5 2.3GHz": {
       "16GB": {
-       "Brand New": 254.0,
-       "Broken": 27.0,
-       "Fair": 150.0,
-       "Flawless": 234.0,
-       "Good": 204.0,
-       "Minor Damage": 27.0
+       "Brand New": 219.0,
+       "Broken": 24.0,
+       "Fair": 106.0,
+       "Flawless": 184.0,
+       "Good": 154.0,
+       "Minor Damage": 24.0
       },
       "8GB": {
-       "Brand New": 234.0,
-       "Broken": 27.0,
-       "Fair": 130.0,
-       "Flawless": 214.0,
-       "Good": 184.0,
-       "Minor Damage": 27.0
+       "Brand New": 209.0,
+       "Broken": 24.0,
+       "Fair": 96.0,
+       "Flawless": 174.0,
+       "Good": 144.0,
+       "Minor Damage": 24.0
       }
      },
      "i5 2.9GHz": {
@@ -15155,20 +15155,20 @@
      },
      "i7 2.7GHz": {
       "16GB": {
-       "Brand New": 284.0,
-       "Broken": 33.0,
-       "Fair": 168.0,
-       "Flawless": 264.0,
-       "Good": 236.0,
-       "Minor Damage": 33.0
+       "Brand New": 250.0,
+       "Broken": 27.0,
+       "Fair": 115.0,
+       "Flawless": 204.0,
+       "Good": 169.0,
+       "Minor Damage": 27.0
       },
       "8GB": {
-       "Brand New": 264.0,
-       "Broken": 33.0,
-       "Fair": 148.0,
-       "Flawless": 244.0,
-       "Good": 216.0,
-       "Minor Damage": 33.0
+       "Brand New": 240.0,
+       "Broken": 27.0,
+       "Fair": 105.0,
+       "Flawless": 194.0,
+       "Good": 159.0,
+       "Minor Damage": 27.0
       }
      }
     },
@@ -15621,81 +15621,81 @@
      "M3 Max 14-Core CPU 30-Core GPU": {
       "36GB": {
        "Brand New": 1445.0,
-       "Broken": 342.0,
+       "Broken": 227.0,
        "Fair": 846.0,
        "Flawless": 1351.0,
        "Good": 1300.0,
-       "Minor Damage": 342.0
+       "Minor Damage": 227.0
       },
       "96GB": {
        "Brand New": 1720.0,
-       "Broken": 342.0,
+       "Broken": 227.0,
        "Fair": 1121.0,
        "Flawless": 1626.0,
        "Good": 1575.0,
-       "Minor Damage": 342.0
+       "Minor Damage": 227.0
       }
      },
      "M3 Max 16-Core CPU 40-Core GPU": {
       "128GB": {
        "Brand New": 1946.0,
-       "Broken": 380.0,
+       "Broken": 265.0,
        "Fair": 1260.0,
        "Flawless": 1848.0,
        "Good": 1791.0,
-       "Minor Damage": 380.0
+       "Minor Damage": 265.0
       },
       "48GB": {
        "Brand New": 1646.0,
-       "Broken": 380.0,
+       "Broken": 265.0,
        "Fair": 960.0,
        "Flawless": 1548.0,
        "Good": 1491.0,
-       "Minor Damage": 380.0
+       "Minor Damage": 265.0
       },
       "64GB": {
        "Brand New": 1808.0,
-       "Broken": 380.0,
+       "Broken": 265.0,
        "Fair": 1122.0,
        "Flawless": 1710.0,
        "Good": 1653.0,
-       "Minor Damage": 380.0
+       "Minor Damage": 265.0
       }
      },
      "M3 Pro 11-Core CPU 14-Core GPU": {
       "18GB": {
        "Brand New": 891.0,
-       "Broken": 217.0,
+       "Broken": 167.0,
        "Fair": 435.0,
        "Flawless": 816.0,
        "Good": 770.0,
-       "Minor Damage": 217.0
+       "Minor Damage": 167.0
       },
       "36GB": {
        "Brand New": 1069.0,
-       "Broken": 217.0,
+       "Broken": 167.0,
        "Fair": 613.0,
        "Flawless": 994.0,
        "Good": 948.0,
-       "Minor Damage": 217.0
+       "Minor Damage": 167.0
       }
      },
      "M3 Pro 12-Core CPU 18-Core GPU": {
       "18GB": {
        "Brand New": 991.0,
-       "Broken": 237.0,
+       "Broken": 187.0,
        "Fair": 494.0,
        "Flawless": 913.0,
        "Good": 868.0,
-       "Minor Damage": 237.0
+       "Minor Damage": 187.0
       },
       "36GB": {
        "Brand New": 1169.0,
-       "Broken": 237.0,
+       "Broken": 187.0,
        "Fair": 672.0,
        "Flawless": 1091.0,
        "Good": 1046.0,
-       "Minor Damage": 237.0
+       "Minor Damage": 187.0
       }
      }
     },
@@ -15709,91 +15709,91 @@
      "M4 10-Core CPU 10-Core GPU": {
       "16GB": {
        "Brand New": 1200.0,
-       "Broken": 215.0,
+       "Broken": 240.0,
        "Fair": 620.0,
        "Flawless": 1175.0,
        "Good": 1100.0,
-       "Minor Damage": 215.0
+       "Minor Damage": 240.0
       },
       "24GB": {
        "Brand New": 1400.0,
-       "Broken": 290.0,
+       "Broken": 240.0,
        "Fair": 820.0,
        "Flawless": 1375.0,
        "Good": 1300.0,
-       "Minor Damage": 290.0
+       "Minor Damage": 240.0
       },
       "32GB": {
        "Brand New": 1392.0,
-       "Broken": 282.0,
+       "Broken": 240.0,
        "Fair": 812.0,
        "Flawless": 1367.0,
        "Good": 1292.0,
-       "Minor Damage": 282.0
+       "Minor Damage": 240.0
       }
      },
      "M4 Max 14-Core CPU 32-Core GPU": {
       "36GB": {
        "Brand New": 2069.0,
-       "Broken": 378.0,
+       "Broken": 340.0,
        "Fair": 1214.0,
        "Flawless": 1994.0,
        "Good": 1894.0,
-       "Minor Damage": 378.0
+       "Minor Damage": 340.0
       }
      },
      "M4 Max 16-Core CPU 40-Core GPU": {
       "128GB": {
        "Brand New": 2544.0,
-       "Broken": 468.0,
+       "Broken": 380.0,
        "Fair": 1634.0,
        "Flawless": 2494.0,
        "Good": 2394.0,
-       "Minor Damage": 468.0
+       "Minor Damage": 380.0
       },
       "48GB": {
        "Brand New": 2344.0,
-       "Broken": 468.0,
+       "Broken": 380.0,
        "Fair": 1434.0,
        "Flawless": 2294.0,
        "Good": 2194.0,
-       "Minor Damage": 468.0
+       "Minor Damage": 380.0
       },
       "64GB": {
        "Brand New": 2444.0,
-       "Broken": 468.0,
+       "Broken": 380.0,
        "Fair": 1534.0,
        "Flawless": 2394.0,
        "Good": 2294.0,
-       "Minor Damage": 468.0
+       "Minor Damage": 380.0
       }
      },
      "M4 Pro 12-Core CPU 16-Core GPU": {
       "24GB": {
        "Brand New": 1400.0,
-       "Broken": 251.0,
+       "Broken": 245.0,
        "Fair": 785.0,
        "Flawless": 1350.0,
        "Good": 1275.0,
-       "Minor Damage": 251.0
+       "Minor Damage": 245.0
       }
      },
      "M4 Pro 14-Core CPU 20-Core GPU": {
       "24GB": {
        "Brand New": 1425.0,
-       "Broken": 256.0,
+       "Broken": 250.0,
        "Fair": 800.0,
        "Flawless": 1375.0,
        "Good": 1300.0,
-       "Minor Damage": 256.0
+       "Minor Damage": 250.0
       },
       "48GB": {
        "Brand New": 1525.0,
-       "Broken": 306.0,
+       "Broken": 250.0,
        "Fair": 900.0,
        "Flawless": 1475.0,
        "Good": 1400.0,
-       "Minor Damage": 306.0
+       "Minor Damage": 250.0
       }
      }
     },
@@ -15806,28 +15806,28 @@
     "variants": {
      "M5 10-Core CPU 10-Core GPU": {
       "16GB": {
-       "Brand New": 1275.0,
+       "Brand New": 1250.0,
        "Broken": 108.0,
-       "Fair": 650.0,
-       "Flawless": 1175.0,
-       "Good": 1100.0,
+       "Fair": 625.0,
+       "Flawless": 1150.0,
+       "Good": 1075.0,
        "Minor Damage": 108.0
       },
       "24GB": {
-       "Brand New": 1425.0,
-       "Broken": 258.0,
-       "Fair": 800.0,
-       "Flawless": 1325.0,
-       "Good": 1250.0,
-       "Minor Damage": 258.0
+       "Brand New": 1400.0,
+       "Broken": 225.0,
+       "Fair": 775.0,
+       "Flawless": 1300.0,
+       "Good": 1225.0,
+       "Minor Damage": 225.0
       },
       "32GB": {
-       "Brand New": 1550.0,
-       "Broken": 308.0,
-       "Fair": 925.0,
-       "Flawless": 1450.0,
-       "Good": 1375.0,
-       "Minor Damage": 308.0
+       "Brand New": 1525.0,
+       "Broken": 225.0,
+       "Fair": 900.0,
+       "Flawless": 1425.0,
+       "Good": 1350.0,
+       "Minor Damage": 225.0
       }
      }
     },
@@ -16111,56 +16111,56 @@
     "variants": {
      "i7 2.2GHz": {
       "16GB": {
-       "Brand New": 264.0,
-       "Broken": 26.0,
-       "Fair": 146.0,
-       "Flawless": 226.0,
-       "Good": 198.0,
-       "Minor Damage": 26.0
+       "Brand New": 235.0,
+       "Broken": 24.0,
+       "Fair": 111.0,
+       "Flawless": 179.0,
+       "Good": 159.0,
+       "Minor Damage": 24.0
       },
       "32GB": {
-       "Brand New": 313.0,
-       "Broken": 26.0,
-       "Fair": 195.0,
-       "Flawless": 275.0,
-       "Good": 247.0,
-       "Minor Damage": 26.0
+       "Brand New": 275.0,
+       "Broken": 24.0,
+       "Fair": 151.0,
+       "Flawless": 219.0,
+       "Good": 199.0,
+       "Minor Damage": 24.0
       }
      },
      "i7 2.6GHz": {
       "16GB": {
-       "Brand New": 271.0,
-       "Broken": 28.0,
-       "Fair": 153.0,
-       "Flawless": 238.0,
-       "Good": 209.0,
-       "Minor Damage": 28.0
+       "Brand New": 242.0,
+       "Broken": 26.0,
+       "Fair": 117.0,
+       "Flawless": 199.0,
+       "Good": 169.0,
+       "Minor Damage": 26.0
       },
       "32GB": {
-       "Brand New": 320.0,
-       "Broken": 28.0,
-       "Fair": 202.0,
-       "Flawless": 287.0,
-       "Good": 258.0,
-       "Minor Damage": 28.0
+       "Brand New": 282.0,
+       "Broken": 26.0,
+       "Fair": 157.0,
+       "Flawless": 239.0,
+       "Good": 209.0,
+       "Minor Damage": 26.0
       }
      },
      "i9 2.9GHz": {
       "16GB": {
-       "Brand New": 299.0,
-       "Broken": 33.0,
-       "Fair": 167.0,
-       "Flawless": 261.0,
-       "Good": 233.0,
-       "Minor Damage": 33.0
+       "Brand New": 270.0,
+       "Broken": 29.0,
+       "Fair": 126.0,
+       "Flawless": 219.0,
+       "Good": 184.0,
+       "Minor Damage": 29.0
       },
       "32GB": {
-       "Brand New": 348.0,
-       "Broken": 33.0,
-       "Fair": 216.0,
-       "Flawless": 310.0,
-       "Good": 282.0,
-       "Minor Damage": 33.0
+       "Brand New": 310.0,
+       "Broken": 29.0,
+       "Fair": 166.0,
+       "Flawless": 259.0,
+       "Good": 224.0,
+       "Minor Damage": 29.0
       }
      }
     },
@@ -16503,55 +16503,55 @@
      "M4 Max 14-Core CPU 32-Core GPU": {
       "36GB": {
        "Brand New": 2194.0,
-       "Broken": 398.0,
+       "Broken": 360.0,
        "Fair": 1274.0,
        "Flawless": 2094.0,
        "Good": 1994.0,
-       "Minor Damage": 398.0
+       "Minor Damage": 360.0
       }
      },
      "M4 Max 16-Core CPU 40-Core GPU": {
       "128GB": {
        "Brand New": 2594.0,
-       "Broken": 472.0,
+       "Broken": 385.0,
        "Fair": 1549.0,
        "Flawless": 2544.0,
        "Good": 2419.0,
-       "Minor Damage": 472.0
+       "Minor Damage": 385.0
       },
       "48GB": {
        "Brand New": 2294.0,
-       "Broken": 422.0,
+       "Broken": 385.0,
        "Fair": 1349.0,
        "Flawless": 2244.0,
        "Good": 2093.0,
-       "Minor Damage": 422.0
+       "Minor Damage": 385.0
       },
       "64GB": {
        "Brand New": 2494.0,
-       "Broken": 472.0,
+       "Broken": 385.0,
        "Fair": 1474.0,
        "Flawless": 2444.0,
        "Good": 2318.0,
-       "Minor Damage": 472.0
+       "Minor Damage": 385.0
       }
      },
      "M4 Pro 14-Core CPU 20-Core GPU": {
       "24GB": {
        "Brand New": 1725.0,
-       "Broken": 246.0,
+       "Broken": 340.0,
        "Fair": 845.0,
        "Flawless": 1625.0,
        "Good": 1525.0,
-       "Minor Damage": 246.0
+       "Minor Damage": 340.0
       },
       "48GB": {
        "Brand New": 1950.0,
-       "Broken": 346.0,
+       "Broken": 340.0,
        "Fair": 1070.0,
        "Flawless": 1850.0,
        "Good": 1750.0,
-       "Minor Damage": 346.0
+       "Minor Damage": 340.0
       }
      }
     },
