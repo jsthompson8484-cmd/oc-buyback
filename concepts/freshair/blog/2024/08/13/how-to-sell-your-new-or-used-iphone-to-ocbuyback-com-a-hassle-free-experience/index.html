@@ -16,8 +16,15 @@
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Blog", "item": "https://www.ocbuyback.com/blog"}, {"@type": "ListItem", "position": 2, "name": "How to Sell Your New or Used iPhone to OCBuyBack.com: A Hassle-Free Experience"}]}</script>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Figtree:wght@400;500;600;700&display=swap">
 <style>
+/* --- accessibility: visible keyboard focus everywhere (WCAG 2.4.7) --- */
+:focus-visible{outline:3px solid var(--deep);outline-offset:2px;border-radius:4px}
+.skip{position:absolute;left:-9999px;top:0;background:var(--deep);color:#fff;padding:12px 20px;
+font-weight:700;border-radius:0 0 8px 0;z-index:100}
+.skip:focus{left:0}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;
+clip:rect(0,0,0,0);white-space:nowrap;border:0}
 :root{--ground:#f5f8f4;--surface:#ffffff;--ink:#182420;--muted:#5c6e64;--brand:#2EB835;--green:#2D8631;--deep:#1E6323;
---lime:#DFF3E1;--lime-ink:#1E6323;--line:#e3eae2;--gold:#e8a828}
+--lime:#DFF3E1;--lime-ink:#1E6323;--line:#e3eae2;--gold:#b87d00}
 *{box-sizing:border-box}
 body{margin:0;background:var(--ground);color:var(--ink);font:400 16px/1.6 "Figtree",system-ui,sans-serif}
 a{color:inherit;text-decoration:none}
@@ -46,7 +53,7 @@ transition:transform .12s,box-shadow .12s}
 font-size:12px;font-weight:700;padding:9px 14px;border-radius:99px;z-index:20;box-shadow:0 2px 10px rgba(14,61,38,.08)}
 footer{background:var(--deep);color:#bcd6c4;font-size:13.5px;margin-top:40px}
 footer .cols{display:grid;grid-template-columns:1.3fr 1fr 1fr 1fr;gap:36px;padding:44px 0 30px}
-footer h4{font:700 13px "Bricolage Grotesque",sans-serif;letter-spacing:.08em;text-transform:uppercase;color:var(--lime);margin:0 0 12px}
+footer h2.fh{font:700 13px "Bricolage Grotesque",sans-serif;letter-spacing:.08em;text-transform:uppercase;color:var(--lime);margin:0 0 12px}
 footer a{color:#bcd6c4}
 footer a:hover{color:#fff}
 footer .flinks{display:grid;gap:7px}
@@ -79,6 +86,7 @@ transition:transform .12s,box-shadow .12s;display:flex;flex-direction:column}
 .postcta a{display:inline-block;background:var(--lime);color:var(--lime-ink);font-weight:800;font-size:14.5px;
 padding:13px 26px;border-radius:99px;margin-top:14px}
 </style></head><body>
+<a class="skip" href="#main">Skip to main content</a>
 <header><div class="wrap nav">
   <a class="logo" href="../../../../../index.html">OC<i>BuyBack</i></a>
   <nav class="links"><a href="../../../../../sell/index.html">Sell</a><a href="../../../../../trade-in/track/index.html">Track order</a><a href="../../../../../faq/index.html">FAQ</a><a href="../../../../../blog/index.html">Blog</a><a href="../../../../../contact-us/index.html">Contact</a></nav>
@@ -111,6 +119,7 @@ cartBadge();
   } catch(e) {}
 })();
 </script>
+<main id="main">
 
 <div class="wrap post">
   <div class="crumb"><a href="../../../../../index.html">Home</a> → <a href="../../../../../blog/index.html">Blog</a> → <b>How to Sell Your New or Used iPhone to OCBuyBack…</b></div>
@@ -122,6 +131,7 @@ cartBadge();
     Get an instant offer — locked for 14 days, free shipping, paid within 1 business day.
     <br><a href="../../../../../sell/index.html">Get my instant quote</a></div>
 </div>
+</main>
 <footer>
 <div class="wrap">
   <div class="cols">
@@ -130,7 +140,7 @@ cartBadge();
       <p>Cash for phones, tablets, watches, consoles and more — Brea's local buyback shop. Instant quotes, free shipping, paid within 1 business day.</p>
       <p>1203 W Imperial Hwy, STE 103<br>Brea, CA 92821<br><a href="tel:657-286-8274">657-286-8274</a> · <a href="mailto:support@ocbuyback.com">support@ocbuyback.com</a><br>Mon–Fri 10 AM – 6 PM</p>
     </div>
-    <div><h4>Sell your device</h4><div class="flinks">
+    <div><h2 class="fh">Sell your device</h2><div class="flinks">
       <a href="../../../../../sell/cell-phone/apple/index.html">Apple iPhone</a>
       <a href="../../../../../sell/cell-phone/samsung/index.html">Samsung Galaxy</a>
       <a href="../../../../../sell/cell-phone/google/index.html">Google Pixel</a>
@@ -139,14 +149,14 @@ cartBadge();
       <a href="../../../../../sell/game-console/index.html">Game Consoles</a>
       <a href="../../../../../sell/index.html">All devices →</a>
     </div></div>
-    <div><h4>OCBuyBack</h4><div class="flinks">
+    <div><h2 class="fh">OCBuyBack</h2><div class="flinks">
       <a href="../../../../../trade-in/track/index.html">Track your order</a>
       <a href="../../../../../faq/index.html">FAQ</a>
       <a href="../../../../../blog/index.html">Blog</a>
       <a href="../../../../../locations/brea-ca-92821/index.html">Our Brea store</a>
       <a href="../../../../../contact-us/index.html">Contact us</a>
     </div></div>
-    <div><h4>Follow us</h4><div class="flinks">
+    <div><h2 class="fh">Follow us</h2><div class="flinks">
       <a href="https://x.com/buy_oc" target="_blank" rel="noopener">X</a><a href="https://www.facebook.com/ocbuyback" target="_blank" rel="noopener">Facebook</a><a href="https://www.instagram.com/ocbuyback" target="_blank" rel="noopener">Instagram</a>
     </div>
     <p style="margin-top:14px">★ 4.7 on Google<br>★ 4.8 on Trustpilot</p></div>

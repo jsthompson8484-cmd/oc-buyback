@@ -178,8 +178,15 @@ def money(v):
     return f"${v:,.0f}" if v == int(v) else f"${v:,.2f}"
 
 CSS = """
+/* --- accessibility: visible keyboard focus everywhere (WCAG 2.4.7) --- */
+:focus-visible{outline:3px solid var(--deep);outline-offset:2px;border-radius:4px}
+.skip{position:absolute;left:-9999px;top:0;background:var(--deep);color:#fff;padding:12px 20px;
+font-weight:700;border-radius:0 0 8px 0;z-index:100}
+.skip:focus{left:0}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;
+clip:rect(0,0,0,0);white-space:nowrap;border:0}
 :root{--ground:#f5f8f4;--surface:#ffffff;--ink:#182420;--muted:#5c6e64;--brand:#2EB835;--green:#2D8631;--deep:#1E6323;
---lime:#DFF3E1;--lime-ink:#1E6323;--line:#e3eae2;--gold:#e8a828}
+--lime:#DFF3E1;--lime-ink:#1E6323;--line:#e3eae2;--gold:#b87d00}
 *{box-sizing:border-box}
 body{margin:0;background:var(--ground);color:var(--ink);font:400 16px/1.6 "Figtree",system-ui,sans-serif}
 a{color:inherit;text-decoration:none}
@@ -208,7 +215,7 @@ transition:transform .12s,box-shadow .12s}
 font-size:12px;font-weight:700;padding:9px 14px;border-radius:99px;z-index:20;box-shadow:0 2px 10px rgba(14,61,38,.08)}
 footer{background:var(--deep);color:#bcd6c4;font-size:13.5px;margin-top:40px}
 footer .cols{display:grid;grid-template-columns:1.3fr 1fr 1fr 1fr;gap:36px;padding:44px 0 30px}
-footer h4{font:700 13px "Bricolage Grotesque",sans-serif;letter-spacing:.08em;text-transform:uppercase;color:var(--lime);margin:0 0 12px}
+footer h2.fh{font:700 13px "Bricolage Grotesque",sans-serif;letter-spacing:.08em;text-transform:uppercase;color:var(--lime);margin:0 0 12px}
 footer a{color:#bcd6c4}
 footer a:hover{color:#fff}
 footer .flinks{display:grid;gap:7px}
@@ -227,12 +234,13 @@ WIZ_CSS = """
 .pill{background:var(--ground);border:1.5px solid var(--line);border-radius:99px;padding:11px 22px;font-weight:600;
 font-size:14.5px;cursor:pointer;color:var(--ink);font-family:inherit}
 .pill:hover{border-color:var(--green)}
-.pill.on{border-color:var(--brand);background:var(--brand);color:#fff}
+.pill.on{border-color:var(--green);background:var(--green);color:#fff}
 .conds{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.cond{background:var(--ground);border:1.5px solid var(--line);border-radius:12px;padding:14px 16px;cursor:pointer}
+.cond{background:var(--ground);border:1.5px solid var(--line);border-radius:12px;padding:14px 16px;cursor:pointer;
+display:block;width:100%;text-align:left;font-family:inherit;color:var(--ink)}
 .cond:hover{border-color:var(--green)}
 .cond.on{border-color:var(--green);background:#eaf6ee}
-.cond.na{opacity:.45;cursor:not-allowed}
+.cond.na,.cond[disabled]{opacity:.45;cursor:not-allowed}
 .cond b{font-size:14.5px}
 .cond p{margin:3px 0 0;font-size:12.5px;color:var(--muted);line-height:1.45}
 .sum{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:28px;position:sticky;top:88px;
@@ -259,7 +267,8 @@ FONTS = '<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=B
 
 def header(depth):
     p = "../" * depth
-    return f'''<header><div class="wrap nav">
+    return f'''<a class="skip" href="#main">Skip to main content</a>
+<header><div class="wrap nav">
   <a class="logo" href="{p}index.html">OC<i>BuyBack</i></a>
   <nav class="links"><a href="{p}sell/index.html">Sell</a><a href="{p}trade-in/track/index.html">Track order</a><a href="{p}faq/index.html">FAQ</a><a href="{p}blog/index.html">Blog</a><a href="{p}contact-us/index.html">Contact</a></nav>
   <a class="cta" href="{p}sell/index.html">Get my quote</a>
@@ -332,7 +341,9 @@ def page(title, body, depth, extra_css="", *, path=None, desc="", schema=None,
 <style>{CSS}{extra_css}</style></head><body>
 {header(depth)}
 {CART_JS}
+<main id="main">
 {body}
+</main>
 <footer>
 <div class="wrap">
   <div class="cols">
@@ -341,7 +352,7 @@ def page(title, body, depth, extra_css="", *, path=None, desc="", schema=None,
       <p>Cash for phones, tablets, watches, consoles and more — Brea's local buyback shop. Instant quotes, free shipping, paid within 1 business day.</p>
       <p>1203 W Imperial Hwy, STE 103<br>Brea, CA 92821<br><a href="tel:657-286-8274">657-286-8274</a> · <a href="mailto:support@ocbuyback.com">support@ocbuyback.com</a><br>Mon–Fri 10 AM – 6 PM</p>
     </div>
-    <div><h4>Sell your device</h4><div class="flinks">
+    <div><h2 class="fh">Sell your device</h2><div class="flinks">
       <a href="{p}sell/cell-phone/apple/index.html">Apple iPhone</a>
       <a href="{p}sell/cell-phone/samsung/index.html">Samsung Galaxy</a>
       <a href="{p}sell/cell-phone/google/index.html">Google Pixel</a>
@@ -350,14 +361,14 @@ def page(title, body, depth, extra_css="", *, path=None, desc="", schema=None,
       <a href="{p}sell/game-console/index.html">Game Consoles</a>
       <a href="{p}sell/index.html">All devices →</a>
     </div></div>
-    <div><h4>OCBuyBack</h4><div class="flinks">
+    <div><h2 class="fh">OCBuyBack</h2><div class="flinks">
       <a href="{p}trade-in/track/index.html">Track your order</a>
       <a href="{p}faq/index.html">FAQ</a>
       <a href="{p}blog/index.html">Blog</a>
       <a href="{p}locations/brea-ca-92821/index.html">Our Brea store</a>
       <a href="{p}contact-us/index.html">Contact us</a>
     </div></div>
-    <div><h4>Follow us</h4><div class="flinks">
+    <div><h2 class="fh">Follow us</h2><div class="flinks">
       {"".join(f'<a href="{u}" target="_blank" rel="noopener">{n}</a>' for n, u in SOCIAL)}
     </div>
     <p style="margin-top:14px">★ 4.7 on Google<br>★ 4.8 on Trustpilot</p></div>
@@ -395,8 +406,8 @@ for cat, brand, dev, m in models:
     single_storage = all(len(ss) == 1 for ss in variants.values())
     matrix = json.dumps(variants).replace("</", "<\\/")
     cond_html = "".join(
-        f'<div class="cond" data-v="{c}"><b>{c}</b><p>{html.escape(COND_DESC[c])}</p></div>' for c in COND_ORDER)
-    carrier_html = "".join(f'<button class="pill" data-v="{html.escape(c)}">{html.escape(c) if c != "-" else "Standard"}</button>' for c in carriers)
+        f'<button type="button" class="cond" data-v="{c}" aria-pressed="false"><b>{c}</b><p>{html.escape(COND_DESC[c])}</p></button>' for c in COND_ORDER)
+    carrier_html = "".join(f'<button type="button" class="pill" data-v="{html.escape(c)}" aria-pressed="false">{html.escape(c) if c != "-" else "Standard"}</button>' for c in carriers)
     step = 1
     q1_block = ""
     if not single_carrier:
@@ -430,7 +441,8 @@ for cat, brand, dev, m in models:
       <img src="{img_url(cat, brand, dev)}" alt="{html.escape(dev)}" onerror="this.style.display='none'">
       <div class="dev">{html.escape(brand)} {html.escape(dev)}</div>
       <div class="picks" id="picks">Make your picks to see the price</div>
-      <div class="pricebox"><div class="pl">Your offer</div><div class="price dim" id="price">— —</div><div class="lock" id="lock"></div></div>
+      <div class="pricebox"><div class="pl">Your offer</div><div class="price dim" id="price" aria-hidden="true">— —</div><div class="lock" id="lock"></div></div>
+      <p class="sr-only" id="priceLive" role="status" aria-live="polite"></p>
       <button id="go" disabled>Lock my price for 14 days</button>
       <div class="toast" id="toast"></div>
       <div class="trust"><span>Free prepaid USPS shipping label</span><span>Paid within 1 business day of arrival</span><span>PayPal or check — or cash in store</span></div>
@@ -448,7 +460,8 @@ function renderStorage(){{
   const el = document.getElementById("storage"); if(!el) return; el.innerHTML = "";
   if(!state.carrier) {{ el.innerHTML = '<span style="color:var(--muted);font-size:13.5px">Pick an option above first</span>'; return; }}
   Object.keys(M[state.carrier]).sort((a,b)=>storkey(a)-storkey(b)).forEach(s=>{{
-    const b = document.createElement("button"); b.className = "pill"+(state.storage===s?" on":""); b.textContent = s; b.dataset.v = s;
+    const b = document.createElement("button"); b.type = "button"; b.className = "pill"+(state.storage===s?" on":"");
+    b.textContent = s; b.dataset.v = s; b.setAttribute("aria-pressed", state.storage===s ? "true":"false");
     b.onclick = ()=>{{ state.storage = s; state.cond = null; renderStorage(); renderConds(); render(); }};
     el.appendChild(b);
   }});
@@ -457,8 +470,11 @@ function renderConds(){{
   const avail = (state.carrier && state.storage) ? M[state.carrier][state.storage] : null;
   document.querySelectorAll("#cond .cond").forEach(c=>{{
     const has = avail && avail[c.dataset.v] > 0;
-    c.classList.toggle("na", avail !== null && !has);
+    const off = avail !== null && !has;
+    c.classList.toggle("na", off);
+    c.disabled = off;
     c.classList.toggle("on", state.cond === c.dataset.v);
+    c.setAttribute("aria-pressed", state.cond === c.dataset.v ? "true" : "false");
   }});
   // show the full grading criteria for the selected condition (like the live site)
   document.getElementById("condDetail").style.display = state.cond ? "block" : "none";
@@ -467,7 +483,7 @@ function renderConds(){{
 }}
 document.querySelectorAll("#carrier .pill").forEach(b=>b.onclick=()=>{{
   state.carrier = b.dataset.v; state.storage = SINGLE_S ? Object.keys(M[b.dataset.v])[0] : null; state.cond = null;
-  document.querySelectorAll("#carrier .pill").forEach(x=>x.classList.toggle("on", x===b));
+  document.querySelectorAll("#carrier .pill").forEach(x=>{{ x.classList.toggle("on", x===b); x.setAttribute("aria-pressed", x===b ? "true":"false"); }});
   renderStorage(); renderConds(); render();
 }});
 document.getElementById("cond").addEventListener("click", e=>{{
@@ -481,12 +497,15 @@ function render(){{
   document.getElementById("picks").textContent = parts.join(" · ") || "Make your picks to see the price";
   const priceEl = document.getElementById("price"), go = document.getElementById("go");
   const p = (carrier && storage && cond) ? M[carrier][storage][cond] : null;
+  const live = document.getElementById("priceLive");
   if(p > 0){{
     priceEl.textContent = "$" + p.toLocaleString(); priceEl.classList.remove("dim");
+    if(live) live.textContent = "Your offer: $" + p.toLocaleString() + " for " + (parts.join(", ") || "your device") + ". Price locks for 14 days.";
     document.getElementById("lock").textContent = "Locked through " + new Date(Date.now()+14*864e5).toLocaleDateString("en-US",{{month:"short",day:"numeric"}});
     go.disabled = false;
   }} else {{
     priceEl.textContent = "— —"; priceEl.classList.add("dim"); go.disabled = true;
+    if(live) live.textContent = "";
     document.getElementById("lock").textContent = "";
   }}
 }}
@@ -675,7 +694,10 @@ padding:12px 14px;font:400 15px "Figtree",sans-serif;color:var(--ink)}
 .field.err input,.field.err select{border-color:#b3372b}
 .field .hint{font-size:12px;color:#b3372b;margin-top:4px;min-height:14px}
 .pay{display:grid;gap:10px}
-.payopt{border:1.5px solid var(--line);border-radius:12px;padding:14px 16px;cursor:pointer;background:var(--ground)}
+.payopt{border:1.5px solid var(--line);border-radius:12px;cursor:pointer;background:var(--ground)}
+.payopt .optmain{display:block;padding:14px 16px;cursor:pointer}
+.payopt:has(input:focus-visible){outline:3px solid var(--deep);outline-offset:2px}
+.payopt .extra{padding:0 16px 14px}
 .payopt.on{border-color:var(--green);background:#eaf6ee}
 .payopt b{font-size:14.5px}
 .payopt p{margin:3px 0 0;font-size:12.5px;color:var(--muted)}
@@ -720,7 +742,7 @@ cart_body = f'''
 
   <div id="emptyState" class="bigstate" style="display:none">
     <div class="emoji">📦</div>
-    <h2>Nothing here yet</h2>
+    <h1>Nothing here yet</h1>
     <p>Get an instant quote for your device — it takes about 90 seconds and the price locks for 14 days.</p>
     <a class="btn" href="../index.html">Pick a device to sell</a>
   </div>
@@ -734,25 +756,28 @@ cart_body = f'''
 
     <div class="co">
       <div>
-        <div class="fs"><h2>How do you want to get paid?</h2>
-          <div class="pay" id="pay">
-            <div class="payopt" data-v="PayPal"><b>PayPal</b><p>Sent to your PayPal within 1 business day of arrival.</p>
-              <div class="extra field"><label for="paypal">PayPal email</label><input id="paypal"><div class="hint"></div></div></div>
-            <div class="payopt" data-v="Check"><b>Check</b><p>Mailed to the address you enter below within 1 business day of your device arriving.</p></div>
-            <div class="payopt" data-v="Cash in store"><b>Cash in store</b><p>Skip shipping — bring your device to 1203 W Imperial Hwy, Brea and get paid on the spot.</p></div>
+        <div class="fs"><h2 id="payHead">How do you want to get paid?</h2>
+          <div class="pay" id="pay" role="group" aria-labelledby="payHead">
+            <div class="payopt" data-v="PayPal">
+              <label class="optmain"><input type="radio" name="paymethod" value="PayPal" class="sr-only"><b>PayPal</b><p>Sent to your PayPal within 1 business day of arrival.</p></label>
+              <div class="extra field"><label for="paypal">PayPal email</label><input id="paypal"><div class="hint" aria-live="polite"></div></div></div>
+            <div class="payopt" data-v="Check">
+              <label class="optmain"><input type="radio" name="paymethod" value="Check" class="sr-only"><b>Check</b><p>Mailed to the address you enter below within 1 business day of your device arriving.</p></label></div>
+            <div class="payopt" data-v="Cash in store">
+              <label class="optmain"><input type="radio" name="paymethod" value="Cash in store" class="sr-only"><b>Cash in store</b><p>Skip shipping — bring your device to 1203 W Imperial Hwy, Brea and get paid on the spot.</p></label></div>
           </div>
         </div>
-        <div class="fs" id="shipWrap" style="display:none"><h2>How would you like to ship?</h2>
-          <div class="pay" id="shipPick">
-            <div class="payopt shipopt" data-c="USPS"><b>USPS</b><p>Show a QR code at any Post Office — no printer needed.</p></div>
-            <div class="payopt shipopt" data-c="FedEx"><b>FedEx</b><p>Print the label and drop off at any FedEx location.</p></div>
-            <div class="payopt shipopt" data-c="UPS"><b>UPS</b><p>Print the label and drop off at any UPS location.</p></div>
+        <div class="fs" id="shipWrap" style="display:none"><h2 id="shipHead">How would you like to ship?</h2>
+          <div class="pay" id="shipPick" role="group" aria-labelledby="shipHead">
+            <div class="payopt shipopt" data-c="USPS"><label class="optmain"><input type="radio" name="shipcarrier" value="USPS" class="sr-only"><b>USPS</b><p>Show a QR code at any Post Office — no printer needed.</p></label></div>
+            <div class="payopt shipopt" data-c="FedEx"><label class="optmain"><input type="radio" name="shipcarrier" value="FedEx" class="sr-only"><b>FedEx</b><p>Print the label and drop off at any FedEx location.</p></label></div>
+            <div class="payopt shipopt" data-c="UPS"><label class="optmain"><input type="radio" name="shipcarrier" value="UPS" class="sr-only"><b>UPS</b><p>Print the label and drop off at any UPS location.</p></label></div>
           </div>
           <p style="color:var(--muted);font-size:12.5px;margin:8px 0 0" id="shipNote"></p>
         </div>
         <div class="fs"><h2 id="detailsHead">Your details</h2>
           <div class="frow">
-            <div class="field"><label for="fn">First name</label><input id="fn" autocomplete="given-name"><div class="hint"></div></div>
+            <div class="field"><label for="fn">First name</label><input id="fn" autocomplete="given-name"><div class="hint" aria-live="polite"></div></div>
             <div class="field"><label for="ln">Last name</label><input id="ln" autocomplete="family-name"><div class="hint"></div></div>
             <div class="field full addrf"><label for="a1">Address</label><input id="a1" autocomplete="address-line1"><div class="hint"></div></div>
             <div class="field full addrf"><label for="a2">Address 2 <span style="color:var(--muted);font-weight:400">(optional)</span></label><input id="a2" autocomplete="address-line2"><div class="hint"></div></div>
@@ -772,7 +797,7 @@ cart_body = f'''
         <div id="sideRows"></div>
         <div class="tot"><span style="font-weight:700">Total offer</span><b id="sideTotal">$0</b></div>
         <button id="submit">Sell my device(s)</button>
-        <div class="toast" id="coToast" style="margin-top:12px;font-size:13px;color:#b3372b;text-align:center;min-height:18px;font-weight:600"></div>
+        <div class="toast" id="coToast" role="alert" aria-live="assertive" style="margin-top:12px;font-size:13px;color:#b3372b;text-align:center;min-height:18px;font-weight:600"></div>
         <div class="trust"><span>Free prepaid shipping label</span><span>Price locked for 14 days</span><span>Paid within 1 business day of arrival</span></div>
       </aside>
     </div>
@@ -811,13 +836,17 @@ function refreshShip(){{
   document.querySelectorAll(".shipopt").forEach(x=>{{ x.style.display = allowed.includes(x.dataset.c) ? "" : "none"; }});
   if(!allowed.includes(shipCarrier) || !show)
     shipCarrier = show ? (allowed.includes("USPS") ? "USPS" : "FedEx") : (allowed.length === 1 ? allowed[0] : "USPS");
-  document.querySelectorAll(".shipopt").forEach(x=>x.classList.toggle("on", x.dataset.c === shipCarrier));
+  document.querySelectorAll(".shipopt").forEach(x=>{{
+    x.classList.toggle("on", x.dataset.c === shipCarrier);
+    const radio = x.querySelector("input[type=radio]"); if(radio) radio.checked = (x.dataset.c === shipCarrier);
+  }});
   document.getElementById("shipNote").textContent = allowed.includes("USPS")
     ? "Pick whichever is easiest — the label is free either way."
     : "These items ship FedEx or UPS — sturdier handling for bigger boxes, and the label is free either way.";
 }}
-document.getElementById("shipPick").addEventListener("click", e=>{{
-  const t = e.target.closest(".shipopt"); if(!t) return;
+document.getElementById("shipPick").addEventListener("change", e=>{{
+  if(e.target.name !== "shipcarrier") return;
+  const t = e.target.closest(".shipopt");
   shipCarrier = t.dataset.c;
   document.querySelectorAll(".shipopt").forEach(x=>x.classList.toggle("on", x===t));
 }});
@@ -831,7 +860,7 @@ function renderCart(){{
   c.forEach((it,i)=>{{
     const d = document.createElement("div"); d.className = "item";
     const spec = [it.carrier, it.storage, it.cond].filter(v=>v && v!=="-").join(" / ");
-    d.innerHTML = `<img src="${{it.img}}" onerror="this.style.display='none'">`+
+    d.innerHTML = `<img src="${{it.img}}" alt="" onerror="this.style.display='none'">`+
       `<div class="name">${{it.brand}} ${{it.device}}</div><div class="spec">${{spec}}</div>`+
       `<div class="price">${{money(it.price)}}<small style="color:var(--muted);font-weight:500"> each</small></div>`+
       `<div class="qty"><button data-i="${{i}}" data-d="-1">−</button><b>${{it.qty}}</b><button data-i="${{i}}" data-d="1">+</button></div>`+
@@ -856,9 +885,9 @@ document.getElementById("items")?.addEventListener("click", e=>{{
   else {{ c[i].qty += +t.dataset.d; if(c[i].qty < 1) c.splice(i,1); }}
   cartSave(c); renderCart();
 }});
-document.getElementById("pay").addEventListener("click", e=>{{
+document.getElementById("pay").addEventListener("change", e=>{{
+  if(e.target.name !== "paymethod") return;
   const t = e.target.closest(".payopt");
-  if(!t || e.target.closest("input")) return;
   payMethod = t.dataset.v;
   document.querySelectorAll(".payopt").forEach(x=>x.classList.toggle("on", x===t));
   // cash in store = walk-in: no shipping, so no address — just name, email, phone
@@ -874,8 +903,12 @@ document.getElementById("pay").addEventListener("click", e=>{{
   refreshShip();
 }});
 function setErr(id, msg){{
-  const f = document.getElementById(id).closest(".field");
+  const el = document.getElementById(id), f = el.closest(".field");
   f.classList.toggle("err", !!msg); f.querySelector(".hint").textContent = msg || "";
+  el.setAttribute("aria-invalid", msg ? "true" : "false");
+  const hint = f.querySelector(".hint");
+  if(!hint.id) hint.id = id + "-hint";
+  if(msg) el.setAttribute("aria-describedby", hint.id); else el.removeAttribute("aria-describedby");
 }}
 // ZIP -> city/state autofill (prevents typos; fields stay editable)
 document.getElementById("zip").addEventListener("input", async (e) => {{
@@ -1051,7 +1084,7 @@ track_body = '''
     <div class="demo-note" id="demoNote">Sample data — live tracking connects when the site is deployed.</div>
     <div class="shead">
       <div class="on">Order <span id="rOrder"></span></div>
-      <h1 id="rLabel"></h1>
+      <h2 id="rLabel"></h2>
       <div class="sub2" id="rMeta"></div>
       <div class="prog" id="rProg"></div>
     </div>
