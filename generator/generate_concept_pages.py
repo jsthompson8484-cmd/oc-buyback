@@ -263,7 +263,9 @@ border-radius:99px;cursor:pointer}
 @media(max-width:900px){.layout{grid-template-columns:1fr}.sum{position:static}.conds{grid-template-columns:1fr}}
 """
 
-FONTS = '<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Figtree:wght@400;500;600;700&display=swap">'
+FONTS = ('<link rel="preconnect" href="https://fonts.googleapis.com">'
+         '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>'
+         '<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Figtree:wght@400;500;600;700&display=swap">')
 
 def header(depth):
     p = "../" * depth
@@ -348,7 +350,7 @@ def page(title, body, depth, extra_css="", *, path=None, desc="", schema=None,
 <div class="wrap">
   <div class="cols">
     <div class="fbrand">
-      <img src="{p}assets/logo-white.png" alt="OCBuyBack">
+      <img src="{p}assets/logo-white.png" alt="OCBuyBack" width="150" height="34" loading="lazy" decoding="async">
       <p>Cash for phones, tablets, watches, consoles and more — Brea's local buyback shop. Instant quotes, free shipping, paid within 1 business day.</p>
       <p>1203 W Imperial Hwy, STE 103<br>Brea, CA 92821<br><a href="tel:657-286-8274">657-286-8274</a> · <a href="mailto:support@ocbuyback.com">support@ocbuyback.com</a><br>Mon–Fri 10 AM – 6 PM</p>
     </div>
@@ -438,7 +440,7 @@ for cat, brand, dev, m in models:
       <p style="color:var(--muted);font-size:13px;max-width:60ch;margin-top:10px">Not sure about condition? Pick your best guess — if our inspection differs, you get a new offer to accept, or we ship your device back free.</p>
     </div>
     <aside class="sum">
-      <img src="{img_url(cat, brand, dev)}" alt="{html.escape(dev)}" onerror="this.style.display='none'">
+      <img src="{img_url(cat, brand, dev)}" alt="{html.escape(dev)}" width="260" height="260" decoding="async" onerror="this.style.display='none'">
       <div class="dev">{html.escape(brand)} {html.escape(dev)}</div>
       <div class="picks" id="picks">Make your picks to see the price</div>
       <div class="pricebox"><div class="pl">Your offer</div><div class="price dim" id="price" aria-hidden="true">— —</div><div class="lock" id="lock"></div></div>
@@ -584,7 +586,7 @@ def brand_logo(brand):
 def model_cards(cat, brand, devs, depth_prefix=""):
     return "".join(
         f"""<a class="card" href="{depth_prefix}{slug(brand)}/{mslug(m, d)}/index.html">
-<img src="{img_url(cat, brand, d)}" alt="" onerror="this.style.display='none'">
+<img src="{img_url(cat, brand, d)}" alt="" width="193" height="193" loading="lazy" decoding="async" onerror="this.style.display='none'">
 <div class="name">{html.escape(d)}</div><div class="val">{money(model_max(m))} <small>up to</small></div></a>"""
         for d, m in devs)
 
@@ -603,7 +605,7 @@ for cat in LIVE_CATS:
 
     # brand picker page (like the live site) + a page per brand
     tiles = "".join(f"""<a class="card" href="{slug(b)}/index.html" style="padding:28px 20px">
-<img src="{brand_logo(b)}" alt="{html.escape(b)} logo" style="height:64px;object-fit:contain" onerror="this.style.display='none'">
+<img src="{brand_logo(b)}" alt="{html.escape(b)} logo" width="64" height="64" loading="lazy" decoding="async" style="height:64px;object-fit:contain" onerror="this.style.display='none'">
 <div class="name" style="font-size:17px;margin-top:6px">{html.escape(b)}</div>
 <div style="color:var(--green);font-weight:700;font-size:13px">{html.escape(BRAND_LINE.get((cat, b), ""))}</div>
 <div class="val" style="font-size:14px">up to {money(max(model_max(m) for _, m in by_brand[b]))}</div>
@@ -644,7 +646,7 @@ for cat in LIVE_CATS:
     top = max(devs, key=lambda x: model_max(x[2]))
     n = len(devs)
     cat_cards.append(f'''<a class="card" href="{CAT_SLUG[cat]}/index.html">
-<img src="{img_url(cat, top[0], top[1])}" alt="" onerror="this.style.display='none'">
+<img src="{img_url(cat, top[0], top[1])}" alt="" width="193" height="193" loading="lazy" decoding="async" onerror="this.style.display='none'">
 <div class="name">{CAT_DISPLAY[cat]}</div><div class="val">up to {money(model_max(top[2]))}</div>
 <div style="color:var(--muted);font-size:12.5px;margin-top:2px">{n} models</div></a>''')
 body = f'''
@@ -860,7 +862,7 @@ function renderCart(){{
   c.forEach((it,i)=>{{
     const d = document.createElement("div"); d.className = "item";
     const spec = [it.carrier, it.storage, it.cond].filter(v=>v && v!=="-").join(" / ");
-    d.innerHTML = `<img src="${{it.img}}" alt="" onerror="this.style.display='none'">`+
+    d.innerHTML = `<img src="${{it.img}}" alt="" width="96" height="96" decoding="async" onerror="this.style.display='none'">`+
       `<div class="name">${{it.brand}} ${{it.device}}</div><div class="spec">${{spec}}</div>`+
       `<div class="price">${{money(it.price)}}<small style="color:var(--muted);font-weight:500"> each</small></div>`+
       `<div class="qty"><button data-i="${{i}}" data-d="-1">−</button><b>${{it.qty}}</b><button data-i="${{i}}" data-d="1">+</button></div>`+
@@ -1465,7 +1467,7 @@ def _top_devices(cat, brand=None, n=1):
 
 def _dev_card(prefix, cat, b, d, m):
     return (f'<a class="card" href="{prefix}sell/{CAT_SLUG[cat]}/{slug(b)}/{mslug(m, d)}/index.html">'
-            f'<img src="{img_url(cat, b, d)}" alt="{html.escape(d)}" onerror="this.style.display=\'none\'">'
+            f'<img src="{img_url(cat, b, d)}" alt="{html.escape(d)}" width="193" height="193" loading="lazy" decoding="async" onerror="this.style.display=\'none\'">'
             f'<div class="name">{html.escape(d)}</div><div class="val">up to {money(model_max(m))}</div></a>')
 
 TOP_IPHONES = _top_devices("Cell Phone", "Apple", 6)
@@ -1501,7 +1503,7 @@ def city_cat_cards(prefix):
         if not devs: continue
         top = max(devs, key=lambda x: model_max(x[2]))
         cards.append(f'''<a class="card" href="{prefix}sell/{CAT_SLUG[cat]}/index.html">
-<img src="{img_url(cat, top[0], top[1])}" alt="" onerror="this.style.display='none'">
+<img src="{img_url(cat, top[0], top[1])}" alt="" width="193" height="193" loading="lazy" decoding="async" onerror="this.style.display='none'">
 <div class="name">{CAT_DISPLAY[cat]}</div><div class="val">up to {money(model_max(top[2]))}</div></a>''')
     return "".join(cards)
 

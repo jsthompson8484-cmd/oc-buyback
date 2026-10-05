@@ -12,7 +12,7 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="OCBuyBack">
 <meta name="robots" content="noindex,nofollow">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Figtree:wght@400;500;600;700&display=swap">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Figtree:wght@400;500;600;700&display=swap">
 <style>
 /* --- accessibility: visible keyboard focus everywhere (WCAG 2.4.7) --- */
 :focus-visible{outline:3px solid var(--deep);outline-offset:2px;border-radius:4px}
@@ -324,7 +324,7 @@ function renderCart(){
   c.forEach((it,i)=>{
     const d = document.createElement("div"); d.className = "item";
     const spec = [it.carrier, it.storage, it.cond].filter(v=>v && v!=="-").join(" / ");
-    d.innerHTML = `<img src="${it.img}" alt="" onerror="this.style.display='none'">`+
+    d.innerHTML = `<img src="${it.img}" alt="" width="96" height="96" decoding="async" onerror="this.style.display='none'">`+
       `<div class="name">${it.brand} ${it.device}</div><div class="spec">${spec}</div>`+
       `<div class="price">${money(it.price)}<small style="color:var(--muted);font-weight:500"> each</small></div>`+
       `<div class="qty"><button data-i="${i}" data-d="-1">−</button><b>${it.qty}</b><button data-i="${i}" data-d="1">+</button></div>`+
@@ -485,7 +485,7 @@ renderCart();
 <div class="wrap">
   <div class="cols">
     <div class="fbrand">
-      <img src="../../assets/logo-white.png" alt="OCBuyBack">
+      <img src="../../assets/logo-white.png" alt="OCBuyBack" width="150" height="34" loading="lazy" decoding="async">
       <p>Cash for phones, tablets, watches, consoles and more — Brea's local buyback shop. Instant quotes, free shipping, paid within 1 business day.</p>
       <p>1203 W Imperial Hwy, STE 103<br>Brea, CA 92821<br><a href="tel:657-286-8274">657-286-8274</a> · <a href="mailto:support@ocbuyback.com">support@ocbuyback.com</a><br>Mon–Fri 10 AM – 6 PM</p>
     </div>
