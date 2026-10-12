@@ -34,7 +34,9 @@ tr:last-child td{border-bottom:none}
 padding:3px 9px;border-radius:99px;background:var(--ground);color:var(--muted)}
 .chip.initiated{background:#e7f0fa;color:#20507e}.chip.shipped{background:#e7f0fa;color:#20507e}.chip.delivered{background:#e3f1e5;color:var(--green)}.chip.received{background:#faf0e2;color:var(--warn)}
 .chip.evaluating{background:#f3eafa;color:#6d3fa3}.chip.adjusted{background:#faf0e2;color:var(--warn)}.chip.action_pending{background:#faf0e2;color:var(--warn)}
-.chip.paid{background:#e3f1e5;color:var(--green)}.chip.returned,.chip.cancelled{background:#f9e9e6;color:var(--crit)}
+.chip.paid{background:#e3f1e5;color:var(--green)}.chip.returned,.chip.legacy{background:#eef1f5;color:#4b5a6b}
+.chip.expired{background:#f1f0ec;color:#6b6457}
+.chip.cancelled{background:#f9e9e6;color:var(--crit)}
 .btn{background:var(--green);color:#fff;border:0;border-radius:99px;font-weight:700;font-size:13px;padding:9px 16px}
 .btn:hover{background:var(--deep)}
 .btn.ghost{background:var(--ground);color:var(--ink);border:1.5px solid var(--line)}
@@ -339,6 +341,9 @@ else {
 }
 const $ = (s) => document.querySelector(s);
 const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+// orders carried over from the old FlipTech platform
+const legacyBadge = (t) => t.legacy_id
+  ? ` <span class="chip legacy" title="Imported from the old site — original status: ${esc(t.legacy_status || "n/a")}">⟲ legacy</span>` : "";
 const money = (v) => "$" + Number(v || 0).toLocaleString(undefined, {maximumFractionDigits: 2});
 let toastT;
 function toast(msg){ const t = $("#toast"); t.textContent = msg; t.classList.add("show");
@@ -462,7 +467,7 @@ async function loadActions(){
         const responded = iss.filter((i) => ["accepted","declined","cannot_complete"].includes(i.status));
         return `<tr>
           <td style="width:110px"><span class="chip ${t.status}">${t.status}</span></td>
-          <td><b>${esc(t.order_number)}</b><br><span class="muted">${esc(t.first_name)} ${esc(t.last_name)}</span></td>
+          <td><b>${esc(t.order_number)}</b>${legacyBadge(t)}<br><span class="muted">${esc(t.first_name)} ${esc(t.last_name)}</span></td>
           <td>${(t.trade_in_items || []).map((i) => esc(`${i.brand} ${i.model}`)).join("<br>")}</td>
           <td class="muted">${esc(t.email)}<br>${esc(t.phone)}</td>
           <td>${esc(t.payment_method)}</td>
@@ -717,7 +722,7 @@ $("#postTable").addEventListener("click", async (e) => {
 });
 
 // ---------- trade-ins ----------
-const STATUSES = ["initiated","shipped","delivered","received","evaluating","adjusted","action_pending","paid","returned","cancelled"];
+const STATUSES = ["initiated","shipped","delivered","received","evaluating","adjusted","action_pending","paid","returned","cancelled","expired"];
 async function loadTradeIns(){
   let q = sb.from("trade_ins").select("*, trade_in_items(*)").order("created_at", { ascending: false }).limit(200);
   if ($("#tiStatus").value) q = q.eq("status", $("#tiStatus").value);
@@ -728,7 +733,7 @@ async function loadTradeIns(){
   $("#tiTable tbody").innerHTML = (data || []).map((t) => `
     <tr>
       <td><span class="chip ${t.status}">${t.status}</span></td>
-      <td><b>${esc(t.order_number)}</b></td>
+      <td><b>${esc(t.order_number)}</b>${legacyBadge(t)}</td>
       <td>${esc(t.first_name)} ${esc(t.last_name)}<br><span class="muted">${esc(t.city)}, ${esc(t.state)}</span></td>
       <td>${esc(t.email)}<br><span class="muted">${esc(t.phone)}</span></td>
       <td>${esc(t.payment_method)}${t.payment_detail ? "<br><span class='muted'>" + esc(t.payment_detail) + "</span>" : ""}</td>
@@ -752,7 +757,7 @@ function openTradeInDialog(t, refresh){
   const d = $("#tiDialog");
   d.classList.remove("wide");
   d.innerHTML = `
-    <h1 style="margin:0 0 4px">${esc(t.order_number)} <span class="chip ${t.status}">${t.status}</span></h1>
+    <h1 style="margin:0 0 4px">${esc(t.order_number)} <span class="chip ${t.status}">${t.status}</span>${legacyBadge(t)}</h1>
     <p class="muted" style="margin:0 0 12px">${esc(t.first_name)} ${esc(t.last_name)} · ${esc(t.address1)}${t.address2 ? ", " + esc(t.address2) : ""}, ${esc(t.city)}, ${esc(t.state)} ${esc(t.zip)}</p>
     ${(t.trade_in_items || []).map((it) => `
       <div class="detail"><b>${esc(it.brand)} ${esc(it.model)}</b> × ${it.qty}
@@ -793,6 +798,7 @@ function openTradeInDialog(t, refresh){
         <span class="muted" id="iHint" style="font-size:12.5px">The email includes one-click links — their response lands back here automatically.</span>
       </div>
     </div>
+    ${t.legacy_id ? `<p class="muted" style="margin:6px 0 0;font-size:12.5px">⟲ Imported from the old FlipTech site (order #${t.legacy_id}, original status "${esc(t.legacy_status || "n/a")}"). Pre-migration orders are read-only history — payment and label actions apply to new orders only.</p>` : ""}
     ${t.label_url || t.label_qr_url ? `<div class="row" style="margin-top:14px;background:var(--ground);border-radius:10px;padding:10px 12px;gap:10px;align-items:center">
       <b style="font-size:13px">📦 ${esc(t.ship_carrier || "USPS")} label</b>
       ${t.label_url ? `<a class="btn sm ghost" href="${esc(t.label_url)}" target="_blank" rel="noopener">Open label</a>` : ""}
