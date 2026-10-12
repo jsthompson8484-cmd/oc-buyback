@@ -3,10 +3,11 @@
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex,nofollow">
 <title>OCBuyBack Admin</title>
+<link rel="icon" type="image/png" href="../favicon.png">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=Figtree:wght@400;500;600;700&display=swap">
 <style>
-:root{--ground:#f5f8f4;--surface:#fff;--ink:#182420;--muted:#5c6e64;--green:#167a46;--deep:#0e3d26;
---lime:#d9f26a;--lime-ink:#2c3a10;--line:#e3eae2;--warn:#b45d0e;--crit:#b3372b}
+:root{--ground:#f5f8f4;--surface:#fff;--ink:#182420;--muted:#5c6e64;--brand:#2EB835;--green:#2D8631;--deep:#1E6323;
+--lime:#DFF3E1;--lime-ink:#1E6323;--line:#e3eae2;--warn:#b45d0e;--crit:#b3372b}
 *{box-sizing:border-box}
 body{margin:0;background:var(--ground);color:var(--ink);font:400 14.5px/1.55 "Figtree",system-ui,sans-serif}
 button{font-family:inherit;cursor:pointer}
@@ -32,8 +33,10 @@ tr:last-child td{border-bottom:none}
 .chip{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;
 padding:3px 9px;border-radius:99px;background:var(--ground);color:var(--muted)}
 .chip.initiated{background:#e7f0fa;color:#20507e}.chip.shipped{background:#e7f0fa;color:#20507e}.chip.delivered{background:#e3f1e5;color:var(--green)}.chip.received{background:#faf0e2;color:var(--warn)}
-.chip.evaluating{background:#f3eafa;color:#6d3fa3}.chip.adjusted{background:#faf0e2;color:var(--warn)}
-.chip.paid{background:#e3f1e5;color:var(--green)}.chip.returned,.chip.cancelled{background:#f9e9e6;color:var(--crit)}
+.chip.evaluating{background:#f3eafa;color:#6d3fa3}.chip.adjusted{background:#faf0e2;color:var(--warn)}.chip.action_pending{background:#faf0e2;color:var(--warn)}
+.chip.paid{background:#e3f1e5;color:var(--green)}.chip.returned,.chip.legacy{background:#eef1f5;color:#4b5a6b}
+.chip.expired{background:#f1f0ec;color:#6b6457}
+.chip.cancelled{background:#f9e9e6;color:var(--crit)}
 .btn{background:var(--green);color:#fff;border:0;border-radius:99px;font-weight:700;font-size:13px;padding:9px 16px}
 .btn:hover{background:var(--deep)}
 .btn.ghost{background:var(--ground);color:var(--ink);border:1.5px solid var(--line)}
@@ -72,10 +75,11 @@ min-height:260px;max-height:46vh;overflow-y:auto;padding:14px 16px;font-size:14.
 <div id="login" style="display:none">
   <div class="panel">
     <h1>OC<i style="font-style:normal;color:var(--green)">BuyBack</i> Admin</h1>
-    <p class="muted">Sign in with your admin email — we'll send a magic link.</p>
-    <div class="row" style="justify-content:center;margin-top:14px">
-      <input id="loginEmail" type="email" placeholder="you@example.com" style="width:240px">
-      <button class="btn" id="loginBtn">Send link</button>
+    <p class="muted">Sign in with your admin email and password.</p>
+    <div style="display:grid;gap:10px;max-width:280px;margin:14px auto 0">
+      <input id="loginEmail" type="email" placeholder="you@example.com" autocomplete="username">
+      <input id="loginPass" type="password" placeholder="Password" autocomplete="current-password">
+      <button class="btn" id="loginBtn">Sign in</button>
     </div>
     <p class="muted" id="loginMsg" style="min-height:20px;margin-top:12px"></p>
   </div>
@@ -92,6 +96,7 @@ min-height:260px;max-height:46vh;overflow-y:auto;padding:14px 16px;font-size:14.
   <button class="tab" data-t="promos">Promo Codes</button>
   <button class="tab" data-t="faqs">FAQs</button>
   <span class="who" id="who"></span>
+  <button class="out" id="publishBtn" style="background:var(--green);border-color:var(--green);font-weight:700">🚀 Publish site</button>
   <button class="out" id="signOut">Sign out</button>
 </div></header>
 <div class="wrap">
@@ -154,13 +159,31 @@ min-height:260px;max-height:46vh;overflow-y:auto;padding:14px 16px;font-size:14.
       to confirm your changes are flowing through.</p>
       <div id="feedList" style="display:grid;gap:6px;font-size:13px"></div>
     </div>
+    <div class="panel">
+      <div class="row" style="justify-content:space-between">
+        <b style="font-size:15px">Mac price feed — daily auto-sync</b>
+        <button class="btn sm" id="macSync">Sync now</button>
+      </div>
+      <p class="muted" style="margin:8px 0 10px;font-size:13px">Trade-in prices for Mac computers and
+      laptops pull automatically from the partner feed every morning at 6 AM. Only Mac categories are
+      touched, price jumps over 40% are held back for review, and nothing shows on the site until you
+      enable the model or category here.</p>
+      <div id="macSyncInfo" class="muted" style="font-size:13px">No sync has run yet.</div>
+    </div>
     <div class="panel"><div class="row">
       <select id="catSel"></select>
       <select id="brandSel"></select>
       <button class="btn ghost" id="catLoad">Load prices</button>
+      <button class="btn" id="devAdd">+ Add device</button>
       <span class="muted" id="catCount"></span>
       <button class="btn" id="catSave" style="margin-left:auto;display:none">Save changes (<span id="dirtyN">0</span>)</button>
     </div></div>
+    <div class="panel"><details id="condPanel">
+      <summary style="font-weight:700;font-size:15px;cursor:pointer">📝 Condition descriptions — edit what customers see</summary>
+      <p class="muted" style="font-size:12.5px;margin:8px 0 12px">"Card text" is the one-liner on each condition card; "What this means" is the panel that expands when a customer selects the condition (intro sentence + one criterion per line). Changes go live on the next site publish.</p>
+      <div id="condEditors"></div>
+      <button class="btn" id="condSave" style="margin-top:6px">Save condition descriptions</button>
+    </details></div>
     <div class="panel" style="overflow-x:auto"><table class="pricegrid" id="catTable">
       <thead><tr><th>On</th><th>Model</th><th>Carrier</th><th>Storage</th>
         <th>Brand New</th><th>Flawless</th><th>Good</th><th>Fair</th><th>Minor Damage</th><th>Broken</th></tr></thead>
@@ -211,20 +234,22 @@ function demoClient(){
   const iso = (d) => new Date(d).toISOString();
   const DATA = {
     trade_ins: [
-      { id:"d1", order_number:"OCB-K4TN2M", status:"shipped", first_name:"Pooja", last_name:"Subramaniam",
-        email:"poojalsub@gmail.com", phone:"248-635-2371", address1:"18 Sample Ave", city:"Irvine", state:"CA", zip:"92602",
-        payment_method:"zelle", payment_detail:"poojalsub@gmail.com", total_quote:905, total_paid:null, source:"SellCell",
+      { id:"d1", order_number:"OCB-K4TN2M", status:"shipped", first_name:"Demi", last_name:"Example",
+        email:"demi.example@example.com", phone:"555-010-0001", address1:"18 Sample Ave", city:"Irvine", state:"CA", zip:"92602",
+        payment_method:"zelle", payment_detail:"demi.example@example.com", total_quote:905, total_paid:null, source:"SellCell",
         tracking_number:null, created_at: iso(now - 2*3600e3),
         trade_in_items:[{id:901,category:"Cell Phone",brand:"Apple",model:"iPhone 17 Pro Max",carrier:"Unlocked",storage:"256GB",condition:"Flawless",quoted_price:905,qty:1}] },
-      { id:"d2", order_number:"OCB-8WQPRV", status:"received", first_name:"Bret", last_name:"Packard",
-        email:"bretpackard@gmail.com", phone:"702-308-6154", address1:"9 Demo Ct", city:"Brea", state:"CA", zip:"92821",
+      { id:"d2", order_number:"OCB-8WQPRV", status:"received", first_name:"Sam", last_name:"Sample",
+        email:"sam.sample@example.com", phone:"555-010-0002", address1:"9 Demo Ct", city:"Brea", state:"CA", zip:"92821",
         payment_method:"check", payment_detail:null, total_quote:1435, total_paid:null, source:"Google",
         tracking_number:"9400 1234 5678 9012 3456 78", created_at: iso(now - day),
+        ship_carrier:"USPS", label_url:"#demo-label", label_qr_url:"#demo-qr",
+        legacy_id:51927, legacy_status:"seller_action_pending",
         trade_in_items:[{id:902,category:"Tablet",brand:"Apple",model:"iPad Pro 13 M5 Standard Glass (2025)",carrier:"WiFi",storage:"512GB",condition:"Good",quoted_price:1020,qty:1},
                         {id:903,category:"Cell Phone",brand:"Samsung",model:"Galaxy S25 FE",carrier:"Unlocked",storage:"128GB",condition:"Good",quoted_price:415,qty:1}] },
-      { id:"d3", order_number:"OCB-2JXH7A", status:"evaluating", first_name:"Catherine", last_name:"Hilgen",
-        email:"catherinehilgen@gmail.com", phone:"818-472-5749", address1:"41 Placeholder Rd", city:"Fullerton", state:"CA", zip:"92831",
-        payment_method:"venmo", payment_detail:"@cat-hilgen", total_quote:205, total_paid:null, source:"Swappa",
+      { id:"d3", order_number:"OCB-2JXH7A", status:"evaluating", first_name:"Taylor", last_name:"Placeholder",
+        email:"taylor.demo@example.com", phone:"555-010-0003", address1:"41 Placeholder Rd", city:"Fullerton", state:"CA", zip:"92831",
+        payment_method:"venmo", payment_detail:"@taylor-demo", total_quote:205, total_paid:null, source:"Swappa",
         tracking_number:"9400 8765 4321 0987 6543 21", created_at: iso(now - 2*day),
         trade_in_items:[{id:904,category:"Smartwatch",brand:"Apple",model:"Watch Ultra",carrier:"49mm",storage:"-",condition:"Good",quoted_price:205,qty:1}] },
       { id:"d5", order_number:"OCB-7DELIV", status:"delivered", first_name:"Marcus", last_name:"Webb",
@@ -317,6 +342,9 @@ else {
 }
 const $ = (s) => document.querySelector(s);
 const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+// orders carried over from the old FlipTech platform
+const legacyBadge = (t) => t.legacy_id
+  ? ` <span class="chip legacy" title="Imported from the old site — original status: ${esc(t.legacy_status || "n/a")}">⟲ legacy</span>` : "";
 const money = (v) => "$" + Number(v || 0).toLocaleString(undefined, {maximumFractionDigits: 2});
 let toastT;
 function toast(msg){ const t = $("#toast"); t.textContent = msg; t.classList.add("show");
@@ -335,13 +363,44 @@ async function boot(){
     $("#login").style.display = ""; $("#app").style.display = "none";
   }
 }
-$("#loginBtn").onclick = async () => {
-  const email = $("#loginEmail").value.trim();
-  if (!email) return;
-  const { error } = await sb.auth.signInWithOtp({ email, options: { emailRedirectTo: location.href } });
-  $("#loginMsg").textContent = error ? error.message : "Check your email for the sign-in link.";
+async function doLogin(){
+  const email = $("#loginEmail").value.trim(), password = $("#loginPass").value;
+  if (!email || !password) return;
+  $("#loginBtn").disabled = true;
+  const { error } = await sb.auth.signInWithPassword({ email, password });
+  $("#loginBtn").disabled = false;
+  if (error) $("#loginMsg").textContent = error.message === "Invalid login credentials"
+    ? "Wrong email or password." : error.message;
+}
+$("#loginBtn").onclick = doLogin;
+$("#loginPass").addEventListener("keydown", (e) => { if (e.key === "Enter") doLogin(); });
+
+// click your email in the header to change your password
+$("#who").style.cursor = "pointer";
+$("#who").title = "Change password";
+$("#who").onclick = async () => {
+  const pw = prompt("New password (min 8 characters):");
+  if (!pw) return;
+  if (pw.length < 8) return toast("Password must be at least 8 characters");
+  const { error } = await sb.auth.updateUser({ password: pw });
+  toast(error ? error.message : "Password changed");
 };
 $("#signOut").onclick = async () => { await sb.auth.signOut(); location.reload(); };
+$("#publishBtn").onclick = async () => {
+  const b = $("#publishBtn");
+  b.disabled = true; b.textContent = "Publishing…";
+  try {
+    if (DEMO) { await new Promise((r) => setTimeout(r, 600)); }
+    else {
+      const { data: { session } } = await sb.auth.getSession();
+      const r = await fetch("/api/publish-site", { method: "POST",
+        headers: { authorization: `Bearer ${session.access_token}` } });
+      if (!r.ok) throw new Error((await r.json().catch(() => ({}))).error || "Publish failed");
+    }
+    toast("🚀 Publishing — your changes are live in about 2 minutes");
+    setTimeout(() => { b.disabled = false; b.textContent = "🚀 Publish site"; }, 60000);
+  } catch (e) { toast(e.message); b.disabled = false; b.textContent = "🚀 Publish site"; }
+};
 sb.auth.onAuthStateChange(() => boot());
 boot();
 
@@ -358,12 +417,12 @@ document.querySelectorAll(".tab").forEach((b) => b.onclick = () => {
 
 // ---------- action items (the working queue) ----------
 async function loadActions(){
-  const ACTIVE = ["shipped","delivered","received","evaluating","adjusted"];
+  const ACTIVE = ["shipped","delivered","received","evaluating","adjusted","action_pending"];
   const [{ data: orders, error }, { data: issues }] = await Promise.all([
     sb.from("trade_ins").select("*, trade_in_items(*)").in("status", ACTIVE)
       .order("created_at", { ascending: true }).limit(500),
     sb.from("trade_in_issues").select("trade_in_id,status,type,new_price").in("status",
-      ["pending","accepted","declined","cannot_complete"]),
+      ["pending","accepted","declined","cannot_complete","resolved"]),
   ]);
   if (error) return toast(error.message);
   const issuesBy = new Map();
@@ -371,28 +430,35 @@ async function loadActions(){
 
   const label = (i) => ({ pending: "waiting on customer", accepted: `accepted $${i.new_price}`,
     declined: "DECLINED — ship device back", cannot_complete: "can't complete — arrange return" }[i.status]);
-  const QUEUES = [
-    { key: "respond", title: "🟢 Customer responded — act now", hint: "Accepted offers need payment; declined or stuck ones need a return.",
-      match: (o, iss) => iss.some((i) => ["accepted","declined","cannot_complete"].includes(i.status)) },
-    { key: "delivered", title: "📬 Delivered — check in", hint: "USPS says these arrived. Open each and mark it received.",
-      match: (o) => o.status === "delivered" },
-    { key: "inspect", title: "🔍 Received — needs inspection", hint: "Checked in and waiting on evaluation.",
-      match: (o, iss) => o.status === "received" && !iss.some((i) => i.status === "pending") },
-    { key: "evaluating", title: "🧪 Evaluating — finish and pay or requote", hint: "",
-      match: (o, iss) => o.status === "evaluating" && !iss.some((i) => i.status === "pending") },
-    { key: "waiting", title: "⏳ Waiting on customer", hint: "Issue or revised-offer email sent — the ball is in their court.",
-      match: (o, iss) => iss.some((i) => i.status === "pending") || o.status === "adjusted" },
-    { key: "transit", title: "🚚 On the way", hint: "Label scanned — nothing to do until they arrive.",
-      match: (o) => o.status === "shipped" },
+  // one bucket per order, most-specific first
+  function bucket(o, iss){
+    if (["initiated","paid","returned","cancelled"].includes(o.status)) return null;
+    if (iss.some((i) => i.status === "accepted")) return "pay";          // requote accepted -> needs payment
+    if (iss.some((i) => i.status === "declined")) return "denied";
+    if (iss.some((i) => i.status === "cannot_complete")) return "failed";
+    if (iss.some((i) => i.status === "resolved") && !iss.some((i) => i.status === "pending")) return "completed";
+    if (iss.some((i) => i.status === "pending") || o.status === "action_pending" || o.status === "adjusted") return "pending";
+    if (o.status === "delivered") return "delivered";
+    if (o.status === "shipped") return "incoming";
+    return "inspect";                                                     // received / evaluating, nothing open
+  }
+  const QUEUES = [   // render order
+    { key: "incoming", title: "🚚 Incoming", hint: "Label scanned — on the way to you." },
+    { key: "delivered", title: "📬 Delivered — check in", hint: "USPS says these arrived. Open each and mark it received." },
+    { key: "inspect", title: "🔍 Received — needs inspection", hint: "Checked in and waiting on evaluation." },
+    { key: "pending", title: "⏳ Action pending — waiting on customer", hint: "Issue or revised-offer email sent — the ball is in their court." },
+    { key: "completed", title: "✅ Action completed — verify & continue", hint: "Customer says it's fixed. Verify and finish the evaluation." },
+    { key: "failed", title: "⚠️ Action failed — follow up", hint: "Customer couldn't complete the request — arrange a return or reach out." },
+    { key: "denied", title: "🚫 Requote denied — ship it back", hint: "Revised offer declined. Return the device and mark the order returned." },
+    { key: "pay", title: "💰 Needs payment", hint: "Accepted offers — send the payment from each order." },
   ];
-  const claimed = new Set();
+  const byBucket = {};
+  (orders || []).forEach((o) => {
+    const b = bucket(o, issuesBy.get(o.id) || []);
+    if (b) (byBucket[b] ||= []).push(o);
+  });
   const html_ = QUEUES.map((q) => {
-    const rows = (orders || []).filter((o) => {
-      if (claimed.has(o.id)) return false;
-      const ok = q.match(o, issuesBy.get(o.id) || []);
-      if (ok) claimed.add(o.id);
-      return ok;
-    });
+    const rows = byBucket[q.key] || [];
     if (!rows.length) return "";
     return `<div class="panel">
       <h2 style="font:700 16px 'Bricolage Grotesque',sans-serif;color:var(--deep);margin:0 0 2px">${q.title} <span class="muted">(${rows.length})</span></h2>
@@ -402,7 +468,7 @@ async function loadActions(){
         const responded = iss.filter((i) => ["accepted","declined","cannot_complete"].includes(i.status));
         return `<tr>
           <td style="width:110px"><span class="chip ${t.status}">${t.status}</span></td>
-          <td><b>${esc(t.order_number)}</b><br><span class="muted">${esc(t.first_name)} ${esc(t.last_name)}</span></td>
+          <td><b>${esc(t.order_number)}</b>${legacyBadge(t)}<br><span class="muted">${esc(t.first_name)} ${esc(t.last_name)}</span></td>
           <td>${(t.trade_in_items || []).map((i) => esc(`${i.brand} ${i.model}`)).join("<br>")}</td>
           <td class="muted">${esc(t.email)}<br>${esc(t.phone)}</td>
           <td>${esc(t.payment_method)}</td>
@@ -473,7 +539,7 @@ async function loadAnalytics(){
      <td class="money" style="text-align:right">${money(e.v)}</td></tr>`).join("")
     || "<tr><td colspan=3 class=muted>No devices yet.</td></tr>";
 
-  const ORDER = ["initiated","received","evaluating","adjusted","paid","returned","cancelled"];
+  const ORDER = ["initiated","shipped","delivered","received","evaluating","adjusted","action_pending","paid","returned","cancelled"];
   const st = agg(orders || [], (o) => o.status);
   $("#anFunnel tbody").innerHTML = ORDER.filter((s) => st.find(([k]) => k === s))
     .map((s) => { const e = st.find(([k]) => k === s)[1];
@@ -657,7 +723,7 @@ $("#postTable").addEventListener("click", async (e) => {
 });
 
 // ---------- trade-ins ----------
-const STATUSES = ["initiated","shipped","delivered","received","evaluating","adjusted","paid","returned","cancelled"];
+const STATUSES = ["initiated","shipped","delivered","received","evaluating","adjusted","action_pending","paid","returned","cancelled","expired"];
 async function loadTradeIns(){
   let q = sb.from("trade_ins").select("*, trade_in_items(*)").order("created_at", { ascending: false }).limit(200);
   if ($("#tiStatus").value) q = q.eq("status", $("#tiStatus").value);
@@ -668,7 +734,7 @@ async function loadTradeIns(){
   $("#tiTable tbody").innerHTML = (data || []).map((t) => `
     <tr>
       <td><span class="chip ${t.status}">${t.status}</span></td>
-      <td><b>${esc(t.order_number)}</b></td>
+      <td><b>${esc(t.order_number)}</b>${legacyBadge(t)}</td>
       <td>${esc(t.first_name)} ${esc(t.last_name)}<br><span class="muted">${esc(t.city)}, ${esc(t.state)}</span></td>
       <td>${esc(t.email)}<br><span class="muted">${esc(t.phone)}</span></td>
       <td>${esc(t.payment_method)}${t.payment_detail ? "<br><span class='muted'>" + esc(t.payment_detail) + "</span>" : ""}</td>
@@ -692,14 +758,25 @@ function openTradeInDialog(t, refresh){
   const d = $("#tiDialog");
   d.classList.remove("wide");
   d.innerHTML = `
-    <h1 style="margin:0 0 4px">${esc(t.order_number)} <span class="chip ${t.status}">${t.status}</span></h1>
+    <h1 style="margin:0 0 4px">${esc(t.order_number)} <span class="chip ${t.status}">${t.status}</span>${legacyBadge(t)}</h1>
     <p class="muted" style="margin:0 0 12px">${esc(t.first_name)} ${esc(t.last_name)} · ${esc(t.address1)}${t.address2 ? ", " + esc(t.address2) : ""}, ${esc(t.city)}, ${esc(t.state)} ${esc(t.zip)}</p>
     ${(t.trade_in_items || []).map((it) => `
       <div class="detail"><b>${esc(it.brand)} ${esc(it.model)}</b> × ${it.qty}
         <span class="muted">· ${[it.carrier, it.storage, it.condition].filter(Boolean).map(esc).join(" / ")}</span>
         <span class="money" style="float:right"><b>${money(it.quoted_price * it.qty)}</b>${it.final_price != null ? `<br><span style="color:var(--green);font-size:12px">final ${money(it.final_price)}</span>` : ""}</span></div>`).join("")}
-    <div class="detail"><b>Total quote</b> <span class="money" style="float:right"><b>${money(t.total_quote)}</b></span></div>
+    <div class="detail"><b>Total quote</b> <span class="money" style="float:right"><b>${money(t.total_quote)}</b></span>${t.estimated_weight_oz ? `<span class="muted" style="float:right;margin-right:14px">est. ${Math.floor(t.estimated_weight_oz/16)} lb ${Math.round(t.estimated_weight_oz%16)} oz</span>` : ""}</div>
     <div id="issueList"></div>
+    <div style="border-top:1px solid var(--line);margin-top:14px;padding-top:14px">
+      <b style="font-size:14px">Add a device to this order</b>
+      <div class="row" style="margin-top:10px">
+        <select id="adCat"><option value="">Category…</option></select>
+        <select id="adModel" style="display:none;max-width:220px"></select>
+        <select id="adVar" style="display:none"></select>
+        <select id="adCond" style="display:none"></select>
+        <button class="btn sm" id="adAdd" style="display:none">Add</button>
+        <span class="muted" id="adPrice" style="font-size:12.5px"></span>
+      </div>
+    </div>
     <div style="border-top:1px solid var(--line);margin-top:14px;padding-top:14px">
       <b style="font-size:14px">Raise an issue / requote</b>
       <div class="row" style="margin-top:10px">
@@ -722,6 +799,14 @@ function openTradeInDialog(t, refresh){
         <span class="muted" id="iHint" style="font-size:12.5px">The email includes one-click links — their response lands back here automatically.</span>
       </div>
     </div>
+    ${t.legacy_id ? `<p class="muted" style="margin:6px 0 0;font-size:12.5px">⟲ Imported from the old FlipTech site (order #${t.legacy_id}, original status "${esc(t.legacy_status || "n/a")}"). Pre-migration orders are read-only history — payment and label actions apply to new orders only.</p>` : ""}
+    ${t.label_url || t.label_qr_url ? `<div class="row" style="margin-top:14px;background:var(--ground);border-radius:10px;padding:10px 12px;gap:10px;align-items:center">
+      <b style="font-size:13px">📦 ${esc(t.ship_carrier || "USPS")} label</b>
+      ${t.label_url ? `<a class="btn sm ghost" href="${esc(t.label_url)}" target="_blank" rel="noopener">Open label</a>` : ""}
+      ${t.label_qr_url ? `<a class="btn sm ghost" href="${esc(t.label_qr_url)}" target="_blank" rel="noopener">QR code</a>` : ""}
+      <button class="btn sm" id="dResendLabel">✉️ Resend label email</button>
+      <span class="muted" style="font-size:12px">Re-sends the confirmation email with the label${t.label_qr_url ? " + QR" : ""} to ${esc(t.email)}</span>
+    </div>` : ""}
     <div class="row" style="margin-top:14px">
       <select id="dStatus">${STATUSES.map((s) => `<option ${s === t.status ? "selected" : ""}>${s}</option>`).join("")}</select>
       <input id="dNote" placeholder="Note (optional, shown in history)" style="flex:1">
@@ -739,14 +824,32 @@ function openTradeInDialog(t, refresh){
   d.showModal();
   $("#dClose").onclick = () => d.close();
 
+  const resendBtn = $("#dResendLabel");
+  if (resendBtn) resendBtn.onclick = async () => {
+    resendBtn.disabled = true; resendBtn.textContent = "Sending…";
+    try {
+      if (DEMO) { await new Promise((r) => setTimeout(r, 500)); toast("Label email re-sent (demo)"); }
+      else {
+        const { data: { session } } = await sb.auth.getSession();
+        const r = await fetch("/api/resend-label", { method: "POST",
+          headers: { "content-type": "application/json", authorization: `Bearer ${session.access_token}` },
+          body: JSON.stringify({ trade_in_id: t.id }) });
+        const dta = await r.json().catch(() => ({}));
+        if (!r.ok) throw new Error(dta.error || "Resend failed");
+        toast(`Label email re-sent to ${dta.to || t.email}`);
+      }
+    } catch (e) { toast(e.message); }
+    resendBtn.disabled = false; resendBtn.textContent = "✉️ Resend label email";
+  };
+
   const payBtn = $("#dPay");
   if (payBtn) payBtn.onclick = async () => {
     const amount = Number($("#dPaid").value) ||
       (t.trade_in_items || []).reduce((a, i) => a + Number(i.final_price ?? i.quoted_price) * i.qty, 0) + Number(t.promo_amount || 0);
-    const how = { paypal: `PayPal payout to ${t.payment_detail || t.email}`,
-                  check: `mail a Lob check to ${t.first_name} ${t.last_name}`,
-                  zelle: `mark paid (send Zelle to ${t.payment_detail} yourself)`,
-                  venmo: `mark paid (send Venmo to ${t.payment_detail} yourself)`,
+    const how = { paypal: `PayPal payout to ${t.payment_detail || t.email} + payment email`,
+                  check: `mark paid — mail the check to ${t.first_name} ${t.last_name} yourself (customer gets a "check is in the mail" email)`,
+                  zelle: `mark paid (send Zelle to ${t.payment_detail} yourself) + payment email`,
+                  venmo: `mark paid (send Venmo to ${t.payment_detail} yourself) + payment email`,
                   cash: "mark paid (cash in store)" }[t.payment_method];
     if (!confirm(`Send ${money(amount)} — ${how}?`)) return;
     payBtn.disabled = true; payBtn.textContent = "Sending…";
@@ -759,10 +862,71 @@ function openTradeInDialog(t, refresh){
           body: JSON.stringify({ trade_in_id: t.id, amount }) });
         const dta = await r.json().catch(() => ({}));
         if (!r.ok) throw new Error(dta.error || "Payment failed");
-        toast(dta.note || `Paid ${money(dta.paid)}`);
+        toast((dta.sandbox ? "⚠️ SANDBOX — no real money moved. " : "") + (dta.note || `Paid ${money(dta.paid)}`));
       }
       d.close(); refresh();
     } catch (e) { toast(e.message); payBtn.disabled = false; payBtn.textContent = "💸 Send payment"; }
+  };
+
+  // ---- add device to order ----
+  (async () => {
+    const { data: cats } = await sb.from("categories").select("id,name").order("sort");
+    $("#adCat").innerHTML = '<option value="">Category…</option>' +
+      (cats || []).map((c) => `<option value="${c.id}">${esc(c.name)}</option>`).join("");
+  })();
+  let adState = {};
+  $("#adCat").onchange = async () => {
+    adState = { cat: $("#adCat option:checked").textContent };
+    ["adVar","adCond","adAdd"].forEach((x) => $("#" + x).style.display = "none"); $("#adPrice").textContent = "";
+    if (!$("#adCat").value) return $("#adModel").style.display = "none";
+    const { data: models } = await sb.from("models").select("id,name,brands(name)")
+      .eq("category_id", $("#adCat").value).eq("enabled", true).order("sort", { ascending: false });
+    $("#adModel").innerHTML = '<option value="">Model…</option>' +
+      (models || []).map((m) => `<option value="${m.id}" data-brand="${esc(m.brands.name)}">${esc(m.brands.name)} ${esc(m.name)}</option>`).join("");
+    $("#adModel").style.display = "";
+  };
+  $("#adModel").onchange = async () => {
+    ["adCond","adAdd"].forEach((x) => $("#" + x).style.display = "none"); $("#adPrice").textContent = "";
+    if (!$("#adModel").value) return $("#adVar").style.display = "none";
+    const opt = $("#adModel option:checked");
+    adState.brand = opt.dataset.brand;
+    adState.model = opt.textContent.replace(adState.brand + " ", "");
+    const { data: vars } = await sb.from("variants").select("id,carrier,storage,prices(condition,price,enabled)")
+      .eq("model_id", $("#adModel").value);
+    adState.vars = vars || [];
+    $("#adVar").innerHTML = '<option value="">Variant…</option>' +
+      adState.vars.map((v) => `<option value="${v.id}">${esc([v.carrier, v.storage].filter((x) => x !== "-").join(" / ") || "Standard")}</option>`).join("");
+    $("#adVar").style.display = "";
+  };
+  $("#adVar").onchange = () => {
+    $("#adAdd").style.display = "none"; $("#adPrice").textContent = "";
+    const v = adState.vars.find((x) => x.id == $("#adVar").value);
+    if (!v) return $("#adCond").style.display = "none";
+    adState.v = v;
+    const live = (v.prices || []).filter((p) => p.enabled && p.price > 0);
+    $("#adCond").innerHTML = '<option value="">Condition…</option>' +
+      live.map((p) => `<option value="${esc(p.condition)}" data-price="${p.price}">${esc(p.condition)} — ${money(p.price)}</option>`).join("");
+    $("#adCond").style.display = "";
+  };
+  $("#adCond").onchange = () => {
+    const o = $("#adCond option:checked");
+    $("#adAdd").style.display = o.value ? "" : "none";
+    $("#adPrice").textContent = o.value ? `will add ${money(o.dataset.price)} to the quote` : "";
+  };
+  $("#adAdd").onclick = async () => {
+    const o = $("#adCond option:checked");
+    const price = Number(o.dataset.price);
+    const item = { trade_in_id: t.id, category: adState.cat, brand: adState.brand, model: adState.model,
+      carrier: adState.v.carrier === "-" ? null : adState.v.carrier,
+      storage: adState.v.storage === "-" ? null : adState.v.storage,
+      condition: o.value, quoted_price: price, qty: 1 };
+    const { error } = await sb.from("trade_in_items").insert(item);
+    if (error) return toast(error.message);
+    await sb.from("trade_ins").update({ total_quote: Number(t.total_quote) + price }).eq("id", t.id);
+    await sb.from("trade_in_events").insert({ trade_in_id: t.id, status: t.status,
+      note: `Added ${adState.brand} ${adState.model} (${o.value}) ${money(price)} to the order` });
+    toast(`Added — quote now ${money(Number(t.total_quote) + price)}`);
+    d.close(); refresh();
   };
 
   // ---- issue composer ----
@@ -822,7 +986,8 @@ function openTradeInDialog(t, refresh){
           body: JSON.stringify(payload) });
         const d = await r.json().catch(() => ({}));
         if (!r.ok) throw new Error(d.error || "Send failed");
-        toast("Email sent: " + d.subject);
+        toast(d.emailed ? "Email sent: " + d.subject
+                        : "⚠️ Issue saved but EMAIL NOT SENT — email service isn't configured yet");
       }
       $("#iMsg").value = ""; loadIssues();
     } catch (e) { toast(e.message); }
@@ -846,7 +1011,7 @@ let dirty = {};   // `${variant_id}|${condition}` -> {price, enabled}
 async function loadCategories(){
   const { data } = await sb.from("categories").select("*").order("sort");
   $("#catSel").innerHTML = (data || []).map((c) =>
-    `<option value="${c.id}">${esc(c.name)}${c.enabled ? "" : " (off)"}</option>`).join("");
+    `<option value="${c.id}" data-w="${c.default_weight_oz ?? 16}">${esc(c.name)}${c.enabled ? "" : " (off)"}</option>`).join("");
   loadBrands();
 }
 async function loadBrands(){
@@ -859,7 +1024,8 @@ async function loadBrands(){
 $("#catSel").onchange = loadBrands;
 $("#catLoad").onclick = async () => {
   dirty = {}; updateDirty();
-  const { data: models } = await sb.from("models").select("id,name,sort,enabled")
+  const catDefaultW = $("#catSel option:checked")?.dataset?.w || 16;
+  const { data: models } = await sb.from("models").select("id,name,sort,enabled,weight_oz")
     .eq("category_id", $("#catSel").value).eq("brand_id", $("#brandSel").value)
     .order("sort", { ascending: false }); // newest models first
   if (!models?.length) { $("#catTable tbody").innerHTML = "<tr><td colspan=10 class=muted>No models.</td></tr>"; return; }
@@ -870,13 +1036,16 @@ $("#catLoad").onclick = async () => {
   (variants || []).forEach((v) => (byModel[v.model_id] ||= []).push(v));
   let html = "", n = 0;
   for (const m of models) {
+    let first = true;
     for (const v of (byModel[m.id] || [])) {
       n++;
       const p = {}; (v.prices || []).forEach((x) => p[x.condition] = x);
       const allOn = (v.prices || []).some((x) => x.enabled);
+      const wCell = first ? `<b>${esc(m.name)}</b><br><input type="number" class="wOz" data-m="${m.id}" value="${m.weight_oz ?? ""}" placeholder="${catDefaultW} oz" title="Shipping weight (oz) — blank uses the category default" style="width:70px;margin-top:4px;font-size:12px">` : `<b>${esc(m.name)}</b>`;
+      first = false;
       html += `<tr data-v="${v.id}">
         <td><input type="checkbox" class="rowOn" ${allOn ? "checked" : ""}></td>
-        <td><b>${esc(m.name)}</b></td><td>${esc(v.carrier)}</td><td>${esc(v.storage)}</td>
+        <td>${wCell}</td><td>${esc(v.carrier)}</td><td>${esc(v.storage)}</td>
         ${CONDS.map((c) => `<td><input type="number" step="1" min="0" data-c="${c}" value="${p[c]?.price ?? 0}"></td>`).join("")}
       </tr>`;
     }
@@ -884,7 +1053,16 @@ $("#catLoad").onclick = async () => {
   $("#catTable tbody").innerHTML = html;
   $("#catCount").textContent = n + " variant rows";
 };
+$("#catTable").addEventListener("change", async (e) => {
+  if (e.target.classList.contains("wOz")) {
+    const w = e.target.value ? Number(e.target.value) : null;
+    const { error } = await sb.from("models").update({ weight_oz: w }).eq("id", e.target.dataset.m);
+    toast(error ? error.message : (w ? `Weight saved: ${w} oz` : "Weight cleared — using category default"));
+    return;
+  }
+});
 $("#catTable").addEventListener("input", (e) => {
+  if (e.target.classList.contains("wOz")) return;
   const tr = e.target.closest("tr"); if (!tr) return;
   const vid = tr.dataset.v;
   const on = tr.querySelector(".rowOn").checked;
@@ -951,6 +1129,235 @@ $("#feedCheck").onclick = async () => {
     renderFeeds(results);
   }
   $("#feedCheck").disabled = false; $("#feedCheck").textContent = "Check feeds now";
+};
+
+// ---------- Mac price feed sync ----------
+function renderMacSync(s){
+  if (!s) return;
+  if (s.error) { $("#macSyncInfo").innerHTML = `<span class="chip cancelled">${esc(s.error)}</span>`; return; }
+  const when = new Date(s.at).toLocaleString();
+  $("#macSyncInfo").innerHTML =
+    `<span class="chip paid">OK</span> ${s.updated} prices updated · ${s.matched}/${s.feed_rows} rows matched` +
+    (s.guarded ? ` · <b style="color:var(--warn,#b45309)">${s.guarded} held back (&gt;40% jump)</b>` : "") +
+    (s.unknown ? ` · ${s.unknown} unrecognized` : "") +
+    ` <span class="muted">· ${s.trigger} sync ${when}</span>`;
+}
+(async () => {
+  if (DEMO) return renderMacSync({ at: new Date().toISOString(), trigger: "scheduled",
+    feed_rows: 3366, matched: 3320, updated: 214, guarded: 2, unknown: 46 });
+  const { data } = await sb.from("site_settings").select("value").eq("key", "mac_price_sync").maybeSingle();
+  if (data?.value) renderMacSync(data.value);
+})();
+$("#macSync").onclick = async () => {
+  const b = $("#macSync");
+  b.disabled = true; b.textContent = "Syncing…";
+  try {
+    if (DEMO) { await new Promise((r) => setTimeout(r, 800));
+      renderMacSync({ at: new Date().toISOString(), trigger: "manual",
+        feed_rows: 3366, matched: 3320, updated: 12, guarded: 0, unknown: 46 });
+    } else {
+      const { data: { session } } = await sb.auth.getSession();
+      const r = await fetch("/api/sync-mac-prices", { method: "POST",
+        headers: { authorization: `Bearer ${session.access_token}` } });
+      const s = await r.json();
+      renderMacSync(s);
+      if (s.error) throw new Error(s.error);
+    }
+    toast("Mac prices synced");
+  } catch (e) { toast(e.message); }
+  b.disabled = false; b.textContent = "Sync now";
+};
+
+// ---------- condition descriptions ----------
+const COND_NAMES = ["Brand New","Flawless","Good","Fair","Minor Damage","Broken"];
+let condLoaded = false;
+$("#condPanel").addEventListener("toggle", async () => {
+  if (!$("#condPanel").open || condLoaded) return;
+  condLoaded = true;
+  const { data } = await sb.from("site_settings").select("value").eq("key", "conditions");
+  const conds = data?.[0]?.value || {};
+  $("#condEditors").innerHTML = COND_NAMES.map((c) => {
+    const v = conds[c] || { short: "", intro: "", steps: [] };
+    return `<div style="border:1px solid var(--line);border-radius:10px;padding:12px 14px;margin-bottom:10px" data-cond="${c}">
+      <b style="font-size:14px">${c}</b>
+      <input class="cShort" value="${esc(v.short)}" placeholder="Card text (one line)" style="width:100%;margin-top:6px">
+      <input class="cIntro" value="${esc(v.intro)}" placeholder="Expanded panel intro sentence" style="width:100%;margin-top:6px">
+      <textarea class="cSteps" rows="4" placeholder="Criteria — one per line"
+        style="width:100%;margin-top:6px">${esc((v.steps || []).join("\n"))}</textarea>
+    </div>`;
+  }).join("");
+});
+$("#condSave").onclick = async () => {
+  const value = {};
+  document.querySelectorAll("#condEditors [data-cond]").forEach((el) => {
+    value[el.dataset.cond] = {
+      short: el.querySelector(".cShort").value.trim(),
+      intro: el.querySelector(".cIntro").value.trim(),
+      steps: el.querySelector(".cSteps").value.split("\n").map((s) => s.trim()).filter(Boolean),
+    };
+  });
+  const { error } = await sb.from("site_settings").upsert({ key: "conditions", value });
+  toast(error ? error.message : "Saved — descriptions go live on the next site publish");
+};
+
+// ---------- add device to catalog ----------
+$("#devAdd").onclick = async () => {
+  const d = $("#tiDialog");
+  d.classList.add("wide");
+  const { data: cats } = await sb.from("categories").select("id,name").order("sort");
+  const { data: allBrands } = await sb.from("brands").select("id,name").order("name");
+  d.innerHTML = `
+    <h1 style="margin:0 0 14px">Add a device</h1>
+    <div class="row">
+      <select id="nCat">${(cats || []).map((c) => `<option value="${c.id}">${esc(c.name)}</option>`).join("")}</select>
+      <select id="nBrand">${(allBrands || []).map((b) => `<option value="${b.id}">${esc(b.name)}</option>`).join("")}
+        <option value="__new">+ New brand…</option></select>
+      <input id="nBrandName" placeholder="New brand name" style="display:none;width:150px">
+    </div>
+    <div class="row" style="margin-top:10px">
+      <input id="nName" placeholder="Model name (e.g. iPhone 18 Pro)" style="flex:1">
+      <input id="nWeight" type="number" placeholder="Weight oz (blank = category default)" style="width:230px">
+      <label class="muted" style="font-size:12.5px"><input type="checkbox" id="nOn" checked> live</label>
+    </div>
+    <div class="heroprev" style="margin-top:12px">
+      <img id="nImgPrev" style="display:none" alt="">
+      <button class="btn sm ghost" id="nImgBtn" type="button">Upload photo (.webp only)</button>
+      <input id="nImgFile" type="file" accept="image/webp" style="display:none">
+      <span class="muted" id="nImgMsg" style="font-size:12.5px"></span>
+    </div>
+    <div style="margin-top:14px"><b style="font-size:14px">Variants</b>
+      <div class="row" style="margin:6px 0 8px">
+        <span class="muted" style="font-size:12.5px">Start from:</span>
+        <select id="nClone" style="max-width:260px"><option value="">Blank</option></select>
+      </div>
+      <p class="muted" style="font-size:12.5px;margin:2px 0 8px">One row per carrier + storage combo (phones: "Unlocked"/"128GB"; watches use case + size like "Titanium"/"49mm"; consoles can leave both as "-"). Prices start at $0 — set them in the grid after creating.</p>
+      <div id="nVars"></div>
+      <div class="row">
+        <button class="btn sm ghost" id="nVarAdd" type="button">+ Add variant</button>
+        <input id="nFind" placeholder="Find (e.g. M5)" style="width:110px">
+        <input id="nRepl" placeholder="Replace (e.g. M6)" style="width:110px">
+        <button class="btn sm ghost" id="nFR" type="button">Replace in all rows</button>
+      </div>
+    </div>
+    <div class="row" style="margin-top:16px;justify-content:flex-end">
+      <button class="btn ghost" id="nClose">Close</button>
+      <button class="btn" id="nCreate">Create device</button>
+    </div>`;
+  let imgUrl = null;
+  const varRow = (c = "", s = "") => {
+    const div = document.createElement("div");
+    div.className = "row"; div.style.marginBottom = "8px";
+    div.innerHTML = `<input class="vC" placeholder="Carrier / case" value="${esc(c)}" style="width:170px">
+      <input class="vS" placeholder="Storage / size" value="${esc(s)}" style="width:150px">
+      <button class="btn sm ghost vX" type="button">✕</button>`;
+    div.querySelector(".vX").onclick = () => div.remove();
+    $("#nVars").appendChild(div);
+  };
+  varRow("Unlocked", "128GB");
+  $("#nVarAdd").onclick = () => varRow();
+  $("#nFR").onclick = () => {
+    const f = $("#nFind").value, r = $("#nRepl").value;
+    if (!f) return;
+    let n = 0;
+    document.querySelectorAll("#nVars .vC, #nVars .vS").forEach((inp) => {
+      if (inp.value.includes(f)) { inp.value = inp.value.split(f).join(r); n++; }
+    });
+    toast(n ? `Replaced "${f}" → "${r}" in ${n} fields` : `"${f}" not found in any row`);
+  };
+
+  // "Start from" — clone the carrier×storage matrix (and weight) of an existing
+  // model, defaulting to the newest one for the picked category + brand.
+  async function refreshCloneOptions(){
+    const bid = $("#nBrand").value;
+    if (bid === "__new") { $("#nClone").innerHTML = '<option value="">Blank</option>'; return; }
+    const { data: sibs } = await sb.from("models").select("id,name,weight_oz")
+      .eq("category_id", $("#nCat").value).eq("brand_id", bid)
+      .order("sort", { ascending: false }).limit(25);
+    $("#nClone").innerHTML = '<option value="">Blank</option>' +
+      (sibs || []).map((m) => `<option value="${m.id}" data-w="${m.weight_oz ?? ""}">Copy of ${esc(m.name)}</option>`).join("");
+    if (sibs?.length) { $("#nClone").value = sibs[0].id; await applyClone(); }
+  }
+  async function applyClone(){
+    const mid = $("#nClone").value;
+    if (!mid) return;
+    const { data: vars } = await sb.from("variants").select("carrier,storage").eq("model_id", mid);
+    if (!vars?.length) return;
+    $("#nVars").innerHTML = "";
+    vars.sort((a, b) => a.carrier.localeCompare(b.carrier) || a.storage.localeCompare(b.storage, undefined, { numeric: true }))
+        .forEach((v) => varRow(v.carrier, v.storage));
+    const w = $("#nClone option:checked")?.dataset?.w;
+    if (w && !$("#nWeight").value) $("#nWeight").value = w;
+    toast(`Copied ${vars.length} variants from ${$("#nClone option:checked").textContent.replace("Copy of ", "")}`);
+  }
+  $("#nClone").onchange = applyClone;
+  $("#nCat").onchange = refreshCloneOptions;
+  refreshCloneOptions();
+  $("#nBrand").onchange = () => {
+    $("#nBrandName").style.display = $("#nBrand").value === "__new" ? "" : "none";
+    refreshCloneOptions();
+  };
+  $("#nImgBtn").onclick = () => $("#nImgFile").click();
+  $("#nImgFile").onchange = async (e) => {
+    const f = e.target.files[0]; if (!f) return;
+    if (f.type !== "image/webp" || !/\.webp$/i.test(f.name))
+      return $("#nImgMsg").textContent = "⚠️ .webp files only — convert the image first.";
+    $("#nImgMsg").textContent = "Uploading…";
+    try {
+      const name = Date.now() + "-" + f.name.toLowerCase().replace(/[^a-z0-9.]+/g, "-");
+      const { error } = await sb.storage.from("device-images").upload(name, f, { cacheControl: "31536000", contentType: "image/webp" });
+      if (error) throw error;
+      imgUrl = sb.storage.from("device-images").getPublicUrl(name).data.publicUrl;
+      const prev = $("#nImgPrev");
+      prev.src = DEMO ? URL.createObjectURL(f) : imgUrl;
+      prev.style.display = ""; $("#nImgMsg").textContent = "";
+      $("#nImgBtn").textContent = "Replace photo (.webp)";
+    } catch (err) { $("#nImgMsg").textContent = err.message; }
+  };
+  d.showModal();
+  $("#nClose").onclick = () => d.close();
+  $("#nCreate").onclick = async () => {
+    const name = $("#nName").value.trim();
+    if (!name) return toast("Model name is required");
+    const vars = [...$("#nVars").children].map((r) => ({
+      carrier: r.querySelector(".vC").value.trim() || "-",
+      storage: r.querySelector(".vS").value.trim() || "-",
+    }));
+    if (!vars.length) return toast("Add at least one variant");
+    $("#nCreate").disabled = true; $("#nCreate").textContent = "Creating…";
+    try {
+      let brandId = $("#nBrand").value;
+      if (brandId === "__new") {
+        const bn = $("#nBrandName").value.trim();
+        if (!bn) throw new Error("New brand name is required");
+        const { data: nb, error: be } = await sb.from("brands").insert({ name: bn, slug: slugify(bn) }).select().single();
+        if (be) throw be;
+        brandId = nb.id;
+      }
+      const catId = Number($("#nCat").value);
+      const { data: maxRow } = await sb.from("models").select("sort").eq("category_id", catId)
+        .order("sort", { ascending: false }).limit(1);
+      const { data: model, error: me } = await sb.from("models").insert({
+        category_id: catId, brand_id: Number(brandId), name, slug: slugify(name),
+        image_url: imgUrl, weight_oz: $("#nWeight").value ? Number($("#nWeight").value) : null,
+        sort: ((maxRow?.[0]?.sort) || 0) + 10, enabled: $("#nOn").checked,
+      }).select().single();
+      if (me) throw me;
+      const CONDS6 = ["Brand New","Flawless","Good","Fair","Minor Damage","Broken"];
+      for (const v of vars) {
+        const { data: nv, error: ve } = await sb.from("variants").insert({
+          model_id: model.id, carrier: v.carrier, storage: v.storage }).select().single();
+        if (ve) throw ve;
+        const { error: pe } = await sb.from("prices").insert(
+          CONDS6.map((c) => ({ variant_id: nv.id, condition: c, price: 0, enabled: false })));
+        if (pe) throw pe;
+      }
+      toast(`${name} created — now set its prices below and tick the rows live`);
+      d.close();
+      $("#catSel").value = catId; await loadBrands();
+      $("#brandSel").value = brandId; $("#catLoad").click();
+    } catch (e) { toast(e.message); }
+    $("#nCreate").disabled = false; $("#nCreate").textContent = "Create device";
+  };
 };
 
 // ---------- promos ----------
