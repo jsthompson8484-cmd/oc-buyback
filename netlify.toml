@@ -36,12 +36,3 @@
   for = "/admin/*"
   [headers.values]
     X-Robots-Tag = "noindex, nofollow"
-
-# ############################################################################
-# STAGING GUARD — REMOVE THIS BLOCK AT CUTOVER (when ocbuyback.com points here)
-# Keeps the staging URL out of Google while the real site still runs on FlipTech.
-[[headers]]
-  for = "/*"
-  [headers.values]
-    X-Robots-Tag = "noindex"
-# ############################################################################
