@@ -263,6 +263,42 @@ export function buildReceived({ orderNumber, firstName, items, total }) {
   };
 }
 
+// Device heading back to the customer (declined offer, or we can't buy it).
+// issue-respond promises "we'll email you the tracking number" — this is it.
+export function buildReturned({ orderNumber, firstName, items, tracking, carrier = "USPS" }) {
+  const what = (items || []).map((i) => esc(i.brand + " " + (i.device || i.model))).join(", ") || "your device";
+  return {
+    subject: `Your device is on its way back — order ${orderNumber}`,
+    html: layout({
+      orderNumber,
+      heading: "📬 Your device is heading back to you",
+      intro: `Hi ${esc(firstName)} — we've packed up ${what} and it's on its way back to the address on your order, free of charge.`,
+      bodyHtml: tracking
+        ? `<div style="background:${GROUND};border-radius:12px;padding:14px 18px;margin:0 0 12px">
+             <p style="font-size:14.5px;margin:0">${esc(carrier)} tracking: <b>${esc(tracking)}</b></p></div>
+           <p style="font-size:14px;color:${MUTED};line-height:1.6;margin:0">Tracking can take a few hours to show movement after it's scanned.</p>`
+        : `<p style="font-size:14.5px;line-height:1.6">We'll follow up with a tracking number as soon as the label is scanned.</p>`,
+      buttonsHtml: "",
+      footNote: "Changed your mind, or want to talk it through? Reply to this email or call 657-286-8274 — no hard feelings either way.",
+    }),
+  };
+}
+
+// Order cancelled before completion.
+export function buildCancelled({ orderNumber, firstName }) {
+  return {
+    subject: `Order ${orderNumber} has been cancelled`,
+    html: layout({
+      orderNumber,
+      heading: "Your trade-in has been cancelled",
+      intro: `Hi ${esc(firstName)} — we've cancelled order ${esc(orderNumber)}. Nothing further is needed from you, and any shipping label we sent is no longer valid.`,
+      bodyHtml: `<p style="font-size:14.5px;line-height:1.6">If you still have the device and want to sell it, you're welcome to start a fresh quote any time — prices change, so it's worth checking what it's worth today.</p>`,
+      buttonsHtml: "",
+      footNote: "If this wasn't expected, reply to this email or call 657-286-8274 and we'll sort it out.",
+    }),
+  };
+}
+
 // Payment-sent notification, per payout method. Checks are mailed by hand,
 // so the copy promises the mail, not a Lob tracking ref.
 export function buildPaymentSent({ orderNumber, firstName, amount, method, detail }) {

@@ -1022,7 +1022,7 @@ function openTradeInDialog(t, refresh){
       await sb.from("trade_in_events").insert({ trade_in_id: t.id, status, note: $("#dNote").value.trim() || null });
     // a status change the customer should hear about -> send the email
     let note = "Saved";
-    if (changed && ["received", "paid"].includes(status) && !DEMO) {
+    if (changed && ["received", "paid", "returned", "cancelled"].includes(status) && !DEMO) {
       try {
         const { data: { session } } = await sb.auth.getSession();
         const r = await fetch("/api/notify-status", { method: "POST",
