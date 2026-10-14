@@ -126,6 +126,9 @@ create table trade_in_items (
   qty             int not null default 1,
   final_condition text,                                 -- set during evaluation
   final_price     numeric(10,2)
+  imei text,
+  serial text,
+  notes text,
 );
 
 -- issues raised during evaluation that need a customer response by email:

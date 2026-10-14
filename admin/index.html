@@ -781,7 +781,13 @@ function openTradeInDialog(t, refresh){
     ${(t.trade_in_items || []).map((it) => `
       <div class="detail"><b>${esc(it.brand)} ${esc(it.model)}</b> × ${it.qty}
         <span class="muted">· ${[it.carrier, it.storage, it.condition].filter(Boolean).map(esc).join(" / ")}</span>
-        <span class="money" style="float:right"><b>${money(it.quoted_price * it.qty)}</b>${it.final_price != null ? `<br><span style="color:var(--green);font-size:12px">final ${money(it.final_price)}</span>` : ""}</span></div>`).join("")}
+        <span class="money" style="float:right"><b>${money(it.quoted_price * it.qty)}</b>${it.final_price != null ? `<br><span style="color:var(--green);font-size:12px">final ${money(it.final_price)}</span>` : ""}</span>
+        <div class="row" style="gap:8px;margin-top:8px;align-items:flex-start">
+          <input class="imei-in" data-item="${it.id}" placeholder="IMEI / serial" value="${esc(it.imei || it.serial || "")}" style="flex:0 0 190px;font-family:ui-monospace,monospace;font-size:12.5px">
+          <textarea class="note-in" data-item="${it.id}" placeholder="Notes for this device (condition findings, missing parts…)" rows="1" style="flex:1;min-height:34px;font-size:12.5px">${esc(it.notes || "")}</textarea>
+          <button class="btn sm ghost" data-saveitem="${it.id}">Save</button>
+          <button class="btn sm ghost" data-label="${it.id}">🏷️ Label</button>
+        </div></div>`).join("")}
     <div class="detail"><b>Total quote</b> <span class="money" style="float:right"><b>${money(t.total_quote)}</b></span>${t.estimated_weight_oz ? `<span class="muted" style="float:right;margin-right:14px">est. ${Math.floor(t.estimated_weight_oz/16)} lb ${Math.round(t.estimated_weight_oz%16)} oz</span>` : ""}</div>
     <div id="issueList"></div>
     <div style="border-top:1px solid var(--line);margin-top:14px;padding-top:14px">
@@ -841,6 +847,35 @@ function openTradeInDialog(t, refresh){
     </div>`;
   d.showModal();
   $("#dClose").onclick = () => d.close();
+
+  // per-device metadata: IMEI/serial + notes, saved individually
+  d.querySelectorAll("[data-saveitem]").forEach((btn) => {
+    btn.onclick = async () => {
+      const id = btn.dataset.saveitem;
+      const idVal = d.querySelector(`.imei-in[data-item="${id}"]`).value.trim();
+      const notes = d.querySelector(`.note-in[data-item="${id}"]`).value.trim();
+      // digits-only 14-16 chars reads as an IMEI; anything else is a serial
+      const isImei = /^\d{14,16}$/.test(idVal);
+      const patch = { imei: isImei ? idVal : null, serial: isImei ? null : (idVal || null), notes: notes || null };
+      btn.disabled = true; btn.textContent = "Saving…";
+      const { error } = await sb.from("trade_in_items").update(patch).eq("id", id);
+      btn.disabled = false; btn.textContent = "Save";
+      if (error) return toast(error.message);
+      const it = (t.trade_in_items || []).find((x) => String(x.id) === String(id));
+      if (it) Object.assign(it, patch);
+      toast(idVal ? `Saved ${isImei ? "IMEI" : "serial"} ${idVal}` : "Saved");
+    };
+  });
+  d.querySelectorAll("[data-label]").forEach((btn) => {
+    btn.onclick = () => {
+      const id = btn.dataset.label;
+      const it = (t.trade_in_items || []).find((x) => String(x.id) === String(id));
+      if (!it) return;
+      const idVal = d.querySelector(`.imei-in[data-item="${id}"]`).value.trim();
+      const notes = d.querySelector(`.note-in[data-item="${id}"]`).value.trim();
+      printDeviceLabel(t, { ...it, imei: idVal, notes });
+    };
+  });
 
   const resendBtn = $("#dResendLabel");
   if (resendBtn) resendBtn.onclick = async () => {
@@ -1036,6 +1071,68 @@ function openTradeInDialog(t, refresh){
     }
     d.close(); toast(note); refresh();
   };
+}
+
+// ---------- device label (4.5in x 6in, matches the legacy format) ----------
+// Code 128 (auto B/C) rendered as plain SVG rects — no external barcode library.
+const C128 = ["11011001100","11001101100","11001100110","10010011000","10010001100","10001001100","10011001000","10011000100","10001100100","11001001000","11001000100","11000100100","10110011100","10011011100","10011001110","10111001100","10011101100","10011100110","11001110010","11001011100","11001001110","11011100100","11001110100","11101101110","11101001100","11100101100","11100100110","11101100100","11100110100","11100110010","11011011000","11011000110","11000110110","10100011000","10001011000","10001000110","10110001000","10001101000","10001100010","11010001000","11000101000","11000100010","10110111000","10110001110","10001101110","10111011000","10111000110","10001110110","11101110110","11010001110","11000101110","11011101000","11011100010","11011101110","11101011000","11101000110","11100010110","11101101000","11101100010","11100011010","11101111010","11001000010","11110001010","10100110000","10100001100","10010110000","10010000110","10000101100","10000100110","10110010000","10110000100","10011010000","10011000010","10000110100","10000110010","11000010010","11001010000","11110111010","11000010100","10001111010","10100111100","10010111100","10010011110","10111100100","10011110100","10011110010","11110100100","11110010100","11110010010","11011011110","11011110110","11110110110","10101111000","10100011110","10001011110","10111101000","10111100010","11110101000","11110100010","10111011110","10111101110","11101011110","11110101110","11010000100","11010010000","11010011100","11000111010"];
+function code128(data) {
+  const isC = /^\d+$/.test(data) && data.length % 2 === 0 && data.length >= 4;
+  let codes = [isC ? 105 : 104];
+  if (isC) for (let i = 0; i < data.length; i += 2) codes.push(parseInt(data.substr(i, 2), 10));
+  else for (const ch of data) codes.push(ch.charCodeAt(0) - 32);
+  let sum = codes[0];
+  for (let i = 1; i < codes.length; i++) sum += codes[i] * i;
+  codes.push(sum % 103, 106);
+  return codes.map((c) => C128[c]).join("") + "11";
+}
+function barcodeSvg(data, { width = 1.6, height = 44 } = {}) {
+  const bits = code128(data);
+  let x = 0, rects = "";
+  for (let i = 0; i < bits.length; ) {
+    let run = 1; while (bits[i + run] === bits[i]) run++;
+    if (bits[i] === "1") rects += `<rect x="${(x * width).toFixed(2)}" y="0" width="${(run * width).toFixed(2)}" height="${height}"/>`;
+    x += run; i += run;
+  }
+  return `<svg width="${(x * width).toFixed(0)}" height="${height}" viewBox="0 0 ${(x * width).toFixed(0)} ${height}" xmlns="http://www.w3.org/2000/svg" shape-rendering="crispEdges"><g fill="#000">${rects}</g></svg>`;
+}
+function printDeviceLabel(order, item) {
+  const esc2 = (v) => String(v ?? "").replace(/[&<>]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;" }[c]));
+  const spec = [item.carrier, item.storage].filter((v) => v && v !== "-").join(" ");
+  const price = item.final_price != null ? item.final_price : item.quoted_price;
+  const idVal = (item.imei || item.serial || "").trim();
+  const idLabel = /^\d{14,16}$/.test(idVal) ? "IMEI" : "Serial";
+  const w = window.open("", "_blank", "width=520,height=760");
+  w.document.write(`<!doctype html><html><head><meta charset="utf-8"><title>${esc2(order.order_number)} — ${esc2(item.model)}</title>
+  <style>
+    @page { size: 4.5in 6in; margin: 0 }
+    html,body{margin:0;padding:0;font-family:Helvetica,Arial,sans-serif;color:#111}
+    .label{width:4.5in;height:6in;box-sizing:border-box;padding:.3in .25in;display:flex;flex-direction:column;align-items:center;text-align:center}
+    .brand{align-self:flex-start;font:800 17px/1 Helvetica,Arial,sans-serif;color:#1E6323;margin-bottom:10px}
+    .brand i{font-style:normal;color:#2D8631}
+    .k{font-size:12px;color:#666;margin:13px 0 2px;letter-spacing:.02em}
+    .v{font-size:15px;font-weight:700;line-height:1.3}
+    .v.big{font-size:18px}
+    .code{font:700 11px ui-monospace,SFMono-Regular,Menlo,monospace;letter-spacing:.06em;margin-top:2px}
+    .notes{font-size:12.5px;line-height:1.4;white-space:pre-wrap;max-width:3.7in;word-break:break-word}
+    @media print{ .noprint{display:none} }
+  </style></head><body>
+  <div class="label">
+    <div class="brand">OC<i>BuyBack</i></div>
+    ${barcodeSvg(order.order_number)}
+    <div class="code">TRADE-IN ${esc2(order.order_number)}</div>
+    <div class="k">Customer</div><div class="v">${esc2(order.first_name)} ${esc2(order.last_name)}</div>
+    <div class="k">Product</div>
+    <div class="v">${esc2(item.brand)} ${esc2(item.model)}${spec ? " " + esc2(spec) : ""}</div>
+    <div class="v">${esc2(item.condition)} Condition</div>
+    <div class="k">Offer</div><div class="v big">${money(price)}</div>
+    <div class="k">Notes</div><div class="notes">${esc2(item.notes || "")}</div>
+    ${idVal ? `<div class="k">${idLabel}</div>${barcodeSvg(idVal)}<div class="code">${esc2(idVal)}</div>` : ""}
+  </div>
+  <div class="noprint" style="text-align:center;padding:12px"><button onclick="window.print()" style="padding:8px 18px;font-size:14px">Print</button></div>
+  <script>window.onload=()=>setTimeout(()=>window.print(),250)<\/script>
+  </body></html>`);
+  w.document.close();
 }
 
 // ---------- catalog ----------
