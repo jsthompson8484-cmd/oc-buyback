@@ -4,12 +4,14 @@
 // The admin's status dropdown writes straight to the database, so without this
 // the customer heard nothing between "order confirmed" and whatever came next.
 // Only two statuses are worth an email:
-//   received -> "we've got your device, inspection next"
-//   paid     -> "your payment is on the way" (same copy as the Send payment button)
+//   received  -> "we've got your device, inspection next"
+//   paid      -> "your payment is on the way" (same copy as the Send payment button)
+//   returned  -> "your device is heading back" (issue-respond promises this email)
+//   cancelled -> "your trade-in was cancelled"
 // Everything else returns ok:true, emailed:false so the admin can call this
 // unconditionally.
 
-import { buildReceived, buildPaymentSent } from "./lib/issue-emails.mjs";
+import { buildReceived, buildPaymentSent, buildReturned, buildCancelled } from "./lib/issue-emails.mjs";
 import { sendEmail, emailConfigured } from "./lib/send-email.mjs";
 
 const SUPABASE_URL = process.env.SUPABASE_URL;
@@ -40,7 +42,7 @@ export default async (req) => {
 
   const { trade_in_id, status } = await req.json().catch(() => ({}));
   if (!trade_in_id || !status) return json(400, { error: "trade_in_id and status required" });
-  if (!["received", "paid"].includes(status)) return json(200, { ok: true, emailed: false, reason: "no email for this status" });
+  if (!["received", "paid", "returned", "cancelled"].includes(status)) return json(200, { ok: true, emailed: false, reason: "no email for this status" });
   if (!emailConfigured()) return json(200, { ok: true, emailed: false, reason: "email not configured" });
 
   const [t] = await db(`trade_ins?id=eq.${encodeURIComponent(trade_in_id)}&select=*,trade_in_items(*)`)
@@ -56,10 +58,12 @@ export default async (req) => {
   const amount = Number(t.total_paid) ||
     items.reduce((a, i) => a + i.price * i.qty, 0) + Number(t.promo_amount || 0);
 
-  const { subject, html } = status === "received"
-    ? buildReceived({ orderNumber: t.order_number, firstName: t.first_name, items, total: amount })
-    : buildPaymentSent({ orderNumber: t.order_number, firstName: t.first_name, amount,
-                         method: t.payment_method, detail: t.payment_detail || t.email });
+  const base = { orderNumber: t.order_number, firstName: t.first_name };
+  const { subject, html } =
+      status === "received"  ? buildReceived({ ...base, items, total: amount })
+    : status === "returned"  ? buildReturned({ ...base, items, tracking: t.tracking_number, carrier: t.ship_carrier || "USPS" })
+    : status === "cancelled" ? buildCancelled(base)
+    : buildPaymentSent({ ...base, amount, method: t.payment_method, detail: t.payment_detail || t.email });
 
   const sent = await sendEmail({ to: t.email, subject, html });
   await db("trade_in_events", { method: "POST", body: JSON.stringify({
