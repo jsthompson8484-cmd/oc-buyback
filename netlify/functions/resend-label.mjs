@@ -6,7 +6,8 @@ import { sendEmail, emailConfigured } from "./lib/send-email.mjs";
 
 const SUPABASE_URL = process.env.SUPABASE_URL;
 const SERVICE_KEY = process.env.SUPABASE_SERVICE_KEY;
-const ADMIN_EMAILS = (process.env.ADMIN_EMAILS || "js@neartechpartners.com")
+// keep in sync with is_admin() in supabase/schema.sql
+const ADMIN_EMAILS = (process.env.ADMIN_EMAILS || "js@neartechpartners.com,henry@ocbuyback.com")
   .split(",").map((e) => e.trim().toLowerCase());
 
 const db = (path, init = {}) =>

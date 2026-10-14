@@ -11,7 +11,8 @@
 
 const SUPABASE_URL = process.env.SUPABASE_URL;
 const SERVICE_KEY = process.env.SUPABASE_SERVICE_KEY;
-const ADMIN_EMAILS = (process.env.ADMIN_EMAILS || "js@neartechpartners.com")
+// keep in sync with is_admin() in supabase/schema.sql
+const ADMIN_EMAILS = (process.env.ADMIN_EMAILS || "js@neartechpartners.com,henry@ocbuyback.com")
   .split(",").map((e) => e.trim().toLowerCase());
 const PP_ID = process.env.PAYPAL_CLIENT_ID;
 const PP_SECRET = process.env.PAYPAL_CLIENT_SECRET;

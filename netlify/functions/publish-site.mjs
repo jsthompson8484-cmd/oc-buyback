@@ -4,7 +4,8 @@
 
 const SUPABASE_URL = process.env.SUPABASE_URL;
 const SERVICE_KEY = process.env.SUPABASE_SERVICE_KEY;
-const ADMIN_EMAILS = (process.env.ADMIN_EMAILS || "js@neartechpartners.com")
+// keep in sync with is_admin() in supabase/schema.sql
+const ADMIN_EMAILS = (process.env.ADMIN_EMAILS || "js@neartechpartners.com,henry@ocbuyback.com")
   .split(",").map((e) => e.trim().toLowerCase());
 // Netlify build hook "Admin publish" — knowing it only lets you trigger builds
 const BUILD_HOOK = process.env.NETLIFY_BUILD_HOOK ||
