@@ -187,6 +187,11 @@ def mslug(m, name):
     """DB slug wins (it carries the legacy overrides); fall back to computed."""
     return (m.get("slug") if isinstance(m, dict) else None) or slug(name)
 
+def abs_url(u):
+    """Sitemaps and OG tags need absolute URLs; our image paths are root-relative."""
+    if not u: return u
+    return u if u.startswith("http") else SITE + (u if u.startswith("/") else "/" + u)
+
 def money(v):
     return f"${v:,.0f}" if v == int(v) else f"${v:,.2f}"
 
@@ -334,7 +339,7 @@ def page(title, body, depth, extra_css="", *, path=None, desc="", schema=None,
                        f'<meta property="og:type" content="website">\n'
                        f'<meta property="og:site_name" content="OCBuyBack">\n')
         if og_image:
-            head_extra += f'<meta property="og:image" content="{html.escape(og_image)}">\n'
+            head_extra += f'<meta property="og:image" content="{html.escape(abs_url(og_image))}">\n'
         if noindex:
             head_extra += '<meta name="robots" content="noindex,nofollow">\n'
         elif in_sitemap:
@@ -1595,7 +1600,7 @@ urls = []
 for path, img in [("/", None)] + SITEMAP:
     entry = f"  <url>\n    <loc>{SITE}{path if path != '/' else ''}/</loc>\n  </url>" if path == "/" else \
             f"  <url>\n    <loc>{SITE}{path}</loc>\n" + \
-            (f"    <image:image><image:loc>{html.escape(img)}</image:loc></image:image>\n" if img else "") + "  </url>"
+            (f"    <image:image><image:loc>{html.escape(abs_url(img))}</image:loc></image:image>\n" if img else "") + "  </url>"
     urls.append(entry)
 (OUT/"sitemap.xml").write_text(
     '<?xml version="1.0" encoding="UTF-8"?>\n'
