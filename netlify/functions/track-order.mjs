@@ -28,20 +28,25 @@ const STATUS_LABELS = {
 
 export default async (req) => {
   const url = new URL(req.url);
-  const order = (url.searchParams.get("order") || "").trim().toUpperCase();
+  const typed = (url.searchParams.get("order") || "").trim();
   const email = (url.searchParams.get("email") || "").trim().toLowerCase();
-  if (!order || !email) return json(400, { error: "Order number and email required" });
-  if (!/^[A-Z0-9-]{4,20}$/.test(order)) return json(404, { error: "No order found for that number and email" });
+  if (!typed || !email) return json(400, { error: "Order number and email required" });
+  if (!/^[A-Za-z0-9-]{4,20}$/.test(typed)) return json(404, { error: "No order found for that number and email" });
 
-  // Fetch by order number only, then compare the email in JS — never put the
-  // email in a pattern operator (ilike lets "%" match any address).
-  const r = await db(
-    `trade_ins?order_number=eq.${encodeURIComponent(order)}` +
+  // New orders are uppercase (OCB-XXXXXX); orders carried over from the old
+  // platform are lowercase hex hashes. Try what the customer typed, then the
+  // uppercase form, so either style works regardless of how they type it.
+  const SELECT =
     `&select=order_number,email,status,total_quote,total_paid,price_locked_until,tracking_number,created_at,` +
     `trade_in_items(model,brand,condition,quoted_price,qty,final_price,final_condition),` +
-    `trade_in_events(status,note,created_at)`
-  );
-  const rows = await r.json();
+    `trade_in_events(status,note,created_at)`;
+  // Fetch by order number only, then compare the email in JS — never put the
+  // email in a pattern operator (ilike lets "%" match any address).
+  let rows = await db(`trade_ins?order_number=eq.${encodeURIComponent(typed)}${SELECT}`).then((x) => x.json());
+  if (!rows.length && typed !== typed.toUpperCase())
+    rows = await db(`trade_ins?order_number=eq.${encodeURIComponent(typed.toUpperCase())}${SELECT}`).then((x) => x.json());
+  if (!rows.length && typed !== typed.toLowerCase())
+    rows = await db(`trade_ins?order_number=eq.${encodeURIComponent(typed.toLowerCase())}${SELECT}`).then((x) => x.json());
   if (!rows.length || (rows[0].email || "").toLowerCase() !== email)
     return json(404, { error: "No order found for that number and email" });
 
