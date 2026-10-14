@@ -35,6 +35,12 @@ padding:3px 9px;border-radius:99px;background:var(--ground);color:var(--muted)}
 .chip.initiated{background:#e7f0fa;color:#20507e}.chip.shipped{background:#e7f0fa;color:#20507e}.chip.delivered{background:#e3f1e5;color:var(--green)}.chip.received{background:#faf0e2;color:var(--warn)}
 .chip.evaluating{background:#f3eafa;color:#6d3fa3}.chip.adjusted{background:#faf0e2;color:var(--warn)}.chip.action_pending{background:#faf0e2;color:var(--warn)}
 .chip.paid{background:#e3f1e5;color:var(--green)}.chip.returned,.chip.legacy{background:#eef1f5;color:#4b5a6b}
+.detail.passed{border-left:3px solid var(--green);background:#f3faf4}
+.detail.failed{border-left:3px solid #b3372b;background:#fdf4f3}
+.insp{display:inline-flex;gap:6px;margin-left:8px}
+.insp button{border:1.5px solid var(--line);background:#fff;border-radius:99px;padding:3px 12px;font:600 12px inherit;cursor:pointer;color:var(--muted)}
+.insp button.on-pass{background:var(--green);border-color:var(--green);color:#fff}
+.insp button.on-fail{background:#b3372b;border-color:#b3372b;color:#fff}
 .chip.expired{background:#f1f0ec;color:#6b6457}
 .chip.cancelled{background:#f9e9e6;color:var(--crit)}
 .btn{background:var(--green);color:#fff;border:0;border-radius:99px;font-weight:700;font-size:13px;padding:9px 16px}
@@ -779,15 +785,20 @@ function openTradeInDialog(t, refresh){
     <h1 style="margin:0 0 4px">${esc(t.order_number)} <span class="chip ${t.status}">${t.status}</span>${legacyBadge(t)}</h1>
     <p class="muted" style="margin:0 0 12px">${esc(t.first_name)} ${esc(t.last_name)} · ${esc(t.address1)}${t.address2 ? ", " + esc(t.address2) : ""}, ${esc(t.city)}, ${esc(t.state)} ${esc(t.zip)}</p>
     ${(t.trade_in_items || []).map((it) => `
-      <div class="detail"><b>${esc(it.brand)} ${esc(it.model)}</b> × ${it.qty}
+      <div class="detail ${it.inspection === "pass" ? "passed" : it.inspection === "fail" ? "failed" : ""}" data-itemrow="${it.id}"><b>${esc(it.brand)} ${esc(it.model)}</b> × ${it.qty}
         <span class="muted">· ${[it.carrier, it.storage, it.condition].filter(Boolean).map(esc).join(" / ")}</span>
+        <span class="insp">
+          <button data-insp="pass" data-item="${it.id}" class="${it.inspection === "pass" ? "on-pass" : ""}">✓ Pass</button>
+          <button data-insp="fail" data-item="${it.id}" class="${it.inspection === "fail" ? "on-fail" : ""}">✗ Fail</button>
+        </span>
         <span class="money" style="float:right"><b>${money(it.quoted_price * it.qty)}</b>${it.final_price != null ? `<br><span style="color:var(--green);font-size:12px">final ${money(it.final_price)}</span>` : ""}</span>
         <div class="row" style="gap:8px;margin-top:8px;align-items:flex-start">
           <input class="imei-in" data-item="${it.id}" placeholder="IMEI / serial" value="${esc(it.imei || it.serial || "")}" style="flex:0 0 190px;font-family:ui-monospace,monospace;font-size:12.5px">
-          <textarea class="note-in" data-item="${it.id}" placeholder="Notes for this device (condition findings, missing parts…)" rows="1" style="flex:1;min-height:34px;font-size:12.5px">${esc(it.notes || "")}</textarea>
+          <textarea class="note-in" data-item="${it.id}" placeholder="Notes for this device (condition findings, missing parts…)" rows="2" style="flex:1;min-height:42px;font-size:12.5px;resize:vertical">${esc(it.notes || "")}</textarea>
           <button class="btn sm ghost" data-saveitem="${it.id}">Save</button>
           <button class="btn sm ghost" data-label="${it.id}">🏷️ Label</button>
         </div></div>`).join("")}
+    <div class="muted" id="inspSummary" style="font-size:12.5px;margin:6px 0 2px"></div>
     <div class="detail"><b>Total quote</b> <span class="money" style="float:right"><b>${money(t.total_quote)}</b></span>${t.estimated_weight_oz ? `<span class="muted" style="float:right;margin-right:14px">est. ${Math.floor(t.estimated_weight_oz/16)} lb ${Math.round(t.estimated_weight_oz%16)} oz</span>` : ""}</div>
     <div id="issueList"></div>
     <div style="border-top:1px solid var(--line);margin-top:14px;padding-top:14px">
@@ -847,6 +858,49 @@ function openTradeInDialog(t, refresh){
     </div>`;
   d.showModal();
   $("#dClose").onclick = () => d.close();
+
+  // per-device inspection: pass / fail. Failing a device pre-selects it in the
+  // issue composer so the email goes out about the right device on a multi-
+  // device order.
+  d.querySelectorAll("[data-insp]").forEach((btn) => {
+    btn.onclick = async () => {
+      const id = btn.dataset.item, want = btn.dataset.insp;
+      const it = (t.trade_in_items || []).find((x) => String(x.id) === String(id));
+      const next = it && it.inspection === want ? null : want;   // click again to clear
+      const patch = { inspection: next,
+                      inspected_at: next ? new Date().toISOString() : null,
+                      inspected_by: next ? ($("#who").textContent || null) : null };
+      const { error } = await sb.from("trade_in_items").update(patch).eq("id", id);
+      if (error) return toast(error.message);
+      if (it) Object.assign(it, patch);
+      // repaint this row
+      const row = d.querySelector(`[data-itemrow="${id}"]`);
+      if (row) { row.classList.toggle("passed", next === "pass"); row.classList.toggle("failed", next === "fail"); }
+      d.querySelectorAll(`[data-insp][data-item="${id}"]`).forEach((b) => {
+        b.classList.toggle("on-pass", next === "pass" && b.dataset.insp === "pass");
+        b.classList.toggle("on-fail", next === "fail" && b.dataset.insp === "fail");
+      });
+      renderInspSummary();
+      if (next === "fail") {
+        const sel = $("#iItem");
+        if (sel) { sel.value = id; sel.dispatchEvent(new Event("change")); sel.scrollIntoView({ behavior: "smooth", block: "center" }); }
+        toast("Marked FAILED — pick an issue type below to email the customer about this device");
+      } else {
+        toast(next === "pass" ? "Marked passed" : "Inspection cleared");
+      }
+    };
+  });
+  function renderInspSummary(){
+    const its = t.trade_in_items || [];
+    const p = its.filter((i) => i.inspection === "pass").length;
+    const f = its.filter((i) => i.inspection === "fail").length;
+    const el = $("#inspSummary");
+    if (!el) return;
+    el.innerHTML = its.length < 1 ? "" :
+      `${p} passed · ${f} failed · ${its.length - p - f} not inspected` +
+      (f && p ? ` <b style="color:#b3372b">— mixed result, handle each device separately</b>` : "");
+  }
+  renderInspSummary();
 
   // per-device metadata: IMEI/serial + notes, saved individually
   d.querySelectorAll("[data-saveitem]").forEach((btn) => {
