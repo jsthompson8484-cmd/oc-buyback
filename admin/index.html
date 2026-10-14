@@ -252,8 +252,8 @@ function demoClient(){
         tracking_number:"9400 1234 5678 9012 3456 78", created_at: iso(now - day),
         ship_carrier:"USPS", label_url:"#demo-label", label_qr_url:"#demo-qr",
         legacy_id:51927, legacy_status:"seller_action_pending",
-        trade_in_items:[{id:902,category:"Tablet",brand:"Apple",model:"iPad Pro 13 M5 Standard Glass (2025)",carrier:"WiFi",storage:"512GB",condition:"Good",quoted_price:1020,qty:1},
-                        {id:903,category:"Cell Phone",brand:"Samsung",model:"Galaxy S25 FE",carrier:"Unlocked",storage:"128GB",condition:"Good",quoted_price:415,qty:1}] },
+        trade_in_items:[{id:902,inspection:"pass",category:"Tablet",brand:"Apple",model:"iPad Pro 13 M5 Standard Glass (2025)",carrier:"WiFi",storage:"512GB",condition:"Good",quoted_price:1020,qty:1},
+                        {id:903,inspection:"fail",category:"Cell Phone",brand:"Samsung",model:"Galaxy S25 FE",carrier:"Unlocked",storage:"128GB",condition:"Good",quoted_price:415,qty:1}] },
       { id:"d3", order_number:"OCB-2JXH7A", status:"evaluating", first_name:"Taylor", last_name:"Placeholder",
         email:"taylor.demo@example.com", phone:"555-010-0003", address1:"41 Placeholder Rd", city:"Fullerton", state:"CA", zip:"92831",
         payment_method:"venmo", payment_detail:"@taylor-demo", total_quote:205, total_paid:null, source:"Swappa",
@@ -464,12 +464,19 @@ async function loadActions(){
     if (iss.some((i) => i.status === "pending") || o.status === "action_pending" || o.status === "adjusted") return "pending";
     if (o.status === "delivered") return "delivered";
     if (o.status === "shipped") return "incoming";
+    // inspection outcomes drive the rest: a failed device needs an email,
+    // an all-passed order is ready to pay, anything else still needs looking at
+    const its = o.trade_in_items || [];
+    if (its.some((i) => i.inspection === "fail")) return "failed_inspect";
+    if (its.length && its.every((i) => i.inspection === "pass")) return "passed";
     return "inspect";                                                     // received / evaluating, nothing open
   }
   const QUEUES = [   // render order
     { key: "incoming", title: "🚚 Incoming", hint: "Label scanned — on the way to you." },
     { key: "delivered", title: "📬 Delivered — check in", hint: "USPS says these arrived. Open each and mark it received." },
     { key: "inspect", title: "🔍 Received — needs inspection", hint: "Checked in and waiting on evaluation." },
+    { key: "failed_inspect", title: "❌ Failed inspection — email the customer", hint: "A device didn't pass. Open the order and send a requote or issue email about that device." },
+    { key: "passed", title: "✅ Passed inspection — ready to pay", hint: "Every device passed. Send the payment." },
     { key: "pending", title: "⏳ Action pending — waiting on customer", hint: "Issue or revised-offer email sent — the ball is in their court." },
     { key: "completed", title: "✅ Action completed — verify & continue", hint: "Customer says it's fixed. Verify and finish the evaluation." },
     { key: "failed", title: "⚠️ Action failed — follow up", hint: "Customer couldn't complete the request — arrange a return or reach out." },
@@ -493,7 +500,8 @@ async function loadActions(){
         return `<tr>
           <td style="width:110px"><span class="chip ${t.status}">${t.status}</span></td>
           <td><b>${esc(t.order_number)}</b>${legacyBadge(t)}<br><span class="muted">${esc(t.first_name)} ${esc(t.last_name)}</span></td>
-          <td>${(t.trade_in_items || []).map((i) => esc(`${i.brand} ${i.model}`)).join("<br>")}</td>
+          <td>${(t.trade_in_items || []).map((i) =>
+            `${i.inspection === "fail" ? '<span title="failed inspection" style="color:#b3372b;font-weight:800">✗</span> ' : i.inspection === "pass" ? '<span title="passed inspection" style="color:var(--green);font-weight:800">✓</span> ' : ""}${esc(`${i.brand} ${i.model}`)}`).join("<br>")}</td>
           <td class="muted">${esc(t.email)}<br>${esc(t.phone)}</td>
           <td>${esc(t.payment_method)}</td>
           <td class="money" style="text-align:right"><b>${money(t.total_quote)}</b></td>
