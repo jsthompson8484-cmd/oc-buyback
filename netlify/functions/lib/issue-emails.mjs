@@ -6,6 +6,19 @@
 
 const GREEN = "#2D8631", DEEP = "#1E6323", GROUND = "#f5f8f4", MUTED = "#5c6e64", LINE = "#e3eae2";
 
+// Review links. The Google one is built from the store's Place ID (decoded
+// from the Maps listing) and opens the write-a-review dialog directly.
+const REVIEW_GOOGLE = "https://search.google.com/local/writereview?placeid=ChIJsciG4RLV3IARSjtD81ptNsM";
+const REVIEW_TRUSTPILOT = "https://www.trustpilot.com/evaluate/www.ocbuyback.com";
+const reviewAsk = () => `
+  <div style="background:${GROUND};border-radius:12px;padding:18px;margin:22px 0 0;text-align:center">
+    <p style="font-size:15px;font-weight:700;color:${DEEP};margin:0 0 4px">Happy with how it went?</p>
+    <p style="font-size:14px;color:${MUTED};line-height:1.55;margin:0 0 14px">
+      A quick review helps other people find us — it takes about a minute, and we read every one.</p>
+    ${button(REVIEW_GOOGLE, "Review us on Google")}
+    ${button(REVIEW_TRUSTPILOT, "Review on Trustpilot", false)}
+  </div>`;
+
 const money = (v) => "$" + Number(v).toLocaleString(undefined, { maximumFractionDigits: 2 });
 const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 
@@ -315,7 +328,8 @@ export function buildPaymentSent({ orderNumber, firstName, amount, method, detai
       heading: "💸 Your payment is on the way!",
       intro: `Hi ${esc(firstName)} — great news: your trade-in is complete and you've been paid.`,
       bodyHtml: `<p style="font-size:15px;line-height:1.7">${how}</p>
-        <p style="font-size:14px;line-height:1.6;color:${MUTED}">Don't see it after the window above? Reply to this email or call 657-286-8274 and we'll chase it down.</p>`,
+        <p style="font-size:14px;line-height:1.6;color:${MUTED}">Don't see it after the window above? Reply to this email or call 657-286-8274 and we'll chase it down.</p>`
+        + reviewAsk(),
       buttonsHtml: "",
       footNote: "Thanks for trading in with OCBuyBack — we'd love to see you again. Got another device? Every quote locks for 14 days.",
     }),
