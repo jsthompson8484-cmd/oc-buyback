@@ -244,6 +244,25 @@ export function buildOrderConfirmation({ orderNumber, firstName, items, total, l
   };
 }
 
+// "We've got it" — sent when the device is checked in at the shop.
+export function buildReceived({ orderNumber, firstName, items, total }) {
+  const list = (items || []).map((i) =>
+    `<li style="margin-bottom:4px">${esc(i.brand)} ${esc(i.device || i.model)}${i.qty > 1 ? ` × ${i.qty}` : ""}</li>`).join("");
+  return {
+    subject: `We received your device — order ${orderNumber}`,
+    html: layout({
+      orderNumber,
+      heading: "📦 Your device arrived safely",
+      intro: `Hi ${esc(firstName)} — good news: your trade-in reached our Brea shop and is checked in.`,
+      bodyHtml:
+        (list ? `<ul style="font-size:14.5px;line-height:1.6;margin:0 0 14px;padding-left:20px">${list}</ul>` : "") +
+        `<p style="font-size:14.5px;line-height:1.7">Next we'll inspect it — usually the same business day. If everything matches what you told us, you'll be paid <b>${money(total)}</b> within one business day. If our inspection turns up something different, we'll email you a revised offer to accept or decline, and you can always have the device back free.</p>`,
+      buttonsHtml: "",
+      footNote: "Questions? Just reply to this email or call 657-286-8274.",
+    }),
+  };
+}
+
 // Payment-sent notification, per payout method. Checks are mailed by hand,
 // so the copy promises the mail, not a Lob tracking ref.
 export function buildPaymentSent({ orderNumber, firstName, amount, method, detail }) {

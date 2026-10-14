@@ -1017,9 +1017,24 @@ function openTradeInDialog(t, refresh){
                     total_paid: $("#dPaid").value ? Number($("#dPaid").value) : null };
     const { error } = await sb.from("trade_ins").update(patch).eq("id", t.id);
     if (error) return toast(error.message);
-    if (status !== t.status || $("#dNote").value.trim())
+    const changed = status !== t.status;
+    if (changed || $("#dNote").value.trim())
       await sb.from("trade_in_events").insert({ trade_in_id: t.id, status, note: $("#dNote").value.trim() || null });
-    d.close(); toast("Saved"); refresh();
+    // a status change the customer should hear about -> send the email
+    let note = "Saved";
+    if (changed && ["received", "paid"].includes(status) && !DEMO) {
+      try {
+        const { data: { session } } = await sb.auth.getSession();
+        const r = await fetch("/api/notify-status", { method: "POST",
+          headers: { "content-type": "application/json", authorization: `Bearer ${session.access_token}` },
+          body: JSON.stringify({ trade_in_id: t.id, status }) });
+        const dta = await r.json().catch(() => ({}));
+        if (dta.emailed) note = `Saved — "${status}" email sent to ${dta.to}`;
+        else if (dta.reason) note = `Saved (no email: ${dta.reason})`;
+        else note = `Saved — but the email FAILED: ${dta.detail || dta.error || "unknown"}`;
+      } catch (e) { note = "Saved — but the email failed to send"; }
+    }
+    d.close(); toast(note); refresh();
   };
 }
 
