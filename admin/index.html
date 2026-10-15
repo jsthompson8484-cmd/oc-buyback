@@ -35,6 +35,8 @@ padding:3px 9px;border-radius:99px;background:var(--ground);color:var(--muted)}
 .chip.initiated{background:#e7f0fa;color:#20507e}.chip.shipped{background:#e7f0fa;color:#20507e}.chip.delivered{background:#e3f1e5;color:var(--green)}.chip.received{background:#faf0e2;color:var(--warn)}
 .chip.evaluating{background:#f3eafa;color:#6d3fa3}.chip.adjusted{background:#faf0e2;color:var(--warn)}.chip.action_pending{background:#faf0e2;color:var(--warn)}
 .chip.paid{background:#e3f1e5;color:var(--green)}.chip.returned,.chip.legacy{background:#eef1f5;color:#4b5a6b}
+.chip.instore{background:#fff3d6;color:#8a5a00}
+.chip.mailin{background:#e8eefb;color:#2f4b86}
 .detail.passed{border-left:3px solid var(--green);background:#f3faf4}
 .detail.failed{border-left:3px solid #b3372b;background:#fdf4f3}
 .insp{display:inline-flex;gap:6px;margin-left:8px}
@@ -350,6 +352,13 @@ else {
 const $ = (s) => document.querySelector(s);
 const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 // orders carried over from the old FlipTech platform
+// cash orders are walk-ins: no address, no label. Everything else ships in.
+const isWalkIn = (t) => t.payment_method === "cash";
+const fulfilBadge = (t) => isWalkIn(t)
+  ? `<span class="chip instore">🏪 In store</span>`
+  : `<span class="chip mailin">📦 Mail-in${t.ship_carrier && t.ship_carrier !== "USPS" ? " · " + esc(t.ship_carrier) : ""}</span>`;
+const cityState = (t) => [t.city, t.state].filter(Boolean).map(esc).join(", ");
+
 const legacyBadge = (t) => t.legacy_id
   ? ` <span class="chip legacy" title="Imported from the old site — original status: ${esc(t.legacy_status || "n/a")}">⟲ legacy</span>` : "";
 const money = (v) => "$" + Number(v || 0).toLocaleString(undefined, {maximumFractionDigits: 2});
@@ -499,7 +508,7 @@ async function loadActions(){
         const responded = iss.filter((i) => ["accepted","declined","cannot_complete"].includes(i.status));
         return `<tr>
           <td style="width:110px"><span class="chip ${t.status}">${t.status}</span></td>
-          <td><b>${esc(t.order_number)}</b>${legacyBadge(t)}<br><span class="muted">${esc(t.first_name)} ${esc(t.last_name)}</span></td>
+          <td><b>${esc(t.order_number)}</b>${legacyBadge(t)}<br><span class="muted">${esc(t.first_name)} ${esc(t.last_name)}</span><br>${fulfilBadge(t)}</td>
           <td>${(t.trade_in_items || []).map((i) =>
             `${i.inspection === "fail" ? '<span title="failed inspection" style="color:#b3372b;font-weight:800">✗</span> ' : i.inspection === "pass" ? '<span title="passed inspection" style="color:var(--green);font-weight:800">✓</span> ' : ""}${esc(`${i.brand} ${i.model}`)}`).join("<br>")}</td>
           <td class="muted">${esc(t.email)}<br>${esc(t.phone)}</td>
@@ -767,7 +776,7 @@ async function loadTradeIns(){
     <tr>
       <td><span class="chip ${t.status}">${t.status}</span></td>
       <td><b>${esc(t.order_number)}</b>${legacyBadge(t)}</td>
-      <td>${esc(t.first_name)} ${esc(t.last_name)}<br><span class="muted">${esc(t.city)}, ${esc(t.state)}</span></td>
+      <td>${esc(t.first_name)} ${esc(t.last_name)}<br>${fulfilBadge(t)}${cityState(t) ? ` <span class="muted">${cityState(t)}</span>` : ""}</td>
       <td>${esc(t.email)}<br><span class="muted">${esc(t.phone)}</span></td>
       <td>${esc(t.payment_method)}${t.payment_detail ? "<br><span class='muted'>" + esc(t.payment_detail) + "</span>" : ""}</td>
       <td class="money" style="text-align:right"><b>${money(t.total_quote)}</b></td>
@@ -791,7 +800,11 @@ function openTradeInDialog(t, refresh){
   d.classList.remove("wide");
   d.innerHTML = `
     <h1 style="margin:0 0 4px">${esc(t.order_number)} <span class="chip ${t.status}">${t.status}</span>${legacyBadge(t)}</h1>
-    <p class="muted" style="margin:0 0 12px">${esc(t.first_name)} ${esc(t.last_name)} · ${esc(t.address1)}${t.address2 ? ", " + esc(t.address2) : ""}, ${esc(t.city)}, ${esc(t.state)} ${esc(t.zip)}</p>
+    <p style="margin:0 0 12px">${fulfilBadge(t)} <span class="muted">${esc(t.first_name)} ${esc(t.last_name)}${
+      isWalkIn(t)
+        ? " · bringing it to the Brea shop — no shipping label"
+        : ` · ${[t.address1, t.address2].filter(Boolean).map(esc).join(", ")}${cityState(t) ? ", " + cityState(t) : ""} ${esc(t.zip || "")}`
+    }</span></p>
     ${(t.trade_in_items || []).map((it) => `
       <div class="detail ${it.inspection === "pass" ? "passed" : it.inspection === "fail" ? "failed" : ""}" data-itemrow="${it.id}"><b>${esc(it.brand)} ${esc(it.model)}</b> × ${it.qty}
         <span class="muted">· ${[it.carrier, it.storage, it.condition].filter(Boolean).map(esc).join(" / ")}</span>
