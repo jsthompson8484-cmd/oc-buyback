@@ -572,7 +572,7 @@ renderStorage(); renderConds();
     mx = model_max(m)
     product_schema = {
         "@context": "https://schema.org", "@type": "Product",
-        "name": f"{brand} {dev}", "image": img_url(cat, brand, dev),
+        "name": f"{brand} {dev}", "image": abs_url(img_url(cat, brand, dev)),
         "brand": {"@type": "Brand", "name": brand},
         "description": f"Sell your {brand} {dev} for cash at OCBuyBack in Brea, CA — instant quote, free shipping, paid within 1 business day.",
         "offers": {"@type": "Offer", "price": f"{mx:.2f}", "priceCurrency": "USD",
