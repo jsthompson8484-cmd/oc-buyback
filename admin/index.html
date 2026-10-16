@@ -36,6 +36,7 @@ padding:3px 9px;border-radius:99px;background:var(--ground);color:var(--muted)}
 .chip.evaluating{background:#f3eafa;color:#6d3fa3}.chip.adjusted{background:#faf0e2;color:var(--warn)}.chip.action_pending{background:#faf0e2;color:var(--warn)}
 .chip.paid{background:#e3f1e5;color:var(--green)}.chip.returned,.chip.legacy{background:#eef1f5;color:#4b5a6b}
 .chip.instore{background:#fff3d6;color:#8a5a00}
+.chip.source{background:#eef6ef;color:#2D8631;cursor:help}
 .chip.mailin{background:#e8eefb;color:#2f4b86}
 .detail.passed{border-left:3px solid var(--green);background:#f3faf4}
 .detail.failed{border-left:3px solid #b3372b;background:#fdf4f3}
@@ -245,7 +246,7 @@ function demoClient(){
     trade_ins: [
       { id:"d1", order_number:"OCB-K4TN2M", status:"shipped", first_name:"Demi", last_name:"Example",
         email:"demi.example@example.com", phone:"555-010-0001", address1:"18 Sample Ave", city:"Irvine", state:"CA", zip:"92602",
-        payment_method:"zelle", payment_detail:"demi.example@example.com", total_quote:905, total_paid:null, source:"SellCell",
+        payment_method:"zelle", payment_detail:"demi.example@example.com", total_quote:905, total_paid:null, source:"SellCell", referrer:"https://www.sellcell.com/", landing_page:"/sell/cell-phone/apple/iphone-17-pro-max/?utm_source=sellcell&utm_medium=referral&utm_campaign=price-compare", utm:{source:"sellcell",medium:"referral",campaign:"price-compare"},
         tracking_number:null, created_at: iso(now - 2*3600e3),
         trade_in_items:[{id:901,category:"Cell Phone",brand:"Apple",model:"iPhone 17 Pro Max",carrier:"Unlocked",storage:"256GB",condition:"Flawless",quoted_price:905,qty:1}] },
       { id:"d2", order_number:"OCB-8WQPRV", status:"received", first_name:"Sam", last_name:"Sample",
@@ -358,6 +359,21 @@ const fulfilBadge = (t) => isWalkIn(t)
   ? `<span class="chip instore">🏪 In store</span>`
   : `<span class="chip mailin">📦 Mail-in${t.ship_carrier && t.ship_carrier !== "USPS" ? " · " + esc(t.ship_carrier) : ""}</span>`;
 const cityState = (t) => [t.city, t.state].filter(Boolean).map(esc).join(", ");
+// where the lead came from — first-touch attribution captured at checkout
+const SOURCE_ICON = { Google:"🔍", Bing:"🔍", "DuckDuckGo":"🔍", Yahoo:"🔍", Swappa:"🤝", SellCell:"🤝",
+  Flipsy:"🤝", BankMyCell:"🤝", "Trade Into Cash":"🤝", Facebook:"📣", Instagram:"📣", X:"📣",
+  Reddit:"📣", YouTube:"📣", Yelp:"⭐", Direct:"🔗", "Price comparison":"🤝" };
+const sourceChip = (t) => {
+  const src = t.source || "Direct";
+  const icon = SOURCE_ICON[src] || (src.startsWith("Referral") ? "🤝" : "🔗");
+  const bits = [];
+  if (t.landing_page) bits.push("Landed on " + t.landing_page);
+  if (t.referrer) bits.push("Referrer: " + t.referrer);
+  const u = t.utm || {};
+  if (u.campaign || u.source || u.medium)
+    bits.push("Campaign: " + [u.source, u.medium, u.campaign].filter(Boolean).join(" / "));
+  return `<span class="chip source" title="${esc(bits.join("\n") || "No referrer recorded")}">${icon} ${esc(src)}</span>`;
+};
 
 const legacyBadge = (t) => t.legacy_id
   ? ` <span class="chip legacy" title="Imported from the old site — original status: ${esc(t.legacy_status || "n/a")}">⟲ legacy</span>` : "";
@@ -800,11 +816,17 @@ function openTradeInDialog(t, refresh){
   d.classList.remove("wide");
   d.innerHTML = `
     <h1 style="margin:0 0 4px">${esc(t.order_number)} <span class="chip ${t.status}">${t.status}</span>${legacyBadge(t)}</h1>
-    <p style="margin:0 0 12px">${fulfilBadge(t)} <span class="muted">${esc(t.first_name)} ${esc(t.last_name)}${
+    <p style="margin:0 0 12px">${fulfilBadge(t)} ${sourceChip(t)} <span class="muted">${esc(t.first_name)} ${esc(t.last_name)}${
       isWalkIn(t)
         ? " · bringing it to the Brea shop — no shipping label"
         : ` · ${[t.address1, t.address2].filter(Boolean).map(esc).join(", ")}${cityState(t) ? ", " + cityState(t) : ""} ${esc(t.zip || "")}`
     }</span></p>
+    ${(t.referrer || (t.utm && (t.utm.campaign || t.utm.source)) || t.landing_page) ? `
+      <p class="muted" style="font-size:12px;margin:-6px 0 12px;line-height:1.5">
+        ${t.referrer ? `came from <b>${esc((() => { try { return new URL(t.referrer).hostname.replace(/^www\./, ""); } catch(e) { return t.referrer; } })())}</b>` : "no referrer"}${
+          t.utm && t.utm.campaign ? ` · campaign <b>${esc(t.utm.campaign)}</b>` : ""}${
+          t.landing_page ? ` · landed on <b>${esc(String(t.landing_page).split("?")[0])}</b>` : ""}
+      </p>` : ""}
     ${(t.trade_in_items || []).map((it) => `
       <div class="detail ${it.inspection === "pass" ? "passed" : it.inspection === "fail" ? "failed" : ""}" data-itemrow="${it.id}"><b>${esc(it.brand)} ${esc(it.model)}</b> × ${it.qty}
         <span class="muted">· ${[it.carrier, it.storage, it.condition].filter(Boolean).map(esc).join(" / ")}</span>
