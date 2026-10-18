@@ -107,6 +107,9 @@ create table trade_ins (
   ship_carrier text not null default 'USPS',  -- USPS | FedEx | UPS (consoles only)                        -- for the shipping label
   label_url         text,
   label_qr_url      text,                               -- USPS Label Broker QR code image
+  label_shipment_id text,
+  label_refund_status text,
+  label_refunded_at timestamptz,
   tracking_number   text,
   admin_notes       text,
   created_at        timestamptz not null default now(),

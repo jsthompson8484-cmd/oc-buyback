@@ -82,6 +82,7 @@ async function buyReturnLabel(customer, weightOz, orderNumber, shipCarrier = "US
     } catch { /* QR is best-effort; the printable label always works */ }
   }
   return { labelUrl: bought.postage_label.label_url, qrUrl, tracking: bought.tracking_code,
+           shipmentId: shipment.id,
            service: `${rate.carrier} ${rate.service}`, carrier: rate.carrier.startsWith("USPS") ? "USPS" : rate.carrier };
 }
 
@@ -266,7 +267,8 @@ export default async (req) => {
       label = await buyReturnLabel(customer,
         verified.reduce((a, i) => a + i.weight_oz * i.qty, 0) + 8, orderNumber, shipCarrier);
       await db(`trade_ins?id=eq.${tradeIn.id}`, { method: "PATCH", body: JSON.stringify({
-        label_url: label.labelUrl, label_qr_url: label.qrUrl, tracking_number: label.tracking }) });
+        label_url: label.labelUrl, label_qr_url: label.qrUrl, tracking_number: label.tracking,
+        label_shipment_id: label.shipmentId }) });
     } catch (e) {
       await db("trade_in_events", { method: "POST", body: JSON.stringify({
         trade_in_id: tradeIn.id, status: "initiated",
