@@ -312,6 +312,26 @@ export function buildCancelled({ orderNumber, firstName }) {
   };
 }
 
+// Corrected shipping label after we sent a bad one.
+export function buildLabelCorrection({ orderNumber, firstName, device, carrier, tracking, labelUrl, lockedUntil }) {
+  return {
+    subject: `Please use this corrected shipping label — order ${orderNumber}`,
+    html: layout({
+      orderNumber,
+      heading: "We sent you the wrong shipping label — here's the right one",
+      intro: `Hi ${esc(firstName)} — we made a mistake. The ${esc(carrier)} label we emailed for your <b>${esc(device)}</b> had the addresses the wrong way round, so it would have sent your device back to you instead of to us. That's on us, and we're sorry for the hassle.`,
+      bodyHtml:
+        `<p style="font-size:14.5px;line-height:1.7;margin:0 0 14px"><b>Please don't use the old label.</b> It's been cancelled. Use the corrected one below instead — it ships to our shop in Brea, and it's still free.</p>` +
+        (tracking ? `<div style="background:${GROUND};border-radius:12px;padding:14px 18px;margin:0 0 14px">
+           <p style="font-size:14.5px;margin:0">New ${esc(carrier)} tracking: <b>${esc(tracking)}</b></p></div>` : "") +
+        `<p style="font-size:14.5px;line-height:1.7;margin:0">If you already dropped off a package with the old label, reply to this email or call <b>657-286-8274</b> right away and we'll track it down and sort it out — you won't be out of pocket.</p>` +
+        (lockedUntil ? `<p style="font-size:14px;color:${MUTED};line-height:1.6;margin:14px 0 0">Your offer is unchanged and still locked through <b>${esc(lockedUntil)}</b>.</p>` : ""),
+      buttonsHtml: labelUrl ? button(labelUrl, "Get my corrected label") : "",
+      footNote: "Thanks for your patience — and sorry again for the mix-up.",
+    }),
+  };
+}
+
 // Payment-sent notification, per payout method. Checks are mailed by hand,
 // so the copy promises the mail, not a Lob tracking ref.
 export function buildPaymentSent({ orderNumber, firstName, amount, method, detail }) {
