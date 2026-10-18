@@ -235,7 +235,6 @@ cartBadge();
           <div class="pay" id="shipPick" role="group" aria-labelledby="shipHead">
             <div class="payopt shipopt" data-c="USPS"><label class="optmain"><input type="radio" name="shipcarrier" value="USPS" class="sr-only"><b>USPS</b><p>Show a QR code at any Post Office — no printer needed.</p></label></div>
             <div class="payopt shipopt" data-c="FedEx"><label class="optmain"><input type="radio" name="shipcarrier" value="FedEx" class="sr-only"><b>FedEx</b><p>Print the label and drop off at any FedEx location.</p></label></div>
-            <div class="payopt shipopt" data-c="UPS"><label class="optmain"><input type="radio" name="shipcarrier" value="UPS" class="sr-only"><b>UPS</b><p>Print the label and drop off at any UPS location.</p></label></div>
           </div>
           <p style="color:var(--muted);font-size:12.5px;margin:8px 0 0" id="shipNote"></p>
         </div>
@@ -287,8 +286,8 @@ let payMethod = null;
 let shipCarrier = "USPS";
 // which carriers each category may ship with (mirrors the server rules)
 function carriersFor(cat){
-  if(["Cell Phone","GoPro","Smartwatch"].includes(cat)) return ["USPS","FedEx","UPS"];
-  if(["Game Console","Tablet","Macbook","iMac","Mac Mini","Mac Studio","Mac Pro"].includes(cat)) return ["FedEx","UPS"];
+  if(["Cell Phone","GoPro","Smartwatch"].includes(cat)) return ["USPS","FedEx"];
+  if(["Game Console","Tablet","Macbook","iMac","Mac Mini","Mac Studio","Mac Pro"].includes(cat)) return ["FedEx"];
   return ["USPS"];
 }
 function refreshShip(){
@@ -306,7 +305,7 @@ function refreshShip(){
   });
   document.getElementById("shipNote").textContent = allowed.includes("USPS")
     ? "Pick whichever is easiest — the label is free either way."
-    : "These items ship FedEx or UPS — sturdier handling for bigger boxes, and the label is free either way.";
+    : "These items ship FedEx — sturdier handling for bigger boxes, and the label is free either way.";
 }
 document.getElementById("shipPick").addEventListener("change", e=>{
   if(e.target.name !== "shipcarrier") return;

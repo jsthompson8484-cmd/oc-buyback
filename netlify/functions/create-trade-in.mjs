@@ -133,7 +133,8 @@ export default async (req) => {
 
   const method = PAY_METHODS[payment.method] || null;
   if (!method) return json(400, { error: "Invalid payment method" });
-  let shipCarrier = ["USPS", "FedEx", "UPS"].includes(ship_carrier) ? ship_carrier : "USPS";
+  // UPS suspended Oct 18 2026 (DAP wallet billing + no QR); USPS/FedEx only
+  let shipCarrier = ["USPS", "FedEx"].includes(ship_carrier) ? ship_carrier : "USPS";
 
   // -- validate customer fields (cash walk-ins bring the device — no address needed)
   const required = method === "cash"
@@ -192,8 +193,8 @@ export default async (req) => {
   // item allows; if that's empty, USPS (one shipment must carry the cart, and
   // rate-pick falls back to USPS anyway if a carrier returns no rate).
   const CARRIERS_BY_CAT = (cat) =>
-    ["Cell Phone", "GoPro", "Smartwatch"].includes(cat) ? ["USPS", "FedEx", "UPS"]
-    : ["Game Console", "Tablet", "Macbook", "iMac", "Mac Mini", "Mac Studio", "Mac Pro"].includes(cat) ? ["FedEx", "UPS"]
+    ["Cell Phone", "GoPro", "Smartwatch"].includes(cat) ? ["USPS", "FedEx"]
+    : ["Game Console", "Tablet", "Macbook", "iMac", "Mac Mini", "Mac Studio", "Mac Pro"].includes(cat) ? ["FedEx"]
     : ["USPS"];
   let allowed = verified.map((i) => CARRIERS_BY_CAT(i.cat))
     .reduce((a, b) => a.filter((x) => b.includes(x)));
