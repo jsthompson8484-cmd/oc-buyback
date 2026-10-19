@@ -8,6 +8,16 @@
   publish = "concepts/freshair"
   functions = "netlify/functions"
 
+# Google Business Profile website link. GBP clicks are indistinguishable from
+# organic search (same google.com referrer, no parameters), so the link itself
+# has to carry the tag. Pointing the listing at /visit keeps the URL clean in
+# the profile while landing the visitor on a tagged URL we can attribute.
+[[redirects]]
+  from = "/visit"
+  to = "/?utm_source=google&utm_medium=organic&utm_campaign=gbp"
+  status = 302
+  force = true
+
 # SellCell per-condition deeplinks (from the price feed) land on the device
 # page with the pick pre-selected via query params
 [[redirects]]
