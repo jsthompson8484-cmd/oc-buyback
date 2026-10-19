@@ -18,7 +18,7 @@ import { buildOrderConfirmation } from "./lib/issue-emails.mjs";
 const SUPABASE_URL = process.env.SUPABASE_URL;
 const SERVICE_KEY = process.env.SUPABASE_SERVICE_KEY;
 import { sendEmail, emailConfigured } from "./lib/send-email.mjs";
-import { reportConversion } from "./lib/tic-conversion.mjs";
+import { reportConversion, isTicReferral } from "./lib/tic-conversion.mjs";
 const SITE_URL = process.env.SITE_URL || "https://www.ocbuyback.com";
 const EASYPOST_KEY = process.env.EASYPOST_API_KEY;
 
@@ -289,8 +289,14 @@ export default async (req) => {
     }),
   });
 
-  // -- report the conversion to Trade Into Cash (partner referral billing)
-  try {
+  // -- report the conversion to Trade Into Cash — ONLY for orders they
+  // actually referred. Reporting every order would have OCBuyBack paying 3%
+  // on its own organic traffic.
+  const ticReferral = isTicReferral({
+    tic_click, referrer: attrib?.r, landing_page: attrib?.l,
+    source: deriveSource(attrib), utm: { source: attrib?.us },
+  });
+  if (ticReferral) try {
     const r = await reportConversion({
       orderNumber, orderTotal: total + promoAmount, clickId: tic_click });
     await db(`trade_ins?id=eq.${tradeIn.id}`, { method: "PATCH", body: JSON.stringify({

@@ -19,6 +19,22 @@ const ENDPOINT = "https://tradeintocash.com/.netlify/functions/conversion-pixel"
 const PARTNER = "ocbuyback";          // must match their records byte for byte
 const CLICK_RE = /^[0-9a-f-]{10,40}$/i;
 
+/**
+ * Is this order actually a Trade Into Cash referral?
+ *
+ * The referral tag is the source of truth, NOT the absence of a click id:
+ * a missing click id only means we couldn't join the order back to a specific
+ * click (cleared cookies, device switch, weeks elapsed) — it never means
+ * "assume it's theirs". Reporting unreferred orders would have OCBuyBack
+ * paying 3% on its own organic and Swappa traffic.
+ */
+export function isTicReferral(t = {}) {
+  if (CLICK_RE.test(String(t.tic_click || ""))) return true;
+  const hay = [t.referrer, t.landing_page, t.source, t.utm && t.utm.source]
+    .filter(Boolean).join(" ").toLowerCase();
+  return hay.includes("tradeintocash");
+}
+
 let cachedSecret;
 async function secret() {
   if (cachedSecret !== undefined) return cachedSecret;
@@ -46,6 +62,7 @@ export async function reportConversion({ orderNumber, orderTotal, clickId }, { a
     order_id: orderNumber,
     order_total: Number(Number(orderTotal).toFixed(2)),
     currency: "USD",
+    referral_source: "tradeintocash",
     ...(t ? { t } : {}),
   });
 
