@@ -18,6 +18,7 @@ import { buildOrderConfirmation } from "./lib/issue-emails.mjs";
 const SUPABASE_URL = process.env.SUPABASE_URL;
 const SERVICE_KEY = process.env.SUPABASE_SERVICE_KEY;
 import { sendEmail, emailConfigured } from "./lib/send-email.mjs";
+import { reportConversion } from "./lib/tic-conversion.mjs";
 const SITE_URL = process.env.SITE_URL || "https://www.ocbuyback.com";
 const EASYPOST_KEY = process.env.EASYPOST_API_KEY;
 
@@ -288,31 +289,15 @@ export default async (req) => {
     }),
   });
 
-  // -- report the conversion to Trade Into Cash (partner referral billing).
-  // Done server-side rather than with their browser pixel: it can't be lost to
-  // ad blockers or a closed tab, and order_number is unique+stable so their
-  // duplicate detection holds even if the customer reloads.
+  // -- report the conversion to Trade Into Cash (partner referral billing)
   try {
-    const ticRes = await fetch("https://tradeintocash.com/.netlify/functions/conversion-pixel", {
-      method: "POST",
-      headers: { "content-type": "application/json" },
-      body: JSON.stringify({
-        partner: "ocbuyback",
-        click_id: /^[0-9a-f-]{10,40}$/i.test(String(tic_click || "")) ? tic_click : null,
-        order_id: orderNumber,
-        order_total: Number((total + promoAmount).toFixed(2)),
-        currency: "USD",
-      }),
-    });
+    const r = await reportConversion({
+      orderNumber, orderTotal: total + promoAmount, clickId: tic_click });
     await db(`trade_ins?id=eq.${tradeIn.id}`, { method: "PATCH", body: JSON.stringify({
-      tic_reported_at: new Date().toISOString(),
-      tic_report_status: ticRes.ok ? "reported" : `failed ${ticRes.status}`,
+      tic_reported_at: r.ok ? new Date().toISOString() : null,
+      tic_report_status: r.status,
     }) }).catch(() => {});
-  } catch (e) {
-    await db(`trade_ins?id=eq.${tradeIn.id}`, { method: "PATCH", body: JSON.stringify({
-      tic_report_status: `failed: ${String(e.message).slice(0, 80)}`,
-    }) }).catch(() => {});   // never let partner reporting break an order
-  }
+  } catch { /* partner billing must never break an order */ }
 
   // -- order confirmation email (label email comes with the carrier integration)
   if (emailConfigured()) {
