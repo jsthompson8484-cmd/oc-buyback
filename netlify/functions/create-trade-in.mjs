@@ -114,6 +114,10 @@ const REF_CHANNELS = [
 ];
 function deriveSource(attrib) {
   if (!attrib) return "Direct";
+  // a click id means they arrived from a paid ad, not an organic result
+  if (attrib.gc) return "Google Ads";
+  if (attrib.mc) return "Microsoft Ads";
+  if (attrib.fc) return "Facebook Ads";
   if (attrib.us) return attrib.us.charAt(0).toUpperCase() + attrib.us.slice(1);
   if (attrib.r) {
     for (const [re, name] of REF_CHANNELS) if (re.test(attrib.r)) return name;
@@ -244,8 +248,12 @@ export default async (req) => {
       source: deriveSource(attrib),
       referrer: (attrib?.r || "").slice(0, 500) || null,
       landing_page: (attrib?.l || "").slice(0, 500) || null,
-      utm: attrib?.us || attrib?.um || attrib?.uc
-        ? { source: attrib.us || null, medium: attrib.um || null, campaign: attrib.uc || null } : null,
+      utm: attrib?.us || attrib?.um || attrib?.uc || attrib?.gc || attrib?.mc || attrib?.fc || attrib?.kw
+        ? { source: attrib.us || null, medium: attrib.um || null, campaign: attrib.uc || null,
+            term: attrib.kw || null,
+            // keep the raw click id: it's the join key to the ad platform's
+            // report, which is where the search term that triggered the ad lives
+            gclid: attrib.gc || null, msclkid: attrib.mc || null, fbclid: attrib.fc || null } : null,
     }),
   });
   if (!tiRes.ok) {

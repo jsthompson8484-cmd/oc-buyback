@@ -126,6 +126,13 @@ cartBadge();
       r: sameSite ? "" : ref,
       l: location.pathname + location.search,
       us: q.get("utm_source") || "", um: q.get("utm_medium") || "", uc: q.get("utm_campaign") || "",
+      // ad click ids — these are what separate a PAID click from an organic
+      // one, and they're the join key back to the ad platform's own report
+      // (where the actual search term lives). Google strips search queries
+      // from the referrer, so this is the only route to keyword data.
+      gc: q.get("gclid") || q.get("gbraid") || q.get("wbraid") || "",
+      mc: q.get("msclkid") || "", fc: q.get("fbclid") || "",
+      kw: q.get("utm_term") || "",
       t: new Date().toISOString(),
     }));
   } catch(e) {}
