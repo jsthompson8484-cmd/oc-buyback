@@ -360,7 +360,9 @@ const fulfilBadge = (t) => isWalkIn(t)
   : `<span class="chip mailin">📦 Mail-in${t.ship_carrier && t.ship_carrier !== "USPS" ? " · " + esc(t.ship_carrier) : ""}</span>`;
 const cityState = (t) => [t.city, t.state].filter(Boolean).map(esc).join(", ");
 // where the lead came from — first-touch attribution captured at checkout
-const SOURCE_ICON = { Google:"🔍", Bing:"🔍", "DuckDuckGo":"🔍", Yahoo:"🔍", Swappa:"🤝", SellCell:"🤝",
+const SOURCE_ICON = { "Google Ads":"💰", "Microsoft Ads":"💰", "Facebook Ads":"💰",
+  "Google Business Profile":"📍", "Google Maps":"📍",
+  Google:"🔍", Bing:"🔍", "DuckDuckGo":"🔍", Yahoo:"🔍", Swappa:"🤝", SellCell:"🤝",
   Flipsy:"🤝", BankMyCell:"🤝", "Trade Into Cash":"🤝", Facebook:"📣", Instagram:"📣", X:"📣",
   Reddit:"📣", YouTube:"📣", Yelp:"⭐", Direct:"🔗", "Price comparison":"🤝" };
 const sourceChip = (t) => {
@@ -825,6 +827,8 @@ function openTradeInDialog(t, refresh){
       <p class="muted" style="font-size:12px;margin:-6px 0 12px;line-height:1.5">
         ${t.referrer ? `came from <b>${esc((() => { try { return new URL(t.referrer).hostname.replace(/^www\./, ""); } catch(e) { return t.referrer; } })())}</b>` : "no referrer"}${
           t.utm && t.utm.campaign ? ` · campaign <b>${esc(t.utm.campaign)}</b>` : ""}${
+          t.utm && t.utm.term ? ` · keyword <b>${esc(t.utm.term)}</b>` : ""}${
+          t.utm && (t.utm.gclid || t.utm.msclkid) ? ` · <span title="Paid click — look this id up in the ad platform report to see the exact search term that triggered the ad.">ad click <b>${esc(String(t.utm.gclid || t.utm.msclkid).slice(0,18))}…</b></span>` : ""}${
           t.landing_page ? ` · landed on <b>${esc(String(t.landing_page).split("?")[0])}</b>` : ""}
       </p>` : ""}
     ${(t.trade_in_items || []).map((it) => `

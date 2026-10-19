@@ -118,6 +118,11 @@ function deriveSource(attrib) {
   if (attrib.gc) return "Google Ads";
   if (attrib.mc) return "Microsoft Ads";
   if (attrib.fc) return "Facebook Ads";
+  // Google Business Profile: the listing's website link carries our own utm
+  // (set in the GBP dashboard). Maps referrers are the weaker fallback signal.
+  const tag = `${attrib.us || ""} ${attrib.um || ""} ${attrib.uc || ""}`.toLowerCase();
+  if (/\bgbp\b|business[_-]?profile|\bgmb\b/.test(tag)) return "Google Business Profile";
+  if (/maps\.google\./i.test(attrib.r || "")) return "Google Maps";
   if (attrib.us) return attrib.us.charAt(0).toUpperCase() + attrib.us.slice(1);
   if (attrib.r) {
     for (const [re, name] of REF_CHANNELS) if (re.test(attrib.r)) return name;
