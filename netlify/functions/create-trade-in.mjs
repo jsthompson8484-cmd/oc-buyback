@@ -129,7 +129,7 @@ export default async (req) => {
   let body;
   try { body = await req.json(); } catch { return json(400, { error: "Invalid JSON" }); }
 
-  const { customer = {}, items = [], payment = {}, promo_code, sms_opt_in, attrib, ship_carrier } = body;
+  const { customer = {}, items = [], payment = {}, promo_code, sms_opt_in, attrib, ship_carrier, tic_click } = body;
 
   const method = PAY_METHODS[payment.method] || null;
   if (!method) return json(400, { error: "Invalid payment method" });
@@ -239,6 +239,7 @@ export default async (req) => {
       price_locked_until: lockDate,
       estimated_weight_oz: verified.reduce((a, i) => a + i.weight_oz * i.qty, 0) + 8, // +8oz box/padding
       ship_carrier: method === "cash" ? "USPS" : shipCarrier,
+      tic_click: /^[0-9a-f-]{10,40}$/i.test(String(tic_click || "")) ? tic_click : null,
       source: deriveSource(attrib),
       referrer: (attrib?.r || "").slice(0, 500) || null,
       landing_page: (attrib?.l || "").slice(0, 500) || null,
@@ -286,6 +287,32 @@ export default async (req) => {
                 : "Order created — label pending.",
     }),
   });
+
+  // -- report the conversion to Trade Into Cash (partner referral billing).
+  // Done server-side rather than with their browser pixel: it can't be lost to
+  // ad blockers or a closed tab, and order_number is unique+stable so their
+  // duplicate detection holds even if the customer reloads.
+  try {
+    const ticRes = await fetch("https://tradeintocash.com/.netlify/functions/conversion-pixel", {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({
+        partner: "ocbuyback",
+        click_id: /^[0-9a-f-]{10,40}$/i.test(String(tic_click || "")) ? tic_click : null,
+        order_id: orderNumber,
+        order_total: Number((total + promoAmount).toFixed(2)),
+        currency: "USD",
+      }),
+    });
+    await db(`trade_ins?id=eq.${tradeIn.id}`, { method: "PATCH", body: JSON.stringify({
+      tic_reported_at: new Date().toISOString(),
+      tic_report_status: ticRes.ok ? "reported" : `failed ${ticRes.status}`,
+    }) }).catch(() => {});
+  } catch (e) {
+    await db(`trade_ins?id=eq.${tradeIn.id}`, { method: "PATCH", body: JSON.stringify({
+      tic_report_status: `failed: ${String(e.message).slice(0, 80)}`,
+    }) }).catch(() => {});   // never let partner reporting break an order
+  }
 
   // -- order confirmation email (label email comes with the carrier integration)
   if (emailConfigured()) {

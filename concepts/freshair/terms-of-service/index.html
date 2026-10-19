@@ -111,6 +111,18 @@ cartBadge();
     }));
   } catch(e) {}
 })();
+// Trade Into Cash referral click id — stored on arrival so it survives the
+// journey to checkout. The conversion itself is reported server-side from the
+// order handler (browser pixels lose orders to ad blockers and closed tabs).
+(function(){
+  try {
+    const cid = new URLSearchParams(location.search).get("tic_click");
+    if (!cid || !/^[0-9a-f-]{10,40}$/i.test(cid)) return;
+    localStorage.setItem("tic_click", cid);
+    localStorage.setItem("tic_click_at", String(Date.now()));
+    document.cookie = "tic_click=" + encodeURIComponent(cid) + ";path=/;max-age=2592000;SameSite=Lax";
+  } catch(e) {}
+})();
 </script>
 <main id="main">
 
