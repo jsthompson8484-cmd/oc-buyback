@@ -4,18 +4,6 @@
     <loc>https://www.ocbuyback.com/</loc>
   </url>
   <url>
-    <loc>https://www.ocbuyback.com/sell/cell-phone/apple/iphone-11</loc>
-    <image:image><image:loc>https://www.ocbuyback.com/assets/devices/cell-phones/apple/iphone-11.webp</image:loc></image:image>
-  </url>
-  <url>
-    <loc>https://www.ocbuyback.com/sell/cell-phone/apple/iphone-11-pro</loc>
-    <image:image><image:loc>https://www.ocbuyback.com/assets/devices/cell-phones/apple/iphone-11-pro.webp</image:loc></image:image>
-  </url>
-  <url>
-    <loc>https://www.ocbuyback.com/sell/cell-phone/apple/iphone-11-pro-max</loc>
-    <image:image><image:loc>https://www.ocbuyback.com/assets/devices/cell-phones/apple/iphone-11-pro-max.webp</image:loc></image:image>
-  </url>
-  <url>
     <loc>https://www.ocbuyback.com/sell/cell-phone/apple/iphone-12</loc>
     <image:image><image:loc>https://www.ocbuyback.com/assets/devices/cell-phones/apple/iphone-12.webp</image:loc></image:image>
   </url>
@@ -114,6 +102,10 @@
   <url>
     <loc>https://www.ocbuyback.com/sell/cell-phone/apple/iphone-17e</loc>
     <image:image><image:loc>https://www.ocbuyback.com/assets/devices/cell-phones/apple/iphone-17e.webp</image:loc></image:image>
+  </url>
+  <url>
+    <loc>https://www.ocbuyback.com/sell/cell-phone/apple/iphone-18-pro-max</loc>
+    <image:image><image:loc>https://www.ocbuyback.com/assets/devices/cell-phones/apple/iphone-18-pro-max.webp</image:loc></image:image>
   </url>
   <url>
     <loc>https://www.ocbuyback.com/sell/cell-phone/apple/iphone-air</loc>

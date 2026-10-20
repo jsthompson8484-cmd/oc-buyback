@@ -1272,7 +1272,7 @@ $("#catLoad").onclick = async () => {
       n++;
       const p = {}; (v.prices || []).forEach((x) => p[x.condition] = x);
       const allOn = (v.prices || []).some((x) => x.enabled);
-      const wCell = first ? `<b>${esc(m.name)}</b><br><label style="display:inline-flex;align-items:center;gap:5px;margin-top:4px;font-size:11.5px;color:var(--muted)" title="Shipping weight used to buy the label. Blank uses the ${catDefaultW} oz category default."><input type="number" class="wOz" data-m="${m.id}" value="${m.weight_oz ?? ""}" placeholder="${catDefaultW}" style="width:58px;font-size:12px"> oz ship weight</label>` : `<b>${esc(m.name)}</b>`;
+      const wCell = first ? `<label style="display:inline-flex;align-items:center;gap:6px;cursor:pointer" title="Show this device on the website. Needs at least one priced condition below, then hit Publish."><input type="checkbox" class="mOn" data-m="${m.id}" ${m.enabled ? "checked" : ""}><b>${esc(m.name)}</b></label><br><label style="display:inline-flex;align-items:center;gap:5px;margin-top:4px;font-size:11.5px;color:var(--muted)" title="Shipping weight used to buy the label. Blank uses the ${catDefaultW} oz category default."><input type="number" class="wOz" data-m="${m.id}" value="${m.weight_oz ?? ""}" placeholder="${catDefaultW}" style="width:58px;font-size:12px"> oz ship weight</label>` : `<b>${esc(m.name)}</b>`;
       first = false;
       html += `<tr data-v="${v.id}">
         <td><input type="checkbox" class="rowOn" ${allOn ? "checked" : ""}></td>
@@ -1291,6 +1291,14 @@ $("#catTable").addEventListener("change", async (e) => {
     toast(error ? error.message : (w ? `Weight saved: ${w} oz` : "Weight cleared — using category default"));
     return;
   }
+    if (e.target.classList.contains("mOn")) {
+      const on = e.target.checked;
+      const { error } = await sb.from("models").update({ enabled: on }).eq("id", e.target.dataset.m);
+      if (error) { e.target.checked = !on; return toast(error.message); }
+      toast(on ? "Device turned on — hit 🚀 Publish site to make it live"
+               : "Device turned off — hit 🚀 Publish site to update the site");
+      return;
+    }
 });
 $("#catTable").addEventListener("input", (e) => {
   if (e.target.classList.contains("wOz")) return;
