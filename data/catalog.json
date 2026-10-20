@@ -3362,171 +3362,171 @@
     "variants": {
      "AT&T": {
       "1TB": {
-       "Brand New": 910.0,
+       "Brand New": 890.0,
        "Broken": 50.0,
-       "Fair": 710.0,
-       "Flawless": 860.0,
-       "Good": 810.0,
+       "Fair": 690.0,
+       "Flawless": 840.0,
+       "Good": 790.0,
        "Minor Damage": 300.0
       },
       "256GB": {
-       "Brand New": 745.0,
+       "Brand New": 725.0,
        "Broken": 50.0,
-       "Fair": 545.0,
-       "Flawless": 695.0,
-       "Good": 645.0,
-       "Minor Damage": 230.0
+       "Fair": 525.0,
+       "Flawless": 675.0,
+       "Good": 625.0,
+       "Minor Damage": 210.0
       },
       "2TB": {
-       "Brand New": 945.0,
-       "Broken": 50.0,
-       "Fair": 745.0,
-       "Flawless": 895.0,
-       "Good": 845.0,
-       "Minor Damage": 380.0
-      },
-      "512GB": {
-       "Brand New": 845.0,
-       "Broken": 50.0,
-       "Fair": 645.0,
-       "Flawless": 795.0,
-       "Good": 745.0,
-       "Minor Damage": 260.0
-      }
-     },
-     "Other": {
-      "1TB": {
-       "Brand New": 530.0,
-       "Broken": 50.0,
-       "Fair": 330.0,
-       "Flawless": 480.0,
-       "Good": 430.0,
-       "Minor Damage": 150.0
-      },
-      "256GB": {
-       "Brand New": 365.0,
-       "Broken": 50.0,
-       "Fair": 165.0,
-       "Flawless": 315.0,
-       "Good": 265.0,
-       "Minor Damage": 80.0
-      },
-      "2TB": {
-       "Brand New": 565.0,
-       "Broken": 50.0,
-       "Fair": 365.0,
-       "Flawless": 515.0,
-       "Good": 465.0,
-       "Minor Damage": 230.0
-      },
-      "512GB": {
-       "Brand New": 465.0,
-       "Broken": 50.0,
-       "Fair": 265.0,
-       "Flawless": 415.0,
-       "Good": 365.0,
-       "Minor Damage": 110.0
-      }
-     },
-     "T-Mobile": {
-      "1TB": {
        "Brand New": 925.0,
        "Broken": 50.0,
        "Fair": 725.0,
        "Flawless": 875.0,
        "Good": 825.0,
+       "Minor Damage": 360.0
+      },
+      "512GB": {
+       "Brand New": 825.0,
+       "Broken": 50.0,
+       "Fair": 625.0,
+       "Flawless": 775.0,
+       "Good": 725.0,
+       "Minor Damage": 260.0
+      }
+     },
+     "Other": {
+      "1TB": {
+       "Brand New": 510.0,
+       "Broken": 50.0,
+       "Fair": 310.0,
+       "Flawless": 460.0,
+       "Good": 410.0,
+       "Minor Damage": 150.0
+      },
+      "256GB": {
+       "Brand New": 345.0,
+       "Broken": 50.0,
+       "Fair": 145.0,
+       "Flawless": 295.0,
+       "Good": 245.0,
+       "Minor Damage": 80.0
+      },
+      "2TB": {
+       "Brand New": 545.0,
+       "Broken": 50.0,
+       "Fair": 345.0,
+       "Flawless": 495.0,
+       "Good": 445.0,
+       "Minor Damage": 230.0
+      },
+      "512GB": {
+       "Brand New": 445.0,
+       "Broken": 50.0,
+       "Fair": 245.0,
+       "Flawless": 395.0,
+       "Good": 345.0,
+       "Minor Damage": 110.0
+      }
+     },
+     "T-Mobile": {
+      "1TB": {
+       "Brand New": 905.0,
+       "Broken": 50.0,
+       "Fair": 705.0,
+       "Flawless": 855.0,
+       "Good": 805.0,
        "Minor Damage": 325.0
       },
       "256GB": {
-       "Brand New": 760.0,
+       "Brand New": 740.0,
        "Broken": 50.0,
-       "Fair": 560.0,
-       "Flawless": 710.0,
-       "Good": 660.0,
+       "Fair": 540.0,
+       "Flawless": 690.0,
+       "Good": 640.0,
        "Minor Damage": 255.0
       },
       "2TB": {
-       "Brand New": 960.0,
+       "Brand New": 940.0,
        "Broken": 50.0,
-       "Fair": 760.0,
-       "Flawless": 910.0,
-       "Good": 860.0,
+       "Fair": 740.0,
+       "Flawless": 890.0,
+       "Good": 840.0,
        "Minor Damage": 405.0
       },
       "512GB": {
-       "Brand New": 860.0,
+       "Brand New": 840.0,
        "Broken": 50.0,
-       "Fair": 660.0,
-       "Flawless": 810.0,
-       "Good": 760.0,
+       "Fair": 640.0,
+       "Flawless": 790.0,
+       "Good": 740.0,
        "Minor Damage": 285.0
       }
      },
      "Unlocked": {
       "1TB": {
-       "Brand New": 1030.0,
+       "Brand New": 1010.0,
        "Broken": 50.0,
-       "Fair": 830.0,
-       "Flawless": 980.0,
-       "Good": 930.0,
+       "Fair": 810.0,
+       "Flawless": 960.0,
+       "Good": 910.0,
        "Minor Damage": 400.0
       },
       "256GB": {
-       "Brand New": 865.0,
+       "Brand New": 845.0,
        "Broken": 50.0,
-       "Fair": 665.0,
-       "Flawless": 815.0,
-       "Good": 765.0,
+       "Fair": 645.0,
+       "Flawless": 795.0,
+       "Good": 745.0,
        "Minor Damage": 330.0
       },
       "2TB": {
-       "Brand New": 1165.0,
+       "Brand New": 1145.0,
        "Broken": 50.0,
-       "Fair": 865.0,
-       "Flawless": 1015.0,
-       "Good": 965.0,
+       "Fair": 845.0,
+       "Flawless": 1095.0,
+       "Good": 945.0,
        "Minor Damage": 480.0
       },
       "512GB": {
-       "Brand New": 965.0,
+       "Brand New": 945.0,
        "Broken": 50.0,
-       "Fair": 765.0,
-       "Flawless": 915.0,
-       "Good": 865.0,
+       "Fair": 745.0,
+       "Flawless": 895.0,
+       "Good": 845.0,
        "Minor Damage": 360.0
       }
      },
      "Verizon": {
       "1TB": {
-       "Brand New": 830.0,
+       "Brand New": 810.0,
        "Broken": 50.0,
-       "Fair": 630.0,
-       "Flawless": 780.0,
-       "Good": 730.0,
+       "Fair": 610.0,
+       "Flawless": 760.0,
+       "Good": 710.0,
        "Minor Damage": 350.0
       },
       "256GB": {
-       "Brand New": 665.0,
+       "Brand New": 645.0,
        "Broken": 50.0,
-       "Fair": 465.0,
-       "Flawless": 615.0,
-       "Good": 565.0,
+       "Fair": 445.0,
+       "Flawless": 595.0,
+       "Good": 545.0,
        "Minor Damage": 280.0
       },
       "2TB": {
-       "Brand New": 865.0,
+       "Brand New": 845.0,
        "Broken": 50.0,
-       "Fair": 665.0,
-       "Flawless": 815.0,
-       "Good": 765.0,
+       "Fair": 645.0,
+       "Flawless": 795.0,
+       "Good": 745.0,
        "Minor Damage": 430.0
       },
       "512GB": {
-       "Brand New": 765.0,
+       "Brand New": 745.0,
        "Broken": 50.0,
-       "Fair": 565.0,
-       "Flawless": 715.0,
-       "Good": 665.0,
+       "Fair": 545.0,
+       "Flawless": 695.0,
+       "Good": 645.0,
        "Minor Damage": 310.0
       }
      }
@@ -3623,6 +3623,82 @@
     },
     "image": "https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/apple/iphone-17e.webp",
     "slug": "iphone-17e"
+   },
+   "iPhone 18 Pro": {
+    "enabled": false,
+    "sort": 8350,
+    "variants": {
+     "AT&T": {
+      "1TB": {},
+      "256GB": {},
+      "2TB": {},
+      "512GB": {}
+     },
+     "Other": {
+      "1TB": {},
+      "256GB": {},
+      "2TB": {},
+      "512GB": {}
+     },
+     "T-Mobile": {
+      "1TB": {},
+      "256GB": {},
+      "2TB": {},
+      "512GB": {}
+     },
+     "Unlocked": {
+      "1TB": {},
+      "256GB": {},
+      "2TB": {},
+      "512GB": {}
+     },
+     "Verizon": {
+      "1TB": {},
+      "256GB": {},
+      "2TB": {},
+      "512GB": {}
+     }
+    },
+    "image": "/assets/devices/cell-phones/apple/iphone-18-pro.webp",
+    "slug": "iphone-18-pro"
+   },
+   "iPhone 18 Pro Max": {
+    "enabled": false,
+    "sort": 8400,
+    "variants": {
+     "AT&T": {
+      "1TB": {},
+      "256GB": {},
+      "2TB": {},
+      "512GB": {}
+     },
+     "Other": {
+      "1TB": {},
+      "256GB": {},
+      "2TB": {},
+      "512GB": {}
+     },
+     "T-Mobile": {
+      "1TB": {},
+      "256GB": {},
+      "2TB": {},
+      "512GB": {}
+     },
+     "Unlocked": {
+      "1TB": {},
+      "256GB": {},
+      "2TB": {},
+      "512GB": {}
+     },
+     "Verizon": {
+      "1TB": {},
+      "256GB": {},
+      "2TB": {},
+      "512GB": {}
+     }
+    },
+    "image": "/assets/devices/cell-phones/apple/iphone-18-pro-max.webp",
+    "slug": "iphone-18-pro-max"
    },
    "iPhone 5c": {
     "enabled": false,
@@ -4116,6 +4192,44 @@
     },
     "image": "https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/apple/iphone-air.webp",
     "slug": "iphone-air"
+   },
+   "iPhone Duo": {
+    "enabled": false,
+    "sort": 8450,
+    "variants": {
+     "AT&T": {
+      "1TB": {},
+      "256GB": {},
+      "2TB": {},
+      "512GB": {}
+     },
+     "Other": {
+      "1TB": {},
+      "256GB": {},
+      "2TB": {},
+      "512GB": {}
+     },
+     "T-Mobile": {
+      "1TB": {},
+      "256GB": {},
+      "2TB": {},
+      "512GB": {}
+     },
+     "Unlocked": {
+      "1TB": {},
+      "256GB": {},
+      "2TB": {},
+      "512GB": {}
+     },
+     "Verizon": {
+      "1TB": {},
+      "256GB": {},
+      "2TB": {},
+      "512GB": {}
+     }
+    },
+    "image": "/assets/devices/cell-phones/apple/iphone-duo.webp",
+    "slug": "iphone-duo"
    },
    "iPhone SE 1st Gen (2016)": {
     "enabled": false,
@@ -5384,18 +5498,8 @@
     "sort": 15101,
     "variants": {
      "AT&T": {
-      "128GB": {
-       "Fair": 10.0,
-       "Flawless": 40.0,
-       "Good": 25.0,
-       "Minor Damage": 5.0
-      },
-      "256GB": {
-       "Fair": 30.0,
-       "Flawless": 60.0,
-       "Good": 45.0,
-       "Minor Damage": 10.0
-      }
+      "128GB": {},
+      "256GB": {}
      },
      "Other": {
       "128GB": {},
@@ -5406,32 +5510,12 @@
       "256GB": {}
      },
      "Unlocked": {
-      "128GB": {
-       "Fair": 40.0,
-       "Flawless": 70.0,
-       "Good": 55.0,
-       "Minor Damage": 15.0
-      },
-      "256GB": {
-       "Fair": 60.0,
-       "Flawless": 90.0,
-       "Good": 75.0,
-       "Minor Damage": 25.0
-      }
+      "128GB": {},
+      "256GB": {}
      },
      "Verizon": {
-      "128GB": {
-       "Fair": 5.0,
-       "Flawless": 40.0,
-       "Good": 25.0,
-       "Minor Damage": 5.0
-      },
-      "256GB": {
-       "Fair": 10.0,
-       "Flawless": 40.0,
-       "Good": 25.0,
-       "Minor Damage": 5.0
-      }
+      "128GB": {},
+      "256GB": {}
      }
     },
     "image": "https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/google/pixel-7.webp",
@@ -5442,27 +5526,9 @@
     "sort": 15161,
     "variants": {
      "AT&T": {
-      "128GB": {
-       "Brand New": 95.0,
-       "Fair": 10.0,
-       "Flawless": 55.0,
-       "Good": 40.0,
-       "Minor Damage": 5.0
-      },
-      "256GB": {
-       "Brand New": 115.0,
-       "Fair": 25.0,
-       "Flawless": 75.0,
-       "Good": 60.0,
-       "Minor Damage": 10.0
-      },
-      "512GB": {
-       "Brand New": 120.0,
-       "Fair": 25.0,
-       "Flawless": 80.0,
-       "Good": 65.0,
-       "Minor Damage": 10.0
-      }
+      "128GB": {},
+      "256GB": {},
+      "512GB": {}
      },
      "Other": {
       "128GB": {},
@@ -5475,50 +5541,14 @@
       "512GB": {}
      },
      "Unlocked": {
-      "128GB": {
-       "Brand New": 155.0,
-       "Fair": 60.0,
-       "Flawless": 115.0,
-       "Good": 100.0,
-       "Minor Damage": 20.0
-      },
-      "256GB": {
-       "Brand New": 175.0,
-       "Fair": 80.0,
-       "Flawless": 135.0,
-       "Good": 120.0,
-       "Minor Damage": 20.0
-      },
-      "512GB": {
-       "Brand New": 180.0,
-       "Fair": 85.0,
-       "Flawless": 140.0,
-       "Good": 125.0,
-       "Minor Damage": 20.0
-      }
+      "128GB": {},
+      "256GB": {},
+      "512GB": {}
      },
      "Verizon": {
-      "128GB": {
-       "Brand New": 75.0,
-       "Fair": 20.0,
-       "Flawless": 45.0,
-       "Good": 30.0,
-       "Minor Damage": 10.0
-      },
-      "256GB": {
-       "Brand New": 95.0,
-       "Fair": 15.0,
-       "Flawless": 55.0,
-       "Good": 40.0,
-       "Minor Damage": 10.0
-      },
-      "512GB": {
-       "Brand New": 100.0,
-       "Fair": 15.0,
-       "Flawless": 60.0,
-       "Good": 45.0,
-       "Minor Damage": 10.0
-      }
+      "128GB": {},
+      "256GB": {},
+      "512GB": {}
      }
     },
     "image": "https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/google/pixel-7-pro.webp",
@@ -5529,39 +5559,19 @@
     "sort": 15251,
     "variants": {
      "AT&T": {
-      "128GB": {
-       "Fair": 35.0,
-       "Flawless": 90.0,
-       "Good": 70.0,
-       "Minor Damage": 10.0
-      }
+      "128GB": {}
      },
      "Other": {
       "128GB": {}
      },
      "T-Mobile": {
-      "128GB": {
-       "Fair": 20.0,
-       "Flawless": 65.0,
-       "Good": 45.0,
-       "Minor Damage": 10.0
-      }
+      "128GB": {}
      },
      "Unlocked": {
-      "128GB": {
-       "Fair": 60.0,
-       "Flawless": 115.0,
-       "Good": 95.0,
-       "Minor Damage": 15.0
-      }
+      "128GB": {}
      },
      "Verizon": {
-      "128GB": {
-       "Fair": 15.0,
-       "Flawless": 55.0,
-       "Good": 35.0,
-       "Minor Damage": 5.0
-      }
+      "128GB": {}
      }
     },
     "image": "https://s3.amazonaws.com/fliptech-assets/images/devices/cell-phones/google/pixel-7a.webp",
@@ -5828,32 +5838,60 @@
     "sort": 15641,
     "variants": {
      "AT&T": {
-      "128GB": {},
-      "256GB": {}
+      "128GB": {
+       "Brand New": 285.0,
+       "Broken": 5.0,
+       "Fair": 125.0,
+       "Flawless": 235.0,
+       "Good": 195.0,
+       "Minor Damage": 35.0
+      },
+      "256GB": {
+       "Brand New": 305.0,
+       "Broken": 5.0,
+       "Fair": 145.0,
+       "Flawless": 255.0,
+       "Good": 215.0,
+       "Minor Damage": 45.0
+      }
      },
      "Other": {
       "128GB": {},
       "256GB": {}
      },
      "T-Mobile": {
-      "128GB": {},
-      "256GB": {}
+      "128GB": {
+       "Brand New": 260.0,
+       "Broken": 5.0,
+       "Fair": 100.0,
+       "Flawless": 210.0,
+       "Good": 170.0,
+       "Minor Damage": 35.0
+      },
+      "256GB": {
+       "Brand New": 280.0,
+       "Broken": 5.0,
+       "Fair": 120.0,
+       "Flawless": 230.0,
+       "Good": 190.0,
+       "Minor Damage": 40.0
+      }
      },
      "Unlocked": {
       "128GB": {
-       "Brand New": 285.0,
-       "Broken": 10.0,
-       "Fair": 130.0,
-       "Flawless": 235.0,
-       "Good": 185.0,
+       "Brand New": 310.0,
+       "Broken": 5.0,
+       "Fair": 150.0,
+       "Flawless": 260.0,
+       "Good": 220.0,
        "Minor Damage": 50.0
       },
       "256GB": {
-       "Brand New": 305.0,
-       "Broken": 10.0,
-       "Fair": 150.0,
-       "Flawless": 255.0,
-       "Good": 205.0,
+       "Brand New": 330.0,
+       "Broken": 5.0,
+       "Fair": 170.0,
+       "Flawless": 280.0,
+       "Good": 240.0,
        "Minor Damage": 50.0
       }
      },
@@ -5870,10 +5908,38 @@
     "sort": 15761,
     "variants": {
      "AT&T": {
-      "128GB": {},
-      "1TB": {},
-      "256GB": {},
-      "512GB": {}
+      "128GB": {
+       "Brand New": 260.0,
+       "Broken": 5.0,
+       "Fair": 105.0,
+       "Flawless": 210.0,
+       "Good": 170.0,
+       "Minor Damage": 20.0
+      },
+      "1TB": {
+       "Brand New": 335.0,
+       "Broken": 5.0,
+       "Fair": 180.0,
+       "Flawless": 285.0,
+       "Good": 245.0,
+       "Minor Damage": 40.0
+      },
+      "256GB": {
+       "Brand New": 290.0,
+       "Broken": 5.0,
+       "Fair": 135.0,
+       "Flawless": 240.0,
+       "Good": 200.0,
+       "Minor Damage": 30.0
+      },
+      "512GB": {
+       "Brand New": 310.0,
+       "Broken": 5.0,
+       "Fair": 155.0,
+       "Flawless": 260.0,
+       "Good": 220.0,
+       "Minor Damage": 30.0
+      }
      },
      "Other": {
       "128GB": {},
@@ -5936,32 +6002,60 @@
     "sort": 15581,
     "variants": {
      "AT&T": {
-      "256GB": {},
-      "512GB": {}
+      "256GB": {
+       "Brand New": 390.0,
+       "Broken": 5.0,
+       "Fair": 205.0,
+       "Flawless": 340.0,
+       "Good": 290.0,
+       "Minor Damage": 85.0
+      },
+      "512GB": {
+       "Brand New": 420.0,
+       "Broken": 5.0,
+       "Fair": 235.0,
+       "Flawless": 370.0,
+       "Good": 320.0,
+       "Minor Damage": 95.0
+      }
      },
      "Other": {
       "256GB": {},
       "512GB": {}
      },
      "T-Mobile": {
-      "256GB": {},
-      "512GB": {}
+      "256GB": {
+       "Brand New": 340.0,
+       "Broken": 5.0,
+       "Fair": 155.0,
+       "Flawless": 290.0,
+       "Good": 240.0,
+       "Minor Damage": 60.0
+      },
+      "512GB": {
+       "Brand New": 370.0,
+       "Broken": 5.0,
+       "Fair": 185.0,
+       "Flawless": 320.0,
+       "Good": 270.0,
+       "Minor Damage": 70.0
+      }
      },
      "Unlocked": {
       "256GB": {
-       "Brand New": 510.0,
-       "Broken": 20.0,
-       "Fair": 330.0,
-       "Flawless": 460.0,
-       "Good": 410.0,
+       "Brand New": 540.0,
+       "Broken": 5.0,
+       "Fair": 355.0,
+       "Flawless": 490.0,
+       "Good": 440.0,
        "Minor Damage": 110.0
       },
       "512GB": {
-       "Brand New": 540.0,
-       "Broken": 20.0,
-       "Fair": 360.0,
-       "Flawless": 490.0,
-       "Good": 440.0,
+       "Brand New": 570.0,
+       "Broken": 5.0,
+       "Fair": 385.0,
+       "Flawless": 520.0,
+       "Good": 470.0,
        "Minor Damage": 120.0
       }
      },
@@ -5978,10 +6072,38 @@
     "sort": 15881,
     "variants": {
      "AT&T": {
-      "128GB": {},
-      "1TB": {},
-      "256GB": {},
-      "512GB": {}
+      "128GB": {
+       "Brand New": 310.0,
+       "Broken": 5.0,
+       "Fair": 145.0,
+       "Flawless": 260.0,
+       "Good": 210.0,
+       "Minor Damage": 50.0
+      },
+      "1TB": {
+       "Brand New": 370.0,
+       "Broken": 5.0,
+       "Fair": 205.0,
+       "Flawless": 320.0,
+       "Good": 270.0,
+       "Minor Damage": 60.0
+      },
+      "256GB": {
+       "Brand New": 330.0,
+       "Broken": 5.0,
+       "Fair": 165.0,
+       "Flawless": 280.0,
+       "Good": 230.0,
+       "Minor Damage": 50.0
+      },
+      "512GB": {
+       "Brand New": 350.0,
+       "Broken": 5.0,
+       "Fair": 185.0,
+       "Flawless": 300.0,
+       "Good": 250.0,
+       "Minor Damage": 50.0
+      }
      },
      "Other": {
       "128GB": {},
@@ -5991,41 +6113,55 @@
      },
      "T-Mobile": {
       "128GB": {},
-      "1TB": {},
-      "256GB": {},
+      "1TB": {
+       "Brand New": 345.0,
+       "Broken": 5.0,
+       "Fair": 180.0,
+       "Flawless": 295.0,
+       "Good": 245.0,
+       "Minor Damage": 60.0
+      },
+      "256GB": {
+       "Brand New": 305.0,
+       "Broken": 5.0,
+       "Fair": 140.0,
+       "Flawless": 255.0,
+       "Good": 205.0,
+       "Minor Damage": 50.0
+      },
       "512GB": {}
      },
      "Unlocked": {
       "128GB": {
-       "Brand New": 380.0,
-       "Broken": 10.0,
-       "Fair": 215.0,
-       "Flawless": 330.0,
-       "Good": 280.0,
+       "Brand New": 370.0,
+       "Broken": 5.0,
+       "Fair": 205.0,
+       "Flawless": 320.0,
+       "Good": 270.0,
        "Minor Damage": 75.0
       },
       "1TB": {
-       "Brand New": 440.0,
-       "Broken": 10.0,
-       "Fair": 275.0,
-       "Flawless": 390.0,
-       "Good": 330.0,
+       "Brand New": 430.0,
+       "Broken": 5.0,
+       "Fair": 265.0,
+       "Flawless": 380.0,
+       "Good": 320.0,
        "Minor Damage": 90.0
       },
       "256GB": {
-       "Brand New": 390.0,
-       "Broken": 10.0,
-       "Fair": 230.0,
-       "Flawless": 340.0,
-       "Good": 290.0,
+       "Brand New": 380.0,
+       "Broken": 5.0,
+       "Fair": 220.0,
+       "Flawless": 330.0,
+       "Good": 280.0,
        "Minor Damage": 80.0
       },
       "512GB": {
-       "Brand New": 420.0,
-       "Broken": 10.0,
-       "Fair": 255.0,
-       "Flawless": 370.0,
-       "Good": 320.0,
+       "Brand New": 410.0,
+       "Broken": 5.0,
+       "Fair": 245.0,
+       "Flawless": 360.0,
+       "Good": 310.0,
        "Minor Damage": 85.0
       }
      },
@@ -6126,20 +6262,8 @@
       "512GB": {}
      },
      "Unlocked": {
-      "256GB": {
-       "Brand New": 225.0,
-       "Fair": 100.0,
-       "Flawless": 175.0,
-       "Good": 150.0,
-       "Minor Damage": 35.0
-      },
-      "512GB": {
-       "Brand New": 265.0,
-       "Fair": 145.0,
-       "Flawless": 215.0,
-       "Good": 190.0,
-       "Minor Damage": 36.0
-      }
+      "256GB": {},
+      "512GB": {}
      },
      "Verizon": {
       "256GB": {},
@@ -12877,10 +13001,10 @@
      },
      "M3 8-Core CPU 10-Core GPU": {
       "16GB": {
-       "Brand New": 715.0,
-       "Fair": 489.0,
-       "Flawless": 682.0,
-       "Good": 584.0
+       "Brand New": 690.0,
+       "Fair": 464.0,
+       "Flawless": 658.0,
+       "Good": 559.0
       },
       "24GB": {
        "Brand New": 765.0,
@@ -12889,30 +13013,30 @@
        "Good": 634.0
       },
       "8GB": {
-       "Brand New": 665.0,
-       "Fair": 439.0,
-       "Flawless": 632.0,
-       "Good": 534.0
+       "Brand New": 615.0,
+       "Fair": 389.0,
+       "Flawless": 582.0,
+       "Good": 484.0
       }
      },
      "M3 8-Core CPU 8-Core GPU": {
       "16GB": {
-       "Brand New": 600.0,
-       "Fair": 403.0,
-       "Flawless": 570.0,
-       "Good": 487.0
+       "Brand New": 595.0,
+       "Fair": 398.0,
+       "Flawless": 565.0,
+       "Good": 482.0
       },
       "24GB": {
-       "Brand New": 650.0,
-       "Fair": 453.0,
-       "Flawless": 620.0,
-       "Good": 537.0
+       "Brand New": 645.0,
+       "Fair": 448.0,
+       "Flawless": 615.0,
+       "Good": 532.0
       },
       "8GB": {
-       "Brand New": 550.0,
-       "Fair": 353.0,
-       "Flawless": 520.0,
-       "Good": 437.0
+       "Brand New": 545.0,
+       "Fair": 348.0,
+       "Flawless": 515.0,
+       "Good": 432.0
       }
      }
     },
@@ -12925,36 +13049,36 @@
     "variants": {
      "M4 10-Core CPU 10-Core GPU": {
       "16GB": {
-       "Brand New": 1035.0,
-       "Fair": 662.0,
-       "Flawless": 975.0,
-       "Good": 812.0
+       "Brand New": 960.0,
+       "Fair": 588.0,
+       "Flawless": 900.0,
+       "Good": 738.0
       },
       "24GB": {
-       "Brand New": 1160.0,
-       "Fair": 788.0,
-       "Flawless": 1100.0,
-       "Good": 938.0
+       "Brand New": 1085.0,
+       "Fair": 712.0,
+       "Flawless": 1025.0,
+       "Good": 862.0
       },
       "32GB": {
-       "Brand New": 1322.0,
-       "Fair": 883.0,
-       "Flawless": 1250.0,
-       "Good": 1067.0
+       "Brand New": 1247.0,
+       "Fair": 808.0,
+       "Flawless": 1175.0,
+       "Good": 992.0
       }
      },
      "M4 8-Core CPU 8-Core GPU": {
       "16GB": {
-       "Brand New": 800.0,
-       "Fair": 532.0,
-       "Flawless": 750.0,
-       "Good": 650.0
+       "Brand New": 775.0,
+       "Fair": 507.0,
+       "Flawless": 725.0,
+       "Good": 625.0
       },
       "24GB": {
-       "Brand New": 900.0,
-       "Fair": 632.0,
-       "Flawless": 850.0,
-       "Good": 750.0
+       "Brand New": 875.0,
+       "Fair": 607.0,
+       "Flawless": 825.0,
+       "Good": 725.0
       }
      }
     },
@@ -13831,16 +13955,16 @@
     "variants": {
      "M1 Max 10-Core CPU 32-Core GPU": {
       "32GB": {
-       "Brand New": 1550.0,
-       "Fair": 1200.0,
-       "Flawless": 1500.0,
-       "Good": 1350.0
+       "Brand New": 1400.0,
+       "Fair": 1050.0,
+       "Flawless": 1350.0,
+       "Good": 1200.0
       },
       "64GB": {
-       "Brand New": 1950.0,
-       "Fair": 1600.0,
-       "Flawless": 1900.0,
-       "Good": 1750.0
+       "Brand New": 1800.0,
+       "Fair": 1450.0,
+       "Flawless": 1750.0,
+       "Good": 1600.0
       }
      },
      "M1 Ultra 20-Core CPU 32-Core CPU": {
@@ -13861,74 +13985,74 @@
     "variants": {
      "M2 Max 12-Core CPU 30-Core GPU": {
       "32GB": {
-       "Brand New": 1720.0,
-       "Fair": 1300.0,
-       "Flawless": 1650.0,
-       "Good": 1468.0
+       "Brand New": 1470.0,
+       "Fair": 1050.0,
+       "Flawless": 1400.0,
+       "Good": 1218.0
       },
       "64GB": {
-       "Brand New": 2090.0,
-       "Fair": 1570.0,
-       "Flawless": 2020.0,
-       "Good": 1792.0
+       "Brand New": 1890.0,
+       "Fair": 1370.0,
+       "Flawless": 1820.0,
+       "Good": 1592.0
       },
       "96GB": {}
      },
      "M2 Max 12-Core CPU 38-Core GPU": {
       "32GB": {
-       "Brand New": 1790.0,
-       "Fair": 1270.0,
-       "Flawless": 1720.0,
-       "Good": 1492.0
+       "Brand New": 1590.0,
+       "Fair": 1070.0,
+       "Flawless": 1520.0,
+       "Good": 1292.0
       },
       "64GB": {
-       "Brand New": 2140.0,
-       "Fair": 1620.0,
-       "Flawless": 2070.0,
-       "Good": 1842.0
+       "Brand New": 1990.0,
+       "Fair": 1470.0,
+       "Flawless": 1920.0,
+       "Good": 1692.0
       },
       "96GB": {
-       "Brand New": 2490.0,
-       "Fair": 1970.0,
-       "Flawless": 2420.0,
-       "Good": 2192.0
+       "Brand New": 2390.0,
+       "Fair": 1870.0,
+       "Flawless": 2320.0,
+       "Good": 2092.0
       }
      },
      "M2 Ultra 24-Core CPU 60-Core GPU": {
       "128GB": {
-       "Brand New": 3938.0,
+       "Brand New": 4138.0,
        "Fair": 2288.0,
-       "Flawless": 3838.0,
-       "Good": 3538.0
+       "Flawless": 4038.0,
+       "Good": 3738.0
       },
       "192GB": {
-       "Brand New": 4438.0,
-       "Fair": 3738.0,
-       "Flawless": 4338.0,
-       "Good": 4038.0
+       "Brand New": 4538.0,
+       "Fair": 3838.0,
+       "Flawless": 4438.0,
+       "Good": 4138.0
       },
       "64GB": {
-       "Brand New": 3150.0,
+       "Brand New": 3250.0,
        "Fair": 1675.0,
-       "Flawless": 3038.0,
+       "Flawless": 3138.0,
        "Good": 1925.0
       }
      },
      "M2 Ultra 24-Core CPU 76-Core GPU": {
       "128GB": {
-       "Brand New": 4138.0,
+       "Brand New": 4338.0,
        "Fair": 2388.0,
-       "Flawless": 4038.0,
-       "Good": 3738.0
+       "Flawless": 4238.0,
+       "Good": 3938.0
       },
       "192GB": {
-       "Brand New": 4638.0,
-       "Fair": 3938.0,
-       "Flawless": 4538.0,
-       "Good": 4238.0
+       "Brand New": 4738.0,
+       "Fair": 4038.0,
+       "Flawless": 4638.0,
+       "Good": 4338.0
       },
       "64GB": {
-       "Brand New": 3350.0,
+       "Brand New": 3450.0,
        "Fair": 1775.0,
        "Flawless": 2300.0,
        "Good": 2025.0
@@ -13950,52 +14074,52 @@
        "Good": 6100.0
       },
       "96GB": {
-       "Brand New": 4920.0,
-       "Fair": 3980.0,
-       "Flawless": 4680.0,
-       "Good": 4260.0
+       "Brand New": 4720.0,
+       "Fair": 3780.0,
+       "Flawless": 4480.0,
+       "Good": 4060.0
       }
      },
      "M3 Ultra 32-Core CPU 80-Core GPU": {
       "256GB": {
-       "Brand New": 8300.0,
-       "Fair": 7040.0,
-       "Flawless": 8000.0,
-       "Good": 7420.0
+       "Brand New": 8100.0,
+       "Fair": 6840.0,
+       "Flawless": 7800.0,
+       "Good": 7220.0
       },
       "512GB": {
-       "Brand New": 10300.0,
-       "Fair": 9040.0,
-       "Flawless": 10000.0,
-       "Good": 9420.0
+       "Brand New": 10100.0,
+       "Fair": 8840.0,
+       "Flawless": 9800.0,
+       "Good": 9220.0
       },
       "96GB": {
-       "Brand New": 6090.0,
-       "Fair": 4980.0,
-       "Flawless": 5820.0,
-       "Good": 5300.0
+       "Brand New": 5890.0,
+       "Fair": 4780.0,
+       "Flawless": 5620.0,
+       "Good": 5100.0
       }
      },
      "M4 Max 14-Core CPU 32-Core GPU": {
       "36GB": {
-       "Brand New": 2270.0,
-       "Fair": 1760.0,
-       "Flawless": 2120.0,
-       "Good": 1935.0
+       "Brand New": 2220.0,
+       "Fair": 1710.0,
+       "Flawless": 2070.0,
+       "Good": 1885.0
       }
      },
      "M4 Max 16-Core CPU 40-Core GPU": {
       "128GB": {
-       "Brand New": 3800.0,
-       "Fair": 3220.0,
-       "Flawless": 3640.0,
-       "Good": 3400.0
+       "Brand New": 3700.0,
+       "Fair": 3120.0,
+       "Flawless": 3540.0,
+       "Good": 3300.0
       },
       "48GB": {
-       "Brand New": 2800.0,
-       "Fair": 2220.0,
-       "Flawless": 2640.0,
-       "Good": 2400.0
+       "Brand New": 2700.0,
+       "Fair": 2120.0,
+       "Flawless": 2540.0,
+       "Good": 2300.0
       },
       "64GB": {
        "Brand New": 3100.0,
@@ -14307,25 +14431,11 @@
     "variants": {
      "i5 1.8GHz": {
       "4GB": {},
-      "8GB": {
-       "Brand New": 99.0,
-       "Broken": 8.0,
-       "Fair": 34.0,
-       "Flawless": 70.0,
-       "Good": 50.0,
-       "Minor Damage": 8.0
-      }
+      "8GB": {}
      },
      "i7 2.2GHz": {
       "4GB": {},
-      "8GB": {
-       "Brand New": 105.0,
-       "Broken": 12.0,
-       "Fair": 46.0,
-       "Flawless": 90.0,
-       "Good": 70.0,
-       "Minor Damage": 12.0
-      }
+      "8GB": {}
      }
     },
     "image": "https://s3.amazonaws.com/fliptech-assets/images/devices/macbooks/apple/macbook-air-13-2017.webp",
@@ -14336,22 +14446,8 @@
     "sort": 19763,
     "variants": {
      "i5 1.6GHz": {
-      "16GB": {
-       "Brand New": 191.0,
-       "Broken": 20.0,
-       "Fair": 103.0,
-       "Flawless": 158.0,
-       "Good": 143.0,
-       "Minor Damage": 20.0
-      },
-      "8GB": {
-       "Brand New": 165.0,
-       "Broken": 20.0,
-       "Fair": 77.0,
-       "Flawless": 132.0,
-       "Good": 117.0,
-       "Minor Damage": 20.0
-      }
+      "16GB": {},
+      "8GB": {}
      }
     },
     "image": "https://s3.amazonaws.com/fliptech-assets/images/devices/macbooks/apple/macbook-air-13-2018.webp",
@@ -14362,22 +14458,8 @@
     "sort": 19775,
     "variants": {
      "i5 1.6GHz": {
-      "16GB": {
-       "Brand New": 230.0,
-       "Broken": 23.0,
-       "Fair": 140.0,
-       "Flawless": 202.0,
-       "Good": 185.0,
-       "Minor Damage": 23.0
-      },
-      "8GB": {
-       "Brand New": 185.0,
-       "Broken": 23.0,
-       "Fair": 95.0,
-       "Flawless": 157.0,
-       "Good": 140.0,
-       "Minor Damage": 23.0
-      }
+      "16GB": {},
+      "8GB": {}
      }
     },
     "image": "https://s3.amazonaws.com/fliptech-assets/images/devices/macbooks/apple/macbook-air-13-2019.webp",
@@ -14915,107 +14997,37 @@
     "sort": 20825,
     "variants": {
      "i5 2.0GHz": {
-      "16GB": {
-       "Brand New": 141.0,
-       "Broken": 15.0,
-       "Fair": 83.0,
-       "Flawless": 130.0,
-       "Good": 113.0,
-       "Minor Damage": 15.0
-      },
+      "16GB": {},
       "4GB": {},
-      "8GB": {
-       "Brand New": 121.0,
-       "Broken": 15.0,
-       "Fair": 63.0,
-       "Flawless": 110.0,
-       "Good": 93.0,
-       "Minor Damage": 15.0
-      }
+      "8GB": {}
      },
      "i5 2.9GHz": {
-      "16GB": {
-       "Brand New": 159.0,
-       "Broken": 19.0,
-       "Fair": 93.0,
-       "Flawless": 147.0,
-       "Good": 130.0,
-       "Minor Damage": 19.0
-      },
+      "16GB": {},
       "4GB": {},
-      "8GB": {
-       "Brand New": 139.0,
-       "Broken": 19.0,
-       "Fair": 73.0,
-       "Flawless": 127.0,
-       "Good": 110.0,
-       "Minor Damage": 19.0
-      }
+      "8GB": {}
      },
      "i5 3.1GHz": {
-      "16GB": {
-       "Brand New": 164.0,
-       "Broken": 20.0,
-       "Fair": 96.0,
-       "Flawless": 152.0,
-       "Good": 135.0,
-       "Minor Damage": 20.0
-      },
+      "16GB": {},
       "4GB": {},
-      "8GB": {
-       "Brand New": 144.0,
-       "Broken": 20.0,
-       "Fair": 76.0,
-       "Flawless": 132.0,
-       "Good": 115.0,
-       "Minor Damage": 20.0
-      }
+      "8GB": {}
      },
      "i5 3.3GHz": {
       "16GB": {},
       "8GB": {}
      },
      "i7 2.4GHz": {
-      "16GB": {
-       "Brand New": 152.0,
-       "Broken": 17.0,
-       "Fair": 89.0,
-       "Flawless": 141.0,
-       "Good": 123.0,
-       "Minor Damage": 17.0
-      },
+      "16GB": {},
       "4GB": {},
-      "8GB": {
-       "Brand New": 132.0,
-       "Broken": 17.0,
-       "Fair": 69.0,
-       "Flawless": 121.0,
-       "Good": 103.0,
-       "Minor Damage": 17.0
-      }
+      "8GB": {}
      },
      "i7 2.9GHz": {
       "16GB": {},
       "8GB": {}
      },
      "i7 3.3GHz": {
-      "16GB": {
-       "Brand New": 170.0,
-       "Broken": 21.0,
-       "Fair": 99.0,
-       "Flawless": 159.0,
-       "Good": 141.0,
-       "Minor Damage": 21.0
-      },
+      "16GB": {},
       "4GB": {},
-      "8GB": {
-       "Brand New": 150.0,
-       "Broken": 21.0,
-       "Fair": 79.0,
-       "Flawless": 139.0,
-       "Good": 121.0,
-       "Minor Damage": 21.0
-      }
+      "8GB": {}
      }
     },
     "image": "https://s3.amazonaws.com/fliptech-assets/images/devices/macbooks/apple/macbook-pro-13-2016.webp",
@@ -15026,102 +15038,32 @@
     "sort": 20957,
     "variants": {
      "i5 2.3GHz": {
-      "16GB": {
-       "Brand New": 140.0,
-       "Broken": 15.0,
-       "Fair": 74.0,
-       "Flawless": 126.0,
-       "Good": 104.0,
-       "Minor Damage": 15.0
-      },
-      "8GB": {
-       "Brand New": 124.0,
-       "Broken": 15.0,
-       "Fair": 58.0,
-       "Flawless": 110.0,
-       "Good": 88.0,
-       "Minor Damage": 15.0
-      }
+      "16GB": {},
+      "8GB": {}
      },
      "i5 2.9GHz": {
       "16GB": {},
       "8GB": {}
      },
      "i5 3.1GHz": {
-      "16GB": {
-       "Brand New": 166.0,
-       "Broken": 19.0,
-       "Fair": 93.0,
-       "Flawless": 151.0,
-       "Good": 131.0,
-       "Minor Damage": 19.0
-      },
-      "8GB": {
-       "Brand New": 150.0,
-       "Broken": 19.0,
-       "Fair": 77.0,
-       "Flawless": 135.0,
-       "Good": 115.0,
-       "Minor Damage": 19.0
-      }
+      "16GB": {},
+      "8GB": {}
      },
      "i5 3.3GHz": {
-      "16GB": {
-       "Brand New": 171.0,
-       "Broken": 20.0,
-       "Fair": 97.0,
-       "Flawless": 158.0,
-       "Good": 138.0,
-       "Minor Damage": 20.0
-      },
-      "8GB": {
-       "Brand New": 155.0,
-       "Broken": 20.0,
-       "Fair": 81.0,
-       "Flawless": 142.0,
-       "Good": 122.0,
-       "Minor Damage": 20.0
-      }
+      "16GB": {},
+      "8GB": {}
      },
      "i7 2.5GHz": {
-      "16GB": {
-       "Brand New": 152.0,
-       "Broken": 18.0,
-       "Fair": 80.0,
-       "Flawless": 138.0,
-       "Good": 116.0,
-       "Minor Damage": 18.0
-      },
-      "8GB": {
-       "Brand New": 136.0,
-       "Broken": 18.0,
-       "Fair": 64.0,
-       "Flawless": 122.0,
-       "Good": 100.0,
-       "Minor Damage": 18.0
-      }
+      "16GB": {},
+      "8GB": {}
      },
      "i7 3.3GHz": {
       "16GB": {},
       "8GB": {}
      },
      "i7 3.5GHz": {
-      "16GB": {
-       "Brand New": 180.0,
-       "Broken": 22.0,
-       "Fair": 102.0,
-       "Flawless": 166.0,
-       "Good": 146.0,
-       "Minor Damage": 22.0
-      },
-      "8GB": {
-       "Brand New": 164.0,
-       "Broken": 22.0,
-       "Fair": 86.0,
-       "Flawless": 150.0,
-       "Good": 130.0,
-       "Minor Damage": 22.0
-      }
+      "16GB": {},
+      "8GB": {}
      }
     },
     "image": "https://s3.amazonaws.com/fliptech-assets/images/devices/macbooks/apple/macbook-pro-13-2017.webp",
@@ -15132,44 +15074,16 @@
     "sort": 21059,
     "variants": {
      "i5 2.3GHz": {
-      "16GB": {
-       "Brand New": 219.0,
-       "Broken": 24.0,
-       "Fair": 106.0,
-       "Flawless": 184.0,
-       "Good": 154.0,
-       "Minor Damage": 24.0
-      },
-      "8GB": {
-       "Brand New": 209.0,
-       "Broken": 24.0,
-       "Fair": 96.0,
-       "Flawless": 174.0,
-       "Good": 144.0,
-       "Minor Damage": 24.0
-      }
+      "16GB": {},
+      "8GB": {}
      },
      "i5 2.9GHz": {
       "16GB": {},
       "8GB": {}
      },
      "i7 2.7GHz": {
-      "16GB": {
-       "Brand New": 250.0,
-       "Broken": 27.0,
-       "Fair": 115.0,
-       "Flawless": 204.0,
-       "Good": 169.0,
-       "Minor Damage": 27.0
-      },
-      "8GB": {
-       "Brand New": 240.0,
-       "Broken": 27.0,
-       "Fair": 105.0,
-       "Flawless": 194.0,
-       "Good": 159.0,
-       "Minor Damage": 27.0
-      }
+      "16GB": {},
+      "8GB": {}
      }
     },
     "image": "https://s3.amazonaws.com/fliptech-assets/images/devices/macbooks/apple/macbook-pro-13-2018.webp",
@@ -15180,80 +15094,24 @@
     "sort": 21131,
     "variants": {
      "i5 1.4GHz": {
-      "16GB": {
-       "Brand New": 241.0,
-       "Broken": 23.0,
-       "Fair": 152.0,
-       "Flawless": 216.0,
-       "Good": 198.0,
-       "Minor Damage": 23.0
-      },
-      "8GB": {
-       "Brand New": 221.0,
-       "Broken": 23.0,
-       "Fair": 132.0,
-       "Flawless": 196.0,
-       "Good": 178.0,
-       "Minor Damage": 23.0
-      }
+      "16GB": {},
+      "8GB": {}
      },
      "i5 2.4GHz": {
-      "16GB": {
-       "Brand New": 269.0,
-       "Broken": 25.0,
-       "Fair": 175.0,
-       "Flawless": 243.0,
-       "Good": 226.0,
-       "Minor Damage": 25.0
-      },
-      "8GB": {
-       "Brand New": 249.0,
-       "Broken": 25.0,
-       "Fair": 155.0,
-       "Flawless": 223.0,
-       "Good": 206.0,
-       "Minor Damage": 25.0
-      }
+      "16GB": {},
+      "8GB": {}
      },
      "i5 2.8GHz": {
       "16GB": {},
       "8GB": {}
      },
      "i7 1.7GHz": {
-      "16GB": {
-       "Brand New": 265.0,
-       "Broken": 28.0,
-       "Fair": 166.0,
-       "Flawless": 239.0,
-       "Good": 222.0,
-       "Minor Damage": 28.0
-      },
-      "8GB": {
-       "Brand New": 245.0,
-       "Broken": 28.0,
-       "Fair": 146.0,
-       "Flawless": 219.0,
-       "Good": 202.0,
-       "Minor Damage": 28.0
-      }
+      "16GB": {},
+      "8GB": {}
      },
      "i7 2.8GHz": {
-      "16GB": {
-       "Brand New": 281.0,
-       "Broken": 28.0,
-       "Fair": 182.0,
-       "Flawless": 255.0,
-       "Good": 238.0,
-       "Minor Damage": 28.0
-      },
-      "8GB": {
-       "Brand New": 261.0,
-       "Broken": 28.0,
-       "Fair": 162.0,
-       "Flawless": 235.0,
-       "Good": 218.0,
-       "Minor Damage": 28.0
-      }
+      "16GB": {},
+      "8GB": {}
      }
     },
     "image": "https://s3.amazonaws.com/fliptech-assets/images/devices/macbooks/apple/macbook-pro-13-2019.webp",
@@ -16034,34 +15892,13 @@
     "sort": 20939,
     "variants": {
      "i7 2.6GHz": {
-      "16GB": {
-       "Brand New": 188.0,
-       "Broken": 22.0,
-       "Fair": 106.0,
-       "Flawless": 167.0,
-       "Good": 150.0,
-       "Minor Damage": 22.0
-      }
+      "16GB": {}
      },
      "i7 2.7GHz": {
-      "16GB": {
-       "Brand New": 175.0,
-       "Broken": 20.0,
-       "Fair": 99.0,
-       "Flawless": 155.0,
-       "Good": 138.0,
-       "Minor Damage": 20.0
-      }
+      "16GB": {}
      },
      "i7 2.9GHz": {
-      "16GB": {
-       "Brand New": 193.0,
-       "Broken": 23.0,
-       "Fair": 109.0,
-       "Flawless": 173.0,
-       "Good": 155.0,
-       "Minor Damage": 23.0
-      }
+      "16GB": {}
      }
     },
     "image": "https://s3.amazonaws.com/fliptech-assets/images/devices/macbooks/apple/macbook-pro-15-2016.webp",
@@ -16072,34 +15909,13 @@
     "sort": 21041,
     "variants": {
      "i7 2.8GHz": {
-      "16GB": {
-       "Brand New": 213.0,
-       "Broken": 28.0,
-       "Fair": 116.0,
-       "Flawless": 189.0,
-       "Good": 172.0,
-       "Minor Damage": 28.0
-      }
+      "16GB": {}
      },
      "i7 2.9GHz": {
-      "16GB": {
-       "Brand New": 216.0,
-       "Broken": 29.0,
-       "Fair": 117.0,
-       "Flawless": 192.0,
-       "Good": 175.0,
-       "Minor Damage": 29.0
-      }
+      "16GB": {}
      },
      "i7 3.1GHz": {
-      "16GB": {
-       "Brand New": 224.0,
-       "Broken": 30.0,
-       "Fair": 121.0,
-       "Flawless": 201.0,
-       "Good": 181.0,
-       "Minor Damage": 30.0
-      }
+      "16GB": {}
      }
     },
     "image": "https://s3.amazonaws.com/fliptech-assets/images/devices/macbooks/apple/macbook-pro-15-2017.webp",
@@ -16110,58 +15926,16 @@
     "sort": 21095,
     "variants": {
      "i7 2.2GHz": {
-      "16GB": {
-       "Brand New": 235.0,
-       "Broken": 24.0,
-       "Fair": 111.0,
-       "Flawless": 179.0,
-       "Good": 159.0,
-       "Minor Damage": 24.0
-      },
-      "32GB": {
-       "Brand New": 275.0,
-       "Broken": 24.0,
-       "Fair": 151.0,
-       "Flawless": 219.0,
-       "Good": 199.0,
-       "Minor Damage": 24.0
-      }
+      "16GB": {},
+      "32GB": {}
      },
      "i7 2.6GHz": {
-      "16GB": {
-       "Brand New": 242.0,
-       "Broken": 26.0,
-       "Fair": 117.0,
-       "Flawless": 199.0,
-       "Good": 169.0,
-       "Minor Damage": 26.0
-      },
-      "32GB": {
-       "Brand New": 282.0,
-       "Broken": 26.0,
-       "Fair": 157.0,
-       "Flawless": 239.0,
-       "Good": 209.0,
-       "Minor Damage": 26.0
-      }
+      "16GB": {},
+      "32GB": {}
      },
      "i9 2.9GHz": {
-      "16GB": {
-       "Brand New": 270.0,
-       "Broken": 29.0,
-       "Fair": 126.0,
-       "Flawless": 219.0,
-       "Good": 184.0,
-       "Minor Damage": 29.0
-      },
-      "32GB": {
-       "Brand New": 310.0,
-       "Broken": 29.0,
-       "Fair": 166.0,
-       "Flawless": 259.0,
-       "Good": 224.0,
-       "Minor Damage": 29.0
-      }
+      "16GB": {},
+      "32GB": {}
      }
     },
     "image": "https://s3.amazonaws.com/fliptech-assets/images/devices/macbooks/apple/macbook-pro-15-2018.webp",
@@ -16172,58 +15946,16 @@
     "sort": 21191,
     "variants": {
      "i7 2.6GHz": {
-      "16GB": {
-       "Brand New": 312.0,
-       "Broken": 37.0,
-       "Fair": 186.0,
-       "Flawless": 286.0,
-       "Good": 260.0,
-       "Minor Damage": 37.0
-      },
-      "32GB": {
-       "Brand New": 353.0,
-       "Broken": 37.0,
-       "Fair": 227.0,
-       "Flawless": 327.0,
-       "Good": 301.0,
-       "Minor Damage": 37.0
-      }
+      "16GB": {},
+      "32GB": {}
      },
      "i9 2.3GHz": {
-      "16GB": {
-       "Brand New": 324.0,
-       "Broken": 41.0,
-       "Fair": 190.0,
-       "Flawless": 298.0,
-       "Good": 272.0,
-       "Minor Damage": 41.0
-      },
-      "32GB": {
-       "Brand New": 373.0,
-       "Broken": 41.0,
-       "Fair": 239.0,
-       "Flawless": 347.0,
-       "Good": 321.0,
-       "Minor Damage": 41.0
-      }
+      "16GB": {},
+      "32GB": {}
      },
      "i9 2.4GHz": {
-      "16GB": {
-       "Brand New": 328.0,
-       "Broken": 41.0,
-       "Fair": 194.0,
-       "Flawless": 302.0,
-       "Good": 276.0,
-       "Minor Damage": 41.0
-      },
-      "32GB": {
-       "Brand New": 373.0,
-       "Broken": 41.0,
-       "Fair": 239.0,
-       "Flawless": 347.0,
-       "Good": 321.0,
-       "Minor Damage": 41.0
-      }
+      "16GB": {},
+      "32GB": {}
      }
     },
     "image": "https://s3.amazonaws.com/fliptech-assets/images/devices/macbooks/apple/macbook-pro-15-2019.webp",
@@ -16234,82 +15966,19 @@
     "sort": 21227,
     "variants": {
      "i7 2.6GHz": {
-      "16GB": {
-       "Brand New": 393.0,
-       "Broken": 37.0,
-       "Fair": 262.0,
-       "Flawless": 358.0,
-       "Good": 336.0,
-       "Minor Damage": 37.0
-      },
-      "32GB": {
-       "Brand New": 443.0,
-       "Broken": 37.0,
-       "Fair": 312.0,
-       "Flawless": 408.0,
-       "Good": 386.0,
-       "Minor Damage": 37.0
-      },
-      "64GB": {
-       "Brand New": 508.0,
-       "Broken": 37.0,
-       "Fair": 377.0,
-       "Flawless": 473.0,
-       "Good": 451.0,
-       "Minor Damage": 37.0
-      }
+      "16GB": {},
+      "32GB": {},
+      "64GB": {}
      },
      "i9 2.3GHz": {
-      "16GB": {
-       "Brand New": 427.0,
-       "Broken": 40.0,
-       "Fair": 289.0,
-       "Flawless": 392.0,
-       "Good": 369.0,
-       "Minor Damage": 40.0
-      },
-      "32GB": {
-       "Brand New": 492.0,
-       "Broken": 40.0,
-       "Fair": 354.0,
-       "Flawless": 457.0,
-       "Good": 434.0,
-       "Minor Damage": 40.0
-      },
-      "64GB": {
-       "Brand New": 557.0,
-       "Broken": 40.0,
-       "Fair": 419.0,
-       "Flawless": 522.0,
-       "Good": 499.0,
-       "Minor Damage": 40.0
-      }
+      "16GB": {},
+      "32GB": {},
+      "64GB": {}
      },
      "i9 2.4GHz": {
-      "16GB": {
-       "Brand New": 441.0,
-       "Broken": 44.0,
-       "Fair": 295.0,
-       "Flawless": 406.0,
-       "Good": 383.0,
-       "Minor Damage": 44.0
-      },
-      "32GB": {
-       "Brand New": 478.0,
-       "Broken": 44.0,
-       "Fair": 332.0,
-       "Flawless": 443.0,
-       "Good": 420.0,
-       "Minor Damage": 44.0
-      },
-      "64GB": {
-       "Brand New": 543.0,
-       "Broken": 44.0,
-       "Fair": 397.0,
-       "Flawless": 508.0,
-       "Good": 485.0,
-       "Minor Damage": 44.0
-      }
+      "16GB": {},
+      "32GB": {},
+      "64GB": {}
      }
     },
     "image": "https://s3.amazonaws.com/fliptech-assets/images/devices/macbooks/apple/macbook-pro-16-2019.webp",
