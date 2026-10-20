@@ -1621,6 +1621,15 @@ for _cat in LIVE_CATS:
             print(f"WARNING: homepage payout card for {_cat} not found - value not updated")
 _idx.write_text(_h)
 
+# Every device URL this site has ever published. Committed, so a clean CI
+# checkout still knows which URLs are live in Google's index and therefore
+# deserve a redirect when a model is retired.
+_pub_file = ROOT / "data" / "published_urls.json"
+try: PUBLISHED = set(json.load(open(_pub_file)))
+except Exception: PUBLISHED = set()
+_current = {p for p, _ in SITEMAP if p.startswith("/sell/") and p.count("/") == 4}
+json.dump(sorted(PUBLISHED | _current), open(_pub_file, "w"), indent=0)
+
 # ---- retired models: 302 to their category page ----
 # A model Henry un-ticks (or zeroes) stops being generated, but its old page
 # would keep serving stale HTML and its URL may already rank. These are
@@ -1637,10 +1646,18 @@ for _cat, _bs in TREE.items():
                 continue                                   # still sellable
             _path = f"/sell/{CAT_SLUG[_cat]}/{slug(_brand)}/{mslug(_m, _name)}"
             _file = OUT / _path.lstrip("/") / "index.html"
-            if _file.exists():                             # had a page before
-                _file.unlink()                             # drop the stale HTML
+            _was_live = _file.exists()                     # stale page from a previous build
+            if _was_live:
+                _file.unlink()
                 try: _file.parent.rmdir()
                 except OSError: pass
+            # Emit a redirect only for URLs that were actually public: the
+            # pre-cutover crawl (what Google indexed) or a page this build
+            # would otherwise have replaced. Redirecting never-public URLs
+            # would just manufacture soft 404s. Keyed off BASELINE, which is
+            # committed, so it survives CI's clean checkout — the stale-file
+            # check alone produced an empty _redirects on real builds.
+            if _path in BASELINE or _path in PUBLISHED or _was_live:
                 retired.append((_path, f"/sell/{CAT_SLUG[_cat]}/"))
 
 (OUT / "_redirects").write_text(
