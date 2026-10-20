@@ -1621,6 +1621,32 @@ for _cat in LIVE_CATS:
             print(f"WARNING: homepage payout card for {_cat} not found - value not updated")
 _idx.write_text(_h)
 
+# ---- retired models: 302 to their category page ----
+# A model Henry un-ticks (or zeroes) stops being generated, but its old page
+# would keep serving stale HTML and its URL may already rank. These are
+# TEMPORARY retirements — he re-enables devices when he wants them again — so
+# the redirect is a 302, which keeps the URL in Google's index and lets the
+# real page come straight back. A 301 would tell Google to drop it.
+retired = []
+for _cat, _bs in TREE.items():
+    if _cat not in CAT_SLUG: continue
+    for _brand, _ms in _bs.items():
+        for _name, _m in _ms.items():
+            if _m.get("enabled") and any(pp for cc in _m["variants"].values()
+                                         for ss in cc.values() for pp in ss.values()):
+                continue                                   # still sellable
+            _path = f"/sell/{CAT_SLUG[_cat]}/{slug(_brand)}/{mslug(_m, _name)}"
+            _file = OUT / _path.lstrip("/") / "index.html"
+            if _file.exists():                             # had a page before
+                _file.unlink()                             # drop the stale HTML
+                try: _file.parent.rmdir()
+                except OSError: pass
+                retired.append((_path, f"/sell/{CAT_SLUG[_cat]}/"))
+
+(OUT / "_redirects").write_text(
+    "".join(f"{frm}  {to}  302\n" for frm, to in sorted(retired)))
+print(f"retired {len(retired)} model pages -> 302 to their category")
+
 # ---- sitemap.xml + robots.txt ----
 urls = []
 for path, img in [("/", None)] + SITEMAP:
