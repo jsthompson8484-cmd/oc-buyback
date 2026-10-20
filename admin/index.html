@@ -1272,7 +1272,7 @@ $("#catLoad").onclick = async () => {
       n++;
       const p = {}; (v.prices || []).forEach((x) => p[x.condition] = x);
       const allOn = (v.prices || []).some((x) => x.enabled);
-      const wCell = first ? `<b>${esc(m.name)}</b><br><input type="number" class="wOz" data-m="${m.id}" value="${m.weight_oz ?? ""}" placeholder="${catDefaultW} oz" title="Shipping weight (oz) — blank uses the category default" style="width:70px;margin-top:4px;font-size:12px">` : `<b>${esc(m.name)}</b>`;
+      const wCell = first ? `<b>${esc(m.name)}</b><br><label style="display:inline-flex;align-items:center;gap:5px;margin-top:4px;font-size:11.5px;color:var(--muted)" title="Shipping weight used to buy the label. Blank uses the ${catDefaultW} oz category default."><input type="number" class="wOz" data-m="${m.id}" value="${m.weight_oz ?? ""}" placeholder="${catDefaultW}" style="width:58px;font-size:12px"> oz ship weight</label>` : `<b>${esc(m.name)}</b>`;
       first = false;
       html += `<tr data-v="${v.id}">
         <td><input type="checkbox" class="rowOn" ${allOn ? "checked" : ""}></td>

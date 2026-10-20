@@ -360,7 +360,9 @@ const fulfilBadge = (t) => isWalkIn(t)
   : `<span class="chip mailin">📦 Mail-in${t.ship_carrier && t.ship_carrier !== "USPS" ? " · " + esc(t.ship_carrier) : ""}</span>`;
 const cityState = (t) => [t.city, t.state].filter(Boolean).map(esc).join(", ");
 // where the lead came from — first-touch attribution captured at checkout
-const SOURCE_ICON = { Google:"🔍", Bing:"🔍", "DuckDuckGo":"🔍", Yahoo:"🔍", Swappa:"🤝", SellCell:"🤝",
+const SOURCE_ICON = { "Google Ads":"💰", "Microsoft Ads":"💰", "Facebook Ads":"💰",
+  "Google Business Profile":"📍", "Google Maps":"📍",
+  Google:"🔍", Bing:"🔍", "DuckDuckGo":"🔍", Yahoo:"🔍", Swappa:"🤝", SellCell:"🤝",
   Flipsy:"🤝", BankMyCell:"🤝", "Trade Into Cash":"🤝", Facebook:"📣", Instagram:"📣", X:"📣",
   Reddit:"📣", YouTube:"📣", Yelp:"⭐", Direct:"🔗", "Price comparison":"🤝" };
 const sourceChip = (t) => {
@@ -825,6 +827,8 @@ function openTradeInDialog(t, refresh){
       <p class="muted" style="font-size:12px;margin:-6px 0 12px;line-height:1.5">
         ${t.referrer ? `came from <b>${esc((() => { try { return new URL(t.referrer).hostname.replace(/^www\./, ""); } catch(e) { return t.referrer; } })())}</b>` : "no referrer"}${
           t.utm && t.utm.campaign ? ` · campaign <b>${esc(t.utm.campaign)}</b>` : ""}${
+          t.utm && t.utm.term ? ` · keyword <b>${esc(t.utm.term)}</b>` : ""}${
+          t.utm && (t.utm.gclid || t.utm.msclkid) ? ` · <span title="Paid click — look this id up in the ad platform report to see the exact search term that triggered the ad.">ad click <b>${esc(String(t.utm.gclid || t.utm.msclkid).slice(0,18))}…</b></span>` : ""}${
           t.landing_page ? ` · landed on <b>${esc(String(t.landing_page).split("?")[0])}</b>` : ""}
       </p>` : ""}
     ${(t.trade_in_items || []).map((it) => `
@@ -1268,7 +1272,7 @@ $("#catLoad").onclick = async () => {
       n++;
       const p = {}; (v.prices || []).forEach((x) => p[x.condition] = x);
       const allOn = (v.prices || []).some((x) => x.enabled);
-      const wCell = first ? `<b>${esc(m.name)}</b><br><input type="number" class="wOz" data-m="${m.id}" value="${m.weight_oz ?? ""}" placeholder="${catDefaultW} oz" title="Shipping weight (oz) — blank uses the category default" style="width:70px;margin-top:4px;font-size:12px">` : `<b>${esc(m.name)}</b>`;
+      const wCell = first ? `<b>${esc(m.name)}</b><br><label style="display:inline-flex;align-items:center;gap:5px;margin-top:4px;font-size:11.5px;color:var(--muted)" title="Shipping weight used to buy the label. Blank uses the ${catDefaultW} oz category default."><input type="number" class="wOz" data-m="${m.id}" value="${m.weight_oz ?? ""}" placeholder="${catDefaultW}" style="width:58px;font-size:12px"> oz ship weight</label>` : `<b>${esc(m.name)}</b>`;
       first = false;
       html += `<tr data-v="${v.id}">
         <td><input type="checkbox" class="rowOn" ${allOn ? "checked" : ""}></td>
