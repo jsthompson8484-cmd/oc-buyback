@@ -295,24 +295,49 @@ def header(depth):
   <a class="cta" id="cartPill" href="{p}sell/devices/index.html" style="display:none;margin-left:12px;background:var(--lime);color:var(--lime-ink)">Cart · 0</a>
 </div></header>'''
 
-CART_JS = '''<script>
-const CART_KEY = "ocb_cart";
-function cartGet(){ try { const c = JSON.parse(localStorage.getItem(CART_KEY)); return Array.isArray(c) ? c : []; } catch(e) { return []; } }
-function cartSave(c){ try { localStorage.setItem(CART_KEY, JSON.stringify(c)); } catch(e) {} }
-function cartBadge(){
-  const c = cartGet(), n = c.reduce((a,i)=>a+i.qty,0), t = c.reduce((a,i)=>a+i.price*i.qty,0);
-  const el = document.getElementById("cartPill");
-  if(el){ el.style.display = n ? "" : "none"; el.textContent = "Cart · " + n + " ($" + t.toLocaleString() + ")"; }
+# ---- canonical first-touch attribution ----
+# ONE definition, used by CART_JS (every generated page) and injected into the
+# static homepage below. The homepage used to carry its own hand-written fork
+# that omitted gclid/msclkid/fbclid/utm_term entirely, so a PAID ad click
+# landing on the homepage recorded no click id and was reported as organic
+# "Google". Never fork this again - the homepage injection asserts it lands.
+ATTRIB_JS = '''// first-touch lead attribution: recorded once per visitor, sent with checkout
+//
+// Stored in BOTH localStorage and a cookie. localStorage on its own loses
+// attribution silently — private browsing, cleared site data and Safari's
+// ITP cap all make it read back empty, and the order then books as "Direct".
+// Whichever store still holds a value wins, and the survivor is mirrored
+// back into the other one.
+const ATTRIB_KEY = "ocb_attrib";
+function attribCookie(){
+  try {
+    const m = document.cookie.match(/(?:^|;\\s*)ocb_attrib=([^;]*)/);
+    return m ? decodeURIComponent(m[1]) : null;
+  } catch(e) { return null; }
 }
-cartBadge();
-// first-touch lead attribution: recorded once per visitor, sent with checkout
+function attribWrite(raw){
+  try { localStorage.setItem(ATTRIB_KEY, raw); } catch(e) {}
+  // 180 days: long enough to cover a seller who researches then returns
+  try { document.cookie = ATTRIB_KEY + "=" + encodeURIComponent(raw)
+        + ";path=/;max-age=15552000;SameSite=Lax"; } catch(e) {}
+}
+// single reader used by checkout too, so both paths honour the fallback
+function attribRead(){
+  let raw = null;
+  try { raw = localStorage.getItem(ATTRIB_KEY); } catch(e) {}
+  if (!raw) raw = attribCookie();
+  if (!raw) return null;
+  try { return JSON.parse(raw); } catch(e) { return null; }
+}
 (function(){
   try {
-    if (localStorage.getItem("ocb_attrib")) return;
+    const prior = attribRead();
+    if (prior) { attribWrite(JSON.stringify(prior)); return; }  // re-mirror
     const q = new URLSearchParams(location.search);
     const ref = document.referrer || "";
-    const sameSite = ref && new URL(ref).host === location.host;
-    localStorage.setItem("ocb_attrib", JSON.stringify({
+    let sameSite = false;
+    try { sameSite = !!ref && new URL(ref).host === location.host; } catch(e) {}
+    attribWrite(JSON.stringify({
       r: sameSite ? "" : ref,
       l: location.pathname + location.search,
       us: q.get("utm_source") || "", um: q.get("utm_medium") || "", uc: q.get("utm_campaign") || "",
@@ -326,7 +351,19 @@ cartBadge();
       t: new Date().toISOString(),
     }));
   } catch(e) {}
-})();
+})();'''
+
+CART_JS = '''<script>
+const CART_KEY = "ocb_cart";
+function cartGet(){ try { const c = JSON.parse(localStorage.getItem(CART_KEY)); return Array.isArray(c) ? c : []; } catch(e) { return []; } }
+function cartSave(c){ try { localStorage.setItem(CART_KEY, JSON.stringify(c)); } catch(e) {} }
+function cartBadge(){
+  const c = cartGet(), n = c.reduce((a,i)=>a+i.qty,0), t = c.reduce((a,i)=>a+i.price*i.qty,0);
+  const el = document.getElementById("cartPill");
+  if(el){ el.style.display = n ? "" : "none"; el.textContent = "Cart · " + n + " ($" + t.toLocaleString() + ")"; }
+}
+cartBadge();
+''' + ATTRIB_JS + '''
 // Trade Into Cash referral click id — stored on arrival so it survives the
 // journey to checkout. The conversion itself is reported server-side from the
 // order handler (browser pixels lose orders to ad blockers and closed tabs).
@@ -1014,11 +1051,11 @@ document.getElementById("submit").addEventListener("click", async ()=>{{
           if (at && Date.now() - at > 30*86400000) return null;        // 30-day window
           const ls = localStorage.getItem("tic_click");
           if (ls) return ls;
-          const m = document.cookie.match(/(?:^|;\s*)tic_click=([^;]+)/);
+          const m = document.cookie.match(/(?:^|;\\s*)tic_click=([^;]+)/);
           return m ? decodeURIComponent(m[1]) : null;
         }} catch(e) {{ return null; }} }})(),
         sms_opt_in: document.getElementById("sms").checked,
-        attrib: (()=>{{ try {{ return JSON.parse(localStorage.getItem("ocb_attrib")); }} catch(e) {{ return null; }} }})(),
+        attrib: attribRead(),   // localStorage, falling back to the cookie
       }}) }});
     if (r.ok) {{
       const d = await r.json();
@@ -1619,6 +1656,27 @@ for _cat in LIVE_CATS:
             lambda mo: mo.group(1) + money(float(round(_mx))), _h)
         if _n == 0:
             print(f"WARNING: homepage payout card for {_cat} not found - value not updated")
+
+# Replace the homepage's attribution block with the canonical ATTRIB_JS.
+#
+# The homepage is a static source file and used to carry its own fork of this
+# code, missing gc/mc/fc/kw - so a Google Ads click landing on the homepage
+# stored no gclid and deriveSource reported it as organic "Google" instead of
+# "Google Ads". The homepage is also where GBP and most typed visits land, so
+# that fork was corrupting the most important first touches.
+#
+# Matches from the comment marker to the end of the IIFE. This MUST land: a
+# silent miss would leave the fork in place, so it raises rather than warns.
+_attr_re = re.compile(
+    r"// first-touch lead attribution.*?\n\}\)\(\);\n", re.S)
+# lambda, not a plain string: the replacement contains a regex of its own
+# (the cookie matcher's \s*) and re would read those as escape sequences.
+_h, _n = _attr_re.subn(lambda _mo: ATTRIB_JS.rstrip() + "\n", _h, count=1)
+if _n != 1:
+    raise SystemExit("FATAL: homepage attribution block not found - "
+                     "cannot inject canonical ATTRIB_JS (did index.html change?)")
+if "gclid" not in _h:
+    raise SystemExit("FATAL: homepage attribution injected but has no gclid capture")
 _idx.write_text(_h)
 
 # Every device URL this site has ever published. Committed, so a clean CI

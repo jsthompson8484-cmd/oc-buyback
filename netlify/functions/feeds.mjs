@@ -58,45 +58,60 @@ async function loadCatalog() {
   return [...variants.values()];
 }
 
-const deeplink = (v) => `${SITE}/sell/${v.category_slug}/${v.brand_slug}/${v.model_slug}`;
+// Every feed deeplink carries a partner tag.
+//
+// Without it, a click from a comparison site is indistinguishable from
+// someone typing the domain: these sites strip the referrer (rel=noreferrer,
+// or a redirect through their own click tracker), so the tag is the ONLY
+// signal that survives the hop. Measured Oct 21 2026 — Flipsy, SellCell and
+// BankMyCell had sent ZERO attributed orders ever, while Swappa (the one
+// partner that tags its own outbound links) showed 9. Everything else landed
+// in "Direct", which was 48% of all orders.
+//
+// Safe for SEO: device pages self-canonicalize to the clean URL, so the
+// parameters can't spawn duplicate indexed URLs. The tag also survives the
+// trailing-slash redirect the deeplinks rely on (verified on prod).
+const base = (v) => `${SITE}/sell/${v.category_slug}/${v.brand_slug}/${v.model_slug}`;
+const tag = (partner) => `?utm_source=${partner}&utm_medium=referral&utm_campaign=price-feed`;
+const deeplink = (v, partner) => base(v) + tag(partner);
 
 const BUILDERS = {
-  swappa(vs) {
+  swappa(vs, partner) {
     const out = ["partner_ref,product,carrier,memory,storage,processor,price_new,price_mint,price_good,price_fair,price_broken,url"];
     for (const v of vs) {
       const p = v.prices;
       out.push(["", `${v.brand_slug}-${v.model_slug}`, swappaCarrier(v.carrier), "", v.storage.toLowerCase(), "",
-        "", p["Flawless"] ?? "", p["Good"] ?? "", p["Fair"] ?? "", p["Minor Damage"] ?? "", deeplink(v)]
+        "", p["Flawless"] ?? "", p["Good"] ?? "", p["Fair"] ?? "", p["Minor Damage"] ?? "", deeplink(v, partner)]
         .map(csv).join(","));
     }
     return out;
   },
-  bankmycell(vs) {
+  bankmycell(vs, partner) {
     const out = ["ID,Manufacturer,Model,Capacity,Carrier,Brand New Price,Like New Price,Good Price,Minor Damage Price,Damaged Price,Deeplink"];
     for (const v of vs) {
       const p = v.prices;
       out.push([v.variant_id, v.brand, v.model, v.storage, v.carrier,
         p["Brand New"] ?? "", p["Flawless"] ?? "", p["Good"] ?? "", p["Minor Damage"] ?? "", p["Broken"] ?? "",
-        deeplink(v)].map(csv).join(","));
+        deeplink(v, partner)].map(csv).join(","));
     }
     return out;
   },
-  sellcell(vs) {
+  sellcell(vs, partner) {
     const out = ["Manufacturer,Model,Capacity,Carrier,Like New Price,Good Price,Fair Price,Minor Damage Price,Damaged Price,Like New Deeplink,Good Deeplink,Fair Deeplink,Minor Damage Deeplink,Damaged Deeplink"];
     for (const v of vs) {
       const p = v.prices;
-      const dl = (cond) => `${deeplink(v)}/${seg(v.carrier)}/${seg(v.storage)}/${COND_SLUG[cond]}`;
+      const dl = (cond) => `${base(v)}/${seg(v.carrier)}/${seg(v.storage)}/${COND_SLUG[cond]}${tag(partner)}`;
       out.push([v.brand, v.model, v.storage, v.carrier,
         p["Flawless"] ?? "", p["Good"] ?? "", p["Fair"] ?? "", p["Minor Damage"] ?? "", p["Broken"] ?? "",
         dl("Flawless"), dl("Good"), dl("Fair"), dl("Minor Damage"), dl("Broken")].map(csv).join(","));
     }
     return out;
   },
-  flipsy(vs) {
+  flipsy(vs, partner) {
     const out = [];
     for (const v of vs)
       for (const [cond, price] of Object.entries(v.prices))
-        out.push([`${v.model}_${v.storage}_${v.carrier}_${cond}`, price, deeplink(v)].map(csv).join(","));
+        out.push([`${v.model}_${v.storage}_${v.carrier}_${cond}`, price, deeplink(v, partner)].map(csv).join(","));
     return out;
   },
 };
@@ -105,7 +120,7 @@ export default async (req) => {
   const m = new URL(req.url).pathname.match(new RegExp(`/admin/catalog/${TOKEN}/export/(swappa|bankmycell|sellcell|flipsy)-csv\\.csv$`));
   if (!m) return new Response("Not found", { status: 404 });
   const variants = await loadCatalog();
-  const lines = BUILDERS[m[1]](variants);
+  const lines = BUILDERS[m[1]](variants, m[1]);
   return new Response(lines.join("\n") + "\n", {
     headers: {
       "content-type": "text/csv; charset=utf-8",

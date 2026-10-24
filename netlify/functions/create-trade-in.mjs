@@ -112,8 +112,25 @@ const REF_CHANNELS = [
   [/instagram\./i, "Instagram"], [/(^|\.)x\.com|twitter\.|t\.co/i, "X"],
   [/reddit\./i, "Reddit"], [/youtube\./i, "YouTube"], [/yelp\./i, "Yelp"],
 ];
+// Display names for utm_source values we set ourselves in the price feeds —
+// without this, "bankmycell" would report as "Bankmycell".
+const UTM_NAMES = {
+  flipsy: "Flipsy", sellcell: "SellCell", bankmycell: "BankMyCell", swappa: "Swappa",
+  google: "Google", bing: "Bing", tradeintocash: "Trade Into Cash",
+};
+// First-touch timestamp, validated. The value comes from the visitor's own
+// clock, so a skewed device could hand us anything: reject non-dates, future
+// times, and anything older than the 180-day cookie could legitimately be.
+function firstTouchAt(attrib) {
+  const ms = Date.parse(attrib?.t || "");
+  if (!Number.isFinite(ms)) return null;
+  const now = Date.now();
+  if (ms > now + 864e5 || ms < now - 200 * 864e5) return null;
+  return new Date(ms).toISOString();
+}
 function deriveSource(attrib) {
-  if (!attrib) return "Direct";
+  // no attribution at all: localStorage AND the cookie came back empty
+  if (!attrib) return "Direct / unknown";
   // a click id means they arrived from a paid ad, not an organic result
   if (attrib.gc) return "Google Ads";
   if (attrib.mc) return "Microsoft Ads";
@@ -123,15 +140,26 @@ function deriveSource(attrib) {
   const tag = `${attrib.us || ""} ${attrib.um || ""} ${attrib.uc || ""}`.toLowerCase();
   if (/\bgbp\b|business[_-]?profile|\bgmb\b/.test(tag)) return "Google Business Profile";
   if (/maps\.google\./i.test(attrib.r || "")) return "Google Maps";
-  if (attrib.us) return attrib.us.charAt(0).toUpperCase() + attrib.us.slice(1);
+  if (attrib.us) return UTM_NAMES[attrib.us.toLowerCase()]
+    || attrib.us.charAt(0).toUpperCase() + attrib.us.slice(1);
   if (attrib.r) {
     for (const [re, name] of REF_CHANNELS) if (re.test(attrib.r)) return name;
     try { return "Referral: " + new URL(attrib.r).hostname.replace(/^www\./, ""); }
     catch { return "Referral"; }
   }
-  // feed deeplink prefill params with no referrer = price-comparison click-through
-  if (/[?&](carrier|cond)=/.test(attrib.l || "")) return "Price comparison";
-  return "Direct";
+  // Safety net for a comparison-site click whose tag didn't survive the hop.
+  // The SellCell deeplink passes through a redirect that rewrites the query
+  // string, so these prefill params are the fingerprint that's left if the
+  // utm is ever lost again. Either shape counts: the post-redirect params, or
+  // the raw 7-segment path if a partner strips query strings on ingest.
+  if (/[?&](carrier|cond)=/.test(attrib.l || "")
+      || /^\/sell\/[^/]+\/[^/]+\/[^/]+\/[^/]+\/[^/]+\/[^/]+\/?$/.test(attrib.l || ""))
+    return "Price comparison";
+  // Genuinely unknown: no referrer, no tag, nothing to go on. Most of this
+  // bucket is NOT someone typing the domain — referrers are stripped by the
+  // Google Maps app, SMS, email clients and in-app browsers — so it must not
+  // read as a real channel in reporting.
+  return "Direct / unknown";
 }
 
 export default async (req) => {
@@ -253,6 +281,11 @@ export default async (req) => {
       source: deriveSource(attrib),
       referrer: (attrib?.r || "").slice(0, 500) || null,
       landing_page: (attrib?.l || "").slice(0, 500) || null,
+      // When the visitor FIRST landed, not when they ordered. Needed to join
+      // an order back to the right day of Search Console data — a seller who
+      // clicks today and checks out Thursday would otherwise be attributed to
+      // Thursday's queries. Browser-supplied, so sanity-check it.
+      first_touch_at: firstTouchAt(attrib),
       utm: attrib?.us || attrib?.um || attrib?.uc || attrib?.gc || attrib?.mc || attrib?.fc || attrib?.kw
         ? { source: attrib.us || null, medium: attrib.um || null, campaign: attrib.uc || null,
             term: attrib.kw || null,

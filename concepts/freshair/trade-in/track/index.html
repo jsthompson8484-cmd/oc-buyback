@@ -122,13 +122,42 @@ function cartBadge(){
 }
 cartBadge();
 // first-touch lead attribution: recorded once per visitor, sent with checkout
+//
+// Stored in BOTH localStorage and a cookie. localStorage on its own loses
+// attribution silently — private browsing, cleared site data and Safari's
+// ITP cap all make it read back empty, and the order then books as "Direct".
+// Whichever store still holds a value wins, and the survivor is mirrored
+// back into the other one.
+const ATTRIB_KEY = "ocb_attrib";
+function attribCookie(){
+  try {
+    const m = document.cookie.match(/(?:^|;\s*)ocb_attrib=([^;]*)/);
+    return m ? decodeURIComponent(m[1]) : null;
+  } catch(e) { return null; }
+}
+function attribWrite(raw){
+  try { localStorage.setItem(ATTRIB_KEY, raw); } catch(e) {}
+  // 180 days: long enough to cover a seller who researches then returns
+  try { document.cookie = ATTRIB_KEY + "=" + encodeURIComponent(raw)
+        + ";path=/;max-age=15552000;SameSite=Lax"; } catch(e) {}
+}
+// single reader used by checkout too, so both paths honour the fallback
+function attribRead(){
+  let raw = null;
+  try { raw = localStorage.getItem(ATTRIB_KEY); } catch(e) {}
+  if (!raw) raw = attribCookie();
+  if (!raw) return null;
+  try { return JSON.parse(raw); } catch(e) { return null; }
+}
 (function(){
   try {
-    if (localStorage.getItem("ocb_attrib")) return;
+    const prior = attribRead();
+    if (prior) { attribWrite(JSON.stringify(prior)); return; }  // re-mirror
     const q = new URLSearchParams(location.search);
     const ref = document.referrer || "";
-    const sameSite = ref && new URL(ref).host === location.host;
-    localStorage.setItem("ocb_attrib", JSON.stringify({
+    let sameSite = false;
+    try { sameSite = !!ref && new URL(ref).host === location.host; } catch(e) {}
+    attribWrite(JSON.stringify({
       r: sameSite ? "" : ref,
       l: location.pathname + location.search,
       us: q.get("utm_source") || "", um: q.get("utm_medium") || "", uc: q.get("utm_campaign") || "",

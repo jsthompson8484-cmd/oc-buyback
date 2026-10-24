@@ -19,10 +19,16 @@
   force = true
 
 # SellCell per-condition deeplinks (from the price feed) land on the device
-# page with the pick pre-selected via query params
+# page with the pick pre-selected via query params.
+#
+# The utm tag is carried HERE, not just in the feed: because this rule's
+# destination declares its own query string, Netlify replaces the incoming
+# one entirely, so a tag on the feed URL is dropped at this hop. This path
+# shape is only ever produced by the SellCell feed, so stamping the source
+# here is safe and is the only place it survives to the page.
 [[redirects]]
   from = "/sell/:cat/:brand/:model/:carrier/:storage/:cond"
-  to = "/sell/:cat/:brand/:model?carrier=:carrier&storage=:storage&cond=:cond"
+  to = "/sell/:cat/:brand/:model?carrier=:carrier&storage=:storage&cond=:cond&utm_source=sellcell&utm_medium=referral&utm_campaign=price-feed"
   status = 301
 
 # Marketplace store is not carried over
