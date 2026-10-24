@@ -32,9 +32,30 @@ td{padding:8px 10px;border-bottom:1px solid var(--line);vertical-align:top}
 tr:last-child td{border-bottom:none}
 .chip{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;
 padding:3px 9px;border-radius:99px;background:var(--ground);color:var(--muted)}
-.chip.initiated{background:#e7f0fa;color:#20507e}.chip.shipped{background:#e7f0fa;color:#20507e}.chip.delivered{background:#e3f1e5;color:var(--green)}.chip.received{background:#faf0e2;color:var(--warn)}
-.chip.evaluating{background:#f3eafa;color:#6d3fa3}.chip.adjusted{background:#faf0e2;color:var(--warn)}.chip.action_pending{background:#faf0e2;color:var(--warn)}
-.chip.paid{background:#e3f1e5;color:var(--green)}.chip.returned,.chip.legacy{background:#eef1f5;color:#4b5a6b}
+/* Status colours: one per status, ordered along the pipeline so the hue
+   itself reads as progress - slate (quoted) -> blue (in transit) -> teal
+   (with us) -> violet (being assessed) -> amber (waiting on someone) ->
+   green (done), with red/grey reserved for terminal states. Every pair is
+   >=4.5:1 on its own background, so the chips stay WCAG AA like the rest
+   of the admin. The 7 legacy-only statuses are included: imported orders
+   carry them and would otherwise all render the same default grey. */
+.chip.initiated{background:#eceff3;color:#49566a}
+.chip.shipped{background:#d6e6fb;color:#14477d}
+.chip.inbound_tracking_activated{background:#eaf2fd;color:#2a5c93}
+.chip.delivered{background:#e6e9fb;color:#3b3f94}
+.chip.received{background:#d9f0f2;color:#0f5a67}
+.chip.evaluating{background:#f1e8fb;color:#653197}
+.chip.requote_completed{background:#f4ebfa;color:#71409c}
+.chip.adjusted{background:#fdeada;color:#8a4a00}
+.chip.requote_pending{background:#fdf0e0;color:#8f5100}
+.chip.action_pending{background:#fbf2cd;color:#75580a}
+.chip.seller_action_pending{background:#fcf4d6;color:#7a5c0d}
+.chip.needs_payment{background:#fdf6d8;color:#6f5400}
+.chip.paid{background:#dcf1e1;color:#1a6b33}
+.chip.recycled{background:#e9eedd;color:#4f5f30}
+.chip.returned{background:#efe8df;color:#6a5238}
+.chip.inspection_failed{background:#fae3e6;color:#97253a}
+.chip.legacy{background:#eef1f5;color:#4b5a6b}
 .chip.instore{background:#fff3d6;color:#8a5a00}
 .chip.source{background:#eef6ef;color:#2D8631;cursor:help}
 .chip.mailin{background:#e8eefb;color:#2f4b86}
@@ -44,8 +65,8 @@ padding:3px 9px;border-radius:99px;background:var(--ground);color:var(--muted)}
 .insp button{border:1.5px solid var(--line);background:#fff;border-radius:99px;padding:3px 12px;font:600 12px inherit;cursor:pointer;color:var(--muted)}
 .insp button.on-pass{background:var(--green);border-color:var(--green);color:#fff}
 .insp button.on-fail{background:#b3372b;border-color:#b3372b;color:#fff}
-.chip.expired{background:#f1f0ec;color:#6b6457}
-.chip.cancelled{background:#f9e9e6;color:var(--crit)}
+.chip.expired{background:#f1f0ec;color:#5d584e}
+.chip.cancelled{background:#f9e5e1;color:#9b2e1b}
 .btn{background:var(--green);color:#fff;border:0;border-radius:99px;font-weight:700;font-size:13px;padding:9px 16px}
 .btn:hover{background:var(--deep)}
 .btn.ghost{background:var(--ground);color:var(--ink);border:1.5px solid var(--line)}
@@ -366,7 +387,7 @@ const SOURCE_ICON = { "Google Ads":"💰", "Microsoft Ads":"💰", "Facebook Ads
   Flipsy:"🤝", BankMyCell:"🤝", "Trade Into Cash":"🤝", Facebook:"📣", Instagram:"📣", X:"📣",
   Reddit:"📣", YouTube:"📣", Yelp:"⭐", Direct:"🔗", "Price comparison":"🤝" };
 const sourceChip = (t) => {
-  const src = t.source || "Direct";
+  const src = t.source || "Direct / unknown";
   const icon = SOURCE_ICON[src] || (src.startsWith("Referral") ? "🤝" : "🔗");
   const bits = [];
   if (t.landing_page) bits.push("Landed on " + t.landing_page);
