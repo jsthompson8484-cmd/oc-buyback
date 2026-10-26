@@ -40,7 +40,15 @@ h1{font:800 24px "Bricolage Grotesque",sans-serif;color:var(--deep);margin:26px 
 #tiTable th,#tiTable td{padding-left:8px;padding-right:8px}
 #tiTable th:last-child,#tiTable td:last-child{padding-right:0}
 /* order numbers must never break across lines ("OCB-" / "54DNK6") */
-#tiTable th:nth-child(2),#tiTable td:nth-child(2){white-space:nowrap}
+#tiTable th:nth-child(2){white-space:nowrap}
+/* Order numbers never break, but the legacy chip beside them may wrap to a
+   second line -- holding the whole cell on one line made this the second
+   widest column in the table (197px -> 134px). */
+#tiTable td:nth-child(2){white-space:normal}
+#tiTable td:nth-child(2) b{white-space:nowrap}
+/* A PayPal address in the payment detail wraps rather than widening the
+   column (203px -> 102px). */
+#tiTable td:nth-child(5){overflow-wrap:anywhere}
 /* Pin the Open column. On a narrow screen the table scrolls inside the
    panel, and without this the action column is simply unreachable. */
 #tiTable th:last-child,#tiTable td:last-child{position:sticky;right:0;background:var(--surface)}
@@ -445,6 +453,13 @@ const money = (v) => "$" + Number(v || 0).toLocaleString(undefined, {maximumFrac
 // two characters matter when nine columns are competing for width
 const shortDate = (d) => new Date(d).toLocaleDateString(undefined,
   { month: "numeric", day: "numeric", year: "2-digit" });
+// PayPal and Zelle details are usually just the customer's own email, which
+// the Contact column already shows. Only surface a detail that adds something.
+const payDetail = (t) => {
+  const d = (t.payment_detail || "").trim();
+  if (!d) return "";
+  return d.toLowerCase() === (t.email || "").trim().toLowerCase() ? "" : d;
+};
 let toastT;
 function toast(msg){ const t = $("#toast"); t.textContent = msg; t.classList.add("show");
   clearTimeout(toastT); toastT = setTimeout(()=>t.classList.remove("show"), 2600); }
@@ -861,7 +876,7 @@ async function loadTradeIns(){
       <td><b>${esc(t.order_number)}</b>${legacyBadge(t)}</td>
       <td>${esc(t.first_name)} ${esc(t.last_name)}<br>${fulfilBadge(t)}${cityState(t) ? ` <span class="muted">${cityState(t)}</span>` : ""}</td>
       <td>${esc(t.email)}<br><span class="muted">${esc(t.phone)}</span></td>
-      <td>${esc(t.payment_method)}${t.payment_detail ? "<br><span class='muted'>" + esc(t.payment_detail) + "</span>" : ""}</td>
+      <td>${esc(t.payment_method)}${payDetail(t) ? "<br><span class='muted'>" + esc(payDetail(t)) + "</span>" : ""}</td>
       <td class="money" style="text-align:right"><b>${money(t.total_quote)}</b></td>
       <td class="nw">${sourceChip(t)}</td>
       <td class="muted nw">${shortDate(t.created_at)}</td>
