@@ -1745,6 +1745,12 @@ for path, img in [("/", None)] + SITEMAP:
     '<?xml version="1.0" encoding="UTF-8"?>\n'
     '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" '
     'xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">\n' + "\n".join(urls) + "\n</urlset>\n")
-(OUT/"robots.txt").write_text(f"User-Agent: *\nAllow: /\nDisallow: /admin\nSitemap: {SITE}/sitemap.xml\n")
+(OUT/"robots.txt").write_text(
+    "User-Agent: *\n"
+    "Allow: /\n"
+    "Disallow: /admin\n"
+    "Disallow: /api/\n"          # function endpoints are not pages; Google
+                                  # crawled /api/create-trade-in and got a 405
+    f"Sitemap: {SITE}/sitemap.xml\n")
 
 print(f"generated {count} device pages, {len(LIVE_CATS)} category pages, 1 hub, 1 cart/checkout, 1 track, 4 static, {len(blog_posts)+1} blog, 1 location; sitemap: {len(SITEMAP)+1} urls")
