@@ -103,6 +103,18 @@ padding:11px 22px;border-radius:99px;font-weight:600;font-size:13.5px;opacity:0;
 dialog{border:1px solid var(--line);border-radius:16px;padding:24px;max-width:560px;width:92vw}
 dialog::backdrop{background:rgba(14,61,38,.35)}
 dialog.wide{max-width:760px}
+dialog.xwide{max-width:940px}
+/* The order dialog is the tallest thing in the admin. Cap it to the viewport
+   and keep the title row pinned, so Close is reachable without scrolling to
+   the bottom of a long order. */
+dialog{max-height:88vh}
+.dlghead{position:sticky;top:0;z-index:5;background:var(--surface);display:flex;align-items:center;
+gap:12px;margin:-24px -24px 32px;padding:22px 24px 10px;border-bottom:1px solid var(--line)}
+.dlghead h1{flex:1;min-width:0;margin:0}
+.dlgx{flex:none;width:34px;height:34px;border:1px solid var(--line);background:var(--surface);
+border-radius:99px;font-size:15px;line-height:1;color:var(--muted)}
+.dlgx:hover{background:var(--ground);color:var(--ink)}
+.dlgx:focus-visible{outline:2px solid var(--brand);outline-offset:2px}
 .toolbar{display:flex;gap:6px;background:var(--ground);border:1.5px solid var(--line);border-bottom:0;
 border-radius:10px 10px 0 0;padding:8px;margin-top:10px}
 .toolbar button{background:var(--surface);border:1px solid var(--line);border-radius:8px;min-width:34px;
@@ -865,8 +877,9 @@ $("#tiTable").addEventListener("click", (e) => {
 function openTradeInDialog(t, refresh){
   const d = $("#tiDialog");
   d.classList.remove("wide");
+  d.classList.add("xwide");
   d.innerHTML = `
-    <h1 style="margin:0 0 4px">${esc(t.order_number)} <span class="chip ${t.status}">${t.status}</span>${legacyBadge(t)}</h1>
+    <div class="dlghead"><h1>${esc(t.order_number)} <span class="chip ${t.status}">${t.status}</span>${legacyBadge(t)}</h1><button class="dlgx" id="dX" aria-label="Close" title="Close (Esc)">✕</button></div>
     <p style="margin:0 0 12px">${fulfilBadge(t)} ${sourceChip(t)} <span class="muted">${esc(t.first_name)} ${esc(t.last_name)}${
       isWalkIn(t)
         ? " · bringing it to the Brea shop — no shipping label"
@@ -954,6 +967,7 @@ function openTradeInDialog(t, refresh){
     </div>`;
   d.showModal();
   $("#dClose").onclick = () => d.close();
+  $("#dX").onclick = () => d.close();
 
   // per-device inspection: pass / fail. Failing a device pre-selects it in the
   // issue composer so the email goes out about the right device on a multi-
