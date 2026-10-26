@@ -123,3 +123,12 @@ These were each a real bug. Don't reintroduce them.
   diagnosis of the device pages entirely.
 - **Verify a URL exists before reasoning about it.** A page measured at "48
   words" turned out to be a 404 for a URL that was never real.
+- **Re-sync `data/` before trusting a local number.** `catalog.json` went stale
+  and claimed Mac Studio at $10,100 against a real $9,400. Netlify re-syncs at
+  build so production was fine, but local verification was worthless until the
+  sync was re-run.
+- **Never insert CSS by indexing a selector fragment.** `index('.fh{')` matched
+  inside `footer h2.fh{` and split it, producing a selector that matched
+  nothing and failed silently. Insert after a complete `}`.
+- **Watch specificity in the footer.** `footer a` is (0,1,1) and beats any bare
+  class, so footer link styling needs `footer a.thing`.
