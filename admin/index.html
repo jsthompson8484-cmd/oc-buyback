@@ -29,6 +29,11 @@ h1{font:800 24px "Bricolage Grotesque",sans-serif;color:var(--deep);margin:26px 
    border instead of letting the Open button hang off the right edge. */
 .panel:has(> table){overflow-x:auto}
 .nw{white-space:nowrap}
+/* Action Items renders one table per bucket, and each sizes its columns to
+   its own content, so the Open buttons landed at four different x positions
+   (26px of spread). The tables share a right edge, so right-aligning the
+   action cell lines every button up down the page. */
+#actionQueues td:last-child{text-align:right}
 /* Nine columns need slightly tighter gutters to fit the panel on a 1240px
    layout; the last column sits flush so the Open button ends on the edge
    rather than pushing a scrollbar. Measured: 38px over -> 0. */
