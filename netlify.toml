@@ -28,18 +28,18 @@
 # here is safe and is the only place it survives to the page.
 [[redirects]]
   from = "/sell/:cat/:brand/:model/:carrier/:storage/:cond"
-  to = "/sell/:cat/:brand/:model?carrier=:carrier&storage=:storage&cond=:cond&utm_source=sellcell&utm_medium=referral&utm_campaign=price-feed"
+  to = "/sell/:cat/:brand/:model/?carrier=:carrier&storage=:storage&cond=:cond&utm_source=sellcell&utm_medium=referral&utm_campaign=price-feed"
   status = 301
 
 # Marketplace store is not carried over
 [[redirects]]
   from = "/buy"
-  to = "/sell"
+  to = "/sell/"
   status = 301
 
 [[redirects]]
   from = "/buy/*"
-  to = "/sell"
+  to = "/sell/"
   status = 301
 
 # device/brand images are content-addressed by filename; cache hard

@@ -187,6 +187,18 @@ def mslug(m, name):
     """DB slug wins (it carries the legacy overrides); fall back to computed."""
     return (m.get("slug") if isinstance(m, dict) else None) or slug(name)
 
+def canon_path(p):
+    """Canonical form of a page path.
+
+    Netlify serves these as directories: /x/ is the 200 and /x 301s to it. We
+    were emitting the slashless form in both the canonical tag and the sitemap,
+    so every page declared a canonical that redirected and every sitemap entry
+    was itself a redirect. Search Console reported 281 of 282 sitemap URLs as
+    "Page with redirect" and fell back to picking its own canonical.
+    """
+    if p in ("/", "", None): return "/"
+    return p if p.endswith("/") else p + "/"
+
 def abs_url(u):
     """Sitemaps and OG tags need absolute URLs; our image paths are root-relative."""
     if not u: return u
@@ -386,7 +398,7 @@ def page(title, body, depth, extra_css="", *, path=None, desc="", schema=None,
         b = BASELINE.get(path, {})
         if b.get("title"): title = b["title"]
         if b.get("desc"): desc = b["desc"]
-        canonical = SITE + (path if path != "/" else "/")
+        canonical = SITE + canon_path(path)
         head_extra += f'<link rel="canonical" href="{canonical}">\n'
         head_extra += f'<meta name="description" content="{html.escape(desc)}">\n'
         head_extra += (f'<meta property="og:title" content="{html.escape(title)}">\n'
@@ -1725,8 +1737,8 @@ print(f"retired {len(retired)} model pages -> 302 to their category")
 # ---- sitemap.xml + robots.txt ----
 urls = []
 for path, img in [("/", None)] + SITEMAP:
-    entry = f"  <url>\n    <loc>{SITE}{path if path != '/' else ''}/</loc>\n  </url>" if path == "/" else \
-            f"  <url>\n    <loc>{SITE}{path}</loc>\n" + \
+    entry = f"  <url>\n    <loc>{SITE}/</loc>\n  </url>" if path == "/" else \
+            f"  <url>\n    <loc>{SITE}{canon_path(path)}</loc>\n" + \
             (f"    <image:image><image:loc>{html.escape(abs_url(img))}</image:loc></image:image>\n" if img else "") + "  </url>"
     urls.append(entry)
 (OUT/"sitemap.xml").write_text(
