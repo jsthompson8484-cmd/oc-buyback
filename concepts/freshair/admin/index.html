@@ -25,13 +25,24 @@ header{background:var(--deep);color:#fff;position:sticky;top:0;z-index:10}
 .nav .out{background:none;border:1px solid rgba(255,255,255,.25);color:#fff;border-radius:99px;padding:6px 12px;font-size:12.5px}
 h1{font:800 24px "Bricolage Grotesque",sans-serif;color:var(--deep);margin:26px 0 14px}
 .panel{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px;margin-bottom:16px}
+/* 9 columns can exceed the panel on a laptop; keep the overflow inside the
+   border instead of letting the Open button hang off the right edge. */
+.panel:has(> table){overflow-x:auto}
+.nw{white-space:nowrap}
+/* Nine columns need slightly tighter gutters to fit the panel on a 1240px
+   layout; the last column sits flush so the Open button ends on the edge
+   rather than pushing a scrollbar. Measured: 38px over -> 0. */
+#tiTable th,#tiTable td{padding-left:8px;padding-right:8px}
+#tiTable th:last-child,#tiTable td:last-child{padding-right:0}
+/* order numbers must never break across lines ("OCB-" / "54DNK6") */
+#tiTable th:nth-child(2),#tiTable td:nth-child(2){white-space:nowrap}
 table{border-collapse:collapse;width:100%;font-size:13.5px}
 th{text-align:left;font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);
 padding:8px 10px;border-bottom:1px solid var(--line)}
 td{padding:8px 10px;border-bottom:1px solid var(--line);vertical-align:top}
 tr:last-child td{border-bottom:none}
 .chip{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;
-padding:3px 9px;border-radius:99px;background:var(--ground);color:var(--muted)}
+padding:3px 9px;border-radius:99px;background:var(--ground);color:var(--muted);white-space:nowrap}
 /* Status colours: one per status, ordered along the pipeline so the hue
    itself reads as progress - slate (quoted) -> blue (in transit) -> teal
    (with us) -> violet (being assessed) -> amber (waiting on someone) ->
@@ -401,6 +412,10 @@ const sourceChip = (t) => {
 const legacyBadge = (t) => t.legacy_id
   ? ` <span class="chip legacy" title="Imported from the old site — original status: ${esc(t.legacy_status || "n/a")}">⟲ legacy</span>` : "";
 const money = (v) => "$" + Number(v || 0).toLocaleString(undefined, {maximumFractionDigits: 2});
+// 10/26/26 rather than 10/26/2026 - the century is never in doubt and the
+// two characters matter when nine columns are competing for width
+const shortDate = (d) => new Date(d).toLocaleDateString(undefined,
+  { month: "numeric", day: "numeric", year: "2-digit" });
 let toastT;
 function toast(msg){ const t = $("#toast"); t.textContent = msg; t.classList.add("show");
   clearTimeout(toastT); toastT = setTimeout(()=>t.classList.remove("show"), 2600); }
@@ -819,8 +834,8 @@ async function loadTradeIns(){
       <td>${esc(t.email)}<br><span class="muted">${esc(t.phone)}</span></td>
       <td>${esc(t.payment_method)}${t.payment_detail ? "<br><span class='muted'>" + esc(t.payment_detail) + "</span>" : ""}</td>
       <td class="money" style="text-align:right"><b>${money(t.total_quote)}</b></td>
-      <td>${sourceChip(t)}</td>
-      <td class="muted">${new Date(t.created_at).toLocaleDateString()}</td>
+      <td class="nw">${sourceChip(t)}</td>
+      <td class="muted nw">${shortDate(t.created_at)}</td>
       <td><button class="btn sm ghost" data-open="${t.id}">Open</button></td>
     </tr>`).join("") || "<tr><td colspan=9 class=muted>No trade-ins found.</td></tr>";
   $("#tiTable").dataset.cache = JSON.stringify(data || []);
