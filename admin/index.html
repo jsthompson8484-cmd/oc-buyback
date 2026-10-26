@@ -36,6 +36,9 @@ h1{font:800 24px "Bricolage Grotesque",sans-serif;color:var(--deep);margin:26px 
 #tiTable th:last-child,#tiTable td:last-child{padding-right:0}
 /* order numbers must never break across lines ("OCB-" / "54DNK6") */
 #tiTable th:nth-child(2),#tiTable td:nth-child(2){white-space:nowrap}
+/* Pin the Open column. On a narrow screen the table scrolls inside the
+   panel, and without this the action column is simply unreachable. */
+#tiTable th:last-child,#tiTable td:last-child{position:sticky;right:0;background:var(--surface)}
 table{border-collapse:collapse;width:100%;font-size:13.5px}
 th{text-align:left;font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);
 padding:8px 10px;border-bottom:1px solid var(--line)}
@@ -68,7 +71,11 @@ padding:3px 9px;border-radius:99px;background:var(--ground);color:var(--muted);w
 .chip.inspection_failed{background:#fae3e6;color:#97253a}
 .chip.legacy{background:#eef1f5;color:#4b5a6b}
 .chip.instore{background:#fff3d6;color:#8a5a00}
-.chip.source{background:#eef6ef;color:#2D8631;cursor:help}
+/* Source chips drop the uppercase treatment the status chips use: domains
+   like tradeintocash.com are unreadable shouted, and the letter-spacing
+   made this the widest column in the table (254px) which pushed the Open
+   button out of the panel entirely. Now 149px. */
+.chip.source{background:#eef6ef;color:#2D8631;cursor:help;text-transform:none;letter-spacing:0}
 .chip.mailin{background:#e8eefb;color:#2f4b86}
 .detail.passed{border-left:3px solid var(--green);background:#f3faf4}
 .detail.failed{border-left:3px solid #b3372b;background:#fdf4f3}
@@ -397,16 +404,21 @@ const SOURCE_ICON = { "Google Ads":"💰", "Microsoft Ads":"💰", "Facebook Ads
   Google:"🔍", Bing:"🔍", "DuckDuckGo":"🔍", Yahoo:"🔍", Swappa:"🤝", SellCell:"🤝",
   Flipsy:"🤝", BankMyCell:"🤝", "Trade Into Cash":"🤝", Facebook:"📣", Instagram:"📣", X:"📣",
   Reddit:"📣", YouTube:"📣", Yelp:"⭐", Direct:"🔗", "Price comparison":"🤝" };
+// Compact label for the table. The icon already carries the category and the
+// tooltip carries the full value, so the chip does not need to repeat either.
+const shortSource = (s) => s.replace(/^Referral: /, "")
+  .replace("Direct / unknown", "Unknown")
+  .replace("Google Business Profile", "Business Profile");
 const sourceChip = (t) => {
   const src = t.source || "Direct / unknown";
   const icon = SOURCE_ICON[src] || (src.startsWith("Referral") ? "🤝" : "🔗");
-  const bits = [];
+  const bits = [src];
   if (t.landing_page) bits.push("Landed on " + t.landing_page);
   if (t.referrer) bits.push("Referrer: " + t.referrer);
   const u = t.utm || {};
   if (u.campaign || u.source || u.medium)
     bits.push("Campaign: " + [u.source, u.medium, u.campaign].filter(Boolean).join(" / "));
-  return `<span class="chip source" title="${esc(bits.join("\n") || "No referrer recorded")}">${icon} ${esc(src)}</span>`;
+  return `<span class="chip source" title="${esc(bits.join("\n"))}">${icon} ${esc(shortSource(src))}</span>`;
 };
 
 const legacyBadge = (t) => t.legacy_id
