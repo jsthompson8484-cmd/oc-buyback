@@ -51,6 +51,12 @@ font-size:12px;font-weight:700;padding:9px 14px;border-radius:99px;z-index:20;bo
 footer{background:var(--deep);color:#bcd6c4;font-size:13.5px;margin-top:40px}
 footer .cols{display:grid;grid-template-columns:1.3fr 1fr 1fr 1fr;gap:36px;padding:44px 0 30px}
 footer h2.fh{font:700 13px "Bricolage Grotesque",sans-serif;letter-spacing:.08em;text-transform:uppercase;color:var(--lime);margin:0 0 12px}
+/* Footer wordmark: the same element as the header logo, so the two cannot
+   drift apart. Was a 180x51 PNG forced into 150x34 and visibly squashed.
+   "footer a" is (0,1,1) and beats a bare ".flogo", hence a.flogo. */
+footer a.flogo{display:inline-block;font-size:21px;color:#fff;text-decoration:none;margin-bottom:14px}
+footer a.flogo i{color:var(--brand);font-style:normal}
+
 footer a{color:#bcd6c4}
 footer a:hover{color:#fff}
 footer .flinks{display:grid;gap:7px}
@@ -147,33 +153,33 @@ function attribRead(){
   <h1>What are you selling?</h1>
   <p class="sub">Every price is a real offer, locked for 14 days once you start a trade-in.</p>
   <div class="grid"><a class="card" href="cell-phone/index.html">
-<img src="/assets/devices/cell-phones/apple/iphone-18-pro-max.webp" alt="" width="193" height="193" loading="lazy" decoding="async" onerror="this.style.display='none'">
-<div class="name">Cell Phones</div><div class="val">up to $1,385</div>
-<div style="color:var(--muted);font-size:12.5px;margin-top:2px">86 models</div></a><a class="card" href="tablet/index.html">
+<img src="/assets/devices/cell-phones/apple/iphone-duo.webp" alt="" width="193" height="193" loading="lazy" decoding="async" onerror="this.style.display='none'">
+<div class="name">Cell Phones</div><div class="val">up to $1,950</div>
+<div style="color:var(--muted);font-size:12.5px;margin-top:2px">88 models</div></a><a class="card" href="tablet/index.html">
 <img src="/assets/devices/tablets/apple/ipad-pro-13-m5-nanominustexture-glass-2025.webp" alt="" width="193" height="193" loading="lazy" decoding="async" onerror="this.style.display='none'">
 <div class="name">Tablets</div><div class="val">up to $1,225</div>
 <div style="color:var(--muted);font-size:12.5px;margin-top:2px">31 models</div></a><a class="card" href="smartwatch/index.html">
-<img src="/assets/devices/smartwatches/apple/ultra-3.webp" alt="" width="193" height="193" loading="lazy" decoding="async" onerror="this.style.display='none'">
-<div class="name">Smartwatches</div><div class="val">up to $390</div>
-<div style="color:var(--muted);font-size:12.5px;margin-top:2px">17 models</div></a><a class="card" href="game-console/index.html">
-<img src="/assets/devices/game-consoles/sony/ps5-pro.webp" alt="" width="193" height="193" loading="lazy" decoding="async" onerror="this.style.display='none'">
-<div class="name">Game Consoles</div><div class="val">up to $565</div>
-<div style="color:var(--muted);font-size:12.5px;margin-top:2px">19 models</div></a><a class="card" href="gopro/index.html">
+<img src="https://bpvlohcbdhvttocsijrm.supabase.co/storage/v1/object/public/device-images/1792773192640-apple-watch-ultra-4-natural-titanium.webp" alt="" width="193" height="193" loading="lazy" decoding="async" onerror="this.style.display='none'">
+<div class="name">Smartwatches</div><div class="val">up to $525</div>
+<div style="color:var(--muted);font-size:12.5px;margin-top:2px">14 models</div></a><a class="card" href="game-console/index.html">
+<img src="https://bpvlohcbdhvttocsijrm.supabase.co/storage/v1/object/public/device-images/1792883995963-valve-steam-machine.webp" alt="" width="193" height="193" loading="lazy" decoding="async" onerror="this.style.display='none'">
+<div class="name">Game Consoles</div><div class="val">up to $1,075</div>
+<div style="color:var(--muted);font-size:12.5px;margin-top:2px">21 models</div></a><a class="card" href="gopro/index.html">
 <img src="/assets/devices/gopros/gopro/hero-12-black.webp" alt="" width="193" height="193" loading="lazy" decoding="async" onerror="this.style.display='none'">
 <div class="name">GoPro</div><div class="val">up to $100</div>
 <div style="color:var(--muted);font-size:12.5px;margin-top:2px">7 models</div></a><a class="card" href="vr/index.html">
 <img src="/assets/devices/vrs/apple/vision-pro-m5.webp" alt="" width="193" height="193" loading="lazy" decoding="async" onerror="this.style.display='none'">
 <div class="name">VR</div><div class="val">up to $2,190</div>
 <div style="color:var(--muted);font-size:12.5px;margin-top:2px">2 models</div></a><a class="card" href="headphones/index.html">
-<img src="/assets/devices/headphones/apple/airpods-max.webp" alt="" width="193" height="193" loading="lazy" decoding="async" onerror="this.style.display='none'">
-<div class="name">Headphones</div><div class="val">up to $205</div>
-<div style="color:var(--muted);font-size:12.5px;margin-top:2px">1 models</div></a><a class="card" href="ipod/index.html">
+<img src="https://bpvlohcbdhvttocsijrm.supabase.co/storage/v1/object/public/device-images/1792881947837-apple-airpods-max-2-midnight.webp" alt="" width="193" height="193" loading="lazy" decoding="async" onerror="this.style.display='none'">
+<div class="name">Headphones</div><div class="val">up to $290</div>
+<div style="color:var(--muted);font-size:12.5px;margin-top:2px">3 models</div></a><a class="card" href="ipod/index.html">
 <img src="/assets/devices/ipods/apple/ipod-touch-7th-gen.webp" alt="" width="193" height="193" loading="lazy" decoding="async" onerror="this.style.display='none'">
 <div class="name">iPods</div><div class="val">up to $70</div>
 <div style="color:var(--muted);font-size:12.5px;margin-top:2px">1 models</div></a><a class="card" href="macbook/index.html">
-<img src="/assets/devices/macbook-pro-16-2024.webp" alt="" width="193" height="193" loading="lazy" decoding="async" onerror="this.style.display='none'">
-<div class="name">MacBooks</div><div class="val">up to $2,594</div>
-<div style="color:var(--muted);font-size:12.5px;margin-top:2px">16 models</div></a><a class="card" href="imac/index.html">
+<img src="/assets/devices/macbook-pro-16-2026.webp" alt="" width="193" height="193" loading="lazy" decoding="async" onerror="this.style.display='none'">
+<div class="name">MacBooks</div><div class="val">up to $4,025</div>
+<div style="color:var(--muted);font-size:12.5px;margin-top:2px">17 models</div></a><a class="card" href="imac/index.html">
 <img src="/assets/devices/imac-24-2024.webp" alt="" width="193" height="193" loading="lazy" decoding="async" onerror="this.style.display='none'">
 <div class="name">iMacs</div><div class="val">up to $1,247</div>
 <div style="color:var(--muted);font-size:12.5px;margin-top:2px">2 models</div></a><a class="card" href="mac-mini/index.html">
@@ -181,7 +187,7 @@ function attribRead(){
 <div class="name">Mac Minis</div><div class="val">up to $349</div>
 <div style="color:var(--muted);font-size:12.5px;margin-top:2px">1 models</div></a><a class="card" href="mac-studio/index.html">
 <img src="/assets/devices/mac-studio-2025.webp" alt="" width="193" height="193" loading="lazy" decoding="async" onerror="this.style.display='none'">
-<div class="name">Mac Studios</div><div class="val">up to $10,100</div>
+<div class="name">Mac Studios</div><div class="val">up to $9,400</div>
 <div style="color:var(--muted);font-size:12.5px;margin-top:2px">3 models</div></a><a class="card" href="mac-pro/index.html">
 <img src="/assets/devices/mac-pro-2023.webp" alt="" width="193" height="193" loading="lazy" decoding="async" onerror="this.style.display='none'">
 <div class="name">Mac Pros</div><div class="val">up to $4,944</div>
@@ -192,7 +198,7 @@ function attribRead(){
 <div class="wrap">
   <div class="cols">
     <div class="fbrand">
-      <img src="../assets/logo-white.png" alt="OCBuyBack" width="150" height="34" loading="lazy" decoding="async">
+      <a class="logo flogo" href="../index.html">OC<i>BuyBack</i></a>
       <p>Cash for phones, tablets, watches, consoles and more — Brea's local buyback shop. Instant quotes, free shipping, paid within 1 business day.</p>
       <p>1203 W Imperial Hwy, STE 103<br>Brea, CA 92821<br><a href="tel:657-286-8274">657-286-8274</a> · <a href="mailto:support@ocbuyback.com">support@ocbuyback.com</a><br>Mon–Fri 10 AM – 6 PM</p>
     </div>

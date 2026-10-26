@@ -52,6 +52,12 @@ font-size:12px;font-weight:700;padding:9px 14px;border-radius:99px;z-index:20;bo
 footer{background:var(--deep);color:#bcd6c4;font-size:13.5px;margin-top:40px}
 footer .cols{display:grid;grid-template-columns:1.3fr 1fr 1fr 1fr;gap:36px;padding:44px 0 30px}
 footer h2.fh{font:700 13px "Bricolage Grotesque",sans-serif;letter-spacing:.08em;text-transform:uppercase;color:var(--lime);margin:0 0 12px}
+/* Footer wordmark: the same element as the header logo, so the two cannot
+   drift apart. Was a 180x51 PNG forced into 150x34 and visibly squashed.
+   "footer a" is (0,1,1) and beats a bare ".flogo", hence a.flogo. */
+footer a.flogo{display:inline-block;font-size:21px;color:#fff;text-decoration:none;margin-bottom:14px}
+footer a.flogo i{color:var(--brand);font-style:normal}
+
 footer a{color:#bcd6c4}
 footer a:hover{color:#fff}
 footer .flinks{display:grid;gap:7px}
@@ -180,7 +186,7 @@ function attribRead(){
 <div class="wrap">
   <div class="cols">
     <div class="fbrand">
-      <img src="../../../assets/logo-white.png" alt="OCBuyBack" width="150" height="34" loading="lazy" decoding="async">
+      <a class="logo flogo" href="../../../index.html">OC<i>BuyBack</i></a>
       <p>Cash for phones, tablets, watches, consoles and more — Brea's local buyback shop. Instant quotes, free shipping, paid within 1 business day.</p>
       <p>1203 W Imperial Hwy, STE 103<br>Brea, CA 92821<br><a href="tel:657-286-8274">657-286-8274</a> · <a href="mailto:support@ocbuyback.com">support@ocbuyback.com</a><br>Mon–Fri 10 AM – 6 PM</p>
     </div>

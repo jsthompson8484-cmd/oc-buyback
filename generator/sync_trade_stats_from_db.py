@@ -28,6 +28,7 @@ def get(path):
         return []
 
 models = get("model_trade_stats?select=*")
+cats = get("category_trade_stats?select=*")
 overall = get("trade_stats_overall?select=*")
 
 if not isinstance(models, list) or not models:
@@ -38,7 +39,8 @@ if not isinstance(models, list) or not models:
 
 stats = {m["model"]: m for m in models if m.get("model")}
 out = {"models": stats,
+       "categories": {c["category"]: c for c in cats if isinstance(cats, list) and c.get("category")},
        "overall": (overall[0] if isinstance(overall, list) and overall else {})}
 json.dump(out, open(ROOT / "data" / "trade_stats.json", "w"), indent=1)
-print(f"trade stats: {len(stats)} models, "
+print(f"trade stats: {len(stats)} models, {len(out['categories'])} categories, "
       f"site-wide {out['overall'].get('pct_damaged','?')}% damaged")

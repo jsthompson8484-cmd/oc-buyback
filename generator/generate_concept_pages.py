@@ -67,6 +67,13 @@ CAT_DISPLAY = {"Cell Phone":"Cell Phones","Tablet":"Tablets","Smartwatch":"Smart
                "Macbook":"MacBooks","iMac":"iMacs","Mac Mini":"Mac Minis","Mac Studio":"Mac Studios","Mac Pro":"Mac Pros"}
 SELL_YOUR = {"GoPro":"GoPro","VR":"VR headset","iPod":"iPod","Macbook":"MacBook",
              "iMac":"iMac","Mac Mini":"Mac Mini","Mac Studio":"Mac Studio","Mac Pro":"Mac Pro"}
+# lowercase plural for mid-sentence use. Explicit rather than derived: "GoPro"
+# and "iPod" keep their casing, and "Smartwatch" does not pluralise by +s.
+CAT_PLURAL = {"Cell Phone":"cell phones","Tablet":"tablets","Smartwatch":"smartwatches",
+              "Game Console":"game consoles","GoPro":"GoPros","VR":"VR headsets",
+              "Headphones":"headphones","iPod":"iPods","Macbook":"MacBooks","iMac":"iMacs",
+              "Mac Mini":"Mac Minis","Mac Studio":"Mac Studios","Mac Pro":"Mac Pros"}
+
 # question labels per category: (question-1 label, question-2 label)
 CAT_LABELS = {"Smartwatch":("Which case?","What size?"),
               "Game Console":("Which edition?","How much storage?"),
@@ -193,8 +200,9 @@ def mslug(m, name):
 try:
     _ts = json.load(open(ROOT / "data" / "trade_stats.json"))
     TRADE_STATS, TRADE_OVERALL = _ts.get("models", {}), _ts.get("overall", {})
+    TRADE_STATS_CATS = _ts.get("categories", {})
 except Exception:
-    TRADE_STATS, TRADE_OVERALL = {}, {}
+    TRADE_STATS, TRADE_OVERALL, TRADE_STATS_CATS = {}, {}, {}
 
 # Below this many trades a statistic describes too small a group to be worth
 # stating, and the percentages get noisy enough to mislead.
@@ -309,6 +317,98 @@ def device_data_blocks(cat, brand, dev, m):
 </div></section>'''
     return out
 
+def category_data_blocks(cat, cslug, brands_tree):
+    """Content for the 13 category pages, which sat at a 43-word median.
+
+    These are the pages positioned for head terms -- "cell phone buyback" at
+    position 26, "who buys broken phones" at 18 -- and they carried a heading
+    and a brand picker, nothing else.
+
+    The broken-device section is the notable one: we hold 832 live Broken
+    prices on cell phones alone, and three separate queries about broken
+    phones sit at positions 16-26 earning no clicks, because nothing on the
+    site says we buy them outside a condition label inside the quote picker.
+    """
+    models = [(b, n, m) for b, ms in brands_tree.items()
+              for n, m in ms.items() if m.get("enabled")]
+    priced = [(b, n, m, model_max(m)) for b, n, m in models if model_max(m)]
+    if not priced:
+        return ""
+    priced.sort(key=lambda x: -x[3])
+    top = priced[:6]
+    top_price = priced[0][3]
+
+    # does this category price broken units, and what is the best payout?
+    broken = []
+    for b, n, m in models:
+        for cs in m["variants"].values():
+            for ss in cs.values():
+                if ss.get("Broken"):
+                    broken.append((b, n, ss["Broken"]))
+    broken.sort(key=lambda x: -x[2])
+
+    noun = CAT_PLURAL.get(cat, SELL_YOUR.get(cat, cat.lower()) + "s")
+    one = SELL_YOUR.get(cat, cat.lower())        # "cell phone models", not "cell phones models"
+    art = lambda w: ("an " if w[:1] in "aeiouAEIOU" else "a ") + w
+    st = TRADE_STATS_CATS.get(cat)
+
+    # a category noun that is already plural ("headphones") cannot take the
+    # adjective form, so flip the phrasing rather than emit "1 headphones model"
+    _n, _s = len(priced), "" if len(priced) == 1 else "s"
+    count_phrase = (f"{_n} model{_s} of {one}" if one.endswith("s")
+                    else f"{_n} {one} model{_s}")
+    lead = (f"OCBuyBack buys {count_phrase} outright, paying up to "
+            f"{money(top_price)} depending on the exact model and its condition. "
+            f"Every price is live: pick your device for a quote that is locked "
+            f"for 14 days, ship it free, and get paid within one business day "
+            f"of it arriving. Local to Brea? Bring it in and leave with cash.")
+
+    rows = "".join(
+        f'<li><a href="{bslug_href(cslug, b, n, m)}">{html.escape(n)}</a>'
+        f'<span>up to {money(mx)}</span></li>' for b, n, m, mx in top)
+
+    out = f'''<section class="dblock"><div class="wrap">
+  <h2>What we pay for {html.escape(noun)}</h2>
+  <p class="dsub">{lead}</p>
+  <ul class="toplist">{rows}</ul>
+</div></section>'''
+
+    if broken:
+        bb, bn, bp = broken[0]
+        out += f'''<section class="dblock"><div class="wrap">
+  <h2>We buy broken {html.escape(noun)} too</h2>
+  <p class="dsub">A cracked screen, a battery that will not hold, water damage,
+     a device that will not power on at all &mdash; we still make an offer.
+     {len(broken)} broken-condition prices are live right now across our
+     {html.escape(noun)} range, up to {money(bp)} for {art(html.escape(bn))}.
+     Pick <b>Broken</b> as the condition in any quote and you will see the
+     figure before you commit to anything.</p>
+  <p class="dnote">There is no charge if you change your mind. If our inspection
+     disagrees with the condition you picked, we send a revised offer you can
+     accept or decline &mdash; decline and the device ships back to you free.</p>
+</div></section>'''
+
+    if st and st.get("traded", 0) >= TRADE_MIN:
+        year = str(st.get("first_traded", ""))[:4]
+        out += f'''<section class="dblock"><div class="wrap">
+  <h2>Our record in this category</h2>
+  <div class="dstats">
+    <div class="dstat"><b>{st["traded"]:,}</b><span>bought since {year}</span></div>
+    <div class="dstat"><b>{st["models_seen"]}</b><span>different models</span></div>
+    <div class="dstat"><b>{st["pct_flawless"]}%</b><span>arrived flawless</span></div>
+    <div class="dstat"><b>{st["pct_damaged"]}%</b><span>arrived damaged</span></div>
+  </div>
+  <p class="dnote">Figures from our own completed purchases, not an industry
+     estimate. Most arrive somewhere between the two &mdash; graded good or
+     fair, which is the condition the majority of our payouts are made at.
+     Damaged covers minor damage and broken together, and we bought every one
+     of those too.</p>
+</div></section>'''
+    return out
+
+def bslug_href(cslug, brand, name, m):
+    return f"/sell/{cslug}/{slug(brand)}/{mslug(m, name)}/"
+
 def MATRIX_CARRIER(m):
     """Carrier whose prices the matrix shows: the one with the most priced rows,
     preferring Unlocked when it is present, since that is what most people have."""
@@ -377,6 +477,12 @@ font-size:12px;font-weight:700;padding:9px 14px;border-radius:99px;z-index:20;bo
 footer{background:var(--deep);color:#bcd6c4;font-size:13.5px;margin-top:40px}
 footer .cols{display:grid;grid-template-columns:1.3fr 1fr 1fr 1fr;gap:36px;padding:44px 0 30px}
 footer h2.fh{font:700 13px "Bricolage Grotesque",sans-serif;letter-spacing:.08em;text-transform:uppercase;color:var(--lime);margin:0 0 12px}
+/* Footer wordmark: the same element as the header logo, so the two cannot
+   drift apart. Was a 180x51 PNG forced into 150x34 and visibly squashed.
+   "footer a" is (0,1,1) and beats a bare ".flogo", hence a.flogo. */
+footer a.flogo{display:inline-block;font-size:21px;color:#fff;text-decoration:none;margin-bottom:14px}
+footer a.flogo i{color:var(--brand);font-style:normal}
+
 footer a{color:#bcd6c4}
 footer a:hover{color:#fff}
 footer .flinks{display:grid;gap:7px}
@@ -384,6 +490,39 @@ footer .fbrand img{height:34px;margin-bottom:12px}
 footer .fbrand p{margin:0 0 10px;line-height:1.6;max-width:34ch}
 footer .fbot{border-top:1px solid rgba(255,255,255,.12);padding:16px 0;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:12.5px;color:#bcd6c4}
 @media(max-width:860px){footer .cols{grid-template-columns:1fr 1fr}}
+"""
+
+DBLOCK_CSS = """/* --- per-device data blocks: price matrix + what we actually see --- */
+.dblock{padding:38px 0;border-top:1px solid var(--line)}
+.dblock h2{font:700 26px/1.25 "Bricolage Grotesque",sans-serif;color:var(--deep);margin:0 0 10px}
+.dblock h3{font:700 15px "Bricolage Grotesque",sans-serif;color:var(--deep);margin:0 0 12px}
+.dsub{color:var(--muted);max-width:68ch;margin:0 0 22px;line-height:1.6}
+.dnote{color:var(--muted);font-size:14px;margin:16px 0 0;max-width:72ch;line-height:1.6}
+.tscroll{overflow-x:auto}
+.pmatrix{border-collapse:collapse;width:100%;max-width:780px;font-size:14.5px;font-variant-numeric:tabular-nums}
+.pmatrix th,.pmatrix td{padding:11px 14px;text-align:right;border-bottom:1px solid var(--line);white-space:nowrap}
+.pmatrix thead th{font-size:12px;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);font-weight:700}
+.pmatrix th[scope=row],.pmatrix thead th:first-child{text-align:left;font-weight:800;color:var(--deep)}
+.pmatrix tbody tr:hover{background:var(--ground)}
+.pmatrix td{font-weight:700;color:var(--green)}
+.dstats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin:4px 0 26px;max-width:780px}
+.dstat{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px}
+.dstat b{display:block;font:800 30px/1.1 "Bricolage Grotesque",sans-serif;color:var(--deep);font-variant-numeric:tabular-nums}
+.dstat span{display:block;color:var(--muted);font-size:13.5px;margin-top:5px}
+.dsplit{display:grid;grid-template-columns:1fr 1fr;gap:36px}
+.bars{list-style:none;margin:0;padding:0;display:grid;gap:9px}
+.bars li{display:grid;grid-template-columns:76px 1fr 44px;align-items:center;gap:10px;font-size:14px}
+.bl{color:var(--muted)}
+.bar{background:var(--ground);border-radius:99px;height:9px;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--brand);border-radius:99px}
+.bn{text-align:right;font-weight:700;font-variant-numeric:tabular-nums;color:var(--deep)}
+@media(max-width:720px){.dsplit{grid-template-columns:1fr}.dblock h2{font-size:22px}}
+.toplist{list-style:none;margin:18px 0 0;padding:0;max-width:620px;display:grid;gap:2px}
+.toplist li{display:flex;justify-content:space-between;align-items:baseline;gap:16px;
+padding:11px 0;border-bottom:1px solid var(--line)}
+.toplist a{font-weight:700;color:var(--deep);text-decoration:none}
+.toplist a:hover{text-decoration:underline}
+.toplist span{color:var(--green);font-weight:800;font-variant-numeric:tabular-nums;white-space:nowrap}
 """
 
 WIZ_CSS = """
@@ -423,31 +562,7 @@ border-radius:99px;cursor:pointer}
 .toast{margin-top:12px;font-size:13px;color:var(--green);text-align:center;min-height:18px;font-weight:700}
 @media(max-width:900px){.layout{grid-template-columns:1fr}.sum{position:static}.conds{grid-template-columns:1fr}}
 
-/* --- per-device data blocks: price matrix + what we actually see --- */
-.dblock{padding:38px 0;border-top:1px solid var(--line)}
-.dblock h2{font:700 26px/1.25 "Bricolage Grotesque",sans-serif;color:var(--deep);margin:0 0 10px}
-.dblock h3{font:700 15px "Bricolage Grotesque",sans-serif;color:var(--deep);margin:0 0 12px}
-.dsub{color:var(--muted);max-width:68ch;margin:0 0 22px;line-height:1.6}
-.dnote{color:var(--muted);font-size:14px;margin:16px 0 0;max-width:72ch;line-height:1.6}
-.tscroll{overflow-x:auto}
-.pmatrix{border-collapse:collapse;width:100%;max-width:780px;font-size:14.5px;font-variant-numeric:tabular-nums}
-.pmatrix th,.pmatrix td{padding:11px 14px;text-align:right;border-bottom:1px solid var(--line);white-space:nowrap}
-.pmatrix thead th{font-size:12px;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);font-weight:700}
-.pmatrix th[scope=row],.pmatrix thead th:first-child{text-align:left;font-weight:800;color:var(--deep)}
-.pmatrix tbody tr:hover{background:var(--ground)}
-.pmatrix td{font-weight:700;color:var(--green)}
-.dstats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin:4px 0 26px;max-width:780px}
-.dstat{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px}
-.dstat b{display:block;font:800 30px/1.1 "Bricolage Grotesque",sans-serif;color:var(--deep);font-variant-numeric:tabular-nums}
-.dstat span{display:block;color:var(--muted);font-size:13.5px;margin-top:5px}
-.dsplit{display:grid;grid-template-columns:1fr 1fr;gap:36px}
-.bars{list-style:none;margin:0;padding:0;display:grid;gap:9px}
-.bars li{display:grid;grid-template-columns:76px 1fr 44px;align-items:center;gap:10px;font-size:14px}
-.bl{color:var(--muted)}
-.bar{background:var(--ground);border-radius:99px;height:9px;overflow:hidden}
-.bar i{display:block;height:100%;background:var(--brand);border-radius:99px}
-.bn{text-align:right;font-weight:700;font-variant-numeric:tabular-nums;color:var(--deep)}
-@media(max-width:720px){.dsplit{grid-template-columns:1fr}.dblock h2{font-size:22px}}
+
 """
 
 FONTS = ('<link rel="preconnect" href="https://fonts.googleapis.com">'
@@ -593,7 +708,7 @@ def page(title, body, depth, extra_css="", *, path=None, desc="", schema=None,
 <div class="wrap">
   <div class="cols">
     <div class="fbrand">
-      <img src="{p}assets/logo-white.png" alt="OCBuyBack" width="150" height="34" loading="lazy" decoding="async">
+      <a class="logo flogo" href="{p}index.html">OC<i>BuyBack</i></a>
       <p>Cash for phones, tablets, watches, consoles and more — Brea's local buyback shop. Instant quotes, free shipping, paid within 1 business day.</p>
       <p>1203 W Imperial Hwy, STE 103<br>Brea, CA 92821<br><a href="tel:657-286-8274">657-286-8274</a> · <a href="mailto:support@ocbuyback.com">support@ocbuyback.com</a><br>Mon–Fri 10 AM – 6 PM</p>
     </div>
@@ -807,7 +922,7 @@ renderStorage(); renderConds();
     }
     crumbs = breadcrumbs([("Sell", "/sell"), (cat, f"/sell/{cslug}"), (brand, f"/sell/{cslug}/{bslug}"), (dev, None)])
     write(OUT/"sell"/cslug/bslug/dslug/"index.html",
-          page(f"Sell {dev} Brea, CA | OCBuyBack", body, 4, WIZ_CSS,
+          page(f"Sell {dev} Brea, CA | OCBuyBack", body, 4, WIZ_CSS + DBLOCK_CSS,
                path=live_path,
                desc=f"Cash for {dev} in Brea, CA 92821 — up to {money(mx)}. Instant quote locked for 14 days, free shipping, paid within 1 business day.",
                schema=[product_schema, crumbs], og_image=img_url(cat, brand, dev)))
@@ -864,10 +979,12 @@ for cat in LIVE_CATS:
   <p class="sub">Pick your brand to see every model we buy.</p>
   <div class="grid" style="grid-template-columns:repeat(auto-fill,minmax(220px,1fr))">{tiles}</div>
 </div>"""
+    body += category_data_blocks(cat, cslug, TREE.get(cat, {}))
     write(OUT/"sell"/cslug/"index.html",
           page(f"Sell {CAT_DISPLAY[cat]} Near Me Brea, CA | OCBuyBack", body, 2,
                path=f"/sell/{cslug}",
                desc=f"Sell your {SELL_YOUR.get(cat, cat.lower())} for cash near Brea, CA. Pick your brand for an instant quote — locked for 14 days, free shipping, paid within 1 business day.",
+               extra_css=DBLOCK_CSS,
                schema=[breadcrumbs([("Sell", "/sell"), (cat, None)])]))
     for b in order:
         line = BRAND_LINE.get((cat, b), "")

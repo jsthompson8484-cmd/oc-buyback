@@ -52,6 +52,12 @@ font-size:12px;font-weight:700;padding:9px 14px;border-radius:99px;z-index:20;bo
 footer{background:var(--deep);color:#bcd6c4;font-size:13.5px;margin-top:40px}
 footer .cols{display:grid;grid-template-columns:1.3fr 1fr 1fr 1fr;gap:36px;padding:44px 0 30px}
 footer h2.fh{font:700 13px "Bricolage Grotesque",sans-serif;letter-spacing:.08em;text-transform:uppercase;color:var(--lime);margin:0 0 12px}
+/* Footer wordmark: the same element as the header logo, so the two cannot
+   drift apart. Was a 180x51 PNG forced into 150x34 and visibly squashed.
+   "footer a" is (0,1,1) and beats a bare ".flogo", hence a.flogo. */
+footer a.flogo{display:inline-block;font-size:21px;color:#fff;text-decoration:none;margin-bottom:14px}
+footer a.flogo i{color:var(--brand);font-style:normal}
+
 footer a{color:#bcd6c4}
 footer a:hover{color:#fff}
 footer .flinks{display:grid;gap:7px}
@@ -147,7 +153,9 @@ function attribRead(){
   <div class="crumb"><a href="../../index.html">Sell</a> → <a href="../index.html">Smartwatch</a> → <b>Apple</b></div>
   <h1>Sell your Apple Watch</h1>
   <p class="sub">Pick your model for an instant quote — prices lock for 14 days.</p>
-  <div class="grid"><a class="card" href="../apple/ultra-3/index.html">
+  <div class="grid"><a class="card" href="../apple/watch-ultra-4/index.html">
+<img src="https://bpvlohcbdhvttocsijrm.supabase.co/storage/v1/object/public/device-images/1792773192640-apple-watch-ultra-4-natural-titanium.webp" alt="" width="193" height="193" loading="lazy" decoding="async" onerror="this.style.display='none'">
+<div class="name">Watch Ultra 4</div><div class="val">$525 <small>up to</small></div></a><a class="card" href="../apple/ultra-3/index.html">
 <img src="/assets/devices/smartwatches/apple/ultra-3.webp" alt="" width="193" height="193" loading="lazy" decoding="async" onerror="this.style.display='none'">
 <div class="name">Ultra 3</div><div class="val">$390 <small>up to</small></div></a><a class="card" href="../apple/ultra-2/index.html">
 <img src="/assets/devices/smartwatches/apple/ultra-2.webp" alt="" width="193" height="193" loading="lazy" decoding="async" onerror="this.style.display='none'">
@@ -173,22 +181,14 @@ function attribRead(){
 <img src="/assets/devices/smartwatches/apple/watch-se-gps-plus-cellular-3rd-gen.webp" alt="" width="193" height="193" loading="lazy" decoding="async" onerror="this.style.display='none'">
 <div class="name">Watch SE GPS + Cellular 3rd Gen</div><div class="val">$110 <small>up to</small></div></a><a class="card" href="../apple/watch-se-gps-3rd-gen/index.html">
 <img src="/assets/devices/smartwatches/apple/watch-se-gps-3rd-gen.webp" alt="" width="193" height="193" loading="lazy" decoding="async" onerror="this.style.display='none'">
-<div class="name">Watch SE GPS 3rd Gen</div><div class="val">$100 <small>up to</small></div></a><a class="card" href="../apple/watch-se-gps-plus-cellular-2nd-gen/index.html">
-<img src="/assets/devices/smartwatches/apple/watch-se-gps-plus-cellular-2nd-gen.webp" alt="" width="193" height="193" loading="lazy" decoding="async" onerror="this.style.display='none'">
-<div class="name">Watch SE GPS + Cellular 2nd Gen</div><div class="val">$50 <small>up to</small></div></a><a class="card" href="../apple/watch-se-gps-2nd-gen/index.html">
-<img src="/assets/devices/smartwatches/apple/watch-se-gps-2nd-gen.webp" alt="" width="193" height="193" loading="lazy" decoding="async" onerror="this.style.display='none'">
-<div class="name">Watch SE GPS 2nd Gen</div><div class="val">$45 <small>up to</small></div></a><a class="card" href="../apple/series-7-gps-cellular/index.html">
-<img src="/assets/devices/smartwatches/apple/series-7-gps-cellular.webp" alt="" width="193" height="193" loading="lazy" decoding="async" onerror="this.style.display='none'">
-<div class="name">Series 7 GPS + Cellular</div><div class="val">$80 <small>up to</small></div></a><a class="card" href="../apple/series-7-gps/index.html">
-<img src="/assets/devices/smartwatches/apple/series-7-gps.webp" alt="" width="193" height="193" loading="lazy" decoding="async" onerror="this.style.display='none'">
-<div class="name">Series 7 GPS</div><div class="val">$75 <small>up to</small></div></a></div>
+<div class="name">Watch SE GPS 3rd Gen</div><div class="val">$100 <small>up to</small></div></a></div>
 </div>
 </main>
 <footer>
 <div class="wrap">
   <div class="cols">
     <div class="fbrand">
-      <img src="../../../assets/logo-white.png" alt="OCBuyBack" width="150" height="34" loading="lazy" decoding="async">
+      <a class="logo flogo" href="../../../index.html">OC<i>BuyBack</i></a>
       <p>Cash for phones, tablets, watches, consoles and more — Brea's local buyback shop. Instant quotes, free shipping, paid within 1 business day.</p>
       <p>1203 W Imperial Hwy, STE 103<br>Brea, CA 92821<br><a href="tel:657-286-8274">657-286-8274</a> · <a href="mailto:support@ocbuyback.com">support@ocbuyback.com</a><br>Mon–Fri 10 AM – 6 PM</p>
     </div>

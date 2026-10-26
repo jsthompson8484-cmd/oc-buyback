@@ -4168,6 +4168,56 @@
    ]
   }
  },
+ "categories": {
+  "Cell Phone": {
+   "category": "Cell Phone",
+   "traded": 10994,
+   "models_seen": 154,
+   "pct_flawless": 25,
+   "pct_damaged": 12,
+   "first_traded": "2018-09-09"
+  },
+  "Game Console": {
+   "category": "Game Console",
+   "traded": 125,
+   "models_seen": 20,
+   "pct_flawless": 50,
+   "pct_damaged": 1,
+   "first_traded": "2021-06-29"
+  },
+  "GoPro": {
+   "category": "GoPro",
+   "traded": 67,
+   "models_seen": 14,
+   "pct_flawless": 46,
+   "pct_damaged": 0,
+   "first_traded": "2020-11-01"
+  },
+  "iPod": {
+   "category": "iPod",
+   "traded": 320,
+   "models_seen": 10,
+   "pct_flawless": 34,
+   "pct_damaged": 2,
+   "first_traded": "2019-02-17"
+  },
+  "Smartwatch": {
+   "category": "Smartwatch",
+   "traded": 474,
+   "models_seen": 32,
+   "pct_flawless": 48,
+   "pct_damaged": 0,
+   "first_traded": "2018-12-27"
+  },
+  "Tablet": {
+   "category": "Tablet",
+   "traded": 1091,
+   "models_seen": 45,
+   "pct_flawless": 28,
+   "pct_damaged": 8,
+   "first_traded": "2019-01-26"
+  }
+ },
  "overall": {
   "traded": 13415,
   "pct_damaged": 11,

@@ -100,6 +100,11 @@ h2{font:700 clamp(22px,3vw,30px)/1.2 "Bricolage Grotesque",sans-serif;color:var(
 footer{background:var(--deep);color:#bcd6c4;font-size:13.5px;margin-top:40px}
 footer .cols{display:grid;grid-template-columns:1.3fr 1fr 1fr 1fr;gap:36px;padding:44px 0 30px}
 footer h2.fh{font:700 13px "Bricolage Grotesque",sans-serif;letter-spacing:.08em;text-transform:uppercase;color:var(--lime);margin:0 0 12px}
+/* Footer wordmark: same element as the header logo. "footer a" is (0,1,1)
+   and beats a bare ".flogo", hence a.flogo. */
+footer a.flogo{display:inline-block;font-size:21px;color:#fff;text-decoration:none;margin-bottom:14px}
+footer a.flogo i{color:var(--brand);font-style:normal}
+
 footer a{color:#bcd6c4}
 footer a:hover{color:#fff}
 footer .flinks{display:grid;gap:7px}
@@ -186,17 +191,17 @@ function attribRead(){
     <a class="btn primary" href="sell/index.html">Get an instant quote</a>
   </div>
   <div class="devgrid" style="padding:44px 0 8px;text-align:left">
-    <a class="dev" href="sell/cell-phone/index.html"><img src="/assets/devices/cell-phones/apple/iphone-16.webp" alt="Cell Phones" width="193" height="193" decoding="async" loading="lazy"><div class="name">Cell Phones</div><div class="val">$1,385 <small>up to</small></div></a>
+    <a class="dev" href="sell/cell-phone/index.html"><img src="/assets/devices/cell-phones/apple/iphone-16.webp" alt="Cell Phones" width="193" height="193" decoding="async" loading="lazy"><div class="name">Cell Phones</div><div class="val">$1,950 <small>up to</small></div></a>
     <a class="dev" href="sell/tablet/index.html"><img src="/assets/devices/tablets/apple/ipad-air-11-m4-2026.webp" alt="Tablets" width="193" height="193" decoding="async" loading="lazy"><div class="name">Tablets</div><div class="val">$1,225 <small>up to</small></div></a>
-    <a class="dev" href="sell/smartwatch/index.html"><img src="/assets/devices/smartwatches/apple/series-11-gps.webp" alt="Watches" width="193" height="193" decoding="async" loading="lazy"><div class="name">Watches</div><div class="val">$390 <small>up to</small></div></a>
-    <a class="dev" href="sell/game-console/index.html"><img src="/assets/devices/game-consoles/nintendo/switch-2.webp" alt="Consoles" width="193" height="193" decoding="async" loading="lazy"><div class="name">Consoles</div><div class="val">$565 <small>up to</small></div></a>
-    <a class="dev" href="sell/macbook/index.html"><img src="/assets/devices/macbook-pro-14-2024.webp" alt="MacBooks" width="193" height="193" decoding="async" loading="lazy"><div class="name">MacBooks</div><div class="val">$2,594 <small>up to</small></div></a>
+    <a class="dev" href="sell/smartwatch/index.html"><img src="/assets/devices/smartwatches/apple/series-11-gps.webp" alt="Watches" width="193" height="193" decoding="async" loading="lazy"><div class="name">Watches</div><div class="val">$525 <small>up to</small></div></a>
+    <a class="dev" href="sell/game-console/index.html"><img src="/assets/devices/game-consoles/nintendo/switch-2.webp" alt="Consoles" width="193" height="193" decoding="async" loading="lazy"><div class="name">Consoles</div><div class="val">$1,075 <small>up to</small></div></a>
+    <a class="dev" href="sell/macbook/index.html"><img src="/assets/devices/macbook-pro-14-2024.webp" alt="MacBooks" width="193" height="193" decoding="async" loading="lazy"><div class="name">MacBooks</div><div class="val">$4,025 <small>up to</small></div></a>
     <a class="dev" href="sell/imac/index.html"><img src="/assets/devices/imac-24-2024.webp" alt="iMacs" width="193" height="193" decoding="async" loading="lazy"><div class="name">iMacs</div><div class="val">$1,247 <small>up to</small></div></a>
-    <a class="dev" href="sell/mac-studio/index.html"><img src="/assets/devices/mac-studio-2025.webp" alt="Mac Studio" width="193" height="193" decoding="async" loading="lazy"><div class="name">Mac Studio</div><div class="val">$10,100 <small>up to</small></div></a>
+    <a class="dev" href="sell/mac-studio/index.html"><img src="/assets/devices/mac-studio-2025.webp" alt="Mac Studio" width="193" height="193" decoding="async" loading="lazy"><div class="name">Mac Studio</div><div class="val">$9,400 <small>up to</small></div></a>
     <a class="dev" href="sell/mac-mini/index.html"><img src="/assets/devices/mac-mini-2024.webp" alt="Mac Mini" width="193" height="193" decoding="async" loading="lazy"><div class="name">Mac Mini</div><div class="val">$349 <small>up to</small></div></a>
     <a class="dev" href="sell/mac-pro/index.html"><img src="/assets/devices/mac-pro-2023.webp" alt="Mac Pro" width="193" height="193" decoding="async" loading="lazy"><div class="name">Mac Pro</div><div class="val">$4,944 <small>up to</small></div></a>
     <a class="dev" href="sell/vr/index.html"><img src="/assets/devices/vrs/apple/vision-pro-m5.webp" alt="VR" width="193" height="193" decoding="async" loading="lazy"><div class="name">VR</div><div class="val">$2,190 <small>up to</small></div></a>
-    <a class="dev" href="sell/headphones/index.html"><img src="/assets/devices/headphones/apple/airpods-max.webp" alt="Headphones" width="193" height="193" decoding="async" loading="lazy"><div class="name">Headphones</div><div class="val">$205 <small>up to</small></div></a>
+    <a class="dev" href="sell/headphones/index.html"><img src="/assets/devices/headphones/apple/airpods-max.webp" alt="Headphones" width="193" height="193" decoding="async" loading="lazy"><div class="name">Headphones</div><div class="val">$290 <small>up to</small></div></a>
     <a class="dev" href="sell/gopro/index.html"><img src="/assets/devices/gopros/gopro/hero-9-black.webp" alt="GoPro" width="193" height="193" decoding="async" loading="lazy"><div class="name">GoPro</div><div class="val">$100 <small>up to</small></div></a>
     <a class="dev" href="sell/ipod/index.html"><img src="/assets/devices/ipods/apple/ipod-touch-7th-gen.webp" alt="iPods" width="193" height="193" decoding="async" loading="lazy"><div class="name">iPods</div><div class="val">$70 <small>up to</small></div></a>
     <a class="dev" href="sell/index.html" style="display:flex;flex-direction:column;justify-content:center;text-align:center"><div class="name" style="font-size:17px">Every device we buy</div><div style="color:var(--muted);font-size:13.5px;margin-top:6px">Instant quotes on 200+ models →</div></a>
@@ -291,7 +296,7 @@ function attribRead(){
 <div class="wrap">
   <div class="cols">
     <div class="fbrand">
-      <img src="assets/logo-white.png" alt="OCBuyBack" width="150" height="34" loading="lazy" decoding="async">
+      <a class="logo flogo" href="index.html">OC<i>BuyBack</i></a>
       <p>Cash for phones, tablets, watches, consoles and more — Brea's local buyback shop. Instant quotes, free shipping, paid within 1 business day.</p>
       <p>1203 W Imperial Hwy, STE 103<br>Brea, CA 92821<br><a href="tel:657-286-8274">657-286-8274</a> · <a href="mailto:support@ocbuyback.com">support@ocbuyback.com</a><br>Mon–Fri 10 AM – 6 PM</p>
     </div>

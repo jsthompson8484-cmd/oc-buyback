@@ -68,3 +68,28 @@ join trade_ins t on t.id = i.trade_in_id
 where coalesce(t.legacy_status, t.status) = 'paid' and i.model is not null;
 
 grant select on public.trade_stats_overall to anon, authenticated;
+
+-- Category-level equivalent, for the 13 category pages (43-word median).
+-- Same aggregate-only, spam-filtered, floored treatment as the model view.
+drop view if exists public.category_trade_stats;
+create view public.category_trade_stats as
+with sane as (
+  select trade_in_id from trade_in_items group by trade_in_id having count(*) <= 20
+)
+select
+  i.category,
+  count(*)::int as traded,
+  count(distinct i.model)::int as models_seen,
+  round(100.0 * count(*) filter (where i.condition = 'Flawless') / count(*))::int as pct_flawless,
+  round(100.0 * count(*) filter (where i.condition in ('Minor Damage','Broken'))
+        / count(*))::int as pct_damaged,
+  min(t.created_at)::date as first_traded
+from trade_in_items i
+join sane s on s.trade_in_id = i.trade_in_id
+join trade_ins t on t.id = i.trade_in_id
+where coalesce(t.legacy_status, t.status) = 'paid'
+  and i.category is not null and i.category <> 'Unknown'
+group by i.category
+having count(*) >= 25;
+
+grant select on public.category_trade_stats to anon, authenticated;

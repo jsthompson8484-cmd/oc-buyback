@@ -52,6 +52,12 @@ font-size:12px;font-weight:700;padding:9px 14px;border-radius:99px;z-index:20;bo
 footer{background:var(--deep);color:#bcd6c4;font-size:13.5px;margin-top:40px}
 footer .cols{display:grid;grid-template-columns:1.3fr 1fr 1fr 1fr;gap:36px;padding:44px 0 30px}
 footer h2.fh{font:700 13px "Bricolage Grotesque",sans-serif;letter-spacing:.08em;text-transform:uppercase;color:var(--lime);margin:0 0 12px}
+/* Footer wordmark: the same element as the header logo, so the two cannot
+   drift apart. Was a 180x51 PNG forced into 150x34 and visibly squashed.
+   "footer a" is (0,1,1) and beats a bare ".flogo", hence a.flogo. */
+footer a.flogo{display:inline-block;font-size:21px;color:#fff;text-decoration:none;margin-bottom:14px}
+footer a.flogo i{color:var(--brand);font-style:normal}
+
 footer a{color:#bcd6c4}
 footer a:hover{color:#fff}
 footer .flinks{display:grid;gap:7px}
@@ -59,6 +65,37 @@ footer .fbrand img{height:34px;margin-bottom:12px}
 footer .fbrand p{margin:0 0 10px;line-height:1.6;max-width:34ch}
 footer .fbot{border-top:1px solid rgba(255,255,255,.12);padding:16px 0;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;font-size:12.5px;color:#bcd6c4}
 @media(max-width:860px){footer .cols{grid-template-columns:1fr 1fr}}
+/* --- per-device data blocks: price matrix + what we actually see --- */
+.dblock{padding:38px 0;border-top:1px solid var(--line)}
+.dblock h2{font:700 26px/1.25 "Bricolage Grotesque",sans-serif;color:var(--deep);margin:0 0 10px}
+.dblock h3{font:700 15px "Bricolage Grotesque",sans-serif;color:var(--deep);margin:0 0 12px}
+.dsub{color:var(--muted);max-width:68ch;margin:0 0 22px;line-height:1.6}
+.dnote{color:var(--muted);font-size:14px;margin:16px 0 0;max-width:72ch;line-height:1.6}
+.tscroll{overflow-x:auto}
+.pmatrix{border-collapse:collapse;width:100%;max-width:780px;font-size:14.5px;font-variant-numeric:tabular-nums}
+.pmatrix th,.pmatrix td{padding:11px 14px;text-align:right;border-bottom:1px solid var(--line);white-space:nowrap}
+.pmatrix thead th{font-size:12px;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);font-weight:700}
+.pmatrix th[scope=row],.pmatrix thead th:first-child{text-align:left;font-weight:800;color:var(--deep)}
+.pmatrix tbody tr:hover{background:var(--ground)}
+.pmatrix td{font-weight:700;color:var(--green)}
+.dstats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin:4px 0 26px;max-width:780px}
+.dstat{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px}
+.dstat b{display:block;font:800 30px/1.1 "Bricolage Grotesque",sans-serif;color:var(--deep);font-variant-numeric:tabular-nums}
+.dstat span{display:block;color:var(--muted);font-size:13.5px;margin-top:5px}
+.dsplit{display:grid;grid-template-columns:1fr 1fr;gap:36px}
+.bars{list-style:none;margin:0;padding:0;display:grid;gap:9px}
+.bars li{display:grid;grid-template-columns:76px 1fr 44px;align-items:center;gap:10px;font-size:14px}
+.bl{color:var(--muted)}
+.bar{background:var(--ground);border-radius:99px;height:9px;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--brand);border-radius:99px}
+.bn{text-align:right;font-weight:700;font-variant-numeric:tabular-nums;color:var(--deep)}
+@media(max-width:720px){.dsplit{grid-template-columns:1fr}.dblock h2{font-size:22px}}
+.toplist{list-style:none;margin:18px 0 0;padding:0;max-width:620px;display:grid;gap:2px}
+.toplist li{display:flex;justify-content:space-between;align-items:baseline;gap:16px;
+padding:11px 0;border-bottom:1px solid var(--line)}
+.toplist a{font-weight:700;color:var(--deep);text-decoration:none}
+.toplist a:hover{text-decoration:underline}
+.toplist span{color:var(--green);font-weight:800;font-variant-numeric:tabular-nums;white-space:nowrap}
 </style></head><body>
 <a class="skip" href="#main">Skip to main content</a>
 <header><div class="wrap nav">
@@ -162,24 +199,41 @@ function attribRead(){
 <div class="name" style="font-size:17px;margin-top:6px">Microsoft</div>
 <div style="color:var(--green);font-weight:700;font-size:13px">Xbox</div>
 <div class="val" style="font-size:14px">up to $460</div>
+<div style="color:var(--muted);font-size:12.5px">3 models</div></a><a class="card" href="valve/index.html" style="padding:28px 20px">
+<img src="/assets/brands/valve.webp" alt="Valve logo" width="64" height="64" loading="lazy" decoding="async" style="height:64px;object-fit:contain" onerror="this.style.display='none'">
+<div class="name" style="font-size:17px;margin-top:6px">Valve</div>
+<div style="color:var(--green);font-weight:700;font-size:13px">Steam Deck</div>
+<div class="val" style="font-size:14px">up to $1,075</div>
 <div style="color:var(--muted);font-size:12.5px">3 models</div></a><a class="card" href="asus/index.html" style="padding:28px 20px">
 <img src="/assets/brands/asus.webp" alt="Asus logo" width="64" height="64" loading="lazy" decoding="async" style="height:64px;object-fit:contain" onerror="this.style.display='none'">
 <div class="name" style="font-size:17px;margin-top:6px">Asus</div>
 <div style="color:var(--green);font-weight:700;font-size:13px">ROG Ally</div>
 <div class="val" style="font-size:14px">up to $525</div>
-<div style="color:var(--muted);font-size:12.5px">2 models</div></a><a class="card" href="valve/index.html" style="padding:28px 20px">
-<img src="/assets/brands/valve.webp" alt="Valve logo" width="64" height="64" loading="lazy" decoding="async" style="height:64px;object-fit:contain" onerror="this.style.display='none'">
-<div class="name" style="font-size:17px;margin-top:6px">Valve</div>
-<div style="color:var(--green);font-weight:700;font-size:13px">Steam Deck</div>
-<div class="val" style="font-size:14px">up to $485</div>
-<div style="color:var(--muted);font-size:12.5px">1 models</div></a></div>
-</div>
+<div style="color:var(--muted);font-size:12.5px">2 models</div></a></div>
+</div><section class="dblock"><div class="wrap">
+  <h2>What we pay for game consoles</h2>
+  <p class="dsub">OCBuyBack buys 21 game console models outright, paying up to $1,075 depending on the exact model and its condition. Every price is live: pick your device for a quote that is locked for 14 days, ship it free, and get paid within one business day of it arriving. Local to Brea? Bring it in and leave with cash.</p>
+  <ul class="toplist"><li><a href="/sell/game-console/valve/steam-machine/">Steam Machine</a><span>up to $1,075</span></li><li><a href="/sell/game-console/valve/steam-deck-oled/">Steam Deck OLED</a><span>up to $615</span></li><li><a href="/sell/game-console/sony/ps5-pro/">ps5 pro</a><span>up to $565</span></li><li><a href="/sell/game-console/asus/rog-ally-x/">ROG Ally X</a><span>up to $525</span></li><li><a href="/sell/game-console/microsoft/xbox-series-x/">Xbox Series X</a><span>up to $460</span></li><li><a href="/sell/game-console/valve/steam-deck/">Steam Deck</a><span>up to $410</span></li></ul>
+</div></section><section class="dblock"><div class="wrap">
+  <h2>Our record in this category</h2>
+  <div class="dstats">
+    <div class="dstat"><b>125</b><span>bought since 2021</span></div>
+    <div class="dstat"><b>20</b><span>different models</span></div>
+    <div class="dstat"><b>50%</b><span>arrived flawless</span></div>
+    <div class="dstat"><b>1%</b><span>arrived damaged</span></div>
+  </div>
+  <p class="dnote">Figures from our own completed purchases, not an industry
+     estimate. Most arrive somewhere between the two &mdash; graded good or
+     fair, which is the condition the majority of our payouts are made at.
+     Damaged covers minor damage and broken together, and we bought every one
+     of those too.</p>
+</div></section>
 </main>
 <footer>
 <div class="wrap">
   <div class="cols">
     <div class="fbrand">
-      <img src="../../assets/logo-white.png" alt="OCBuyBack" width="150" height="34" loading="lazy" decoding="async">
+      <a class="logo flogo" href="../../index.html">OC<i>BuyBack</i></a>
       <p>Cash for phones, tablets, watches, consoles and more — Brea's local buyback shop. Instant quotes, free shipping, paid within 1 business day.</p>
       <p>1203 W Imperial Hwy, STE 103<br>Brea, CA 92821<br><a href="tel:657-286-8274">657-286-8274</a> · <a href="mailto:support@ocbuyback.com">support@ocbuyback.com</a><br>Mon–Fri 10 AM – 6 PM</p>
     </div>
