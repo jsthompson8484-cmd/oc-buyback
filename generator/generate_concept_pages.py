@@ -187,6 +187,137 @@ def mslug(m, name):
     """DB slug wins (it carries the legacy overrides); fall back to computed."""
     return (m.get("slug") if isinstance(m, dict) else None) or slug(name)
 
+# Per-model trade statistics (data/trade_stats.json, written by
+# sync_trade_stats_from_db.py). Absent or stale is survivable: the blocks are
+# additive, so a page without them is the page we shipped yesterday.
+try:
+    _ts = json.load(open(ROOT / "data" / "trade_stats.json"))
+    TRADE_STATS, TRADE_OVERALL = _ts.get("models", {}), _ts.get("overall", {})
+except Exception:
+    TRADE_STATS, TRADE_OVERALL = {}, {}
+
+# Below this many trades a statistic describes too small a group to be worth
+# stating, and the percentages get noisy enough to mislead.
+TRADE_MIN = 25
+
+def device_data_blocks(cat, brand, dev, m):
+    """Price matrix + 'what we see' panel, both rendered from real data.
+
+    Deliberately NOT shown: the historical average payout. It spans years in
+    which a model was worth far more than it is today -- the iPhone 13 Pro Max
+    averaged $555 across 2021-2026 while its live top price is $375 -- so next
+    to a current price table it reads as a promise we would not honour.
+
+    This is what makes one device page different from the next. Without it the
+    pages were 81-94% identical, which Google reads as thin regardless of
+    length, because only the model name and the quote widget's numbers varied.
+    """
+    CONDS = ["Brand New", "Flawless", "Good", "Fair", "Minor Damage", "Broken"]
+    LABEL = {"Brand New": "Brand new", "Minor Damage": "Minor damage"}
+
+    # price matrix, for the carrier most people actually trade
+    by_storage, carriers = {}, {}
+    for carrier, stores in m["variants"].items():
+        for storage, conds in stores.items():
+            for cond, price in conds.items():
+                if price:
+                    carriers[carrier] = carriers.get(carrier, 0) + 1
+                    if carrier == MATRIX_CARRIER(m):
+                        by_storage.setdefault(storage, {})[cond] = price
+    if not by_storage:
+        return ""
+    # only show a condition that is actually priced on THIS model -- an empty
+    # column is noise, and which conditions a model carries genuinely varies
+    live_conds = [c for c in CONDS if any(c in v for v in by_storage.values())]
+    if not live_conds:
+        return ""
+    order = ["64GB","128GB","256GB","512GB","1TB","2TB"]
+    stores = ([s for s in order if s in by_storage]
+              + sorted(s for s in by_storage if s not in order))
+
+    head = "".join(f"<th>{html.escape(LABEL.get(c, c))}</th>" for c in live_conds)
+    rows = ""
+    for s in stores:
+        cells = "".join(
+            f"<td>{money(by_storage[s][c])}</td>" if by_storage[s].get(c)
+            else '<td><span class="muted">\u2014</span></td>' for c in live_conds)
+        rows += f"<tr><th scope=\"row\">{html.escape(s)}</th>{cells}</tr>"
+
+    all_prices = [p for st in by_storage.values() for p in st.values() if p]
+    combos = sum(1 for cs in m["variants"].values() for ss in cs.values()
+                 for p in ss.values() if p)
+    carrier_note = (f" Unlocked handsets shown; carrier-locked models are priced in the "
+                    f"quote tool above." if len(carriers) > 1 else "")
+
+    out = f'''<section class="dblock"><div class="wrap">
+  <h2>What {html.escape(brand)} {html.escape(dev)} owners are paid today</h2>
+  <p class="dsub">Every figure below is what OCBuyBack pays right now, taken straight
+     from our live catalogue.{carrier_note} Prices follow the market, so this table
+     changes whenever our offers do.</p>
+  <div class="tscroll"><table class="pmatrix">
+    <thead><tr><th>Storage</th>{head}</tr></thead><tbody>{rows}</tbody></table></div>
+  <p class="dnote">Top payout <b>{money(max(all_prices))}</b> &middot; lowest listed
+     <b>{money(min(all_prices))}</b> &middot; {combos} storage, carrier and condition
+     combinations priced.</p>
+</div></section>'''
+
+    # the part nobody else can publish: our own record
+    st = TRADE_STATS.get(dev) or TRADE_STATS.get(f"{brand} {dev}")
+    if st and st.get("traded", 0) >= TRADE_MIN:
+        def bars(mix, total):
+            if not mix: return ""
+            li = ""
+            for x in mix[:5]:
+                pct = 100.0 * x["n"] / total
+                shown = f"{pct:.0f}%" if pct >= 1 else "&lt;1%"
+                li += (f'<li><span class="bl">{html.escape(str(x["k"]))}</span>'
+                       f'<span class="bar"><i style="width:{max(pct,1):.0f}%"></i></span>'
+                       f'<span class="bn">{shown}</span></li>')
+            return li
+        smix, cmix = st.get("storage_mix") or [], st.get("carrier_mix") or []
+        stot = sum(x["n"] for x in smix) or 1
+        ctot = sum(x["n"] for x in cmix) or 1
+        _ft = str(st.get("first_traded", ""))
+        year = _ft[:4]
+        # month-first reads naturally to a US customer; the ISO form looked
+        # like a product code sitting under a big number
+        since = f"{_ft[5:7]}-{_ft[:4]}" if len(_ft) >= 7 else year
+        site_dmg = TRADE_OVERALL.get("pct_damaged")
+        # only draw the comparison when we hold the site-wide figure AND the
+        # gap is big enough to mean anything
+        cmp_line = ""
+        if site_dmg is not None and abs(st["pct_damaged"] - site_dmg) >= 3:
+            word = "below" if st["pct_damaged"] < site_dmg else "above"
+            cmp_line = (f" That is {word} the {site_dmg}% we see across every device "
+                        f"we buy, so check the higher condition tiers before talking "
+                        f"yourself down a grade.")
+        panels = ""
+        if smix: panels += f'<div><h3>Storage people trade</h3><ul class="bars">{bars(smix, stot)}</ul></div>'
+        if cmix: panels += f'<div><h3>Carriers we see</h3><ul class="bars">{bars(cmix, ctot)}</ul></div>'
+        out += f'''<section class="dblock"><div class="wrap">
+  <h2>What we actually see on this model</h2>
+  <p class="dsub">We have bought <b>{st["traded"]} {html.escape(dev)}</b> units since
+     {year}. These are our own numbers, not an industry estimate.</p>
+  <div class="dstats">
+    <div class="dstat"><b>{st["traded"]}</b><span>bought since {since}</span></div>
+    <div class="dstat"><b>{st["pct_flawless"]}%</b><span>arrive flawless</span></div>
+    <div class="dstat"><b>{st["pct_damaged"]}%</b><span>arrive damaged</span></div>
+  </div>
+  {f'<div class="dsplit">{panels}</div>' if panels else ""}
+  <p class="dnote">{st["pct_damaged"]}% of the {html.escape(dev)} units we receive are
+     damaged.{cmp_line}</p>
+</div></section>'''
+    return out
+
+def MATRIX_CARRIER(m):
+    """Carrier whose prices the matrix shows: the one with the most priced rows,
+    preferring Unlocked when it is present, since that is what most people have."""
+    counts = {}
+    for carrier, stores in m["variants"].items():
+        counts[carrier] = sum(1 for ss in stores.values() for p in ss.values() if p)
+    if counts.get("Unlocked"): return "Unlocked"
+    return max(counts, key=counts.get) if counts else None
+
 def canon_path(p):
     """Canonical form of a page path.
 
@@ -291,6 +422,32 @@ border-radius:99px;cursor:pointer}
 .sum .trust span::before{content:"\\2713 ";color:var(--green);font-weight:800}
 .toast{margin-top:12px;font-size:13px;color:var(--green);text-align:center;min-height:18px;font-weight:700}
 @media(max-width:900px){.layout{grid-template-columns:1fr}.sum{position:static}.conds{grid-template-columns:1fr}}
+
+/* --- per-device data blocks: price matrix + what we actually see --- */
+.dblock{padding:38px 0;border-top:1px solid var(--line)}
+.dblock h2{font:700 26px/1.25 "Bricolage Grotesque",sans-serif;color:var(--deep);margin:0 0 10px}
+.dblock h3{font:700 15px "Bricolage Grotesque",sans-serif;color:var(--deep);margin:0 0 12px}
+.dsub{color:var(--muted);max-width:68ch;margin:0 0 22px;line-height:1.6}
+.dnote{color:var(--muted);font-size:14px;margin:16px 0 0;max-width:72ch;line-height:1.6}
+.tscroll{overflow-x:auto}
+.pmatrix{border-collapse:collapse;width:100%;max-width:780px;font-size:14.5px;font-variant-numeric:tabular-nums}
+.pmatrix th,.pmatrix td{padding:11px 14px;text-align:right;border-bottom:1px solid var(--line);white-space:nowrap}
+.pmatrix thead th{font-size:12px;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);font-weight:700}
+.pmatrix th[scope=row],.pmatrix thead th:first-child{text-align:left;font-weight:800;color:var(--deep)}
+.pmatrix tbody tr:hover{background:var(--ground)}
+.pmatrix td{font-weight:700;color:var(--green)}
+.dstats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin:4px 0 26px;max-width:780px}
+.dstat{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px}
+.dstat b{display:block;font:800 30px/1.1 "Bricolage Grotesque",sans-serif;color:var(--deep);font-variant-numeric:tabular-nums}
+.dstat span{display:block;color:var(--muted);font-size:13.5px;margin-top:5px}
+.dsplit{display:grid;grid-template-columns:1fr 1fr;gap:36px}
+.bars{list-style:none;margin:0;padding:0;display:grid;gap:9px}
+.bars li{display:grid;grid-template-columns:76px 1fr 44px;align-items:center;gap:10px;font-size:14px}
+.bl{color:var(--muted)}
+.bar{background:var(--ground);border-radius:99px;height:9px;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--brand);border-radius:99px}
+.bn{text-align:right;font-weight:700;font-variant-numeric:tabular-nums;color:var(--deep)}
+@media(max-width:720px){.dsplit{grid-template-columns:1fr}.dblock h2{font-size:22px}}
 """
 
 FONTS = ('<link rel="preconnect" href="https://fonts.googleapis.com">'
@@ -636,6 +793,7 @@ renderStorage(); renderConds();
   }}
 }})();
 </script>'''
+    body += device_data_blocks(cat, brand, dev, m)
     live_path = f"/sell/{cslug}/{bslug}/{dslug}"
     mx = model_max(m)
     product_schema = {

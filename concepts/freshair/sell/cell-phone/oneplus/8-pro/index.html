@@ -97,6 +97,32 @@ border-radius:99px;cursor:pointer}
 .sum .trust span::before{content:"\2713 ";color:var(--green);font-weight:800}
 .toast{margin-top:12px;font-size:13px;color:var(--green);text-align:center;min-height:18px;font-weight:700}
 @media(max-width:900px){.layout{grid-template-columns:1fr}.sum{position:static}.conds{grid-template-columns:1fr}}
+
+/* --- per-device data blocks: price matrix + what we actually see --- */
+.dblock{padding:38px 0;border-top:1px solid var(--line)}
+.dblock h2{font:700 26px/1.25 "Bricolage Grotesque",sans-serif;color:var(--deep);margin:0 0 10px}
+.dblock h3{font:700 15px "Bricolage Grotesque",sans-serif;color:var(--deep);margin:0 0 12px}
+.dsub{color:var(--muted);max-width:68ch;margin:0 0 22px;line-height:1.6}
+.dnote{color:var(--muted);font-size:14px;margin:16px 0 0;max-width:72ch;line-height:1.6}
+.tscroll{overflow-x:auto}
+.pmatrix{border-collapse:collapse;width:100%;max-width:780px;font-size:14.5px;font-variant-numeric:tabular-nums}
+.pmatrix th,.pmatrix td{padding:11px 14px;text-align:right;border-bottom:1px solid var(--line);white-space:nowrap}
+.pmatrix thead th{font-size:12px;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);font-weight:700}
+.pmatrix th[scope=row],.pmatrix thead th:first-child{text-align:left;font-weight:800;color:var(--deep)}
+.pmatrix tbody tr:hover{background:var(--ground)}
+.pmatrix td{font-weight:700;color:var(--green)}
+.dstats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin:4px 0 26px;max-width:780px}
+.dstat{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px}
+.dstat b{display:block;font:800 30px/1.1 "Bricolage Grotesque",sans-serif;color:var(--deep);font-variant-numeric:tabular-nums}
+.dstat span{display:block;color:var(--muted);font-size:13.5px;margin-top:5px}
+.dsplit{display:grid;grid-template-columns:1fr 1fr;gap:36px}
+.bars{list-style:none;margin:0;padding:0;display:grid;gap:9px}
+.bars li{display:grid;grid-template-columns:76px 1fr 44px;align-items:center;gap:10px;font-size:14px}
+.bl{color:var(--muted)}
+.bar{background:var(--ground);border-radius:99px;height:9px;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--brand);border-radius:99px}
+.bn{text-align:right;font-weight:700;font-variant-numeric:tabular-nums;color:var(--deep)}
+@media(max-width:720px){.dsplit{grid-template-columns:1fr}.dblock h2{font-size:22px}}
 </style></head><body>
 <a class="skip" href="#main">Skip to main content</a>
 <header><div class="wrap nav">
@@ -305,7 +331,17 @@ renderStorage(); renderConds();
     if (cc && !cc.classList.contains("na")) cc.click();
   }
 })();
-</script>
+</script><section class="dblock"><div class="wrap">
+  <h2>What OnePlus 8 Pro owners are paid today</h2>
+  <p class="dsub">Every figure below is what OCBuyBack pays right now, taken straight
+     from our live catalogue. Prices follow the market, so this table
+     changes whenever our offers do.</p>
+  <div class="tscroll"><table class="pmatrix">
+    <thead><tr><th>Storage</th><th>Flawless</th><th>Good</th><th>Fair</th><th>Minor damage</th><th>Broken</th></tr></thead><tbody><tr><th scope="row">256GB</th><td>$125</td><td>$105</td><td>$75</td><td>$35</td><td>$5</td></tr></tbody></table></div>
+  <p class="dnote">Top payout <b>$125</b> &middot; lowest listed
+     <b>$5</b> &middot; 5 storage, carrier and condition
+     combinations priced.</p>
+</div></section>
 </main>
 <footer>
 <div class="wrap">

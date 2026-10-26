@@ -1,0 +1,4176 @@
+{
+ "models": {
+  "iPad Pro 9.7 1st Gen (2016)": {
+   "model": "iPad Pro 9.7 1st Gen (2016)",
+   "traded": 42,
+   "avg_quote": 105,
+   "pct_flawless": 19,
+   "pct_damaged": 7,
+   "first_traded": "2019-07-16",
+   "last_traded": "2024-07-11",
+   "storage_mix": [
+    {
+     "k": "32GB",
+     "n": 22
+    },
+    {
+     "k": "128GB",
+     "n": 17
+    },
+    {
+     "k": "256GB",
+     "n": 3
+    }
+   ],
+   "carrier_mix": [
+    {
+     "k": "Wi-Fi + Cellular",
+     "n": 30
+    },
+    {
+     "k": "Wi-Fi",
+     "n": 12
+    }
+   ]
+  },
+  "Galaxy Note 10+ 4G": {
+   "model": "Galaxy Note 10+ 4G",
+   "traded": 35,
+   "avg_quote": 273,
+   "pct_flawless": 37,
+   "pct_damaged": 14,
+   "first_traded": "2019-10-23",
+   "last_traded": "2025-09-25",
+   "storage_mix": [
+    {
+     "k": "256GB",
+     "n": 27
+    },
+    {
+     "k": "512GB",
+     "n": 8
+    }
+   ],
+   "carrier_mix": [
+    {
+     "k": "Verizon",
+     "n": 15
+    },
+    {
+     "k": "Unlocked",
+     "n": 13
+    },
+    {
+     "k": "AT&T",
+     "n": 3
+    },
+    {
+     "k": "T-Mobile",
+     "n": 3
+    },
+    {
+     "k": "DELETED",
+     "n": 1
+    }
+   ]
+  },
+  "Ultra": {
+   "model": "Ultra",
+   "traded": 28,
+   "avg_quote": 309,
+   "pct_flawless": 50,
+   "pct_damaged": 0,
+   "first_traded": "2023-02-26",
+   "last_traded": "2026-05-06",
+   "storage_mix": [
+    {
+     "k": "49mm",
+     "n": 28
+    }
+   ],
+   "carrier_mix": [
+    {
+     "k": "Titanium",
+     "n": 28
+    }
+   ]
+  },
+  "iPhone 14 Pro Max": {
+   "model": "iPhone 14 Pro Max",
+   "traded": 163,
+   "avg_quote": 509,
+   "pct_flawless": 24,
+   "pct_damaged": 9,
+   "first_traded": "2023-02-21",
+   "last_traded": "2026-10-23",
+   "storage_mix": [
+    {
+     "k": "256GB",
+     "n": 78
+    },
+    {
+     "k": "128GB",
+     "n": 62
+    },
+    {
+     "k": "512GB",
+     "n": 13
+    },
+    {
+     "k": "1TB",
+     "n": 10
+    }
+   ],
+   "carrier_mix": [
+    {
+     "k": "Unlocked",
+     "n": 111
+    },
+    {
+     "k": "Verizon",
+     "n": 31
+    },
+    {
+     "k": "T-Mobile",
+     "n": 12
+    },
+    {
+     "k": "AT&T",
+     "n": 7
+    },
+    {
+     "k": "Other",
+     "n": 2
+    }
+   ]
+  },
+  "iPhone 15": {
+   "model": "iPhone 15",
+   "traded": 40,
+   "avg_quote": 257,
+   "pct_flawless": 48,
+   "pct_damaged": 3,
+   "first_traded": "2024-01-11",
+   "last_traded": "2026-08-27",
+   "storage_mix": [
+    {
+     "k": "128GB",
+     "n": 32
+    },
+    {
+     "k": "256GB",
+     "n": 8
+    }
+   ],
+   "carrier_mix": [
+    {
+     "k": "Verizon",
+     "n": 18
+    },
+    {
+     "k": "T-Mobile",
+     "n": 10
+    },
+    {
+     "k": "Unlocked",
+     "n": 10
+    },
+    {
+     "k": "AT&T",
+     "n": 2
+    }
+   ]
+  },
+  "Galaxy S23 Ultra": {
+   "model": "Galaxy S23 Ultra",
+   "traded": 52,
+   "avg_quote": 385,
+   "pct_flawless": 29,
+   "pct_damaged": 6,
+   "first_traded": "2023-05-12",
+   "last_traded": "2026-06-05",
+   "storage_mix": [
+    {
+     "k": "256GB",
+     "n": 43
+    },
+    {
+     "k": "512GB",
+     "n": 9
+    }
+   ],
+   "carrier_mix": [
+    {
+     "k": "Unlocked",
+     "n": 37
+    },
+    {
+     "k": "Verizon",
+     "n": 10
+    },
+    {
+     "k": "AT&T",
+     "n": 4
+    },
+    {
+     "k": "T-Mobile",
+     "n": 1
+    }
+   ]
+  },
+  "Galaxy Note 20": {
+   "model": "Galaxy Note 20",
+   "traded": 28,
+   "avg_quote": 215,
+   "pct_flawless": 21,
+   "pct_damaged": 7,
+   "first_traded": "2020-10-05",
+   "last_traded": "2024-12-13",
+   "storage_mix": [
+    {
+     "k": "128GB",
+     "n": 28
+    }
+   ],
+   "carrier_mix": [
+    {
+     "k": "Unlocked",
+     "n": 14
+    },
+    {
+     "k": "Verizon",
+     "n": 9
+    },
+    {
+     "k": "T-Mobile",
+     "n": 3
+    },
+    {
+     "k": "AT&T",
+     "n": 1
+    },
+    {
+     "k": "DELETED",
+     "n": 1
+    }
+   ]
+  },
+  "iPad 10.2 7th Gen (2019)": {
+   "model": "iPad 10.2 7th Gen (2019)",
+   "traded": 36,
+   "avg_quote": 94,
+   "pct_flawless": 19,
+   "pct_damaged": 11,
+   "first_traded": "2020-08-31",
+   "last_traded": "2025-09-16",
+   "storage_mix": [
+    {
+     "k": "32GB",
+     "n": 25
+    },
+    {
+     "k": "128GB",
+     "n": 11
+    }
+   ],
+   "carrier_mix": [
+    {
+     "k": "Wi-Fi + Cellular",
+     "n": 24
+    },
+    {
+     "k": "Wi-Fi",
+     "n": 12
+    }
+   ]
+  },
+  "Galaxy S22": {
+   "model": "Galaxy S22",
+   "traded": 58,
+   "avg_quote": 235,
+   "pct_flawless": 50,
+   "pct_damaged": 2,
+   "first_traded": "2022-03-04",
+   "last_traded": "2026-06-05",
+   "storage_mix": [
+    {
+     "k": "128GB",
+     "n": 42
+    },
+    {
+     "k": "256GB",
+     "n": 16
+    }
+   ],
+   "carrier_mix": [
+    {
+     "k": "Unlocked",
+     "n": 35
+    },
+    {
+     "k": "Verizon",
+     "n": 12
+    },
+    {
+     "k": "AT&T",
+     "n": 6
+    },
+    {
+     "k": "T-Mobile",
+     "n": 5
+    }
+   ]
+  },
+  "Series 7 GPS": {
+   "model": "Series 7 GPS",
+   "traded": 38,
+   "avg_quote": 133,
+   "pct_flawless": 74,
+   "pct_damaged": 0,
+   "first_traded": "2022-01-30",
+   "last_traded": "2025-11-29",
+   "storage_mix": [
+    {
+     "k": "45mm",
+     "n": 27
+    },
+    {
+     "k": "41mm",
+     "n": 11
+    }
+   ],
+   "carrier_mix": [
+    {
+     "k": "Aluminium",
+     "n": 35
+    },
+    {
+     "k": "Titanium",
+     "n": 2
+    },
+    {
+     "k": "Stainless Steel",
+     "n": 1
+    }
+   ]
+  },
+  "iPhone 13 Mini": {
+   "model": "iPhone 13 Mini",
+   "traded": 118,
+   "avg_quote": 244,
+   "pct_flawless": 28,
+   "pct_damaged": 7,
+   "first_traded": "2021-11-03",
+   "last_traded": "2026-09-30",
+   "storage_mix": [
+    {
+     "k": "128GB",
+     "n": 99
+    },
+    {
+     "k": "256GB",
+     "n": 19
+    }
+   ],
+   "carrier_mix": [
+    {
+     "k": "Verizon",
+     "n": 69
+    },
+    {
+     "k": "Unlocked",
+     "n": 42
+    },
+    {
+     "k": "AT&T",
+     "n": 5
+    },
+    {
+     "k": "Other",
+     "n": 1
+    },
+    {
+     "k": "T-Mobile",
+     "n": 1
+    }
+   ]
+  },
+  "iPad Mini 4th Gen (2015)": {
+   "model": "iPad Mini 4th Gen (2015)",
+   "traded": 32,
+   "avg_quote": 83,
+   "pct_flawless": 19,
+   "pct_damaged": 6,
+   "first_traded": "2019-05-07",
+   "last_traded": "2025-08-05",
+   "storage_mix": [
+    {
+     "k": "128GB",
+     "n": 17
+    },
+    {
+     "k": "16GB",
+     "n": 10
+    },
+    {
+     "k": "64GB",
+     "n": 5
+    }
+   ],
+   "carrier_mix": [
+    {
+     "k": "Wi-Fi",
+     "n": 21
+    },
+    {
+     "k": "Wi-Fi + Cellular",
+     "n": 11
+    }
+   ]
+  },
+  "Galaxy Note 5": {
+   "model": "Galaxy Note 5",
+   "traded": 44,
+   "avg_quote": 52,
+   "pct_flawless": 14,
+   "pct_damaged": 14,
+   "first_traded": "2018-09-27",
+   "last_traded": "2021-07-17",
+   "storage_mix": [
+    {
+     "k": "32GB",
+     "n": 39
+    },
+    {
+     "k": "64GB",
+     "n": 5
+    }
+   ],
+   "carrier_mix": [
+    {
+     "k": "Verizon",
+     "n": 23
+    },
+    {
+     "k": "DELETED",
+     "n": 11
+    },
+    {
+     "k": "T-Mobile",
+     "n": 5
+    },
+    {
+     "k": "Unlocked",
+     "n": 4
+    },
+    {
+     "k": "AT&T",
+     "n": 1
+    }
+   ]
+  },
+  "Galaxy S20 FE": {
+   "model": "Galaxy S20 FE",
+   "traded": 45,
+   "avg_quote": 165,
+   "pct_flawless": 53,
+   "pct_damaged": 7,
+   "first_traded": "2021-04-03",
+   "last_traded": "2026-01-01",
+   "storage_mix": [
+    {
+     "k": "128GB",
+     "n": 38
+    },
+    {
+     "k": "256GB",
+     "n": 7
+    }
+   ],
+   "carrier_mix": [
+    {
+     "k": "Unlocked",
+     "n": 17
+    },
+    {
+     "k": "Verizon",
+     "n": 16
+    },
+    {
+     "k": "AT&T",
+     "n": 6
+    },
+    {
+     "k": "T-Mobile",
+     "n": 5
+    },
+    {
+     "k": "DELETED",
+     "n": 1
+    }
+   ]
+  },
+  "iPhone 8 Plus": {
+   "model": "iPhone 8 Plus",
+   "traded": 422,
+   "avg_quote": 147,
+   "pct_flawless": 12,
+   "pct_damaged": 15,
+   "first_traded": "2019-03-09",
+   "last_traded": "2024-03-12",
+   "storage_mix": [
+    {
+     "k": "64GB",
+     "n": 332
+    },
+    {
+     "k": "256GB",
+     "n": 86
+    },
+    {
+     "k": "128GB",
+     "n": 4
+    }
+   ],
+   "carrier_mix": [
+    {
+     "k": "Unlocked",
+     "n": 242
+    },
+    {
+     "k": "Verizon",
+     "n": 67
+    },
+    {
+     "k": "T-Mobile",
+     "n": 51
+    },
+    {
+     "k": "AT&T",
+     "n": 45
+    },
+    {
+     "k": "DELETED",
+     "n": 14
+    },
+    {
+     "k": "Other",
+     "n": 3
+    }
+   ]
+  },
+  "iPad 9.7 6th Gen (2018)": {
+   "model": "iPad 9.7 6th Gen (2018)",
+   "traded": 97,
+   "avg_quote": 66,
+   "pct_flawless": 23,
+   "pct_damaged": 1,
+   "first_traded": "2019-12-24",
+   "last_traded": "2025-01-12",
+   "storage_mix": [
+    {
+     "k": "32GB",
+     "n": 54
+    },
+    {
+     "k": "128GB",
+     "n": 43
+    }
+   ],
+   "carrier_mix": [
+    {
+     "k": "Wi-Fi + Cellular",
+     "n": 62
+    },
+    {
+     "k": "Wi-Fi",
+     "n": 35
+    }
+   ]
+  },
+  "iPhone 14": {
+   "model": "iPhone 14",
+   "traded": 117,
+   "avg_quote": 235,
+   "pct_flawless": 33,
+   "pct_damaged": 6,
+   "first_traded": "2022-12-22",
+   "last_traded": "2026-09-23",
+   "storage_mix": [
+    {
+     "k": "128GB",
+     "n": 91
+    },
+    {
+     "k": "256GB",
+     "n": 23
+    },
+    {
+     "k": "512GB",
+     "n": 3
+    }
+   ],
+   "carrier_mix": [
+    {
+     "k": "Verizon",
+     "n": 57
+    },
+    {
+     "k": "Unlocked",
+     "n": 47
+    },
+    {
+     "k": "AT&T",
+     "n": 9
+    },
+    {
+     "k": "T-Mobile",
+     "n": 4
+    }
+   ]
+  },
+  "iPhone 15 Pro": {
+   "model": "iPhone 15 Pro",
+   "traded": 63,
+   "avg_quote": 439,
+   "pct_flawless": 40,
+   "pct_damaged": 5,
+   "first_traded": "2023-12-29",
+   "last_traded": "2026-09-21",
+   "storage_mix": [
+    {
+     "k": "128GB",
+     "n": 36
+    },
+    {
+     "k": "256GB",
+     "n": 19
+    },
+    {
+     "k": "512GB",
+     "n": 6
+    },
+    {
+     "k": "1TB",
+     "n": 2
+    }
+   ],
+   "carrier_mix": [
+    {
+     "k": "Unlocked",
+     "n": 39
+    },
+    {
+     "k": "AT&T",
+     "n": 15
+    },
+    {
+     "k": "T-Mobile",
+     "n": 5
+    },
+    {
+     "k": "Verizon",
+     "n": 3
+    },
+    {
+     "k": "Other",
+     "n": 1
+    }
+   ]
+  },
+  "iPad 4th Gen (2012)": {
+   "model": "iPad 4th Gen (2012)",
+   "traded": 25,
+   "avg_quote": 34,
+   "pct_flawless": 28,
+   "pct_damaged": 8,
+   "first_traded": "2019-05-18",
+   "last_traded": "2021-10-02",
+   "storage_mix": [
+    {
+     "k": "16GB",
+     "n": 14
+    },
+    {
+     "k": "32GB",
+     "n": 7
+    },
+    {
+     "k": "64GB",
+     "n": 4
+    }
+   ],
+   "carrier_mix": [
+    {
+     "k": "Wi-Fi",
+     "n": 19
+    },
+    {
+     "k": "Wi-Fi + Cellular",
+     "n": 6
+    }
+   ]
+  },
+  "iPhone 16 Pro Max": {
+   "model": "iPhone 16 Pro Max",
+   "traded": 120,
+   "avg_quote": 683,
+   "pct_flawless": 64,
+   "pct_damaged": 0,
+   "first_traded": "2024-10-31",
+   "last_traded": "2026-09-22",
+   "storage_mix": [
+    {
+     "k": "1TB",
+     "n": 59
+    },
+    {
+     "k": "256GB",
+     "n": 53
+    },
+    {
+     "k": "512GB",
+     "n": 8
+    }
+   ],
+   "carrier_mix": [
+    {
+     "k": "Verizon",
+     "n": 62
+    },
+    {
+     "k": "T-Mobile",
+     "n": 22
+    },
+    {
+     "k": "Unlocked",
+     "n": 20
+    },
+    {
+     "k": "AT&T",
+     "n": 14
+    },
+    {
+     "k": "Other",
+     "n": 2
+    }
+   ]
+  },
+  "iPod Touch 6th Gen": {
+   "model": "iPod Touch 6th Gen",
+   "traded": 90,
+   "avg_quote": 46,
+   "pct_flawless": 42,
+   "pct_damaged": 2,
+   "first_traded": "2019-03-24",
+   "last_traded": "2022-07-23",
+   "storage_mix": [
+    {
+     "k": "16GB",
+     "n": 63
+    },
+    {
+     "k": "32GB",
+     "n": 17
+    },
+    {
+     "k": "128GB",
+     "n": 7
+    },
+    {
+     "k": "64GB",
+     "n": 3
+    }
+   ],
+   "carrier_mix": [
+    {
+     "k": "Other",
+     "n": 90
+    }
+   ]
+  },
+  "Galaxy S21 FE": {
+   "model": "Galaxy S21 FE",
+   "traded": 53,
+   "avg_quote": 196,
+   "pct_flawless": 55,
+   "pct_damaged": 4,
+   "first_traded": "2022-02-14",
+   "last_traded": "2025-06-03",
+   "storage_mix": [
+    {
+     "k": "128GB",
+     "n": 44
+    },
+    {
+     "k": "256GB",
+     "n": 9
+    }
+   ],
+   "carrier_mix": [
+    {
+     "k": "Unlocked",
+     "n": 33
+    },
+    {
+     "k": "Verizon",
+     "n": 12
+    },
+    {
+     "k": "AT&T",
+     "n": 7
+    },
+    {
+     "k": "T-Mobile",
+     "n": 1
+    }
+   ]
+  },
+  "iPhone 12": {
+   "model": "iPhone 12",
+   "traded": 302,
+   "avg_quote": 204,
+   "pct_flawless": 19,
+   "pct_damaged": 9,
+   "first_traded": "2020-11-28",
+   "last_traded": "2026-09-29",
+   "storage_mix": [
+    {
+     "k": "64GB",
+     "n": 181
+    },
+    {
+     "k": "128GB",
+     "n": 92
+    },
+    {
+     "k": "256GB",
+     "n": 29
+    }
+   ],
+   "carrier_mix": [
+    {
+     "k": "Unlocked",
+     "n": 170
+    },
+    {
+     "k": "Verizon",
+     "n": 71
+    },
+    {
+     "k": "T-Mobile",
+     "n": 40
+    },
+    {
+     "k": "AT&T",
+     "n": 19
+    },
+    {
+     "k": "DELETED",
+     "n": 1
+    },
+    {
+     "k": "Other",
+     "n": 1
+    }
+   ]
+  },
+  "Galaxy Z Fold2": {
+   "model": "Galaxy Z Fold2",
+   "traded": 28,
+   "avg_quote": 554,
+   "pct_flawless": 29,
+   "pct_damaged": 18,
+   "first_traded": "2021-04-01",
+   "last_traded": "2024-05-17",
+   "storage_mix": [
+    {
+     "k": "256GB",
+     "n": 24
+    },
+    {
+     "k": "512GB",
+     "n": 4
+    }
+   ],
+   "carrier_mix": [
+    {
+     "k": "Unlocked",
+     "n": 15
+    },
+    {
+     "k": "Verizon",
+     "n": 9
+    },
+    {
+     "k": "AT&T",
+     "n": 3
+    },
+    {
+     "k": "DELETED",
+     "n": 1
+    }
+   ]
+  },
+  "Galaxy S21 Plus": {
+   "model": "Galaxy S21 Plus",
+   "traded": 35,
+   "avg_quote": 204,
+   "pct_flawless": 31,
+   "pct_damaged": 17,
+   "first_traded": "2021-03-09",
+   "last_traded": "2026-01-15",
+   "storage_mix": [
+    {
+     "k": "128GB",
+     "n": 24
+    },
+    {
+     "k": "256GB",
+     "n": 11
+    }
+   ],
+   "carrier_mix": [
+    {
+     "k": "Unlocked",
+     "n": 22
+    },
+    {
+     "k": "T-Mobile",
+     "n": 6
+    },
+    {
+     "k": "Verizon",
+     "n": 5
+    },
+    {
+     "k": "AT&T",
+     "n": 1
+    },
+    {
+     "k": "DELETED",
+     "n": 1
+    }
+   ]
+  },
+  "iPhone 5c": {
+   "model": "iPhone 5c",
+   "traded": 60,
+   "avg_quote": 11,
+   "pct_flawless": 13,
+   "pct_damaged": 22,
+   "first_traded": "2018-09-16",
+   "last_traded": "2021-05-07",
+   "storage_mix": [
+    {
+     "k": "16GB",
+     "n": 31
+    },
+    {
+     "k": "8GB",
+     "n": 22
+    },
+    {
+     "k": "32GB",
+     "n": 7
+    }
+   ],
+   "carrier_mix": [
+    {
+     "k": "Verizon",
+     "n": 32
+    },
+    {
+     "k": "Unlocked",
+     "n": 12
+    },
+    {
+     "k": "DELETED",
+     "n": 9
+    },
+    {
+     "k": "AT&T",
+     "n": 7
+    }
+   ]
+  },
+  "iPhone 16 Pro": {
+   "model": "iPhone 16 Pro",
+   "traded": 48,
+   "avg_quote": 490,
+   "pct_flawless": 67,
+   "pct_damaged": 2,
+   "first_traded": "2024-11-04",
+   "last_traded": "2026-09-10",
+   "storage_mix": [
+    {
+     "k": "1TB",
+     "n": 21
+    },
+    {
+     "k": "256GB",
+     "n": 18
+    },
+    {
+     "k": "128GB",
+     "n": 7
+    },
+    {
+     "k": "512GB",
+     "n": 2
+    }
+   ],
+   "carrier_mix": [
+    {
+     "k": "Verizon",
+     "n": 25
+    },
+    {
+     "k": "Unlocked",
+     "n": 13
+    },
+    {
+     "k": "AT&T",
+     "n": 9
+    },
+    {
+     "k": "T-Mobile",
+     "n": 1
+    }
+   ]
+  },
+  "Galaxy Note 20 Ultra": {
+   "model": "Galaxy Note 20 Ultra",
+   "traded": 61,
+   "avg_quote": 366,
+   "pct_flawless": 31,
+   "pct_damaged": 16,
+   "first_traded": "2020-10-21",
+   "last_traded": "2025-10-24",
+   "storage_mix": [
+    {
+     "k": "128GB",
+     "n": 54
+    },
+    {
+     "k": "512GB",
+     "n": 7
+    }
+   ],
+   "carrier_mix": [
+    {
+     "k": "Unlocked",
+     "n": 28
+    },
+    {
+     "k": "Verizon",
+     "n": 16
+    },
+    {
+     "k": "AT&T",
+     "n": 10
+    },
+    {
+     "k": "T-Mobile",
+     "n": 6
+    },
+    {
+     "k": "DELETED",
+     "n": 1
+    }
+   ]
+  },
+  "Pixel 6": {
+   "model": "Pixel 6",
+   "traded": 36,
+   "avg_quote": 196,
+   "pct_flawless": 33,
+   "pct_damaged": 3,
+   "first_traded": "2022-02-14",
+   "last_traded": "2025-07-28",
+   "storage_mix": [
+    {
+     "k": "128GB",
+     "n": 31
+    },
+    {
+     "k": "256GB",
+     "n": 5
+    }
+   ],
+   "carrier_mix": [
+    {
+     "k": "Unlocked",
+     "n": 29
+    },
+    {
+     "k": "Verizon",
+     "n": 4
+    },
+    {
+     "k": "AT&T",
+     "n": 2
+    },
+    {
+     "k": "T-Mobile",
+     "n": 1
+    }
+   ]
+  },
+  "Galaxy Note 9": {
+   "model": "Galaxy Note 9",
+   "traded": 46,
+   "avg_quote": 162,
+   "pct_flawless": 43,
+   "pct_damaged": 17,
+   "first_traded": "2019-02-11",
+   "last_traded": "2024-05-07",
+   "storage_mix": [
+    {
+     "k": "128GB",
+     "n": 36
+    },
+    {
+     "k": "512GB",
+     "n": 10
+    }
+   ],
+   "carrier_mix": [
+    {
+     "k": "Verizon",
+     "n": 18
+    },
+    {
+     "k": "Unlocked",
+     "n": 14
+    },
+    {
+     "k": "AT&T",
+     "n": 6
+    },
+    {
+     "k": "T-Mobile",
+     "n": 5
+    },
+    {
+     "k": "DELETED",
+     "n": 3
+    }
+   ]
+  },
+  "iPad 10.2 9th Gen (2021)": {
+   "model": "iPad 10.2 9th Gen (2021)",
+   "traded": 83,
+   "avg_quote": 149,
+   "pct_flawless": 48,
+   "pct_damaged": 2,
+   "first_traded": "2022-06-10",
+   "last_traded": "2026-08-19",
+   "storage_mix": [
+    {
+     "k": "64GB",
+     "n": 55
+    },
+    {
+     "k": "256GB",
+     "n": 28
+    }
+   ],
+   "carrier_mix": [
+    {
+     "k": "Wi-Fi",
+     "n": 47
+    },
+    {
+     "k": "Wi-Fi + Cellular",
+     "n": 36
+    }
+   ]
+  },
+  "iPhone XR": {
+   "model": "iPhone XR",
+   "traded": 603,
+   "avg_quote": 151,
+   "pct_flawless": 19,
+   "pct_damaged": 12,
+   "first_traded": "2019-02-09",
+   "last_traded": "2025-08-20",
+   "storage_mix": [
+    {
+     "k": "64GB",
+     "n": 423
+    },
+    {
+     "k": "128GB",
+     "n": 158
+    },
+    {
+     "k": "256GB",
+     "n": 22
+    }
+   ],
+   "carrier_mix": [
+    {
+     "k": "Unlocked",
+     "n": 255
+    },
+    {
+     "k": "Verizon",
+     "n": 168
+    },
+    {
+     "k": "T-Mobile",
+     "n": 108
+    },
+    {
+     "k": "AT&T",
+     "n": 46
+    },
+    {
+     "k": "DELETED",
+     "n": 21
+    },
+    {
+     "k": "Other",
+     "n": 5
+    }
+   ]
+  },
+  "iPhone X": {
+   "model": "iPhone X",
+   "traded": 239,
+   "avg_quote": 215,
+   "pct_flawless": 19,
+   "pct_damaged": 27,
+   "first_traded": "2018-09-13",
+   "last_traded": "2025-03-07",
+   "storage_mix": [
+    {
+     "k": "64GB",
+     "n": 125
+    },
+    {
+     "k": "256GB",
+     "n": 114
+    }
+   ],
+   "carrier_mix": [
+    {
+     "k": "Unlocked",
+     "n": 99
+    },
+    {
+     "k": "Verizon",
+     "n": 74
+    },
+    {
+     "k": "AT&T",
+     "n": 40
+    },
+    {
+     "k": "T-Mobile",
+     "n": 17
+    },
+    {
+     "k": "DELETED",
+     "n": 8
+    },
+    {
+     "k": "Other",
+     "n": 1
+    }
+   ]
+  },
+  "Galaxy S20": {
+   "model": "Galaxy S20",
+   "traded": 28,
+   "avg_quote": 149,
+   "pct_flawless": 36,
+   "pct_damaged": 18,
+   "first_traded": "2020-09-16",
+   "last_traded": "2025-10-31",
+   "storage_mix": [
+    {
+     "k": "128GB",
+     "n": 28
+    }
+   ],
+   "carrier_mix": [
+    {
+     "k": "Unlocked",
+     "n": 19
+    },
+    {
+     "k": "T-Mobile",
+     "n": 4
+    },
+    {
+     "k": "Verizon",
+     "n": 3
+    },
+    {
+     "k": "AT&T",
+     "n": 1
+    },
+    {
+     "k": "DELETED",
+     "n": 1
+    }
+   ]
+  },
+  "Galaxy S21 Ultra": {
+   "model": "Galaxy S21 Ultra",
+   "traded": 71,
+   "avg_quote": 324,
+   "pct_flawless": 44,
+   "pct_damaged": 15,
+   "first_traded": "2021-02-25",
+   "last_traded": "2025-12-15",
+   "storage_mix": [
+    {
+     "k": "128GB",
+     "n": 42
+    },
+    {
+     "k": "256GB",
+     "n": 20
+    },
+    {
+     "k": "512GB",
+     "n": 9
+    }
+   ],
+   "carrier_mix": [
+    {
+     "k": "Unlocked",
+     "n": 37
+    },
+    {
+     "k": "Verizon",
+     "n": 22
+    },
+    {
+     "k": "AT&T",
+     "n": 6
+    },
+    {
+     "k": "T-Mobile",
+     "n": 6
+    }
+   ]
+  },
+  "Missing or Deleted Device": {
+   "model": "Missing or Deleted Device",
+   "traded": 55,
+   "avg_quote": 172,
+   "pct_flawless": 42,
+   "pct_damaged": 13,
+   "first_traded": "2019-02-10",
+   "last_traded": "2023-06-08",
+   "storage_mix": [
+    {
+     "k": "32GB",
+     "n": 22
+    },
+    {
+     "k": "128GB",
+     "n": 21
+    },
+    {
+     "k": "256GB",
+     "n": 6
+    },
+    {
+     "k": "64GB",
+     "n": 4
+    },
+    {
+     "k": "1TB",
+     "n": 1
+    },
+    {
+     "k": "512GB",
+     "n": 1
+    }
+   ],
+   "carrier_mix": [
+    {
+     "k": "Unlocked",
+     "n": 23
+    },
+    {
+     "k": "Verizon",
+     "n": 16
+    },
+    {
+     "k": "-",
+     "n": 7
+    },
+    {
+     "k": "AT&T",
+     "n": 3
+    },
+    {
+     "k": "DELETED",
+     "n": 3
+    },
+    {
+     "k": "T-Mobile",
+     "n": 2
+    },
+    {
+     "k": "Wi-Fi + Cellular",
+     "n": 1
+    }
+   ]
+  },
+  "Galaxy Z Fold3": {
+   "model": "Galaxy Z Fold3",
+   "traded": 73,
+   "avg_quote": 351,
+   "pct_flawless": 18,
+   "pct_damaged": 18,
+   "first_traded": "2021-11-13",
+   "last_traded": "2025-08-20",
+   "storage_mix": [
+    {
+     "k": "256GB",
+     "n": 49
+    },
+    {
+     "k": "512GB",
+     "n": 24
+    }
+   ],
+   "carrier_mix": [
+    {
+     "k": "T-Mobile",
+     "n": 29
+    },
+    {
+     "k": "Unlocked",
+     "n": 23
+    },
+    {
+     "k": "AT&T",
+     "n": 17
+    },
+    {
+     "k": "Verizon",
+     "n": 4
+    }
+   ]
+  },
+  "Pixel 4a": {
+   "model": "Pixel 4a",
+   "traded": 33,
+   "avg_quote": 116,
+   "pct_flawless": 33,
+   "pct_damaged": 6,
+   "first_traded": "2021-03-19",
+   "last_traded": "2023-03-22",
+   "storage_mix": [
+    {
+     "k": "128GB",
+     "n": 33
+    }
+   ],
+   "carrier_mix": [
+    {
+     "k": "Unlocked",
+     "n": 26
+    },
+    {
+     "k": "Verizon",
+     "n": 4
+    },
+    {
+     "k": "T-Mobile",
+     "n": 2
+    },
+    {
+     "k": "DELETED",
+     "n": 1
+    }
+   ]
+  },
+  "iPhone XS Max": {
+   "model": "iPhone XS Max",
+   "traded": 220,
+   "avg_quote": 368,
+   "pct_flawless": 33,
+   "pct_damaged": 16,
+   "first_traded": "2018-10-30",
+   "last_traded": "2025-09-09",
+   "storage_mix": [
+    {
+     "k": "256GB",
+     "n": 129
+    },
+    {
+     "k": "64GB",
+     "n": 80
+    },
+    {
+     "k": "512GB",
+     "n": 11
+    }
+   ],
+   "carrier_mix": [
+    {
+     "k": "Unlocked",
+     "n": 90
+    },
+    {
+     "k": "Verizon",
+     "n": 67
+    },
+    {
+     "k": "AT&T",
+     "n": 44
+    },
+    {
+     "k": "DELETED",
+     "n": 14
+    },
+    {
+     "k": "T-Mobile",
+     "n": 5
+    }
+   ]
+  },
+  "iPhone 12 Pro": {
+   "model": "iPhone 12 Pro",
+   "traded": 151,
+   "avg_quote": 411,
+   "pct_flawless": 34,
+   "pct_damaged": 10,
+   "first_traded": "2021-02-19",
+   "last_traded": "2026-08-02",
+   "storage_mix": [
+    {
+     "k": "256GB",
+     "n": 81
+    },
+    {
+     "k": "128GB",
+     "n": 62
+    },
+    {
+     "k": "512GB",
+     "n": 8
+    }
+   ],
+   "carrier_mix": [
+    {
+     "k": "Unlocked",
+     "n": 60
+    },
+    {
+     "k": "Verizon",
+     "n": 55
+    },
+    {
+     "k": "AT&T",
+     "n": 24
+    },
+    {
+     "k": "T-Mobile",
+     "n": 8
+    },
+    {
+     "k": "Other",
+     "n": 3
+    },
+    {
+     "k": "DELETED",
+     "n": 1
+    }
+   ]
+  },
+  "iPhone 15 Pro Max": {
+   "model": "iPhone 15 Pro Max",
+   "traded": 102,
+   "avg_quote": 559,
+   "pct_flawless": 35,
+   "pct_damaged": 6,
+   "first_traded": "2023-12-24",
+   "last_traded": "2026-08-24",
+   "storage_mix": [
+    {
+     "k": "256GB",
+     "n": 71
+    },
+    {
+     "k": "512GB",
+     "n": 20
+    },
+    {
+     "k": "1TB",
+     "n": 11
+    }
+   ],
+   "carrier_mix": [
+    {
+     "k": "Unlocked",
+     "n": 74
+    },
+    {
+     "k": "Verizon",
+     "n": 14
+    },
+    {
+     "k": "AT&T",
+     "n": 11
+    },
+    {
+     "k": "T-Mobile",
+     "n": 3
+    }
+   ]
+  },
+  "9 Pro": {
+   "model": "9 Pro",
+   "traded": 35,
+   "avg_quote": 442,
+   "pct_flawless": 71,
+   "pct_damaged": 9,
+   "first_traded": "2021-06-03",
+   "last_traded": "2026-01-15",
+   "storage_mix": [
+    {
+     "k": "256GB",
+     "n": 33
+    },
+    {
+     "k": "128GB",
+     "n": 2
+    }
+   ],
+   "carrier_mix": [
+    {
+     "k": "Unlocked",
+     "n": 33
+    },
+    {
+     "k": "T-Mobile",
+     "n": 2
+    }
+   ]
+  },
+  "Galaxy Z Flip3": {
+   "model": "Galaxy Z Flip3",
+   "traded": 43,
+   "avg_quote": 193,
+   "pct_flawless": 51,
+   "pct_damaged": 14,
+   "first_traded": "2021-11-11",
+   "last_traded": "2025-02-11",
+   "storage_mix": [
+    {
+     "k": "128GB",
+     "n": 28
+    },
+    {
+     "k": "256GB",
+     "n": 15
+    }
+   ],
+   "carrier_mix": [
+    {
+     "k": "AT&T",
+     "n": 17
+    },
+    {
+     "k": "Unlocked",
+     "n": 15
+    },
+    {
+     "k": "Verizon",
+     "n": 8
+    },
+    {
+     "k": "T-Mobile",
+     "n": 3
+    }
+   ]
+  },
+  "iPhone 11 Pro Max": {
+   "model": "iPhone 11 Pro Max",
+   "traded": 190,
+   "avg_quote": 417,
+   "pct_flawless": 27,
+   "pct_damaged": 14,
+   "first_traded": "2019-12-08",
+   "last_traded": "2025-12-16",
+   "storage_mix": [
+    {
+     "k": "64GB",
+     "n": 97
+    },
+    {
+     "k": "256GB",
+     "n": 76
+    },
+    {
+     "k": "512GB",
+     "n": 17
+    }
+   ],
+   "carrier_mix": [
+    {
+     "k": "Unlocked",
+     "n": 80
+    },
+    {
+     "k": "Verizon",
+     "n": 57
+    },
+    {
+     "k": "AT&T",
+     "n": 35
+    },
+    {
+     "k": "T-Mobile",
+     "n": 11
+    },
+    {
+     "k": "DELETED",
+     "n": 5
+    },
+    {
+     "k": "Other",
+     "n": 2
+    }
+   ]
+  },
+  "iPad 10.2 8th Gen (2020)": {
+   "model": "iPad 10.2 8th Gen (2020)",
+   "traded": 116,
+   "avg_quote": 60,
+   "pct_flawless": 9,
+   "pct_damaged": 5,
+   "first_traded": "2021-04-12",
+   "last_traded": "2026-02-03",
+   "storage_mix": [
+    {
+     "k": "32GB",
+     "n": 59
+    },
+    {
+     "k": "128GB",
+     "n": 57
+    }
+   ],
+   "carrier_mix": [
+    {
+     "k": "Wi-Fi + Cellular",
+     "n": 78
+    },
+    {
+     "k": "Wi-Fi",
+     "n": 38
+    }
+   ]
+  },
+  "iPod Touch 5th Gen": {
+   "model": "iPod Touch 5th Gen",
+   "traded": 42,
+   "avg_quote": 17,
+   "pct_flawless": 40,
+   "pct_damaged": 0,
+   "first_traded": "2019-07-23",
+   "last_traded": "2023-09-28",
+   "storage_mix": [
+    {
+     "k": "16GB",
+     "n": 18
+    },
+    {
+     "k": "32GB",
+     "n": 17
+    },
+    {
+     "k": "64GB",
+     "n": 7
+    }
+   ],
+   "carrier_mix": [
+    {
+     "k": "Other",
+     "n": 42
+    }
+   ]
+  },
+  "iPad 9.7 5th Gen (2017)": {
+   "model": "iPad 9.7 5th Gen (2017)",
+   "traded": 44,
+   "avg_quote": 60,
+   "pct_flawless": 11,
+   "pct_damaged": 7,
+   "first_traded": "2019-04-02",
+   "last_traded": "2024-10-11",
+   "storage_mix": [
+    {
+     "k": "128GB",
+     "n": 25
+    },
+    {
+     "k": "32GB",
+     "n": 19
+    }
+   ],
+   "carrier_mix": [
+    {
+     "k": "Wi-Fi + Cellular",
+     "n": 28
+    },
+    {
+     "k": "Wi-Fi",
+     "n": 16
+    }
+   ]
+  },
+  "Galaxy S22 Ultra": {
+   "model": "Galaxy S22 Ultra",
+   "traded": 96,
+   "avg_quote": 382,
+   "pct_flawless": 38,
+   "pct_damaged": 14,
+   "first_traded": "2022-05-09",
+   "last_traded": "2026-02-03",
+   "storage_mix": [
+    {
+     "k": "128GB",
+     "n": 58
+    },
+    {
+     "k": "256GB",
+     "n": 26
+    },
+    {
+     "k": "512GB",
+     "n": 11
+    },
+    {
+     "k": "1TB",
+     "n": 1
+    }
+   ],
+   "carrier_mix": [
+    {
+     "k": "Unlocked",
+     "n": 80
+    },
+    {
+     "k": "Verizon",
+     "n": 7
+    },
+    {
+     "k": "AT&T",
+     "n": 5
+    },
+    {
+     "k": "T-Mobile",
+     "n": 4
+    }
+   ]
+  },
+  "Galaxy S21": {
+   "model": "Galaxy S21",
+   "traded": 33,
+   "avg_quote": 119,
+   "pct_flawless": 18,
+   "pct_damaged": 9,
+   "first_traded": "2021-09-01",
+   "last_traded": "2026-01-15",
+   "storage_mix": [
+    {
+     "k": "128GB",
+     "n": 33
+    }
+   ],
+   "carrier_mix": [
+    {
+     "k": "Unlocked",
+     "n": 21
+    },
+    {
+     "k": "Verizon",
+     "n": 8
+    },
+    {
+     "k": "T-Mobile",
+     "n": 3
+    },
+    {
+     "k": "DELETED",
+     "n": 1
+    }
+   ]
+  },
+  "iPhone 6": {
+   "model": "iPhone 6",
+   "traded": 251,
+   "avg_quote": 28,
+   "pct_flawless": 10,
+   "pct_damaged": 25,
+   "first_traded": "2018-09-15",
+   "last_traded": "2021-09-07",
+   "storage_mix": [
+    {
+     "k": "16GB",
+     "n": 152
+    },
+    {
+     "k": "64GB",
+     "n": 61
+    },
+    {
+     "k": "32GB",
+     "n": 20
+    },
+    {
+     "k": "128GB",
+     "n": 18
+    }
+   ],
+   "carrier_mix": [
+    {
+     "k": "Verizon",
+     "n": 102
+    },
+    {
+     "k": "AT&T",
+     "n": 63
+    },
+    {
+     "k": "Unlocked",
+     "n": 53
+    },
+    {
+     "k": "DELETED",
+     "n": 24
+    },
+    {
+     "k": "T-Mobile",
+     "n": 8
+    },
+    {
+     "k": "Other",
+     "n": 1
+    }
+   ]
+  },
+  "Pixel 7a": {
+   "model": "Pixel 7a",
+   "traded": 25,
+   "avg_quote": 130,
+   "pct_flawless": 36,
+   "pct_damaged": 8,
+   "first_traded": "2023-12-23",
+   "last_traded": "2026-08-17",
+   "storage_mix": [
+    {
+     "k": "128GB",
+     "n": 25
+    }
+   ],
+   "carrier_mix": [
+    {
+     "k": "Unlocked",
+     "n": 25
+    }
+   ]
+  },
+  "iPhone 6s": {
+   "model": "iPhone 6s",
+   "traded": 433,
+   "avg_quote": 44,
+   "pct_flawless": 18,
+   "pct_damaged": 18,
+   "first_traded": "2018-12-29",
+   "last_traded": "2022-07-08",
+   "storage_mix": [
+    {
+     "k": "32GB",
+     "n": 176
+    },
+    {
+     "k": "16GB",
+     "n": 129
+    },
+    {
+     "k": "64GB",
+     "n": 102
+    },
+    {
+     "k": "128GB",
+     "n": 26
+    }
+   ],
+   "carrier_mix": [
+    {
+     "k": "Verizon",
+     "n": 239
+    },
+    {
+     "k": "Unlocked",
+     "n": 87
+    },
+    {
+     "k": "AT&T",
+     "n": 69
+    },
+    {
+     "k": "DELETED",
+     "n": 28
+    },
+    {
+     "k": "T-Mobile",
+     "n": 10
+    }
+   ]
+  },
+  "iPhone SE 1st Gen (2016)": {
+   "model": "iPhone SE 1st Gen (2016)",
+   "traded": 67,
+   "avg_quote": 29,
+   "pct_flawless": 19,
+   "pct_damaged": 22,
+   "first_traded": "2019-02-07",
+   "last_traded": "2022-07-04",
+   "storage_mix": [
+    {
+     "k": "16GB",
+     "n": 36
+    },
+    {
+     "k": "32GB",
+     "n": 13
+    },
+    {
+     "k": "64GB",
+     "n": 11
+    },
+    {
+     "k": "128GB",
+     "n": 7
+    }
+   ],
+   "carrier_mix": [
+    {
+     "k": "Verizon",
+     "n": 32
+    },
+    {
+     "k": "AT&T",
+     "n": 15
+    },
+    {
+     "k": "Unlocked",
+     "n": 12
+    },
+    {
+     "k": "DELETED",
+     "n": 6
+    },
+    {
+     "k": "T-Mobile",
+     "n": 2
+    }
+   ]
+  },
+  "iPhone XS": {
+   "model": "iPhone XS",
+   "traded": 109,
+   "avg_quote": 246,
+   "pct_flawless": 27,
+   "pct_damaged": 17,
+   "first_traded": "2019-03-28",
+   "last_traded": "2025-02-23",
+   "storage_mix": [
+    {
+     "k": "64GB",
+     "n": 69
+    },
+    {
+     "k": "256GB",
+     "n": 37
+    },
+    {
+     "k": "512GB",
+     "n": 3
+    }
+   ],
+   "carrier_mix": [
+    {
+     "k": "Verizon",
+     "n": 46
+    },
+    {
+     "k": "Unlocked",
+     "n": 38
+    },
+    {
+     "k": "AT&T",
+     "n": 20
+    },
+    {
+     "k": "DELETED",
+     "n": 3
+    },
+    {
+     "k": "T-Mobile",
+     "n": 2
+    }
+   ]
+  },
+  "Galaxy S9": {
+   "model": "Galaxy S9",
+   "traded": 108,
+   "avg_quote": 87,
+   "pct_flawless": 41,
+   "pct_damaged": 12,
+   "first_traded": "2019-03-20",
+   "last_traded": "2024-08-04",
+   "storage_mix": [
+    {
+     "k": "64GB",
+     "n": 102
+    },
+    {
+     "k": "128GB",
+     "n": 6
+    }
+   ],
+   "carrier_mix": [
+    {
+     "k": "Verizon",
+     "n": 41
+    },
+    {
+     "k": "AT&T",
+     "n": 24
+    },
+    {
+     "k": "Unlocked",
+     "n": 21
+    },
+    {
+     "k": "DELETED",
+     "n": 11
+    },
+    {
+     "k": "T-Mobile",
+     "n": 11
+    }
+   ]
+  },
+  "iPhone 17 Pro Max": {
+   "model": "iPhone 17 Pro Max",
+   "traded": 39,
+   "avg_quote": 803,
+   "pct_flawless": 51,
+   "pct_damaged": 0,
+   "first_traded": "2025-12-22",
+   "last_traded": "2026-10-14",
+   "storage_mix": [
+    {
+     "k": "256GB",
+     "n": 31
+    },
+    {
+     "k": "512GB",
+     "n": 5
+    },
+    {
+     "k": "1TB",
+     "n": 3
+    }
+   ],
+   "carrier_mix": [
+    {
+     "k": "Unlocked",
+     "n": 22
+    },
+    {
+     "k": "T-Mobile",
+     "n": 15
+    },
+    {
+     "k": "Verizon",
+     "n": 2
+    }
+   ]
+  },
+  "iPad Pro 11 3rd Gen (2021)": {
+   "model": "iPad Pro 11 3rd Gen (2021)",
+   "traded": 34,
+   "avg_quote": 383,
+   "pct_flawless": 56,
+   "pct_damaged": 6,
+   "first_traded": "2022-04-22",
+   "last_traded": "2026-09-18",
+   "storage_mix": [
+    {
+     "k": "128GB",
+     "n": 18
+    },
+    {
+     "k": "256GB",
+     "n": 9
+    },
+    {
+     "k": "512GB",
+     "n": 4
+    },
+    {
+     "k": "2TB",
+     "n": 3
+    }
+   ],
+   "carrier_mix": [
+    {
+     "k": "Wi-Fi",
+     "n": 18
+    },
+    {
+     "k": "Wi-Fi + Cellular",
+     "n": 16
+    }
+   ]
+  },
+  "iPhone 13": {
+   "model": "iPhone 13",
+   "traded": 260,
+   "avg_quote": 269,
+   "pct_flawless": 44,
+   "pct_damaged": 4,
+   "first_traded": "2022-02-17",
+   "last_traded": "2026-10-23",
+   "storage_mix": [
+    {
+     "k": "128GB",
+     "n": 218
+    },
+    {
+     "k": "256GB",
+     "n": 38
+    },
+    {
+     "k": "512GB",
+     "n": 4
+    }
+   ],
+   "carrier_mix": [
+    {
+     "k": "Unlocked",
+     "n": 142
+    },
+    {
+     "k": "Verizon",
+     "n": 93
+    },
+    {
+     "k": "AT&T",
+     "n": 15
+    },
+    {
+     "k": "T-Mobile",
+     "n": 8
+    },
+    {
+     "k": "Other",
+     "n": 2
+    }
+   ]
+  },
+  "Series 6 GPS + Cellular": {
+   "model": "Series 6 GPS + Cellular",
+   "traded": 28,
+   "avg_quote": 71,
+   "pct_flawless": 32,
+   "pct_damaged": 0,
+   "first_traded": "2022-01-16",
+   "last_traded": "2025-08-20",
+   "storage_mix": [
+    {
+     "k": "44mm",
+     "n": 16
+    },
+    {
+     "k": "40mm",
+     "n": 12
+    }
+   ],
+   "carrier_mix": [
+    {
+     "k": "Aluminium",
+     "n": 21
+    },
+    {
+     "k": "Titanium",
+     "n": 6
+    },
+    {
+     "k": "Steel",
+     "n": 1
+    }
+   ]
+  },
+  "Series 7 GPS + Cellular": {
+   "model": "Series 7 GPS + Cellular",
+   "traded": 56,
+   "avg_quote": 150,
+   "pct_flawless": 73,
+   "pct_damaged": 0,
+   "first_traded": "2022-01-14",
+   "last_traded": "2025-06-11",
+   "storage_mix": [
+    {
+     "k": "45mm",
+     "n": 41
+    },
+    {
+     "k": "41mm",
+     "n": 15
+    }
+   ],
+   "carrier_mix": [
+    {
+     "k": "Aluminium",
+     "n": 36
+    },
+    {
+     "k": "Stainless Steel",
+     "n": 13
+    },
+    {
+     "k": "Titanium",
+     "n": 4
+    },
+    {
+     "k": "Steel",
+     "n": 3
+    }
+   ]
+  },
+  "Galaxy S9 Plus": {
+   "model": "Galaxy S9 Plus",
+   "traded": 91,
+   "avg_quote": 89,
+   "pct_flawless": 40,
+   "pct_damaged": 11,
+   "first_traded": "2019-02-19",
+   "last_traded": "2024-08-05",
+   "storage_mix": [
+    {
+     "k": "64GB",
+     "n": 84
+    },
+    {
+     "k": "128GB",
+     "n": 7
+    }
+   ],
+   "carrier_mix": [
+    {
+     "k": "Verizon",
+     "n": 34
+    },
+    {
+     "k": "T-Mobile",
+     "n": 19
+    },
+    {
+     "k": "Unlocked",
+     "n": 16
+    },
+    {
+     "k": "AT&T",
+     "n": 15
+    },
+    {
+     "k": "DELETED",
+     "n": 7
+    }
+   ]
+  },
+  "iPhone 8": {
+   "model": "iPhone 8",
+   "traded": 341,
+   "avg_quote": 96,
+   "pct_flawless": 16,
+   "pct_damaged": 15,
+   "first_traded": "2019-02-11",
+   "last_traded": "2024-07-16",
+   "storage_mix": [
+    {
+     "k": "64GB",
+     "n": 295
+    },
+    {
+     "k": "256GB",
+     "n": 41
+    },
+    {
+     "k": "128GB",
+     "n": 5
+    }
+   ],
+   "carrier_mix": [
+    {
+     "k": "Verizon",
+     "n": 135
+    },
+    {
+     "k": "Unlocked",
+     "n": 117
+    },
+    {
+     "k": "AT&T",
+     "n": 50
+    },
+    {
+     "k": "T-Mobile",
+     "n": 23
+    },
+    {
+     "k": "DELETED",
+     "n": 15
+    },
+    {
+     "k": "Other",
+     "n": 1
+    }
+   ]
+  },
+  "Pixel 5": {
+   "model": "Pixel 5",
+   "traded": 35,
+   "avg_quote": 326,
+   "pct_flawless": 37,
+   "pct_damaged": 0,
+   "first_traded": "2021-03-17",
+   "last_traded": "2023-06-30",
+   "storage_mix": [
+    {
+     "k": "128GB",
+     "n": 35
+    }
+   ],
+   "carrier_mix": [
+    {
+     "k": "Unlocked",
+     "n": 28
+    },
+    {
+     "k": "Verizon",
+     "n": 4
+    },
+    {
+     "k": "AT&T",
+     "n": 3
+    }
+   ]
+  },
+  "Galaxy S23": {
+   "model": "Galaxy S23",
+   "traded": 47,
+   "avg_quote": 214,
+   "pct_flawless": 38,
+   "pct_damaged": 2,
+   "first_traded": "2023-03-22",
+   "last_traded": "2026-08-19",
+   "storage_mix": [
+    {
+     "k": "128GB",
+     "n": 39
+    },
+    {
+     "k": "256GB",
+     "n": 8
+    }
+   ],
+   "carrier_mix": [
+    {
+     "k": "Unlocked",
+     "n": 31
+    },
+    {
+     "k": "Verizon",
+     "n": 14
+    },
+    {
+     "k": "AT&T",
+     "n": 2
+    }
+   ]
+  },
+  "Open": {
+   "model": "Open",
+   "traded": 26,
+   "avg_quote": 717,
+   "pct_flawless": 54,
+   "pct_damaged": 0,
+   "first_traded": "2024-02-09",
+   "last_traded": "2026-06-20",
+   "storage_mix": [
+    {
+     "k": "512GB",
+     "n": 26
+    }
+   ],
+   "carrier_mix": [
+    {
+     "k": "Unlocked",
+     "n": 26
+    }
+   ]
+  },
+  "Pixel 9a": {
+   "model": "Pixel 9a",
+   "traded": 30,
+   "avg_quote": 198,
+   "pct_flawless": 10,
+   "pct_damaged": 0,
+   "first_traded": "2025-09-02",
+   "last_traded": "2026-08-05",
+   "storage_mix": [
+    {
+     "k": "128GB",
+     "n": 30
+    }
+   ],
+   "carrier_mix": [
+    {
+     "k": "Unlocked",
+     "n": 30
+    }
+   ]
+  },
+  "Galaxy S20 Plus": {
+   "model": "Galaxy S20 Plus",
+   "traded": 44,
+   "avg_quote": 239,
+   "pct_flawless": 41,
+   "pct_damaged": 11,
+   "first_traded": "2020-06-16",
+   "last_traded": "2025-11-27",
+   "storage_mix": [
+    {
+     "k": "128GB",
+     "n": 40
+    },
+    {
+     "k": "512GB",
+     "n": 4
+    }
+   ],
+   "carrier_mix": [
+    {
+     "k": "Unlocked",
+     "n": 21
+    },
+    {
+     "k": "Verizon",
+     "n": 11
+    },
+    {
+     "k": "AT&T",
+     "n": 9
+    },
+    {
+     "k": "T-Mobile",
+     "n": 2
+    },
+    {
+     "k": "DELETED",
+     "n": 1
+    }
+   ]
+  },
+  "iPad Mini 6th Gen (2021)": {
+   "model": "iPad Mini 6th Gen (2021)",
+   "traded": 37,
+   "avg_quote": 242,
+   "pct_flawless": 38,
+   "pct_damaged": 0,
+   "first_traded": "2022-09-17",
+   "last_traded": "2026-08-02",
+   "storage_mix": [
+    {
+     "k": "64GB",
+     "n": 27
+    },
+    {
+     "k": "256GB",
+     "n": 10
+    }
+   ],
+   "carrier_mix": [
+    {
+     "k": "Wi-Fi + Cellular",
+     "n": 25
+    },
+    {
+     "k": "Wi-Fi",
+     "n": 12
+    }
+   ]
+  },
+  "iPhone 7": {
+   "model": "iPhone 7",
+   "traded": 610,
+   "avg_quote": 66,
+   "pct_flawless": 15,
+   "pct_damaged": 17,
+   "first_traded": "2018-09-21",
+   "last_traded": "2023-09-28",
+   "storage_mix": [
+    {
+     "k": "32GB",
+     "n": 429
+    },
+    {
+     "k": "128GB",
+     "n": 159
+    },
+    {
+     "k": "256GB",
+     "n": 22
+    }
+   ],
+   "carrier_mix": [
+    {
+     "k": "Verizon",
+     "n": 297
+    },
+    {
+     "k": "Unlocked",
+     "n": 179
+    },
+    {
+     "k": "AT&T",
+     "n": 87
+    },
+    {
+     "k": "T-Mobile",
+     "n": 27
+    },
+    {
+     "k": "DELETED",
+     "n": 20
+    }
+   ]
+  },
+  "Series 8 GPS": {
+   "model": "Series 8 GPS",
+   "traded": 37,
+   "avg_quote": 138,
+   "pct_flawless": 86,
+   "pct_damaged": 0,
+   "first_traded": "2023-03-27",
+   "last_traded": "2025-07-09",
+   "storage_mix": [
+    {
+     "k": "45mm",
+     "n": 25
+    },
+    {
+     "k": "41mm",
+     "n": 12
+    }
+   ],
+   "carrier_mix": [
+    {
+     "k": "Aluminium",
+     "n": 34
+    },
+    {
+     "k": "Stainless Steel",
+     "n": 3
+    }
+   ]
+  },
+  "Galaxy S25": {
+   "model": "Galaxy S25",
+   "traded": 33,
+   "avg_quote": 378,
+   "pct_flawless": 55,
+   "pct_damaged": 0,
+   "first_traded": "2025-03-12",
+   "last_traded": "2026-03-31",
+   "storage_mix": [
+    {
+     "k": "128GB",
+     "n": 21
+    },
+    {
+     "k": "256GB",
+     "n": 12
+    }
+   ],
+   "carrier_mix": [
+    {
+     "k": "Unlocked",
+     "n": 20
+    },
+    {
+     "k": "AT&T",
+     "n": 13
+    }
+   ]
+  },
+  "iPhone 11": {
+   "model": "iPhone 11",
+   "traded": 486,
+   "avg_quote": 173,
+   "pct_flawless": 15,
+   "pct_damaged": 14,
+   "first_traded": "2019-11-16",
+   "last_traded": "2026-07-11",
+   "storage_mix": [
+    {
+     "k": "64GB",
+     "n": 333
+    },
+    {
+     "k": "128GB",
+     "n": 121
+    },
+    {
+     "k": "256GB",
+     "n": 32
+    }
+   ],
+   "carrier_mix": [
+    {
+     "k": "Unlocked",
+     "n": 237
+    },
+    {
+     "k": "Verizon",
+     "n": 137
+    },
+    {
+     "k": "T-Mobile",
+     "n": 59
+    },
+    {
+     "k": "AT&T",
+     "n": 42
+    },
+    {
+     "k": "Other",
+     "n": 6
+    },
+    {
+     "k": "DELETED",
+     "n": 5
+    }
+   ]
+  },
+  "Pixel 8 Pro": {
+   "model": "Pixel 8 Pro",
+   "traded": 25,
+   "avg_quote": 273,
+   "pct_flawless": 16,
+   "pct_damaged": 4,
+   "first_traded": "2024-02-13",
+   "last_traded": "2026-05-13",
+   "storage_mix": [
+    {
+     "k": "128GB",
+     "n": 17
+    },
+    {
+     "k": "256GB",
+     "n": 6
+    },
+    {
+     "k": "512GB",
+     "n": 2
+    }
+   ],
+   "carrier_mix": [
+    {
+     "k": "Unlocked",
+     "n": 23
+    },
+    {
+     "k": "AT&T",
+     "n": 1
+    },
+    {
+     "k": "T-Mobile",
+     "n": 1
+    }
+   ]
+  },
+  "iPod Classic 5th Gen": {
+   "model": "iPod Classic 5th Gen",
+   "traded": 35,
+   "avg_quote": 13,
+   "pct_flawless": 0,
+   "pct_damaged": 3,
+   "first_traded": "2019-02-17",
+   "last_traded": "2022-03-24",
+   "storage_mix": [
+    {
+     "k": "30GB",
+     "n": 22
+    },
+    {
+     "k": "80GB",
+     "n": 8
+    },
+    {
+     "k": "60GB",
+     "n": 5
+    }
+   ],
+   "carrier_mix": [
+    {
+     "k": "Other",
+     "n": 35
+    }
+   ]
+  },
+  "iPhone 13 Pro": {
+   "model": "iPhone 13 Pro",
+   "traded": 109,
+   "avg_quote": 436,
+   "pct_flawless": 35,
+   "pct_damaged": 11,
+   "first_traded": "2021-11-24",
+   "last_traded": "2026-08-17",
+   "storage_mix": [
+    {
+     "k": "128GB",
+     "n": 48
+    },
+    {
+     "k": "256GB",
+     "n": 47
+    },
+    {
+     "k": "512GB",
+     "n": 11
+    },
+    {
+     "k": "1TB",
+     "n": 3
+    }
+   ],
+   "carrier_mix": [
+    {
+     "k": "Unlocked",
+     "n": 50
+    },
+    {
+     "k": "Verizon",
+     "n": 32
+    },
+    {
+     "k": "AT&T",
+     "n": 13
+    },
+    {
+     "k": "T-Mobile",
+     "n": 13
+    },
+    {
+     "k": "DELETED",
+     "n": 1
+    }
+   ]
+  },
+  "iPad 2nd Gen (2011)": {
+   "model": "iPad 2nd Gen (2011)",
+   "traded": 45,
+   "avg_quote": 10,
+   "pct_flawless": 9,
+   "pct_damaged": 11,
+   "first_traded": "2019-03-25",
+   "last_traded": "2021-02-09",
+   "storage_mix": [
+    {
+     "k": "16GB",
+     "n": 36
+    },
+    {
+     "k": "32GB",
+     "n": 5
+    },
+    {
+     "k": "64GB",
+     "n": 4
+    }
+   ],
+   "carrier_mix": [
+    {
+     "k": "Wi-Fi",
+     "n": 38
+    },
+    {
+     "k": "Wi-Fi + Cellular",
+     "n": 7
+    }
+   ]
+  },
+  "iPhone 6s Plus": {
+   "model": "iPhone 6s Plus",
+   "traded": 141,
+   "avg_quote": 72,
+   "pct_flawless": 18,
+   "pct_damaged": 18,
+   "first_traded": "2019-03-10",
+   "last_traded": "2022-06-24",
+   "storage_mix": [
+    {
+     "k": "64GB",
+     "n": 50
+    },
+    {
+     "k": "16GB",
+     "n": 35
+    },
+    {
+     "k": "32GB",
+     "n": 33
+    },
+    {
+     "k": "128GB",
+     "n": 23
+    }
+   ],
+   "carrier_mix": [
+    {
+     "k": "Verizon",
+     "n": 49
+    },
+    {
+     "k": "Unlocked",
+     "n": 35
+    },
+    {
+     "k": "AT&T",
+     "n": 34
+    },
+    {
+     "k": "DELETED",
+     "n": 12
+    },
+    {
+     "k": "T-Mobile",
+     "n": 11
+    }
+   ]
+  },
+  "Pixel 8": {
+   "model": "Pixel 8",
+   "traded": 33,
+   "avg_quote": 161,
+   "pct_flawless": 6,
+   "pct_damaged": 3,
+   "first_traded": "2023-12-23",
+   "last_traded": "2026-09-16",
+   "storage_mix": [
+    {
+     "k": "128GB",
+     "n": 31
+    },
+    {
+     "k": "256GB",
+     "n": 2
+    }
+   ],
+   "carrier_mix": [
+    {
+     "k": "Unlocked",
+     "n": 33
+    }
+   ]
+  },
+  "iPhone 12 Mini": {
+   "model": "iPhone 12 Mini",
+   "traded": 62,
+   "avg_quote": 209,
+   "pct_flawless": 23,
+   "pct_damaged": 15,
+   "first_traded": "2021-01-19",
+   "last_traded": "2026-03-23",
+   "storage_mix": [
+    {
+     "k": "64GB",
+     "n": 27
+    },
+    {
+     "k": "128GB",
+     "n": 26
+    },
+    {
+     "k": "256GB",
+     "n": 9
+    }
+   ],
+   "carrier_mix": [
+    {
+     "k": "Unlocked",
+     "n": 43
+    },
+    {
+     "k": "Verizon",
+     "n": 13
+    },
+    {
+     "k": "AT&T",
+     "n": 4
+    },
+    {
+     "k": "T-Mobile",
+     "n": 2
+    }
+   ]
+  },
+  "iPad Pro 12.9 5th Gen (2021)": {
+   "model": "iPad Pro 12.9 5th Gen (2021)",
+   "traded": 48,
+   "avg_quote": 602,
+   "pct_flawless": 69,
+   "pct_damaged": 2,
+   "first_traded": "2022-01-19",
+   "last_traded": "2026-09-18",
+   "storage_mix": [
+    {
+     "k": "2TB",
+     "n": 20
+    },
+    {
+     "k": "256GB",
+     "n": 13
+    },
+    {
+     "k": "128GB",
+     "n": 10
+    },
+    {
+     "k": "1TB",
+     "n": 3
+    },
+    {
+     "k": "512GB",
+     "n": 2
+    }
+   ],
+   "carrier_mix": [
+    {
+     "k": "Wi-Fi + Cellular",
+     "n": 32
+    },
+    {
+     "k": "Wi-Fi",
+     "n": 16
+    }
+   ]
+  },
+  "iPhone 12 Pro Max": {
+   "model": "iPhone 12 Pro Max",
+   "traded": 182,
+   "avg_quote": 453,
+   "pct_flawless": 30,
+   "pct_damaged": 9,
+   "first_traded": "2020-12-28",
+   "last_traded": "2026-09-04",
+   "storage_mix": [
+    {
+     "k": "128GB",
+     "n": 98
+    },
+    {
+     "k": "256GB",
+     "n": 62
+    },
+    {
+     "k": "512GB",
+     "n": 22
+    }
+   ],
+   "carrier_mix": [
+    {
+     "k": "Unlocked",
+     "n": 95
+    },
+    {
+     "k": "Verizon",
+     "n": 46
+    },
+    {
+     "k": "AT&T",
+     "n": 25
+    },
+    {
+     "k": "T-Mobile",
+     "n": 11
+    },
+    {
+     "k": "Other",
+     "n": 3
+    },
+    {
+     "k": "DELETED",
+     "n": 2
+    }
+   ]
+  },
+  "iPhone 14 Plus": {
+   "model": "iPhone 14 Plus",
+   "traded": 34,
+   "avg_quote": 297,
+   "pct_flawless": 18,
+   "pct_damaged": 6,
+   "first_traded": "2022-11-07",
+   "last_traded": "2026-03-05",
+   "storage_mix": [
+    {
+     "k": "128GB",
+     "n": 27
+    },
+    {
+     "k": "256GB",
+     "n": 6
+    },
+    {
+     "k": "512GB",
+     "n": 1
+    }
+   ],
+   "carrier_mix": [
+    {
+     "k": "Unlocked",
+     "n": 20
+    },
+    {
+     "k": "Verizon",
+     "n": 9
+    },
+    {
+     "k": "AT&T",
+     "n": 4
+    },
+    {
+     "k": "T-Mobile",
+     "n": 1
+    }
+   ]
+  },
+  "Pixel 4a 5G": {
+   "model": "Pixel 4a 5G",
+   "traded": 28,
+   "avg_quote": 199,
+   "pct_flawless": 50,
+   "pct_damaged": 18,
+   "first_traded": "2021-03-18",
+   "last_traded": "2022-09-07",
+   "storage_mix": [
+    {
+     "k": "128GB",
+     "n": 28
+    }
+   ],
+   "carrier_mix": [
+    {
+     "k": "Unlocked",
+     "n": 24
+    },
+    {
+     "k": "T-Mobile",
+     "n": 2
+    },
+    {
+     "k": "DELETED",
+     "n": 1
+    },
+    {
+     "k": "Verizon",
+     "n": 1
+    }
+   ]
+  },
+  "Galaxy S5": {
+   "model": "Galaxy S5",
+   "traded": 130,
+   "avg_quote": 15,
+   "pct_flawless": 12,
+   "pct_damaged": 5,
+   "first_traded": "2018-09-14",
+   "last_traded": "2021-01-28",
+   "storage_mix": [
+    {
+     "k": "16GB",
+     "n": 124
+    },
+    {
+     "k": "32GB",
+     "n": 6
+    }
+   ],
+   "carrier_mix": [
+    {
+     "k": "Verizon",
+     "n": 94
+    },
+    {
+     "k": "AT&T",
+     "n": 22
+    },
+    {
+     "k": "Unlocked",
+     "n": 8
+    },
+    {
+     "k": "DELETED",
+     "n": 4
+    },
+    {
+     "k": "T-Mobile",
+     "n": 2
+    }
+   ]
+  },
+  "Galaxy S25 Ultra": {
+   "model": "Galaxy S25 Ultra",
+   "traded": 95,
+   "avg_quote": 669,
+   "pct_flawless": 15,
+   "pct_damaged": 1,
+   "first_traded": "2025-03-06",
+   "last_traded": "2026-10-18",
+   "storage_mix": [
+    {
+     "k": "256GB",
+     "n": 71
+    },
+    {
+     "k": "512GB",
+     "n": 19
+    },
+    {
+     "k": "1TB",
+     "n": 5
+    }
+   ],
+   "carrier_mix": [
+    {
+     "k": "Unlocked",
+     "n": 70
+    },
+    {
+     "k": "AT&T",
+     "n": 25
+    }
+   ]
+  },
+  "iPhone 13 Pro Max": {
+   "model": "iPhone 13 Pro Max",
+   "traded": 215,
+   "avg_quote": 555,
+   "pct_flawless": 46,
+   "pct_damaged": 7,
+   "first_traded": "2021-10-12",
+   "last_traded": "2026-05-19",
+   "storage_mix": [
+    {
+     "k": "128GB",
+     "n": 106
+    },
+    {
+     "k": "256GB",
+     "n": 87
+    },
+    {
+     "k": "512GB",
+     "n": 16
+    },
+    {
+     "k": "1TB",
+     "n": 6
+    }
+   ],
+   "carrier_mix": [
+    {
+     "k": "Unlocked",
+     "n": 90
+    },
+    {
+     "k": "Verizon",
+     "n": 69
+    },
+    {
+     "k": "AT&T",
+     "n": 28
+    },
+    {
+     "k": "T-Mobile",
+     "n": 27
+    },
+    {
+     "k": "Other",
+     "n": 1
+    }
+   ]
+  },
+  "iPhone 5s": {
+   "model": "iPhone 5s",
+   "traded": 150,
+   "avg_quote": 11,
+   "pct_flawless": 17,
+   "pct_damaged": 17,
+   "first_traded": "2018-09-21",
+   "last_traded": "2021-05-10",
+   "storage_mix": [
+    {
+     "k": "16GB",
+     "n": 109
+    },
+    {
+     "k": "32GB",
+     "n": 24
+    },
+    {
+     "k": "64GB",
+     "n": 17
+    }
+   ],
+   "carrier_mix": [
+    {
+     "k": "Verizon",
+     "n": 47
+    },
+    {
+     "k": "AT&T",
+     "n": 37
+    },
+    {
+     "k": "DELETED",
+     "n": 37
+    },
+    {
+     "k": "Unlocked",
+     "n": 24
+    },
+    {
+     "k": "T-Mobile",
+     "n": 5
+    }
+   ]
+  },
+  "Galaxy S6": {
+   "model": "Galaxy S6",
+   "traded": 59,
+   "avg_quote": 31,
+   "pct_flawless": 27,
+   "pct_damaged": 12,
+   "first_traded": "2019-02-19",
+   "last_traded": "2021-06-12",
+   "storage_mix": [
+    {
+     "k": "32GB",
+     "n": 50
+    },
+    {
+     "k": "64GB",
+     "n": 7
+    },
+    {
+     "k": "128GB",
+     "n": 2
+    }
+   ],
+   "carrier_mix": [
+    {
+     "k": "Verizon",
+     "n": 31
+    },
+    {
+     "k": "AT&T",
+     "n": 10
+    },
+    {
+     "k": "DELETED",
+     "n": 6
+    },
+    {
+     "k": "T-Mobile",
+     "n": 6
+    },
+    {
+     "k": "Unlocked",
+     "n": 6
+    }
+   ]
+  },
+  "Galaxy S20 Ultra": {
+   "model": "Galaxy S20 Ultra",
+   "traded": 41,
+   "avg_quote": 290,
+   "pct_flawless": 29,
+   "pct_damaged": 20,
+   "first_traded": "2020-06-23",
+   "last_traded": "2025-12-29",
+   "storage_mix": [
+    {
+     "k": "128GB",
+     "n": 35
+    },
+    {
+     "k": "512GB",
+     "n": 6
+    }
+   ],
+   "carrier_mix": [
+    {
+     "k": "Unlocked",
+     "n": 20
+    },
+    {
+     "k": "Verizon",
+     "n": 11
+    },
+    {
+     "k": "AT&T",
+     "n": 5
+    },
+    {
+     "k": "T-Mobile",
+     "n": 4
+    },
+    {
+     "k": "DELETED",
+     "n": 1
+    }
+   ]
+  },
+  "iPod Touch 4th Gen": {
+   "model": "iPod Touch 4th Gen",
+   "traded": 34,
+   "avg_quote": 8,
+   "pct_flawless": 9,
+   "pct_damaged": 3,
+   "first_traded": "2019-04-06",
+   "last_traded": "2021-03-03",
+   "storage_mix": [
+    {
+     "k": "16GB",
+     "n": 22
+    },
+    {
+     "k": "8GB",
+     "n": 9
+    },
+    {
+     "k": "32GB",
+     "n": 3
+    }
+   ],
+   "carrier_mix": [
+    {
+     "k": "Other",
+     "n": 34
+    }
+   ]
+  },
+  "iPhone SE 2nd Gen (2020)": {
+   "model": "iPhone SE 2nd Gen (2020)",
+   "traded": 228,
+   "avg_quote": 79,
+   "pct_flawless": 20,
+   "pct_damaged": 9,
+   "first_traded": "2020-10-10",
+   "last_traded": "2025-07-28",
+   "storage_mix": [
+    {
+     "k": "64GB",
+     "n": 188
+    },
+    {
+     "k": "128GB",
+     "n": 29
+    },
+    {
+     "k": "256GB",
+     "n": 11
+    }
+   ],
+   "carrier_mix": [
+    {
+     "k": "Verizon",
+     "n": 145
+    },
+    {
+     "k": "Unlocked",
+     "n": 62
+    },
+    {
+     "k": "AT&T",
+     "n": 14
+    },
+    {
+     "k": "T-Mobile",
+     "n": 4
+    },
+    {
+     "k": "Other",
+     "n": 3
+    }
+   ]
+  },
+  "iPad Air 1st Gen (2013)": {
+   "model": "iPad Air 1st Gen (2013)",
+   "traded": 34,
+   "avg_quote": 53,
+   "pct_flawless": 53,
+   "pct_damaged": 3,
+   "first_traded": "2019-05-14",
+   "last_traded": "2022-07-04",
+   "storage_mix": [
+    {
+     "k": "16GB",
+     "n": 17
+    },
+    {
+     "k": "32GB",
+     "n": 9
+    },
+    {
+     "k": "64GB",
+     "n": 6
+    },
+    {
+     "k": "128GB",
+     "n": 2
+    }
+   ],
+   "carrier_mix": [
+    {
+     "k": "Wi-Fi",
+     "n": 23
+    },
+    {
+     "k": "Wi-Fi + Cellular",
+     "n": 11
+    }
+   ]
+  },
+  "Galaxy S10 Plus": {
+   "model": "Galaxy S10 Plus",
+   "traded": 52,
+   "avg_quote": 202,
+   "pct_flawless": 33,
+   "pct_damaged": 13,
+   "first_traded": "2019-07-28",
+   "last_traded": "2024-02-09",
+   "storage_mix": [
+    {
+     "k": "128GB",
+     "n": 49
+    },
+    {
+     "k": "512GB",
+     "n": 3
+    }
+   ],
+   "carrier_mix": [
+    {
+     "k": "Unlocked",
+     "n": 18
+    },
+    {
+     "k": "Verizon",
+     "n": 13
+    },
+    {
+     "k": "AT&T",
+     "n": 12
+    },
+    {
+     "k": "DELETED",
+     "n": 6
+    },
+    {
+     "k": "T-Mobile",
+     "n": 3
+    }
+   ]
+  },
+  "iPhone 7 Plus": {
+   "model": "iPhone 7 Plus",
+   "traded": 582,
+   "avg_quote": 109,
+   "pct_flawless": 9,
+   "pct_damaged": 15,
+   "first_traded": "2018-09-09",
+   "last_traded": "2023-11-12",
+   "storage_mix": [
+    {
+     "k": "32GB",
+     "n": 376
+    },
+    {
+     "k": "128GB",
+     "n": 185
+    },
+    {
+     "k": "256GB",
+     "n": 21
+    }
+   ],
+   "carrier_mix": [
+    {
+     "k": "Unlocked",
+     "n": 329
+    },
+    {
+     "k": "T-Mobile",
+     "n": 96
+    },
+    {
+     "k": "Verizon",
+     "n": 89
+    },
+    {
+     "k": "AT&T",
+     "n": 50
+    },
+    {
+     "k": "DELETED",
+     "n": 18
+    }
+   ]
+  },
+  "Galaxy S8 Plus": {
+   "model": "Galaxy S8 Plus",
+   "traded": 55,
+   "avg_quote": 83,
+   "pct_flawless": 18,
+   "pct_damaged": 31,
+   "first_traded": "2019-02-08",
+   "last_traded": "2023-09-25",
+   "storage_mix": [
+    {
+     "k": "64GB",
+     "n": 50
+    },
+    {
+     "k": "128GB",
+     "n": 5
+    }
+   ],
+   "carrier_mix": [
+    {
+     "k": "Verizon",
+     "n": 38
+    },
+    {
+     "k": "Unlocked",
+     "n": 7
+    },
+    {
+     "k": "AT&T",
+     "n": 5
+    },
+    {
+     "k": "T-Mobile",
+     "n": 4
+    },
+    {
+     "k": "DELETED",
+     "n": 1
+    }
+   ]
+  },
+  "Pixel 4 XL": {
+   "model": "Pixel 4 XL",
+   "traded": 27,
+   "avg_quote": 193,
+   "pct_flawless": 30,
+   "pct_damaged": 15,
+   "first_traded": "2020-09-29",
+   "last_traded": "2023-05-01",
+   "storage_mix": [
+    {
+     "k": "64GB",
+     "n": 15
+    },
+    {
+     "k": "128GB",
+     "n": 12
+    }
+   ],
+   "carrier_mix": [
+    {
+     "k": "Unlocked",
+     "n": 18
+    },
+    {
+     "k": "Verizon",
+     "n": 6
+    },
+    {
+     "k": "T-Mobile",
+     "n": 2
+    },
+    {
+     "k": "AT&T",
+     "n": 1
+    }
+   ]
+  },
+  "iPhone 14 Pro": {
+   "model": "iPhone 14 Pro",
+   "traded": 89,
+   "avg_quote": 377,
+   "pct_flawless": 22,
+   "pct_damaged": 7,
+   "first_traded": "2022-10-13",
+   "last_traded": "2026-08-19",
+   "storage_mix": [
+    {
+     "k": "256GB",
+     "n": 42
+    },
+    {
+     "k": "128GB",
+     "n": 38
+    },
+    {
+     "k": "512GB",
+     "n": 6
+    },
+    {
+     "k": "1TB",
+     "n": 3
+    }
+   ],
+   "carrier_mix": [
+    {
+     "k": "Unlocked",
+     "n": 56
+    },
+    {
+     "k": "Verizon",
+     "n": 21
+    },
+    {
+     "k": "T-Mobile",
+     "n": 8
+    },
+    {
+     "k": "AT&T",
+     "n": 4
+    }
+   ]
+  },
+  "Pixel 6a": {
+   "model": "Pixel 6a",
+   "traded": 60,
+   "avg_quote": 88,
+   "pct_flawless": 33,
+   "pct_damaged": 10,
+   "first_traded": "2022-10-13",
+   "last_traded": "2025-10-17",
+   "storage_mix": [
+    {
+     "k": "128GB",
+     "n": 52
+    },
+    {
+     "k": "256GB",
+     "n": 8
+    }
+   ],
+   "carrier_mix": [
+    {
+     "k": "Unlocked",
+     "n": 58
+    },
+    {
+     "k": "AT&T",
+     "n": 1
+    },
+    {
+     "k": "Verizon",
+     "n": 1
+    }
+   ]
+  },
+  "Galaxy S10e": {
+   "model": "Galaxy S10e",
+   "traded": 76,
+   "avg_quote": 91,
+   "pct_flawless": 26,
+   "pct_damaged": 4,
+   "first_traded": "2019-04-08",
+   "last_traded": "2025-09-20",
+   "storage_mix": [
+    {
+     "k": "128GB",
+     "n": 72
+    },
+    {
+     "k": "256GB",
+     "n": 4
+    }
+   ],
+   "carrier_mix": [
+    {
+     "k": "Verizon",
+     "n": 57
+    },
+    {
+     "k": "Unlocked",
+     "n": 8
+    },
+    {
+     "k": "AT&T",
+     "n": 7
+    },
+    {
+     "k": "T-Mobile",
+     "n": 3
+    },
+    {
+     "k": "DELETED",
+     "n": 1
+    }
+   ]
+  },
+  "iPod Touch 7th Gen": {
+   "model": "iPod Touch 7th Gen",
+   "traded": 33,
+   "avg_quote": 64,
+   "pct_flawless": 55,
+   "pct_damaged": 0,
+   "first_traded": "2020-12-21",
+   "last_traded": "2025-05-24",
+   "storage_mix": [
+    {
+     "k": "32GB",
+     "n": 23
+    },
+    {
+     "k": "128GB",
+     "n": 7
+    },
+    {
+     "k": "256GB",
+     "n": 3
+    }
+   ],
+   "carrier_mix": [
+    {
+     "k": "Other",
+     "n": 33
+    }
+   ]
+  },
+  "iPhone SE 3rd Gen (2022)": {
+   "model": "iPhone SE 3rd Gen (2022)",
+   "traded": 149,
+   "avg_quote": 86,
+   "pct_flawless": 30,
+   "pct_damaged": 5,
+   "first_traded": "2022-05-11",
+   "last_traded": "2026-09-23",
+   "storage_mix": [
+    {
+     "k": "64GB",
+     "n": 125
+    },
+    {
+     "k": "128GB",
+     "n": 21
+    },
+    {
+     "k": "256GB",
+     "n": 3
+    }
+   ],
+   "carrier_mix": [
+    {
+     "k": "Verizon",
+     "n": 80
+    },
+    {
+     "k": "Unlocked",
+     "n": 57
+    },
+    {
+     "k": "AT&T",
+     "n": 10
+    },
+    {
+     "k": "T-Mobile",
+     "n": 2
+    }
+   ]
+  },
+  "Galaxy S8": {
+   "model": "Galaxy S8",
+   "traded": 113,
+   "avg_quote": 76,
+   "pct_flawless": 35,
+   "pct_damaged": 14,
+   "first_traded": "2018-09-26",
+   "last_traded": "2023-11-26",
+   "storage_mix": [
+    {
+     "k": "64GB",
+     "n": 104
+    },
+    {
+     "k": "128GB",
+     "n": 9
+    }
+   ],
+   "carrier_mix": [
+    {
+     "k": "Verizon",
+     "n": 50
+    },
+    {
+     "k": "Unlocked",
+     "n": 23
+    },
+    {
+     "k": "AT&T",
+     "n": 17
+    },
+    {
+     "k": "DELETED",
+     "n": 16
+    },
+    {
+     "k": "T-Mobile",
+     "n": 6
+    },
+    {
+     "k": "Other",
+     "n": 1
+    }
+   ]
+  },
+  "iPad Air 2nd Gen (2014)": {
+   "model": "iPad Air 2nd Gen (2014)",
+   "traded": 52,
+   "avg_quote": 73,
+   "pct_flawless": 17,
+   "pct_damaged": 2,
+   "first_traded": "2019-05-16",
+   "last_traded": "2023-01-21",
+   "storage_mix": [
+    {
+     "k": "64GB",
+     "n": 34
+    },
+    {
+     "k": "128GB",
+     "n": 9
+    },
+    {
+     "k": "16GB",
+     "n": 9
+    }
+   ],
+   "carrier_mix": [
+    {
+     "k": "Wi-Fi + Cellular",
+     "n": 35
+    },
+    {
+     "k": "Wi-Fi",
+     "n": 17
+    }
+   ]
+  },
+  "iPhone 6 Plus": {
+   "model": "iPhone 6 Plus",
+   "traded": 159,
+   "avg_quote": 60,
+   "pct_flawless": 6,
+   "pct_damaged": 19,
+   "first_traded": "2019-01-26",
+   "last_traded": "2021-09-14",
+   "storage_mix": [
+    {
+     "k": "16GB",
+     "n": 115
+    },
+    {
+     "k": "64GB",
+     "n": 32
+    },
+    {
+     "k": "128GB",
+     "n": 10
+    },
+    {
+     "k": "32GB",
+     "n": 2
+    }
+   ],
+   "carrier_mix": [
+    {
+     "k": "DELETED",
+     "n": 54
+    },
+    {
+     "k": "Verizon",
+     "n": 36
+    },
+    {
+     "k": "T-Mobile",
+     "n": 24
+    },
+    {
+     "k": "Unlocked",
+     "n": 24
+    },
+    {
+     "k": "AT&T",
+     "n": 21
+    }
+   ]
+  },
+  "iPhone 11 Pro": {
+   "model": "iPhone 11 Pro",
+   "traded": 152,
+   "avg_quote": 342,
+   "pct_flawless": 22,
+   "pct_damaged": 12,
+   "first_traded": "2020-04-18",
+   "last_traded": "2026-08-16",
+   "storage_mix": [
+    {
+     "k": "256GB",
+     "n": 81
+    },
+    {
+     "k": "64GB",
+     "n": 64
+    },
+    {
+     "k": "512GB",
+     "n": 7
+    }
+   ],
+   "carrier_mix": [
+    {
+     "k": "Unlocked",
+     "n": 70
+    },
+    {
+     "k": "Verizon",
+     "n": 47
+    },
+    {
+     "k": "AT&T",
+     "n": 20
+    },
+    {
+     "k": "T-Mobile",
+     "n": 7
+    },
+    {
+     "k": "DELETED",
+     "n": 6
+    },
+    {
+     "k": "Other",
+     "n": 2
+    }
+   ]
+  },
+  "iPhone 16": {
+   "model": "iPhone 16",
+   "traded": 123,
+   "avg_quote": 322,
+   "pct_flawless": 3,
+   "pct_damaged": 0,
+   "first_traded": "2025-09-08",
+   "last_traded": "2026-10-22",
+   "storage_mix": [
+    {
+     "k": "128GB",
+     "n": 122
+    },
+    {
+     "k": "256GB",
+     "n": 1
+    }
+   ],
+   "carrier_mix": [
+    {
+     "k": "T-Mobile",
+     "n": 116
+    },
+    {
+     "k": "Unlocked",
+     "n": 4
+    },
+    {
+     "k": "Verizon",
+     "n": 2
+    },
+    {
+     "k": "AT&T",
+     "n": 1
+    }
+   ]
+  },
+  "iPad Mini 2nd Gen (2013)": {
+   "model": "iPad Mini 2nd Gen (2013)",
+   "traded": 35,
+   "avg_quote": 39,
+   "pct_flawless": 37,
+   "pct_damaged": 20,
+   "first_traded": "2019-07-15",
+   "last_traded": "2022-01-08",
+   "storage_mix": [
+    {
+     "k": "16GB",
+     "n": 18
+    },
+    {
+     "k": "32GB",
+     "n": 13
+    },
+    {
+     "k": "128GB",
+     "n": 2
+    },
+    {
+     "k": "64GB",
+     "n": 2
+    }
+   ],
+   "carrier_mix": [
+    {
+     "k": "Wi-Fi",
+     "n": 26
+    },
+    {
+     "k": "Wi-Fi + Cellular",
+     "n": 9
+    }
+   ]
+  }
+ },
+ "overall": {
+  "traded": 13415,
+  "pct_damaged": 11,
+  "pct_flawless": 27
+ }
+}
