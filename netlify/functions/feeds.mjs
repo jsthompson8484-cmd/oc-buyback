@@ -19,6 +19,9 @@
 //              Like New Price,Good Price,Minor Damage Price,Damaged Price,Deeplink
 //  sellcell:  Manufacturer,Model,Capacity,Carrier,<5 prices>,<5 per-condition deeplinks>
 //  flipsy:    "{Model}_{Storage}_{Carrier}_{Condition}",price,url   (no header)
+//  tic:       identical columns to sellcell, but deeplinks point straight at
+//             the model page with the pick preselected (no redirect hop) and
+//             carry utm_source=tradeintocash
 
 const SUPABASE_URL = process.env.SUPABASE_URL;
 const SERVICE_KEY = process.env.SUPABASE_SERVICE_KEY;
@@ -75,6 +78,25 @@ const base = (v) => `${SITE}/sell/${v.category_slug}/${v.brand_slug}/${v.model_s
 const tag = (partner) => `?utm_source=${partner}&utm_medium=referral&utm_campaign=price-feed`;
 const deeplink = (v, partner) => base(v) + tag(partner);
 
+// Shared by the SellCell and TIC feeds: TIC's parser expects this exact
+// header, in this order.
+const TIC_HEADER = "Manufacturer,Model,Capacity,Carrier,Like New Price,Good Price,"
+  + "Fair Price,Minor Damage Price,Damaged Price,Like New Deeplink,Good Deeplink,"
+  + "Fair Deeplink,Minor Damage Deeplink,Damaged Deeplink";
+
+// The one place TIC pricing is decided. Identical to the catalogue price today,
+// which is what SellCell gets; change this function alone to offer Trade Into
+// Cash a different number without touching the SellCell feed.
+const ticPrice = (v, cond) => v.prices[cond] ?? "";
+
+// Straight to the model page with the pick preselected -- no redirect hop, so
+// whatever TIC appends at click time arrives intact. The carrier, storage and
+// cond values are the same slugs the redirect produces today, so the page's
+// existing prefill reads them unchanged.
+const ticDeeplink = (v, cond) =>
+  `${base(v)}/?carrier=${seg(v.carrier)}&storage=${seg(v.storage)}&cond=${COND_SLUG[cond]}`
+  + `&utm_source=tradeintocash&utm_medium=referral&utm_campaign=tic`;
+
 const BUILDERS = {
   swappa(vs, partner) {
     const out = ["partner_ref,product,carrier,memory,storage,processor,price_new,price_mint,price_good,price_fair,price_broken,url"];
@@ -107,6 +129,28 @@ const BUILDERS = {
     }
     return out;
   },
+  // Trade Into Cash: same shape as the SellCell feed so their existing parser
+  // works unchanged, but the deeplinks go STRAIGHT to the model page.
+  //
+  // TIC used to read the SellCell CSV, whose deeplinks take the
+  // /sell/:cat/:brand/:model/:carrier/:storage/:cond shape and 301 to the model
+  // page. That redirect declares its own query string, so it dropped the
+  // tic_click TIC appends at click time, and tagged every TIC visitor as
+  // SellCell. Skipping the hop removes both problems at the source.
+  //
+  // Deliberately NO tic_click here: TIC stamps it on the href at click time.
+  tic(vs) {
+    const out = [TIC_HEADER];
+    for (const v of vs) {
+      const dl = (cond) => ticDeeplink(v, cond);
+      out.push([v.brand, v.model, v.storage, v.carrier,
+        ticPrice(v, "Flawless"), ticPrice(v, "Good"), ticPrice(v, "Fair"),
+        ticPrice(v, "Minor Damage"), ticPrice(v, "Broken"),
+        dl("Flawless"), dl("Good"), dl("Fair"), dl("Minor Damage"), dl("Broken")]
+        .map(csv).join(","));
+    }
+    return out;
+  },
   flipsy(vs, partner) {
     const out = [];
     for (const v of vs)
@@ -117,7 +161,7 @@ const BUILDERS = {
 };
 
 export default async (req) => {
-  const m = new URL(req.url).pathname.match(new RegExp(`/admin/catalog/${TOKEN}/export/(swappa|bankmycell|sellcell|flipsy)-csv\\.csv$`));
+  const m = new URL(req.url).pathname.match(new RegExp(`/admin/catalog/${TOKEN}/export/(swappa|bankmycell|sellcell|flipsy|tic)-csv\\.csv$`));
   if (!m) return new Response("Not found", { status: 404 });
   const variants = await loadCatalog();
   const lines = BUILDERS[m[1]](variants, m[1]);
