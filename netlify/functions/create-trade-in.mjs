@@ -106,6 +106,7 @@ const PAY_METHODS = { PayPal: "paypal", Check: "check", "Cash in store": "cash" 
 
 // derive a clean lead channel from first-touch attribution
 const REF_CHANNELS = [
+  [/tradeintocash\./i, "Trade Into Cash"],
   [/sellcell\./i, "SellCell"], [/swappa\./i, "Swappa"], [/flipsy\./i, "Flipsy"],
   [/bankmycell\./i, "BankMyCell"], [/google\./i, "Google"], [/bing\./i, "Bing"],
   [/duckduckgo\./i, "DuckDuckGo"], [/yahoo\./i, "Yahoo"], [/facebook\.|fb\.com/i, "Facebook"],
@@ -140,6 +141,20 @@ function deriveSource(attrib) {
   const tag = `${attrib.us || ""} ${attrib.um || ""} ${attrib.uc || ""}`.toLowerCase();
   if (/\bgbp\b|business[_-]?profile|\bgmb\b/.test(tag)) return "Google Business Profile";
   if (/maps\.google\./i.test(attrib.r || "")) return "Google Maps";
+  // A real referrer beats a tag we applied to ourselves.
+  //
+  // Our price-feed tags are stamped by US -- the SellCell one by a redirect in
+  // netlify.toml -- so anyone who links with a SellCell-shaped deeplink gets
+  // labelled sellcell, whether or not they are SellCell. Trade Into Cash does
+  // exactly that: it consumes our SellCell feed to build its comparison pages,
+  // so TIC referrals were arriving tagged sellcell and overwriting a referrer
+  // that plainly said tradeintocash.com. The referrer is evidence; the tag is
+  // our own handwriting.
+  if ((attrib.uc || "").toLowerCase() === "price-feed" && attrib.r) {
+    for (const [re, name] of REF_CHANNELS) if (re.test(attrib.r)) return name;
+    try { return "Referral: " + new URL(attrib.r).hostname.replace(/^www\./, ""); }
+    catch { /* fall through to the tag */ }
+  }
   if (attrib.us) return UTM_NAMES[attrib.us.toLowerCase()]
     || attrib.us.charAt(0).toUpperCase() + attrib.us.slice(1);
   if (attrib.r) {

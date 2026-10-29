@@ -1,0 +1,69 @@
+{
+ "captured": "2026-10-28",
+ "window": {
+  "start": "2026-09-27",
+  "end": "2026-10-25"
+ },
+ "legacy": {
+  "pages": 76,
+  "impressions": 585,
+  "clicks": 0
+ },
+ "www": {
+  "pages": 270,
+  "impressions": 18496,
+  "clicks": 520
+ },
+ "legacy_top": [
+  {
+   "url": "https://legacy.ocbuyback.com/blog/2020/02/24/top-5-places-to-sell-your-used-ipad-for-the-most-cash",
+   "impr": 83,
+   "pos": 42.0
+  },
+  {
+   "url": "https://legacy.ocbuyback.com/blog/2019/02/1/is-your-old-ipod-worth-anything-where-can-you-sell-your-ipod-for-a-good-price",
+   "impr": 73,
+   "pos": 19.6
+  },
+  {
+   "url": "https://legacy.ocbuyback.com/blog/2019/01/3/the-best-way-to-sell-your-iphone-online",
+   "impr": 52,
+   "pos": 29.7
+  },
+  {
+   "url": "https://legacy.ocbuyback.com/blog/2026/09/1/sell-your-iphone-17-pro-max-before-the-iphone-18-pro-max-arrives-get-top-cash-at-ocbuyback",
+   "impr": 33,
+   "pos": 30.3
+  },
+  {
+   "url": "https://legacy.ocbuyback.com/blog/2018/010/27/how-to-check-if-your-phone-has-clean-esn-or-imei",
+   "impr": 28,
+   "pos": 31.7
+  },
+  {
+   "url": "https://legacy.ocbuyback.com/how-to/check-battery-health",
+   "impr": 28,
+   "pos": 49.6
+  },
+  {
+   "url": "https://legacy.ocbuyback.com/",
+   "impr": 25,
+   "pos": 3.8
+  },
+  {
+   "url": "https://legacy.ocbuyback.com/blog/2020/03/17/top-picks-best-places-to-sell-your-used-phone-online",
+   "impr": 23,
+   "pos": 35.6
+  },
+  {
+   "url": "https://legacy.ocbuyback.com/blog",
+   "impr": 20,
+   "pos": 34.6
+  },
+  {
+   "url": "https://legacy.ocbuyback.com/blog/2019/02/22/galaxy-s10-phone-lineup-release-date-price-and-specs",
+   "impr": 20,
+   "pos": 42.6
+  }
+ ]
+}

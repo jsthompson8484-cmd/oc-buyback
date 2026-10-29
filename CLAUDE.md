@@ -112,6 +112,14 @@ These were each a real bug. Don't reintroduce them.
   that survives. SellCell's tag lives in the `netlify.toml` redirect, because
   that rule's destination replaces the incoming query string.
 
+  **A real referrer outranks these tags.** They are applied by us — the SellCell
+  one by a redirect — so anyone linking with a SellCell-shaped deeplink gets
+  labelled sellcell whether or not they are SellCell. Trade Into Cash consumes
+  our SellCell feed, so TIC referrals arrived tagged `sellcell` and overwrote a
+  referrer that said `tradeintocash.com`. `deriveSource` now prefers the
+  referrer whenever `utm_campaign=price-feed`. TIC billing was never affected:
+  `isTicReferral()` reads the referrer, not the derived source.
+
 ## Working style
 
 - **Show changes locally before pushing.** Serve the build and verify in a
