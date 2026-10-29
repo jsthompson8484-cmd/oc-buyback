@@ -32,7 +32,9 @@ rm -rf concepts/freshair/admin && cp -r admin concepts/freshair/admin
 
 That is the netlify.toml build command. Run it locally before pushing.
 
-- **Push to `main` deploys.** No separate staging branch.
+- **Push to `main` deploys.** No separate staging branch. A commit that is not pushed
+  is not deployed, and the repo looks correct while production runs the old
+  code — check `git status -sb` for `[ahead N]` before concluding a fix failed.
 - **Netlify runs Python 3.11** — compile with `python3.11 -m py_compile` before
   pushing. No backslashes inside f-string expressions.
 - **Build output is committed.** Sync `admin/` into `concepts/freshair/admin`
