@@ -26,6 +26,24 @@
 # one entirely, so a tag on the feed URL is dropped at this hop. This path
 # shape is only ever produced by the SellCell feed, so stamping the source
 # here is safe and is the only place it survives to the page.
+#
+# Trade Into Cash links to these same feed URLs and appends ?tic_click=<id>.
+# Because the destination replaces the query string, that id was dropped here
+# and every TIC order arrived with no click id (OCB-4G97AD, Oct 28 2026), and
+# was tagged sellcell besides. Rules with a `query` block only match when the
+# parameter is present, so the TIC rule must come first.
+[[redirects]]
+  from = "/sell/:cat/:brand/:model/:carrier/:storage/:cond"
+  query = {tic_click = ":tic_click"}
+  to = "/sell/:cat/:brand/:model/?carrier=:carrier&storage=:storage&cond=:cond&tic_click=:tic_click&utm_source=tradeintocash&utm_medium=referral&utm_campaign=tic"
+  status = 301
+
+[[redirects]]
+  from = "/sell/:cat/:brand/:model/:carrier/:storage/:cond"
+  query = {ref = ":ref"}
+  to = "/sell/:cat/:brand/:model/?carrier=:carrier&storage=:storage&cond=:cond&ref=:ref&utm_source=tradeintocash&utm_medium=referral&utm_campaign=tic"
+  status = 301
+
 [[redirects]]
   from = "/sell/:cat/:brand/:model/:carrier/:storage/:cond"
   to = "/sell/:cat/:brand/:model/?carrier=:carrier&storage=:storage&cond=:cond&utm_source=sellcell&utm_medium=referral&utm_campaign=price-feed"
