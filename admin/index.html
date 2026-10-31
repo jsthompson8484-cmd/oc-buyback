@@ -610,6 +610,8 @@ async function loadActions(){
     return "inspect";                                                     // received / evaluating, nothing open
   }
   const QUEUES = [   // render order
+    { key: "pay", title: "💰 Ready to pay",
+      hint: "Everything cleared for payment, whatever route it took. The amount shown is what to send — a revised offer overrides the original quote." },
     { key: "incoming", title: "🚚 Incoming", hint: "Label scanned — on the way to you." },
     { key: "delivered", title: "📬 Delivered — check in", hint: "USPS says these arrived. Open each and mark it received." },
     { key: "inspect", title: "🔍 Received — needs inspection", hint: "Checked in and waiting on evaluation." },
@@ -618,8 +620,6 @@ async function loadActions(){
     { key: "completed", title: "✅ Action completed — verify & continue", hint: "Customer says it's fixed. Verify and finish the evaluation." },
     { key: "failed", title: "⚠️ Action failed — follow up", hint: "Customer couldn't complete the request — arrange a return or reach out." },
     { key: "denied", title: "🚫 Requote denied — ship it back", hint: "Revised offer declined. Return the device and mark the order returned." },
-    { key: "pay", title: "💰 Ready to pay",
-      hint: "Everything cleared for payment, whatever route it took. The amount shown is what to send — a revised offer overrides the original quote." },
   ];
   const byBucket = {};
   (orders || []).forEach((o) => {
