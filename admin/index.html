@@ -455,6 +455,34 @@ const shortDate = (d) => new Date(d).toLocaleDateString(undefined,
   { month: "numeric", day: "numeric", year: "2-digit" });
 // PayPal and Zelle details are usually just the customer's own email, which
 // the Contact column already shows. Only surface a detail that adds something.
+// What to actually send for an order. Deliberately the SAME expression the
+// Pay button uses (see the dPay handler), so the queue and the button can
+// never disagree: an accepted requote writes final_price onto the item, so
+// reading items handles a multi-device order where only one was revised.
+const payableAmount = (t, iss) => {
+  const items = t.trade_in_items || [];
+  const promo = Number(t.promo_amount || 0);
+  const base = items.reduce(
+    (a, i) => a + Number(i.final_price ?? i.quoted_price) * i.qty, 0) + promo;
+  // Safety net. issue-respond writes final_price onto the item when a customer
+  // accepts, and that is what the sum above reads. If it ever failed to land,
+  // the sum would still be the PRE-revision figure — the exact overpay this
+  // queue exists to prevent. One device with one accepted price is
+  // unambiguous, so trust the accepted price there.
+  const acc = (iss || []).filter((i) => i.status === "accepted" && i.new_price != null);
+  if (acc.length === 1 && items.length === 1 && items[0].final_price == null)
+    return Number(acc[0].new_price) + promo;
+  return base;
+};
+
+// Why an order is sitting in the pay queue. Amber for a revised offer because
+// that is the case where the payable is NOT the number you first agreed.
+const payReason = (t, iss) => (iss || []).some((i) => i.status === "accepted")
+  ? { kind: "revised", label: "🤝 Revised offer accepted",
+      note: "Customer agreed a new price after inspection" }
+  : { kind: "passed", label: "✅ Passed inspection",
+      note: "Every device matched its described condition" };
+
 const payDetail = (t) => {
   const d = (t.payment_detail || "").trim();
   if (!d) return "";
@@ -564,7 +592,7 @@ async function loadActions(){
   // one bucket per order, most-specific first
   function bucket(o, iss){
     if (["initiated","paid","returned","cancelled"].includes(o.status)) return null;
-    if (iss.some((i) => i.status === "accepted")) return "pay";          // requote accepted -> needs payment
+    if (iss.some((i) => i.status === "accepted")) return "pay";          // requote accepted -> ready to pay
     if (iss.some((i) => i.status === "declined")) return "denied";
     if (iss.some((i) => i.status === "cannot_complete")) return "failed";
     if (iss.some((i) => i.status === "resolved") && !iss.some((i) => i.status === "pending")) return "completed";
@@ -575,7 +603,10 @@ async function loadActions(){
     // an all-passed order is ready to pay, anything else still needs looking at
     const its = o.trade_in_items || [];
     if (its.some((i) => i.inspection === "fail")) return "failed_inspect";
-    if (its.length && its.every((i) => i.inspection === "pass")) return "passed";
+    // All devices passed -> the SAME queue as an accepted requote. Both mean
+    // "send the money", and they were two sections five positions apart, so a
+    // payable order could sit unnoticed in whichever one you were not watching.
+    if (its.length && its.every((i) => i.inspection === "pass")) return "pay";
     return "inspect";                                                     // received / evaluating, nothing open
   }
   const QUEUES = [   // render order
@@ -583,12 +614,12 @@ async function loadActions(){
     { key: "delivered", title: "📬 Delivered — check in", hint: "USPS says these arrived. Open each and mark it received." },
     { key: "inspect", title: "🔍 Received — needs inspection", hint: "Checked in and waiting on evaluation." },
     { key: "failed_inspect", title: "❌ Failed inspection — email the customer", hint: "A device didn't pass. Open the order and send a requote or issue email about that device." },
-    { key: "passed", title: "✅ Passed inspection — ready to pay", hint: "Every device passed. Send the payment." },
     { key: "pending", title: "⏳ Action pending — waiting on customer", hint: "Issue or revised-offer email sent — the ball is in their court." },
     { key: "completed", title: "✅ Action completed — verify & continue", hint: "Customer says it's fixed. Verify and finish the evaluation." },
     { key: "failed", title: "⚠️ Action failed — follow up", hint: "Customer couldn't complete the request — arrange a return or reach out." },
     { key: "denied", title: "🚫 Requote denied — ship it back", hint: "Revised offer declined. Return the device and mark the order returned." },
-    { key: "pay", title: "💰 Needs payment", hint: "Accepted offers — send the payment from each order." },
+    { key: "pay", title: "💰 Ready to pay",
+      hint: "Everything cleared for payment, whatever route it took. The amount shown is what to send — a revised offer overrides the original quote." },
   ];
   const byBucket = {};
   (orders || []).forEach((o) => {
@@ -598,8 +629,13 @@ async function loadActions(){
   const html_ = QUEUES.map((q) => {
     const rows = byBucket[q.key] || [];
     if (!rows.length) return "";
+    // largest owed first: the biggest payout is the one you least want sitting
+    if (q.key === "pay") rows.sort((a, b) =>
+      payableAmount(b, issuesBy.get(b.id)) - payableAmount(a, issuesBy.get(a.id)));
     return `<div class="panel">
-      <h2 style="font:700 16px 'Bricolage Grotesque',sans-serif;color:var(--deep);margin:0 0 2px">${q.title} <span class="muted">(${rows.length})</span></h2>
+      <h2 style="font:700 16px 'Bricolage Grotesque',sans-serif;color:var(--deep);margin:0 0 2px">${q.title} <span class="muted">(${rows.length})</span>${
+        q.key === "pay" ? `<span class="muted" style="float:right;font:700 15px 'Bricolage Grotesque',sans-serif">${
+          money(rows.reduce((a, o) => a + payableAmount(o, issuesBy.get(o.id)), 0))} outstanding</span>` : ""}</h2>
       ${q.hint ? `<p class="muted" style="font-size:12.5px;margin:0 0 8px">${q.hint}</p>` : ""}
       <table><tbody>${rows.map((t) => {
         const iss = issuesBy.get(t.id) || [];
@@ -611,9 +647,19 @@ async function loadActions(){
             `${i.inspection === "fail" ? '<span title="failed inspection" style="color:#b3372b;font-weight:800">✗</span> ' : i.inspection === "pass" ? '<span title="passed inspection" style="color:var(--green);font-weight:800">✓</span> ' : ""}${esc(`${i.brand} ${i.model}`)}`).join("<br>")}</td>
           <td class="muted">${esc(t.email)}<br>${esc(t.phone)}</td>
           <td>${esc(t.payment_method)}</td>
-          <td class="money" style="text-align:right"><b>${money(t.total_quote)}</b></td>
+          ${q.key === "pay" ? (() => {
+            const pay = payableAmount(t, iss), quoted = Number(t.total_quote);
+            return `<td class="paycell"><b>${money(pay)}</b>${
+              Math.abs(pay - quoted) > 0.005
+                ? `<br><span class="muted" style="font-size:12px;white-space:nowrap">quoted <s>${money(quoted)}</s></span>`
+                : ""}</td>`;
+          })() : `<td class="money" style="text-align:right"><b>${money(t.total_quote)}</b></td>`}
           <td class="muted" style="white-space:nowrap">${new Date(t.created_at).toLocaleDateString()}</td>
-          <td>${responded.map((i) => `<span class="chip ${i.status === "accepted" ? "paid" : "cancelled"}">${label(i)}</span>`).join(" ")}</td>
+          ${q.key === "pay" ? (() => {
+            const r = payReason(t, iss);
+            return `<td><span class="whybadge ${r.kind}">${r.label}</span>` +
+                   `<br><span class="muted" style="font-size:12px">${r.note}</span></td>`;
+          })() : `<td>${responded.map((i) => `<span class="chip ${i.status === "accepted" ? "paid" : "cancelled"}">${label(i)}</span>`).join(" ")}</td>`}
           <td><button class="btn sm ghost" data-open-action="${t.id}">Open</button></td></tr>`;
       }).join("")}</tbody></table></div>`;
   }).join("");
